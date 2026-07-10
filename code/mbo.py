@@ -213,6 +213,112 @@ def botorch_lcb_torch(gp, beta):
         return (post.mean - beta*post.variance.clamp_min(1e-12).sqrt()).squeeze(-1).float()
     return f
 
+# ---------------- CMA-ES optimizer (3rd optimizer axis) ---------------------
+def cma_opt(score_np, x0, budget=3000, seed=0):
+    """Zeroth-order CMA-ES ascent on the surrogate score. Seeds from the best init
+    candidate, pools every queried point, returns top-TOP by surrogate score — a
+    candidate set consistent with the gradient/perturbation protocols. Returns None
+    if pycma is missing (runner skips the cell)."""
+    try:
+        import cma
+    except ImportError:
+        return None
+    dim = x0.shape[1]
+    x_start = x0[int(np.argmax(score_np(x0)))]
+    es = cma.CMAEvolutionStrategy(x_start.tolist(), 0.2,
+        {'bounds': [0, 1], 'maxfevals': budget, 'verbose': -9, 'seed': seed + 1})
+    pool = [x0]
+    while not es.stop():
+        sols = es.ask()
+        arr = np.clip(np.array(sols, dtype=np.float32), 0, 1)
+        es.tell(sols, [-v for v in score_np(arr)])   # cma minimizes; we maximize
+        pool.append(arr)
+    allc = np.concatenate(pool)
+    return allc[np.argsort(score_np(allc))[-TOP:]]
+
+# ---------------- SVGP surrogate (3rd surrogate axis, scales past exact GP) --
+def fit_svgp(x, y, dim, seed, n_ind=128, iters=250, max_train=2000):
+    """Stochastic variational GP (gpytorch). Differentiable posterior -> pairs with
+    every optimizer. Returns None if gpytorch is missing."""
+    try:
+        import gpytorch
+        from gpytorch.models import ApproximateGP
+        from gpytorch.variational import CholeskyVariationalDistribution, VariationalStrategy
+    except ImportError:
+        return None
+    np.random.seed(seed); torch.manual_seed(seed)
+    if len(x) > max_train:
+        top = np.argsort(y)[-int(max_train*0.2):]
+        rest = np.setdiff1d(np.arange(len(x)), top)
+        sel = np.concatenate([top, np.random.choice(rest, max_train-len(top), replace=False)])
+        x, y = x[sel], y[sel]
+    xt, yt = torch.FloatTensor(x), torch.FloatTensor(y)
+    ym, ys = yt.mean(), yt.std() + 1e-8
+    yt = (yt - ym) / ys
+    ind = xt[torch.randperm(len(xt))[:n_ind]].clone()
+
+    class SVGP(ApproximateGP):
+        def __init__(s):
+            vd = CholeskyVariationalDistribution(n_ind)
+            super().__init__(VariationalStrategy(s, ind, vd, learn_inducing_locations=True))
+            s.mean = gpytorch.means.ConstantMean()
+            s.cov = gpytorch.kernels.ScaleKernel(gpytorch.kernels.MaternKernel(nu=2.5, ard_num_dims=dim))
+        def forward(s, x):
+            return gpytorch.distributions.MultivariateNormal(s.mean(x), s.cov(x))
+
+    model = SVGP(); lik = gpytorch.likelihoods.GaussianLikelihood()
+    model.train(); lik.train()
+    opt = torch.optim.Adam([{'params': model.parameters()}, {'params': lik.parameters()}], lr=0.01)
+    mll = gpytorch.mlls.VariationalELBO(lik, model, num_data=len(xt))
+    for _ in range(iters):
+        opt.zero_grad(); out = model(xt); loss = -mll(out, yt); loss.backward(); opt.step()
+    model.eval(); lik.eval()
+    return {'model': model, 'lik': lik, 'ym': float(ym), 'ys': float(ys)}
+
+def svgp_lcb_torch(svgp, beta):
+    import gpytorch
+    m, ym, ys = svgp['model'], svgp['ym'], svgp['ys']
+    def f(x):
+        with gpytorch.settings.fast_pred_var():
+            post = m(x)
+        return (post.mean - beta*post.variance.clamp_min(1e-12).sqrt())*ys + ym
+    return f
+
+def svgp_lcb_np(svgp, beta):
+    f = svgp_lcb_torch(svgp, beta)
+    def g(x):
+        with torch.no_grad():
+            return f(torch.FloatTensor(x)).numpy()
+    return g
+
+# ---------------- calibration repair (conformal / temperature) --------------
+def conformal_lower_delta(cal_mu, cal_y, alpha):
+    """One-sided split-conformal margin q: [mu - q] is a (1-alpha) lower bound for a
+    FUTURE EXCHANGEABLE point. Nonconformity = mu - y (over-prediction). Returns the
+    finite-sample-valid quantile. NOTE (CCC 2026): validity holds only under
+    exchangeability; on OOD candidates the proposal induces covariate shift and this
+    margin under-covers — which is exactly what E4 measures, not a bug."""
+    res = cal_mu - cal_y                                   # signed over-prediction
+    n = len(res)
+    k = int(np.ceil((n + 1) * (1 - alpha)))
+    return float(np.sort(res)[min(k, n) - 1])
+
+def coverage_of_premise(mu, sigma, f, beta):
+    """Empirical P(|mu - f| <= beta*sigma) — the pessimism-guarantee premise."""
+    return float(np.mean(np.abs(mu - f) <= beta * sigma))
+
+def fit_conformal_multiplier(mu_cal, sigma_cal, y_cal, alpha=0.1):
+    """Calibrated multiplier q that REPLACES the arbitrary beta in LCB: the lower
+    bound mu - q*sigma achieves ~1-alpha coverage on exchangeable data. Nonconformity
+    is normalized (|mu-y|/sigma), so q scales the uncertainty and therefore reshapes
+    the search — unlike a marginal (constant) conformal offset, which only shifts the
+    reported bound and leaves the argmax = mean-ascent. This is the honest 'repair the
+    calibration of the uncertainty used inside LCB'."""
+    r = np.abs(mu_cal - y_cal) / (sigma_cal + 1e-8)
+    n = len(r)
+    k = min(int(np.ceil((n + 1) * (1 - alpha))), n)
+    return float(np.sort(r)[k - 1])
+
 # ---------------- candidate init + scoring ---------------------------------
 def init_candidates(x, y, seed):
     """top-TOP dataset points + sigma=0.05 perturbed copies (legacy protocol)."""
@@ -226,12 +332,66 @@ def eval_designs(task, x_final):
     t = np.sort(sc)[-TOP:]
     return float(t[-1]), float(np.median(t))   # p100, p50
 
-# ---------------- offline MBO methods ---------------------------------------
+# ---------------- offline MBO: compositional surrogate x optimizer grid ------
+# A scorer is (f_torch or None, f_np). Optimizers consume whichever they need; a
+# cell whose surrogate can't supply the optimizer's input (e.g. exact GP + gradient)
+# or whose dependency is missing (svgp without gpytorch, cma without pycma) -> None,
+# and the runner skips it. This block IS the paper's decomposition, in code.
+
+def build_surrogate(name, x, y, dim, seed, beta, ep, K):
+    """name in {ens, gp, botorchgp, svgp, ens_conformal} -> (f_torch|None, f_np|None)."""
+    if name in ('ens', 'ens_conformal'):
+        ms = train_ensemble(x, y, dim, seed=seed, K=K, ep=ep)
+        if name == 'ens':
+            return ens_lcb_torch(ms, beta), ens_lcb_np(ms, beta), ms
+        # conformal: split off a calibration fold, fit multiplier q, use mu - q*sigma
+        n = len(x); cut = int(0.8 * n)
+        idx = np.random.RandomState(seed).permutation(n)
+        xc, yc = x[idx[cut:]], y[idx[cut:]]
+        with torch.no_grad():
+            ps = torch.stack([m(torch.FloatTensor(xc)) for m in ms])
+        q = fit_conformal_multiplier(ps.mean(0).numpy(), ps.std(0).numpy(), yc)
+        return ens_lcb_torch(ms, q), ens_lcb_np(ms, q), ms      # q replaces beta
+    if name == 'gp':
+        gp = fit_exact_gp(x, y, dim, seed)
+        return None, gp_lcb_np(gp, beta), None                  # exact GP: no grad
+    if name == 'botorchgp':
+        gp = fit_botorch_gp(x, y, seed)
+        if gp is None: return None, None, None
+        f = botorch_lcb_torch(gp, beta)
+        return f, (lambda xx: f(torch.FloatTensor(xx)).detach().numpy()), None
+    if name == 'svgp':
+        s = fit_svgp(x, y, dim, seed)
+        if s is None: return None, None, None
+        return svgp_lcb_torch(s, beta), svgp_lcb_np(s, beta), None
+    raise ValueError(name)
+
+def run_grid_cell(task, x, y, x0, seed, surrogate, optimizer, beta, ep, K):
+    f_torch, f_np, _ = build_surrogate(surrogate, x, y, task.dim, seed, beta, ep, K)
+    if optimizer == 'grad':
+        if f_torch is None: return None                          # surrogate not differentiable
+        xf = grad_opt(f_torch, torch.FloatTensor(x0), steps=OPT_STEPS)
+    elif optimizer == 'perturb':
+        if f_np is None: return None
+        xf = perturb_opt(f_np, x0)
+    elif optimizer == 'cma':
+        if f_np is None: return None
+        xf = cma_opt(f_np, x0, seed=seed)
+        if xf is None: return None                               # pycma missing
+    else:
+        raise ValueError(optimizer)
+    p100, p50 = eval_designs(task, xf)
+    return {'p100': p100, 'p50': p50}
+
 def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP):
-    """Returns dict with p100/p50 (+ ensemble state for O2O reuse where applicable)."""
+    """method is either a special baseline (below) or a grid cell 'surrogate:optimizer'.
+    Ensemble+gradient family returns extra state (ms/x/y/xf) for O2O reuse."""
     np.random.seed(seed); torch.manual_seed(seed)
     x, y = task.data()
     x0 = init_candidates(x, y, seed)
+
+    if ':' in method:                                            # compositional grid cell
+        return run_grid_cell(task, x, y, x0, seed, *method.split(':'), beta, ep, K)
 
     if method in ('lcb', 'grad_ascent', 'lcb_perturb', 'coms'):
         alpha = 1.0 if method == 'coms' else None
@@ -244,19 +404,14 @@ def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP):
         p100, p50 = eval_designs(task, xf)
         return {'p100': p100, 'p50': p50, 'ms': ms, 'x': x, 'y': y, 'xf': xf}
 
-    if method == 'gp':          # exact GP + perturbation optimizer
+    if method == 'gp':          # exact GP + perturbation optimizer (legacy name = gp:perturb)
         gp = fit_exact_gp(x, y, task.dim, seed)
         xf = perturb_opt(gp_lcb_np(gp, beta), x0)
         p100, p50 = eval_designs(task, xf)
         return {'p100': p100, 'p50': p50}
 
-    if method == 'gp_grad':     # BoTorch GP + gradient optimizer (2x2 missing cell)
-        gp = fit_botorch_gp(x, y, seed)
-        if gp is None:
-            return None
-        xf = grad_opt(botorch_lcb_torch(gp, beta), torch.FloatTensor(x0), steps=OPT_STEPS)
-        p100, p50 = eval_designs(task, xf)
-        return {'p100': p100, 'p50': p50}
+    if method == 'gp_grad':     # legacy alias for botorchgp:grad
+        return run_grid_cell(task, x, y, x0, seed, 'botorchgp', 'grad', beta, ep, K)
 
     if method == 'sparse_gp':
         from sklearn.kernel_approximation import Nystroem
@@ -308,7 +463,15 @@ def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP):
 
     raise ValueError(f'unknown method {method}')
 
-OFFLINE_METHODS = ['lcb', 'lcb_perturb', 'grad_ascent', 'coms', 'cbas', 'sparse_gp', 'gp', 'gp_grad']
+# The decomposition grid: 3 surrogates x 3 optimizers. GP row uses the BoTorch GP for
+# ALL cells (one differentiable surrogate, three optimizers = clean controlled compare).
+GRID_SURROGATES = ['ens', 'botorchgp', 'svgp']
+GRID_OPTIMIZERS = ['grad', 'perturb', 'cma']
+GRID_METHODS = [f'{s}:{o}' for s in GRID_SURROGATES for o in GRID_OPTIMIZERS]
+CONFORMAL_METHODS = ['ens_conformal:grad', 'ens_conformal:perturb']   # E4 causal test vs ens:*
+BASELINE_METHODS = ['coms', 'cbas', 'sparse_gp', 'grad_ascent', 'gp']  # gp = exact sklearn GP (robustness vs botorchgp)
+# ens:grad == 'lcb', ens:perturb == 'lcb_perturb' (kept as O2O-internal names, not swept twice).
+OFFLINE_METHODS = GRID_METHODS + CONFORMAL_METHODS + BASELINE_METHODS
 
 # ---------------- unified O2O protocol --------------------------------------
 def run_o2o(task, seed, k=50, select='greedy', beta=BETA, lam=0.5, r=0.1, ep=TRAIN_EP):
@@ -354,15 +517,39 @@ def run_calibration(task, seed, n_test=500, ep=TRAIN_EP):
     np.random.seed(seed); torch.manual_seed(seed)
     x, y = task.data()
     ms = train_ensemble(x, y, task.dim, seed=seed, ep=ep)
+
+    def mu_sig(xx):
+        with torch.no_grad():
+            ps = torch.stack([m(torch.FloatTensor(xx)) for m in ms])
+        return ps.mean(0).numpy(), ps.std(0).numpy()
+
+    # (1) sigma-vs-error diagnostics on in-distribution test points (legacy rho ~0.08)
     xt = np.random.uniform(0, 1, (n_test, task.dim)).astype(np.float32)
-    with torch.no_grad():
-        ps = torch.stack([m(torch.FloatTensor(xt)) for m in ms])
-    mu, sig = ps.mean(0).numpy(), ps.std(0).numpy()
+    mu, sig = mu_sig(xt)
     err = np.abs(mu - task.oracle(xt))
-    knn = NearestNeighbors(n_neighbors=5).fit(x)
-    dist = knn.kneighbors(xt)[0].mean(1)
+    dist = NearestNeighbors(n_neighbors=5).fit(x).kneighbors(xt)[0].mean(1)
+
+    # (2) premise coverage P(|mu-f| <= beta*sigma), in-distribution vs on LCB's OOD designs
+    x0 = init_candidates(x, y, seed)
+    xf = grad_opt(ens_lcb_torch(ms, BETA), torch.FloatTensor(x0), steps=OPT_STEPS)   # what LCB actually proposes
+    mu_o, sig_o = mu_sig(xf); f_o = task.oracle(xf)
+    betas = [0.5, 1.0, 2.0, 5.0]
+    cov_indist = {str(b): coverage_of_premise(mu, sig, task.oracle(xt), b) for b in betas}
+    cov_ood = {str(b): coverage_of_premise(mu_o, sig_o, f_o, b) for b in betas}
+
+    # (3) conformal repair: calibrate q on fresh exchangeable data; measure coverage of
+    # [mu - q*sigma] in-distribution (should ~= 1-alpha) vs on OOD designs (collapses —
+    # the covariate-shift break, CCC 2026). alpha=0.1.
+    xc = np.random.uniform(0, 1, (500, task.dim)).astype(np.float32)
+    mu_c, sig_c = mu_sig(xc)
+    q = fit_conformal_multiplier(mu_c, sig_c, task.oracle(xc), alpha=0.1)
+    cov_conf_indist = float(np.mean(task.oracle(xt) >= mu - q*sig))
+    cov_conf_ood = float(np.mean(f_o >= mu_o - q*sig_o))
+
     return {'rho_err': float(spearmanr(sig, err).statistic),
-            'rho_knn': float(spearmanr(sig, dist).statistic)}
+            'rho_knn': float(spearmanr(sig, dist).statistic),
+            'cov_indist': cov_indist, 'cov_ood': cov_ood,
+            'q_conformal': q, 'cov_conf_indist': cov_conf_indist, 'cov_conf_ood': cov_conf_ood}
 
 # ---------------- smoke check ----------------------------------------------
 if __name__ == '__main__':
@@ -370,9 +557,12 @@ if __name__ == '__main__':
     for m in OFFLINE_METHODS:
         r = run_offline(t, 0, m, ep=3)
         assert r is None or np.isfinite(r['p100']), m
-        print(f'{m:12s}', 'skipped (botorch missing)' if r is None else f"p100={r['p100']:.3f}")
+        print(f'{m:20s}', 'skipped (dep missing)' if r is None else f"p100={r['p100']:.3f}")
     o = run_o2o(t, 0, k=10, select='diversity', ep=3)
     assert np.isfinite(o['on_p100'])
-    c = run_calibration(t, 0, ep=3)
-    assert np.isfinite(c['rho_err'])
-    print('o2o ok', 'calib ok — smoke passed')
+    c = run_calibration(t, 0, n_test=200, ep=3)
+    assert np.isfinite(c['rho_err']) and 0 <= c['cov_conf_indist'] <= 1
+    print(f"calib: rho_err={c['rho_err']:.3f}  cov_indist@2={c['cov_indist']['2.0']:.2f}"
+          f"  cov_ood@2={c['cov_ood']['2.0']:.2f}  q={c['q_conformal']:.2f}"
+          f"  conf_indist={c['cov_conf_indist']:.2f}  conf_ood={c['cov_conf_ood']:.2f}")
+    print('smoke passed')
