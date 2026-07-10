@@ -21,14 +21,26 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 import numpy as np
 import mbo
 
-OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'results_camera.json')
+RESULTS = os.path.join(os.path.dirname(__file__), '..', 'results')
+
+def out_path(db):
+    return os.path.join(RESULTS, 'results_db.json' if db else 'results_camera.json')
+
+def build_task(name, db):
+    if db:
+        import db_tasks
+        # ponytail: reconstructs the DB task per cell (design_bench caches data on disk,
+        # so make() is cheap after the first call). If DB task construction dominates
+        # wall-time, switch to per-(task,method) workers that loop seeds internally.
+        return db_tasks.make_db_tasks([name])[0]
+    return mbo.make_tasks([name])[0]
 
 # ---------------- cell worker (module-level = picklable for spawn/fork) ------
 def _worker(spec):
     """spec: dict with exp, task, variant, seed, + params. Returns spec + metrics."""
     import torch
     torch.set_num_threads(1)                       # parallelism is across processes
-    task = mbo.make_tasks([spec['task']])[0]
+    task = build_task(spec['task'], spec.get('db', False))
     e, seed, ep = spec['exp'], spec['seed'], spec['ep']
     if e == 'mbo':
         r = mbo.run_offline(task, seed, spec['variant'], beta=spec.get('beta', mbo.BETA), ep=ep)
@@ -70,15 +82,15 @@ def agg(vals):
     if not vals: return None
     return {'mean': float(np.mean(vals)), 'std': float(np.std(vals)), 'all': [float(v) for v in vals]}
 
-def load():
-    if os.path.exists(OUT):
-        with open(OUT) as f: return json.load(f)
+def load(out):
+    if os.path.exists(out):
+        with open(out) as f: return json.load(f)
     return {}
 
-def save(R):
-    tmp = OUT + '.tmp'
+def save(R, out):
+    tmp = out + '.tmp'
     with open(tmp, 'w') as f: json.dump(R, f, indent=1)
-    os.replace(tmp, OUT)                            # atomic — survives a kill mid-write
+    os.replace(tmp, out)                            # atomic — survives a kill mid-write
 
 def have(R, exp, task, variant, seeds):
     """Cell already complete for all requested seeds? (merge-safe resume)"""
@@ -97,18 +109,26 @@ def main():
     ap.add_argument('--k', type=int, default=50)
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 1))
     ap.add_argument('--force', action='store_true', help='recompute cells already in the JSON')
+    ap.add_argument('--db', action='store_true', help='run on Design-Bench tasks -> results_db.json')
     ap.add_argument('--smoke', action='store_true')
     a = ap.parse_args()
+    out = out_path(a.db)
 
     if a.smoke:
         tasks, seeds, ep, exps, a.k, a.jobs = mbo.make_tasks(['Branin-2D']), 2, 3, ['mbo', 'o2o', 'beta', 'K', 'calibration'], 10, 2
+    elif a.db:
+        import db_tasks
+        names = a.tasks or list(db_tasks.TASKS)
+        tasks, seeds, ep = [type('N', (), {'name': n})() for n in names], a.seeds, mbo.TRAIN_EP  # names only; workers build
+        exps = a.exp or ['mbo']
+        if 'all' in exps: exps = ['mbo', 'o2o', 'calibration']    # beta/K sweeps are synthetic-only
     else:
         tasks, seeds, ep = mbo.make_tasks(a.tasks), a.seeds, mbo.TRAIN_EP
         exps = a.exp or ['mbo']
         if 'all' in exps: exps = ['mbo', 'o2o', 'beta', 'K', 'calibration']
 
-    R = load()
-    specs = [s for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
+    R = load(out)
+    specs = [{**s, 'db': a.db} for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
     if not a.force:
         specs = [s for s in specs if not have(R, s['exp'], s['task'], s['variant'], seeds)]
     # group results as they land: R[exp][task][variant][metric] = agg over seeds
@@ -131,10 +151,10 @@ def main():
                     node = R.setdefault(e, {}).setdefault(tk, {}).setdefault(v, {})
                     for mname, seedmap in metrics.items():
                         node[mname] = agg([seedmap[s] for s in sorted(seedmap)])
-                save(R)
+                save(R, out)
                 print(f'  {done}/{len(specs)}  [{(time.time()-t0)/60:.1f}m]', flush=True)
-    save(R)
-    print(f'done {done} cells in {(time.time()-t0)/60:.1f} min -> {os.path.abspath(OUT)}', flush=True)
+    save(R, out)
+    print(f'done {done} cells in {(time.time()-t0)/60:.1f} min -> {os.path.abspath(out)}', flush=True)
 
 if __name__ == '__main__':
     main()
