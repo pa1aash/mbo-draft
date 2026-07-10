@@ -107,7 +107,12 @@ def main():
     ap.add_argument('--seeds', type=int, default=30)
     ap.add_argument('--tasks', nargs='*', default=None)
     ap.add_argument('--k', type=int, default=50)
-    ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 1))
+    # ponytail: Windows spawn + torch/gpytorch in many workers hard-crashes with no
+    # traceback at high job counts; cap the default there. Linux (fork) is unaffected
+    # -- pass --jobs explicitly on the cloud box. Also: run ONE writer per results
+    # file at a time; concurrent runs race on the JSON and clobber each other.
+    _default_jobs = min(4, os.cpu_count() or 2) if os.name == 'nt' else max(1, (os.cpu_count() or 2) - 1)
+    ap.add_argument('--jobs', type=int, default=_default_jobs)
     ap.add_argument('--force', action='store_true', help='recompute cells already in the JSON')
     ap.add_argument('--db', action='store_true', help='run on Design-Bench tasks -> results_db.json')
     ap.add_argument('--smoke', action='store_true')
@@ -145,8 +150,9 @@ def main():
             slot = buf.setdefault(key, {})
             for mname, mval in r['metrics'].items():
                 slot.setdefault(mname, {})[r['seed']] = mval
-            # fold + checkpoint every 25 cells (atomic write => safe)
-            if done % 25 == 0 or done == len(specs):
+            # fold + checkpoint every 10 cells (atomic write => safe; small so a crash
+            # loses little and --force-less rerun resumes from the last checkpoint)
+            if done % 10 == 0 or done == len(specs):
                 for (e, tk, v), metrics in buf.items():
                     node = R.setdefault(e, {}).setdefault(tk, {}).setdefault(v, {})
                     for mname, seedmap in metrics.items():

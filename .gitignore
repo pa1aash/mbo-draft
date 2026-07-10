@@ -7,3 +7,10 @@ paper/latex_source/*.out
 paper/latex_source/*.bbl
 paper/latex_source/*.blg
 paper/latex_source/*.synctex.gz
+
+# preview/scratch (real results come from the cloud run, frozen later)
+results/results_camera.json
+results/results_db.json
+results/*.log
+results/*.tmp
+paper/aaai27/kit.zip
