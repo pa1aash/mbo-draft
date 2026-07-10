@@ -1,0 +1,9 @@
+# Versions pinned from the environment the existing results were produced with.
+torch==2.11.0
+numpy==2.4.4
+scipy==1.17.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+# Needed only for the gp_grad (BoTorch GP + gradient acquisition) cell:
+botorch
+gpytorch

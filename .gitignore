@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+paper/latex_source/*.aux
+paper/latex_source/*.log
+paper/latex_source/*.out
+paper/latex_source/*.bbl
+paper/latex_source/*.blg
+paper/latex_source/*.synctex.gz
