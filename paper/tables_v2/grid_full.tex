@@ -1,0 +1,23 @@
+\begin{table*}[t]\centering
+\caption{Full comparison including domain baselines (COMs, CbAS, gradient ascent).}
+\label{tab:grid_full}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lcc}
+\toprule
+Method & Branin & Styblinski \\
+\midrule
+Ens+Grad & -6.63 & 4.99 \\
+Ens+Pert & -0.98 & 33.20 \\
+Ens+CMA & -13.92 & 4.05 \\
+GP+Grad & \textbf{-0.40} & 24.64 \\
+GP+Pert & -0.40 & \textbf{35.88} \\
+GP+CMA & -0.40 & 24.84 \\
+SVGP+Grad & -0.47 & 11.66 \\
+SVGP+Pert & -0.40 & 34.10 \\
+SVGP+CMA & -0.59 & 11.58 \\
+COMs & -5.49 & -- \\
+CbAS & -3.99 & -- \\
+Grad.Asc. & -7.65 & -- \\
+\bottomrule
+\end{tabular}}
+\end{table*}

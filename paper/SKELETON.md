@@ -41,5 +41,12 @@ Surrogate-class comparison: Li-Rudner-Wilson 2024 (BNN surrogates for BO, optimi
 - Baselines honestly labeled: "CbAS" → real CbAS if E3 runs it, else "CEM-style adaptive sampling"; sparse-GP uncertainty is a feature-variance proxy unless a real posterior is fit.
 - Every number traces to the frozen results JSON (number-trace audit gate).
 
+## Baseline strategy (from R2 — `research/notes/baseline-numbers-designbench.md`)
+- **Run ourselves (design-baselines repo, one protocol):** Grad. Ascent, COMs, CbAS, CMA-ES, BO-qEI. **Report our own COMs beside the published range** — published COMs varies ±0.1 across re-runs, so our number anchors the comparison.
+- **Cite from published tables:** DDOM, BONET, ExPT, BDI, RoMA, RaM/LTR, Match-OPT (diffusion/transformer/ranking — expensive to reproduce). Cross-check appendix table = Tables A+B from the R2 note.
+- **Protocol (state exactly):** 100th-pct (max) headline + 50th-pct (median); **N=128** oracle budget; `y_norm=(y−y_min)/(y_max−y_min)` with y_min/max from the **full unobserved dataset** (Design-Bench App. C.1); 8 trials standard.
+- **Landscape for positioning:** current published leaders are ranking-based **RaM/LTR**, then BDI/Tri-Mentoring/ICT/COMs. GFP/UTR are saturated (~0.86/0.69, being retired). Superconductor has no clear winner (0.40–0.52). Note published-number disagreements (RoMA 0.43–0.92; BONET Q=256 double-budget; DDOM Ant/D'Kitty splits differ) in the appendix — motivates our controlled single-protocol run.
+- **Appendix ID fix:** BONET = arXiv 2206.10786 (not 2301.10123).
+
 ## Novelty one-liner (for intro + rebuttal)
 "We present the first controlled decomposition of offline-MBO performance into surrogate class, acquisition optimizer, and uncertainty calibration. Prior work varies one axis at a time — surrogates with the optimizer fixed (Li et al. 2024), optimizers as a proposed method (PGS 2024), or calibration on a fixed GP+EI pipeline (the conformal-BO line) — and the surrogate–optimizer confound has not been isolated."

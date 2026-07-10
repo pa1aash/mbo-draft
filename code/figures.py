@@ -119,8 +119,40 @@ def fig_calib_scatter(mbo, cal, beta):
     ax.set_title('Does calibration predict whether pessimism helps?', fontsize=9.5)
     save(fig, 'fig4_calibration_vs_benefit')
 
+# ---- F6: critical-difference diagram (Demsar) over the grid cells ----
+def fig_cd(mbo, methods=None):
+    methods = methods or [f'{s}:{o}' for s in SURR for o in OPT]
+    tasks = [t for t in mbo if all(m in mbo[t] for m in methods)]
+    if len(tasks) < 2: return
+    # per-task ranks (1 = best), averaged
+    R = np.array([[mbo[t][m]['p100']['mean'] for m in methods] for t in tasks])
+    ranks = (-R).argsort(1).argsort(1) + 1
+    avg = ranks.mean(0); k, N = len(methods), len(tasks)
+    q = {3: 2.343, 4: 2.569, 5: 2.728, 6: 2.850, 7: 2.949, 8: 3.031, 9: 3.102, 10: 3.164}.get(k, 3.164)
+    cd = q * np.sqrt(k * (k + 1) / (6 * N))                     # Nemenyi critical difference, alpha=0.05
+    order = np.argsort(avg)
+    fig, ax = plt.subplots(figsize=(6.2, 0.5 * k + 1)); ax.set_xlim(1, k); ax.axis('off')
+    ax.plot([1, k], [0, 0], 'k', lw=1)
+    for r in range(1, k + 1): ax.plot([r, r], [0, 0.1], 'k', lw=1); ax.text(r, 0.18, str(r), ha='center', fontsize=8)
+    for i, idx in enumerate(order):
+        y = -(i + 1) * 0.6
+        ax.plot([avg[idx], avg[idx]], [0, y], color=OK['gray'], lw=0.8)
+        ax.plot([avg[idx], 1 if avg[idx] < (k + 1) / 2 else k], [y, y], color=OK['gray'], lw=0.8)
+        side = 1 if avg[idx] < (k + 1) / 2 else k
+        ax.text(side, y, f' {LBL_M(methods[idx])} ({avg[idx]:.1f})', va='center',
+                ha='left' if side == 1 else 'right', fontsize=8)
+    ax.plot([1, 1 + cd], [0.5, 0.5], 'k', lw=2); ax.text(1 + cd / 2, 0.6, f'CD={cd:.2f}', ha='center', fontsize=8)
+    ax.set_title('Critical-difference diagram (Nemenyi, α=0.05)', fontsize=9.5)
+    save(fig, 'fig6_cd_diagram')
+
+def LBL_M(m):
+    return {'ens:grad': 'Ens+Grad', 'ens:perturb': 'Ens+Pert', 'ens:cma': 'Ens+CMA',
+            'botorchgp:grad': 'GP+Grad', 'botorchgp:perturb': 'GP+Pert', 'botorchgp:cma': 'GP+CMA',
+            'svgp:grad': 'SVGP+Grad', 'svgp:perturb': 'SVGP+Pert', 'svgp:cma': 'SVGP+CMA'}.get(m, m)
+
 if __name__ == '__main__':
     R = load(CAM)
+    if R.get('mbo'): fig_cd(R['mbo'])
     if R.get('mbo'): fig_grid_bars(R['mbo'])
     if R.get('calibration'): fig_coverage(R['calibration'])
     if R.get('mbo') and R.get('calibration') and R.get('beta'):
