@@ -276,11 +276,14 @@ def fit_svgp(x, y, dim, seed, n_ind=128, iters=250, max_train=2000):
     return {'model': model, 'lik': lik, 'ym': float(ym), 'ys': float(ys)}
 
 def svgp_lcb_torch(svgp, beta):
-    import gpytorch
+    # Predict in TRAIN mode: the variational strategy recomputes q(f(x)) each call
+    # instead of reusing eval-mode predictive caches, which get freed after the first
+    # backward and crash repeated gradient-acquisition steps. For an SVGP the latent-f
+    # marginal is identical in train/eval; only the (unused) caching differs.
     m, ym, ys = svgp['model'], svgp['ym'], svgp['ys']
+    m.train()
     def f(x):
-        with gpytorch.settings.fast_pred_var():
-            post = m(x)
+        post = m(x)
         return (post.mean - beta*post.variance.clamp_min(1e-12).sqrt())*ys + ym
     return f
 
