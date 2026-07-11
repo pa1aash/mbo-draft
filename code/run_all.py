@@ -145,8 +145,16 @@ def main():
     print(f'{len(specs)} cells, {a.jobs} workers', flush=True)
     with ProcessPoolExecutor(max_workers=a.jobs) as ex:
         futs = {ex.submit(_worker, s): s for s in specs}
+        failed = 0
         for fut in as_completed(futs):
-            r = fut.result(); done += 1
+            done += 1
+            try:
+                r = fut.result()
+            except Exception as ex:                 # one bad cell must NOT kill the run
+                s = futs[fut]; failed += 1
+                print(f"  CELL FAILED {s['exp']}/{s['task']}/{s['variant']} seed{s['seed']}: "
+                      f"{type(ex).__name__}: {ex}", flush=True)
+                continue
             if r['metrics'] is None:                # e.g. gp_grad without botorch
                 continue
             key = (r['exp'], r['task'], r['variant'])
@@ -163,7 +171,7 @@ def main():
                 save(R, out)
                 print(f'  {done}/{len(specs)}  [{(time.time()-t0)/60:.1f}m]', flush=True)
     save(R, out)
-    print(f'done {done} cells in {(time.time()-t0)/60:.1f} min -> {os.path.abspath(out)}', flush=True)
+    print(f'done {done} cells ({failed} failed) in {(time.time()-t0)/60:.1f} min -> {os.path.abspath(out)}', flush=True)
 
 if __name__ == '__main__':
     main()

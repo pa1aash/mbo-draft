@@ -15,7 +15,8 @@ echo "design_bench=$SP"; echo "design_bench_data=$DBD"
 # botorch/gpytorch/cma so the FULL surrogate x optimizer grid runs on DB tasks too (not
 # just ensemble+exact-GP). Install those first, then pin numpy LAST so it wins (botorch
 # would otherwise pull numpy>=1.24 and re-break design-bench's np.bool).
-pip install -q 'scikit-learn==1.0.2' 'gym==0.23.1' botorch gpytorch cma huggingface_hub 2>&1 | tail -1 || true
+# scipy<1.9: sklearn 1.0.2's Ridge calls scipy.linalg.solve(sym_pos=), removed in scipy 1.9.
+pip install -q 'scikit-learn==1.0.2' 'scipy==1.8.1' 'gym==0.23.1' botorch gpytorch cma huggingface_hub 2>&1 | tail -1 || true
 pip uninstall -y tensorflow tensorflow-cpu keras 2>/dev/null | grep -i uninstall || true
 pip install -q 'numpy==1.23.5' 2>&1 | tail -1 || true   # LAST: overrides any botorch bump
 
