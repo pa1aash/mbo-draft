@@ -8,12 +8,17 @@ say(){ echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$LOG"; }
 have(){ conda env list | grep -qE "^\s*$1\s"; }
 
 # Bootstrap miniconda if absent (bare RunPod/cloud containers have no conda).
+# Idempotent: reuse an existing install rather than re-bootstrapping on rerun.
 if ! command -v conda >/dev/null; then
-  say "conda not found — bootstrapping miniconda to \$HOME/miniconda3…"
-  curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/mc.sh \
-    && bash /tmp/mc.sh -b -p "$HOME/miniconda3" >>"$LOG" 2>&1 \
-    && say "miniconda installed" || { say "miniconda bootstrap FAILED — see $LOG"; exit 1; }
-  export PATH="$HOME/miniconda3/bin:$PATH"
+  if [ -x "$HOME/miniconda3/bin/conda" ]; then
+    export PATH="$HOME/miniconda3/bin:$PATH"; say "reusing existing miniconda at \$HOME/miniconda3"
+  else
+    say "conda not found — bootstrapping miniconda to \$HOME/miniconda3…"
+    curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/mc.sh \
+      && bash /tmp/mc.sh -b -p "$HOME/miniconda3" >>"$LOG" 2>&1 \
+      && say "miniconda installed" || { say "miniconda bootstrap FAILED — see $LOG"; exit 1; }
+    export PATH="$HOME/miniconda3/bin:$PATH"
+  fi
 fi
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
