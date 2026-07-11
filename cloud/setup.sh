@@ -17,12 +17,18 @@ if ! command -v conda >/dev/null; then
 fi
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
+# Accept channel ToS (newer conda refuses `conda create` otherwise; harmless if already accepted).
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main >>"$LOG" 2>&1 || true
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r    >>"$LOG" 2>&1 || true
+
 # mujoco system deps for Design-Bench Ant/D'Kitty (best-effort; non-mujoco tasks don't need them).
+# Package names vary by Ubuntu; try modern then legacy, don't fail the run either way.
 if command -v apt-get >/dev/null; then
   say "installing mujoco system deps (best-effort)…"
-  (apt-get update && apt-get install -y --no-install-recommends \
-     libgl1-mesa-glx libosmesa6 patchelf libglew-dev >>"$LOG" 2>&1) \
-    && say "mujoco system deps OK" || say "mujoco system deps skipped (need sudo/root?) — non-mujoco DB tasks still fine"
+  apt-get update >>"$LOG" 2>&1 || true
+  (apt-get install -y --no-install-recommends libgl1 libglx-mesa0 libosmesa6 patchelf libglew-dev >>"$LOG" 2>&1 \
+     || apt-get install -y --no-install-recommends libgl1-mesa-glx libosmesa6 patchelf libglew-dev >>"$LOG" 2>&1) \
+    && say "mujoco system deps OK" || say "mujoco system deps skipped — non-mujoco DB tasks still fine"
 fi
 
 # --- main: our engine (E1/E4/E5/E6/E8, synthetic + Design-Bench via torch) ------
