@@ -12,8 +12,12 @@ echo "design_bench=$SP"; echo "design_bench_data=$DBD"
 
 # 1-4: version pins design-bench needs (np.NINF/np.bool -> numpy<1.24; old RF pickle ->
 # sklearn<1.4; exact-oracle Hopper import -> gym; TF unused + conflicts -> remove).
-pip install -q 'numpy==1.23.5' 'scikit-learn==1.0.2' 'gym==0.23.1' huggingface_hub 2>&1 | tail -1 || true
+# botorch/gpytorch/cma so the FULL surrogate x optimizer grid runs on DB tasks too (not
+# just ensemble+exact-GP). Install those first, then pin numpy LAST so it wins (botorch
+# would otherwise pull numpy>=1.24 and re-break design-bench's np.bool).
+pip install -q 'scikit-learn==1.0.2' 'gym==0.23.1' botorch gpytorch cma huggingface_hub 2>&1 | tail -1 || true
 pip uninstall -y tensorflow tensorflow-cpu keras 2>/dev/null | grep -i uninstall || true
+pip install -q 'numpy==1.23.5' 2>&1 | tail -1 || true   # LAST: overrides any botorch bump
 
 # 5: data from a community mirror (original hosting is gone). Only the tasks we use.
 hf download beckhamc/design_bench_data --repo-type dataset --local-dir "$DBD" \

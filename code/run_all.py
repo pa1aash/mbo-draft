@@ -27,13 +27,13 @@ RESULTS = os.path.join(os.path.dirname(__file__), '..', 'results')
 def out_path(db):
     return os.path.join(RESULTS, 'results_db.json' if db else 'results_camera.json')
 
-def build_task(name, db):
+def build_task(name, db, subsample=None):
     if db:
         import db_tasks
         # ponytail: reconstructs the DB task per cell (design_bench caches data on disk,
-        # so make() is cheap after the first call). If DB task construction dominates
-        # wall-time, switch to per-(task,method) workers that loop seeds internally.
-        return db_tasks.make_db_tasks([name])[0]
+        # so make() is cheap after the first call). subsample caps the offline dataset
+        # (score-biased) — essential: TFBind10 ships 4.16M rows, untrainable in full.
+        return db_tasks.make_db_tasks([name], subsample=subsample)[0]
     return mbo.make_tasks([name])[0]
 
 # ---------------- cell worker (module-level = picklable for spawn/fork) ------
@@ -41,7 +41,7 @@ def _worker(spec):
     """spec: dict with exp, task, variant, seed, + params. Returns spec + metrics."""
     import torch
     torch.set_num_threads(1)                       # parallelism is across processes
-    task = build_task(spec['task'], spec.get('db', False))
+    task = build_task(spec['task'], spec.get('db', False), spec.get('db_sub'))
     e, seed, ep = spec['exp'], spec['seed'], spec['ep']
     if e == 'mbo':
         r = mbo.run_offline(task, seed, spec['variant'], beta=spec.get('beta', mbo.BETA), ep=ep)
@@ -116,6 +116,7 @@ def main():
     ap.add_argument('--jobs', type=int, default=_default_jobs)
     ap.add_argument('--force', action='store_true', help='recompute cells already in the JSON')
     ap.add_argument('--db', action='store_true', help='run on Design-Bench tasks -> results_db.json')
+    ap.add_argument('--db-subsample', type=int, default=8000, help='cap DB offline dataset (score-biased); 0=full')
     ap.add_argument('--smoke', action='store_true')
     a = ap.parse_args()
     out = out_path(a.db)
@@ -134,7 +135,8 @@ def main():
         if 'all' in exps: exps = ['mbo', 'o2o', 'beta', 'K', 'calibration']
 
     R = load(out)
-    specs = [{**s, 'db': a.db} for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
+    db_sub = (a.db_subsample or None) if a.db else None
+    specs = [{**s, 'db': a.db, 'db_sub': db_sub} for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
     if not a.force:
         specs = [s for s in specs if not have(R, s['exp'], s['task'], s['variant'], seeds)]
     # group results as they land: R[exp][task][variant][metric] = agg over seeds
