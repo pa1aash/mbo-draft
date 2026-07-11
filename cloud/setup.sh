@@ -58,10 +58,13 @@ if have db; then say "db exists, skipping"; else
          && say "db[all] OK — morphology tasks available" \
          || say "db[all] FAILED — non-mujoco tasks (TFBind8/10, Superconductor, ChEMBL, GFP, UTR) still usable" ) \
     || say "db FAILED — see $LOG"
-  # verify whatever installed
-  conda run -n db python code/db_tasks.py TFBind8 Superconductor >>"$LOG" 2>&1 \
-    && say "db verify OK (TFBind8 + Superconductor instantiate + oracle-evaluate)" \
-    || say "db verify FAILED — check $LOG"
+  # Design-Bench 2.0.20 is broken in 2026 (dead data hosting + modern numpy/sklearn).
+  # fix_designbench.sh applies the 8 fixes (version pins, HF-mirror data, source patches).
+  say "applying Design-Bench compatibility fixes…"
+  conda run -n db bash cloud/fix_designbench.sh >>"$LOG" 2>&1
+  conda run -n db python code/db_tasks.py TFBind8 TFBind10 Superconductor >>"$LOG" 2>&1 \
+    && say "db verify OK (TFBind8 d=32, TFBind10 d=40, Superconductor d=86 — real tasks live)" \
+    || say "db verify FAILED — check $LOG (fallback: cite Design-Bench numbers)"
 fi
 
 # --- baselines: official design-baselines repo (E3). Hardest; its own TF1-era env ---
