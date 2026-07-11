@@ -7,8 +7,23 @@ LOG="cloud/setup.log"; : > "$LOG"
 say(){ echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$LOG"; }
 have(){ conda env list | grep -qE "^\s*$1\s"; }
 
-command -v conda >/dev/null || { say "conda not found — install miniconda first"; exit 1; }
+# Bootstrap miniconda if absent (bare RunPod/cloud containers have no conda).
+if ! command -v conda >/dev/null; then
+  say "conda not found — bootstrapping miniconda to \$HOME/miniconda3…"
+  curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/mc.sh \
+    && bash /tmp/mc.sh -b -p "$HOME/miniconda3" >>"$LOG" 2>&1 \
+    && say "miniconda installed" || { say "miniconda bootstrap FAILED — see $LOG"; exit 1; }
+  export PATH="$HOME/miniconda3/bin:$PATH"
+fi
 source "$(conda info --base)/etc/profile.d/conda.sh"
+
+# mujoco system deps for Design-Bench Ant/D'Kitty (best-effort; non-mujoco tasks don't need them).
+if command -v apt-get >/dev/null; then
+  say "installing mujoco system deps (best-effort)…"
+  (apt-get update && apt-get install -y --no-install-recommends \
+     libgl1-mesa-glx libosmesa6 patchelf libglew-dev >>"$LOG" 2>&1) \
+    && say "mujoco system deps OK" || say "mujoco system deps skipped (need sudo/root?) — non-mujoco DB tasks still fine"
+fi
 
 # --- main: our engine (E1/E4/E5/E6/E8, synthetic + Design-Bench via torch) ------
 if have main; then say "main exists, skipping"; else
