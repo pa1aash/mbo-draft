@@ -163,15 +163,28 @@ def ens_lcb_np(ms, beta):
     return g
 
 # ---------------- optimizers (shared across surrogates) ---------------------
-def grad_opt(score_torch, x0, steps=OPT_STEPS, lr=LR_OPT):
-    """Adam ascent on a differentiable score. x0: torch (N,d)."""
+def grad_opt(score_torch, x0, steps=OPT_STEPS, lr=LR_OPT, normalize=False, trust=None):
+    """Adam ascent on a differentiable score. x0: torch (N,d).
+    normalize: unit-normalize the per-candidate gradient (bounds step aggressiveness).
+    trust: cap each candidate's distance from its start x0 (a trust region). Both exist
+    for the robustness sweep that rebuts 'your gradient ascent was just under-tuned' —
+    if the collapse persists even with normalize+trust, it is surrogate geometry, not tuning."""
     x = x0.clone().detach().requires_grad_(True)
+    anchor = x0.clone().detach()
     o = optim.Adam([x], lr=lr)
     for _ in range(steps):
         o.zero_grad()
         (-score_torch(x).mean()).backward()
+        if normalize:
+            with torch.no_grad():
+                x.grad /= (x.grad.norm(dim=1, keepdim=True) + 1e-8)
         o.step()
-        with torch.no_grad(): x.clamp_(0, 1)
+        with torch.no_grad():
+            x.clamp_(0, 1)
+            if trust is not None:                       # project back into the trust ball
+                d = x - anchor; n = d.norm(dim=1, keepdim=True)
+                over = (n > trust).squeeze(-1)
+                x[over] = anchor[over] + d[over] * (trust / n[over])
     return x.detach().numpy()
 
 def perturb_opt(score_np, x0, rounds=5, sigmas=(0.1, 0.05, 0.02)):
