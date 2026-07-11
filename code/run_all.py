@@ -5,6 +5,7 @@ so partial runs accumulate and reruns overwrite only what they recompute).
   python run_all.py --exp o2o --seeds 15 --jobs 32
   python run_all.py --exp beta --exp K --exp calibration --seeds 10
   python run_all.py --exp all --seeds 30 --jobs 48
+  python run_all.py --exp mbo --tasks Ackley2D Ackley5D Ackley10D Ackley20D Ackley50D Ackley100D   # scaling ladder
   python run_all.py --smoke                 # ~2 min sanity pass on Branin
 
 Every experiment expands to a flat list of independent (task, variant, seed) CELLS.

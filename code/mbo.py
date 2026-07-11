@@ -85,9 +85,38 @@ class Griewank(Task):
 
 ALL_TASKS = [Branin, Styblinski, Levy, Rosenbrock, Rastrigin, Ackley, Griewank]
 
+class ScaledAckley(Task):
+    """Controlled scaling-ladder family (plan section 4.5): ONE function at any d, with a
+    data-density knob. N = density * 250 * d, clamped [2000, 25000]. Analytic optimum = 0
+    (at x = 0.5^d), so normalized regret for the continuous-metric falsification is
+    computable post hoc. Names: 'Ackley50D', 'Ackley100D-x0.5' (density 0.5)."""
+    optimum = 0.0
+    def __init__(s, d, density=1.0):
+        n = int(min(max(250 * d * density, 2000), 25000))
+        name = f'Ackley{d}D' + (f'-x{density:g}' if density != 1 else '')
+        super().__init__(name, d, n, 0.05)
+    def oracle(s, x):
+        xs = x*10-5; d = xs.shape[1]
+        return -(-20*np.exp(-0.2*np.sqrt(np.sum(xs**2, 1)/d))
+                 - np.exp(np.sum(np.cos(2*np.pi*xs), 1)/d)+20+np.e)
+
+_LADDER = __import__('re').compile(r'^Ackley(\d+)D(?:-x([\d.]+))?$')
+
 def make_tasks(names=None):
     tasks = [T() for T in ALL_TASKS]
-    return tasks if not names else [t for t in tasks if t.name in names]
+    if not names:
+        return tasks
+    byname = {t.name: t for t in tasks}
+    out = []
+    for n in names:
+        m = _LADDER.match(n)
+        if n in byname:
+            out.append(byname[n])
+        elif m:
+            out.append(ScaledAckley(int(m.group(1)), float(m.group(2) or 1)))
+        else:
+            raise ValueError(f'unknown task {n}')
+    return out
 
 # ---------------- ensemble surrogates --------------------------------------
 class MLP(nn.Module):
