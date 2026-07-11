@@ -50,8 +50,10 @@ fi
 if have db; then say "db exists, skipping"; else
   say "building db (py3.9, design-bench)…"
   conda create -y -n db -c conda-forge python=3.9 rdkit >>"$LOG" 2>&1 \
-    && conda run -n db pip install design-bench==2.0.20 torch numpy scipy scikit-learn >>"$LOG" 2>&1 \
+    && conda run -n db pip install design-bench==2.0.20 torch 'numpy<2' scipy scikit-learn >>"$LOG" 2>&1 \
     && say "db core OK — trying mujoco tasks (Ant/DKitty; may fail on headless boxes)" \
+    && ( DBD=$(conda run -n db python -c 'import design_bench_data,os;print(os.path.dirname(design_bench_data.__file__))' 2>/dev/null); \
+         [ -n "$DBD" ] && [ ! -f "$DBD/smiles_vocab.txt" ] && printf '%s\n' '[PAD]' '[unused1]' '[UNK]' '[CLS]' '[SEP]' '[MASK]' C N O S P F I H c n o s B r l '(' ')' '[' ']' = '#' - + / '\' '@' 1 2 3 4 5 6 7 8 9 0 . '%' > "$DBD/smiles_vocab.txt"; true ) \
     && ( conda run -n db pip install "design-bench[all]==2.0.20" morphing-agents==1.5.1 mujoco==2.3.7 >>"$LOG" 2>&1 \
          && say "db[all] OK — morphology tasks available" \
          || say "db[all] FAILED — non-mujoco tasks (TFBind8/10, Superconductor, ChEMBL, GFP, UTR) still usable" ) \
