@@ -202,9 +202,12 @@ def perturb_opt(score_np, x0, rounds=5, sigmas=(0.1, 0.05, 0.02)):
     return x_best
 
 # ---------------- GP surrogates ---------------------------------------------
-def fit_exact_gp(x, y, dim, seed, max_train=800):
+def fit_exact_gp(x, y, dim, seed, max_train=800, matched=False):
     """sklearn exact GP on score-biased subsample (top 20% + random fill).
-    Port of legacy run_gp_lcb. 800^3 is fine at any input dim."""
+    Port of legacy run_gp_lcb. 800^3 is fine at any input dim.
+    matched=True freezes kernel hyperparameters (no per-run marginal-likelihood
+    optimization) so the GP gets the SAME zero per-run tuning budget the ensemble
+    gets -- the GATE-1 fair-tuning control (COSEAL 'Do HPO Fairly')."""
     from sklearn.gaussian_process import GaussianProcessRegressor
     from sklearn.gaussian_process.kernels import Matern, WhiteKernel, ConstantKernel
     np.random.seed(seed)
@@ -215,7 +218,9 @@ def fit_exact_gp(x, y, dim, seed, max_train=800):
         x, y = x[sel], y[sel]
     kernel = (ConstantKernel(1.0) * Matern(length_scale=np.ones(dim)*0.3, nu=2.5)
               + WhiteKernel(noise_level=0.01))
-    gp = GaussianProcessRegressor(kernel=kernel, n_restarts_optimizer=2,
+    gp = GaussianProcessRegressor(kernel=kernel,
+                                  n_restarts_optimizer=(0 if matched else 2),
+                                  optimizer=(None if matched else 'fmin_l_bfgs_b'),
                                   normalize_y=True, alpha=1e-6)
     gp.fit(x, y)
     return gp
@@ -226,9 +231,13 @@ def gp_lcb_np(gp, beta):
         return mu - beta*sd
     return g
 
-def fit_botorch_gp(x, y, seed, max_train=800):
+def fit_botorch_gp(x, y, seed, max_train=800, matched=False):
     """BoTorch GP -> differentiable posterior, enables the GP+gradient cell.
-    Returns None if botorch isn't installed (runner skips the cell)."""
+    Returns None if botorch isn't installed (runner skips the cell).
+    matched=True skips the marginal-likelihood fit so the GP keeps its prior/default
+    hyperparameters -- the GATE-1 fair-tuning control (same zero per-run HPO as the
+    frozen-beta ensemble). If the surrogate-class effect vanishes here, the headline
+    reframes to 'a tuning-budget artifact'."""
     try:
         from botorch.models import SingleTaskGP
         from botorch.fit import fit_gpytorch_mll
@@ -245,7 +254,8 @@ def fit_botorch_gp(x, y, seed, max_train=800):
     yt = torch.DoubleTensor(y).unsqueeze(-1)
     yt = (yt - yt.mean()) / (yt.std() + 1e-8)
     gp = SingleTaskGP(xt, yt)
-    fit_gpytorch_mll(ExactMarginalLogLikelihood(gp.likelihood, gp))
+    if not matched:
+        fit_gpytorch_mll(ExactMarginalLogLikelihood(gp.likelihood, gp))
     gp.eval()
     return gp
 
@@ -383,8 +393,9 @@ def eval_designs(task, x_final):
 # or whose dependency is missing (svgp without gpytorch, cma without pycma) -> None,
 # and the runner skips it. This block IS the paper's decomposition, in code.
 
-def build_surrogate(name, x, y, dim, seed, beta, ep, K):
-    """name in {ens, gp, botorchgp, svgp, ens_conformal} -> (f_torch|None, f_np|None)."""
+def build_surrogate(name, x, y, dim, seed, beta, ep, K, matched=False):
+    """name in {ens, gp, botorchgp, svgp, ens_conformal} -> (f_torch|None, f_np|None).
+    matched flows to the GP fits only (the ensemble/svgp already get no per-run HPO)."""
     if name in ('ens', 'ens_conformal'):
         ms = train_ensemble(x, y, dim, seed=seed, K=K, ep=ep)
         if name == 'ens':
@@ -398,10 +409,10 @@ def build_surrogate(name, x, y, dim, seed, beta, ep, K):
         q = fit_conformal_multiplier(ps.mean(0).numpy(), ps.std(0).numpy(), yc)
         return ens_lcb_torch(ms, q), ens_lcb_np(ms, q), ms      # q replaces beta
     if name == 'gp':
-        gp = fit_exact_gp(x, y, dim, seed)
+        gp = fit_exact_gp(x, y, dim, seed, matched=matched)
         return None, gp_lcb_np(gp, beta), None                  # exact GP: no grad
     if name == 'botorchgp':
-        gp = fit_botorch_gp(x, y, seed)
+        gp = fit_botorch_gp(x, y, seed, matched=matched)
         if gp is None: return None, None, None
         f = botorch_lcb_torch(gp, beta)
         return f, (lambda xx: f(torch.FloatTensor(xx)).detach().numpy()), None
@@ -411,8 +422,8 @@ def build_surrogate(name, x, y, dim, seed, beta, ep, K):
         return svgp_lcb_torch(s, beta), svgp_lcb_np(s, beta), None
     raise ValueError(name)
 
-def run_grid_cell(task, x, y, x0, seed, surrogate, optimizer, beta, ep, K):
-    f_torch, f_np, _ = build_surrogate(surrogate, x, y, task.dim, seed, beta, ep, K)
+def run_grid_cell(task, x, y, x0, seed, surrogate, optimizer, beta, ep, K, matched=False):
+    f_torch, f_np, _ = build_surrogate(surrogate, x, y, task.dim, seed, beta, ep, K, matched=matched)
     if optimizer == 'grad':
         if f_torch is None: return None                          # surrogate not differentiable
         xf = grad_opt(f_torch, torch.FloatTensor(x0), steps=OPT_STEPS)
@@ -428,15 +439,17 @@ def run_grid_cell(task, x, y, x0, seed, surrogate, optimizer, beta, ep, K):
     p100, p50 = eval_designs(task, xf)
     return {'p100': p100, 'p50': p50}
 
-def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP):
+def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP, matched=False):
     """method is either a special baseline (below) or a grid cell 'surrogate:optimizer'.
-    Ensemble+gradient family returns extra state (ms/x/y/xf) for O2O reuse."""
+    Ensemble+gradient family returns extra state (ms/x/y/xf) for O2O reuse.
+    matched=True is the GATE-1 fair-tuning control (freezes GP per-run HPO)."""
     np.random.seed(seed); torch.manual_seed(seed)
     x, y = task.data()
     x0 = init_candidates(x, y, seed)
 
     if ':' in method:                                            # compositional grid cell
-        return run_grid_cell(task, x, y, x0, seed, *method.split(':'), beta, ep, K)
+        surrogate, optimizer = method.split(':')
+        return run_grid_cell(task, x, y, x0, seed, surrogate, optimizer, beta, ep, K, matched=matched)
 
     if method in ('lcb', 'grad_ascent', 'lcb_perturb', 'coms'):
         alpha = 1.0 if method == 'coms' else None
@@ -450,13 +463,13 @@ def run_offline(task, seed, method, beta=BETA, K=K_ENS, ep=TRAIN_EP):
         return {'p100': p100, 'p50': p50, 'ms': ms, 'x': x, 'y': y, 'xf': xf}
 
     if method == 'gp':          # exact GP + perturbation optimizer (legacy name = gp:perturb)
-        gp = fit_exact_gp(x, y, task.dim, seed)
+        gp = fit_exact_gp(x, y, task.dim, seed, matched=matched)
         xf = perturb_opt(gp_lcb_np(gp, beta), x0)
         p100, p50 = eval_designs(task, xf)
         return {'p100': p100, 'p50': p50}
 
     if method == 'gp_grad':     # legacy alias for botorchgp:grad
-        return run_grid_cell(task, x, y, x0, seed, 'botorchgp', 'grad', beta, ep, K)
+        return run_grid_cell(task, x, y, x0, seed, 'botorchgp', 'grad', beta, ep, K, matched=matched)
 
     if method == 'sparse_gp':
         from sklearn.kernel_approximation import Nystroem

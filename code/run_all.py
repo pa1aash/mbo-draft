@@ -24,8 +24,9 @@ import mbo
 
 RESULTS = os.path.join(os.path.dirname(__file__), '..', 'results')
 
-def out_path(db):
-    return os.path.join(RESULTS, 'results_db.json' if db else 'results_camera.json')
+def out_path(db, matched=False):
+    base = 'results_db' if db else 'results_camera'
+    return os.path.join(RESULTS, f'{base}{"_matched" if matched else ""}.json')
 
 def build_task(name, db, subsample=None):
     if db:
@@ -44,7 +45,8 @@ def _worker(spec):
     task = build_task(spec['task'], spec.get('db', False), spec.get('db_sub'))
     e, seed, ep = spec['exp'], spec['seed'], spec['ep']
     if e == 'mbo':
-        r = mbo.run_offline(task, seed, spec['variant'], beta=spec.get('beta', mbo.BETA), ep=ep)
+        r = mbo.run_offline(task, seed, spec['variant'], beta=spec.get('beta', mbo.BETA), ep=ep,
+                            matched=spec.get('matched', False))
         m = None if r is None else {'p100': r['p100'], 'p50': r['p50']}
     elif e == 'o2o':
         r = mbo.run_o2o(task, seed, k=spec['k'], select=spec['variant'], ep=ep)
@@ -117,9 +119,12 @@ def main():
     ap.add_argument('--force', action='store_true', help='recompute cells already in the JSON')
     ap.add_argument('--db', action='store_true', help='run on Design-Bench tasks -> results_db.json')
     ap.add_argument('--db-subsample', type=int, default=8000, help='cap DB offline dataset (score-biased); 0=full')
+    ap.add_argument('--matched-tuning', action='store_true',
+                    help='GATE-1 fair-tuning control: freeze GP per-run HPO so it gets the '
+                         'same zero tuning budget as the ensemble. Writes results_*_matched.json.')
     ap.add_argument('--smoke', action='store_true')
     a = ap.parse_args()
-    out = out_path(a.db)
+    out = out_path(a.db, a.matched_tuning)
 
     if a.smoke:
         tasks, seeds, ep, exps, a.k, a.jobs = mbo.make_tasks(['Branin-2D']), 2, 3, ['mbo', 'o2o', 'beta', 'K', 'calibration'], 10, 2
@@ -136,7 +141,8 @@ def main():
 
     R = load(out)
     db_sub = (a.db_subsample or None) if a.db else None
-    specs = [{**s, 'db': a.db, 'db_sub': db_sub} for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
+    specs = [{**s, 'db': a.db, 'db_sub': db_sub, 'matched': a.matched_tuning}
+             for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
     if not a.force:
         specs = [s for s in specs if not have(R, s['exp'], s['task'], s['variant'], seeds)]
     # group results as they land: R[exp][task][variant][metric] = agg over seeds
