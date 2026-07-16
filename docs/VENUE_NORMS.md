@@ -222,14 +222,35 @@ carried it.
 workshop, not a main track. Cite it only for its argument, which is the best one-line defense available:
 *"Empirical study aimed at understanding can be illuminating even absent a new algorithm."*
 
-### Search-layer fabrication caught — a caution for the whole revision
+### Search-layer fabrication — FOUR caught this session. Treat as a standing hazard.
 
 While checking peer-review statistics, WebSearch returned confident, precisely-formatted numbers
 ("novelty rewarded least often (31.9%)", "rises from 21.5% to 54.0%") attributed to a real paper
 (arXiv:2511.15462). The PDF was downloaded and grepped: **zero hits. The numbers do not exist in the
 paper.** They were a search-summary fabrication.
 
-**Nothing sourced from a search snippet goes in the paper without fetching the primary text.** The related
+**Nothing sourced from a search snippet goes in the paper without fetching the primary text.**
+
+**This was not a one-off. Four distinct fabrications were caught, each only because an agent fetched the
+primary document and grepped it:**
+
+1. Novelty percentages (31.9% / 21.5% / 54.0% / 63.5% ...) attributed to arXiv:2511.15462 — **zero grep
+   hits in the PDF.** The paper's only percentages are 12.4/55.7/57.6/6.4/7.8/8.0.
+2. *"Gundersen & Kjensmo: only 6% stated research questions, 5% stated hypotheses"* — **not in the AAAI
+   paper.** Its complete percentage set is 15/20/24/25/26/29/30/32.3/4.29/4.30/48.3/49/7.15/8.54/8.87/90/95.
+   An agent reported nearly using this one.
+3. *"NeurIPS 2019 Reproducibility Challenge: 21.1% acceptance"* — a fabricated conflation with the
+   main-conference rate.
+4. Fanelli 2010's Computer Science positive-results rate — the **category exists** (Table 1: B=0.711,
+   p=0.068, OR=2.036, CI 0.949-4.372) but **no percentage is ever printed**; it exists only as a bar in
+   Figure 1. A WebFetch summarizer first claimed CS was absent entirely, then a visual read of the figure
+   showed it present. Do not cite a number here: N=63 (second-smallest discipline), **p=0.068 — not
+   significant, CI crosses 1** — and Fanelli sampled on the phrase "test\* the hypothes\*", which ML
+   papers reporting benchmark wins do not use.
+
+**The relevant irony:** this paper's own thesis is that unverified implementation details decide results
+(P0-0, P0-2). Importing a hallucinated statistic into the fix would be the same error one level up.
+Every number that enters the revision gets fetched and grepped, including the ones in these docs. The related
 real finding, verified: in that paper's Table 4, novelty criticism is the **#1 predictor of review rating**
 (0.47 avg |coef|) — an importance weight, **not** a frequency. No verified "% of ML reviews citing lack of
 novelty" statistic exists in the reachable literature.
