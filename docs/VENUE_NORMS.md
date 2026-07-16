@@ -342,3 +342,86 @@ claims + explained mechanism → accept. Broad claims or unexplained null → re
 from a corpus ~99% complete for 2019) — it is ICML 2019, which does not use OpenReview, so no public
 reviews exist. Reviewer identities are confirmed only for *Rethinking Pruning*; elsewhere reviewers are
 labeled by rating, which is what the source supports.
+
+### ★★ The central vulnerability: reviewers have a *competing mechanism* for our gap, and it's free for them
+
+Across ~600 real reviews, three independent sweeps converge: **no reviewer rejected a measurement paper
+for being wrong. Every rejection was on contribution framing.** The confirmed measurement-paper rejects
+died on *"low technical contribution"*, *"missing the so what?"*, or *"confirms what is already known"*.
+
+But the sharpest finding is about *our* paper specifically:
+
+> **Reviewers already believe Design-Bench's oracles are broken.** That gives them a competing
+> explanation for our synthetic→Design-Bench gap that costs them nothing to raise and that **N=7 cannot
+> rule out.**
+
+We make this worse ourselves: we substitute **RF oracles on 5 of 7** Design-Bench tasks (`db_tasks.py:22`,
+`FLAW_LEDGER.md` T4). Our headline claim is that the gap reflects prior–task mismatch; a reviewer says it
+reflects broken oracles; both fit the data. **This is a framing problem, not a measurement problem**, and
+it is the single most likely reject route for Contribution 3.
+
+**Cheap answer, and it becomes a new ledger row (X11):** show the null survives on the **exact-oracle
+subset** (TF-Bind-8, TF-Bind-10 — the only two DB tasks with exact oracles), or report the **oracle noise
+floor against our effect size**. Near-zero CPU; reuses the existing grid. It converts "your oracles are
+broken" from a fatal competing hypothesis into a controlled-for one.
+
+### The attack our η²_opt = 0.01 will take, in a reviewer's own words
+
+*Are GANs Created Equal?* (NeurIPS 2018, **accepted**) — Reviewer 2, verified against the proceedings HTML:
+
+> "The authors claim that algorithmic differences in state-of-the-art GANs become less relevant, as the
+> computational budget increases. **This is true according to the way the authors carried out the
+> experiments. But, what happens if we start the hyperparameters tuning by doing a random search from the
+> recommended values for each algorithm.** Maybe the hyperparameters recommended by the authors are
+> already good enough..."
+
+Note the shape: **"This is true according to the way you did it"** — concede the result, attack the
+protocol. Aimed at the closest accepted precedent to our paper. This is exactly the fire P0-0, P0-1 and
+P1-1 invite, and exactly what GATE-1 and `gradtune` were built to answer — while `gradtune`'s answer is
+currently unreported.
+
+### The single most useful sentence for our framing — declare the null
+
+ICLR 2026, [QIJk2xjJI3](https://openreview.net/forum?id=QIJk2xjJI3):
+
+> "is the purpose of the paper to display a null result (**which I think is not an issue, but it should be
+> stated as such**)?"
+
+**A null is acceptable if *declared*. The failure mode is an *undeclared* null** that reads as a study
+that didn't find anything. Declare it in the abstract, scoped to Design-Bench at N=7. Free.
+
+### The offensive precedent — win on the mechanism, not the absence
+
+*Are Emergent Abilities of Large Language Models a Mirage?* — **NeurIPS 2023 Outstanding Paper**, rated 9:
+
+> "shows that the widely-discussed phenomenon of 'emergent abilities' ... is **largely due to the choice of
+> (discontinuous/nonlinear) metrics and underpowered analyses**." / "No major weaknesses - the paper was a
+> pleasure to read!"
+
+It won on ***"it's the metric"***, not on "we found nothing." That is the template: name the artifact that
+manufactures the believed effect.
+
+### Two assets and two cautions
+
+**Asset 1 — our stats apparatus is what reviewers request.** NeurIPS 2025 [RCeZ063p33](https://openreview.net/forum?id=RCeZ063p33):
+*"consider following **Demšar (2006) by first performing a Friedman test and then applying a Wilcoxon
+signed rank post hoc test with Holm adjustment**... visualized with a **Critical Difference diagram**."*
+That is precisely what commit `8ebab0b` built. Lead with it. (Balance against Benavoli's pool objection,
+`FLAW_LEDGER.md` P1-2.)
+
+**Asset 2 — TOST calibration, concrete.** ICLR 2026 [30e3LnZzmI](https://openreview.net/forum?id=30e3LnZzmI),
+authors defending equivalence with our exact tool: *"robust statistical tests, including TOST, require a
+larger number of samples... we performed a Welch TOST analysis with **N=30 runs per condition**."*
+They needed **N=30 per condition**; we have **N=7 tasks**. The most concrete calibration of our gap found.
+
+⚠️ **Caution 1 — do not rebut a phrase reviewers never use.** *"Absence of evidence is not evidence of
+absence"* was independently confirmed **absent** across ~600 reviews and 34 targeted queries. Do not build
+a rebuttal section around it.
+
+⚠️ **Caution 2 — demote Prop 2.** Both conformal-prediction analogues in the corpus are **rating-3 rejects
+on "straightforward application."** Numbering it a Proposition invites a comparison it cannot win
+(`FLAW_LEDGER.md` P1-7, X9). Make it a cited lemma.
+
+⚠️ **Method ceiling:** AAAI reviews are not public. All phrasings are an ICLR/NeurIPS proxy. Also corrected
+here: the ICBINB "Entropic Award" is **NOT VERIFIED** — a direct fetch of the 2026 page shows no awards
+section. Do not cite it.
