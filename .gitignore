@@ -1,16 +1,37 @@
+# --- environments / caches ---
 venv/
 __pycache__/
 *.pyc
+.ipynb_checkpoints/
+
+# --- agent / editor scratch ---
+.claude/
+CLAUDE.md
+.clauderc
+*.agent.md
+.remember/
+
+# --- OS cruft ---
+.DS_Store
+
+# --- model checkpoints / large binaries (regenerable) ---
+*.pt
+*.ckpt
+*.npz
+wandb/
+
+# --- LaTeX build products ---
 paper/latex_source/*.aux
 paper/latex_source/*.log
 paper/latex_source/*.out
 paper/latex_source/*.bbl
 paper/latex_source/*.blg
 paper/latex_source/*.synctex.gz
+paper/aaai27/kit.zip
 
-# preview/scratch (real results come from the cloud run, frozen later)
-results/results_camera.json
-results/results_db.json
+# --- run scratch ---
+# NOTE: results/results_camera.json and results/results_db.json were previously
+# ignored here as "preview/scratch". They are the primary artifacts backing the
+# manuscript's headline numbers and are now tracked.
 results/*.log
 results/*.tmp
-paper/aaai27/kit.zip

@@ -1,0 +1,179 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(AnonymousSubmission2027.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(aaai2027.sty
+Conference Style for AAAI for LaTeX 2e
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex)))
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureve
+rsions.sty)))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg))) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.
+sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newfloat\newfloat.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg))
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd)
+No file AnonymousSubmission2027.aux.
+
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\ts1ntxtlf.fd
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd)
+[1{C:/Users/arjun/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ar
+jun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}{C:/User
+s/arjun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/tex-gyre/q-ts1.enc}{C:/Us
+ers/arjun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}] [2]
+
+LaTeX Warning: Reference `table1' on page 3 undefined on input line 387.
+
+
+LaTeX Warning: Reference `table2' on page 3 undefined on input line 387.
+
+[3] [4]
+Overfull \hbox (8.80545pt too wide) in paragraph at lines 472--472
+ []    \T1/pcr/m/n/7 AuthorOne\equalcontrib\textsuperscript{\rm 1,\rm 2},[] 
+[5]
+
+LaTeX Warning: Reference `table2' on page 6 undefined on input line 575.
+
+
+LaTeX Warning: Reference `fig1' on page 6 undefined on input line 577.
+
+
+LaTeX Warning: Reference `fig2' on page 6 undefined on input line 577.
+
+[6 <./Figures/figure1.pdf>]
+
+LaTeX Warning: Reference `table1' on page 7 undefined on input line 586.
+
+
+Underfull \hbox (badness 4266) in paragraph at lines 595--596
+ \T1/ntxtlf/b/n/10 Low-Resolution Bitmaps. \T1/ntxtlf/m/n/10 You may not use lo
+w-
+[7 <./Figures/figure2.pdf>]
+
+LaTeX Warning: Reference `alg:algorithm' on page 8 undefined on input line 617.
+
+
+
+LaTeX Warning: Reference `lst:listing' on page 8 undefined on input line 642.
+
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang2.sty)
+[8]
+
+Package natbib Warning: Citation `em:86' undefined on input line 716.
+
+
+Package natbib Warning: Citation `r:80' undefined on input line 724.
+
+
+Package natbib Warning: Citation `hcr:83' undefined on input line 730.
+
+
+Package natbib Warning: Citation `c:84' undefined on input line 738.
+
+
+Package natbib Warning: Citation `c:83' undefined on input line 745.
+
+
+Package natbib Warning: Citation `r:86' undefined on input line 756.
+
+
+Package natbib Warning: Citation `c:79' undefined on input line 765.
+
+
+Package natbib Warning: Citation `c:21' undefined on input line 785.
+
+
+Package natbib Warning: Citation `c:22' undefined on input line 804.
+
+
+Package natbib Warning: Citation `c:23' undefined on input line 824.
+
+[9]
+No file AnonymousSubmission2027.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[10] (AnonymousSubmission2027.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)<C:/Users/arjun/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/arjun/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/
+arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/tex-gyre/qtmr.pfb><C:/Us
+ers/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/
+Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C
+:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><
+C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb>
+<C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pf
+b>
+Output written on AnonymousSubmission2027.pdf (10 pages, 1556398 bytes).
+Transcript written on AnonymousSubmission2027.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

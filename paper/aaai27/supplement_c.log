@@ -1,0 +1,116 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(supplement.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(aaai2027.sty
+Conference Style for AAAI for LaTeX 2e
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex)))
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureve
+rsions.sty)))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg))) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.
+sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd)
+(supplement.aux)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+
+Package natbib Warning: Citation `tibshirani2019conformal' on page 1 undefined 
+on input line 51.
+
+[1{C:/Users/arjun/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ar
+jun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd)
+[2{C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <.
+/figures/fig5_calibration_vs_benefit.pdf>] (supplement.bbl)
+
+Package natbib Warning: There were undefined citations.
+
+[3 <./figures/fig7_k_ablation.pdf>] (supplement.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+) )<C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmbx9.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmex10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/font
+s/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/arjun/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/arjun/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/arjun/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/arjun/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/ar
+jun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
+/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7
+.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy9.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/
+type1/urw/courier/ucrr8a.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/font
+s/type1/public/newtx/ztmb.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/newtx/ztmr.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/newtx/ztmri.pfb>
+Output written on supplement.pdf (3 pages, 314026 bytes).
+Transcript written on supplement.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

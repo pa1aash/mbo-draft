@@ -13,16 +13,23 @@ publishes, so numbers are directly comparable to published normalized tables.
 import numpy as np
 
 # Standard Design-Bench task ids (oracle variants match the COMs/DDOM tables).
+# Oracle choice: TFBind8/10 use the exact discrete oracle (dep-free). Every other task
+# uses design-bench's RandomForest approximate oracle -- a first-class, literature-standard
+# oracle (Superconductor's canonical oracle) that avoids the exact-oracle simulator deps
+# (mujoco for Ant/DKitty/Hopper, TensorFlow for GFP-Transformer/UTR-ResNet). A consistent
+# RF oracle across tasks is also cleaner for a surrogate x optimizer attribution study.
+# Document this in the paper. (ChEMBL omitted: its mirror oracle pickle is corrupt.)
 TASKS = {
     'TFBind8':       'TFBind8-Exact-v0',
-    'TFBind10':      'TFBind10-Exact-v0',
+    'TFBind10':      'TFBind10-Exact-v0',   # only exact oracle exists. Its 4^10 landscape
+    #   build (~98s/worker) crashes under 48-way concurrency, so TFBind10 runs in its own
+    #   low-concurrency pass (see cloud/queue) while the other 7 run at full jobs.
     'Superconductor':'Superconductor-RandomForest-v0',
-    'AntMorphology': 'AntMorphology-Exact-v0',
-    'DKitty':        'DKittyMorphology-Exact-v0',
-    'ChEMBL':        'ChEMBL_MCHC_CHEMBL3885882_MorganFingerprint-RandomForest-v0',
-    'GFP':           'GFP-Transformer-v0',
-    'UTR':           'UTR-ResNet-v0',
-    'Hopper':        'HopperController-Exact-v0',
+    'GFP':           'GFP-RandomForest-v0',
+    'UTR':           'UTR-RandomForest-v0',
+    'AntMorphology': 'AntMorphology-RandomForest-v0',
+    'DKitty':        'DKittyMorphology-RandomForest-v0',
+    'Hopper':        'HopperController-RandomForest-v0',
 }
 
 class DesignBenchTask:
@@ -36,21 +43,27 @@ class DesignBenchTask:
         x, y = self._t.x, self._t.y            # y: (N,1)
         self.ymin, self.ymax = float(y.min()), float(y.max())
         y01 = (y[:, 0] - self.ymin) / (self.ymax - self.ymin + 1e-12)
+        if not self.discrete:
+            self.xmin = x.min(0); self.xmax = x.max(0)          # from FULL data -> oracle decode box
+
+        # Subsample the RAW dataset BEFORE the expensive one-hot/normalize. TFBind10 has
+        # 4.16M rows; one-hot-encoding all of them (-> ~666MB) every build was the per-cell
+        # bottleneck (run_all rebuilds the task per cell). Cap on the raw ints first, encode
+        # only the survivors. Selection is bitwise-identical to encoding-then-subsampling
+        # (same y01, same RandomState(0), one-hot is row-wise) -- pure speedup, no science change.
+        if subsample and len(x) > subsample:                    # score-biased: top + random
+            idx = np.argsort(y01)
+            keep = np.concatenate([idx[-subsample//5:],
+                                   np.random.RandomState(0).choice(len(x), subsample*4//5, replace=False)])
+            x, y01 = x[keep], y01[keep]
 
         if self.discrete:
             self.L, self.C = x.shape[1], int(self._t.num_classes)
             self.dim = self.L * self.C
-            x01 = self._onehot(x).reshape(len(x), -1)          # {0,1} subset of [0,1]
+            x01 = self._onehot(x).reshape(len(x), -1)           # {0,1} subset of [0,1]
         else:
-            self.xmin = x.min(0); self.xmax = x.max(0)
             self.dim = x.shape[1]
             x01 = (x - self.xmin) / (self.xmax - self.xmin + 1e-12)
-
-        if subsample and len(x01) > subsample:                 # optional cap for GP tractability
-            idx = np.argsort(y01)                              # keep top + random (score-biased, like our GP)
-            keep = np.concatenate([idx[-subsample//5:],
-                                   np.random.RandomState(0).choice(len(x01), subsample*4//5, replace=False)])
-            x01, y01 = x01[keep], y01[keep]
         self._x = x01.astype(np.float32)
         self._y = y01.astype(np.float32)
 
@@ -74,8 +87,16 @@ class DesignBenchTask:
         yv = self._t.predict(self._decode(x01))                         # (n,1) raw score
         return ((yv[:, 0] - self.ymin) / (self.ymax - self.ymin + 1e-12)).astype(np.float32)
 
+_TASK_CACHE = {}   # per-worker memo: run_all rebuilds tasks per cell; build+encode each once instead.
 def make_db_tasks(names, subsample=None):
-    return [DesignBenchTask(n, subsample=subsample) for n in names]
+    out = []
+    for n in names:
+        key = (n, subsample)
+        t = _TASK_CACHE.get(key)
+        if t is None:
+            t = _TASK_CACHE[key] = DesignBenchTask(n, subsample=subsample)
+        out.append(t)          # read-only across cells (data() copies, oracle() is pure) -> safe to share
+    return out
 
 if __name__ == '__main__':                                              # cloud-only smoke
     import sys

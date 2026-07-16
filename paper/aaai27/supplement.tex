@@ -1,0 +1,206 @@
+\documentclass[letterpaper]{article}
+\usepackage[submission]{aaai2027}
+\usepackage[hyphens]{url}
+\usepackage{graphicx}
+\urlstyle{rm}
+\def\UrlFont{\rm}
+\usepackage{natbib}
+\usepackage{caption}
+\frenchspacing
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb,amsthm}
+\pdfinfo{/TemplateVersion (2027.1)}
+\setcounter{secnumdepth}{2}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\D}{\mathcal{D}}
+
+\title{Supplementary Material:\\Decomposing the GP Advantage in Offline MBO}
+\author{Anonymous Submission}
+\affiliations{}
+
+\begin{document}
+\maketitle
+
+This supplement contains the proofs of Propositions~1--2, the full per-method result tables, the identifiability (matched-tuning) control, the $\beta$ and ensemble-size ablations, the official-baseline cross-check, the significance details, and the complete experimental configuration. It is provided for reproducibility and is not part of the 7-page body.
+
+\section{Proofs}
+
+\paragraph{Notation.} Objective $f:\X\to\mathbb{R}$; surrogate posterior mean $\mu$ and uncertainty $\sigma>0$; LCB $L_\beta(x)=\mu(x)-\beta\sigma(x)$, $\beta\ge0$. For a distribution $Q$ on $\X$, $L_\beta$ is a \emph{valid $(1{-}\delta)$ lower bound under $Q$} if $\Pr_{x\sim Q}(f(x)\ge L_\beta(x))\ge 1{-}\delta$.
+
+\begin{proposition}[Coverage of the premise is LCB validity]
+For any $Q,\beta,\delta$,
+$\Pr_{x\sim Q}(f(x)\ge L_\beta(x))=\Pr_{x\sim Q}(\mu(x)-f(x)\le\beta\sigma(x))$,
+so $L_\beta$ is a valid $(1{-}\delta)$ lower bound under $Q$ iff the premise $\{\mu-f\le\beta\sigma\}$ has $Q$-probability at least $1{-}\delta$.
+\end{proposition}
+\begin{proof}
+Since $\sigma>0$, pointwise $f(x)\ge\mu(x)-\beta\sigma(x)\iff\mu(x)-f(x)\le\beta\sigma(x)$. The two events coincide as subsets of $\X$ and hence have equal probability under any $Q$.
+\end{proof}
+\noindent\emph{Sanity checks.} $\beta{=}0$ gives $\Pr(f\ge\mu)=\Pr(\mu-f\le0)$; $\beta\to\infty$ gives coverage $\to1$. The identity is dimensionless and uses $\sigma>0$ once.
+
+\begin{proposition}[Split-conformal repair; shift-limited transfer]
+Let $\{(x_i,f(x_i))\}_{i=1}^n$ be exchangeable from $P$, $r_i=(\mu(x_i)-f(x_i))/\sigma(x_i)$ the signed one-sided nonconformity, and $\hat q$ the $\lceil(n{+}1)(1{-}\delta)\rceil$-th smallest of $r_1,\dots,r_n$. Then for a fresh $x_{n+1}\sim P$ exchangeable with the calibration set,
+$\Pr(f(x_{n+1})\ge\mu(x_{n+1})-\hat q\,\sigma(x_{n+1}))\ge 1{-}\delta$.
+Under a shifted proposal $\Pi\neq P$ with density ratio $w=d\Pi/dP$, validity is restored by weighting the calibration quantile by $w$ (weighted conformal).
+\end{proposition}
+\begin{proof}
+The normalized scores $r_1,\dots,r_{n+1}$ are exchangeable, so by the split-conformal rank argument $\Pr(r_{n+1}\le\hat q)\ge1{-}\delta$. The event $r_{n+1}\le\hat q$ implies $\mu(x_{n+1})-f(x_{n+1})\le\hat q\,\sigma(x_{n+1})$, i.e.\ $f(x_{n+1})\ge\mu-\hat q\sigma$; monotonicity of probability gives the bound. The covariate-shift clause is the weighted-exchangeability extension of \citet{tibshirani2019conformal}: replacing the empirical quantile of $\{r_i\}$ with its $w$-weighted analogue restores marginal validity under $\Pi$. At $\Pi=P$, $w\equiv1$ recovers the unweighted bound.
+\end{proof}
+
+\section{Full Result Tables}
+
+Table~\ref{tab:sfull} reports the full synthetic grid including the domain baselines (COMs, CbAS, gradient ascent); Table~\ref{tab:srank} the corresponding average ranks. The ensemble$\times$gradient and gradient-ascent/COMs rows are the boundary-collapse cells discussed in the body.
+
+\begin{table*}[t]\centering
+\caption{Full synthetic grid, 100th-percentile score (30 seeds), including domain baselines. \textbf{Bold} = best per task.}
+\label{tab:sfull}
+\setlength{\tabcolsep}{5pt}\small
+\begin{tabular}{lccccccc}
+\toprule
+Method & Branin & Styblinski & Levy & Rosenbrock & Rastrigin & Ackley & Griewank \\
+\midrule
+Ens+Grad & $-9.27$ & $6.37$ & $-2.14$ & $-0.28$ & $-7.71$ & $-3.66$ & $-2592$ \\
+Ens+Pert & $-0.78$ & $33.08$ & $-0.40$ & $-0.12$ & $-8.44$ & $-6.32$ & $-395$ \\
+Ens+CMA & $-14.01$ & $5.21$ & $-3.19$ & $-0.48$ & $-10.81$ & $-4.31$ & $-2613$ \\
+GP+Grad & $\mathbf{-0.40}$ & $27.57$ & $\mathbf{-0.05}$ & $-0.09$ & $-4.83$ & $\mathbf{-0.55}$ & $\mathbf{-0.94}$ \\
+GP+Pert & $-0.40$ & $\mathbf{36.15}$ & $-0.24$ & $-0.08$ & $-8.28$ & $-6.28$ & $-270$ \\
+GP+CMA & $-0.40$ & $26.65$ & $-0.05$ & $-0.09$ & $-5.06$ & $-0.59$ & $-1.00$ \\
+SVGP+Grad & $-0.45$ & $11.83$ & $-0.08$ & $\mathbf{-0.04}$ & $\mathbf{-2.83}$ & $-0.69$ & $-2.11$ \\
+SVGP+Pert & $-0.40$ & $34.35$ & $-0.25$ & $-0.08$ & $-8.27$ & $-6.14$ & $-275$ \\
+SVGP+CMA & $-0.53$ & $11.60$ & $-0.08$ & $-0.04$ & $-3.00$ & $-0.73$ & $-2.17$ \\
+COMs & $-9.73$ & $8.50$ & $-4.44$ & $-1.31$ & $-6.97$ & $-4.49$ & $-2078$ \\
+CbAS & $-5.64$ & $33.85$ & $-0.21$ & $-0.05$ & $-8.02$ & $-5.10$ & $-276$ \\
+Grad.\ Asc. & $-8.35$ & $3.49$ & $-2.43$ & $-0.31$ & $-9.08$ & $-3.04$ & $-2701$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table}[t]\centering
+\caption{Average rank over the 7 synthetic tasks (from Table~\ref{tab:sfull}; lower is better).}
+\label{tab:srank}
+\small
+\begin{tabular}{lc@{\hskip 2em}lc}
+\toprule
+Method & Rank & Method & Rank \\
+\midrule
+GP+Grad   & $2.57$ & GP+Pert    & $5.71$ \\
+SVGP+Grad & $3.29$ & SVGP+Pert  & $5.86$ \\
+GP+CMA    & $3.57$ & CbAS       & $6.00$ \\
+SVGP+CMA  & $4.29$ & Ens+Pert   & $8.14$ \\
+Ens+Grad  & $8.57$ & COMs       & $9.43$ \\
+Grad.Asc. & $9.86$ & Ens+CMA    & $10.71$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Identifiability: Matched Tuning (GATE-1)}
+Exact and sparse GPs can spend per-run marginal-likelihood budget that ensembles cannot. The \emph{matched} arm freezes GP hyperparameter fitting so every surrogate receives the same (zero) per-run tuning budget. The surrogate main effect on synthetic tasks is $\eta^2_{\text{surr}}{=}0.37$ unmatched and $0.28$ matched---a $76\%$ retention. The optimizer main effect stays small in both ($\eta^2_{\text{opt}}{=}0.01\to0.02$) and the interaction stays large ($\eta^2_{\text{inter}}{=}0.17\to0.12$). The GP advantage is therefore a surrogate-class property, not a per-run tuning artifact.
+
+\section{Mechanism Controls}
+The Section-5 mechanism rests on three controls, all on the synthetic tasks (task-normalized, averaged over optimizers).
+
+\paragraph{Pessimism off ($\beta{=}0$).} Re-running the full $3\times3$ grid at $\beta{=}0$ (no $\sigma$ penalty), the GP--ensemble marginal gap is $0.47$, essentially the $\beta{=}2$ value of $0.51$: pessimism is not the source of the GP advantage. Per-task, the ensemble$\times$gradient cell still collapses without pessimism (Griewank $-2701$, Rastrigin $-28.2$) while the GP does not (Griewank $-0.94$).
+
+\paragraph{Matched subsample.} Training the ensemble on the GP's score-biased $800$-point subsample rather than all data \emph{widens} the gap to $0.76$ (the ensemble marginal falls from $0.34$ to $0.08$): the GP wins with less data, so the biased subsample is not its edge.
+
+\paragraph{Cross-proposal coverage.} Table~\ref{tab:cross} measures each surrogate's premise coverage in-distribution, on its own proposals, and on the other surrogate's proposals. The ensemble premise holds in-distribution ($0.73$) and on the GP's proposals ($0.97$) but collapses on its own ($0.41$); the GP premise holds on both ($0.97$). The ensemble is not miscalibrated in general---only where its own gradient optimizer drives it.
+
+\begin{table}[t]\centering
+\caption{Premise coverage at $\beta{=}2$ (synthetic mean), each surrogate on in-distribution points, its own proposals, and the other surrogate's proposals.}
+\label{tab:cross}
+\small
+\begin{tabular}{lccc}
+\toprule
+Premise & in-dist & own prop. & other's prop. \\
+\midrule
+Ensemble & $0.73$ & $0.41$ & $0.97$ \\
+GP       & $0.98$ & $0.97$ & $0.93$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Ablations}
+\paragraph{Pessimism strength $\beta$.} Sweeping $\beta\in\{0,0.5,1,2,5\}$ (the per-task curves are Figure~4 of the main paper), increasing pessimism improves the final score on 6 of 7 synthetic tasks (median normalized slope $+0.19$); the exception is Ackley, where the uninformative $\sigma$ makes the penalty point away from the optimum. That the benefit is distance-regularization rather than calibrated conservatism is confirmed by Figure~\ref{fig:calib}: the per-task calibration quality $\rho$ (rank correlation between $\sigma$ and $|\mu-f|$) does not predict whether pessimism helps.
+\paragraph{Ensemble size $K$.} Sweeping $K\in\{2,3,5,10\}$ (Figure~\ref{fig:k}), task-normalized score is monotonically \emph{decreasing} in $K$ ($0.95,0.52,0.32,0.18$): more members shrink $\sigma$ and weaken the already-crude penalty rather than improving calibration.
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.9\columnwidth]{figures/fig5_calibration_vs_benefit}
+\caption{Calibration quality vs.\ pessimism benefit. Each point is a synthetic task; the $\sigma$--error rank correlation $\rho$ (x-axis) does not predict the gain from pessimism (y-axis), consistent with a regularization rather than calibration effect.}
+\label{fig:calib}
+\end{figure}
+\begin{figure}[t]\centering
+\includegraphics[width=0.9\columnwidth]{figures/fig7_k_ablation}
+\caption{Ensemble-size ablation. Task-normalized score decreases with $K$.}
+\label{fig:k}
+\end{figure}
+
+\section{Official-Baseline Cross-Check}
+We ran the official \texttt{design-baselines} COMs and CbAS and compare to our reimplementations on the normalized scale (Table~\ref{tab:cc}). CbAS matches closely (TF-Bind-8 $|\Delta|{=}0.004$); COMs diverges (TF-Bind-8 $|\Delta|{=}1.22$), reflecting a reduced-epoch official run and a different oracle variant. We therefore report both rather than a single number.
+
+\begin{table}[t]\centering
+\caption{Official vs.\ reimplemented baselines (normalized 100th-percentile).}
+\label{tab:cc}
+\small
+\begin{tabular}{llccc}
+\toprule
+Method & Task & Official & Ours & $|\Delta|$ \\
+\midrule
+COMs & Superconductor & $1.31$ & $1.01$ & $0.30$ \\
+COMs & TF-Bind-8      & $0.99$ & $2.21$ & $1.22$ \\
+COMs & GFP            & $-8.38$& $-9.20$& $0.82$ \\
+CbAS & Superconductor & $1.21$ & $1.36$ & $0.15$ \\
+CbAS & TF-Bind-8      & $2.13$ & $2.12$ & $\mathbf{0.004}$ \\
+CbAS & GFP            & $2.20$ & $1.85$ & $0.35$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Per-Task Premise Coverage}
+Table~\ref{tab:cov} gives the per-task one-sided coverage of the pessimism premise at $\beta{=}2$, with the fitted split-conformal multiplier $\hat q$ and the repaired coverages. In-distribution coverage is moderate-to-high and on several real tasks above nominal (the ensemble under-predicts there, giving negative $\hat q$); OOD coverage is task-dependent, near zero exactly on the tasks where gradient ascent collapses. Conformal restores in-distribution coverage to its $0.90$ target on every task but leaves OOD coverage erratic. GFP is degenerate---coverage is measured on relaxed logits and is a decode artifact rather than a calibration signal.
+
+\begin{table}[t]\centering
+\caption{One-sided coverage of the premise $\mu{-}f\le\beta\sigma$ (i.e.\ $f\ge\mu-\beta\sigma$) at $\beta{=}2$ (nominal $0.90$). $c_{\text{in}}/c_{\text{ood}}$: coverage in-distribution / on proposals; $\hat q$: signed split-conformal multiplier (negative $\Rightarrow$ the mean already over-covers); $c^{\text{cf}}$: coverage after replacing $\beta$ with $\hat q$.}
+\label{tab:cov}
+\setlength{\tabcolsep}{4pt}\small
+\begin{tabular}{lccccc}
+\toprule
+Task & $c_{\text{in}}$ & $c_{\text{ood}}$ & $\hat q$ & $c^{\text{cf}}_{\text{in}}$ & $c^{\text{cf}}_{\text{ood}}$ \\
+\midrule
+Branin      & $0.71$ & $0.42$ & $6.2$  & $0.91$ & $0.84$ \\
+Styblinski  & $0.64$ & $0.00$ & $7.5$  & $0.90$ & $0.00$ \\
+Levy        & $0.68$ & $0.11$ & $6.0$  & $0.90$ & $0.28$ \\
+Rosenbrock  & $0.86$ & $0.64$ & $2.5$  & $0.90$ & $0.66$ \\
+Rastrigin   & $0.73$ & $0.72$ & $4.8$  & $0.91$ & $0.77$ \\
+Ackley      & $0.92$ & $1.00$ & $1.8$  & $0.89$ & $1.00$ \\
+Griewank    & $0.57$ & $0.00$ & $16.1$ & $0.90$ & $0.00$ \\
+\midrule
+TF-Bind-8      & $0.92$ & $0.71$ & $1.7$  & $0.90$ & $0.70$ \\
+TF-Bind-10     & $1.00$ & $0.53$ & $-1.6$ & $0.89$ & $0.45$ \\
+Superconductor & $1.00$ & $0.01$ & $-2.0$ & $0.90$ & $0.01$ \\
+GFP            & $0.00$ & $0.00$ & $88.4$ & $0.90$ & $0.99$ \\
+UTR            & $1.00$ & $0.00$ & $-2.5$ & $0.91$ & $0.00$ \\
+Ant            & $0.94$ & $0.00$ & $1.2$  & $0.90$ & $0.00$ \\
+D'Kitty        & $0.51$ & $0.00$ & $8.0$  & $0.90$ & $0.00$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Significance Details}
+Over the 9 grid cells and 7 tasks the synthetic Friedman omnibus gives $p{=}6.1\times10^{-5}$ (Nemenyi critical difference $4.54$; best cell GP+Grad, mean rank $2.29$, bootstrap $95\%$ CI $[1.29,3.57]$ over 10{,}000 task resamples). The Design-Bench omnibus over the same 9 cells gives $p{=}0.69$ (best cell GP+Pert, mean rank $3.57$, CI $[1.86,5.71]$; the entire grid within one critical difference). Adding the domain baselines (COMs, CbAS, gradient ascent) to the pool leaves both conclusions unchanged---the synthetic omnibus stays far below and the Design-Bench omnibus far above $\alpha{=}0.05$. Per-task Wilcoxon signed-rank tests with Holm correction and paired TOST equivalence tests are computed by the released \texttt{stats.py}; at the reported seed counts no Design-Bench pairwise comparison is significant after correction, and the omnibus null is not rejected.
+
+\paragraph{Robustness to the random-forest oracle.} Because four of the seven Design-Bench tasks use a substituted random-forest oracle (GFP, UTR, Ant, D'Kitty), we check that the null is not manufactured by RF-flattened surfaces. Restricted to the three tasks whose oracle is \emph{not} a smoothing RF substitution---TF-Bind-8/10 (exact oracles) and Superconductor (native random-forest oracle)---the Friedman omnibus over the 9 cells is $p{=}0.93$, and the median per-task method spread ($0.34$ normalized) is no smaller than on the four substituted tasks ($0.39$). The synthetic-to-real collapse of method separation is therefore a property of the real tasks, not an artifact of the oracle substitution.
+
+\section{Experimental Configuration}
+\paragraph{Surrogates.} Ensemble: $K{=}5$ MLPs, two hidden layers of width $96$, ReLU, MSE, $35$ epochs, Adam (lr $3{\times}10^{-3}$, weight decay $10^{-4}$), batch $256$, per-member seed offset. Exact GP: differentiable single-task GP, ARD Mat\'ern-$5/2$, marginal-likelihood fit (frozen under matched tuning), score-biased subsample to $N_{\max}{=}800$. SVGP: $128$ inducing points, ARD Mat\'ern-$5/2$, $250$ variational-ELBO steps (Adam lr $0.01$), $N_{\max}{=}2000$.
+\paragraph{Optimizers.} Gradient: $100$ Adam steps on $x$ (lr $0.05$), box-clipped. Perturbation: $5$ rounds, $\sigma\in\{0.1,0.05,0.02\}$, elementwise accept-if-better. CMA-ES: initial $\sigma{=}0.2$, bounds $[0,1]$, separable (diagonal) covariance when $d{>}500$.
+\paragraph{Acquisition and protocol.} LCB $\mu-\beta\sigma$, $\beta{=}2$. Candidate budget $128$ (top-$128$ dataset points plus $\sigma{=}0.05$ perturbations as starts; top-$128$ by surrogate score evaluated by the oracle). Metrics: $100$th- and $50$th-percentile normalized scores. Seeds: $30$ synthetic, $16$ Design-Bench, $10$ for the $\beta$/$K$/calibration sweeps.
+\paragraph{Tasks.} Synthetic: Branin-2D ($N{=}2000$), Styblinski-5D ($3000$), Levy-8D ($4000$), Rosenbrock-10D ($5000$), Rastrigin-15D ($5000$), Ackley-20D ($5000$), Griewank-30D ($8000$); dataset drawn once at seed $0$ and fixed across seeds. Design-Bench: TF-Bind-8/10 (exact oracles), Superconductor, GFP, UTR, Ant, D'Kitty (random-forest oracles); discrete designs relaxed to per-position class logits, decoded by argmax; inputs and scores min-max normalized; raw rows score-biased-subsampled to $8000$ before encoding.
+\paragraph{Calibration measurement.} One-sided premise coverage $\widehat{\Pr}(\mu-f\le\beta\sigma)$ (the LCB lower-bound event $f\ge\mu-\beta\sigma$) estimated in-distribution on uniform test points and out-of-distribution on the gradient-ascent proposals, at $\beta\in\{0.5,1,2,5\}$. Split-conformal multiplier $\hat q$ from the signed nonconformity $(\mu-f)/\sigma$ with a relative $\sigma$ floor ($5\%$ of the calibration-fold mean), fit at $\delta{=}0.1$ on a held-out fold; $\rho_{\text{err}}=$ Spearman$(\sigma,|\mu-f|)$.
+
+\bibliography{references}
+
+\end{document}

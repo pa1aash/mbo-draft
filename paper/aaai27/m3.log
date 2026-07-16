@@ -1,0 +1,129 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(aaai2027.sty
+Conference Style for AAAI for LaTeX 2e
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
+e.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex)))
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureve
+rsions.sty)))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg))) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
+y (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.
+sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd)
+(main.aux)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+Underfull \hbox (badness 2435) in paragraph at lines 64--65
+[]\T1/ntxtlf/b/n/10 A con-trolled surrogate$\OMS/cmsy/m/n/10 ^^B$\T1/ntxtlf/b/n
+/10 optimizer de-com-po-si-tion
+[1{C:/Users/arjun/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ar
+jun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}]
+Underfull \hbox (badness 1577) in paragraph at lines 92--93
+ \T1/ntxtlf/b/n/10 Matched tun-ing (iden-ti-fi-a-bil-ity con-trol). \T1/ntxtlf/
+m/n/10 Ex-act and
+
+Underfull \hbox (badness 5217) in paragraph at lines 92--93
+\T1/ntxtlf/m/n/10 sparse GPs, un-like en-sem-bles, can spend per-run
+
+Underfull \hbox (badness 1259) in paragraph at lines 92--93
+\T1/ntxtlf/m/n/10 hyperparameter-optimization bud-get. The \T1/ntxtlf/m/it/10 m
+atched \T1/ntxtlf/m/n/10 arm
+[2]
+Overfull \hbox (12.2147pt too wide) in paragraph at lines 138--147
+ [][] 
+[3]
+Underfull \vbox (badness 10000) has occurred while \output is active
+Underfull \vbox (badness 10000) has occurred while \output is active [4 <./figu
+res/fig1_grid_heatmap.pdf> <./figures/fig2_optimizer_spread.pdf> <./figures/fig
+6_cd_diagram.pdf>] [5 <./figures/fig8_crossproposal.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
+\T1/ntxtlf/b/n/10 Output\T1/ntxtlf/m/n/10 : mul-ti-plier $[]$, cov-er-ages $\OT
+1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$\T1/ntxtlf/m/n/10 ,
+[6 <./figures/fig4_beta_sweep.pdf>] (main.bbl [7 <./figures/fig3_coverage.pdf>]
+) [8] (main.aux) )
+(see the transcript file for additional information)<C:/Users/arjun/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/arjun/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/
+arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmmi9.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmr10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr6.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/arjun/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/arjun/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/arjun/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/arjun/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/
+arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C
+:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><
+C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb>
+<C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pf
+b>
+Output written on main.pdf (8 pages, 467622 bytes).
+Transcript written on main.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

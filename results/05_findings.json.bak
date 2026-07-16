@@ -1,0 +1,344 @@
+{
+  "attribution": {
+    "SYNTH": {
+      "tasks": [
+        "Branin-2D",
+        "Styblinski-5D",
+        "Levy-8D",
+        "Rosenbrock-10D",
+        "Rastrigin-15D",
+        "Ackley-20D",
+        "Griewank-30D"
+      ],
+      "eta2_opt": 0.013189173376026025,
+      "eta2_surr": 0.36872274336144345,
+      "opt_means": {
+        "perturb": 0.708,
+        "grad": 0.695,
+        "cma": 0.608
+      },
+      "surr_means": {
+        "ens": 0.34,
+        "botorchgp": 0.845,
+        "svgp": 0.827
+      }
+    },
+    "SYNTH-matched": {
+      "tasks": [
+        "Branin-2D",
+        "Styblinski-5D",
+        "Levy-8D",
+        "Rosenbrock-10D",
+        "Rastrigin-15D",
+        "Ackley-20D",
+        "Griewank-30D"
+      ],
+      "eta2_opt": 0.024329542667278076,
+      "eta2_surr": 0.27542947156964054,
+      "opt_means": {
+        "perturb": 0.702,
+        "grad": 0.652,
+        "cma": 0.55
+      },
+      "surr_means": {
+        "ens": 0.338,
+        "botorchgp": 0.741,
+        "svgp": 0.825
+      }
+    },
+    "REAL": {
+      "tasks": [
+        "TFBind8",
+        "TFBind10",
+        "Superconductor",
+        "GFP",
+        "UTR",
+        "AntMorphology",
+        "DKitty"
+      ],
+      "eta2_opt": 0.08473928568992424,
+      "eta2_surr": 0.04677094337600403,
+      "opt_means": {
+        "perturb": 0.782,
+        "grad": 0.584,
+        "cma": 0.526
+      },
+      "surr_means": {
+        "ens": 0.529,
+        "botorchgp": 0.729,
+        "svgp": 0.634
+      }
+    }
+  },
+  "gate1": {
+    "sei_unmatched": 0.6515004904835162,
+    "sei_matched": 0.5487667279082784,
+    "retention": 0.842312071785252
+  },
+  "stats": {
+    "SYNTH": {
+      "methods": [
+        "botorchgp:cma",
+        "botorchgp:grad",
+        "botorchgp:perturb",
+        "cbas",
+        "coms",
+        "ens:cma",
+        "ens:grad",
+        "ens:perturb",
+        "ens_conformal:grad",
+        "ens_conformal:perturb",
+        "gp",
+        "grad_ascent",
+        "sparse_gp",
+        "svgp:cma",
+        "svgp:grad",
+        "svgp:perturb"
+      ],
+      "mean_rank": {
+        "botorchgp:cma": 4.43,
+        "botorchgp:grad": 3.29,
+        "botorchgp:perturb": 6.43,
+        "cbas": 6.86,
+        "coms": 12.57,
+        "ens:cma": 14.29,
+        "ens:grad": 11.57,
+        "ens:perturb": 10.14,
+        "ens_conformal:grad": 9.71,
+        "ens_conformal:perturb": 11.14,
+        "gp": 6.86,
+        "grad_ascent": 13.14,
+        "sparse_gp": 9.71,
+        "svgp:cma": 5.0,
+        "svgp:grad": 4.0,
+        "svgp:perturb": 6.86
+      },
+      "cd": 8.718713580595622,
+      "friedman_p": 1.075443304569636e-06,
+      "best": "botorchgp:grad",
+      "best_rank_ci": [
+        1.2857142857142858,
+        5.571428571428571
+      ]
+    },
+    "REAL": {
+      "methods": [
+        "botorchgp:cma",
+        "botorchgp:grad",
+        "botorchgp:perturb",
+        "cbas",
+        "coms",
+        "ens:cma",
+        "ens:grad",
+        "ens:perturb",
+        "ens_conformal:grad",
+        "ens_conformal:perturb",
+        "grad_ascent",
+        "svgp:cma",
+        "svgp:grad",
+        "svgp:perturb"
+      ],
+      "mean_rank": {
+        "botorchgp:cma": 7.79,
+        "botorchgp:grad": 7.0,
+        "botorchgp:perturb": 5.64,
+        "cbas": 5.71,
+        "coms": 7.0,
+        "ens:cma": 10.0,
+        "ens:grad": 8.43,
+        "ens:perturb": 7.14,
+        "ens_conformal:grad": 6.43,
+        "ens_conformal:perturb": 6.57,
+        "grad_ascent": 9.0,
+        "svgp:cma": 9.0,
+        "svgp:grad": 8.86,
+        "svgp:perturb": 6.43
+      },
+      "cd": 7.498917263691774,
+      "friedman_p": 0.7115487157582647,
+      "best": "botorchgp:perturb",
+      "best_rank_ci": [
+        3.1410714285714287,
+        8.571428571428571
+      ]
+    }
+  },
+  "calibration": {
+    "SYNTH": {
+      "per_task": {
+        "Branin-2D": {
+          "cov_indist@2.0": 0.3598,
+          "cov_ood@2.0": 0.24309895833333334,
+          "cov_conf_indist": 0.9618666666666666,
+          "cov_conf_ood": 0.8404947916666666,
+          "rho_err": 0.23415883103532412
+        },
+        "Styblinski-5D": {
+          "cov_indist@2.0": 0.2804,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.9508666666666666,
+          "cov_conf_ood": 0.23333333333333334,
+          "rho_err": 0.08663940895763583
+        },
+        "Levy-8D": {
+          "cov_indist@2.0": 0.3554666666666667,
+          "cov_ood@2.0": 0.08841145833333333,
+          "cov_conf_indist": 0.9504666666666667,
+          "cov_conf_ood": 0.6319010416666667,
+          "rho_err": 0.09046802424844198
+        },
+        "Rosenbrock-10D": {
+          "cov_indist@2.0": 0.6992,
+          "cov_ood@2.0": 0.153515625,
+          "cov_conf_indist": 0.9490666666666667,
+          "cov_conf_ood": 0.7390625,
+          "rho_err": 0.09348607654521679
+        },
+        "Rastrigin-15D": {
+          "cov_indist@2.0": 0.42686666666666667,
+          "cov_ood@2.0": 0.07786458333333333,
+          "cov_conf_indist": 0.9603999999999998,
+          "cov_conf_ood": 0.8466145833333333,
+          "rho_err": 0.024526024577942427
+        },
+        "Ackley-20D": {
+          "cov_indist@2.0": 0.7889333333333332,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.9708000000000001,
+          "cov_conf_ood": 1.0,
+          "rho_err": 0.05969832885035064
+        },
+        "Griewank-30D": {
+          "cov_indist@2.0": 0.14646666666666663,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.9509333333333332,
+          "cov_conf_ood": 0.281640625,
+          "rho_err": 0.07120098240392962
+        }
+      },
+      "mean": {
+        "cov_indist@2.0": 0.43673333333333325,
+        "cov_ood@2.0": 0.08041294642857143,
+        "cov_conf_indist": 0.9563428571428572,
+        "cov_conf_ood": 0.6532924107142856,
+        "rho_err": 0.09431109665983449
+      }
+    },
+    "REAL": {
+      "per_task": {
+        "AntMorphology": {
+          "cov_indist@2.0": 0.37050000000000005,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.999125,
+          "cov_conf_ood": 0.161865234375,
+          "rho_err": 0.33457144228576907
+        },
+        "UTR": {
+          "cov_indist@2.0": 0.12437499999999999,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 1.0,
+          "cov_conf_ood": 0.0,
+          "rho_err": -0.06582328129312517
+        },
+        "DKitty": {
+          "cov_indist@2.0": 0.41175000000000006,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.9075,
+          "cov_conf_ood": 0.0,
+          "rho_err": -0.057938157752631
+        },
+        "Superconductor": {
+          "cov_indist@2.0": 0.393125,
+          "cov_ood@2.0": 0.00244140625,
+          "cov_conf_indist": 1.0,
+          "cov_conf_ood": 0.008056640625,
+          "rho_err": 0.5955042783371368
+        },
+        "TFBind8": {
+          "cov_indist@2.0": 0.26775000000000004,
+          "cov_ood@2.0": 0.06884765625,
+          "cov_conf_indist": 0.999375,
+          "cov_conf_ood": 0.8505859375,
+          "rho_err": -0.0049916239664958666
+        },
+        "GFP": {
+          "cov_indist@2.0": 0.0,
+          "cov_ood@2.0": 0.0,
+          "cov_conf_indist": 0.8961250000000001,
+          "cov_conf_ood": 0.935791015625,
+          "rho_err": -0.010140181686388635
+        },
+        "TFBind10": {
+          "cov_indist@2.0": 0.265,
+          "cov_ood@2.0": 0.078125,
+          "cov_conf_indist": 0.9995,
+          "cov_conf_ood": 0.5712890625,
+          "rho_err": -0.04039106380215554
+        }
+      },
+      "mean": {
+        "cov_indist@2.0": 0.26178571428571434,
+        "cov_ood@2.0": 0.021344866071428572,
+        "cov_conf_indist": 0.9716607142857143,
+        "cov_conf_ood": 0.361083984375,
+        "rho_err": 0.10725591601744423
+      }
+    }
+  },
+  "beta_sweep": {
+    "betas": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      5.0
+    ],
+    "median_norm_slope": 0.1864586742998922,
+    "helps_count": 6,
+    "n": 7
+  },
+  "crosscheck": {
+    "coms:Superconductor": {
+      "official_norm": 1.3126878075233002,
+      "official_raw": 97.13883209228516,
+      "ours": 1.01354655995965,
+      "abs_diff": 0.2991412475636501
+    },
+    "coms:TFBind8": {
+      "official_norm": 0.9925851742969443,
+      "official_raw": 0.4360388517379761,
+      "ours": 2.21014067530632,
+      "abs_diff": 1.217555501009376
+    },
+    "coms:GFP": {
+      "official_norm": -8.379941155295537,
+      "official_raw": 2.1457350850105286,
+      "ours": -9.201119024306536,
+      "abs_diff": 0.8211778690109988
+    },
+    "cbas:Superconductor": {
+      "official_norm": 1.2105149366480696,
+      "official_raw": 89.5780611038208,
+      "ours": 1.3638127595186234,
+      "abs_diff": 0.1532978228705537
+    },
+    "cbas:TFBind8": {
+      "official_norm": 2.1248036594559974,
+      "official_raw": 0.9334180802106857,
+      "ours": 2.1206253692507744,
+      "abs_diff": 0.004178290205222979
+    },
+    "cbas:GFP": {
+      "official_norm": 2.1987514755767723,
+      "official_raw": 3.701169401407242,
+      "ours": 1.8531188517808914,
+      "abs_diff": 0.3456326237958809
+    }
+  },
+  "K_ablation": {
+    "2": 0.9498119122900442,
+    "3": 0.516669630587786,
+    "5": 0.314807002449946,
+    "10": 0.18361987006663957
+  }
+}

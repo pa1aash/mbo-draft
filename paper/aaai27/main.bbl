@@ -1,0 +1,183 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Agarwal et~al.(2021)Agarwal, Schwarzer, Castro, Courville, and
+  Bellemare}]{agarwal2021precipice}
+Agarwal, R.; Schwarzer, M.; Castro, P.~S.; Courville, A.; and Bellemare, M.~G.
+  2021.
+\newblock Deep Reinforcement Learning at the Edge of the Statistical Precipice.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
+\bibitem[{Angelopoulos and Bates(2023)}]{angelopoulos2023conformal}
+Angelopoulos, A.~N.; and Bates, S. 2023.
+\newblock Conformal Prediction: A Gentle Introduction.
+\newblock \emph{Foundations and Trends in Machine Learning}, 16(4): 494--591.
+
+\bibitem[{Balduzzi et~al.(2018)Balduzzi, Tuyls, Perolat, and
+  Graepel}]{balduzzi2018reevaluating}
+Balduzzi, D.; Tuyls, K.; Perolat, J.; and Graepel, T. 2018.
+\newblock Re-evaluating Evaluation.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
+\bibitem[{Brookes, Park, and Listgarten(2019)}]{brookes2019cbas}
+Brookes, D.~H.; Park, H.; and Listgarten, J. 2019.
+\newblock Conditioning by Adaptive Sampling for Robust Design.
+\newblock In \emph{International Conference on Machine Learning}, 773--782.
+  PMLR.
+
+\bibitem[{Chemingui et~al.(2024)Chemingui, Deshwal, Hoang, and
+  Doppa}]{chemingui2024pggs}
+Chemingui, Y.; Deshwal, A.; Hoang, T.~N.; and Doppa, J.~R. 2024.
+\newblock Offline Model-Based Optimization via Policy-Guided Gradient Search.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}.
+
+\bibitem[{Chen et~al.(2022)Chen, Zhang, Fu, Li, and Poupart}]{chen2022bdi}
+Chen, C.; Zhang, Y.; Fu, J.; Li, X.; and Poupart, P. 2022.
+\newblock Bidirectional Learning for Offline Infinite-width Model-Based
+  Optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~35, 6800--6814.
+
+\bibitem[{Fannjiang and Listgarten(2020)}]{fannjiang2020autofocused}
+Fannjiang, C.; and Listgarten, J. 2020.
+\newblock Autofocused Oracles for Model-Based Design.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, 12945--12956.
+
+\bibitem[{Gonz{\'a}lez et~al.(2016)Gonz{\'a}lez, Dai, Hennig, and
+  Lawrence}]{gonzalez2016batch}
+Gonz{\'a}lez, J.; Dai, Z.; Hennig, P.; and Lawrence, N.~D. 2016.
+\newblock Batch {B}ayesian Optimization via Local Penalization.
+\newblock In \emph{International Conference on Artificial Intelligence and
+  Statistics}, 648--657. PMLR.
+
+\bibitem[{Henderson et~al.(2018)Henderson, Islam, Bachman, Pineau, Precup, and
+  Meger}]{henderson2018matters}
+Henderson, P.; Islam, R.; Bachman, P.; Pineau, J.; Precup, D.; and Meger, D.
+  2018.
+\newblock Deep Reinforcement Learning that Matters.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}.
+
+\bibitem[{Jin, Yang, and Wang(2021)}]{jin2021pessimism}
+Jin, Y.; Yang, Z.; and Wang, Z. 2021.
+\newblock Is Pessimism Provably Efficient for Offline Reinforcement Learning?
+\newblock In \emph{International Conference on Machine Learning}, 5084--5096.
+  PMLR.
+
+\bibitem[{Kim et~al.(2025)Kim, Gu, Yuan, Yun, Liu, Bengio, and
+  Chen}]{kim2025mbosurvey}
+Kim, M.; Gu, J.; Yuan, Y.; Yun, T.; Liu, Z.; Bengio, Y.; and Chen, C. 2025.
+\newblock Offline Model-Based Optimization: Comprehensive Review.
+\newblock \emph{arXiv preprint arXiv:2503.17286}.
+
+\bibitem[{Krishnamoorthy, Mashkaria, and
+  Grover(2023{\natexlab{a}})}]{krishnamoorthy2023ddom}
+Krishnamoorthy, S.; Mashkaria, S.~M.; and Grover, A. 2023{\natexlab{a}}.
+\newblock Diffusion Models for Black-Box Optimization.
+\newblock In \emph{International Conference on Machine Learning}, 17842--17857.
+  PMLR.
+
+\bibitem[{Krishnamoorthy, Mashkaria, and
+  Grover(2023{\natexlab{b}})}]{bonet2024}
+Krishnamoorthy, S.; Mashkaria, S.~M.; and Grover, A. 2023{\natexlab{b}}.
+\newblock Generative Pretraining for Black-Box Optimization.
+\newblock \emph{arXiv preprint arXiv:2206.10786}.
+
+\bibitem[{Kumar and Levine(2020)}]{kumar2020mins}
+Kumar, A.; and Levine, S. 2020.
+\newblock Model Inversion Networks for Model-Based Optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, 5126--5137.
+
+\bibitem[{Kumar et~al.(2020)Kumar, Zhou, Tucker, and Levine}]{kumar2020cql}
+Kumar, A.; Zhou, A.; Tucker, G.; and Levine, S. 2020.
+\newblock Conservative {Q}-Learning for Offline Reinforcement Learning.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~33, 1179--1191.
+
+\bibitem[{Lakshminarayanan, Pritzel, and
+  Blundell(2017)}]{lakshminarayanan2017ensembles}
+Lakshminarayanan, B.; Pritzel, A.; and Blundell, C. 2017.
+\newblock Simple and Scalable Predictive Uncertainty Estimation using Deep
+  Ensembles.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~30.
+
+\bibitem[{Li, Rudner, and Wilson(2024)}]{li2024bnnsurrogates}
+Li, Y.~L.; Rudner, T. G.~J.; and Wilson, A.~G. 2024.
+\newblock A Study of {B}ayesian Neural Network Surrogates for {B}ayesian
+  Optimization.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Rashidinejad et~al.(2021)Rashidinejad, Zhu, Ma, Jiao, and
+  Russell}]{rashidinejad2021bridging}
+Rashidinejad, P.; Zhu, B.; Ma, C.; Jiao, J.; and Russell, S. 2021.
+\newblock Bridging Offline Reinforcement Learning and Imitation Learning: A
+  Tale of Pessimism.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34, 11702--11716.
+
+\bibitem[{Srinivas et~al.(2012)Srinivas, Krause, Kakade, and
+  Seeger}]{srinivas2010ucb}
+Srinivas, N.; Krause, A.; Kakade, S.~M.; and Seeger, M.~W. 2012.
+\newblock {G}aussian Process Optimization in the Bandit Setting: No Regret and
+  Experimental Design.
+\newblock \emph{IEEE Transactions on Information Theory}, 58(5): 3250--3265.
+
+\bibitem[{Stanton, Maddox, and Wilson(2023)}]{stanton2023conformalbo}
+Stanton, S.; Maddox, W.; and Wilson, A.~G. 2023.
+\newblock {B}ayesian Optimization with Conformal Prediction Sets.
+\newblock In \emph{International Conference on Artificial Intelligence and
+  Statistics}. PMLR.
+
+\bibitem[{Tan et~al.(2025)Tan, Xue, Lyu, Shang, Wang, Wang, Fu, and
+  Qian}]{tan2025ltr}
+Tan, R.-X.; Xue, K.; Lyu, S.-H.; Shang, H.; Wang, Y.; Wang, Y.; Fu, S.; and
+  Qian, C. 2025.
+\newblock Offline Model-Based Optimization by Learning to Rank.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\bibitem[{Tibshirani et~al.(2019)Tibshirani, Foygel~Barber, Candes, and
+  Ramdas}]{tibshirani2019conformal}
+Tibshirani, R.~J.; Foygel~Barber, R.; Candes, E.~J.; and Ramdas, A. 2019.
+\newblock Conformal Prediction Under Covariate Shift.
+\newblock In \emph{Advances in Neural Information Processing Systems}.
+
+\bibitem[{Trabucco et~al.(2022)Trabucco, Geng, Kumar, and
+  Levine}]{trabucco2022designbench}
+Trabucco, B.; Geng, X.; Kumar, A.; and Levine, S. 2022.
+\newblock Design-{B}ench: Benchmarks for Data-Driven Offline Model-Based
+  Optimization.
+\newblock In \emph{International Conference on Machine Learning}, 21658--21676.
+  PMLR.
+
+\bibitem[{Trabucco et~al.(2021)Trabucco, Kumar, Geng, and
+  Levine}]{trabucco2021coms}
+Trabucco, B.; Kumar, A.; Geng, X.; and Levine, S. 2021.
+\newblock Conservative Objective Models for Effective Offline Model-Based
+  Optimization.
+\newblock In \emph{International Conference on Machine Learning}, 10358--10368.
+  PMLR.
+
+\bibitem[{Xie et~al.(2021)Xie, Cheng, Jiang, Mineiro, and
+  Agarwal}]{xie2021bellman}
+Xie, T.; Cheng, C.-A.; Jiang, N.; Mineiro, P.; and Agarwal, A. 2021.
+\newblock Bellman-Consistent Pessimism for Offline Reinforcement Learning.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34, 6683--6694.
+
+\bibitem[{Yu et~al.(2021)Yu, Ahn, Song, and Shin}]{yu2021roma}
+Yu, S.; Ahn, S.; Song, L.; and Shin, J. 2021.
+\newblock {RoMA}: Robust Model Adaptation for Offline Model-Based Optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~34, 4619--4631.
+
+\bibitem[{Zhu, Qian et~al.(2025)}]{qian2025soobench}
+Zhu, Y.; Qian, H.; et~al. 2025.
+\newblock {SOO}-Bench: Benchmarks for Evaluating the Stability of Offline
+  Black-Box Optimization.
+\newblock In \emph{International Conference on Learning Representations}.
+
+\end{thebibliography}

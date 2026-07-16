@@ -278,7 +278,10 @@ def cma_opt(score_np, x0, budget=3000, seed=0):
     dim = x0.shape[1]
     x_start = x0[int(np.argmax(score_np(x0)))]
     es = cma.CMAEvolutionStrategy(x_start.tolist(), 0.2,
-        {'bounds': [0, 1], 'maxfevals': budget, 'verbose': -9, 'seed': seed + 1})
+        {'bounds': [0, 1], 'maxfevals': budget, 'verbose': -9, 'seed': seed + 1,
+         'CMA_diagonal': dim > 500})   # sep-CMA (O(dim)) for high-dim tasks (GFP d=4740,
+        # Hopper d=5126); full CMA's O(dim^3) eigendecomp is intractable there. Low-dim
+        # (<=500: all other tasks) keeps full CMA, so already-computed cells are unchanged.
     pool = [x0]
     while not es.stop():
         sols = es.ask()
@@ -359,17 +362,20 @@ def conformal_lower_delta(cal_mu, cal_y, alpha):
     return float(np.sort(res)[min(k, n) - 1])
 
 def coverage_of_premise(mu, sigma, f, beta):
-    """Empirical P(|mu - f| <= beta*sigma) — the pessimism-guarantee premise."""
-    return float(np.mean(np.abs(mu - f) <= beta * sigma))
+    """Empirical P(mu - f <= beta*sigma) = P(f >= mu - beta*sigma) — the ONE-SIDED
+    LCB lower-bound premise (Prop 1). Not the two-sided band |mu-f|<=beta*sigma:
+    under-prediction (f >> mu) never violates a lower bound and must not count as a miss."""
+    return float(np.mean((mu - f) <= beta * sigma))
 
 def fit_conformal_multiplier(mu_cal, sigma_cal, y_cal, alpha=0.1):
-    """Calibrated multiplier q that REPLACES the arbitrary beta in LCB: the lower
-    bound mu - q*sigma achieves ~1-alpha coverage on exchangeable data. Nonconformity
-    is normalized (|mu-y|/sigma), so q scales the uncertainty and therefore reshapes
-    the search — unlike a marginal (constant) conformal offset, which only shifts the
-    reported bound and leaves the argmax = mean-ascent. This is the honest 'repair the
-    calibration of the uncertainty used inside LCB'."""
-    r = np.abs(mu_cal - y_cal) / (sigma_cal + 1e-8)
+    """Calibrated multiplier q for the ONE-SIDED lower bound mu - q*sigma: the signed
+    normalized nonconformity (mu - y)/sigma has (1-alpha) empirical quantile q, so
+    P(f >= mu - q*sigma) ~ 1-alpha on exchangeable data (Prop 2). q scales the
+    uncertainty and reshapes the search — unlike a constant conformal offset that only
+    shifts the reported bound. A relative floor on sigma keeps the ratio finite when the
+    ensemble collapses (sigma ~ 0), so a single degenerate point cannot blow up q."""
+    s = np.maximum(sigma_cal, 0.05 * np.mean(sigma_cal) + 1e-8)
+    r = (mu_cal - y_cal) / s                               # signed one-sided nonconformity
     n = len(r)
     k = min(int(np.ceil((n + 1) * (1 - alpha))), n)
     return float(np.sort(r)[k - 1])
@@ -587,7 +593,7 @@ def run_calibration(task, seed, n_test=500, ep=TRAIN_EP):
     err = np.abs(mu - task.oracle(xt))
     dist = NearestNeighbors(n_neighbors=5).fit(x).kneighbors(xt)[0].mean(1)
 
-    # (2) premise coverage P(|mu-f| <= beta*sigma), in-distribution vs on LCB's OOD designs
+    # (2) premise coverage P(mu-f <= beta*sigma) [one-sided], in-distribution vs on LCB's OOD designs
     x0 = init_candidates(x, y, seed)
     xf = grad_opt(ens_lcb_torch(ms, BETA), torch.FloatTensor(x0), steps=OPT_STEPS)   # what LCB actually proposes
     mu_o, sig_o = mu_sig(xf); f_o = task.oracle(xf)

@@ -1,0 +1,298 @@
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{multirow}
+
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+\setcounter{secnumdepth}{1}
+
+% float packing: let floats fill more of each page so wide tables/figures do not orphan
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.80}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{5}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\mdemph}[1]{\emph{#1}}
+\newcommand{\memph}[1]{\emph{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\D}{\mathcal{D}}
+
+\title{Decomposing the GP Advantage in Offline MBO}
+
+\author{Anonymous Submission}
+\affiliations{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+A common intuition in offline model-based optimization (MBO) is that Gaussian-process lower confidence bound (GP-LCB) outperforms neural-ensemble LCB at low dimension because the GP posterior is better calibrated. This comparison is confounded: the two pipelines differ in \memph{both} the surrogate class and the acquisition optimizer. We run the first controlled surrogate$\times$optimizer decomposition---\{deep ensemble, exact GP, sparse variational GP\}$\times$\{gradient ascent, perturbation, CMA-ES\}---on 7 synthetic and 7 Design-Bench tasks. On synthetic tasks the surrogate main effect dominates ($\eta^2{=}0.37$ vs.\ $0.01$ for the optimizer) with a large surrogate$\times$optimizer interaction ($\eta^2{=}0.17$): gradient ascent collapses on the ensemble but is inert on the GP. Controls locate the cause in the GP's posterior \emph{mean}, not its calibration---the GP--ensemble gap is unchanged when the pessimism term is removed ($\beta{=}0$) and \emph{widens} when the ensemble is given the GP's data subsample. The ensemble's LCB premise, which we show equals the bound's validity, is moderately covered in-distribution ($0.73$, below the nominal $0.90$) but collapses on the designs its own gradient ascent returns ($0.41$)---while remaining well covered ($0.97$) on the GP's proposals, so the failure is the ensemble$\times$gradient interaction, not a surrogate defect. Split-conformal recalibration restores in-distribution coverage to its $0.90$ target but not the shifted proposal coverage; we package this as a coverage diagnostic. Finally, method choice is highly significant on synthetic benchmarks (Friedman $p{=}6\times10^{-5}$) but unresolved on Design-Bench ($p{=}0.69$; an equivalence test is underpowered at $N{=}7$): the differences these benchmarks reward do not transfer to real tasks.
+\end{abstract}
+
+% \begin{links}
+%   \link{Code}{https://anonymous.4open.science/r/offline-mbo-decomposition}
+% \end{links}
+
+\section{Introduction}
+
+Offline model-based optimization (MBO) seeks a design $x$ maximizing an expensive black-box $f$ from a fixed dataset $\D=\{(x_i,y_i)\}_{i=1}^N$, with no further queries to $f$ during search \citep{trabucco2022designbench,kim2025mbosurvey}. The dominant recipe fits a surrogate $\hat f$ and optimizes it; because optimization pushes designs into regions where $\hat f$ is unconstrained, the surrogate is typically made conservative---by a learned regularizer \citep{trabucco2021coms} or by a pessimistic acquisition such as the lower confidence bound (LCB) $\mu(x)-\beta\sigma(x)$ \citep{srinivas2010ucb}. A common modeling intuition is that Gaussian-process LCB (GP-LCB) is preferable to neural-ensemble LCB at low dimension, on the grounds that the GP posterior is better calibrated.
+
+That attribution is not identified. A GP-LCB pipeline and an ensemble-LCB pipeline differ in \mdemph{two} coupled factors: the surrogate class (GP posterior vs.\ ensemble disagreement) and the acquisition optimizer (GPs are usually optimized by perturbation or quasi-Newton restarts, neural surrogates by gradient ascent on $x$). Existing systematic studies vary one axis with the other fixed: surrogate-class comparisons hold the optimizer constant \citep{tan2025ltr}---a Bayesian-optimization study of GP vs.\ neural surrogates similarly fixes the acquisition and finds their ranking problem-dependent, with deep ensembles often the weakest \citep{li2024bnnsurrogates}---and the conservative-surrogate lineage holds gradient ascent fixed while varying the regularizer \citep{trabucco2021coms}. The subfield's own survey names realistic benchmarking and surrogate-uncertainty estimation among its open problems \citep{kim2025mbosurvey}, yet whether reported gains come from the surrogate, the optimizer, or neither has not been measured under control. We supply that missing measurement.
+
+\paragraph{Contributions.}
+\begin{enumerate}
+\item \textbf{A controlled surrogate$\times$optimizer decomposition} (Sections~\ref{sec:grid}--\ref{sec:results}) over $\{$ensemble, exact GP, sparse GP$\}\times\{$gradient, perturbation, CMA-ES$\}$ on 7 synthetic and 7 Design-Bench tasks under one score-closure protocol. The surrogate main effect dominates on synthetic tasks ($\eta^2{=}0.37$ vs.\ $0.01$) with a large surrogate$\times$optimizer \mdemph{interaction} ($\eta^2{=}0.17$); a matched-tuning control shows the surrogate effect is not a GP-tuning artifact (it retains $76\%$).
+\item \textbf{The mechanism is inductive bias, not calibration} (Section~\ref{sec:mech}). Three controls locate the GP's advantage in its posterior \mdemph{mean}: the GP--ensemble gap is unchanged with pessimism off ($\beta{=}0$), \mdemph{widens} when the ensemble is given the GP's data subsample, and the ensemble's LCB premise---which we show (Prop.~\ref{prop:cov}) equals the bound's validity---collapses only on the ensemble's own gradient proposals (coverage $0.41$) while holding on the GP's ($0.97$). We package the coverage measurement as a diagnostic with a split-conformal repair (Prop.~\ref{prop:conf}).
+\item \textbf{A benchmark-validity result} (Section~\ref{sec:results}), under a controlled random-forest-oracle protocol. Method choice is highly significant on synthetic benchmarks (Friedman $p{=}6\times10^{-5}$) but statistically unresolved on Design-Bench ($p{=}0.69$; a paired equivalence test is underpowered at $N{=}7$ tasks): the method rankings synthetic suites reward do not transfer to the real tasks---a gap we show is not an artifact of the random-forest oracles. To our knowledge this is the first controlled measurement disentangling the surrogate and optimizer contributions in offline MBO, rather than a new optimizer or regularizer.
+\end{enumerate}
+
+These threads share one cause. Contributions~2 and~3 are two views of a single prior--task match: the synthetic surfaces are globally smooth, matching the GP's Mat\'ern prior, so the GP wins decisively; the Design-Bench oracles are not, the match breaks, and both the GP edge and the method separation vanish.
+
+\section{Background and Related Work}
+
+\paragraph{LCB and the pessimism premise.} GP-LCB $\mu-\beta\sigma$ has regret guarantees under GP assumptions \citep{srinivas2010ucb}; deep ensembles \citep{lakshminarayanan2017ensembles} provide a cheap uncertainty proxy but no calibration guarantee. The pessimism principle underlying conservative offline methods is that a valid lower bound prevents the optimizer from exploiting model error \citep{jin2021pessimism,rashidinejad2021bridging,xie2021bellman}. We make the premise behind LCB operationally measurable.
+
+\paragraph{Offline MBO.} Conservative Objective Models \citep{trabucco2021coms} add a CQL-style regularizer \citep{kumar2020cql}; related methods include MINs \citep{kumar2020mins}, CbAS \citep{brookes2019cbas}, autofocused oracles \citep{fannjiang2020autofocused}, DDOM \citep{krishnamoorthy2023ddom}, RoMA \citep{yu2021roma}, BDI \citep{chen2022bdi}, BONET \citep{bonet2024}, and ranking surrogates \citep{tan2025ltr}. Optimizer-as-contribution work \citep{chemingui2024pggs} argues search strategy is under-explored but proposes a method rather than decomposing. Design-Bench \citep{trabucco2022designbench} standardizes tasks and, by fixing a protocol, documents the confounded status quo we dissect.
+
+\paragraph{Calibration and conformal prediction.} Post-hoc calibration \citep{gonzalez2016batch} and conformal methods give distribution-free coverage \citep{angelopoulos2023conformal}; conformal prediction sets have been used inside the Bayesian-optimization loop itself \citep{stanton2023conformalbo}. We use split-conformal and its weighted extension \citep{tibshirani2019conformal} to repair the LCB premise and to diagnose where the repair transfers, positioning our calibration arm as \mdemph{decompose and diagnose}: measuring coverage where the optimizer operates, rather than certifying a fixed pipeline.
+
+\paragraph{Evaluation critiques and controlled decompositions.} A recurring lesson from adjacent subfields is that reported gains can be artifacts of evaluation rather than method: reproducibility and statistical audits of deep RL \citep{henderson2018matters,agarwal2021precipice} and the demonstration that aggregate benchmark scores are structurally unreliable \citep{balduzzi2018reevaluating} each pair a critique with a reusable tool (a protocol, a stratified-bootstrap library, Nash averaging). Within offline optimization, SOO-Bench \citep{qian2025soobench} pursues a complementary benchmark-validity axis, stress-testing optimizer \mdemph{stability} across problem instances. Our study is in this tradition---a controlled decomposition plus a coverage diagnostic---but targets the surrogate$\times$optimizer confound in offline MBO, where it is not merely statistical noise but a specific, measurable premise (LCB coverage) that prior work has not quantified in the region the optimizer actually reaches.
+
+\section{The Decomposition Grid}
+\label{sec:grid}
+
+\paragraph{Surrogates.} (i) \textbf{Ensemble}: $K{=}5$ two-hidden-layer MLPs (width 96, ReLU), trained by MSE for 35 epochs (Adam, lr $3\times10^{-3}$); $\mu,\sigma$ are the member mean and standard deviation. (ii) \textbf{Exact GP}: a differentiable single-task GP (ARD Mat\'ern-$5/2$), fit by marginal likelihood on a score-biased subsample ($N_{\max}{=}800$). (iii) \textbf{Sparse variational GP (SVGP)}: 128 inducing points, ARD Mat\'ern-$5/2$, 250 ELBO steps ($N_{\max}{=}2000$). The GPs additionally fit kernel hyperparameters by marginal likelihood---per-run tuning the ensemble does not receive; the matched-tuning control (below) freezes it to isolate the surrogate-class effect.
+
+\paragraph{Optimizers.} (i) \textbf{Gradient}: 100 Adam steps on $x$ (lr $0.05$), box-clipped to $[0,1]^d$. (ii) \textbf{Perturbation}: 5 rounds of Gaussian hill-climbing ($\sigma\in\{0.1,0.05,0.02\}$). (iii) \textbf{CMA-ES}: population search (initial $\sigma{=}0.2$, separable variant when $d{>}500$). All three surrogates are differentiable (the exact GP is a differentiable single-task GP), so every surrogate$\times$optimizer combination is realizable: a full $3\times3$ grid of 9 cells, plus the COMs, CbAS, and gradient-ascent baselines.
+
+\paragraph{Acquisition.} All cells maximize the LCB $\mu(x)-\beta\sigma(x)$ with $\beta{=}2$; $\beta{=}0$ recovers pure surrogate maximization.
+
+\paragraph{Score-closure protocol.} Every cell and baseline shares one evaluation closure: fit the surrogate on $\D$, form the LCB acquisition, hand it to the optimizer, collect the 128 proposed designs, and score them with the ground-truth oracle. Only the two swept factors---the surrogate producing $(\mu,\sigma)$ and the optimizer searching the acquisition---vary across cells; the data split, candidate budget, input normalization, and oracle scoring are held identical. This shared closure is what licenses attributing score differences to the surrogate$\times$optimizer factors rather than to incidental protocol choices, and it is precisely the control that pipeline-level comparisons of full published methods lack.
+
+\paragraph{Tasks and protocol.} 7 synthetic functions (Branin-2D through Griewank-30D; fixed dataset drawn once at seed 0) and 7 Design-Bench tasks (TF-Bind-8/10 with exact oracles; Superconductor, GFP, UTR, Ant, D'Kitty with random-forest oracles to remove simulator/framework dependencies). Discrete designs are relaxed to per-position class logits and decoded by argmax; continuous inputs and all scores are min-max normalized. Each method proposes 128 candidates; we report the 100th-percentile (max) oracle score, following Design-Bench. We run 30 seeds on synthetic and 16 on Design-Bench.
+
+\paragraph{Matched tuning (identifiability control).} Exact and sparse GPs, unlike ensembles, can spend per-run hyperparameter-optimization budget. The \mdemph{matched} arm freezes GP hyperparameter fitting so every surrogate gets the same zero per-run tuning budget, isolating the surrogate-class effect from a GP-tuning advantage.
+
+\paragraph{Attribution.} Per task we min-max normalize the grid and compute a two-way ANOVA: $\eta^2_{\text{surr}}$ and $\eta^2_{\text{opt}}$ are the fractions of normalized-score variance explained by the surrogate and optimizer main effects. Significance uses Wilcoxon signed-rank with Holm correction, an omnibus Friedman test, Nemenyi critical differences, and bootstrap rank confidence intervals.
+
+\begin{table*}[t]
+\centering
+\caption{Offline MBO on synthetic tasks: 100th-percentile score by surrogate$\times$optimizer (30 seeds; higher is better). \textbf{Bold} = best per task. Within the ensemble rows the optimizer swings the score enormously (Branin $-0.78\!\to\!-9.27$; Griewank $-395\!\to\!-2612$); within the GP rows it is nearly inert (Branin all $\approx-0.40$). This interaction, not a surrogate-only or optimizer-only main effect, is the source of the reported GP-LCB ``advantage.''}
+\label{tab:grid}
+\setlength{\tabcolsep}{5pt}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Surrogate$\times$Opt. & Branin & Styblinski & Levy & Rosenbrock & Rastrigin & Ackley & Griewank \\
+\midrule
+Ens $\times$ Grad     & $-9.27$ & $6.37$  & $-2.14$ & $-0.28$ & $-7.71$ & $-3.66$ & $-2592$ \\
+Ens $\times$ Pert     & $-0.78$ & $33.08$ & $-0.40$ & $-0.12$ & $-8.44$ & $-6.32$ & $-395$ \\
+Ens $\times$ CMA      & $-14.01$& $5.21$  & $-3.19$ & $-0.48$ & $-10.81$& $-4.31$ & $-2613$ \\
+GP $\times$ Grad      & $\mathbf{-0.40}$ & $27.57$ & $\mathbf{-0.05}$ & $-0.09$ & $-4.83$ & $\mathbf{-0.55}$ & $\mathbf{-0.94}$ \\
+GP $\times$ Pert      & $-0.40$ & $\mathbf{36.15}$ & $-0.24$ & $-0.08$ & $-8.28$ & $-6.28$ & $-269$ \\
+GP $\times$ CMA       & $-0.40$ & $26.65$ & $-0.05$ & $-0.09$ & $-5.06$ & $-0.59$ & $-1.00$ \\
+SVGP $\times$ Grad    & $-0.45$ & $11.83$ & $-0.08$ & $\mathbf{-0.04}$ & $\mathbf{-2.83}$ & $-0.69$ & $-2.11$ \\
+SVGP $\times$ Pert    & $-0.40$ & $34.35$ & $-0.25$ & $-0.08$ & $-8.27$ & $-6.14$ & $-275$ \\
+SVGP $\times$ CMA     & $-0.53$ & $11.60$ & $-0.08$ & $-0.04$ & $-3.00$ & $-0.73$ & $-2.17$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Results: What Drives Performance}
+\label{sec:results}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig1_grid_heatmap}
+\caption{Decomposition map: mean rank (over tasks, $1{=}$best) of every surrogate$\times$optimizer cell. \textbf{Left (synthetic):} the GP / SVGP surrogate is best regardless of optimizer (dark cells), while the ensemble is poor and swings with the optimizer (bright cells)---the surrogate main effect plus the ensemble$\times$optimizer interaction. \textbf{Right (Design-Bench):} the same grid collapses to a near-uniform mid-rank field, mirroring the statistically non-significant omnibus.}
+\label{fig:heatmap}
+\end{figure*}
+
+\paragraph{The optimizer effect is an ensemble-specific interaction.} Table~\ref{tab:grid} shows the mechanism directly. Within the \mdemph{ensemble} rows, changing the optimizer moves the score by orders of magnitude (Branin $-0.78$ for perturbation vs.\ $-9.27$ for gradient; Griewank $-395$ vs.\ $-2592$): gradient ascent drives designs into regions where the ensemble over-estimates, collapsing to the domain boundary. Within the \mdemph{GP} rows the same optimizer switch barely moves the score (Branin all $\approx-0.40$). Figure~\ref{fig:optbysurr} summarizes this as the optimizer-induced spread per surrogate.
+
+\paragraph{Attribution: surrogate main effect, plus a large interaction.} The two-way ANOVA assigns the synthetic-task variance to the surrogate main effect ($\eta^2_{\text{surr}}{=}0.37$ vs.\ $\eta^2_{\text{opt}}{=}0.01$): averaging over optimizers, GP and SVGP lead the ensemble by a real marginal-mean gap. Under \mdemph{matched} tuning the surrogate effect persists ($\eta^2_{\text{surr}}{=}0.28$, retaining $76\%$ of its unmatched $0.37$), so it is not merely a per-run tuning budget the ensemble lacks. The optimizer main effect is small because its influence is concentrated on one surrogate: the surrogate$\times$optimizer \mdemph{interaction} is $\eta^2_{\text{inter}}{=}0.17$, an order of magnitude above the optimizer main effect (Table~\ref{tab:attr}). This is the ensemble-specific collapse quantified---the optimizer matters, but only through the ensemble.
+
+\begin{table}[t]
+\centering
+\caption{Two-way ANOVA attribution ($\eta^2$, fraction of task-normalized variance explained by each term) across regimes. The surrogate main effect dominates on synthetic tasks and survives the matched-tuning control; the surrogate$\times$optimizer interaction is itself an order of magnitude above the optimizer main effect. On Design-Bench neither factor explains much variance and the (small) ordering reverses. Task-and-seed bootstrap $95\%$ CIs (synthetic, unmatched): $\eta^2_{\text{surr}}\in[0.25,0.57]$, $\eta^2_{\text{opt}}\in[0.01,0.19]$ (non-overlapping), $\eta^2_{\text{inter}}\in[0.11,0.26]$.}
+\label{tab:attr}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Regime & $\eta^2_{\text{surr}}$ & $\eta^2_{\text{opt}}$ & $\eta^2_{\text{inter}}$ & Friedman $p$ \\
+\midrule
+Synthetic (unmatched)      & $\mathbf{0.37}$ & $0.01$ & $0.17$ & $6.1\times10^{-5}$ \\
+Synthetic (matched tuning) & $\mathbf{0.28}$ & $0.02$ & $0.12$ & --- \\
+Design-Bench               & $0.05$ & $0.08$ & $0.01$ & $0.69$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.99\columnwidth]{figures/fig2_optimizer_spread}
+\caption{Optimizer-induced spread by surrogate class (synthetic; per-seed task-normalized 100th-percentile score, higher is better; boxes span the interquartile range). The three optimizers produce sharply different distributions on the ensemble surrogate but nearly identical, tightly-clustered distributions on the GP and SVGP surrogates: the acquisition optimizer matters enormously for ensembles and negligibly for the GP and SVGP surrogates, whose smooth posterior mean (not calibration) is the cause (Section~\ref{sec:mech}).}
+\label{fig:optbysurr}
+\end{figure}
+
+\paragraph{Significance, and the synthetic$\to$real collapse.} On synthetic tasks the nine grid cells are strongly separated: a Friedman omnibus over the 9 cells and 7 tasks gives $p{=}6.1\times10^{-5}$, with the best cell (GP$\times$gradient) at mean rank $2.3$ (bootstrap $95\%$ CI $[1.3,3.6]$) against a Nemenyi critical difference of $4.5$. On Design-Bench the same analysis yields $p{=}0.69$: no cell is distinguishable from any other (best cell GP$\times$perturbation at mean rank $3.6$, CI $[1.9,5.7]$; the whole grid lies within one critical difference). Figure~\ref{fig:cd} contrasts the two regimes, and the two-panel decomposition map (Figure~\ref{fig:heatmap}) shows the same collapse at a glance: the sharp dark/bright rank structure on the left flattens to a uniform mid-gray on the right. The driver also reverses: on real tasks the (small) surrogate advantage shrinks ($\eta^2_{\text{surr}}{=}0.05$) and, if anything, the optimizer explains marginally more ($\eta^2_{\text{opt}}{=}0.08$)---no factor explains much variance (Table~\ref{tab:attr}). We state this as a benchmark-validity finding: the large, significant method differences synthetic suites reward are \mdemph{statistically unresolved} on the real tasks in Design-Bench. We are careful not to overstate the null: a paired equivalence test (TOST) on the best-versus-worst cells does \mdemph{not} establish equivalence---the $90\%$ CI on their gap is $\pm0.48$ normalized units---so the real-task result is that method choice is unresolved and \mdemph{underpowered at $N{=}7$ tasks}, not that the methods are provably equal. Table~\ref{tab:dbgrid} gives the full Design-Bench grid. Two caveats sharpen it: the ensemble$\times$gradient collapse is a continuous-domain phenomenon---on the two exact-oracle tasks (TF-Bind-8/10) that cell does not collapse but ties or leads (e.g.\ $2.20$ on TF-Bind-8, above every GP cell)---and elsewhere the methods cluster in a narrow band with the per-task best split across surrogates and optimizers.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\columnwidth]{figures/fig6_cd_diagram}
+\caption{Critical-difference diagram (Nemenyi, $\alpha{=}0.05$) over the 9 grid cells. Synthetic tasks separate the cells sharply (Friedman $p{=}6.1\times10^{-5}$); Design-Bench does not ($p{=}0.69$), all cells falling within one critical difference. Method rankings do not transfer from synthetic to real.}
+\label{fig:cd}
+\end{figure}
+
+\begin{table*}[t]
+\centering
+\caption{Offline MBO on Design-Bench (16 seeds; normalized 100th-percentile score, higher is better; random-forest oracles for the non-exact tasks). \textbf{Bold} = best per task including the COMs/CbAS baselines. Unlike the synthetic grid, the methods cluster tightly and the per-task winner is split across surrogates and optimizers (Friedman $p{=}0.69$ over the grid); the ensemble/COMs gradient-ascent collapse persists only on GFP.}
+\label{tab:dbgrid}
+\setlength{\tabcolsep}{5pt}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Surrogate$\times$Opt. & TF-Bind-8 & TF-Bind-10 & Superconductor & GFP & UTR & Ant & D'Kitty \\
+\midrule
+Ens $\times$ Grad   & $2.20$ & $1.34$ & $0.99$ & $-9.61$ & $\mathbf{1.01}$ & $0.92$ & $0.74$ \\
+Ens $\times$ Pert   & $1.00$ & $1.31$ & $1.29$ & $2.48$  & $0.98$ & $1.29$ & $1.05$ \\
+Ens $\times$ CMA    & $2.06$ & $1.15$ & $1.18$ & $-5.63$ & $0.99$ & $0.89$ & $0.72$ \\
+GP $\times$ Grad    & $1.00$ & $1.31$ & $1.24$ & $2.45$  & $0.99$ & $1.52$ & $1.06$ \\
+GP $\times$ Pert    & $1.00$ & $1.31$ & $1.31$ & $2.45$  & $0.99$ & $1.52$ & $\mathbf{1.11}$ \\
+GP $\times$ CMA     & $1.00$ & $1.00$ & $1.26$ & $2.46$  & $0.99$ & $1.52$ & $1.02$ \\
+SVGP $\times$ Grad  & $1.84$ & $1.11$ & $1.07$ & $1.80$  & $0.99$ & $0.99$ & $1.02$ \\
+SVGP $\times$ Pert  & $1.45$ & $1.31$ & $1.25$ & $2.45$  & $0.99$ & $1.52$ & $1.09$ \\
+SVGP $\times$ CMA   & $1.83$ & $1.11$ & $1.26$ & $\mathbf{2.48}$ & $0.93$ & $0.91$ & $1.02$ \\
+\midrule
+COMs (baseline)     & $\mathbf{2.21}$ & $\mathbf{1.35}$ & $1.01$ & $-9.20$ & $\mathbf{1.01}$ & $0.98$ & $0.95$ \\
+CbAS (baseline)     & $2.12$ & $1.28$ & $\mathbf{1.36}$ & $1.85$ & $0.99$ & $\mathbf{1.53}$ & $1.02$ \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\section{Mechanism: Inductive Bias, Not Calibration}
+\label{sec:mech}
+
+Why does the GP win, and why does gradient ascent collapse on the ensemble but not on the GP? The intuitive answer---that the GP's uncertainty is better calibrated, so its pessimistic bound is valid---is wrong. Three controls localize the effect to the GP's posterior \mdemph{mean}, an inductive bias, and to an ensemble$\times$gradient interaction; $\sigma$-calibration plays no causal role.
+
+\paragraph{The advantage survives with pessimism off.} If the GP's edge were a calibrated LCB, removing the pessimism term should erase it. It does not. Re-running the full grid at $\beta{=}0$ (posterior-mean maximization, no $\sigma$ penalty), the GP--ensemble marginal gap is essentially unchanged---$0.51$ at $\beta{=}2$ versus $0.47$ at $\beta{=}0$ (task-normalized, averaged over optimizers; the paired difference has $95\%$ CI $[-0.02,0.10]$, indistinguishable from zero; Table~\ref{tab:controls})---and the ensemble still collapses under gradient ascent with no pessimism at all (Griewank $-2701$ vs.\ the GP's $-0.94$). The advantage is a property of the GP's smooth mean, not of $\sigma$.
+
+\paragraph{The advantage is not the GP's data subsample.} The GP fits a score-biased $800$-point subsample while the ensemble uses all data. Giving the ensemble the \mdemph{same} subsample does not close the gap---it \mdemph{widens} it, from $0.51$ to $0.76$: the ensemble does worse with fewer points and still collapses under gradient. The GP wins \mdemph{despite} fitting less data, isolating the effect to the surrogate class.
+
+\paragraph{The ensemble fails only under its own gradient ascent.} The collapse is not a blanket ensemble defect. The pessimism premise $\{\mu-f\le\beta\sigma\}$ (Prop.~\ref{prop:cov}) is moderately covered for the ensemble in-distribution ($0.73$, below the nominal $0.90$) but collapses on the designs its \mdemph{own} gradient ascent returns ($0.41$ mean; $0.00$ on the collapse tasks). On the \mdemph{GP's} proposals, however, the ensemble premise is well covered ($0.97$): the ensemble is not uniformly miscalibrated---it fails specifically where its gradient optimizer drives it (Figure~\ref{fig:cross}). The GP's premise holds both in-distribution ($0.98$) and on its own proposals ($0.97$): its smooth mean offers no over-estimated argmax for gradient ascent to exploit. This is the interaction the grid isolates, now measured directly rather than inferred.
+
+\begin{table}[t]
+\centering
+\caption{Gap controls (synthetic; task-normalized GP $-$ ensemble marginal, with 10-seed task$+$seed bootstrap $95\%$ CIs). The gap is unchanged with pessimism off ($\beta{=}0$; the paired $\beta{=}2$ vs.\ $\beta{=}0$ difference has CI $[-0.02,0.10]$) and \emph{widens} when the ensemble is given the GP's score-biased subsample: the edge is the surrogate's posterior mean, not $\sigma$-calibration or data.}
+\label{tab:controls}
+\small
+\begin{tabular}{lcc}
+\toprule
+Setting & gap & 95\% CI \\
+\midrule
+$\beta{=}2$ (pessimism on)                 & $0.51$ & $[0.43,0.58]$ \\
+$\beta{=}0$ (pessimism off)                & $0.47$ & $[0.37,0.57]$ \\
+ensemble on the GP's 800-pt subsample      & $0.76$ & $[0.29,1.32]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.99\columnwidth]{figures/fig8_crossproposal}
+\caption{Premise coverage $\Pr(f\ge\mu-\beta\sigma)$ at $\beta{=}2$ (synthetic mean), each surrogate on in-distribution points, its own proposals, and the other surrogate's proposals. The ensemble premise collapses ($0.41$) \emph{only} on the designs its own gradient ascent returns; on the GP's proposals it is well covered ($0.97$), and the GP premise holds everywhere. The failure is the ensemble$\times$gradient interaction, not a surrogate defect.}
+\label{fig:cross}
+\end{figure}
+
+\paragraph{Coverage is validity.} These frequencies are not incidental; they exactly measure the validity of the pessimistic bound. Write $L_\beta(x)=\mu(x)-\beta\sigma(x)$; call $L_\beta$ a valid $(1{-}\delta)$ lower bound under a distribution $Q$ if $\Pr_{x\sim Q}(f(x)\ge L_\beta(x))\ge 1{-}\delta$.
+
+\begin{proposition}[Coverage of the premise is LCB validity]
+\label{prop:cov}
+For any $Q,\beta,\delta$, $\;\Pr_{x\sim Q}(f(x)\ge L_\beta(x))=\Pr_{x\sim Q}(\mu(x)-f(x)\le\beta\sigma(x))$. Hence $L_\beta$ is a valid $(1{-}\delta)$ lower bound under $Q$ iff the premise $\{\mu-f\le\beta\sigma\}$ has $Q$-probability at least $1{-}\delta$.
+\end{proposition}
+
+The one-line identity ($\sigma>0$; the two events coincide) turns ``the bound holds'' into a measurable frequency, evaluated under the data $\D$ and the proposal $\Pi$. At $\beta{=}2$, ensemble coverage is $0.73$ in-distribution / $0.41$ on proposals (synthetic) and $0.77$ / $0.18$ (real), below the nominal $0.90$ exactly on the proposals where the bound must hold (Figure~\ref{fig:coverage}; per-task values in the supplement).
+
+\paragraph{Pessimism is regularization, not calibration.} Two further observations confirm calibration is not the driver. The uncertainty $\sigma$ is a weak error signal---Spearman $\rho$ between $\sigma$ and $|\mu-f|$ is only $\approx0.1$---yet increasing $\beta$ improves the score on $6$ of $7$ synthetic tasks (Figure~\ref{fig:beta}; median normalized slope $+0.19$). Pessimism helps as crude distance-regularization, penalizing high-variance far-from-data regions, not as calibrated conservatism; the lone exception (Ackley) is where the penalty most often points the wrong way. Per-task calibration quality does not predict whether pessimism helps. Ensemble size is the standard $K{=}5$ \citep{lakshminarayanan2017ensembles}; shrinking $K$ inflates $\sigma$ and the pessimism penalty, improving the ensemble on its own $K$-sweep---corroborating the regularization reading, orthogonal to the $\beta{=}0$ result.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fig3_coverage}
+\caption{Coverage of the pessimism premise $\mu{-}f\le\beta\sigma$ vs.\ $\beta$ on synthetic (left) and Design-Bench (right) tasks: in-distribution (solid) and on the optimizer's OOD proposals (dashed), with $\pm1$ s.d.\ bands across tasks and the split-conformal repair shown as stars ($\star$). Ensemble in-distribution coverage is moderate, but proposal (OOD) coverage is far lower and task-dependent---near zero on the tasks where gradient ascent collapses; conformal recalibration lifts in-distribution coverage to its $0.90$ target (upper star) but leaves the OOD coverage the bound actually needs far below it (lower star).}
+\label{fig:coverage}
+\end{figure*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\columnwidth]{figures/fig4_beta_sweep}
+\caption{Pessimism sweep: per-task normalized 100th-percentile score vs.\ $\beta$ (faint lines, individual synthetic tasks; bold line, mean). Score rises with $\beta$ on 6 of 7 tasks even though $\sigma$ is an uninformative error signal ($\rho\approx0.1$)---pessimism acts as distance-regularization. Ackley is the single task where the penalty points the wrong way.}
+\label{fig:beta}
+\end{figure}
+
+\paragraph{A distribution-free repair, and where it transfers.} Split-conformal calibration replaces the arbitrary $\beta$ with a data-driven multiplier.
+
+\begin{proposition}[Conformal repair; shift-limited transfer]
+\label{prop:conf}
+Let $\{(x_i,f(x_i))\}_{i=1}^n$ be exchangeable from $P$, $r_i=(\mu(x_i)-f(x_i))/\sigma(x_i)$ the signed one-sided nonconformity, and $\hat q$ the $\lceil(n{+}1)(1{-}\delta)\rceil$-th smallest $r_i$. Then for a fresh $x\sim P$, $\Pr(f(x)\ge\mu(x)-\hat q\,\sigma(x))\ge 1{-}\delta$. Under a shifted proposal $\Pi\neq P$ with density ratio $w=d\Pi/dP$, validity is restored by weighting the calibration quantile by $w$ (weighted conformal; \citealp{tibshirani2019conformal}).
+\end{proposition}
+
+Empirically the fitted multiplier varies widely across tasks (synthetic $\hat q\in[1.8,16]$), quantifying how far raw $\sigma$ under-covers. Replacing $\beta\sigma$ by $\hat q\sigma$ restores in-distribution coverage to its $0.90$ target on every task (mean $0.90$ synthetic and real), exactly as Prop.~\ref{prop:conf} predicts; but on the shifted proposal $\Pi$ coverage stays low ($0.51$ / $0.31$ mean, near zero on the sharpest-shift tasks), because $\Pi\neq P$. This yields a concrete recipe (Algorithm~\ref{alg:diag}): a \mdemph{coverage diagnostic} that reports in-distribution and proposal coverage, flags an unreliable LCB when they diverge, and a \mdemph{weighted-conformal repair} when a density-ratio estimate is available. The negative transfer is itself the actionable signal: an LCB whose proposal coverage is near zero should not be trusted regardless of $\beta$.
+
+\begin{algorithm}[t]
+\caption{Coverage diagnostic and conformal-LCB repair}
+\label{alg:diag}
+\textbf{Input}: surrogate $(\mu,\sigma)$, data $\D$, level $\delta$, proposals $\Pi$\\
+\textbf{Output}: multiplier $\hat q$, coverages $(\hat c_{\text{in}},\hat c_{\text{ood}})$, flag
+\begin{algorithmic}[1]
+\STATE Split $\D$ into fit / calibration folds.
+\STATE $r_i \gets (\mu(x_i){-}f(x_i))/\sigma(x_i)$ on calibration fold (signed, one-sided; floor $\sigma$).
+\STATE $\hat q \gets \lceil(n{+}1)(1{-}\delta)\rceil$-th smallest $r_i$.
+\STATE $\hat c_{\text{in}} \gets \widehat{\Pr}_{x\sim\D}(f\ge\mu-\hat q\sigma)$.
+\STATE $\hat c_{\text{ood}} \gets \widehat{\Pr}_{x\sim\Pi}(f\ge\mu-\hat q\sigma)$.
+\IF{$\hat c_{\text{ood}} < 1{-}\delta$}
+\STATE \textbf{flag} LCB unreliable; if $w{=}d\Pi/dP$ available, reweight $r_i$ by $w$ and refit $\hat q$.
+\ENDIF
+\STATE \textbf{return} $\hat q,(\hat c_{\text{in}},\hat c_{\text{ood}})$, flag
+\end{algorithmic}
+\end{algorithm}
+
+\section{Discussion, Guidance, and Limitations}
+
+\paragraph{Practitioner guidance.} (i) On smooth, low-to-moderate-dimensional problems, a GP/SVGP surrogate is robust to the acquisition optimizer (its smooth mean offers no exploitable argmax); a neural ensemble is not, and should be paired with a conservative optimizer (perturbation/CMA-ES) rather than aggressive gradient ascent. (ii) Before trusting an LCB, run the coverage diagnostic (Algorithm~\ref{alg:diag}); if proposal coverage is near zero, the pessimism is not doing what the theory says, and neither $\beta$-tuning nor in-distribution conformal calibration fixes it. (iii) On real Design-Bench tasks, method choice within this family is not statistically resolvable at standard seed counts---effort is better spent on the surrogate's informativeness than on the search rule.
+
+\paragraph{Anticipated objections.} Three objections deserve direct answers. (i) \mdemph{That these benchmarks are imperfect is already known.} The contribution is its first controlled measurement---a crossed surrogate$\times$optimizer decomposition with a matched-tuning control, and a premise-coverage frequency not previously reported. (ii) \mdemph{There is no new state of the art.} The constructive artifact is the coverage diagnostic and weighted-conformal repair (Algorithm~\ref{alg:diag}): a reusable check, the same form of contribution as the evaluation tools this line of work is built on. (iii) \mdemph{The real-task result is null.} It is a significance collapse, not a claim of equivalence---the differences are unresolved, not provably zero (underpowered at $N{=}7$)---a benchmark-validity statement that the rewarded differences do not transfer.
+
+\paragraph{Scope and external validity.} The synthetic$\to$real collapse is a statement about the \mdemph{measured} regime. Two boundary conditions bound it. First, for the non-exact tasks we substitute a random-forest oracle to remove simulator and framework dependence---a genuine substitution on GFP, UTR, Ant, and D'Kitty (the native oracle is an RF only for Superconductor), so a different oracle could re-separate methods. But it does not manufacture the null: on the three tasks with no smoothing RF substitution (TF-Bind-8/10 exact, Superconductor native RF), the omnibus stays flat (Friedman $p{=}0.93$) and the median 9-cell spread ($0.34$) is no smaller than on the substituted tasks ($0.39$). Second, the real-task omnibus is over 7 tasks, and the equivalence test is underpowered there (Section~\ref{sec:results}): we can say the method differences are unresolved, not that they are zero.
+
+\paragraph{Limitations.} Our real-task evidence is Design-Bench with random-forest oracles for the non-exact tasks; the null is scoped to that suite and to CPU-scale training. A cross-check ran official COMs and CbAS: our CbAS matches the official scores ($|\Delta|{=}0.004$ on TF-Bind-8), while our COMs and official COMs diverge ($|\Delta|{=}1.2$, a reduced-epoch official run and a different oracle variant), so we report both side by side. The synthetic datasets are fixed across seeds (seed-0), so reported variance is training/optimization, not data-draw. Premise coverage on the discrete tasks uses relaxed logits, not decoded sequences, so those numbers (notably GFP) are softer---we lean the coverage mechanism on the synthetic tasks. Weighted conformal needs a density-ratio estimate we do not learn; we characterize the transfer gap rather than close it.
+
+\section{Conclusion}
+
+The reported low-dimensional advantage of GP-LCB in offline MBO is not a clean surrogate-class effect and not a calibration effect: it is a surrogate$\times$optimizer interaction driven by the GP's smooth posterior mean, on which gradient ascent finds no over-estimated argmax to exploit as it does on the ensemble's jagged mean. Removing pessimism ($\beta{=}0$) leaves the edge intact and giving the ensemble the GP's data does not close it---the cause is inductive bias, not uncertainty. Making the premise measurable (coverage equals LCB validity) turns it into a diagnostic: a bound whose proposal coverage is near zero should not be trusted regardless of $\beta$. And the differences these synthetic benchmarks reward are unresolved on real tasks---the same prior--task match, seen from both sides. We contribute the decomposition, the mechanism and its controls, the coverage diagnostic, and the synthetic-to-real validity result.
+
+\section*{Ethical Statement}
+This work studies optimization methodology on public benchmarks and introduces no new data or deployed system. By flagging when a pessimistic bound is invalid, the coverage diagnostic aims to reduce over-confident designs downstream.
+
+\bibliography{references}
+
+\end{document}

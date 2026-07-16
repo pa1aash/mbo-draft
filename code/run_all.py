@@ -149,7 +149,13 @@ def main():
     buf = {}                                        # (exp,task,variant) -> {metric: {seed: val}}
     t0, done = time.time(), 0
     print(f'{len(specs)} cells, {a.jobs} workers', flush=True)
-    with ProcessPoolExecutor(max_workers=a.jobs) as ex:
+    # fork (default): workers inherit the already-imported torch, so no per-worker re-import
+    # from the FUSE-mounted env (16 concurrent cold imports thrash it -> workers stuck in D).
+    # spawn is only needed to build TFBind10-Exact (crashes forked workers); pass
+    # --spawn when that task is in the run and not already cached.
+    import multiprocessing as _mp
+    _ctx = _mp.get_context('spawn' if os.environ.get('MBO_SPAWN') else 'fork')
+    with ProcessPoolExecutor(max_workers=a.jobs, mp_context=_ctx) as ex:
         futs = {ex.submit(_worker, s): s for s in specs}
         failed = 0
         for fut in as_completed(futs):
