@@ -59,3 +59,43 @@ exists in `PREREGISTRATION.md:32-36` and was never run.
 **On X4 + X5 together:** they are the two halves of a defensible Contribution 3 — X4 says the current
 benchmark *cannot* answer the question, X5 builds a benchmark that *can*. That pairing is a stronger
 paper than either alone, and neither depends on the offline-selection idea that 5.1 killed.
+
+---
+
+## Late upgrade: X4 is stronger than its row says — it fills a named 20-year-old gap
+
+A ~20-search sweep of the power-analysis literature returns a clean partition by *which sample-size axis*
+a paper treats:
+
+| Axis | Owned by |
+|---|---|
+| # test examples | Card et al., *With Little Power Comes Great Responsibility*, **EMNLP 2020** (2000-sentence MT test sets ≈ **75% power** to detect 1 BLEU) |
+| # seeds / runs | Colas et al. (arXiv-only); **AdaStop, TMLR 2024** — *"Researchers in Deep RL often use less than 5 independent executions ... this is not enough in general"* |
+| # topics / queries | Sakai (SIGIR 2016; Springer 2018, *topic set size design*); Urbano et al. (SIGIR 2019) |
+| **# tasks / datasets** | **NOBODY — VERDICT: NONE FOUND** |
+
+**Demšar (JMLR 2006) — the exact paper our CD diagram cites — identified this gap and left it open.**
+He establishes Friedman + Nemenyi over multiple datasets and *observes* that Nemenyi's critical value can
+be too large to detect real differences, i.e. that the procedure is underpowered when datasets are few.
+**He never turns that observation into a power or sample-size analysis. Nobody has since, in 20 years.**
+
+**So X4 is not a limitation paragraph. It is a contribution that closes a named gap in the canonical
+reference this paper already depends on** — and 5.1 has already produced its core number for free
+(a *perfect* selection rule reaches d_z = 0.71 where 0.81 is needed for 80% power at n=14).
+
+**Method to borrow:** Sakai's *topic set size design* (Springer 2018, Ch. 7) is the closest template —
+topics are to IR test collections what tasks are to a benchmark suite; it determines how many topics a
+collection needs from a prior similar experiment. That is exactly the shape of "how many tasks must an
+offline-MBO suite have."
+
+**Revised ranking.** X4 moves to **joint-first with X1/X2**: zero CPU, novel, fills a 20-year gap, and
+it is the "deeper analysis" NeurIPS 2026's Negative Results bar explicitly demands (`VENUE_NORMS.md`).
+It also converts Contribution 3 from the paper's weakest half into a *specification*, and it pairs with
+the Design-Bench App. D.3 framing (`NOVELTY_CHECK`): the field deleted GFP/UTR/ChEMBL for showing this
+result, without ever computing how many tasks would be needed to detect it.
+
+⚠️ **Bibliographic caution:** the most quotable seed-count sources are the weakest venues — Colas et al.
+2018 is **arXiv-only**, Colas et al. 2019 is a **workshop** paper, Picard is arXiv-only. Cite **AdaStop
+(TMLR 2024)** and **Card et al. (EMNLP 2020)** as the peer-reviewed anchors. Agarwal et al. (NeurIPS 2021
+Outstanding Paper) is *not* a power paper — it argues for quantifying uncertainty at small N rather than
+prescribing N, which is the opposite move; cite it for interval estimates/IQM, not for power.
