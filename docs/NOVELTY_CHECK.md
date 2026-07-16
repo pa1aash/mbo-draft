@@ -255,3 +255,77 @@ At N=7 an inconclusive TOST is the **predicted** outcome, so it carries near-zer
 
 ⚠️ Scariano & Davenport (1987) is often quoted for "ρ=0.3 inflates α to 0.49" — the source is paywalled
 and that figure is **NOT VERIFIED**. Do not cite the number without checking the primary text.
+
+---
+
+## Design-Bench scoop check (verified 2026-07-17) — NOT SCOOPED, with one large complication
+
+**Verdict: NONE FOUND.** No paper runs an omnibus statistical test across offline-MBO methods on
+Design-Bench and reports a null. Not in ~100 citing papers scanned, not in SOO-Bench, and the field's
+own 44-page TMLR-certified survey (arXiv:2503.17286) has **zero hits** for "indistinguish" / "not
+distinguish" / "error bar". Contribution 3's *measurement* is unscooped.
+
+### The gift — and it lands directly on P0-5 / D5
+
+**Design-Bench's authors excluded GFP and UTR for exactly our reason** (Trabucco et al., ICML 2022,
+App. D.3, verbatim):
+
+> "Note that for GFP and UTR performance of offline MBO method is **not not distinguishable** [sic], and
+> we consider this an indication each task is **not suitable for benchmarking offline MBO methods**."
+
+The field later dropped ChEMBL on the same grounds (arXiv:2506.07109, App. C.1: *"almost all methods
+produce the same oracle prediction results ... not appropriate for comparison"*). Design-Bench shipped
+8 tasks; the modern convention is **5** (Ant, D'Kitty, Superconductor, TF8, TF10).
+
+**We run 7 — including GFP and UTR, the two tasks the benchmark's own authors deleted for being
+non-discriminative.** This cuts both ways and the paper must choose, explicitly:
+
+- **As a threat:** a reviewer objects that our null is manufactured by re-including tasks documented as
+  unsuitable. Compounding it, `FLAW_LEDGER.md` **P0-5** shows our headline coverage claim is carried
+  *entirely by GFP = 0.00*, which our own supplement calls a degenerate decode artifact. So the two
+  weakest tasks drive two different headline claims.
+- **As the paper's best framing:** *the community has spent four years deleting the tasks that show this
+  result.* That is defensible, novel, built from the field's own words — **but only if stated
+  deliberately.** Silence reads as the threat.
+
+**This changes D5.** Quarantining GFP is no longer only about honesty; it is entangled with whether the
+task set is a bug or the argument. Decide the framing first, then the task list. Also: Hopper has a known
+normalization bug (design-bench issue #8) — do not include it unquestioned.
+
+### The main threat to Contribution 3 — DEMO (TMLR 2025)
+
+DEMO (arXiv:2405.13964, §5.5) runs **Welch's t-test + Bonferroni across seven tasks** and *reports
+significance* over 7–16 baselines per task. A reviewer will cite it against our null. **The defense is
+sound and must be stated in related work:** DEMO's test is *per-task, pairwise, one new method vs. each
+baseline* — the comparison most exposed to tuning asymmetry. Friedman across N=7 asks a different
+question: *do the methods differ as a family?* Ours is an omnibus test; theirs is not.
+
+Useful corroboration: the field's actual "significance" convention is an informal **1-SD overlap
+bolding rule** (DEMO §5.5, tracing to COMs 2021 and ICT 2023) — an implicit admission that error bars
+overlap, with no omnibus test ever run. That is precisely the gap. Design-Bench's own Table 2 supports
+it: TF-Bind-10 spans 0.616–0.730 across 10 methods; ChEMBL SDs (0.22–0.31) rival the entire range;
+CMA-ES on Ant is 1.214 ± 0.732. Several cells have SD = 0.000 (degenerate) — good justification for
+rank-based tests over parametric ones.
+
+### Must-cite or the framing reads as uninformed
+
+- **IGNITE** (NeurIPS 2024, arXiv:2503.04242) — *"reducing surrogate sharpness on the offline dataset
+  provably reduces its generalized sharpness on unseen data"*; surrogate sharpness beats loss sharpness
+  for offline optimization. **The nearest prior claim to our smoothness thesis. Omitting it is a real
+  risk.** Also **BOSS** (ICML 2024, surrogate sensitivity).
+- **PGS** (AAAI 2024, arXiv:2405.05349) — its premise is the *antithesis* of our conclusion: the field
+  over-invested in surrogates and under-invested in optimizers; *"surrogate models ... can be non-smooth
+  which could result in highly sub-optimal solutions for a fixed gradient search strategy."*
+  **AAAI-27 reviewers may include its authors.** Engage it directly.
+- **Overconfident Oracles** (2025) — *"oracles differing by architecture, or even just training seed,
+  are shown to yield conflicting relative performance"*. Supports our RF-oracle argument (T4).
+- **Design-Bench's own concessions**, quotable: *"this approach to evaluation diminishes the realism of
+  our benchmark"*; *"The comparatively high efficacy of even simple baselines such as CMA-ES and naïve
+  gradient ascent suggests the need for careful tuning and standardization of methods in this area"*;
+  and — directly on P0-0/P0-2 — the gradient baseline *"is also sensitive to certain design choices such
+  as input normalization schemes and the number of optimization steps."*
+
+**Baselines a reviewer will demand** (RaM's ICLR-2025 set, ~21): BO-qEI, CMA-ES, REINFORCE, Grad+Mean/Min,
+CbAS, MINs, COMs, RoMA, IOM, BDI, DDOM, BONET, ICT, Tri-Mentoring, GTG, PGS, FGM, Match-OPT; plus RaM,
+IGNITE, BOSS, DEMO for a 2026/27 submission. SOO-Bench (ICLR 2025) may be requested as the successor
+benchmark — if the null holds there too it materially strengthens the paper.
