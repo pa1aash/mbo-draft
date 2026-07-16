@@ -273,6 +273,21 @@ includes methods the grid section never defines."
 **Fix:** proper mixed model or a permutation effect size; unify the normalization. **Cost:** ~4 h.
 **Fixable:** yes.
 
+**A citable reviewer objection lands exactly here.** Benavoli, Corani & Mangili, *Should We Really Use
+Post-Hoc Tests Based on Mean-Ranks?*, **JMLR 17(5):1-10, 2016**, verbatim:
+
+> "the outcome of the mean-ranks test depends on the pool of algorithms originally included in the
+> experiment ... the difference between A and B could be declared significant if the pool comprises
+> algorithms C, D, E and not significant if the pool comprises algorithms F, G, H"
+
+Our rank/CD/TOST matrix runs through `analysis.task_norm`, which matches any key containing `':'` and
+therefore **silently pools 11 cells, including the `ens_conformal:*` arms the grid section never defines**.
+So the CD conclusions demonstrably depend on a pool the paper does not disclose — Benavoli's objection is
+not hypothetical here, it is instantiated. Their recommendation is to use tests whose "outcome only
+depends on the two algorithms being compared, such as the sign-test or the Wilcoxon signed-rank test."
+Demsar's canonical cite is **JMLR 7(1):1-30, 2006**; Garcia & Herrera (**JMLR 9(89):2677-2694, 2008**)
+give Holm/Shaffer/Bergmann-Hommel alternatives to Nemenyi for all-pairwise comparisons.
+
 ### P1-3 · The ensemble is unregularized, unvalidated, and never early-stopped
 **Evidence.** The complete regularization list is `weight_decay=1e-4` (`mbo.py:23,137`). No dropout,
 no norm layers, **no validation split of any kind**; `mbo.py:140` `for _ in range(ep):` runs 35 epochs
@@ -355,7 +370,10 @@ disclosed Design-Bench convention if not.
 - **P2-7 · Sparse-GP σ provenance.** `SKELETON.md:41` warns it is "a feature-variance proxy unless a real
   posterior is fit." `mbo.py:311-342` does fit a real SVGP posterior — so the warning appears stale, but
   the paper should say which. ~0 h.
-- **P2-8 · `li2024bnnsurrogates` is ICLR **2023**, not 2024.** ~5 min.
+- **P2-8 · RETRACTED — `li2024bnnsurrogates` IS ICLR 2024.** An earlier revision of this ledger claimed
+  it was 2023. That was my error. Verified: Li, Rudner & Wilson, *A Study of Bayesian Neural Network
+  Surrogates for Bayesian Optimization*, **ICLR 2024**, arXiv:2305.20028, OpenReview `SA19ijj44B`; the
+  PDF header reads "Published as a conference paper at ICLR 2024." The bib key is correct. No action.
 
 ## P3 — polish
 

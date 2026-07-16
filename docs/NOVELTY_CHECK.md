@@ -210,3 +210,48 @@ Also relevant (calibration-improves-decisions lineage the paper should cite): Ku
 | Q5 | Synthetic→Design-Bench validity collapse | **PRIOR WORK FOUND** (complaint) / **NONE FOUND** (measurement) | Kim et al. TMLR 2026 §6; Design-Bench 2022 | Quantification survives; complaint does not |
 | Q6 | Deep-ensemble uncertainty criticisms | **PRIOR WORK FOUND** | see section | Related work only |
 | Q7 | Stats methodology criticisms | **PRIOR WORK FOUND** | see section | Preempt required |
+
+---
+
+## Late corrections (verified 2026-07-17) — citation traps that would be reviewer-visible
+
+**1. Li/Rudner/Wilson is ICLR 2024** (arXiv:2305.20028, OpenReview `SA19ijj44B`). The bib key
+`li2024bnnsurrogates` is right. It supports the thesis in unusually quotable language: *"deep ensembles
+work surprisingly poorly, given their success in other settings"*; *"Deep ensembles also consistently
+underperform the other surrogate models ... This result is surprising, since ensembles are often seen to
+as an effective way to measure uncertainty"* (sic); and the inductive-bias point — *"on standard
+benchmarks, standard GPs are relatively competitive, due to their strong priors and simple exact
+inference procedures."*
+
+**2. Do NOT cite Ovadia 2019 or Ashukha 2020 as anti-ensemble.** Both conclude the opposite.
+Ovadia et al. (NeurIPS 2019, arXiv:1906.02530): *"Deep ensembles seem to perform the best across most
+metrics and be more robust to dataset shift."* Ashukha et al. (ICLR 2020, arXiv:2002.06470): *"Deep
+ensembles dominate other methods given a fixed test-time budget."* Citing either for "ensembles are
+poorly calibrated" is a **miscitation a reviewer will catch**. Cite Ovadia instead for the
+method-agnostic claim we actually need: *"calibration on the i.i.d. validation dataset does not
+guarantee calibration under distributional shift"* — which is our Prop 2 story, stated better.
+
+**3. The anti-ensemble load must ride on:** D'Angelo & Fortuin (NeurIPS 2021, arXiv:2106.11642) —
+*"they do not offer any guarantees for the diversity between those hypotheses nor do they provably
+converge to the true Bayesian posterior under any meaningful limit"* (**directly relevant: our members
+differ only by init seed, `mbo.py:135`, no bootstrap**); Li et al. 2024; and NEMO (Fu & Levine, ICLR
+2021, arXiv:2102.07970), the **only** in-setting paper that says it: *"In out-of-support regions far
+from the data, the bootstrap ensemble tends to underestimate uncertainty and produce overconfident
+predictions."*
+
+**4. Do NOT attribute ensemble-calibration criticism to COMs, Design-Bench, or RoMA.** Not supportable
+from their text — they argue *model exploitation*, not calibration. COMs/Design-Bench contain zero
+occurrences of "uncertainty"/"calibrat"/"epistemic"; RoMA has zero "ensembl".
+
+**5. Statistics citations to preempt (all P1-2 / T6 / T9 territory).** Agarwal et al., *Deep RL at the
+Edge of the Statistical Precipice*, **NeurIPS 2021 Outstanding Paper** (arXiv:2108.13264) — lands
+directly on N=7; recommends interval estimates and IQM over point estimates. η² bias: Okada (2013)
+*Behaviormetrika* 40(2):129-147 — note its answer is that **ε² is least biased**, not ω². Bounded [0,1]
+outcomes violate OLS: Smithson & Verkuilen (2006) *Psych. Methods* 11(1):54-71 (beta regression).
+**TOST at N=7:** Lakens (2017), *SPPS* 8(4):355-362 — *"Rejecting small effects in an equivalence test
+requires large samples ... in most cases, only a meta-analysis will have sufficient statistical power."*
+At N=7 an inconclusive TOST is the **predicted** outcome, so it carries near-zero evidential weight.
+**The text must never imply inconclusive ≈ equivalent.**
+
+⚠️ Scariano & Davenport (1987) is often quoted for "ρ=0.3 inflates α to 0.49" — the source is paywalled
+and that figure is **NOT VERIFIED**. Do not cite the number without checking the primary text.
