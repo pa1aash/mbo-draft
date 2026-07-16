@@ -171,3 +171,65 @@ and the multiplicity argument we need for X4: "if a researcher collects 10 accur
 reports the significant ones (significance 0.05), then the probability of reporting a progress that is
 only virtual jumps from 5% to 40%." (5.1 ran 10 rules and reported all 10 — that discipline is already
 in `PREREGISTRATION_V2.md` commitment 5.)
+
+---
+
+## The decisive move: AAAI has published this genre FOUR times
+
+Beyond Henderson, three more — all **AAAI main track**, all no-new-method:
+
+| Paper | Venue | The move |
+|---|---|---|
+| Henderson et al., *Deep RL that Matters* | **AAAI 2018** | *"to the best of our knowledge this is the first work to address this important question in the context of deep RL"* — novelty of the **question**, not the method. Every section heading is an italicized *question*. |
+| Gundersen & Kjensmo, *State of the Art: Reproducibility in AI* | **AAAI 2018** | Pure measurement, **zero method** — surveyed 400 IJCAI/AAAI papers against six metrics. Proof AAAI accepts a paper whose entire contribution is counting things about other papers. |
+| Kim et al., *Towards a Rigorous Evaluation of Time-Series Anomaly Detection* | **AAAI 2022** | *"even a random anomaly score can easily turn into a state-of-the-art TAD method"* + *"an untrained model obtains comparable detection performance to the existing methods."* Null + a minimal positive deliverable (new baseline + PA%K protocol). **Our closest AAAI structural twin.** |
+| Zeng et al., *Are Transformers Effective for Time Series Forecasting?* | **AAAI 2023, ORAL** | *"we question the validity of this line of research in this work"* — an AAAI **oral** opened with that sentence. The baseline is sold as *"embarrassingly simple"*: anti-novelty as a weapon. |
+
+### Steal this sentence (Musgrave, ECCV 2020 §1.6)
+
+> "Exposing hype and methodological flaws is not new. Papers of this type have been written for machine
+> learning, image classification, neural network pruning, information retrieval, recommender systems, and
+> generative adversarial networks."
+
+He cites the genre **to legitimize the genre**. Write the AAAI version — citing Henderson (AAAI'18),
+Gundersen (AAAI'18), Kim (AAAI'22), Zeng (AAAI'23) — and "is this even a paper?" becomes "this venue has
+published this genre four times." Ours is stronger than Musgrave's because all four are the target venue.
+
+### The rule every accepted paper here obeys
+
+**Every single one shipped an artifact. A null alone is not the unit of acceptance; null + protocol/artifact
+is.** Kim → a baseline + PA%K protocol. Locatello (ICML 2019 **Best Paper**) → `disentanglement_lib` + 10,000
+released models. Musgrave → an evaluation protocol. Dodge → the expected-validation-performance curve —
+explicitly manufactured so the paper had a nameable *thing*. **This is X4's job for us**: the power
+specification *is* the artifact. Without it we are a bare null.
+
+Other transferable moves: **scale as a credential** (put the grid size in the abstract — "12,000 models",
+"2.52 GPU years", "18 algorithms, only 7 reproduced"; ours is 14 tasks × 9 cells × 30 seeds); **pre-empt
+"trivial" with self-deprecation** (Locatello: *"(perhaps unsurprisingly)"*; Zeng: *"embarrassingly
+simple"* — this is how X9 should demote Prop 1); and **never end on the negative** — every abstract closes
+on the field's obligation ("our results suggest that future work should…").
+
+### Precedent for surviving our exact objection
+
+*Are GANs Created Equal?* (NeurIPS 2018) has **public reviews**. Reviewer 1: the *"main conclusion of the
+paper is expected (that there is really no model that is clearly better than others in all conditions and
+for all datasets), but not very helpful for the practitioner."* **Accepted anyway** — and the arXiv comment
+records that the camera-ready *"added section on study limitations"*. That is verbatim the "so what, the
+null isn't actionable" objection we will get, on the record, on an accepted paper, with the fix that
+carried it.
+
+⚠️ **Do not cite Lipton & Steinhardt as venue precedent** — *Troubling Trends* was **ICML 2018 Debates**, a
+workshop, not a main track. Cite it only for its argument, which is the best one-line defense available:
+*"Empirical study aimed at understanding can be illuminating even absent a new algorithm."*
+
+### Search-layer fabrication caught — a caution for the whole revision
+
+While checking peer-review statistics, WebSearch returned confident, precisely-formatted numbers
+("novelty rewarded least often (31.9%)", "rises from 21.5% to 54.0%") attributed to a real paper
+(arXiv:2511.15462). The PDF was downloaded and grepped: **zero hits. The numbers do not exist in the
+paper.** They were a search-summary fabrication.
+
+**Nothing sourced from a search snippet goes in the paper without fetching the primary text.** The related
+real finding, verified: in that paper's Table 4, novelty criticism is the **#1 predictor of review rating**
+(0.47 avg |coef|) — an importance weight, **not** a frequency. No verified "% of ML reviews citing lack of
+novelty" statistic exists in the reachable literature.

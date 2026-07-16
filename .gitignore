@@ -35,3 +35,8 @@ paper/aaai27/kit.zip
 # manuscript's headline numbers and are now tracked.
 results/*.log
 results/*.tmp
+
+# hyperresearch vault internals (audit trail lives in docs/)
+.hyperresearch/
+research/notes/
+research/raw/
