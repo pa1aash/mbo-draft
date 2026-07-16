@@ -14,6 +14,70 @@ Severity: **P0** reject-driver · **P1** major-revision demand · **P2** minor �
 
 ## P0 — reject-drivers
 
+### P0-0 · The authors' own control refutes the paper's mechanism, and the paper does not report it
+**Claim at risk:** the ensemble×gradient collapse — i.e. the premise of Contribution 2 and the
+subject of Figure 4 and all of Section 5.
+
+**This is the most serious finding in this ledger.** It is not an outside objection. It is the
+authors' own pre-stated test, run, failed, and unreported.
+
+**Evidence.** `code/gradtune.py:1-5` states its own purpose and decision rule verbatim:
+
+> *"Robustness sweep rebutting the #1 reviewer objection: 'the ensemble's gradient-ascent collapse
+> is just an under-tuned optimizer.' … **If even the best-tuned gradient config still underperforms
+> perturbation, the collapse is surrogate geometry (genuine), not tuning.**"*
+
+`gradtune.py:22` defines `grad_default = dict(lr=0.05, steps=100)`. That is **exactly** the main
+grid's gradient optimizer: `mbo.py:26-27` `OPT_STEPS=100`, `LR_OPT=0.05`, and `mbo.py:166`
+`grad_opt(..., steps=OPT_STEPS, lr=LR_OPT, normalize=False, trust=None)`. The comparison is direct.
+
+Means over 15 seeds from `results/results_gradtune.json` (higher is better):
+
+| Task | perturb | grad_default (= the grid's) | best gradient config | verdict by the script's own rule |
+|---|---|---|---|---|
+| Branin-2D | −0.792 | **−8.174** | **−0.543** (`grad_trust`) | gradient **beats** perturb |
+| Styblinski-5D | 33.008 | **5.557** | **34.295** (`grad_besttuned`) | gradient **beats** perturb |
+| Rosenbrock-10D | −0.116 | −0.275 | −0.138 (`grad_gentle`) | perturb wins (narrowly) |
+| Ackley-20D | −6.405 | −3.767 | **−3.731** (`grad_gentle`) | gradient **beats** perturb decisively |
+
+**By the script's own criterion the collapse is NOT surrogate geometry. It is tuning — on 3 of 4 tasks.**
+A single trust-region hyperparameter (`trust=0.1`) moves Branin from −8.17 to −0.54 (**15×**) and
+Styblinski from 5.56 to 34.30 (**6×**). The paper's Table 1 reports Branin Ens×Grad = −9.27, consistent
+with the untuned `grad_default`.
+
+Commit `cdd5ad8`'s own message records the result: *"Smoke: trust region closes the ensemble gradient
+collapse."*
+
+The manuscript never mentions it. The string "trust" does not appear in `main.tex`. The only tuning
+control in the paper (`main.tex:94`) is **matched tuning**, which *removes the GP's* hyperparameter
+budget and gives the ensemble and the gradient optimizer **nothing** — precisely the asymmetry T1
+predicted.
+
+**Reviewer's phrasing:** "The released code contains a gradient-tuning sweep whose stated purpose is to
+test whether the collapse is a tuning artifact. It concludes that it is: a trust region closes the gap
+on three of four tasks, and on Ackley plain gradient ascent already beats perturbation. This result is
+absent from the paper. The central mechanism is an artifact of one untuned optimizer setting."
+
+**Fix.** There is no way to fix this by argument — only by reporting it. Three honest options:
+1. **Re-scope.** The finding becomes "the ensemble's gradient collapse is a *trust-region* failure, and
+   the LCB premise-coverage diagnostic *predicts which configurations collapse*." That is still a real
+   contribution and it makes the diagnostic **predictive**.
+2. **Re-run the grid with a tuned gradient optimizer** on the ensemble and report what survives. If
+   η²_inter = 0.17 evaporates, say so.
+3. **Report the sweep as a limitation.** Weakest option; a reviewer who opens the artifact finds it anyway.
+
+**Cost:** 0 h to disclose. ~1 grid re-run to re-scope properly (combine with P0-2's re-run — one pass).
+**Fixable:** yes. **Blocks submission:** **yes — unconditionally.** Shipping a mechanism claim that the
+repo's own control refutes, with the refuting result in the released artifact, is the single largest
+risk in this project.
+
+**Caveats, stated honestly.** gradtune is 4 tasks × 15 seeds, not 7 × 30; it compares gradient against
+`perturb` only, not against the full 3×3 grid; and it uses the grid's default ensemble, so it inherits
+P0-2's unnormalized-target problem. None of these caveats rescue the paper — they are reasons the sweep
+should be *run properly and reported*, not reasons to omit it.
+
+---
+
 ### P0-1 · The identifiability license is factually false against the code
 **Claim at risk:** the entire causal attribution — every η², the whole decomposition.
 
@@ -309,8 +373,8 @@ disclosed Design-Bench convention if not.
 
 | ID | Verdict | Basis |
 |---|---|---|
-| **T1** Crippled baseline | **CONFIRMED — worse than hypothesized** | Not merely under-tuned: the ensemble trains on **raw targets** while both GPs standardize (P0-2). No validation split, no early stopping, no bootstrap, σ unfloored. Held-out error per task: **MISSING**. |
-| **T2** Mechanism misnamed | **CONFIRMED** | Coverage exists for `ens:grad` only, 1 of 9 (P0-3). Ens×CMA coverage: **MISSING**. The cross-proposal claim varies both factors at once and uses a different GP. Framing is not supported by the data that exists. |
+| **T1** Crippled baseline | **CONFIRMED — decisively** | Two independent confirmations. (a) The ensemble trains on **raw targets** while both GPs standardize (P0-2). (b) The authors' own `gradtune.py` sweep shows a trust region closes the gradient collapse on 3 of 4 tasks, failing the script's own pre-stated decision rule (P0-0). Matched tuning is asymmetric exactly as hypothesized. No validation split, no early stopping, no bootstrap, σ unfloored. Held-out error per task: **MISSING**. |
+| **T2** Mechanism misnamed | **CONFIRMED — and the name is worse than 'wrong'** | Coverage exists for `ens:grad` only, 1 of 9 (P0-3). Ens×CMA coverage: **MISSING**. The cross-proposal claim varies both factors at once and uses a different GP. And P0-0 shows the mechanism is not "ensemble×gradient" at all — it is "ensemble×*untuned* gradient", which a trust region repairs. |
 | **T3** Unmatched budget | **CONFIRMED** | 25,600 / 4,096 / 432–3,012 surrogate queries (P1-1). Plus an unmatched **oracle** budget, 256 vs 128 (P0-1). |
 | **T4** RF-oracle validity | **PARTIAL** | Circularity: not confirmed — needs the RF-vs-surrogate split check. But DB "in-distribution" coverage is sampled from the **wrong distribution** (P0-5), and the RF defense sentence is arithmetically backwards (P0-7) with no supporting table. |
 | **T5** COMs divergence | **CONFIRMED** | 1.22 units on TF-Bind-8; the one "matches official" number fails to verify against its own row (P1-6). |
