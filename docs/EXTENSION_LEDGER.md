@@ -99,3 +99,27 @@ result, without ever computing how many tasks would be needed to detect it.
 (TMLR 2024)** and **Card et al. (EMNLP 2020)** as the peer-reviewed anchors. Agarwal et al. (NeurIPS 2021
 Outstanding Paper) is *not* a power paper — it argues for quantifying uncertainty at small N rather than
 prescribing N, which is the opposite move; cite it for interval estimates/IQM, not for power.
+
+### X4 — one reviewer trap to pre-empt (from an adjacent-literature sweep)
+
+A sweep of the LLM-eval power literature is **tangential** (different field, different axis) and mostly
+confirms the partition above: even there, the only papers where power is *the* headline are 2026 ICML
+**workshop** posters; everything at main-conference level treats it as supporting. Task-count power stays
+unowned. Two items are worth carrying:
+
+**The trap.** *tinyBenchmarks* (Maia Polo et al., **ICML 2024**, PMLR v235:34303-34326, **267 cites**) and
+*100 instances is all you need* (arXiv:2409.03563) are sample-size papers that ask the **inverse**
+question: how *few* items suffice to estimate **one model's score** cheaply. X4 asks how *many* units are
+needed to **detect a difference between methods**. Those are different questions on different axes —
+theirs is items-within-a-task, ours is tasks-within-a-suite — but the titles collide, and **a reviewer may
+cite "100 instances is all you need" against "your suite is too small."** Pre-empt it in one sentence:
+estimation efficiency for a single score is not detection power for a contrast, and item count is not task
+count. Do **not** cite them as support; they are the opposing framing.
+
+**A usable anchor.** Miller, *Adding Error Bars to Evals* (arXiv:2411.00640) — *"new evals should contain
+at least 1,000 questions in order to have good signaling ability"* — is a signaling-ability threshold,
+i.e. a power claim, and is the cleanest citable N in that literature. ⚠️ It is **arXiv-only, never peer
+reviewed** (v1, no journal-ref; DBLP files it under "Informal and Other Publications") despite ~96
+citations and Anthropic branding. Its peer-reviewed counterpart is Bowyer et al., **ICML 2025 Spotlight**
+(PMLR v267:81143-81184), which is narrower — interval validity, not power. Cite Bowyer for the venue and
+Miller for the number, and never imply Miller is peer-reviewed.
