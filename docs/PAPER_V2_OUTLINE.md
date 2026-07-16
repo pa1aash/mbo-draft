@@ -130,3 +130,65 @@ drafted — and that is worth knowing in week one rather than in review.
 TMLR, hard deadline 2026-09-30) and states explicitly that *"negative results and partial failures to
 reproduce are as valuable as confirmations."* AAAI has **no** negative-results track. That is a real
 option for the A-shaped version, and it is a better fit than forcing A through AAAI main.
+
+---
+
+## The framing this session missed: **the paper is a reversal, not a null**
+
+Every accepted paper in this genre is *a reversal wearing a null's title* — Melis, Recht, Dacrema,
+Musgrave, Chen, Liu, and now Yauney. None of them lead with "we found no difference." They lead with
+**a named belief, refuted**.
+
+**We have a reversal and the draft is not using it.**
+
+> **η²_surrogate = 0.37 · η²_optimizer = 0.01**
+
+That is not "no difference." That is: **the field has been innovating on the axis that does not matter.**
+And there is a named target for it — **PGS (AAAI 2024)**, whose entire stated premise is that offline BBO
+*"has focused on improving surrogate models while using fixed search strategies"* and that the search
+strategy is the neglected axis. Our optimizer main effect is **0.01**. That is a specific, named,
+falsifiable belief held by a paper at our target venue, and our data contradicts it.
+
+That slots directly into the genre template (`VENUE_NORMS.md`): named belief → refuted → mechanism by
+manipulation → artifact → prescription. It is the "named belief" slot, which the current draft leaves
+empty by leading with a decomposition rather than a contradiction.
+
+### ⚠️ The gate — this framing is currently unearned
+
+**η²_opt = 0.01 is itself confounded.** `FLAW_LEDGER.md` P0-1 (grad/perturb get 256 oracle calls, CMA
+gets 128; three different selection rules) and P1-1 (25,600 vs 4,096 vs 432–3,012 surrogate queries)
+mean the optimizer axis is not measured under control. **We cannot claim "the optimizer doesn't matter"
+from a grid where the optimizers were never given equal budgets.** P0-0 compounds it: a trust region
+moves the ensemble's gradient result 15× on Branin, which is an *optimizer* effect the grid never saw.
+
+So: **X1 + X3 first, then the reversal.** If η²_opt stays ≈0.01 under matched budgets and one selection
+rule, the reversal is real and it is the paper's headline. If it rises, the honest finding is the
+opposite of the current draft *and* of PGS — and that is still a paper. Either way the framing is decided
+by the same run that gates everything else, which is another reason X1/X3 is the critical path.
+
+### Correction to `EXTENSION_LEDGER.md`'s X4 note
+
+I wrote that power-analysis-as-headline lives only in workshops. **That is wrong.** Yauney, Warraich &
+Swayamdipta, *How Reliable is Language Model Micro-Benchmarking?*, **ICLR 2026** (arXiv:2510.08730;
+"Published at ICLR 2026" verified in the comments field; a reported *Oral* status is **NOT VERIFIED**).
+Verbatim: *"no micro-benchmarking method can consistently rank model pairs 3.5 points of accuracy apart
+on MMLU-Pro"*; *"often as many as 250 examples must be selected, at which point **random sampling is
+competitive with existing micro-benchmarking methods**"*; *"more than half of pairwise comparisons are
+not likely to be preserved."*
+
+**This strengthens X4 rather than weakening it.** Power-as-headline *does* clear a top venue — but only
+when shipped with an instrument, a reversal (random ≈ sophisticated methods), specific numbers, and a
+prescription. Yauney measures the *examples-within-a-benchmark* axis; Card measures test-set size.
+**The task-count axis remains unowned** — and it is Design-Bench's binding constraint. X4 stands, with a
+four-month-old template for exactly how to ship it.
+
+**Also directly citable, and it lands on our CD diagram:** Demšar's own rule of thumb is **N > 10 datasets,
+k > 5 methods**. Our N=7 sits **below his own threshold** — in the paper we cite for the procedure.
+Pair with Agarwal et al.'s *"lack of statistically significant results does not demonstrate the absence of
+effect"* and switch to exact critical values / Iman–Davenport F_F plus IQM + bootstrap CIs.
+
+**Verified for the record:** our Design-Bench set is `AntMorphology, DKitty, GFP, Superconductor,
+TFBind10, TFBind8, UTR` — confirming that **two of seven are the tasks Design-Bench's authors excluded
+as non-discriminative** (`NOVELTY_CHECK`, App. D.3). Two of seven are null by construction, which makes
+p=0.69 partly circular. Re-run on the canonical five, or report both and make the selection effect the
+argument — but do not leave it unstated.
