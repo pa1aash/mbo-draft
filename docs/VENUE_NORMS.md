@@ -254,3 +254,91 @@ Every number that enters the revision gets fetched and grepped, including the on
 real finding, verified: in that paper's Table 4, novelty criticism is the **#1 predictor of review rating**
 (0.47 avg |coef|) — an importance weight, **not** a frequency. No verified "% of ML reviews citing lack of
 novelty" statistic exists in the reachable literature.
+
+---
+
+## ★ Verbatim reviewer evidence (ICLR 2017-2020 corpus) — the bar is not what we assumed
+
+Earlier I flagged "the exact phrasing this paper will face" as an unfilled gap. It is now filled from
+real review text, recovered two independent ways and **cross-validated byte-for-byte** (archived
+OpenReview API JSON via Wayback + the ASAP-Review corpus: 5,192 ICLR papers 2017-2020 with full reviews,
+ratings, meta-reviews, and decisions, including 3,333 rejects). Offline copies:
+`scratchpad/index.json`, `scratchpad/neg.txt` (all 69 reviews using negative/null-result language).
+
+### The finding that matters most — and it is a *rejection*
+
+**"Surprising Negative Results for Generative Adversarial Tree Search"** (Azizzadenesheli, Yang, Liu,
+Brunskill, Lipton, Anandkumar), ICLR 2019 — **REJECTED**, https://openreview.net/forum?id=BJl4f2A5tQ
+
+> **R1 (rating 5):** "I think publishing negative research results is very important and should be done
+> more often *if we can learn from those results*. But that is an aspect I feel this paper falls short
+> at... they do not a provide a thorough investigation of the causes which make GATS 'fail'."
+> **R2 (rating 5):** "While I appreciate negative results and there should be more papers like this, I do
+> think that this paper falls short..."
+> **R3 (rating 6):** "It is highly appreciated that this paper presents an idea and discusses why the
+> proposed approach does not result in high performance. This is very valuable..."
+> **META-REVIEW:** "All reviewers and the AC appreciate the import role that such a contribution can
+> bring to the research community... **The concern that most strongly affected the final evaluation is
+> the limited insight (and evidence) of the factors that influence performance.** Due to this, the
+> consensus is to not accept."
+
+**All three reviewers and the AC endorse negative results in the abstract — then reject.** Note a
+Lipton co-authorship: the author of *"Empirical study aimed at understanding can be illuminating even
+absent a new algorithm"* was rejected for a null that did not explain itself.
+
+**So "reviewers punish no-new-method work" is false, and it was the wrong worry.** Praise is
+near-universal and always followed by *but*. The real, repeated bar: **a null is welcome only if it
+diagnoses its own mechanism.** Three more rejections state it outright:
+
+> "Having only negative results could be fine **if the paper was bringing some value with a sharp
+> analysis of the failure modes and of the reasons behind it**... there is not much to take-away."
+> "No positive results, only negative results. **To really understand the negative results, it would be
+> good to know what is missing to make it work. This has not been studied further.**"
+> "In a sense, the present study offers a null result and obviously, **the work would have been much more
+> significant had the authors offered a mechanism**."
+
+**This settles A vs. C** (`PAPER_V2_OUTLINE.md`). Identity A *is* the paper that gets this rejection —
+a repaired measurement whose mechanism section has been hollowed out by P0-0. **Identity C is literally
+the bar these reviewers state.** C is not the ambitious option; it is the minimum.
+
+### Two reviewers wrote our P0-0 and our N=7 objection, verbatim
+
+*Rethinking the Value of Network Pruning*, ICLR 2019 — **ACCEPTED**, AnonReviewer1 post-rebuttal:
+
+> "**I wonder whether that a carefully tuned learning rate/hyperparameters for fine-tuning may get the
+> same or better performance as scratch training.**"
+
+That is P0-0 and P0-2 in a reviewer's own words, on an *accepted* paper — "did you tune the baseline, or
+just yours?" Same thread, AnonReviewer2: *"It is still difficult to believe that most of the previous
+work and previous experiments are faulty."* And R1: *"The experiments might not be enough to reject the
+common belief."*
+
+*On the State of the Art of Evaluation in Neural Language Models*, ICLR 2018 — **ACCEPTED**, Reviewer 2:
+
+> "**the corpus the authors choose are quite small, the variance of the estimate will be quite high, I
+> suspect whether the same conclusions could be drawn.**"
+
+That is our N=7 objection, verbatim, on an accepted paper — which is what X4 answers.
+
+### How accepted nulls survive: guarded claims
+
+*Rethinking Pruning* meta-review (**Accept**), titled *"Empirical paper casting shade on pruning"*:
+
+> "These results **seem unsurprising in retrospect, but hindsight is 20-20**... your claims should be
+> properly circumscribed... **I would recommend the authors make guarded claims here.**"
+
+Melis meta-review (**Accept**): *"it's an important paper in general which will work as an alarm to the
+current practice in the field."* Reviewer 3: *"a milestone in deep learning reproducibility research."*
+
+And the counter-example — *Do Deep RL Algorithms really Learn to Navigate?* (**Reject**): *"While there
+is value in thorough evaluation papers... it misrepresents the claims made by Mirowski et al 2016 and
+**over-reaches in its findings**."* Reviewer: *"by extensively researching the literature before trying
+to affirm that a general method cannot solve certain tasks."*
+
+**The pattern across accept/reject is not the null. It is scope discipline plus a mechanism.** Guarded
+claims + explained mechanism → accept. Broad claims or unexplained null → reject, however warmly praised.
+
+⚠️ **Correction:** *The State of Sparsity in Deep Neural Networks* was **never an ICLR submission** (absent
+from a corpus ~99% complete for 2019) — it is ICML 2019, which does not use OpenReview, so no public
+reviews exist. Reviewer identities are confirmed only for *Rethinking Pruning*; elsewhere reviewers are
+labeled by rating, which is what the source supports.
