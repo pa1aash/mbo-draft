@@ -17,6 +17,9 @@ file exists so the same thing can happen again, visibly.
 | **X7** (full 3x3 coverage) | The ensemble's premise coverage is ALSO low (~0.4) on CMA proposals; c_ood correlates with normalized score across all 9 cells. | If Ens x CMA coverage is high, "any aggressive optimizer exploits a jagged mean" is refuted and the gradient-specific framing is vindicated. |
 | **X8** (M5, density ratio) | The learned ratio PARTIALLY but not fully restores proposal coverage; w is unbounded on the proposal region and ESS collapses. | Full restoration = a positive result the paper lacks. No effect = the shift defeats density-ratio methods, a sharper negative. All three outcomes are publishable; only "we did not try" is not. |
 | **X10** (M6, coverage bound) | A bound of the form c_ood degradation <= Phi(L, D, beta, sigma_min) is derivable and TRACKS the realized c_ood when plotted. | If the bound is vacuous for unregularized ensembles — the LIKELY outcome — report that no non-vacuous bound was found. Do NOT manufacture a theorem. |
+| **M1** (smooth the ensemble, hold sigma) | Spectral-norm / gradient-penalty / input-smoothing regularization of the ensemble RAISES its premise coverage on its own gradient proposals and SHRINKS the ensemble x gradient collapse, WITHOUT closing the sigma gap — isolating smoothness from calibration. | If smoothing the ensemble does NOT reduce the collapse, smoothness of the MEAN is not the operative axis (Identity C's forward direction fails). Report it. |
+| **X11** (null on the exact-oracle subset) | On TF-Bind-8/10 (exact oracles, no RF surrogate), the Design-Bench cross-cell null PERSISTS and the effect size is small relative to the oracle noise floor — killing the "your RF oracles manufactured the null" competing mechanism. | If the exact-oracle subset shows LARGE, resolvable cell differences, the null IS an RF-oracle artifact; concede it and re-scope Contribution 3. |
+| **X4** (power over task count) | A power analysis at the observed synthetic effect sizes shows N=7 tasks is underpowered to resolve the Design-Bench grid (power well below 0.8), quantifying the "underpowered at N=7" claim rather than asserting it. | If N=7 is already adequately powered at the observed effect size, the "underpowered" framing is wrong and the DB result is a genuine equivalence, not an unresolved one — a DIFFERENT (stronger) claim. Report which. |
 
 ## Standing commitments
 
@@ -30,3 +33,14 @@ file exists so the same thing can happen again, visibly.
    search reports every rule tried, not the best.
 6. **5.1 is reported as a dropped stretch goal**, per its own kill criterion — including the
    obstruction finding (the predictive signal is not oracle-free), which is the part worth keeping.
+
+## Amendment — 2026-07-17 (blueprint session)
+
+Added M1 (smooth-the-ensemble forward test), X11 (exact-oracle-subset null + oracle noise
+floor), and X4 (power over task count) as pre-registered CONTINGENT arms, BEFORE any of them
+runs. These are Phase A.2 arms whose launch is gated on the four-corners result: M1/M2(X6)/
+M3(X5) form the smoothness-mechanism triad (Identity C); X11 kills the RF-oracle competing
+mechanism for the Design-Bench null (Identity A/D Contribution 3); X4 quantifies the N=7
+underpowered claim. The four-corners gate itself (X1/X3) was launched this session; its
+result and the resulting Part-III decision rule are committed with a timestamp in
+docs/AAAI_BLUEPRINT.md Part III BEFORE the corner data was read.

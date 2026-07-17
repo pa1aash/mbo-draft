@@ -31,4 +31,15 @@ Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sh
 | A.0 gradtune `--out` + 7 tasks | DONE | code/gradtune.py | adds Levy/Rastrigin/Griewank |
 | A.0 corners driver | DONE | code/run_corners.py | 3 missing corners |
 | A.0 camera byte-verify | DONE | results/results_camera.json | sha matches HEAD |
-| A.1.1 four corners run | LAUNCHED | results/corners/ | background |
+| A.1.1 four corners run | RUNNING | results/corners/ | off_off in flight; (on,on)=camera done |
+| A.1.4 do-nothing baseline | DONE | results/dobest.json | grid beats do-nothing 7/7 |
+| Gate analyzer | DONE | code/analyze_corners.py | (on,on) preview η²_surr=0.369, ρ=+0.536 |
+| A.1.2 gradtune 2×2 (script) | READY | code/gradtune.py | run after corners |
+| A.1.3 held-out RMSE/NLL (script) | READY | code/heldout.py | run after corners |
+| A.1.5 x0 inversion (script) | READY | code/x0_inversion.py | run after corners |
+| A.1.6 3×3 coverage (script) | READY | code/coverage33.py | run after corners |
+| Phase C venue | DONE | docs/AAAI27_VENUE.md | 4 AAAI-27 pages fetched |
+| Phase D novelty | DONE | docs/NOVELTY_V2.md | Li/Rudner/Wilson owns ~90% of A findings |
+| Phase B hyperresearch 2-16 | RUNNING | docs/hyperresearch/ | 2 agents |
+| A.2 prereg contingent arms | DONE | docs/PREREGISTRATION_V2.md | M1/X11/X4 added, timestamped |
+| Phase E blueprint v1 | DONE | docs/AAAI_BLUEPRINT.md | Part I PENDING; Part III pre-committed |
