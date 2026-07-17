@@ -23,6 +23,26 @@ Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sh
 - **(off,off) / (on,off) / (off,on)** = launched via `code/run_corners.py`, 9 grid cells,
   30 seeds, 7 synthetic tasks → `results/corners/corner_*.json`.
 
+## RESUME — how to finish v2 (if this session is interrupted)
+
+Everything is file-first; v2 is a mechanical fill from artifacts on disk. Steps:
+1. Check the post-corner chain finished: `grep "ALL POST-CORNER ARMS DONE" logs/post_corners.log`.
+   If not, the chain (background) is still running; the venv is
+   `<scratchpad>/venv_mac/bin/python`. To re-run any arm manually see the commands in
+   `<scratchpad>/run_post_corners.sh`.
+2. Re-run the analyzer for the complete four-corners table:
+   `cd code && <venv> analyze_corners.py` → `results/corners/analysis.json` + `ANALYSIS.md`.
+3. Read the arm results: `results/corners/ANALYSIS.md`, `results/results_gradtune_x1off.json` +
+   `_x1on.json` (+ `logs/gradtune_x1{off,on}.log` for the VERDICT lines), `results/heldout.json`
+   (+ `logs/heldout.log` table), `results/x0_inversion.json` (+ log), `results/coverage33.json`
+   (+ log), `results/dobest.json`.
+4. Fill `docs/AAAI_BLUEPRINT.md` Part I: four-corners table, ρ test verdict, P0-0 verdict from
+   gradtune-under-X1 (compare gradtune_x1on best-grad vs perturb per the script's own rule),
+   held-out T1 verdict (does ens normRMSE converge to GP under X1-on?), x0-inversion (does it
+   hold, and only for ens?), the 3×3 coverage + (ĉ_ood,score) Spearman, and the full P0/P1
+   status table. Update Part III's realized branch and each P(accept).
+5. Commit as blueprint v2, push. Then curation: `hyperresearch sync && hyperresearch lint -j`.
+
 ## Unit ledger
 | unit | status | path | note |
 |---|---|---|---|
