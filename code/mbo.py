@@ -23,6 +23,16 @@ LR = 3e-3
 WD = 1e-4
 BETA = 2.0
 TOP = 128
+
+# ---- audit switches (X1 / X3). Set both False to reproduce the pre-audit engine. ----
+# X1: standardize the ensemble's regression targets (both GPs already z-score).
+X1_STANDARDIZE_Y = True
+# X3: one candidate-selection rule for every optimizer, and exactly TOP proposals per
+# cell. Pre-audit, grad returned the final iterate of all 2*TOP inits and perturb the
+# per-slot best of 2*TOP, while cma returned top-TOP by surrogate LCB -- so grad/perturb
+# spent 2x cma's ORACLE budget and eval_designs' oracle top-k made p50 a top-half median
+# for two optimizers and a full-set median for the third. Two estimands, one column.
+X3_MATCHED_PROTOCOL = True
 OPT_STEPS = 100
 LR_OPT = 0.05
 DEVICE = torch.device('cpu')
@@ -128,8 +138,24 @@ class MLP(nn.Module):
 
 def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None):
     """coms_alpha=None -> plain MSE ensemble; float -> COMs conservative term.
-    Seed conventions preserved from legacy (coms members offset by +500)."""
-    ds = TensorDataset(torch.FloatTensor(x), torch.FloatTensor(y))
+    Seed conventions preserved from legacy (coms members offset by +500).
+
+    X1: targets are standardized before the MSE fit and the scale is carried on the
+    members (m._ym/_ys) so the LCB closures can invert it. Previously the ensemble
+    regressed on RAW y while botorchgp (fit_botorch_gp) and svgp (fit_svgp) both
+    z-scored, so the ensemble was the only surrogate whose TRAINING was sensitive to
+    the target scale -- across a suite spanning Griewank ~ -2600 to Branin ~ -10 at a
+    fixed lr/epoch budget. That asymmetry is an alternative explanation for the
+    surrogate main effect and had to be removed before the effect could be read.
+    Inverting on prediction is an affine monotone map, so the acquisition RANKING is
+    unchanged by this; only the fit changes. Mirrors svgp's existing treatment."""
+    y = np.asarray(y, dtype=np.float32)
+    if X1_STANDARDIZE_Y:
+        ym, ys = float(y.mean()), float(y.std() + 1e-8)
+        y_fit = (y - ym) / ys
+    else:
+        ym, ys, y_fit = 0.0, 1.0, y
+    ds = TensorDataset(torch.FloatTensor(x), torch.FloatTensor(y_fit))
     ms = []
     for k in range(K):
         torch.manual_seed(seed*100 + k + (500 if coms_alpha is not None else 0))
@@ -146,13 +172,26 @@ def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None):
                     xn = (xn + 0.05*g).detach().clamp(0, 1)
                     loss = loss + coms_alpha*(m(xn).mean() - m(xb).mean())
                 o.zero_grad(); loss.backward(); o.step()
-        m.eval(); ms.append(m)
+        m.eval()
+        m._ym, m._ys = ym, ys
+        ms.append(m)
     return ms
 
+def ens_scale(ms):
+    """(ym, ys) carried by train_ensemble; (0,1) when X1 is off."""
+    return getattr(ms[0], '_ym', 0.0), getattr(ms[0], '_ys', 1.0)
+
+def ens_moments_raw(ms, x_t):
+    """Member mean/std mapped back to RAW target units. sigma scales by ys only."""
+    ps = torch.stack([m(x_t) for m in ms])
+    ym, ys = ens_scale(ms)
+    return ps.mean(0)*ys + ym, ps.std(0)*ys
+
 def ens_lcb_torch(ms, beta):
+    ym, ys = ens_scale(ms)
     def f(x):
         ps = torch.stack([m(x) for m in ms])
-        return ps.mean(0) - beta*ps.std(0)
+        return (ps.mean(0) - beta*ps.std(0))*ys + ym     # affine inverse; ranking unchanged
     return f
 
 def ens_lcb_np(ms, beta):
@@ -163,6 +202,23 @@ def ens_lcb_np(ms, beta):
     return g
 
 # ---------------- optimizers (shared across surrogates) ---------------------
+def _score_np_from_torch(score_torch, a, chunk=4096):
+    """Batched no-grad scoring of a numpy array with a torch scorer."""
+    out = []
+    with torch.no_grad():
+        for i in range(0, len(a), chunk):
+            out.append(score_torch(torch.FloatTensor(a[i:i+chunk])).numpy())
+    return np.concatenate(out)
+
+def _select_top(pool_np, score_np_fn, k=TOP):
+    """X3's ONE selection rule, applied identically by every optimizer: of every point
+    the optimizer visited, return the top-k by SURROGATE LCB. Surrogate-side only -- the
+    oracle never chooses the reported set (pre-audit, eval_designs' oracle top-k did).
+    This is also the fix for the 'gradient discards the best-LCB point it ever saw'
+    failure: the trajectory is pooled, not just its endpoint."""
+    s = score_np_fn(pool_np)
+    idx = np.argsort(s)[-k:]
+    return pool_np[idx]
 def grad_opt(score_torch, x0, steps=OPT_STEPS, lr=LR_OPT, normalize=False, trust=None):
     """Adam ascent on a differentiable score. x0: torch (N,d).
     normalize: unit-normalize the per-candidate gradient (bounds step aggressiveness).
@@ -172,6 +228,7 @@ def grad_opt(score_torch, x0, steps=OPT_STEPS, lr=LR_OPT, normalize=False, trust
     x = x0.clone().detach().requires_grad_(True)
     anchor = x0.clone().detach()
     o = optim.Adam([x], lr=lr)
+    pool = [x0.clone().detach()] if X3_MATCHED_PROTOCOL else None
     for _ in range(steps):
         o.zero_grad()
         (-score_torch(x).mean()).backward()
@@ -185,7 +242,12 @@ def grad_opt(score_torch, x0, steps=OPT_STEPS, lr=LR_OPT, normalize=False, trust
                 d = x - anchor; n = d.norm(dim=1, keepdim=True)
                 over = (n > trust).squeeze(-1)
                 x[over] = anchor[over] + d[over] * (trust / n[over])
-    return x.detach().numpy()
+            if X3_MATCHED_PROTOCOL:
+                pool.append(x.clone().detach())
+    if not X3_MATCHED_PROTOCOL:
+        return x.detach().numpy()                       # pre-audit: final iterate of ALL inits
+    return _select_top(torch.cat(pool).numpy(),
+                       lambda a: _score_np_from_torch(score_torch, a))
 
 def perturb_opt(score_np, x0, rounds=5, sigmas=(0.1, 0.05, 0.02)):
     """Random-perturbation hill climb, elementwise accept. x0: np (N,d).
@@ -199,7 +261,9 @@ def perturb_opt(score_np, x0, rounds=5, sigmas=(0.1, 0.05, 0.02)):
             imp = sc > best
             x_best[imp] = cand[imp]
             best[imp] = sc[imp]
-    return x_best
+    if not X3_MATCHED_PROTOCOL:
+        return x_best                                  # pre-audit: per-slot best of ALL inits
+    return _select_top(x_best, score_np)
 
 # ---------------- GP surrogates ---------------------------------------------
 def fit_exact_gp(x, y, dim, seed, max_train=800, matched=False):
@@ -389,7 +453,18 @@ def init_candidates(x, y, seed):
     return np.concatenate([xt, xp])
 
 def eval_designs(task, x_final):
+    """Score EXACTLY the proposals handed in. p100 = max, p50 = median over all of them.
+
+    X3: pre-audit this applied an oracle top-TOP filter. With grad/perturb handing in
+    2*TOP designs and cma handing in TOP, that meant (a) grad/perturb spent 2x cma's
+    oracle budget and (b) p50 was the median of an ORACLE-selected top half for two
+    optimizers but of the full set for the third -- two estimands under one column name.
+    Every optimizer now proposes exactly TOP, chosen surrogate-side by _select_top, so
+    the oracle only scores; it never selects."""
     sc = task.oracle(x_final)
+    if X3_MATCHED_PROTOCOL:
+        assert len(sc) == TOP, f'X3 expects exactly {TOP} proposals, got {len(sc)}'
+        return float(np.max(sc)), float(np.median(sc))
     t = np.sort(sc)[-TOP:]
     return float(t[-1]), float(np.median(t))   # p100, p50
 
@@ -411,8 +486,8 @@ def build_surrogate(name, x, y, dim, seed, beta, ep, K, matched=False):
         idx = np.random.RandomState(seed).permutation(n)
         xc, yc = x[idx[cut:]], y[idx[cut:]]
         with torch.no_grad():
-            ps = torch.stack([m(torch.FloatTensor(xc)) for m in ms])
-        q = fit_conformal_multiplier(ps.mean(0).numpy(), ps.std(0).numpy(), yc)
+            mu_c, sd_c = ens_moments_raw(ms, torch.FloatTensor(xc))   # RAW units, to match yc
+        q = fit_conformal_multiplier(mu_c.numpy(), sd_c.numpy(), yc)
         return ens_lcb_torch(ms, q), ens_lcb_np(ms, q), ms      # q replaces beta
     if name == 'gp':
         gp = fit_exact_gp(x, y, dim, seed, matched=matched)
@@ -583,9 +658,12 @@ def run_calibration(task, seed, n_test=500, ep=TRAIN_EP):
     ms = train_ensemble(x, y, task.dim, seed=seed, ep=ep)
 
     def mu_sig(xx):
+        # RAW target units. Under X1 the members predict standardized y, so reading
+        # ps.mean/std directly would compare z-space mu against a raw oracle and
+        # silently corrupt every coverage number below.
         with torch.no_grad():
-            ps = torch.stack([m(torch.FloatTensor(xx)) for m in ms])
-        return ps.mean(0).numpy(), ps.std(0).numpy()
+            mu_t, sd_t = ens_moments_raw(ms, torch.FloatTensor(xx))
+        return mu_t.numpy(), sd_t.numpy()
 
     # (1) sigma-vs-error diagnostics on in-distribution test points (legacy rho ~0.08)
     xt = np.random.uniform(0, 1, (n_test, task.dim)).astype(np.float32)
