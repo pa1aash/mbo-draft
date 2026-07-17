@@ -13,8 +13,8 @@ Tolerance (stated before the look): per-cell |diff|<=max(2*SEM,0.10*|pub|) if |p
 | corner | X1 | eta2_surr | eta2_opt | eta2_inter | Friedman p | rho(gap,log|y|) |
 |---|---|---|---|---|---|---|
 | off_off | off | 0.367 | 0.013 | 0.165 | 6.09e-05 | +0.536 |
-| on_off | — | PARTIAL (1/63 cells @30 seeds) | | | | |
-| off_on | — | MISSING (not yet run) | | | | |
+| on_off | on | 0.283 | 0.036 | 0.146 | 1.71e-03 | -0.107 |
+| off_on | off | 0.450 | 0.006 | 0.152 | 4.10e-05 | +0.571 |
 | on_on | on | 0.369 | 0.013 | 0.165 | 6.09e-05 | +0.536 |
 
 ## Pre-registered X1 confound test (rho of per-task GP-ens gap vs log10 |y|-scale)

@@ -54,6 +54,14 @@ Everything is file-first; v2 is a mechanical fill from artifacts on disk. Steps:
 | A.0 camera byte-verify | DONE | results/results_camera.json | sha matches HEAD |
 | A.1.1 four corners run | RUNNING | results/corners/ | off_off DONE (repro PASS 63/63); on_off/off_on in flight |
 | Reproduction gate | **PASS** | results/corners/ANALYSIS.md | off_off η²_surr=0.367 vs pub 0.37; Friedman 6.09e-5 |
+| Four corners (all 4) | **DONE** | results/corners/analysis.json | see below — X1 & X3 real but OFFSETTING |
+| Post-corner arms | RUNNING | results/ | gradtune 2×2 → heldout → x0inv → coverage (nohup driver) |
+
+**Four-corners verdict (η²_surr / ρ(gap,log|y|)):** off_off 0.367/+0.54 · on_off(X1) **0.283/−0.11** ·
+off_on(X3) 0.450/+0.57 · on_on 0.369/+0.54. X1 alone drops η²_surr ~23% and kills the
+scale-correlation (target-scaling confound P0-2 CONFIRMED real); X3 alone raises it; the audited
+engine nets to 0.369≈published 0.37 — an OFFSETTING cancellation of two real confounds, not their
+absence. Both confounds move the answer individually → validates Identity D; headline survives audit.
 | A.1.4 do-nothing baseline | DONE | results/dobest.json | grid beats do-nothing 7/7 |
 | Gate analyzer | DONE | code/analyze_corners.py | (on,on) preview η²_surr=0.369, ρ=+0.536 |
 | A.1.2 gradtune 2×2 (script) | READY | code/gradtune.py | run after corners |
