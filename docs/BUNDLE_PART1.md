@@ -1,14 +1,14 @@
 # BUNDLE — consolidated source and documents
 
-Generated mechanically by `scratchpad/make_bundle.py`. Every included file is VERBATIM: no summarization, elision, or truncation. Repo `/Users/palaash/Downloads/MBO` @ `1c28320`.
+Generated mechanically by `scratchpad/make_bundle.py`. Every included file is VERBATIM: no summarization, elision, or truncation. Repo `/Users/palaash/Downloads/MBO` @ `d5ac385`.
 
-**Total body bytes: 631,091**
+**Total body bytes: 634,930**
 
 ## Part-split map
 
 | Part | Tiers | Body bytes |
 |---|---|---|
-| `docs/BUNDLE_PART1.md` | Tier 1, 2 | 309,925 bytes |
+| `docs/BUNDLE_PART1.md` | Tier 1, 2 | 313,764 bytes |
 | `docs/BUNDLE_PART2.md` | Tier 3, 4 | 321,166 bytes |
 
 Split at tier boundaries only; no file is split across parts.
@@ -17,7 +17,7 @@ Split at tier boundaries only; no file is split across parts.
 
 | # | Tier | Path | Lines | Bytes | Note |
 |---|---|---|---|---|---|
-| 1 | SPECIAL | `__X1X3_STATUS__` | - | 6,432 | |
+| 1 | SPECIAL | `__X1X3_STATUS__` | - | 10,197 | |
 | 2 | T1 | `docs/FINAL_REPORT.md` | DOES NOT EXIST | 0 | |
 | 3 | T1 | `docs/GRADTUNE_RESULT.md` | DOES NOT EXIST | 0 | |
 | 4 | T1 | `docs/UNSUPPORTED_CLAIMS.md` | DOES NOT EXIST | 0 | |
@@ -26,7 +26,7 @@ Split at tier boundaries only; no file is split across parts.
 | 7 | T2 | `code/gradtune.py` | 71 | 3,647 | |
 | 8 | T2 | `code/run_all.py` | 189 | 9,837 | |
 | 9 | SPECIAL | `__GIT_CDD5AD8__` | - | 573 | |
-| 10 | SPECIAL | `__GIT_LOG__` | - | 3,908 | |
+| 10 | SPECIAL | `__GIT_LOG__` | - | 3,971 | |
 | 11 | T2 | `docs/IMPLEMENTATION_AUDIT.md` | 1224 | 67,550 | |
 | 12 | T2 | `docs/PROVENANCE.md` | 827 | 72,163 | |
 | 13 | T2 | `code/analysis.py` | 142 | 7,676 | |
@@ -54,7 +54,7 @@ Split at tier boundaries only; no file is split across parts.
 | 35 | T2 | `cloud/queue/05_analyze.sh` | 32 | 1,662 | |
 | 36 | T2 | `cloud/queue/README.md` | 56 | 3,357 | |
 | 37 | T2 | `.gitattributes` | 1 | 17 | |
-| 38 | T2 | `.gitignore` | 42 | 859 | |
+| 38 | T2 | `.gitignore` | 44 | 866 | |
 | 39 | T3 | `paper/aaai27/main.tex` | 298 | 37,867 | |
 | 40 | T3 | `docs/PAPER_V2_OUTLINE.md` | 194 | 12,596 | |
 | 41 | T3 | `docs/EXTENSION_LEDGER.md` | 125 | 11,850 | |
@@ -161,7 +161,14 @@ Split at tier boundaries only; no file is split across parts.
 
 **Process check at bundle-write time:**
 ```
-(no matching process)
+palaash           8377  61.5  2.0 412495776 164880   ??  RN    4:33PM   1:00.58 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8372  60.1  1.4 412495696 118656   ??  RN    4:33PM   1:00.06 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8375  59.5  1.3 412496768 109056   ??  RN    4:33PM   1:00.29 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8376  58.6  1.4 412488592 113776   ??  RN    4:33PM   1:00.28 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8374  56.3  1.3 412495728 110352   ??  RN    4:33PM   1:00.35 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8373  55.6  1.8 412487520 151200   ??  RN    4:33PM   1:00.17 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8378  54.7  2.7 412496816 230032   ??  RN    4:33PM   1:00.17 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
+palaash           8371   0.0  0.1 411784832  12272   ??  SN    4:33PM   0:01.18 /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3venv/bin/python run_all.py --exp mbo --seeds 30 --jobs 7
 ```
 
 
@@ -192,6 +199,18 @@ SMOKE OK
 0 cells, 7 workers
 done 0 cells (0 failed) in 0.0 min -> /Users/palaash/Downloads/MBO/results/results_camera.json
 === [Fri Jul 17 16:31:10 IST 2026] DONE (exit 0) ===
+=== [Fri Jul 17 16:33:05 IST 2026] X1+X3 full synthetic grid, 30 seeds, ISOLATED (writes /private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3_work/results/) ===
+cwd=/private/tmp/claude-501/-Users-palaash-Downloads-MBO/555543c4-f40c-47b0-ae21-f68c4eff5fad/scratchpad/x1x3_work/code  | real repo artifact is untouched
+3360 cells, 7 workers
+  10/3360  [0.1m]
+  20/3360  [0.2m]
+  30/3360  [0.4m]
+  40/3360  [0.4m]
+  50/3360  [0.6m]
+  60/3360  [0.7m]
+  70/3360  [0.8m]
+  80/3360  [1.0m]
+  90/3360  [1.1m]
 
 ```
 
@@ -223,6 +242,30 @@ designs and still fixes T12's "gradient discards the best point it ever saw". Bu
 population, not slots, so per-slot does not map onto it -- which is exactly why a single rule
 across all three optimizers is harder than it looks. I chose pooled-top-k for consistency and
 am flagging the cost rather than hiding it. **Read p100 from this run; treat p50 as suspect.**
+
+
+### ⚠️ INCIDENT: I damaged the primary artifact, then restored it
+
+Reported because a reviewer of this bundle must know the artifact was touched.
+
+The first launch used `run_all.py --exp mbo --seeds 30`. It scheduled **0 cells** -- `have()`
+(`run_all.py`) is merge-safe resume, and every cell in `results_camera.json` already had 30
+seeds -- but it still re-serialized the file: **392,577 -> 376,660 bytes, ~16KB lost.**
+`run_all.py` has **no `--out` flag**; the path is hardcoded (`run_all.py:28`), so any run
+overwrites the paper's primary artifact in place.
+
+**Restored** via `git checkout -- results/results_camera.json`. Verified: 392,577 bytes,
+sha256 `73ce3be92e79a87d`, `git status results/` clean, 7 tasks x 16 cells intact. This was
+only recoverable because the artifact was committed in the baseline import -- it had been in
+`.gitignore` as "preview/scratch" before this session.
+
+**The relaunch runs in an isolated copy** (`scratchpad/x1x3_work/`) with an empty `results/`,
+so no resume and zero blast radius on the repo. The real artifact is verified byte-identical
+after launch.
+
+**Standing hazard for whoever runs X1/X3 next:** `run_all.py` will silently overwrite
+`results/results_camera.json`. Add an `--out` flag before running it in the repo, or run it
+in a copy as done here.
 
 
 ### The pre-registration X1 is tested against (VERBATIM)
@@ -434,7 +477,7 @@ and the AAAI submission's author list is not something I can infer. No action ta
 
 ---
 ## FILE: code/mbo.py
-<!-- lines: 710 | bytes: 34856 | last commit: bb50904 2026-07-17 -->
+<!-- lines: 710 | bytes: 34856 | last commit: d5ac385 2026-07-17 -->
 ```python
 """Single source of truth for the offline-MBO paper.
 
@@ -1441,6 +1484,7 @@ Commit: juunnq <arjunveluri.work@gmail.com>
 <!-- git log --oneline --all | head -40 -->
 
 ```
+d5ac385 Add consolidated source and document bundle for review
 1c28320 The central vulnerability: reviewers have a free competing mechanism for our gap
 f380cbf Verbatim reviewer evidence: the bar is a mechanism, not novelty -- settling A vs C
 cb204c8 Reframe: the paper is a reversal, not a null -- but the framing is gated on X1/X3
@@ -5593,7 +5637,7 @@ fail-soft and the core drops to TFBind8/10 + Superconductor.
 
 ---
 ## FILE: .gitignore
-<!-- lines: 42 | bytes: 859 | last commit: 70c7664 2026-07-17 -->
+<!-- lines: 44 | bytes: 866 | last commit: d5ac385 2026-07-17 -->
 ```text
 # --- environments / caches ---
 venv/
@@ -5637,6 +5681,8 @@ results/*.tmp
 .hyperresearch/
 research/notes/
 research/raw/
+
+logs/
 ```
 
 ---

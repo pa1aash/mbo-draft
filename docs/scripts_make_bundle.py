@@ -156,6 +156,30 @@ population, not slots, so per-slot does not map onto it -- which is exactly why 
 across all three optimizers is harder than it looks. I chose pooled-top-k for consistency and
 am flagging the cost rather than hiding it. **Read p100 from this run; treat p50 as suspect.**
 """)
+    body.append("""
+### ⚠️ INCIDENT: I damaged the primary artifact, then restored it
+
+Reported because a reviewer of this bundle must know the artifact was touched.
+
+The first launch used `run_all.py --exp mbo --seeds 30`. It scheduled **0 cells** -- `have()`
+(`run_all.py`) is merge-safe resume, and every cell in `results_camera.json` already had 30
+seeds -- but it still re-serialized the file: **392,577 -> 376,660 bytes, ~16KB lost.**
+`run_all.py` has **no `--out` flag**; the path is hardcoded (`run_all.py:28`), so any run
+overwrites the paper's primary artifact in place.
+
+**Restored** via `git checkout -- results/results_camera.json`. Verified: 392,577 bytes,
+sha256 `73ce3be92e79a87d`, `git status results/` clean, 7 tasks x 16 cells intact. This was
+only recoverable because the artifact was committed in the baseline import -- it had been in
+`.gitignore` as "preview/scratch" before this session.
+
+**The relaunch runs in an isolated copy** (`scratchpad/x1x3_work/`) with an empty `results/`,
+so no resume and zero blast radius on the repo. The real artifact is verified byte-identical
+after launch.
+
+**Standing hazard for whoever runs X1/X3 next:** `run_all.py` will silently overwrite
+`results/results_camera.json`. Add an `--out` flag before running it in the repo, or run it
+in a copy as done here.
+""")
     body.append('\n### The pre-registration X1 is tested against (VERBATIM)\n')
     body.append('\nFrom `docs/PREREGISTRATION_V2.md`:\n\n```\n' + (prereg or '(row not found)') + '\n```\n')
     if os.path.exists('docs/MECHANISM_EXPERIMENTS.md'):
