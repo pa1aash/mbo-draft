@@ -26,10 +26,11 @@ Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sh
 ## RESUME — how to finish v2 (if this session is interrupted)
 
 Everything is file-first; v2 is a mechanical fill from artifacts on disk. Steps:
-1. Check the post-corner chain finished: `grep "ALL POST-CORNER ARMS DONE" logs/post_corners.log`.
-   If not, the chain (background) is still running; the venv is
-   `<scratchpad>/venv_mac/bin/python`. To re-run any arm manually see the commands in
-   `<scratchpad>/run_post_corners.sh`.
+1. Check the driver finished: `grep "ALL POST-CORNER ARMS DONE" logs/all_arms.log`.
+   The active driver is the **idempotent** `<scratchpad>/run_all_arms.sh` (launched via nohup;
+   venv `<scratchpad>/venv_mac/bin/python`). If it died mid-run (see FAILURES.md F-2), just
+   relaunch: `nohup bash <scratchpad>/run_all_arms.sh > logs/all_arms.log 2>&1 &` — it resumes
+   corners (merge-safe) and skips any arm whose output JSON already exists.
 2. Re-run the analyzer for the complete four-corners table:
    `cd code && <venv> analyze_corners.py` → `results/corners/analysis.json` + `ANALYSIS.md`.
 3. Read the arm results: `results/corners/ANALYSIS.md`, `results/results_gradtune_x1off.json` +
