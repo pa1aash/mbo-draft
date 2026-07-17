@@ -113,7 +113,10 @@ is welcome only if it diagnoses its own mechanism."*
 - **PASS** iff ≥ 90% of cells within tolerance **and** all three η² within ±0.05 **and** Friedman
   passes. Platform caveat recorded: published was Windows/torch-2.11, corners are
   macOS/torch-2.13, so the gate is on 30-seed means, not per-seed.
-- **VERDICT: PENDING** (off,off not yet complete).
+- **VERDICT: PASS.** **63/63 cells** within tolerance; off_off η² = surr **0.367** / opt 0.013 /
+  inter 0.165 (vs published 0.37 / 0.01 / 0.17); Friedman p = **6.086e-5** (vs 6.1e-5). The
+  published Table 1 reproduces essentially exactly on a fresh macOS/torch-2.13 build. **The
+  paper's headline numbers are real; the session is not moot.** (`results/corners/ANALYSIS.md`.)
 
 ### The four corners — full results
 **PENDING for off_off / on_off / off_on.** Filled and analyzed in v2. What is already on disk:

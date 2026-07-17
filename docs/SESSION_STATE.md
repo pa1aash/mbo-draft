@@ -31,7 +31,8 @@ Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sh
 | A.0 gradtune `--out` + 7 tasks | DONE | code/gradtune.py | adds Levy/Rastrigin/Griewank |
 | A.0 corners driver | DONE | code/run_corners.py | 3 missing corners |
 | A.0 camera byte-verify | DONE | results/results_camera.json | sha matches HEAD |
-| A.1.1 four corners run | RUNNING | results/corners/ | off_off in flight; (on,on)=camera done |
+| A.1.1 four corners run | RUNNING | results/corners/ | off_off DONE (repro PASS 63/63); on_off/off_on in flight |
+| Reproduction gate | **PASS** | results/corners/ANALYSIS.md | off_off η²_surr=0.367 vs pub 0.37; Friedman 6.09e-5 |
 | A.1.4 do-nothing baseline | DONE | results/dobest.json | grid beats do-nothing 7/7 |
 | Gate analyzer | DONE | code/analyze_corners.py | (on,on) preview η²_surr=0.369, ρ=+0.536 |
 | A.1.2 gradtune 2×2 (script) | READY | code/gradtune.py | run after corners |

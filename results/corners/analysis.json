@@ -99,10 +99,136 @@
  },
  "corners": {
   "off_off": {
-   "status": "PARTIAL (20/63 cells @30 seeds)"
+   "status": "complete",
+   "x1_on": false,
+   "eta2": {
+    "n_tasks": 7,
+    "surr": 0.36694780380066677,
+    "opt": 0.013264829388685806,
+    "inter": 0.16458084353792354,
+    "surr_marg": {
+     "ens": 0.3433,
+     "botorchgp": 0.8463,
+     "svgp": 0.8278
+    },
+    "opt_marg": {
+     "perturb": 0.7091,
+     "grad": 0.6982,
+     "cma": 0.6102
+    }
+   },
+   "ranks": {
+    "mean_rank": {
+     "ens:perturb": 6.857,
+     "ens:grad": 7.143,
+     "ens:cma": 8.571,
+     "botorchgp:perturb": 4.714,
+     "botorchgp:grad": 2.286,
+     "botorchgp:cma": 3.286,
+     "svgp:perturb": 4.857,
+     "svgp:grad": 3.143,
+     "svgp:cma": 4.143
+    },
+    "friedman_p": 6.086248775276825e-05,
+    "n_tasks": 7
+   },
+   "per_task_gap": {
+    "Branin-2D": 0.5599751251596039,
+    "Styblinski-5D": 0.3172729743121709,
+    "Levy-8D": 0.5726661784997473,
+    "Rosenbrock-10D": 0.48561426455245976,
+    "Rastrigin-15D": 0.45519666253731883,
+    "Ackley-20D": 0.3846864706784979,
+    "Griewank-30D": 0.6805972016172166
+   },
+   "rho_gap_vs_logyscale": 0.5357142857142858,
+   "rho_p": 0.21521745567801284,
+   "grid_means": {
+    "ens:perturb": [
+     -0.7798330307006835,
+     32.98725573221842,
+     -0.41315552045901616,
+     -0.1153651338070631,
+     -8.4184521039327,
+     -6.325564670562744,
+     -395.42542509020603
+    ],
+    "ens:grad": [
+     -9.395054817199707,
+     6.41365663210551,
+     -2.1161229888598125,
+     -0.26234621306260425,
+     -7.755820322036743,
+     -3.638036600748698,
+     -2593.451619464604
+    ],
+    "ens:cma": [
+     -14.01115600268046,
+     4.981630337238312,
+     -3.11600155433019,
+     -0.5013427654902141,
+     -10.813058757781983,
+     -4.175732421875,
+     -2606.6161702443624
+    ],
+    "botorchgp:perturb": [
+     -0.39859596888224286,
+     36.145073827107744,
+     -0.2441224453349908,
+     -0.07993984824667374,
+     -8.275823974609375,
+     -6.279673957824707,
+     -269.59954900782867
+    ],
+    "botorchgp:grad": [
+     -0.3978944142659505,
+     27.57119369506836,
+     -0.048994660501678784,
+     -0.08760564519713322,
+     -4.83241376876831,
+     -0.5521508534749349,
+     -0.941668863539315
+    ],
+    "botorchgp:cma": [
+     -0.39792938232421876,
+     26.527050050099692,
+     -0.051888079320391016,
+     -0.09295375576863686,
+     -5.054551951090494,
+     -0.5914646784464518,
+     -0.9973219748362211
+    ],
+    "svgp:perturb": [
+     -0.3998024622599284,
+     34.35749028523763,
+     -0.25178550941248734,
+     -0.0759490504860878,
+     -8.225682083765665,
+     -6.1425017674764,
+     -274.70434616873234
+    ],
+    "svgp:grad": [
+     -0.45081052780151365,
+     11.840268484751384,
+     -0.07609210796654224,
+     -0.04393666237592697,
+     -2.901893313725789,
+     -0.6732872009277344,
+     -2.0987432799263495
+    ],
+    "svgp:cma": [
+     -0.588527774810791,
+     11.647919495900473,
+     -0.0794506208350261,
+     -0.04498569245139758,
+     -3.0774806340535483,
+     -0.7138638178507487,
+     -2.1561565127353446
+    ]
+   }
   },
   "on_off": {
-   "status": "MISSING (not yet run)"
+   "status": "PARTIAL (1/63 cells @30 seeds)"
   },
   "off_on": {
    "status": "MISSING (not yet run)"
@@ -238,6 +364,661 @@
   }
  },
  "reproduction_gate": {
-  "status": "PENDING (off,off corner not yet complete)"
+  "tolerance": "per-cell |diff|<=max(2*SEM,0.10*|pub|) if |pub|>1 else 0.10 abs; eta2 within +/-0.05 each; Friedman p<1e-3; PASS if >=90% cells + eta2 + Friedman",
+  "cells_within_tol": 63,
+  "cells_total": 63,
+  "cells_ok": true,
+  "eta2_ok": true,
+  "friedman_ok": true,
+  "verdict": "PASS",
+  "eta2_off_off": {
+   "n_tasks": 7,
+   "surr": 0.36694780380066677,
+   "opt": 0.013264829388685806,
+   "inter": 0.16458084353792354,
+   "surr_marg": {
+    "ens": 0.3433,
+    "botorchgp": 0.8463,
+    "svgp": 0.8278
+   },
+   "opt_marg": {
+    "perturb": 0.7091,
+    "grad": 0.6982,
+    "cma": 0.6102
+   }
+  },
+  "friedman_p_off_off": 6.086248775276825e-05,
+  "cell_rows": [
+   {
+    "cell": "ens:perturb",
+    "task": "Branin-2D",
+    "pub": -0.78,
+    "got": -0.7798,
+    "diff": 0.0002,
+    "tol": 0.1,
+    "sem": 0.0545,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Styblinski-5D",
+    "pub": 33.08,
+    "got": 32.9873,
+    "diff": -0.0927,
+    "tol": 3.308,
+    "sem": 0.2649,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Levy-8D",
+    "pub": -0.4,
+    "got": -0.4132,
+    "diff": -0.0132,
+    "tol": 0.1,
+    "sem": 0.0188,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Rosenbrock-10D",
+    "pub": -0.12,
+    "got": -0.1154,
+    "diff": 0.0046,
+    "tol": 0.1,
+    "sem": 0.0053,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Rastrigin-15D",
+    "pub": -8.44,
+    "got": -8.4185,
+    "diff": 0.0215,
+    "tol": 0.844,
+    "sem": 0.1361,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Ackley-20D",
+    "pub": -6.32,
+    "got": -6.3256,
+    "diff": -0.0056,
+    "tol": 0.632,
+    "sem": 0.0543,
+    "ok": true
+   },
+   {
+    "cell": "ens:perturb",
+    "task": "Griewank-30D",
+    "pub": -395.0,
+    "got": -395.4254,
+    "diff": -0.4254,
+    "tol": 39.5,
+    "sem": 8.9205,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Branin-2D",
+    "pub": -9.27,
+    "got": -9.3951,
+    "diff": -0.1251,
+    "tol": 1.7285,
+    "sem": 0.8643,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Styblinski-5D",
+    "pub": 6.37,
+    "got": 6.4137,
+    "diff": 0.0437,
+    "tol": 0.9452,
+    "sem": 0.4726,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Levy-8D",
+    "pub": -2.14,
+    "got": -2.1161,
+    "diff": 0.0239,
+    "tol": 0.3205,
+    "sem": 0.1602,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Rosenbrock-10D",
+    "pub": -0.28,
+    "got": -0.2623,
+    "diff": 0.0177,
+    "tol": 0.1,
+    "sem": 0.0188,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Rastrigin-15D",
+    "pub": -7.71,
+    "got": -7.7558,
+    "diff": -0.0458,
+    "tol": 0.771,
+    "sem": 0.26,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Ackley-20D",
+    "pub": -3.66,
+    "got": -3.638,
+    "diff": 0.022,
+    "tol": 0.366,
+    "sem": 0.0945,
+    "ok": true
+   },
+   {
+    "cell": "ens:grad",
+    "task": "Griewank-30D",
+    "pub": -2592.0,
+    "got": -2593.4516,
+    "diff": -1.4516,
+    "tol": 259.2,
+    "sem": 19.1639,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Branin-2D",
+    "pub": -14.01,
+    "got": -14.0112,
+    "diff": -0.0012,
+    "tol": 1.7403,
+    "sem": 0.8702,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Styblinski-5D",
+    "pub": 5.21,
+    "got": 4.9816,
+    "diff": -0.2284,
+    "tol": 0.8407,
+    "sem": 0.4203,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Levy-8D",
+    "pub": -3.19,
+    "got": -3.116,
+    "diff": 0.074,
+    "tol": 0.3449,
+    "sem": 0.1725,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Rosenbrock-10D",
+    "pub": -0.48,
+    "got": -0.5013,
+    "diff": -0.0213,
+    "tol": 0.1,
+    "sem": 0.0362,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Rastrigin-15D",
+    "pub": -10.81,
+    "got": -10.8131,
+    "diff": -0.0031,
+    "tol": 1.081,
+    "sem": 0.257,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Ackley-20D",
+    "pub": -4.31,
+    "got": -4.1757,
+    "diff": 0.1343,
+    "tol": 0.431,
+    "sem": 0.121,
+    "ok": true
+   },
+   {
+    "cell": "ens:cma",
+    "task": "Griewank-30D",
+    "pub": -2613.0,
+    "got": -2606.6162,
+    "diff": 6.3838,
+    "tol": 261.3,
+    "sem": 14.7229,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Branin-2D",
+    "pub": -0.4,
+    "got": -0.3986,
+    "diff": 0.0014,
+    "tol": 0.1,
+    "sem": 0.0002,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Styblinski-5D",
+    "pub": 36.15,
+    "got": 36.1451,
+    "diff": -0.0049,
+    "tol": 3.615,
+    "sem": 0.2228,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Levy-8D",
+    "pub": -0.24,
+    "got": -0.2441,
+    "diff": -0.0041,
+    "tol": 0.1,
+    "sem": 0.0174,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Rosenbrock-10D",
+    "pub": -0.08,
+    "got": -0.0799,
+    "diff": 0.0001,
+    "tol": 0.1,
+    "sem": 0.0037,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Rastrigin-15D",
+    "pub": -8.28,
+    "got": -8.2758,
+    "diff": 0.0042,
+    "tol": 0.828,
+    "sem": 0.1513,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Ackley-20D",
+    "pub": -6.28,
+    "got": -6.2797,
+    "diff": 0.0003,
+    "tol": 0.628,
+    "sem": 0.045,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:perturb",
+    "task": "Griewank-30D",
+    "pub": -269.0,
+    "got": -269.5995,
+    "diff": -0.5995,
+    "tol": 26.9,
+    "sem": 4.2266,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Branin-2D",
+    "pub": -0.4,
+    "got": -0.3979,
+    "diff": 0.0021,
+    "tol": 0.1,
+    "sem": 0.0,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Styblinski-5D",
+    "pub": 27.57,
+    "got": 27.5712,
+    "diff": 0.0012,
+    "tol": 2.757,
+    "sem": 1.0433,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Levy-8D",
+    "pub": -0.05,
+    "got": -0.049,
+    "diff": 0.001,
+    "tol": 0.1,
+    "sem": 0.0022,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Rosenbrock-10D",
+    "pub": -0.09,
+    "got": -0.0876,
+    "diff": 0.0024,
+    "tol": 0.1,
+    "sem": 0.0075,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Rastrigin-15D",
+    "pub": -4.83,
+    "got": -4.8324,
+    "diff": -0.0024,
+    "tol": 0.483,
+    "sem": 0.2152,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Ackley-20D",
+    "pub": -0.55,
+    "got": -0.5522,
+    "diff": -0.0022,
+    "tol": 0.1,
+    "sem": 0.018,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:grad",
+    "task": "Griewank-30D",
+    "pub": -0.94,
+    "got": -0.9417,
+    "diff": -0.0017,
+    "tol": 0.1,
+    "sem": 0.0102,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Branin-2D",
+    "pub": -0.4,
+    "got": -0.3979,
+    "diff": 0.0021,
+    "tol": 0.1,
+    "sem": 0.0,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Styblinski-5D",
+    "pub": 26.65,
+    "got": 26.5271,
+    "diff": -0.1229,
+    "tol": 2.665,
+    "sem": 0.985,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Levy-8D",
+    "pub": -0.05,
+    "got": -0.0519,
+    "diff": -0.0019,
+    "tol": 0.1,
+    "sem": 0.0023,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Rosenbrock-10D",
+    "pub": -0.09,
+    "got": -0.093,
+    "diff": -0.003,
+    "tol": 0.1,
+    "sem": 0.0081,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Rastrigin-15D",
+    "pub": -5.06,
+    "got": -5.0546,
+    "diff": 0.0054,
+    "tol": 0.506,
+    "sem": 0.2179,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Ackley-20D",
+    "pub": -0.59,
+    "got": -0.5915,
+    "diff": -0.0015,
+    "tol": 0.1,
+    "sem": 0.0183,
+    "ok": true
+   },
+   {
+    "cell": "botorchgp:cma",
+    "task": "Griewank-30D",
+    "pub": -1.0,
+    "got": -0.9973,
+    "diff": 0.0027,
+    "tol": 0.1,
+    "sem": 0.0054,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Branin-2D",
+    "pub": -0.4,
+    "got": -0.3998,
+    "diff": 0.0002,
+    "tol": 0.1,
+    "sem": 0.0004,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Styblinski-5D",
+    "pub": 34.35,
+    "got": 34.3575,
+    "diff": 0.0075,
+    "tol": 3.435,
+    "sem": 0.2223,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Levy-8D",
+    "pub": -0.25,
+    "got": -0.2518,
+    "diff": -0.0018,
+    "tol": 0.1,
+    "sem": 0.0148,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Rosenbrock-10D",
+    "pub": -0.08,
+    "got": -0.0759,
+    "diff": 0.0041,
+    "tol": 0.1,
+    "sem": 0.0034,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Rastrigin-15D",
+    "pub": -8.27,
+    "got": -8.2257,
+    "diff": 0.0443,
+    "tol": 0.827,
+    "sem": 0.1168,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Ackley-20D",
+    "pub": -6.14,
+    "got": -6.1425,
+    "diff": -0.0025,
+    "tol": 0.614,
+    "sem": 0.0507,
+    "ok": true
+   },
+   {
+    "cell": "svgp:perturb",
+    "task": "Griewank-30D",
+    "pub": -275.0,
+    "got": -274.7043,
+    "diff": 0.2957,
+    "tol": 27.5,
+    "sem": 4.9944,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Branin-2D",
+    "pub": -0.45,
+    "got": -0.4508,
+    "diff": -0.0008,
+    "tol": 0.1,
+    "sem": 0.01,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Styblinski-5D",
+    "pub": 11.83,
+    "got": 11.8403,
+    "diff": 0.0103,
+    "tol": 1.183,
+    "sem": 0.2591,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Levy-8D",
+    "pub": -0.08,
+    "got": -0.0761,
+    "diff": 0.0039,
+    "tol": 0.1,
+    "sem": 0.0021,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Rosenbrock-10D",
+    "pub": -0.04,
+    "got": -0.0439,
+    "diff": -0.0039,
+    "tol": 0.1,
+    "sem": 0.0008,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Rastrigin-15D",
+    "pub": -2.83,
+    "got": -2.9019,
+    "diff": -0.0719,
+    "tol": 0.283,
+    "sem": 0.0895,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Ackley-20D",
+    "pub": -0.69,
+    "got": -0.6733,
+    "diff": 0.0167,
+    "tol": 0.1,
+    "sem": 0.0134,
+    "ok": true
+   },
+   {
+    "cell": "svgp:grad",
+    "task": "Griewank-30D",
+    "pub": -2.11,
+    "got": -2.0987,
+    "diff": 0.0113,
+    "tol": 0.211,
+    "sem": 0.0433,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Branin-2D",
+    "pub": -0.53,
+    "got": -0.5885,
+    "diff": -0.0585,
+    "tol": 0.1,
+    "sem": 0.0437,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Styblinski-5D",
+    "pub": 11.6,
+    "got": 11.6479,
+    "diff": 0.0479,
+    "tol": 1.16,
+    "sem": 0.2925,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Levy-8D",
+    "pub": -0.08,
+    "got": -0.0795,
+    "diff": 0.0005,
+    "tol": 0.1,
+    "sem": 0.0022,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Rosenbrock-10D",
+    "pub": -0.04,
+    "got": -0.045,
+    "diff": -0.005,
+    "tol": 0.1,
+    "sem": 0.0008,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Rastrigin-15D",
+    "pub": -3.0,
+    "got": -3.0775,
+    "diff": -0.0775,
+    "tol": 0.3,
+    "sem": 0.0916,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Ackley-20D",
+    "pub": -0.73,
+    "got": -0.7139,
+    "diff": 0.0161,
+    "tol": 0.1,
+    "sem": 0.0135,
+    "ok": true
+   },
+   {
+    "cell": "svgp:cma",
+    "task": "Griewank-30D",
+    "pub": -2.17,
+    "got": -2.1562,
+    "diff": 0.0138,
+    "tol": 0.217,
+    "sem": 0.0445,
+    "ok": true
+   }
+  ]
  }
 }
