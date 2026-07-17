@@ -55,7 +55,11 @@ Everything is file-first; v2 is a mechanical fill from artifacts on disk. Steps:
 | A.1.1 four corners run | RUNNING | results/corners/ | off_off DONE (repro PASS 63/63); on_off/off_on in flight |
 | Reproduction gate | **PASS** | results/corners/ANALYSIS.md | off_off η²_surr=0.367 vs pub 0.37; Friedman 6.09e-5 |
 | Four corners (all 4) | **DONE** | results/corners/analysis.json | see below — X1 & X3 real but OFFSETTING |
-| Post-corner arms | RUNNING | results/ | gradtune DONE; heldout→x0inv→coverage running |
+| Post-corner arms | **ALL DONE** | results/ | gradtune, heldout, x0inv, coverage all landed |
+| A.1.3 held-out (T1) | DONE | results/heldout.json | bias SEPARABLE from fit (ens≈GP 5/7, still loses opt) |
+| A.1.5 x0 inversion (T12) | DONE | results/x0_inversion.json | HOLDS ensemble-specific (ens:grad 0.52 vs GP 0.14) |
+| A.1.6 3×3 coverage | DONE | results/coverage33.json | matrix complete; ĉ_in 0.83–0.93 from D; ρ(cov,score)=0.19 |
+| Phase E blueprint v2 | **DONE** | docs/AAAI_BLUEPRINT.md | Part I filled; realized branch; P(accept) revised |
 | A.1.2 gradtune 2×2 (P0-0) | **DONE → SCOPED** | results/results_gradtune_x1{off,on}.json | genuine 5/7 (X1off), 4/7 (X1on) |
 
 **P0-0 verdict = SCOPED.** On the AUDITED engine (X3-on), the ensemble×gradient collapse is

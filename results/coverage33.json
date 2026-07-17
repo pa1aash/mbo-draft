@@ -1,0 +1,510 @@
+{
+ "per_cell": {
+  "Branin-2D|ens:grad|x1=0": {
+   "c_in": 0.7385,
+   "c_ood": 0.0
+  },
+  "Branin-2D|ens:perturb|x1=0": {
+   "c_in": 0.7385,
+   "c_ood": 0.158203125
+  },
+  "Branin-2D|ens:cma|x1=0": {
+   "c_in": 0.7385,
+   "c_ood": 0.0
+  },
+  "Branin-2D|ens:grad|x1=1": {
+   "c_in": 0.823,
+   "c_ood": 0.0
+  },
+  "Branin-2D|ens:perturb|x1=1": {
+   "c_in": 0.823,
+   "c_ood": 0.30859375
+  },
+  "Branin-2D|ens:cma|x1=1": {
+   "c_in": 0.823,
+   "c_ood": 0.0
+  },
+  "Branin-2D|botorchgp:grad|x1=0": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|botorchgp:perturb|x1=0": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|botorchgp:cma|x1=0": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|botorchgp:grad|x1=1": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|botorchgp:perturb|x1=1": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|botorchgp:cma|x1=1": {
+   "c_in": 1.0,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:grad|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:perturb|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:cma|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:grad|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:perturb|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Branin-2D|svgp:cma|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Styblinski-5D|ens:grad|x1=0": {
+   "c_in": 0.6465,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|ens:perturb|x1=0": {
+   "c_in": 0.6465,
+   "c_ood": 0.15625
+  },
+  "Styblinski-5D|ens:cma|x1=0": {
+   "c_in": 0.6465,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|ens:grad|x1=1": {
+   "c_in": 0.7,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|ens:perturb|x1=1": {
+   "c_in": 0.7,
+   "c_ood": 0.46875
+  },
+  "Styblinski-5D|ens:cma|x1=1": {
+   "c_in": 0.7,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|botorchgp:grad|x1=0": {
+   "c_in": 0.861,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|botorchgp:perturb|x1=0": {
+   "c_in": 0.861,
+   "c_ood": 0.771484375
+  },
+  "Styblinski-5D|botorchgp:cma|x1=0": {
+   "c_in": 0.861,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|botorchgp:grad|x1=1": {
+   "c_in": 0.861,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|botorchgp:perturb|x1=1": {
+   "c_in": 0.861,
+   "c_ood": 0.771484375
+  },
+  "Styblinski-5D|botorchgp:cma|x1=1": {
+   "c_in": 0.861,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|svgp:grad|x1=0": {
+   "c_in": 0.702,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|svgp:perturb|x1=0": {
+   "c_in": 0.702,
+   "c_ood": 0.306640625
+  },
+  "Styblinski-5D|svgp:cma|x1=0": {
+   "c_in": 0.702,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|svgp:grad|x1=1": {
+   "c_in": 0.702,
+   "c_ood": 0.0
+  },
+  "Styblinski-5D|svgp:perturb|x1=1": {
+   "c_in": 0.702,
+   "c_ood": 0.306640625
+  },
+  "Styblinski-5D|svgp:cma|x1=1": {
+   "c_in": 0.702,
+   "c_ood": 0.0
+  },
+  "Levy-8D|ens:grad|x1=0": {
+   "c_in": 0.6990000000000001,
+   "c_ood": 0.0
+  },
+  "Levy-8D|ens:perturb|x1=0": {
+   "c_in": 0.6990000000000001,
+   "c_ood": 0.826171875
+  },
+  "Levy-8D|ens:cma|x1=0": {
+   "c_in": 0.6990000000000001,
+   "c_ood": 0.0
+  },
+  "Levy-8D|ens:grad|x1=1": {
+   "c_in": 0.7385,
+   "c_ood": 1.0
+  },
+  "Levy-8D|ens:perturb|x1=1": {
+   "c_in": 0.7385,
+   "c_ood": 0.970703125
+  },
+  "Levy-8D|ens:cma|x1=1": {
+   "c_in": 0.7385,
+   "c_ood": 1.0
+  },
+  "Levy-8D|botorchgp:grad|x1=0": {
+   "c_in": 0.8225,
+   "c_ood": 0.25
+  },
+  "Levy-8D|botorchgp:perturb|x1=0": {
+   "c_in": 0.8225,
+   "c_ood": 0.88671875
+  },
+  "Levy-8D|botorchgp:cma|x1=0": {
+   "c_in": 0.8225,
+   "c_ood": 0.25
+  },
+  "Levy-8D|botorchgp:grad|x1=1": {
+   "c_in": 0.8225,
+   "c_ood": 0.25
+  },
+  "Levy-8D|botorchgp:perturb|x1=1": {
+   "c_in": 0.8225,
+   "c_ood": 0.88671875
+  },
+  "Levy-8D|botorchgp:cma|x1=1": {
+   "c_in": 0.8225,
+   "c_ood": 0.25
+  },
+  "Levy-8D|svgp:grad|x1=0": {
+   "c_in": 0.7225,
+   "c_ood": 0.0
+  },
+  "Levy-8D|svgp:perturb|x1=0": {
+   "c_in": 0.7225,
+   "c_ood": 0.046875
+  },
+  "Levy-8D|svgp:cma|x1=0": {
+   "c_in": 0.7225,
+   "c_ood": 0.0
+  },
+  "Levy-8D|svgp:grad|x1=1": {
+   "c_in": 0.7225,
+   "c_ood": 0.0
+  },
+  "Levy-8D|svgp:perturb|x1=1": {
+   "c_in": 0.7225,
+   "c_ood": 0.046875
+  },
+  "Levy-8D|svgp:cma|x1=1": {
+   "c_in": 0.7225,
+   "c_ood": 0.0
+  },
+  "Rosenbrock-10D|ens:grad|x1=0": {
+   "c_in": 0.879,
+   "c_ood": 0.5
+  },
+  "Rosenbrock-10D|ens:perturb|x1=0": {
+   "c_in": 0.879,
+   "c_ood": 0.982421875
+  },
+  "Rosenbrock-10D|ens:cma|x1=0": {
+   "c_in": 0.879,
+   "c_ood": 0.5
+  },
+  "Rosenbrock-10D|ens:grad|x1=1": {
+   "c_in": 0.8805,
+   "c_ood": 0.49609375
+  },
+  "Rosenbrock-10D|ens:perturb|x1=1": {
+   "c_in": 0.8805,
+   "c_ood": 0.970703125
+  },
+  "Rosenbrock-10D|ens:cma|x1=1": {
+   "c_in": 0.8805,
+   "c_ood": 0.0
+  },
+  "Rosenbrock-10D|botorchgp:grad|x1=0": {
+   "c_in": 0.9785,
+   "c_ood": 0.75
+  },
+  "Rosenbrock-10D|botorchgp:perturb|x1=0": {
+   "c_in": 0.9785,
+   "c_ood": 1.0
+  },
+  "Rosenbrock-10D|botorchgp:cma|x1=0": {
+   "c_in": 0.9785,
+   "c_ood": 0.75
+  },
+  "Rosenbrock-10D|botorchgp:grad|x1=1": {
+   "c_in": 0.9785,
+   "c_ood": 0.75
+  },
+  "Rosenbrock-10D|botorchgp:perturb|x1=1": {
+   "c_in": 0.9785,
+   "c_ood": 1.0
+  },
+  "Rosenbrock-10D|botorchgp:cma|x1=1": {
+   "c_in": 0.9785,
+   "c_ood": 0.75
+  },
+  "Rosenbrock-10D|svgp:grad|x1=0": {
+   "c_in": 0.899,
+   "c_ood": 0.0
+  },
+  "Rosenbrock-10D|svgp:perturb|x1=0": {
+   "c_in": 0.899,
+   "c_ood": 0.01953125
+  },
+  "Rosenbrock-10D|svgp:cma|x1=0": {
+   "c_in": 0.899,
+   "c_ood": 0.0
+  },
+  "Rosenbrock-10D|svgp:grad|x1=1": {
+   "c_in": 0.899,
+   "c_ood": 0.0
+  },
+  "Rosenbrock-10D|svgp:perturb|x1=1": {
+   "c_in": 0.899,
+   "c_ood": 0.01953125
+  },
+  "Rosenbrock-10D|svgp:cma|x1=1": {
+   "c_in": 0.899,
+   "c_ood": 0.0
+  },
+  "Rastrigin-15D|ens:grad|x1=0": {
+   "c_in": 0.7025000000000001,
+   "c_ood": 0.490234375
+  },
+  "Rastrigin-15D|ens:perturb|x1=0": {
+   "c_in": 0.7025000000000001,
+   "c_ood": 0.896484375
+  },
+  "Rastrigin-15D|ens:cma|x1=0": {
+   "c_in": 0.7025000000000001,
+   "c_ood": 0.5
+  },
+  "Rastrigin-15D|ens:grad|x1=1": {
+   "c_in": 0.7725000000000001,
+   "c_ood": 0.75
+  },
+  "Rastrigin-15D|ens:perturb|x1=1": {
+   "c_in": 0.7725000000000001,
+   "c_ood": 0.708984375
+  },
+  "Rastrigin-15D|ens:cma|x1=1": {
+   "c_in": 0.7725000000000001,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|botorchgp:grad|x1=0": {
+   "c_in": 0.8705,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|botorchgp:perturb|x1=0": {
+   "c_in": 0.8705,
+   "c_ood": 0.662109375
+  },
+  "Rastrigin-15D|botorchgp:cma|x1=0": {
+   "c_in": 0.8705,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|botorchgp:grad|x1=1": {
+   "c_in": 0.8705,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|botorchgp:perturb|x1=1": {
+   "c_in": 0.8705,
+   "c_ood": 0.662109375
+  },
+  "Rastrigin-15D|botorchgp:cma|x1=1": {
+   "c_in": 0.8705,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|svgp:grad|x1=0": {
+   "c_in": 0.768,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|svgp:perturb|x1=0": {
+   "c_in": 0.768,
+   "c_ood": 0.607421875
+  },
+  "Rastrigin-15D|svgp:cma|x1=0": {
+   "c_in": 0.768,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|svgp:grad|x1=1": {
+   "c_in": 0.768,
+   "c_ood": 1.0
+  },
+  "Rastrigin-15D|svgp:perturb|x1=1": {
+   "c_in": 0.768,
+   "c_ood": 0.607421875
+  },
+  "Rastrigin-15D|svgp:cma|x1=1": {
+   "c_in": 0.768,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|ens:grad|x1=0": {
+   "c_in": 0.925,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|ens:perturb|x1=0": {
+   "c_in": 0.925,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|ens:cma|x1=0": {
+   "c_in": 0.925,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|ens:grad|x1=1": {
+   "c_in": 0.9425,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|ens:perturb|x1=1": {
+   "c_in": 0.9425,
+   "c_ood": 0.998046875
+  },
+  "Ackley-20D|ens:cma|x1=1": {
+   "c_in": 0.9425,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:grad|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:perturb|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:cma|x1=0": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:grad|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:perturb|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|botorchgp:cma|x1=1": {
+   "c_in": 0.994,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:grad|x1=0": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:perturb|x1=0": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:cma|x1=0": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:grad|x1=1": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:perturb|x1=1": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Ackley-20D|svgp:cma|x1=1": {
+   "c_in": 0.9824999999999999,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|ens:grad|x1=0": {
+   "c_in": 0.5509999999999999,
+   "c_ood": 0.0
+  },
+  "Griewank-30D|ens:perturb|x1=0": {
+   "c_in": 0.5509999999999999,
+   "c_ood": 0.62109375
+  },
+  "Griewank-30D|ens:cma|x1=0": {
+   "c_in": 0.5509999999999999,
+   "c_ood": 0.0
+  },
+  "Griewank-30D|ens:grad|x1=1": {
+   "c_in": 0.9684999999999999,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|ens:perturb|x1=1": {
+   "c_in": 0.9684999999999999,
+   "c_ood": 0.998046875
+  },
+  "Griewank-30D|ens:cma|x1=1": {
+   "c_in": 0.9684999999999999,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:grad|x1=0": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:perturb|x1=0": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:cma|x1=0": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:grad|x1=0": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:perturb|x1=0": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:cma|x1=0": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:grad|x1=1": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:perturb|x1=1": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|botorchgp:cma|x1=1": {
+   "c_in": 0.986,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:grad|x1=1": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:perturb|x1=1": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  },
+  "Griewank-30D|svgp:cma|x1=1": {
+   "c_in": 0.918,
+   "c_ood": 1.0
+  }
+ },
+ "cood_vs_normscore_spearman": 0.19205776177503478,
+ "n_scatter": 63
+}
