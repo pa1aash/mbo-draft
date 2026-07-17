@@ -42,3 +42,6 @@ research/notes/
 research/raw/
 
 logs/
+
+# hyperresearch regenerable index
+research/index/
