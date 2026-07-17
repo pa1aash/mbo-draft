@@ -1,0 +1,99 @@
+{
+ "note": "best_cell from (on,on) camera; oracle noiseless; donothing=top-128 by noisy y",
+ "per_task": {
+  "Branin-2D": {
+   "data_best": -0.4135580062866211,
+   "donothing_p100": -0.4135580062866211,
+   "donothing_p50": -1.9353094100952148,
+   "best_cell": "botorchgp:grad",
+   "best_cell_p100": -0.3978944142659505,
+   "gap_best_minus_data": 0.01566359202067058,
+   "ratio_best_over_data": 0.9621248004329174,
+   "ratio_best_over_donothing": 0.9621248004329174,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Styblinski-5D": {
+   "data_best": 33.847434997558594,
+   "donothing_p100": 33.847434997558594,
+   "donothing_p50": 25.66506576538086,
+   "best_cell": "botorchgp:perturb",
+   "best_cell_p100": 36.145073827107744,
+   "gap_best_minus_data": 2.2976388295491503,
+   "ratio_best_over_data": 1.0678822141091304,
+   "ratio_best_over_donothing": 1.0678822141091304,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Levy-8D": {
+   "data_best": -0.4980084002017975,
+   "donothing_p100": -0.4980084002017975,
+   "donothing_p50": -2.981370449066162,
+   "best_cell": "botorchgp:grad",
+   "best_cell_p100": -0.04899466037750244,
+   "gap_best_minus_data": 0.44901373982429504,
+   "ratio_best_over_data": 0.09838119268198962,
+   "ratio_best_over_donothing": 0.09838119268198962,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Rosenbrock-10D": {
+   "data_best": -0.3681851625442505,
+   "donothing_p100": -0.3681851625442505,
+   "donothing_p50": -0.8859487771987915,
+   "best_cell": "svgp:grad",
+   "best_cell_p100": -0.04392196039358775,
+   "gap_best_minus_data": 0.32426320215066273,
+   "ratio_best_over_data": 0.11929312982108281,
+   "ratio_best_over_donothing": 0.11929312982108281,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Rastrigin-15D": {
+   "data_best": -8.322400093078613,
+   "donothing_p100": -8.322400093078613,
+   "donothing_p50": -12.705232620239258,
+   "best_cell": "svgp:grad",
+   "best_cell_p100": -2.829789404074351,
+   "gap_best_minus_data": 5.4926106890042625,
+   "ratio_best_over_data": 0.34002083202269584,
+   "ratio_best_over_donothing": 0.34002083202269584,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Ackley-20D": {
+   "data_best": -6.989267349243164,
+   "donothing_p100": -6.989267349243164,
+   "donothing_p50": -8.799081802368164,
+   "best_cell": "botorchgp:grad",
+   "best_cell_p100": -0.5521478017171224,
+   "gap_best_minus_data": 6.437119547526041,
+   "ratio_best_over_data": 0.07899938207069901,
+   "ratio_best_over_donothing": 0.07899938207069901,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  },
+  "Griewank-30D": {
+   "data_best": -351.31552124666524,
+   "donothing_p100": -351.31552124666524,
+   "donothing_p50": -577.8786010724684,
+   "best_cell": "botorchgp:grad",
+   "best_cell_p100": -0.9416463547231829,
+   "gap_best_minus_data": 350.3738748919421,
+   "ratio_best_over_data": 0.002680343730278957,
+   "ratio_best_over_donothing": 0.002680343730278957,
+   "ratio_note": "ratio unreliable for negative base; use gap_best_minus_data",
+   "beats_donothing": true,
+   "beats_data_best": true
+  }
+ },
+ "n_beats_donothing": 7,
+ "n_beats_data_best": 7,
+ "n_tasks": 7
+}
