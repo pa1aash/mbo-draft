@@ -66,16 +66,16 @@ def _worker(spec):
     return {**{k: spec[k] for k in ('exp', 'task', 'variant', 'seed')}, 'metrics': m}
 
 # ---------------- per-experiment cell specs ---------------------------------
-def variants(exp):
-    return {'mbo': mbo.OFFLINE_METHODS,
+def variants(exp, methods=None):
+    return {'mbo': (methods or mbo.OFFLINE_METHODS),
             'o2o': ['greedy', 'diversity', 'random'],
             'beta': ['0.0', '0.5', '1.0', '2.0', '5.0'],
             'K': ['2', '3', '5', '10'],
             'calibration': ['_']}[exp]
 
-def build_specs(exp, tasks, seeds, ep, k):
+def build_specs(exp, tasks, seeds, ep, k, methods=None):
     for task in tasks:
-        for v in variants(exp):
+        for v in variants(exp, methods):
             for s in range(seeds):
                 yield {'exp': exp, 'task': task.name, 'variant': v, 'seed': s, 'ep': ep, 'k': k}
 
@@ -122,9 +122,17 @@ def main():
     ap.add_argument('--matched-tuning', action='store_true',
                     help='GATE-1 fair-tuning control: freeze GP per-run HPO so it gets the '
                          'same zero tuning budget as the ensemble. Writes results_*_matched.json.')
+    ap.add_argument('--out', default=None,
+                    help='override the output JSON path. The default (results/results_camera.json '
+                         'or results_db.json) is the primary manuscript artifact; ANY in-repo run '
+                         'overwrites it. Pass --out to isolate corner / ablation runs to their own '
+                         'file so the primary artifact is never clobbered.')
+    ap.add_argument('--methods', nargs='*', default=None,
+                    help='restrict the mbo variant list to these methods (e.g. the 9 grid cells for '
+                         'a corner run). Default: all OFFLINE_METHODS. No effect on non-mbo exps.')
     ap.add_argument('--smoke', action='store_true')
     a = ap.parse_args()
-    out = out_path(a.db, a.matched_tuning)
+    out = a.out or out_path(a.db, a.matched_tuning)
 
     if a.smoke:
         tasks, seeds, ep, exps, a.k, a.jobs = mbo.make_tasks(['Branin-2D']), 2, 3, ['mbo', 'o2o', 'beta', 'K', 'calibration'], 10, 2
@@ -142,7 +150,7 @@ def main():
     R = load(out)
     db_sub = (a.db_subsample or None) if a.db else None
     specs = [{**s, 'db': a.db, 'db_sub': db_sub, 'matched': a.matched_tuning}
-             for e in exps for s in build_specs(e, tasks, seeds, ep, a.k)]
+             for e in exps for s in build_specs(e, tasks, seeds, ep, a.k, a.methods)]
     if not a.force:
         specs = [s for s in specs if not have(R, s['exp'], s['task'], s['variant'], seeds)]
     # group results as they land: R[exp][task][variant][metric] = agg over seeds

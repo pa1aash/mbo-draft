@@ -12,7 +12,10 @@ import numpy as np
 import mbo
 
 OUT = os.path.join(os.path.dirname(__file__), '..', 'results', 'results_gradtune.json')
-TASKS = ['Branin-2D', 'Styblinski-5D', 'Rosenbrock-10D', 'Ackley-20D']   # collapse-hard + gradient-ok contrast
+# All 7 synthetic tasks (blueprint A.1.2 extends the original 4 to include Griewank-30D
+# and Rastrigin-15D, the two worst collapse tasks, which the published sweep omitted).
+TASKS = ['Branin-2D', 'Styblinski-5D', 'Levy-8D', 'Rosenbrock-10D',
+         'Rastrigin-15D', 'Ackley-20D', 'Griewank-30D']
 # gradient configs: name -> grad_opt kwargs. 'default' is the one used in the main grid.
 CONFIGS = {
     'perturb':          None,                                              # the conservative target
@@ -43,6 +46,9 @@ def main():
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 1))
     ap.add_argument('--ep', type=int, default=mbo.TRAIN_EP)
     ap.add_argument('--tasks', nargs='*', default=TASKS)
+    ap.add_argument('--out', default=OUT,
+                    help='output JSON path (default results/results_gradtune.json). Pass a '
+                         'distinct path per X1 state so the 2x2 (X1 on/off) sweep does not clobber.')
     a = ap.parse_args()
     specs = [{'task': t, 'cfg': c, 'seed': s, 'ep': a.ep}
              for t in a.tasks for c in CONFIGS for s in range(a.seeds)]
@@ -53,7 +59,7 @@ def main():
         for fut in as_completed([ex.submit(_cell, s) for s in specs]):
             task, cfg, seed, p100 = fut.result()
             R.setdefault(task, {}).setdefault(cfg, []).append(p100)
-    json.dump(R, open(OUT, 'w'), indent=1)
+    json.dump(R, open(a.out, 'w'), indent=1)
 
     print(f'\ndone in {(time.time()-t0)/60:.1f} min. VERDICT (mean p100, higher=better):')
     print(f"{'task':<15}" + ''.join(f'{c:>15}' for c in CONFIGS))

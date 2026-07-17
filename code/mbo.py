@@ -9,6 +9,7 @@ Design note: both optimizers act on a *score closure*, so every surrogate
 (ensemble, exact GP, BoTorch GP) can be paired with every optimizer. That
 2x2 (surrogate x optimizer) is the paper's de-confounding grid.
 """
+import os
 import numpy as np
 import torch
 import torch.nn as nn
@@ -25,14 +26,18 @@ BETA = 2.0
 TOP = 128
 
 # ---- audit switches (X1 / X3). Set both False to reproduce the pre-audit engine. ----
+# Defaults are True (the audited engine that generated results/results_camera.json).
+# They are env-overridable so the 2x2 "four corners" gate can launch each corner in an
+# isolated worker set without editing this file: `MBO_X1=0 MBO_X3=0 python run_all.py ...`.
+# Env unset -> unchanged (both True), so the camera engine is byte-identical by default.
 # X1: standardize the ensemble's regression targets (both GPs already z-score).
-X1_STANDARDIZE_Y = True
+X1_STANDARDIZE_Y = os.environ.get('MBO_X1', '1') != '0'
 # X3: one candidate-selection rule for every optimizer, and exactly TOP proposals per
 # cell. Pre-audit, grad returned the final iterate of all 2*TOP inits and perturb the
 # per-slot best of 2*TOP, while cma returned top-TOP by surrogate LCB -- so grad/perturb
 # spent 2x cma's ORACLE budget and eval_designs' oracle top-k made p50 a top-half median
 # for two optimizers and a full-set median for the third. Two estimands, one column.
-X3_MATCHED_PROTOCOL = True
+X3_MATCHED_PROTOCOL = os.environ.get('MBO_X3', '1') != '0'
 OPT_STEPS = 100
 LR_OPT = 0.05
 DEVICE = torch.device('cpu')
