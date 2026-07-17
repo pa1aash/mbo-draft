@@ -55,7 +55,14 @@ Everything is file-first; v2 is a mechanical fill from artifacts on disk. Steps:
 | A.1.1 four corners run | RUNNING | results/corners/ | off_off DONE (repro PASS 63/63); on_off/off_on in flight |
 | Reproduction gate | **PASS** | results/corners/ANALYSIS.md | off_off η²_surr=0.367 vs pub 0.37; Friedman 6.09e-5 |
 | Four corners (all 4) | **DONE** | results/corners/analysis.json | see below — X1 & X3 real but OFFSETTING |
-| Post-corner arms | RUNNING | results/ | gradtune 2×2 → heldout → x0inv → coverage (nohup driver) |
+| Post-corner arms | RUNNING | results/ | gradtune DONE; heldout→x0inv→coverage running |
+| A.1.2 gradtune 2×2 (P0-0) | **DONE → SCOPED** | results/results_gradtune_x1{off,on}.json | genuine 5/7 (X1off), 4/7 (X1on) |
+
+**P0-0 verdict = SCOPED.** On the AUDITED engine (X3-on), the ensemble×gradient collapse is
+GENUINE (perturb beats best-tuned grad incl. trust-region) on 5/7 tasks X1-off, 4/7 X1-on.
+Tuning rescues gradient only on the high-d multimodal tasks (Rastrigin-15D, Ackley-20D,
+Griewank-30D-under-X1). The ledger's "trust closes it 3/4" was the PRE-AUDIT 4-task run; the
+audit flips it. Collapse is majority-genuine surrogate geometry, not an untuned optimizer.
 
 **Four-corners verdict (η²_surr / ρ(gap,log|y|)):** off_off 0.367/+0.54 · on_off(X1) **0.283/−0.11** ·
 off_on(X3) 0.450/+0.57 · on_on 0.369/+0.54. X1 alone drops η²_surr ~23% and kills the
