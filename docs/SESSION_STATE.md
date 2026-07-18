@@ -193,3 +193,47 @@ report as observation.
 query-budget table); scope the optimizer-null claim to a stated budget; report the DOWN-level
 disagreement as a limitation; state budget alongside K and beta whenever eta2_surr is quoted.
 
+---
+
+## C2-SWING (branch `c2-swing`, 2026-07-18) — BINARY CALL: **SHIP-PURE-D**
+
+| unit | status | artifact | one-line |
+|---|---|---|---|
+| V3 prereg, C2-SWING section | **DONE** | docs/PREREGISTRATION_V3.md (commit 52af907) | committed BEFORE launch |
+| SM1 smooth-the-net | **KILL** | docs/MECHANISM_SWING.md, results/swing/ | manipulation landed (-98% roughness); gap did not close, it WIDENED |
+| SM2 roughen-the-GP | **VOID** | same | not deliverable: max roughness rise +12.6% vs 25% gate |
+| SM3 survives-NTK | **UNTESTABLE** | same | defined on an SM1 winner; there is none |
+| analyzer self-test | **PASS** | code/swing_selftest.py | same code emits FOLD on planted positive data |
+
+210/210 shards, 45/45 cells each, zero failures. **This branch does NOT merge to main** —
+it stays on `origin/c2-swing`. Engine additions (`grad_pen`, `spectral`, kernel `nu`/frozen
+`lengthscale`) are all default-off and verified bit-identical on the incumbent path against
+`results/kbeta/grid_b2.0.json`, so the Stage-0 corpus is undisturbed.
+
+**SM1 verdict.** The intervention worked and the theory did not. Pooled on-D roughness fell
+41%/85%/98%/90% (grad-pen 0.01/0.1/1.0, spectral norm), yet base gap 0.3057 became 0.322,
+0.346, 0.342, 0.552 — every variant WIDER, no closing CI (Bonferroni 98.75%) excluding 0.
+Two unregistered observations sharpen it: (a) smoothing drives own-proposal premise
+coverage 0.654 -> **0.998** with no effect on the gap, so coverage is separable from the
+outcome it was meant to explain (corroborates rho(cov,score)=0.19 from coverage33 on a
+fresh axis); (b) gradient inversion RISES with smoothing (0.548 -> 0.695 at w=96), the
+opposite of SM1's second clause — a flatter mean gives gradient ascent less to climb.
+
+**SM2 verdict.** Not a result about C2, a result about the intervention: a GP posterior mean
+conditioned on ~800 points is smooth because of the CONDITIONING, not the kernel, so
+roughness and fit are not independently manipulable. Two traps caught pre-launch on disjoint
+seeds 100/101, either of which would have produced a false verdict: the MLL refit UNDOES
+nu=0.5 by inflating the lengthscale (Branin 0.40 -> 15.93), and an absolute short
+lengthscale is degenerate in high d (Ackley gradient exactly 0.000). Rough GPs still beat
+every ensemble variant (0.827-0.868 vs 0.346-0.666) — no collapse.
+
+**Incidental.** botorch 0.18 `SingleTaskGP` defaults to **RBFKernel**, not Matern-5/2; repo
+comments saying otherwise are wrong. `paper/` makes no kernel claim, so nothing published
+is affected.
+
+**Effect on C2.** The eliminations now read: not sigma (0A.1), not width (0A.2 W1), not
+held-out accuracy (0A.2 W2), not budget (0A.3), and **not mean smoothness or premise
+coverage** (C2-SWING). C2 stays DIAGNOSTIC. Draft language attributing the GP's advantage
+to a "smoother"/"less jagged" mean should be STRUCK — this arm tested that reading directly
+and it failed.
+
