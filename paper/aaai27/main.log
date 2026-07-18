@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 01:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 01:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,45 +436,39 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.0pt on input line 50.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 (Font)              scaled to size 10.0pt on input line 63.
-
-Underfull \hbox (badness 2435) in paragraph at lines 67--68
-[]\T1/ntxtlf/b/n/10 A con-trolled surrogate$\OMS/cmsy/m/n/10 ^^B$\T1/ntxtlf/b/n
-/10 optimizer de-com-po-si-tion
- []
-
-[1{/Users/palaash/Library/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/p
-dftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
+ [1{/Users/palaash/Library/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/
+pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
 
 
 ]
-[2]
-Underfull \hbox (badness 1577) in paragraph at lines 97--98
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.0pt on input line 71.
+ [2]
+Underfull \hbox (badness 1577) in paragraph at lines 102--103
  \T1/ntxtlf/b/n/10 Matched tun-ing (iden-ti-fi-a-bil-ity con-trol). \T1/ntxtlf/
 m/n/10 Ex-act and
  []
 
 
-Underfull \hbox (badness 5217) in paragraph at lines 97--98
+Underfull \hbox (badness 5217) in paragraph at lines 102--103
 \T1/ntxtlf/m/n/10 sparse GPs, un-like en-sem-bles, can spend per-run
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 97--98
+Underfull \hbox (badness 1259) in paragraph at lines 102--103
 \T1/ntxtlf/m/n/10 hyperparameter-optimization bud-get. The \T1/ntxtlf/m/it/10 m
 atched \T1/ntxtlf/m/n/10 arm
  []
 
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.0pt on input line 99.
 <figures/fig1_grid_heatmap.pdf, id=22, 450.9073pt x 222.15425pt>
 File: figures/fig1_grid_heatmap.pdf Graphic file (type pdf)
 <use figures/fig1_grid_heatmap.pdf>
-Package pdftex.def Info: figures/fig1_grid_heatmap.pdf  used on input line 129.
+Package pdftex.def Info: figures/fig1_grid_heatmap.pdf  used on input line 135.
 
 (pdftex.def)             Requested size: 465.41786pt x 229.31633pt.
 
-Overfull \hbox (12.2147pt too wide) in paragraph at lines 143--152
+Overfull \hbox (12.2147pt too wide) in paragraph at lines 149--158
  [][] 
  []
 
@@ -482,71 +476,66 @@ Overfull \hbox (12.2147pt too wide) in paragraph at lines 143--152
 File: figures/fig2_optimizer_spread.pdf Graphic file (type pdf)
 <use figures/fig2_optimizer_spread.pdf>
 Package pdftex.def Info: figures/fig2_optimizer_spread.pdf  used on input line 
-156.
+162.
 (pdftex.def)             Requested size: 237.00174pt x 138.12434pt.
 <figures/fig6_cd_diagram.pdf, id=24, 467.19098pt x 320.8788pt>
 File: figures/fig6_cd_diagram.pdf Graphic file (type pdf)
 <use figures/fig6_cd_diagram.pdf>
-Package pdftex.def Info: figures/fig6_cd_diagram.pdf  used on input line 165.
+Package pdftex.def Info: figures/fig6_cd_diagram.pdf  used on input line 174.
 (pdftex.def)             Requested size: 234.60545pt x 161.12936pt.
 [3]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 219.
+(Font)              scaled to size 9.0pt on input line 228.
 
-Overfull \hbox (13.39647pt too wide) in paragraph at lines 212--223
+Overfull \hbox (13.39647pt too wide) in paragraph at lines 221--232
  [][] 
  []
 
 <figures/fig8_crossproposal.pdf, id=28, 337.08435pt x 245.80904pt>
 File: figures/fig8_crossproposal.pdf Graphic file (type pdf)
 <use figures/fig8_crossproposal.pdf>
-Package pdftex.def Info: figures/fig8_crossproposal.pdf  used on input line 227
+Package pdftex.def Info: figures/fig8_crossproposal.pdf  used on input line 236
 .
 (pdftex.def)             Requested size: 237.00174pt x 172.82654pt.
-<figures/fig3_coverage.pdf, id=29, 426.69916pt x 233.50839pt>
+[4]
+<figures/fig3_coverage.pdf, id=34, 426.69916pt x 233.50839pt>
 File: figures/fig3_coverage.pdf Graphic file (type pdf)
 <use figures/fig3_coverage.pdf>
-Package pdftex.def Info: figures/fig3_coverage.pdf  used on input line 245.
+Package pdftex.def Info: figures/fig3_coverage.pdf  used on input line 254.
 (pdftex.def)             Requested size: 404.71353pt x 221.47896pt.
-<figures/fig4_beta_sweep.pdf, id=30, 364.96051pt x 228.24672pt>
+<figures/fig4_beta_sweep.pdf, id=35, 364.96051pt x 228.24672pt>
 File: figures/fig4_beta_sweep.pdf Graphic file (type pdf)
 <use figures/fig4_beta_sweep.pdf>
-Package pdftex.def Info: figures/fig4_beta_sweep.pdf  used on input line 252.
+Package pdftex.def Info: figures/fig4_beta_sweep.pdf  used on input line 261.
 (pdftex.def)             Requested size: 196.30513pt x 122.77077pt.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 269--271
+ [5 <./figures/fig1_grid_heatmap.pdf> <./figures/fig2_optimizer_spread.pdf> <./
+figures/fig6_cd_diagram.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 278--280
 \T1/ntxtlf/b/n/10 Output\T1/ntxtlf/m/n/10 : mul-ti-plier $[]$, cov-er-ages $\OT
 1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$\T1/ntxtlf/m/n/10 ,
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5147) has occurred while \output is active []
 
- [5 <./figures/fig1_grid_heatmap.pdf> <./figures/fig2_optimizer_spread.pdf> <./
-figures/fig6_cd_diagram.pdf>]
-Underfull \hbox (badness 1067) in paragraph at lines 288--289
+ [6 <./figures/fig8_crossproposal.pdf>]
+Underfull \hbox (badness 1067) in paragraph at lines 297--298
  \T1/ntxtlf/b/n/10 An-tic-i-pated ob-jec-tions. \T1/ntxtlf/m/n/10 Three ob-jec-
 tions de-serve di-
  []
 
-[6 <./figures/fig8_crossproposal.pdf>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7 <./figures/fig3_coverage.pdf> <./figures/fig4_beta_sweep.pdf>] (./main.bbl 
-[8])
-[9
-
-] (./main.aux)
+[7 <./figures/fig3_coverage.pdf> <./figures/fig4_beta_sweep.pdf>] (./main.bbl
+[8]) [9] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 7707 strings out of 469006
- 123452 string characters out of 5454813
- 562532 words of memory out of 5000000
- 36270 multiletter control sequences out of 15000+600000
+ 7739 strings out of 469006
+ 124281 string characters out of 5454813
+ 560198 words of memory out of 5000000
+ 36302 multiletter control sequences out of 15000+600000
  669244 words of font info for 78 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
  89i,13n,117p,2067b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -565,7 +554,7 @@ mr9.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 /texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/fonts/ty
 pe1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/newt
 x/ztmri.pfb>
-Output written on main.pdf (9 pages, 422372 bytes).
+Output written on main.pdf (9 pages, 426105 bytes).
 PDF statistics:
  498 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams
