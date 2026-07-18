@@ -342,6 +342,50 @@ C → ML or RU (uncertainty/GP mechanism) with SO cross-listing. VENUE-FIT MAPPI
 ## offline-MBO application not), N4 mechanism → PARTIAL (Fan2024 owns mechanism, naming free), N5 →
 ## PARTIAL (L/R/W D.1.2 confounded width test), N6 stays NONE FOUND (fANOVA searched, strengthened).
 
+## STEP 12 CRITIC RETURNS
+- **Instruction critic DONE (5 findings, 0 critical, 3 major, 2 minor; structure PASS).** (1) N6
+  NONE FOUND lacks exact query list — pull from miss-catcher-log + G1 fANOVA queries; (2) N7 NONE
+  FOUND lacks queries/forward-cite terms — pull from N7 interim + W1; (3) **Balduzzi missing** (named
+  N1 comparator; add to N1 + Sources — it's DOES-NOT-TOUCH, note that); (4) N5 render explicit
+  hybrid verdict; (5) N1 "quantify the overlap" → make proportional. All patcher-surgical, no
+  restructure. N6/N7 queries EXIST in the vault (not a gap-fetch need) → step 13 likely no-op for these.
+
+- **Depth critic DONE (6 findings, 4 major, 2 minor).** (1) PGS premise verbatim quote missing
+  (N6/A); (2) Lee 2019 (arXiv:1902.06720) omitted + width-96 below NTK-agreement n>=512-2048 range;
+  (3) N3 rule-outs Lu 2023/Benechehab 2024 dropped; (4) N7 Ziomek (arXiv:2410.10384) closest lexical
+  counterexample omitted; (5) Recht slope 1.69/1.11 missing; (6) **N5 appendix-locator discrepancy**
+  (draft says D.1.2, interim says D.3/§4.1 — RECONCILE or soften to "an appendix architecture-size
+  ablation" to avoid a wrong locator — citation-precision matters). Patcher must ADD 3 sources to the
+  Sources list (Lee 2019, Lu/Benechehab, Ziomek).
+
+- **Width critic DONE (9 findings, 4 major, 5 minor).** 8 fetched-but-UNCITED vault notes: Ziomek
+  (N7, load-bearing near-miss), Moosbauer (N6), Machado+Islam (N8), van Rijn (N6), Dao-boosting (N7),
+  Lee-2019 (N5), Balduzzi (N1). Patcher should cite the load-bearing ones (Ziomek/Moosbauer/Machado/
+  Islam/Lee-2019/Balduzzi) to harden the NONE-FOUND verdicts. BLOAT: "lead with D" stated 3x (exec +
+  candidate + venue); report 61.7KB above 45-55KB band; exec/candidate overlap → patcher CUTS
+  redundancy while adding citations to stay in band.
+- **=> STEP 13 (gap-fetch) IS A NO-OP: every source the critics want cited is ALREADY in the vault
+  (fetched in step 2/8, just uncited). No vault gaps. The patcher pulls from existing notes.**
+
+- **Dialectic critic DONE (8 findings, 1 CRITICAL, 4 major, 3 minor).**
+  - **F1 (CRITICAL) — ORCHESTRATOR RULING:** the 0.405 strengthening is re-attributed to ALL FIVE
+    confounds in exec/N9/candidate-D, but the query says 0.405 = fixing (i)+(ii) only, and confound
+    (iv) K pushes DOWN (K=2 ensemble 0.95 > GP 0.846). N1 already states it right. RULING = patcher
+    fixes the 3 overclaim spots to "target-scaling + candidate/oracle (i+ii) net the surrogate
+    effect UP to 0.405, against the genre's shrink direction; the ensemble-size confound (iv) moves
+    it DOWN" — this REFINES but does NOT collapse N9 (0.405>0.37 landed; strengthening-direction
+    still NONE-FOUND-narrow). Keep the N9 verdict; scope the "strengthens" framing to the protocol
+    confounds. NOT a regeneration — a surgical correction.
+  - F2 (major): N5 over-concedes L/R/W D.1.2 ("already answers" → soften to "partially addresses";
+    D.1.2 tests only a SMALLER net, not the WIDER one the objection predicts).
+  - F3 (major): Recht double-use (exec = clean shrink; N9 = growth partial) → reconcile to "mixed".
+  - F4 (major): Shahriari scope (online BO + acquisition-heuristic) + optimizer-vs-acquisition
+    terminology consistency.
+  - F5 (major): N4 "kills the σ channel" stated settled while β=0 NOT VERIFIABLE → inline hedge.
+  - F6-F8 (minor): η²-novelty scoped vs Hutter fANOVA; N7 "first at all" scoped to indexed corpus;
+    N8 platform variance is ensemble-cell-ONLY (GP cells match exactly) → engage.
+  No straw-manning found. ALL 4 CRITICS DONE (28 findings: 1 critical, 12 major, 15 minor... net).
+
 ## Process
 8 fetchers dispatched (A-E readers over local text; W1 Kim/IGNITE/MS-DDEO; W2 AAAI-27+Gundersen;
 W3 miss-catchers N2/N3/N6/N9). Awaiting completions. Tooling reality: CLI PDF fetch broken;
