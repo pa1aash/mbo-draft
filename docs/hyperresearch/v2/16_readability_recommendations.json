@@ -1,0 +1,145 @@
+{
+  "recommendations": [
+    {
+      "id": "rec-1",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N5 - NTK / Spectral Bias and the Finite-Width Objection",
+      "current": "prediction. Second, the objection is only partially addressed",
+      "recommended": "prediction.\n\nSecond, the objection is only partially addressed",
+      "rationale": "The N5 second paragraph runs ~2,600 chars; splitting at the explicit \"First.../Second...\" hinge restores readable rhythm without touching any argument."
+    },
+    {
+      "id": "rec-2",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N5 - NTK / Spectral Bias and the Finite-Width Objection",
+      "current": "never an ensemble baseline [32]. **Verdict: PARTIAL",
+      "recommended": "never an ensemble baseline [32].\n\n**Verdict: PARTIAL",
+      "rationale": "Second split of the same ~2,600-char paragraph isolates the bolded verdict + consequence as its own scannable closing paragraph."
+    },
+    {
+      "id": "rec-3",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N3 - Unmatched Effective Pessimism",
+      "current": "the mismatch. **Verdict: PARTIAL, and saying so",
+      "recommended": "the mismatch.\n\n**Verdict: PARTIAL, and saying so",
+      "rationale": "The N3 second paragraph (~1,900 chars) mixes prior-art rule-outs with the verdict; breaking before the bolded verdict separates evidence from the strategic call."
+    },
+    {
+      "id": "rec-4",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N4 - Distance-Aware Uncertainty and the Implicit Trust Region",
+      "current": "invites a mis-citation flag [28]. **Verdict: PARTIAL",
+      "recommended": "invites a mis-citation flag [28].\n\n**Verdict: PARTIAL",
+      "rationale": "The N4 third paragraph (~1,650 chars) ends with a dense bolded verdict; breaking before it gives the mechanism-relocation conclusion its own paragraph."
+    },
+    {
+      "id": "rec-5",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N9 - The De-Confounding Direction: an Audit That Strengthens",
+      "current": "shrink likewise [4][3]. The paper's result inverts this:",
+      "recommended": "shrink likewise [4][3].\n\nThe paper's result inverts this:",
+      "rationale": "The N9 opening paragraph (~1,620 chars) pivots from \"the genre shrinks\" to \"the paper inverts it\"; the break marks that rhetorical turn and shortens the block."
+    },
+    {
+      "id": "rec-6",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## N9 - The De-Confounding Direction: an Audit That Strengthens",
+      "current": "[20]. The underlying statistical mechanism (covariate",
+      "recommended": "[20].\n\nThe underlying statistical mechanism (covariate",
+      "rationale": "The N9 second paragraph (~1,750 chars) shifts from listing partials (Recht/Agarwal/Bressan) to the statistical mechanism + claim advice; the break separates the two moves."
+    },
+    {
+      "id": "rec-7",
+      "category": "break-paragraph",
+      "severity": "major",
+      "section": "## Candidate Contributions: The One Sentence Each Owns (A / C / D)",
+      "current": "objection. Two caveats constrain it. The directional gloss",
+      "recommended": "objection.\n\nTwo caveats constrain it. The directional gloss",
+      "rationale": "The Candidate A paragraph (~1,900 chars) states the owned sentence then piles on two caveats; breaking at \"Two caveats constrain it\" separates the claim from its qualifications."
+    },
+    {
+      "id": "rec-8",
+      "category": "break-paragraph",
+      "severity": "moderate",
+      "section": "## N6 - The Crossed Surrogate x Optimizer Factorial",
+      "current": "[8]. The two nearest structural analogs must be named",
+      "recommended": "[8].\n\nThe two nearest structural analogs must be named",
+      "rationale": "The post-table N6 paragraph (~1,620 chars) bundles the L/R/W transpose point with the Hutter/Liang/Moosbauer rule-outs; breaking after the L/R/W sentence separates the two."
+    },
+    {
+      "id": "rec-9",
+      "category": "break-paragraph",
+      "severity": "moderate",
+      "section": "## N1 - Confound Taxonomy: Prior-Art Overlap and the Offline-MBO Residual",
+      "current": "to each factor. Second, the confound",
+      "recommended": "to each factor.\n\nSecond, the confound",
+      "rationale": "The N1 \"two things are absent\" paragraph (~1,520 chars) has a clean First (machinery) / Second (vocabulary) hinge that reads better as two paragraphs."
+    },
+    {
+      "id": "rec-10",
+      "category": "make-list",
+      "severity": "moderate",
+      "section": "## N1 - Confound Taxonomy: Prior-Art Overlap and the Offline-MBO Residual",
+      "current": "The shape recurs across four other well-cited audits: Ferrari Dacrema et al. diagnose recommender-system progress as an artifact of \"(i) weak baselines; (ii) establishment of weak methods as new baselines; and (iii) difficulties in comparing or reproducing results across papers,\" then re-run with tuned baselines and find six of seven neural methods lose to classical algorithms [3]; Musgrave et al. rebuild the deep-metric-learning protocol and find \"the actual improvements over time have been marginal at best\" [4]; Lucic et al. show that for generative adversarial networks \"most models can reach similar scores with enough hyperparameter optimization and random restarts\" [21]; and Agarwal et al. supply the statistical-methodology version, a three-part taxonomy of evaluation confounds with demonstrated ranking reversals [22]. The sixth",
+      "recommended": "The shape recurs across four other well-cited audits:\n\n- **Ferrari Dacrema et al.** diagnose recommender-system progress as an artifact of \"(i) weak baselines; (ii) establishment of weak methods as new baselines; and (iii) difficulties in comparing or reproducing results across papers,\" then re-run with tuned baselines and find six of seven neural methods lose to classical algorithms [3].\n- **Musgrave et al.** rebuild the deep-metric-learning protocol and find \"the actual improvements over time have been marginal at best\" [4].\n- **Lucic et al.** show that for generative adversarial networks \"most models can reach similar scores with enough hyperparameter optimization and random restarts\" [21].\n- **Agarwal et al.** supply the statistical-methodology version, a three-part taxonomy of evaluation confounds with demonstrated ranking reversals [22].\n\nThe sixth",
+      "rationale": "The four comparator audits are a genuine parallel enumeration (X et al. do Y and find \"Z\" [n]); a bulleted list with bold author labels makes the prior-art survey scannable and breaks a 730-char run-on sentence."
+    },
+    {
+      "id": "rec-11",
+      "category": "bold-keyterms",
+      "severity": "minor",
+      "section": "## N2 - K-Contingency of the Surrogate-Class Ranking",
+      "current": "0.95 / 0.52 / 0.32 / 0.18 at K = 2 / 3 / 5 / 10",
+      "recommended": "**0.95 / 0.52 / 0.32 / 0.18 at K = 2 / 3 / 5 / 10**",
+      "rationale": "The K-sweep values are N2's entire quantitative payload but sit unemphasized in prose; bolding them lets a reviewer find the flip point at a glance."
+    },
+    {
+      "id": "rec-12",
+      "category": "bold-keyterms",
+      "severity": "minor",
+      "section": "## N9 - The De-Confounding Direction: an Audit That Strengthens",
+      "current": "the published 0.37 to 0.405",
+      "recommended": "the published **0.37 to 0.405**",
+      "rationale": "The 0.37 -> 0.405 strengthening is the paper's headline landed asset; bolding the figure in the N9 prose surfaces the core statistic where it is first argued."
+    },
+    {
+      "id": "rec-13",
+      "category": "split-sentence",
+      "severity": "minor",
+      "section": "## N4 - Distance-Aware Uncertainty and the Implicit Trust Region",
+      "current": "distance-to-decision-boundary instead [12]; DUQ confirms",
+      "recommended": "distance-to-decision-boundary instead [12]. DUQ confirms",
+      "rationale": "This ~400-char sentence chains the SNGP and DUQ evidence with a semicolon; splitting at the semicolon into two sentences (no rewording) eases parsing."
+    },
+    {
+      "id": "rec-14",
+      "category": "split-sentence",
+      "severity": "minor",
+      "section": "## N7 - Bidirectional Smoothness Manipulation",
+      "current": "never touches a GP [18]; its ICML 2024 sibling",
+      "recommended": "never touches a GP [18]. Its ICML 2024 sibling",
+      "rationale": "This ~450-char sentence joins the IGNITE point and its ICML sibling with a semicolon; a clean period split (only capitalizing \"Its\") shortens both clauses without changing meaning."
+    }
+  ],
+  "summary": {
+    "total_recommendations": 14,
+    "by_category": {
+      "merge-paragraphs": 0,
+      "break-paragraph": 9,
+      "make-list": 1,
+      "make-table": 0,
+      "bold-keyterms": 2,
+      "split-sentence": 2,
+      "remove-hr": 0,
+      "add-whitespace": 0
+    },
+    "highest_severity": "major",
+    "expected_net_char_delta": 62
+  }
+}
