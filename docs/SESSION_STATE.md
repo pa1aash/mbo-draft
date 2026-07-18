@@ -117,7 +117,7 @@ NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2
 | unit | status | artifact | one-line |
 |---|---|---|---|
 | 0A.1 beta=0 reconciliation | **DONE** | docs/BETA0_RECONCILE.md, results/beta0_reconcile.json | disagreement was ENGINE (off_off vs on_on), not estimator |
-| 0A.2 width ablation (W1/W2) | RUNNING | code/width_ablation.py -> results/width/width_grid.json | 4 widths x 7 tasks x 30 seeds, K=5 fixed |
+| 0A.2 width ablation (W1/W2) | **DONE** | docs/WIDTH_ABLATION.md, results/width/ | W1 CONFIRMED: gap does not close with width |
 | 0A.3 budget-matched (BM1) | RUNNING | code/budget_matched.py -> results/budget/budget_matched.json | 2 levels x 7 tasks x 30 seeds |
 | V3 pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 55ced44) | committed BEFORE both launches |
 
@@ -142,3 +142,29 @@ and `supplement.tex:106` need rewriting to a base-plus-amplification claim. The 
 **Carry-forward.** Both V3 arms report on the beta-invariant normalizer for the same reason;
 the incumbent per-condition estimator is reported alongside only where comparability with a
 published figure is required.
+
+**0A.2 verdict.** W1 CONFIRMED. At fixed K=5, sweeping member width 96 -> 1024 (10.7x) leaves
+the GP-ensemble gap statistically unchanged: 0.480 [0.365, 0.576] at w=96 vs 0.476
+[0.208, 0.647] at w=1024; shrinkage -0.006 [-0.210, 0.161], 99.1% of the w=96 value. The curve
+is flat with noise, not a monotone decay, and no pre-registered KILL condition fires. The
+NTK/spectral-bias objection (N5) is answered at practical widths; C2 mean-quality is a class
+property, not a capacity artifact. Caveat: CI widens with w (0.211 -> 0.439), so "does not
+close" is supported but "identical at w=1024" is not; nothing asymptotic in w may be claimed.
+
+W2 SUPPORTED. Held-out normRMSE improves monotonically with w (0.4446 -> 0.3877). On the
+registered tie-cell test (Styblinski-5D at w=256/512) the gap is 0.375. Non-registered but
+stronger: the ensemble BEATS the GP's held-out RMSE on 7/7 tasks and 26/28 (task,w) cells and
+at every width (0.388-0.445 vs 0.479) while still losing the optimization gap - the more
+accurate surrogate is the one that loses, so accuracy is not the bottleneck. NLL is NOT a usable
+second axis (GP mean NLL 202.7 vs ensemble 5.7-6.4 is a calibration artifact, not accuracy).
+
+Validity: w=96 reproduces results/kbeta/grid_b2.0.json bit-exactly for grad and cma; perturb
+differs within noise (median 0.0 SE, max 2.29 SE) because perturb_opt draws from the global
+numpy RNG without reseeding, so its stream position depends on call order.
+
+**C2 consequence.** Stop describing the GP advantage as "fits the function better" - it does not.
+Describe it as: the ensemble's mean, though more accurate on-distribution, admits
+off-distribution maximizers the oracle scores poorly. Combined with 0A.1 (survives sigma removal)
+and 0A.2 (survives width increase), mean geometry under optimization is the remaining live
+explanation.
+
