@@ -51,7 +51,11 @@ user demands each verdict be defended and adversarially stress-tested.
 
 ## Tier rationale
 User-forced full tier. All 16 steps run: 1→2→3→4→5→6→7→8→9→10→11→12→13→14→15→16.
-No downgrade permitted regardless of decompose's own classification.
+No downgrade permitted regardless of decompose's own classification. Step 1's independent
+classification AGREES: fourteen sub-questions, nine contested novelty claims each requiring
+adversarial primary-source verification, a defended recommendation among three candidate
+papers, and an explicit demand for evidence-chain rigor → full + argumentative regardless.
+citation_style = inline (wrapper override: "inline, with venue AND year AND arXiv ID").
 
 ## Prior-run context (treat as UNCHECKED / worthless per user)
 - `docs/NOVELTY_CHECK.md`, `docs/NOVELTY_V2.md` = prior hand-written novelty passes; the user
