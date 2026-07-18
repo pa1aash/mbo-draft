@@ -2,6 +2,23 @@
 
 Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sha/note`.
 
+---
+
+## POD COMPUTE SESSION (branch pod-compute, started 2026-07-18)
+
+Linux pod (RunPod ubuntu-2404, 32 vCPU EPYC 9655P, 64 GB). Env: envs/pod-synth
+(torch 2.11.0+cpu, numpy 2.4.4, sklearn 1.8.0, botorch 0.18.1, gpytorch 1.15.2, cma 4.4.4).
+
+| unit | status | path | sha/note |
+|---|---|---|---|
+| P0 runner safety | DONE | code/run_all.py | f947783; guards tested (no-op=2, camera=3, engine-match=4, meta+loader OK) |
+| P0 X1/X3 switch proof | DONE | (test) | off_off ens:perturb Branin=-0.776~=-0.78; X3-on=-4.54 |
+| P1 pod-synth env + lock | DONE | envs/pod-synth-requirements.lock | ce6dabb |
+| P2 reproduction gate | RUNNING | results/corners/pod_off_off.json | off_off grid, 9 cells x 7 tasks x 30 seeds |
+
+**RESUME (P2 if interrupted):** merge-safe, just re-run the launch command in
+logs/pod_off_off.log header (nohup bash <scratchpad>/run_off_off.sh).
+
 ## Environment reality (load-bearing)
 - This macOS machine had **no working torch/sklearn/botorch env** at session start. The
   repo `venv/` is a **Windows** venv (`venv/Scripts/python.exe`, torch 2.11.0 Windows

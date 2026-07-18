@@ -44,3 +44,46 @@ mechanism for the Design-Bench null (Identity A/D Contribution 3); X4 quantifies
 underpowered claim. The four-corners gate itself (X1/X3) was launched this session; its
 result and the resulting Part-III decision rule are committed with a timestamp in
 docs/AAAI_BLUEPRINT.md Part III BEFORE the corner data was read.
+
+## Amendment — 2026-07-18 (pod compute session): K x beta gate (KB1–KB5)
+
+Registered BEFORE launching the K x beta grid on the pod. Verbatim; not softened; not
+edited after the fact.
+
+| KB1 | eta2_surr at K=2 is materially below its K=5 value. GROUNDS: the paper's own
+  supplement (Section 5, Figure 2) reports task-normalized ensemble scores of
+  0.95 / 0.52 / 0.32 / 0.18 at K = 2 / 3 / 5 / 10 — monotonically decreasing. The grid's
+  ensemble marginal at K=5 is 0.343; the exact GP's is 0.846. The paper fixes K=5,
+  citing Lakshminarayanan et al. 2017 as "standard" — the setting where its own
+  baseline is weakest.
+  KILL CRITERION: if the ensemble's marginal at K=2 EXCEEDS the GP's, the surrogate
+  main effect is a K artifact and the headline REVERSES. Report it plainly. |
+
+| KB2 | The full-grid GP-ensemble gap at beta=0 reproduces the supplement's 0.47
+  (vs 0.51 at beta=2). GROUNDS: this number currently has NO GENERATOR. FLAW_LEDGER
+  P0-4 lists `beta0` among the 05_findings.json keys that nothing in the repo writes,
+  and run_all.py's beta sweep runs variant 'lcb' — which is ensemble+gradient ONLY,
+  not the 3x3 grid. The paper's central mechanism control has never been computed on
+  the full grid.
+  KILL CRITERION: if the gap COLLAPSES at beta=0, the GP advantage is sigma-mediated,
+  the "smooth mean, not calibration" claim is wrong, and the mechanism is calibration
+  after all. |
+
+| KB3 | If the gap closes at beta=2/K=2 but PERSISTS at beta=0: the GP's mean is
+  genuinely better AND it does not matter, because a K=2 ensemble with adequate
+  pessimism reaches the same score. That is the paper's headline, not a caveat. |
+
+| KB4 | sigma_GP / sigma_ens at matched K differs by more than 2x, so a shared beta=2
+  delivers DIFFERENT effective pessimism to different surrogate classes — a fifth
+  unmatched hyperparameter that no control in the paper addresses.
+  KILL CRITERION: if the ratio is ~1, the acquisition was matched and this confound
+  does not exist. |
+
+| KB5 | Every corner and every K x beta configuration carries a task-and-seed bootstrap
+  95% CI on eta2. GROUNDS: the published CI on eta2_surr is [0.25, 0.57] — width 0.32.
+  The four measured corners span 0.283 to 0.450 — a range of 0.167, HALF the CI width.
+  PREDICTION: the corner CIs overlap and the "confounds net up to eta2_surr=0.405"
+  interaction is UNRESOLVABLE at n=7 tasks.
+  If so, report that the decomposition is underpowered by the same task-count limit
+  the paper identifies in Design-Bench. Do NOT report 0.405 as a corrected headline
+  without its CI. |
