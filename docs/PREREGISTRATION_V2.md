@@ -74,3 +74,21 @@ cannot be tested on this machine. The gap is noted, not resolved by argument.
 Step order committed: Step 1 (botorchgp:grad displacement + decode-identity on TF-Bind-8,
 beta=2, X1/X3 on, n=16) reports M-A vs M-B BEFORE Step 2 (beta contrast over
 TF-Bind-8 / UTR / Superconductor, all 9 cells, beta in {0, 2}, n=16) launches.
+
+### Amendment (compute), same day, mid-Step-2
+
+The pre-registered Step 2 was launched over all 9 cells x 3 tasks x 2 betas x 16 seeds
+(864 cells). TF-Bind-8 completed in ~54 min, but on the high-dim tasks (UTR ~200 relaxed
+dims, Superconductor 86 dims) the CMA cells (budget 3000) and the SVGP cells (250 variational
+iters, ARD over the full input dim) cost roughly 5-8 min EACH, projecting the full run to many
+hours -- outside this machine's scope. Rather than run partial-and-inconsistent, the sweep is
+narrowed to the cells the DB1-DB4 predictions actually reference, at full n=16:
+  - TF-Bind-8: the full 9 cells (already complete, and includes botorchgp:cma + all svgp) --
+    so DB1's "all THREE botorchgp cells" is shown in full on the discrete task that motivates it.
+  - UTR and Superconductor: the fast grad + perturb cells of the ensemble and the BoTorch GP
+    (ens:grad, ens:perturb, botorchgp:grad, botorchgp:perturb). SVGP is dropped (it is neither
+    the GP nor the ensemble the predictions concern); botorchgp:cma is dropped on these two
+    tasks only.
+This narrowing is disclosed, not silent. Its one cost: DB1's "all three botorchgp cells" is
+grad+perturb (2 of 3) on UTR, full (3 of 3) on TF-Bind-8. DB2/DB3/DB4 are unaffected -- they
+turn on the GP grad/perturb betas and the continuous-vs-discrete contrast, all retained.
