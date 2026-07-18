@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.3.18)  15 JUL 2026 16:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 01:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./supplement.tex
-(supplement.tex
+**supplement.tex
+(./supplement.tex
 LaTeX2e <2025-11-01>
-L3 programming layer <2025-12-24>
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+L3 programming layer <2026-01-19>
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count275
@@ -23,52 +23,51 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
 )
-(aaai2027.sty
+(./aaai2027.sty
 Package: aaai2027 2027/05/04 AAAI 2027 Submission format
 
 Conference Style for AAAI for LaTeX 2e
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+(/Users/palaash/Library/texmf/tex/latex/newtx/newtxtext.sty
 Package: newtxtext 2024/04/01 v1.744(Michael Sharpe) latex and unicode latex su
 pport for TeXGyreTermesX
 
 `newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
 nd its extensions (msharpe)
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2025-12-24 L3 programming layer (loader) 
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xpatch/xpatch.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
-tex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3backend/l3backend-pdftex.d
+ef
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
-e.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 Package: xparse 2025-10-09 L3 Experimental document command parser
-)
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count284
-)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+))
+(/Users/palaash/Library/texmf/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -78,49 +77,60 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
-Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 \XKV@toks=\toks17
 \XKV@tempa@toks=\toks18
+\XKV@tempb@toks=\toks19
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\keyval.tex))
+(/usr/local/texlive/2026basic/texmf-dist/tex/generic/xkeyval/keyval.tex))
 \XKV@depth=\count285
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+))
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+(/Users/palaash/Library/texmf/tex/generic/xstring/xstring.sty
+(/Users/palaash/Library/texmf/tex/generic/xstring/xstring.tex
 \xs_counta=\count286
 \xs_countb=\count287
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
-) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 LaTeX Font Info:    Setting ntxLF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxTLF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxOsF sub-encoding to TS1/0 on input line 24.
 LaTeX Font Info:    Setting ntxTOsF sub-encoding to TS1/0 on input line 24.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(/Users/palaash/Library/texmf/tex/generic/kastrup/binhex.tex)
 \ntx@tmpcnta=\count288
 \ntx@cnt=\count289
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(/Users/palaash/Library/texmf/tex/latex/fontaxes/fontaxes.sty
 Package: fontaxes 2026-01-02 v2.0.2 Font selection axes (deprecated)
-Applying: [2024-11-01] Use figureversions if present on input line 74.
+Applying: [0000-00-00] Fall back to v1 on input line 76.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureve
-rsions.sty
-Package: figureversions 2025-04-29 v1.0.1 Figure versions
-)
-Already applied: [0000-00-00] Fall back to v1 on input line 76.
-)
+(/Users/palaash/Library/texmf/tex/latex/fontaxes/fontaxes-v1.sty
+Package: fontaxes 2020/07/21 v1.0e Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \swshape on input line 35.
+LaTeX Info: Redefining \scshape on input line 37.
+LaTeX Info: Redefining \sscshape on input line 39.
+LaTeX Info: Redefining \ulcshape on input line 41.
+LaTeX Info: Redefining \textsw on input line 47.
+LaTeX Info: Redefining \textssc on input line 48.
+LaTeX Info: Redefining \textulc on input line 49.
+))
 \tx@sixem=\dimen149
 \tx@y=\dimen150
 \tx@x=\dimen151
@@ -137,49 +147,50 @@ Already applied: [0000-00-00] Fall back to v1 on input line 76.
 \tx@dimC=\dimen162
 LaTeX Info: Redefining \oldstylenums on input line 902.
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\courier.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/courier.sty
 Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+(/Users/palaash/Library/texmf/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 )
 \titlebox=\skip51
 \aaai@thanksins=\insert252
 \aaai@copyrightins=\insert251
-) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+)
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
 )
 \Gin@req@height=\dimen163
 \Gin@req@width=\dimen164
-) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+) (/usr/local/texlive/2026basic/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip52
 \bibsep=\skip53
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count290
-) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+)
+(/Users/palaash/Library/texmf/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+(/Users/palaash/Library/texmf/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen165
 \captionmargin=\dimen166
@@ -194,23 +205,22 @@ Package caption Info: Standard document class detected.
 \c@caption@flags=\count291
 \c@continuedfloat=\count292
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithm.st
-y
+(/Users/palaash/Library/texmf/tex/latex/algorithms/algorithm.sty
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
- (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+
+(/Users/palaash/Library/texmf/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count293
-\float@exts=\toks19
+\float@exts=\toks20
 \float@box=\box53
-\@float@everytoks=\toks20
+\@float@everytoks=\toks21
 \@floatcapt=\box54
 )
-\@float@every@algorithm=\toks21
+\@float@every@algorithm=\toks22
 \c@algorithm=\count294
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/algorithms\algorithmic.
-sty
+(/Users/palaash/Library/texmf/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count295
 \c@ALC@line=\count296
@@ -219,7 +229,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \ALC@tlm=\skip54
 \algorithmicindent=\skip55
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty
+(/Users/palaash/Library/texmf/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen173
 \lightrulewidth=\dimen174
@@ -239,24 +249,24 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count302
 \@thisrulewidth=\dimen185
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
 \@mathmargin=\skip56
 
 For additional information on amsmath, use the `?' option.
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks22
+\@emptytoks=\toks23
 \ex@=\dimen186
 ))
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen187
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count303
@@ -289,57 +299,57 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \dotsspace@=\muskip18
 \c@parentequation=\count310
 \dspbrk@lvl=\count311
-\tag@help=\toks23
+\tag@help=\toks24
 \row@=\count312
 \column@=\count313
 \maxfields@=\count314
-\andhelp@=\toks24
+\andhelp@=\toks25
 \eqnshift@=\dimen189
 \alignsep@=\dimen190
 \tagshift@=\dimen191
 \tagwidth@=\dimen192
 \totwidth@=\dimen193
 \lineht@=\dimen194
-\@envbody=\toks25
+\@envbody=\toks26
 \multlinegap=\skip57
 \multlinetaggap=\skip58
-\mathdisplay@stack=\toks26
+\mathdisplay@stack=\toks27
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(/Users/palaash/Library/texmf/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+(/Users/palaash/Library/texmf/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty
+))
+(/Users/palaash/Library/texmf/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks27
-\thm@bodyfont=\toks28
-\thm@headfont=\toks29
-\thm@notefont=\toks30
-\thm@headpunct=\toks31
+\thm@style=\toks28
+\thm@bodyfont=\toks29
+\thm@headfont=\toks30
+\thm@notefont=\toks31
+\thm@headpunct=\toks32
 \thm@preskip=\skip59
 \thm@postskip=\skip60
 \thm@headsep=\skip61
-\dth@everypar=\toks32
+\dth@everypar=\toks33
 )
 \c@proposition=\count315
 LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line
  26.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd
+(/Users/palaash/Library/texmf/tex/latex/newtx/t1ntxtlf.fd
 File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 26.
-
-(supplement.aux)
+ (./supplement.aux)
 \openout1 = `supplement.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -357,30 +367,29 @@ LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
-ii
+(/usr/local/texlive/2026basic/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count316
 \scratchdimen=\dimen195
 \scratchbox=\box57
 \nofMPsegments=\count317
 \nofMParguments=\count318
-\everyMPshowfont=\toks33
+\everyMPshowfont=\toks34
 \MPscratchCnt=\count319
 \MPscratchDim=\dimen196
 \MPnumerator=\count320
 \makeMPintoPDFobject=\count321
-\everyMPtoPDFconversion=\toks34
+\everyMPtoPDFconversion=\toks35
 )
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
-ase.sty
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.s
+ty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 \c@mv@tabular=\count322
 \c@mv@boldtabular=\count323
@@ -403,13 +412,13 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 27.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 29.
 
- (C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+ (/Users/palaash/Library/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
 
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+(/Users/palaash/Library/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
@@ -420,72 +429,71 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.0pt on input line 101.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.0pt on input line 101.
-
-[1{C:/Users/arjun/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ar
-jun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
+ [1{/Users/palaash/Library/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/
+pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
 
 
 ]
-<figures/fig5_calibration_vs_benefit.pdf, id=15, 330.42995pt x 239.31671pt>
+<figures/fig5_calibration_vs_benefit.pdf, id=16, 330.42995pt x 239.31671pt>
 File: figures/fig5_calibration_vs_benefit.pdf Graphic file (type pdf)
 <use figures/fig5_calibration_vs_benefit.pdf>
 Package pdftex.def Info: figures/fig5_calibration_vs_benefit.pdf  used on input
- line 131.
+ line 135.
 (pdftex.def)             Requested size: 215.45348pt x 156.04698pt.
-<figures/fig7_k_ablation.pdf, id=16, 324.95717pt x 221.7566pt>
+<figures/fig7_k_ablation.pdf, id=17, 324.95717pt x 221.7566pt>
 File: figures/fig7_k_ablation.pdf Graphic file (type pdf)
 <use figures/fig7_k_ablation.pdf>
-Package pdftex.def Info: figures/fig7_k_ablation.pdf  used on input line 136.
+Package pdftex.def Info: figures/fig7_k_ablation.pdf  used on input line 140.
 (pdftex.def)             Requested size: 215.45348pt x 147.02979pt.
 LaTeX Font Info:    Trying to load font information for T1+pcr on input line 14
-2.
+6.
 
-(C:\Users\arjun\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
+) [2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 171.
+(Font)              scaled to size 6.0pt on input line 175.
 
-[2{C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <.
-/figures/fig5_calibration_vs_benefit.pdf>] [3 <./figures/fig7_k_ablation.pdf>]
-(supplement.bbl) [4
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] (supplement.aux)
+ [3 <./figures/fig5_calibration_vs_benefit.pdf> <./figures/fig7_k_ablation.pdf>
+]
+(./supplement.bbl) [4
+
+] (./supplement.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 7478 strings out of 467871
- 120585 string characters out of 5418376
- 556731 words of memory out of 5000000
- 36220 multiletter control sequences out of 15000+600000
+ 7499 strings out of 469006
+ 118692 string characters out of 5454813
+ 549090 words of memory out of 5000000
+ 36060 multiletter control sequences out of 15000+600000
  667008 words of font info for 79 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 89i,13n,117p,939b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx9.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmex10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/arjun/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/arjun/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/arjun/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/arjun/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/arj
-un/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
-Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmsy9.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
-sfonts/symbols/msbm10.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts/t
-ype1/urw/courier/ucrr8a.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/newtx/ztmb.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/font
-s/type1/public/newtx/ztmr.pfb><C:/Users/arjun/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/newtx/ztmri.pfb>
-Output written on supplement.pdf (4 pages, 314927 bytes).
+ 319 hyphenation exceptions out of 8191
+ 89i,13n,117p,1131b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
+s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/palaa
+sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaash/Libr
+ary/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Library/texm
+f/fonts/type1/public/amsfonts/cm/cmmi9.pfb></Users/palaash/Library/texmf/fonts/
+type1/public/amsfonts/cm/cmr10.pfb></Users/palaash/Library/texmf/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsf
+onts/cm/cmr9.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb></User
+s/palaash/Library/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lo
+cal/texlive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/pal
+aash/Library/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/te
+xmf/fonts/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1
+/public/newtx/ztmri.pfb>
+Output written on supplement.pdf (4 pages, 292479 bytes).
 PDF statistics:
- 211 PDF objects out of 1000 (max. 8388607)
+ 213 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

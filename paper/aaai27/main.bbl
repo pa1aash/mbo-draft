@@ -1,4 +1,4 @@
-\begin{thebibliography}{27}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Agarwal et~al.(2021)Agarwal, Schwarzer, Castro, Courville, and
@@ -39,11 +39,31 @@ Chen, C.; Zhang, Y.; Fu, J.; Li, X.; and Poupart, P. 2022.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~35, 6800--6814.
 
+\bibitem[{Dem{\v{s}}ar(2006)}]{demsar2006statistical}
+Dem{\v{s}}ar, J. 2006.
+\newblock Statistical Comparisons of Classifiers over Multiple Data Sets.
+\newblock \emph{Journal of Machine Learning Research}, 7: 1--30.
+
+\bibitem[{Fan et~al.(2024)Fan, Wang, Ng, and Hu}]{fan2024minucb}
+Fan, Z.; Wang, W.; Ng, S.~H.; and Hu, Q. 2024.
+\newblock Minimizing {UCB}: a Better Local Search Strategy in Local {B}ayesian
+  Optimization.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}.
+
 \bibitem[{Fannjiang and Listgarten(2020)}]{fannjiang2020autofocused}
 Fannjiang, C.; and Listgarten, J. 2020.
 \newblock Autofocused Oracles for Model-Based Design.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~33, 12945--12956.
+
+\bibitem[{Ferrari~Dacrema, Cremonesi, and
+  Jannach(2019)}]{ferraridacrema2019worrying}
+Ferrari~Dacrema, M.; Cremonesi, P.; and Jannach, D. 2019.
+\newblock Are we really making much progress? A worrying analysis of recent
+  neural recommendation approaches.
+\newblock In \emph{Proceedings of the 13th ACM Conference on Recommender
+  Systems (RecSys)}, 101--109.
 
 \bibitem[{Gonz{\'a}lez et~al.(2016)Gonz{\'a}lez, Dai, Hennig, and
   Lawrence}]{gonzalez2016batch}
@@ -59,6 +79,12 @@ Henderson, P.; Islam, R.; Bachman, P.; Pineau, J.; Precup, D.; and Meger, D.
 \newblock Deep Reinforcement Learning that Matters.
 \newblock In \emph{Proceedings of the AAAI Conference on Artificial
   Intelligence}.
+
+\bibitem[{Hutter, Hoos, and Leyton-Brown(2014)}]{hutter2014fanova}
+Hutter, F.; Hoos, H.; and Leyton-Brown, K. 2014.
+\newblock An Efficient Approach for Assessing Hyperparameter Importance.
+\newblock In \emph{International Conference on Machine Learning (ICML)},
+  754--762.
 
 \bibitem[{Jin, Yang, and Wang(2021)}]{jin2021pessimism}
 Jin, Y.; Yang, Z.; and Wang, Z. 2021.
@@ -111,6 +137,41 @@ Li, Y.~L.; Rudner, T. G.~J.; and Wilson, A.~G. 2024.
   Optimization.
 \newblock In \emph{International Conference on Learning Representations}.
 
+\bibitem[{Liu et~al.(2020)Liu, Lin, Padhy, Tran, Bedrax-Weiss, and
+  Lakshminarayanan}]{liu2020sngp}
+Liu, J.~Z.; Lin, Z.; Padhy, S.; Tran, D.; Bedrax-Weiss, T.; and
+  Lakshminarayanan, B. 2020.
+\newblock Simple and Principled Uncertainty Estimation with Deterministic Deep
+  Learning via Distance Awareness.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}.
+
+\bibitem[{Lucic et~al.(2018)Lucic, Kurach, Michalski, Gelly, and
+  Bousquet}]{lucic2018gansequal}
+Lucic, M.; Kurach, K.; Michalski, M.; Gelly, S.; and Bousquet, O. 2018.
+\newblock Are {GAN}s Created Equal? A Large-Scale Study.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}.
+
+\bibitem[{Melis, Dyer, and Blunsom(2018)}]{melis2018sota}
+Melis, G.; Dyer, C.; and Blunsom, P. 2018.
+\newblock On the State of the Art of Evaluation in Neural Language Models.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}.
+
+\bibitem[{Moosbauer et~al.(2021)Moosbauer, Herbinger, Casalicchio, Lindauer,
+  and Bischl}]{moosbauer2021pdp}
+Moosbauer, J.; Herbinger, J.; Casalicchio, G.; Lindauer, M.; and Bischl, B.
+  2021.
+\newblock Explaining Hyperparameter Optimization via Partial Dependence Plots.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}.
+
+\bibitem[{Musgrave, Belongie, and Lim(2020)}]{musgrave2020realitycheck}
+Musgrave, K.; Belongie, S.; and Lim, S.-N. 2020.
+\newblock A Metric Learning Reality Check.
+\newblock In \emph{European Conference on Computer Vision (ECCV)}, 681--699.
+
 \bibitem[{Rashidinejad et~al.(2021)Rashidinejad, Zhu, Ma, Jiao, and
   Russell}]{rashidinejad2021bridging}
 Rashidinejad, P.; Zhu, B.; Ma, C.; Jiao, J.; and Russell, S. 2021.
@@ -118,6 +179,13 @@ Rashidinejad, P.; Zhu, B.; Ma, C.; Jiao, J.; and Russell, S. 2021.
   Tale of Pessimism.
 \newblock In \emph{Advances in Neural Information Processing Systems},
   volume~34, 11702--11716.
+
+\bibitem[{Shahriari et~al.(2016)Shahriari, Swersky, Wang, Adams, and
+  de~Freitas}]{shahriari2016humanoutoftheloop}
+Shahriari, B.; Swersky, K.; Wang, Z.; Adams, R.~P.; and de~Freitas, N. 2016.
+\newblock Taking the Human Out of the Loop: A Review of {B}ayesian
+  Optimization.
+\newblock \emph{Proceedings of the IEEE}, 104(1): 148--175.
 
 \bibitem[{Srinivas et~al.(2012)Srinivas, Krause, Kakade, and
   Seeger}]{srinivas2010ucb}
