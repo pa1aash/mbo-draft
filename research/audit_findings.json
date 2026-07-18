@@ -9,6 +9,8 @@
     "polish_escalations": 1,
     "polish_escalation_reason": "length-accepted-by-orchestrator (dense 9-claim audit; all mandated substance)",
     "final_word_count": 10024,
-    "sources": 50
+    "sources": 50,
+    "lint_note": "instruction-coverage lint flagged 32 'missing entities' \u2014 FALSE POSITIVE: naive substring match against decomposition entity-labels (verbose paper titles / claim slugs) that never appear verbatim; report uses inline citation format. Verified all 9 claims + all named papers present; instruction critic confirmed structure PASS. 4 pipeline-gate rules (wrapper-report, locus-coverage, scaffold-prompt, patch-surgery) all 0 errors.",
+    "pipeline_status": "COMPLETE \u2014 all 16 steps"
   }
 ]
