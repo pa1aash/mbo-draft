@@ -1,0 +1,41 @@
+{
+ "complete": true,
+ "cells_present": 63,
+ "camera_compare": {
+  "max_abs_diff": 0.17534383041294177,
+  "n_cells": 63,
+  "worst": {
+   "diff": 0.17534383041294177,
+   "cell": "svgp:perturb",
+   "task": "Griewank-30D",
+   "pod": -274.7918807552309,
+   "camera": -274.616536924818
+  },
+  "enscma_branin_pod": -14.010643275578817,
+  "enscma_branin_camera": -14.010635042190552,
+  "enscma_branin_diff": 8.233388264500263e-06
+ },
+ "camera_ok": false,
+ "published_cells_within_tol": 63,
+ "published_cells_total": 63,
+ "published_ok": true,
+ "eta2": {
+  "n_tasks": 7,
+  "surr": 0.3688740782869653,
+  "opt": 0.013201886767244543,
+  "inter": 0.1651960733970241,
+  "surr_marg": {
+   "ens": 0.3395,
+   "botorchgp": 0.8448,
+   "svgp": 0.8264
+  },
+  "opt_marg": {
+   "perturb": 0.7078,
+   "grad": 0.6949,
+   "cma": 0.6081
+  }
+ },
+ "friedman_p": 6.0862487752768236e-05,
+ "eta2_friedman_ok": true,
+ "verdict": "FAIL"
+}

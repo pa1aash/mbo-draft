@@ -2,6 +2,30 @@
 
 Started 2026-07-17. Updated after every unit. Format: `unit | status | path | sha/note`.
 
+---
+
+## POD COMPUTE SESSION (branch pod-compute, started 2026-07-18)
+
+Linux pod (RunPod ubuntu-2404, 32 vCPU EPYC 9655P, 64 GB). Env: envs/pod-synth
+(torch 2.11.0+cpu, numpy 2.4.4, sklearn 1.8.0, botorch 0.18.1, gpytorch 1.15.2, cma 4.4.4).
+
+| unit | status | path | sha/note |
+|---|---|---|---|
+| P0 runner safety | DONE | code/run_all.py | f947783; guards tested (no-op=2, camera=3, engine-match=4, meta+loader OK) |
+| P0 X1/X3 switch proof | DONE | (test) | off_off ens:perturb Branin=-0.776~=-0.78; X3-on=-4.54 |
+| P1 pod-synth env + lock | DONE | envs/pod-synth-requirements.lock | ce6dabb |
+| P2 reproduction gate | **PASS** | results/corners/pod_off_off.json | eta2_surr=0.3689 (pub 0.367), Friedman p=6.086e-5 (pub 6.09e-5), published 63/63; camera bit-diff <=1.47% rel on svgp/cma cells only (disclosed) |
+| P3 K-beta gate | **DONE** | docs/GATE_KBETA.md | KB1 confirmed/no-reverse; KB2 smooth-mean survives; KB3 GP robust; KB4 median ratio 1.19 (per-task 0.07-1.44); KB5 corners overlap (underpowered) |
+| P4 Design-Bench env | **DONE** | docs/POD_ENV.md, envs/pod-db-*.lock | env `dbm` torch 2.8; 5 non-mujoco tasks verified; unpinned-botorch fix bug documented |
+| P5 DB verification | **DONE** | docs/POD_DB_VERIFICATION.md | results_db.json is OFF_OFF (empirically); TFBind8/10, Superconductor, UTR match; GFP diverges 18% (decode artifact) |
+| P6 DB at scale | **DONE** | docs/POD_DB_SCALE.md | DB four corners eta2_surr~0.001-0.03 (NULL, unlike synthetic 0.28-0.45); mujoco ran; X11 null survives on exact-oracle subset |
+| P7 synthetic re-runs | **DONE** | docs/POD_PHASE7.md | gradtune 2x2 X3-driven; x0 inversion ens-specific; grad~cma is X3 artifact; sigma=distance not error |
+| P8 report | DONE | docs/POD_RESULTS.md | consolidated |
+
+**RESUME commands (if any unit interrupted):** run_phase3.sh / run_phase7.sh for the synthetic
+grids (merge-safe); envs/build_pod_db.sh for the DB env; the DB corner runs are merge-safe under
+results/db_corners/. All launch commands are in logs/ headers.
+
 ## Environment reality (load-bearing)
 - This macOS machine had **no working torch/sklearn/botorch env** at session start. The
   repo `venv/` is a **Windows** venv (`venv/Scripts/python.exe`, torch 2.11.0 Windows

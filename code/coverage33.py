@@ -78,7 +78,7 @@ def _cell(spec):
     import torch
     torch.set_num_threads(1)
     os.environ['MBO_X1'] = '1' if spec['x1'] else '0'
-    os.environ['MBO_X3'] = '1'
+    os.environ['MBO_X3'] = '1' if spec['x3'] else '0'
     import importlib
     import mbo
     importlib.reload(mbo)
@@ -116,10 +116,10 @@ def main():
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 2))
     ap.add_argument('--out', default=OUT)
     a = ap.parse_args()
-    import mbo
+    import mbo, run_all
     tasks = [T().name for T in mbo.ALL_TASKS]
-    specs = [{'task': tk, 'surr': s, 'x1': x1, 'seed': sd}
-             for tk in tasks for s in SURR for x1 in (0, 1) for sd in range(a.seeds)]
+    specs = [{'task': tk, 'surr': s, 'x1': x1, 'x3': x3, 'seed': sd}
+             for tk in tasks for s in SURR for x1 in (0, 1) for x3 in (0, 1) for sd in range(a.seeds)]
     R = {}
     t0 = time.time()
     print(f'{len(specs)} fits, {a.jobs} workers', flush=True)
@@ -129,7 +129,7 @@ def main():
             if not r['metrics']:
                 continue
             for opt, mv in r['metrics'].items():
-                key = f"{r['task']}|{r['surr']}:{opt}|x1={r['x1']}"
+                key = f"{r['task']}|{r['surr']}:{opt}|x1={r['x1']}|x3={r['x3']}"
                 R.setdefault(key, {'c_in': [], 'c_ood': []})
                 R[key]['c_in'].append(mv['c_in']); R[key]['c_ood'].append(mv['c_ood'])
     agg = {k: {'c_in': float(np.mean(v['c_in'])), 'c_ood': float(np.mean(v['c_ood']))}
@@ -144,18 +144,19 @@ def main():
             continue
         lo, hi = min(cells.values()), max(cells.values()); rng = (hi - lo) or 1
         for c in cells:
-            k = f'{tk}|{c}|x1=1'
+            k = f'{tk}|{c}|x1=1|x3=1'                 # camera engine = on_on
             if k in agg:
                 coods.append(agg[k]['c_ood']); scores.append((cells[c] - lo) / rng)
     from scipy.stats import spearmanr
     rho = float(spearmanr(coods, scores).statistic) if len(coods) > 3 else float('nan')
-    result = {'per_cell': agg, 'cood_vs_normscore_spearman': rho, 'n_scatter': len(coods)}
+    result = {'meta': run_all.engine_meta(a.seeds, mbo.BETA, mbo.K_ENS),
+              'per_cell': agg, 'cood_vs_normscore_spearman_x1x3on': rho, 'n_scatter': len(coods)}
     json.dump(result, open(a.out, 'w'), indent=1)
     print(f'done in {(time.time()-t0)/60:.1f} min -> {a.out}')
-    print(f'\nc_ood (X1-on) by cell:  [Spearman(c_ood, normscore) over grid = {rho:+.3f}]')
+    print(f'\nc_ood (on_on) by cell:  [Spearman(c_ood, normscore) over grid = {rho:+.3f}]')
     print(f'{"task":16}' + ''.join(f'{s[:4]+":"+o[:3]:>11}' for s in SURR for o in OPT))
     for tk in tasks:
-        row = ''.join(f'{agg.get(f"{tk}|{s}:{o}|x1=1", {}).get("c_ood", float("nan")):11.2f}'
+        row = ''.join(f'{agg.get(f"{tk}|{s}:{o}|x1=1|x3=1", {}).get("c_ood", float("nan")):11.2f}'
                       for s in SURR for o in OPT)
         print(f'{tk:16}{row}')
 
