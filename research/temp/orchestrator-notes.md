@@ -291,6 +291,57 @@ C → ML or RU (uncertainty/GP mechanism) with SO cross-listing. VENUE-FIT MAPPI
 ## ALL 6 DEPTH INVESTIGATORS DONE. Committed positions captured for N2/N5, N3, N4, N7, N9, and the
 ## optimizer-reversal/A-credit synthesis. Ready for step 6 reconciliation.
 
+## STEP 8 GAP-FILL RETURNS
+- **G1 (N6 fANOVA/AutoML) DONE — N6 stays NONE FOUND, STRENGTHENED.** Exhaustive fANOVA/AutoML
+  search (21+ queries) found NO crossed model-class × optimizer two-way ANOVA/η² decomposition.
+  Nearest-miss citations to NAME in related work (pre-empt reviewers): (1) **Hutter/Hoos/
+  Leyton-Brown fANOVA (ICML 2014)** — "model class" = most important hyperparameter (31-58% var),
+  but ONE-WAY on one fixed search method (SMAC); (2) **Moosbauer et al. (IEEE TEVC 2022)** —
+  discusses then REJECTS fANOVA for OFAT, varies surrogate + sampling separately, no factorial; (3)
+  **Liang et al. (npj Comp Materials 2021)** — THE closest structural analog: crossed surrogate ×
+  acquisition grid, but descriptive ranking only (0 ANOVA/η² hits) + ONLINE BO not offline MBO.
+  => N6 residual SHARPENED = crossed surrogate×optimizer factorial WITH two-way ANOVA/η²
+  decomposition IN OFFLINE MBO (Liang crossed surrogate×acquisition online, no ANOVA; Hutter
+  one-way). Draft MUST cite Hutter + Liang as nearest neighbors.
+
+- **G2 (N5 width-ablation) DONE — N5 = PRIOR WORK FOUND (PARTIAL/CONFOUNDED), refines both ways.**
+  Dai et al. 2022 resolved = "Sample-Then-Optimize Batch Neural Thompson Sampling" (NeurIPS 2022,
+  arXiv:2210.06850): Deep-Ensemble critique is ALGORITHMIC (ensemble = reduced STO-BNTS w/o
+  linearization term, loses theoretical guarantees); width-sweeps only its OWN net, never the
+  ensemble. DECISIVE: **L/R/W Appendix D.1.2 / Fig A.2** rerun the full comparison INCLUDING the K=5
+  ensemble at a smaller architecture (width 128→50, depth 3→2, K fixed), verbatim: *"even with the
+  smaller architecture... the relative performance of the surrogate models mostly remains
+  consistent. We still find that HMC often outperforms... deep ensembles."* => (a) partially
+  pre-empts N5's "width untested" framing (the draft must position its proposed CLEAN width sweep as
+  a de-confounded version of L/R/W's D.1.2, which confounds width+depth+activation and tests only 1
+  alt size); (b) EMPIRICALLY WEAKENS the finite-width OBJECTION to C — shrinking the net does NOT
+  rescue the ensemble, ranking is architecture-size-invariant over their range → the gap looks less
+  like a pure width artifact. Combined with the K≠width category error: the N5 objection to a
+  mechanism (C) paper is MORE ANSWERABLE than the K/finite-width locus assumed. Draft N5 verdict:
+  the theoretical objection exists (NTK/spectral) but is partially answered by L/R/W D.1.2; the
+  paper's K-sweep is NOT valid finite-width evidence.
+
+- **G3 (N3/N4/N9) DONE — TWO honest downgrades + N9 confirmed.**
+  - **N3: clean NONE FOUND → PARTIAL.** Dewolf/De Baets/Waegeman "Valid Prediction Intervals for
+    Regression Problems" (AI Review 2022, arXiv:2107.00363) states N3's premise in GENERAL
+    statistical form across 4 UQ classes at a shared confidence level ("uncalibrated models... either
+    underestimate the uncertainty or produce overconservative prediction intervals"; normalize
+    nonconformity by dispersion σ). 0 hits for acquisition/BO/pessimis/surrogate/LCB → does NOT apply
+    to comparing surrogate CLASSES under a shared β in an acquisition. (Papadopoulos/Vovk/Gammerman
+    2011 corroborates single-model.) => N3 residual = the OFFLINE-MBO ACQUISITION-COMPARISON
+    application, NOT the general principle.
+  - **N4: causal-mechanism sub-claim NONE FOUND → PARTIAL.** Fan/Wang/Ng/Hu "Minimizing UCB: a
+    Better Local Search Strategy in Local BO" (NeurIPS 2024, arXiv:2405.15285) explicitly derives
+    "minimizing UCB can be viewed as local strategy" (UCB small near samples, grows away). "trust
+    region" only as TuRBO cites; "implicit" 0 hits. => the causal mechanism is OWNED (Fan 2024); the
+    "LCB is an implicit trust region" NAMING + offline-MBO application remains available/novel.
+  - **N9 forward-cite = NONE FOUND** (no third party calls Recht slope>1 an "audit strengthens"
+    instance; ~10 queries) → reinforces N9 narrow-unclaimed; Recht/Agarwal stay must-pre-empt.
+
+## ALL 3 GAP-FILLERS DONE. Net verdict changes vs pre-step-8: N3 → PARTIAL (general principle owned,
+## offline-MBO application not), N4 mechanism → PARTIAL (Fan2024 owns mechanism, naming free), N5 →
+## PARTIAL (L/R/W D.1.2 confounded width test), N6 stays NONE FOUND (fANOVA searched, strengthened).
+
 ## Process
 8 fetchers dispatched (A-E readers over local text; W1 Kim/IGNITE/MS-DDEO; W2 AAAI-27+Gundersen;
 W3 miss-catchers N2/N3/N6/N9). Awaiting completions. Tooling reality: CLI PDF fetch broken;

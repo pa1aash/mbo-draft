@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "A confidence-bound acquisition of the form mu(x) + beta*sigma(x) is small only near previously sampled points and grows with distance from them, which the authors state directly implies that minimizing (or maximizing, by symmetry) this bound behaves as an implicit local search strategy.",
+    "stance": "supports",
+    "stance_target": "N4's causal mechanism ('GP posterior variance grows away from data -> LCB is an implicit trust region')",
+    "evidence_type": "theoretical",
+    "scope_conditions": "local Bayesian optimization for high-dimensional black-box minimization, approximate-gradient-descent family (GIBO-style), Gaussian process surrogate with a differentiable covariance function",
+    "quoted_support": "The right figure illustrates UCB across the design space. Here we see that it is small only near the sampled point, and increases as it moves further away, indicating that minimizing UCB can be viewed as local strategy.",
+    "numbers": ["1-D illustrative example, 2 data points"],
+    "entities": ["Fan", "Wang", "Ng", "Hu", "MinUCB", "GIBO", "TuRBO", "NeurIPS 2024"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "minimizing-ucb-a-better-local-search-strategy-in-local-bayesian-optimization-neu"
+  },
+  {
+    "claim": "The paper formally proves (Theorem 1 and surrounding convergence analysis) that a confidence-bound-minimization step maintains a convergence rate similar to GIBO's approximate gradient descent, because the GP posterior standard deviation term is bounded and does not grow faster than a quadratic function of distance from the data.",
+    "stance": "supports",
+    "stance_target": "N4's mechanism, formalized rather than asserted informally",
+    "evidence_type": "theoretical",
+    "scope_conditions": "requires beta > 0 (nonzero pessimism/optimism weight); no analysis of a beta=0 ablation",
+    "quoted_support": "The standard deviation term σD(x) has an upper bound and will not grow faster than the quadratic function, which means the UCB will not change drastically.",
+    "numbers": ["convergence rate matches GIBO"],
+    "entities": ["Fan", "Wang", "Ng", "Hu"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "minimizing-ucb-a-better-local-search-strategy-in-local-bayesian-optimization-neu"
+  },
+  {
+    "claim": "Despite deriving the variance-growth-confines-search mechanism, the paper never labels its own confidence-bound acquisition an '(implicit) trust region' -- that phrase appears only 3 times, all as citations to TuRBO and other EXPLICIT trust-region baselines, and the word 'implicit' never appears in the body.",
+    "stance": "neutral",
+    "stance_target": "N4's specific naming/framing move ('implicit trust region'), as distinct from the underlying causal mechanism",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep verification of the published NeurIPS 2024 version",
+    "quoted_support": "N/A -- this is an absence/usage-pattern finding verified via grep (trust region: 3 hits, all citing TuRBO/MPD; implicit: 0 hits), not a quoted sentence.",
+    "numbers": ["trust region: 3 hits (all citations to prior work)", "implicit: 0 hits"],
+    "entities": ["MinUCB", "TuRBO", "MPD"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "minimizing-ucb-a-better-local-search-strategy-in-local-bayesian-optimization-neu"
+  },
+  {
+    "claim": "MinUCB's confidence-bound step is the mirror image of a pessimistic LCB acquisition used for maximization (mu - beta*sigma maximized) -- MinUCB minimizes mu + beta*sigma for a minimization problem -- so the same beta-weighted-sigma acquisition family is shown, in a peer-reviewed NeurIPS 2024 paper outside the SNGP/DUQ/DUE/TuRBO set the corpus had already exhausted, to produce locally-confined search behavior via variance growth away from data.",
+    "stance": "supports",
+    "stance_target": "N4's mechanism, widening the search beyond the four-paper set the corpus's prior locus had exhaustively grepped with a NONE FOUND result",
+    "evidence_type": "theoretical",
+    "scope_conditions": "acquisition-function family equivalence argument (minimize mu+beta*sigma vs. maximize mu-beta*sigma) is a structural observation by this fetcher, not a claim made explicitly by the source paper itself",
+    "quoted_support": "x* = arg min mu_D(x) + beta*sigma_D(x)",
+    "numbers": ["beta > 0"],
+    "entities": ["MinUCB", "LCB", "UCB", "offline MBO"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "minimizing-ucb-a-better-local-search-strategy-in-local-bayesian-optimization-neu"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Applying one uniform/fixed confidence-interval construction rule across regression uncertainty estimators whose underlying scale is not locally calibrated produces homoscedastic (equal-width) intervals that do not track true local uncertainty, which the UQ literature treats as a defect requiring normalization.",
+    "stance": "supports",
+    "stance_target": "N3 (a shared confidence multiplier across differently-scaled estimators cannot deliver matched effective conservatism) in its general statistical form",
+    "evidence_type": "theoretical",
+    "scope_conditions": "i.i.d. regression uncertainty quantification (Bayesian, ensemble, direct-interval, and conformal-prediction method classes); static coverage/validity setting, not sequential decision-making or acquisition functions",
+    "quoted_support": "The above procedure gives uniform (or homoscedastic) prediction intervals, which is in stark contrast with most bona fide interval estimators... Different modifications to obtain heteroscedastic models have been proposed in the literature, the main one being to normalize the nonconformity measure by a dispersion function σ : X → R.",
+    "numbers": ["nominal coverage level 0.9 (90%)"],
+    "entities": ["Dewolf", "De Baets", "Waegeman", "conformal prediction", "Papadopoulos"],
+    "time_period": "2022 (arXiv 2021, v4 2024)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems-artificial-intelligence-revie"
+  },
+  {
+    "claim": "Four classes of uncalibrated regression uncertainty methods (Bayesian, ensemble, direct-interval, conformal) run at the identical nominal 90% confidence level empirically fail to saturate that validity target in a consistent direction -- some overconservative, some underconservative -- demonstrating unmatched effective conservatism across method classes sharing one nominal setting.",
+    "stance": "supports",
+    "stance_target": "N3's premise that a shared nominal setting delivers unequal effective conservatism across differently-scaled estimator classes",
+    "evidence_type": "empirical",
+    "scope_conditions": "benchmark regression datasets, static uncertainty-quantification comparison across method CLASSES (not within one class), no acquisition function or optimization loop involved",
+    "quoted_support": "the uncalibrated models do not approximately saturate the validity constraint. They either underestimate the uncertainty or produce overconservative prediction intervals.",
+    "numbers": ["nominal confidence level 0.9"],
+    "entities": ["Bayesian methods", "ensemble methods", "direct interval estimation", "conformal prediction", "mean-variance estimation", "deep ensembles"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems-artificial-intelligence-revie"
+  },
+  {
+    "claim": "The paper never extends the shared-threshold-mismatch principle to comparing surrogate model classes under a shared beta inside an acquisition function; it contains zero occurrences of 'acquisition', 'Bayesian optimization', 'pessimis', 'surrogate model', 'lower confidence bound', or 'upper confidence bound' anywhere in its ~17,800-word body.",
+    "stance": "neutral",
+    "stance_target": "N3's narrower claim about acquisition-function/optimization comparisons specifically",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep verification, not an assertion about scope elsewhere in the literature",
+    "quoted_support": "N/A -- this is an absence-of-term finding verified via grep, not a quoted sentence.",
+    "numbers": ["0 hits for 'acquisition', 'Bayesian optimization', 'pessimis', 'surrogate model', 'lower confidence bound', 'upper confidence bound'"],
+    "entities": ["Dewolf", "De Baets", "Waegeman"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems-artificial-intelligence-revie"
+  },
+  {
+    "claim": "The foundational normalized-nonconformity-measure literature (Papadopoulos, Vovk & Gammerman) establishes that an unnormalized nonconformity measure gives predictive regions of roughly equal width regardless of local prediction difficulty, and that normalizing by a local difficulty/dispersion estimate is required so region size (effective conservatism) tracks true local uncertainty.",
+    "stance": "supports",
+    "stance_target": "N3's general statistical premise, at the single-model per-instance level rather than the cross-model-class level",
+    "evidence_type": "theoretical",
+    "scope_conditions": "k-nearest-neighbours regression conformal prediction, single underlying model, per-instance (not per-model-class) heteroscedasticity",
+    "quoted_support": "The main aim of this work was to improve the typical regression nonconformity measure ... by normalizing it with the expected accuracy of the underlying method. ... This leads to predictive regions that are larger for the examples which are more difficult to predict and smaller for the examples which are easier to predict.",
+    "numbers": ["confidence levels 95% and 99% tested"],
+    "entities": ["Papadopoulos", "Vovk", "Gammerman", "JAIR 2011"],
+    "time_period": "2011 (arXiv 1401.3880)",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems-artificial-intelligence-revie"
+  }
+]

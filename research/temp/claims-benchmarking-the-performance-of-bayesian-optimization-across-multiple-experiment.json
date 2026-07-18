@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Liang et al. (npj Comp Materials 2021) run a genuinely crossed grid of surrogate models (RF, GP with 5 kernel choices, GP-ARD) x acquisition functions (EI, PI, LCB_lambda) across 5 materials-science domains -- the closest structural analog to N6's crossed factorial found in this sweep.",
+    "stance": "refutes",
+    "stance_target": "N6 (closest structural counterexample by design, though not by statistical method)",
+    "evidence_type": "empirical",
+    "scope_conditions": "5 experimental materials-science optimization domains, online closed-loop BO (not offline MBO)",
+    "quoted_support": "We then pair the selected surrogate model with one of three acquisition functions, including expected improvement (EI), probability of improvement (PI), and lower confidence bound (LCB) LCBλ(x) = μ̂(x) + λσ̂(x)... Our study provides a comprehensive test across the five datasets in order to reflect how each BO algorithm, resulting from the pairing above, performs across many different materials science design spaces.",
+    "numbers": ["5 datasets", "3 surrogate model families (RF, GP, GP-ARD)", "5 GP kernel choices", "3 acquisition functions"],
+    "entities": ["random forest", "Gaussian process", "GP-ARD", "expected improvement", "probability of improvement", "LCB"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "benchmarking-the-performance-of-bayesian-optimization-across-multiple-experiment"
+  },
+  {
+    "claim": "Despite the crossed surrogate x acquisition-function grid, the paper contains zero ANOVA/eta^2/variance-decomposition statistics anywhere -- performance comparison is via descriptive acceleration/enhancement metrics and ranking, not inferential factor-variance attribution.",
+    "stance": "supports",
+    "stance_target": "N6 NONE FOUND (method-specific: no eta^2/ANOVA)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Whole paper -- grep for ANOVA|variance decomp|eta^2|factorial returns 0 hits",
+    "quoted_support": "By defining acceleration and enhancement metrics for materials optimization objectives, we find that surrogate models such as Gaussian Process (GP) with anisotropic kernels and Random Forest (RF) have comparable performance in BO, and both outperform the commonly used GP with isotropic kernels.",
+    "numbers": ["0 grep hits for ANOVA/eta^2/factorial"],
+    "entities": ["acceleration metric", "enhancement metric"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "benchmarking-the-performance-of-bayesian-optimization-across-multiple-experiment"
+  },
+  {
+    "claim": "GP with anisotropic kernels (ARD) and RF have comparable, best BO performance across the 5 materials domains, both outperforming GP with isotropic kernels.",
+    "stance": "neutral",
+    "stance_target": "surrogate-class ranking in BO more broadly",
+    "evidence_type": "empirical",
+    "scope_conditions": "5 experimental materials-science optimization domains",
+    "quoted_support": "GP with anisotropic kernels has demonstrated the most robustness, yet RF is a close alternative and warrants more consideration because it is free from distribution assumptions, has smaller time complexity, and requires less effort in initial hyperparameter selection.",
+    "numbers": [],
+    "entities": ["GP-ARD", "random forest", "GP isotropic kernel"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "benchmarking-the-performance-of-bayesian-optimization-across-multiple-experiment"
+  },
+  {
+    "claim": "This paper is online, closed-loop experimental BO (materials-science autonomous experimentation), not offline (fixed-dataset, no further oracle queries) MBO -- a domain boundary that further separates it from N6's exact claim scope even where the crossed-grid design matches.",
+    "stance": "neutral",
+    "stance_target": "N6 scope boundary (offline vs online)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Whole paper",
+    "quoted_support": "Bayesian optimization (BO) has been leveraged for guiding autonomous and high-throughput experiments in materials science.",
+    "numbers": [],
+    "entities": ["autonomous experimentation", "closed-loop BO"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "benchmarking-the-performance-of-bayesian-optimization-across-multiple-experiment"
+  }
+]
