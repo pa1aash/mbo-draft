@@ -118,7 +118,7 @@ NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2
 |---|---|---|---|
 | 0A.1 beta=0 reconciliation | **DONE** | docs/BETA0_RECONCILE.md, results/beta0_reconcile.json | disagreement was ENGINE (off_off vs on_on), not estimator |
 | 0A.2 width ablation (W1/W2) | **DONE** | docs/WIDTH_ABLATION.md, results/width/ | W1 CONFIRMED: gap does not close with width |
-| 0A.3 budget-matched (BM1) | RUNNING | code/budget_matched.py -> results/budget/budget_matched.json | 2 levels x 7 tasks x 30 seeds |
+| 0A.3 budget-matched (BM1) | **DONE** | docs/BUDGET_MATCHED.md, results/budget/ | BM1 CONFIRMED: eta2_opt 0.038 matched (was 0.005) |
 | V3 pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 55ced44) | committed BEFORE both launches |
 
 **0A.1 verdict.** GATE_KBETA's 0.378 and the novelty audit's 0.504->0.511 are the same
@@ -167,4 +167,29 @@ Describe it as: the ensemble's mean, though more accurate on-distribution, admit
 off-distribution maximizers the oracle scores poorly. Combined with 0A.1 (survives sigma removal)
 and 0A.2 (survives width increase), mean geometry under optimization is the remaining live
 explanation.
+
+**0A.3 verdict.** BM1 CONFIRMED at the primary (UP) level. Native budgets are grossly unequal --
+grad 51,456 vs perturb 4,352 vs cma 6,528 median (11.8x), measured not derived because cma's
+maxfevals cap rarely binds. Matched at Q=51,456 (achieved within 0.5%, 0/630 cells >5% off),
+eta2_opt = **0.038 [0.003, 0.123]**, below the 0.10 confirm threshold; KILL (>0.15) excluded at
+95%. The optimizer null survives.
+
+Three qualifications: (i) the published 0.005 understates the effect ~8x -- 0.038 is the honest
+number and should replace it; (ii) the CI upper bound 0.123 sits inside the pre-registered
+[0.10,0.15] inconclusive band, so confirmation is not comfortable (n=7 precision limit, same as
+KB5); (iii) the DOWN level (Q=4,352) gives eta2_opt 0.066 CI [0.014, 0.340], upper bound above
+the KILL threshold -- per prereg the primary decides, but the null is best described as
+established at high budget, underpowered at low budget.
+
+Two findings the unmatched grid concealed. (a) The optimizer RANKING flips with budget: grad best
+at DOWN (0.731), perturb best at UP (0.732). Low eta2_opt licenses "explains little variance",
+NOT "choice is arbitrary". (b) eta2_surr more than doubles with budget (0.243 -> 0.526) because
+the ensemble marginal FALLS as budget rises (0.361 -> 0.240) while both GPs rise. More search
+pressure on the ensemble's mean finds more off-distribution maxima -- independent corroboration
+of C2's mechanism from a third axis (after sigma in 0A.1 and width in 0A.2). Not pre-registered;
+report as observation.
+
+**Paper actions.** Replace eta2_opt 0.005 with 0.038 [0.003, 0.123] (budget-matched, cite the
+query-budget table); scope the optimizer-null claim to a stated budget; report the DOWN-level
+disagreement as a limitation; state budget alongside K and beta whenever eta2_surr is quoted.
 

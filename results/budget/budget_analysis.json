@@ -1,0 +1,139 @@
+{
+  "levels_config": {
+    "up": {
+      "Q": 51456,
+      "grad_steps": 100,
+      "perturb_rounds": 66,
+      "cma_fevals": 25472
+    },
+    "down": {
+      "Q": 4352,
+      "grad_steps": 8,
+      "perturb_rounds": 5,
+      "cma_fevals": 1920
+    }
+  },
+  "n_seeds": 30,
+  "nboot": 10000,
+  "engine": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.12.3",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.4.4",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "cma": "4.4.4",
+    "git_sha": "1db61d3007dad1b903694e375fb7a1c5b992496e",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 30,
+    "seed": "0..29",
+    "timestamp": "2026-07-18T14:39:02"
+  },
+  "achieved_q": {
+    "up": {
+      "perturb": {
+        "median": 51200.0,
+        "min": 51200,
+        "max": 51200,
+        "target": 51456,
+        "pct_dev_median": -0.5,
+        "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+        "median": 51456.0,
+        "min": 51456,
+        "max": 51456,
+        "target": 51456,
+        "pct_dev_median": 0.0,
+        "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+        "median": 51472.0,
+        "min": 51464,
+        "max": 51472,
+        "target": 51456,
+        "pct_dev_median": 0.03,
+        "frac_cells_over_5pct": 0.0
+      }
+    },
+    "down": {
+      "perturb": {
+        "median": 4352.0,
+        "min": 4352,
+        "max": 4352,
+        "target": 4352,
+        "pct_dev_median": 0.0,
+        "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+        "median": 4352.0,
+        "min": 4352,
+        "max": 4352,
+        "target": 4352,
+        "pct_dev_median": 0.0,
+        "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+        "median": 4372.0,
+        "min": 4352,
+        "max": 4376,
+        "target": 4352,
+        "pct_dev_median": 0.46,
+        "frac_cells_over_5pct": 0.0
+      }
+    }
+  },
+  "by_level": {
+    "up": {
+      "eta2_incumbent_norm": {
+        "surr": 0.5255546477053188,
+        "opt": 0.0379057869232789,
+        "inter": 0.11028518133940664
+      },
+      "eta2_condition_invariant_norm": {
+        "surr": 0.5046597945489631,
+        "opt": 0.037858463632727164,
+        "inter": 0.11195289710177846
+      },
+      "eta2_opt_ci": [
+        0.002684574350078222,
+        0.12341929194279133
+      ],
+      "eta2_surr_ci": [
+        0.4212018801451158,
+        0.7193651042050153
+      ],
+      "verdict": "BM1 CONFIRMED \u2014 eta2_opt < 0.10 under matched budget"
+    },
+    "down": {
+      "eta2_incumbent_norm": {
+        "surr": 0.24262885086070096,
+        "opt": 0.06643039037323258,
+        "inter": 0.15663239680176227
+      },
+      "eta2_condition_invariant_norm": {
+        "surr": 0.23715934762272334,
+        "opt": 0.05912119784435141,
+        "inter": 0.15041027479233177
+      },
+      "eta2_opt_ci": [
+        0.01378405317201264,
+        0.33981750527168336
+      ],
+      "eta2_surr_ci": [
+        0.18944273529420105,
+        0.35524204686353794
+      ],
+      "verdict": "BM1 CONFIRMED \u2014 eta2_opt < 0.10 under matched budget"
+    }
+  },
+  "primary_level": "up",
+  "BM1_verdict": "BM1 CONFIRMED \u2014 eta2_opt < 0.10 under matched budget"
+}
