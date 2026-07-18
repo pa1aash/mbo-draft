@@ -46,5 +46,6 @@ logs/
 # hyperresearch regenerable index
 research/index/
 
-# built macOS environments (the .lock files and patches ARE committed; the envs are not)
-envs/*/
+# built macOS environments (the .lock files + mac-db-patches/ ARE committed; the venvs are not)
+envs/mac-synth/
+envs/mac-db/

@@ -3,13 +3,19 @@
 Every unit that could not complete is logged here with a resume command, per the session
 contract (API failure: retry 3×, then log + continue; MISSING means MISSING).
 
-## F-1 · Design-Bench corners not runnable this machine
-**What:** Phase A.1.1 also calls for Design-Bench @16 seeds across the four corners, and
-A.1.5/A.1.6 reference DB. `design_bench` is not installed and is impractical to install
-here (needs TensorFlow 1.x + mujoco; ~8 GiB disk free at session start).
-**Status:** MISSING. Not fabricated. The (on,on) DB numbers already in the manuscript come
-from `results/results_db.json` (generated off-machine); the three missing DB corners are
-NOT computed.
+## F-1 · Design-Bench corners not runnable this machine — **RESOLVED (Stage 2) 2026-07-18**
+**Original claim (superseded):** `design_bench` impractical to install on this Mac (thought to
+need TF 1.x + mujoco).
+**Resolution:** `envs/mac-db` (py3.9, design-bench 2.0.20, numpy 1.23.5, sklearn 1.0.2, torch 2.8,
+botorch 0.10, gpytorch 1.11) now builds and runs the **five non-mujoco Design-Bench tasks**
+(TFBind8, TFBind10, Superconductor, GFP, UTR — including both exact-oracle tasks) with the full
+9-cell grid. Build recipe + patches: `docs/ENVIRONMENTS.md`, `envs/mac-db-requirements.lock`,
+`envs/mac-db-patches/fix_designbench_macos.py`. Verification: `docs/ENV_VERIFICATION.md` (GP cells
+reproduce `results_db.json` exactly; ensemble cells drift by platform RNG — a disclosable finding).
+**Still MISSING (Stage 3):** Ant, D'Kitty, Hopper (mujoco at import via morphing-agents; arm64
+hard). Run those on the RunPod Linux pod (`cloud/setup.sh`). Not fabricated.
+**Resume (DB four corners, Stage-2 tasks):** commands in `docs/ENVIRONMENTS.md` (require
+`MBO_SPAWN=1`; TFBind10 in a low-concurrency pass; ~3–8 h/corner).
 **Resume (on a box with design_bench):**
 ```
 # per corner tag in {off_off, on_off, off_on}:
