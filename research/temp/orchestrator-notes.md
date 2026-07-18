@@ -136,6 +136,57 @@ C → ML or RU (uncertainty/GP mechanism) with SO cross-listing. VENUE-FIT MAPPI
   σ-mismatch), and (b) a quantitative η²-variance-decomposition where confounds net UP when
   combined.** (b) is the bridge to N9. => confirms D's differentiation from the genre.
 
+- **N3 partial precedent found (via W3):** "Why So Pessimistic? Estimating Uncertainties for
+  Offline RL through Ensembles" (Ghasemipour, Gu, Nachum, NeurIPS 2022, arXiv:2205.13703). Shares
+  N3's SHAPE ("same nominal pessimism formula → different EFFECTIVE conservatism via an unmeasured
+  implementation detail"; verbatim *"shared pessimistic targets can paradoxically lead to value
+  estimates that are effectively optimistic"*). BUT mechanism = target independence-vs-sharing
+  within ONE Q-ensemble, NOT differing σ scales across surrogate CLASSES sharing one β. => **N3 =
+  NONE FOUND for the specific cross-surrogate-class σ-mismatch mechanism, with Ghasemipour as an
+  honest conceptual analog the draft must cite (the "effective ≠ nominal pessimism" idea exists in
+  offline RL, for a different reason).**
+
+- **W1 (Kim/IGNITE/MS-DDEO, N6/N7) DONE.**
+  - **Kim survey → N6 = NONE FOUND, reinforced.** Kim, Gu, Yuan, Yun, Liu, Bengio, Chen, "Offline
+    Model-Based Optimization: Comprehensive Review," **TMLR 2026** (DATE TRAP: arXiv v1 Mar 2025,
+    certified TMLR Jan 2026), arXiv:2503.17286. Its four-component surrogate taxonomy is DESCRIPTIVE
+    not an empirical factorial; its own future-work names the gap: existing benchmarks don't
+    distinguish *"whether observed gains stem from superior surrogate modeling, improved
+    optimization strategies, or mere chance."* => the field itself concedes the decomposition N6
+    does is undone. Strong verbatim support for N6 novelty.
+  - **N7 = NONE FOUND (strong, with named near-misses).** IGNITE = Dao/Nguyen/Truong/Hoang, NeurIPS
+    2024, arXiv:2503.04242 — SMOOTHS NN surrogate sharpness only, never roughens, 0 "Gaussian
+    process" hits; forward-cite (8 citers) no bidirectional paper. MS-DDEO = Zhen/Gong/Wang, SWEVO
+    2022, DOI 10.1016/j.swevo.2022.101080 — CLOSED-ACCESS (403, no abstract via Unpaywall), paraphrase
+    only, **NOT VERIFIABLE at sentence level** (→ terminal section); 4-tier RBFN smoothness pool for
+    SELECTION, never GP. **ROOT (NeurIPS 2025, arXiv:2509.16300)** = closest GP-smoothness hit, but
+    it VARIES length-scale for DATA AUGMENTATION (synthetic-function generation), not causal
+    ablation → N7 stays NONE FOUND. "Boosting Offline Optimizers with Surrogate Sensitivity" (ICML
+    2024, arXiv:2503.04181) = IGNITE precursor, one-directional. => nobody manipulates smoothness in
+    BOTH directions to establish it as the causal axis of a surrogate-class gap.
+
+- **W3 (miss-catchers N2/N3/N6/N9) DONE — all query logs in
+  `research/notes/miss-catcher-search-log-n2-n3-n6-n9-n1-residual.md`.**
+  - **N2 = NONE FOUND + a LOAD-BEARING TENSION.** Abe never touches BO/surrogate ranking. Li/Rudner/
+    Wilson (ICLR24) runs the closest analog (K=5-vs-10 ensemble-size ablation inside a BO surrogate
+    comparison) and finds the OPPOSITE: verbatim *"the different ensembles perform similarly across
+    many experiments, showing the robustness of our results to this hyperparameter"* (Fig A.7). =>
+    our K-sweep (K=2 ≫ K=5, ranking flips) DIRECTLY CONTRADICTS L/R/W. This is the #1 contradiction
+    for step 3: raises N2 novelty AND arms a reviewer. (Also intersects N5: our K-dependence is the
+    finite-width evidence; L/R/W's K-robustness is evidence against it — a genuine fork.)
+  - **N3 = NONE FOUND** (Ghasemipour closest analog, cross-class σ-mismatch never addressed).
+  - **N6 = NONE FOUND** — all 5 named papers grepped "factorial"/"ANOVA"/"crossed" = 0 hits each.
+  - **N9 = MIXED (not clean NONE FOUND).** No ML/CS paper where an audited headline number EXCEEDS
+    its originally published value. Partial precedents: Recht (ML, relative-slope steepens while
+    absolute drops) + **Bressan, "Confounds in failed replications" (Frontiers in Psychology 2019,
+    DOI 10.3389/fpsyg.2019....)** — controlling a stimulus-allocation confound restores a "failed"
+    replication and a stricter spec "came out stronger" (p 0.001→0.002), but no effect-size stat and
+    OUTSIDE ML. => N9 verdict = NONE FOUND *within ML/CS* for the exact shape (audit → published
+    η²-style effect GROWS); honestly flag Recht + Bressan as the nearest partials.
+
+## ALL 8 FETCHERS DONE. Step-2 corpus complete: every N-claim has grep-verified primary sources +
+## documented NONE-FOUND query logs. Verdicts drafted for N1-N9 (see per-claim notes above).
+
 ## TRUE CORPUS: 33 note files on disk (note-list display caps at 20). Every claim N1-N9 has >=3
 ## grep-verified primary sources. Appropriate for a focused prior-art audit.
 
