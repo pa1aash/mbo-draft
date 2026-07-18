@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "The most-cited Bayesian optimization survey (Shahriari et al. 2016) states as its explicit organizing thesis that the choice of statistical/surrogate model matters far more than the choice of acquisition function heuristic.",
+    "stance": "refutes",
+    "stance_target": "The framing that eta^2_optimizer=0.01 >> eta^2_surrogate=0.37 is a novel/surprising reversal in Bayesian-optimization-adjacent research",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "Online Bayesian optimization (sequential real-function queries), general BO literature as of 2016, restated as the field's canonical framing for a decade.",
+    "quoted_support": "We will see that the careful choice of statistical model is often far more important than the choice of acquisition function heuristic.",
+    "numbers": ["~5,948 citations", "Proc. IEEE Vol. 104, No. 1, pp. 148-175", "24 pages", "137,300 extracted characters"],
+    "entities": ["Bobak Shahriari", "Kevin Swersky", "Ziyu Wang", "Ryan P. Adams", "Nando de Freitas", "Proceedings of the IEEE"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"
+  },
+  {
+    "claim": "The survey's concluding remarks restate the surrogate-over-acquisition-function primacy claim as the paper's final substantive takeaway, explicitly noting that prior work over-focused on acquisition function design relative to model choice.",
+    "stance": "refutes",
+    "stance_target": "Novelty of 'surrogate matters more than search/optimizer strategy' as a general BO finding",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "Online Bayesian optimization, stated in Section IX Concluding Remarks",
+    "quoted_support": "There has been a great deal of work that has focussed heavily on designing acquisition functions, however we have taken the perspective that the importance of this plays a secondary role to the choice of the underlying surrogate model.",
+    "numbers": [],
+    "entities": ["Bobak Shahriari", "Nando de Freitas"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"
+  },
+  {
+    "claim": "No single acquisition strategy dominates across problem instances in online BO, motivating portfolio methods that combine multiple acquisition functions rather than relying on any one heuristic.",
+    "stance": "neutral",
+    "stance_target": "Relative importance of acquisition-function/search-strategy choice in BO performance",
+    "evidence_type": "empirical",
+    "scope_conditions": "Online Bayesian optimization acquisition-function portfolios (GP-Hedge, entropy search portfolio)",
+    "quoted_support": "No single acquisition strategy provides better performance over all problem instances. In fact, it has been empirically observed that the preferred strategy can change at various stages of the sequential optimization process.",
+    "numbers": [],
+    "entities": ["GP-Hedge", "entropy search portfolio (ESP)"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"
+  },
+  {
+    "claim": "Bayesian optimization as framed by this survey consists of exactly two decoupled ingredients whose relative importance the authors explicitly set out to disentangle: a probabilistic surrogate model and an acquisition-function search policy.",
+    "stance": "neutral",
+    "stance_target": "Existence of a surrogate-vs-search-strategy decomposition analogous to eta^2_surrogate / eta^2_optimizer in offline MBO",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General framing of the online BO framework (Section I)",
+    "quoted_support": "Our presentation is unique in that we aim to disentangle the multiple components that determine the success of Bayesian optimization implementations.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"
+  },
+  {
+    "claim": "The Shahriari et al. survey's surrogate-primacy claim is specific to the online BO setting (sequential real-function queries), not to offline, fixed-dataset black-box MBO, so it does not by itself validate or falsify the offline-MBO-specific eta^2 decomposition being audited.",
+    "stance": "neutral",
+    "stance_target": "Whether the audited paper's offline-MBO reversal hook is distinguishable from pre-existing online-BO folklore",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Distinction between online BO (this survey's scope) and offline/black-box MBO (the audited paper's and Chemingui PGS's scope)",
+    "quoted_support": "In particular, we focus on statistical modelling as this leads to general algorithms to solve a broad range tasks.",
+    "numbers": [],
+    "entities": ["Chemingui", "PGS", "AAAI 2024"],
+    "time_period": "2016 vs 2024",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"
+  }
+]

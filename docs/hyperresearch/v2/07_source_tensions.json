@@ -1,0 +1,116 @@
+{
+  "tensions": [
+    {
+      "name": "Li/Rudner/Wilson's K-robustness vs. the paper's K-flip",
+      "side_a": {
+        "position": "Ensemble-vs-surrogate rankings in Bayesian optimization are ROBUST to ensemble size.",
+        "evidence": "Verbatim (Fig A.7, App D.3): 'the different ensembles perform similarly across many experiments, showing the robustness of our results to this hyperparameter.' Sweep spans N in {5,10}.",
+        "proponents": ["a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization-iclr-202"]
+      },
+      "side_b": {
+        "position": "The ensemble-vs-GP ranking FLIPS with K: at K=2 the ensemble marginal (0.95) exceeds the exact GP (0.846); the field-standard K=5 is where the ensemble is weakest.",
+        "evidence": "The paper's own K-sweep: task-normalized ensemble 0.95/0.52/0.32/0.18 at K=2/3/5/10.",
+        "proponents": ["deep-ensembles-work-but-are-they-necessary-neurips-2022-arxiv220206985"]
+      },
+      "resolution": "Both are consistent because they probe DIFFERENT K ranges: L/R/W show flatness over K in {5,10}; the paper's flip is driven by K=2, which L/R/W never tested. The paper's claim (a K-contingent ranking) is NONE FOUND and genuinely unreported, but it is NOT a contradiction of L/R/W and must not be presented as one. The load-bearing caveat: the K-decline runs backward from Lakshminarayanan's monotonic-improvement-with-M, so the K=2 effect is most parsimoniously small-K sigma-estimation noise, not a discovered law — the paper should own the novelty of the observation while conceding the mechanism is unresolved.",
+      "origin": "contradiction-graph",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "SNGP/DUQ 'ensembles confidently wrong far from data' vs. Ovadia's mixed shift results",
+      "side_a": {
+        "position": "Deep ensembles assign low uncertainty to inputs far from the training data (they are confidently wrong out-of-distribution); a GP-style distance-aware variance fixes this.",
+        "evidence": "SNGP: variance 'increases monotonically toward 1 as x* moves further away from X_IND'; ensembles 'assign low uncertainty to OOD examples even if far from the data.' DUQ two-moons: 'Deep Ensembles is uncertain only along the decision boundary, and certain elsewhere.'",
+        "proponents": ["simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi", "uncertainty-estimation-using-a-single-deep-deterministic-neural-network-duq"]
+      },
+      "side_b": {
+        "position": "Deep ensembles are in fact among the most robust uncertainty estimators under distribution shift; 'far from data' is not cleanly spatial.",
+        "evidence": "Ovadia et al. 2019 report deep ensembles are consistently the best or near-best method under increasing shift on their benchmark; their notion of 'far' is corruption severity, not spatial distance from the training manifold.",
+        "proponents": ["can-you-trust-your-models-uncertainty-evaluating-predictive-uncertainty-under-da"]
+      },
+      "resolution": "The two are compatible once 'far from data' is disambiguated: SNGP/DUQ demonstrate a toy-geometry failure (spatial extrapolation on low-dim manifolds) that is exactly the offline-MBO optimizer's regime; Ovadia measures corruption-severity shift on image classifiers where ensembles do well. For this paper, side A is the relevant reading (the optimizer walks the surrogate into spatial OOD regions), but the report must NOT cite Ovadia as support for 'ensembles are confidently wrong far from data' — Ovadia complicates that claim, and a reviewer who knows it will flag a mis-citation. This is why the paper's mechanism must rest on the posterior MEAN, not on a claimed sigma/calibration failure.",
+      "origin": "orphan-scan",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "PGS 'search strategy is the neglected axis' vs. Shahriari doctrine 'surrogate > acquisition'",
+      "side_a": {
+        "position": "Offline black-box optimization has over-focused on surrogates while using fixed search strategies; the SEARCH strategy is the neglected, decisive axis.",
+        "evidence": "PGS's stated premise that offline BBO 'has focused on improving surrogate models while using fixed search strategies.'",
+        "proponents": ["offline-model-based-optimization-via-policy-guided-gradient-search-aaai-2024-arx"]
+      },
+      "side_b": {
+        "position": "The surrogate/model choice matters more than the acquisition/search-strategy choice — long-standing BO doctrine.",
+        "evidence": "Shahriari et al. 2016 (the field's most-cited BO survey) treats surrogate-model choice as the primary design decision, dominating acquisition-function choice.",
+        "proponents": ["taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et"]
+      },
+      "resolution": "The paper's eta^2_surrogate >> eta^2_optimizer sides with Shahriari, NOT against the field. Therefore the paper must NOT frame its result as overturning a field belief (a reversal); it should frame it as the first offline-MBO-specific, ANOVA-quantified FALSIFICATION of PGS's own local motivating premise. This narrower framing is both defensible and still pointed (it names PGS, a same-venue AAAI paper, as the specific belief refuted). Caveat: eta^2_optimizer = 0.01 is itself confounded by unequal oracle budgets and an untuned gradient optimizer, so the falsification is conditional on the reproduction-gate recompute.",
+      "origin": "comparisons",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Agarwal 'absence of significance is not absence of effect' vs. the paper's Design-Bench null",
+      "side_a": {
+        "position": "A statistically non-significant benchmark comparison does not license the conclusion that methods are equivalent, especially at small N.",
+        "evidence": "Agarwal et al.: 'the lack of statistically significant results does not demonstrate the absence of effect'; recommend interval estimates / power analysis; Demšar's own rule of thumb is N>10 datasets, k>5 methods.",
+        "proponents": ["deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice-neurips-202"]
+      },
+      "side_b": {
+        "position": "The Design-Bench grid is null: no cell is distinguishable (Friedman p=0.69, whole grid within one critical difference).",
+        "evidence": "The paper's Design-Bench omnibus (7 tasks, Friedman p=0.69).",
+        "proponents": ["design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20"]
+      },
+      "resolution": "Agarwal wins on method: the paper's N=7 sits below Demsar's own N>10 threshold for the very test it uses, so p=0.69 is under-powered and cannot support a positive equivalence claim. The paper must present the Design-Bench result as 'no detectable difference at this power' WITH an explicit power/N specification, not as 'the methods are equivalent.' This strengthens rather than weakens the paper (it converts a weak two-point null into a power-calibrated statement) and is the honest way to carry N8's benchmark-noise finding — implementation/platform variance of the same order as method differences is exactly why the omnibus is null.",
+      "origin": "orphan-scan",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Reality-check genre 'audit shrinks' vs. the paper's 'audit strengthens'",
+      "side_a": {
+        "position": "Controlling confounds SHRINKS or vanishes the headline effect — the reality-check norm.",
+        "evidence": "Melis: 'effect sizes tend to be much smaller' once tuning is controlled; Musgrave: DML gains 'marginal at best'; Recht: absolute accuracy drops 3-15%.",
+        "proponents": ["on-the-state-of-the-art-of-evaluation-in-neural-language-models-iclr-2018-arxiv1", "a-metric-learning-reality-check-eccv-2020-arxiv200308505", "do-imagenet-classifiers-generalize-to-imagenet-icml-2019-arxiv190210811"]
+      },
+      "side_b": {
+        "position": "Controlling five confounds GREW the effect: eta^2_surr 0.37 -> 0.405.",
+        "evidence": "The paper's result after fixing target scaling + candidate protocol; partial precedents Recht (relative slope>1 'increased advantage') and Bressan (a stricter spec 'came out stronger').",
+        "proponents": ["confounds-in-failed-replications-bressan-frontiers-in-psychology-2019-doi103389f"]
+      },
+      "resolution": "Side B's specific claim survives NARROWLY: within ML/CS, no reality-check paper reports a corrected scalar effect-size exceeding its published value, so the de-confounding DIRECTION is a genuine, nameable differentiator for candidate D. But the BROAD claim ('reality-checks always shrink, we are the exception') is false — Recht's relative-slope growth and Agarwal's power-revealed effects are ML/CS counter-instances. The report must state the strengthening-direction novelty in the narrow scalar-effect-size form and pre-empt Recht+Agarwal explicitly, or a strong reviewer flags overclaiming.",
+      "origin": "comparisons",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Abe 'ensemble gains are capacity' vs. Lakshminarayanan 'ensembles give real uncertainty'",
+      "side_a": {
+        "position": "Deep-ensemble advantages are largely a capacity effect a single larger model reproduces.",
+        "evidence": "Abe et al.: a single larger network matches ensemble accuracy gains across their tests.",
+        "proponents": ["deep-ensembles-work-but-are-they-necessary-neurips-2022-arxiv220206985"]
+      },
+      "side_b": {
+        "position": "Deep ensembles deliver simple, scalable, well-calibrated predictive uncertainty that single models lack; use ~5 members.",
+        "evidence": "Lakshminarayanan et al.: ensembles produce well-calibrated uncertainty; M=5 recommended default (the source the paper cites for 'standard K=5').",
+        "proponents": ["simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"]
+      },
+      "resolution": "Both stop short of the paper's claim (a surrogate-CLASS ranking vs a GP), so neither owns N2. But the disagreement is decision-relevant as CONTEXT: Abe's capacity reading supports the paper's 'ensemble underperformance is a tuning/capacity confound (fix it, do not mythologize it)' framing, while Lakshminarayanan is merely the citation the paper leans on for K=5 — which the paper's own ablation shows is the ensemble's weakest setting. The report should cite Lakshminarayanan honestly (it recommends ~5 for uncertainty quality, not for adversarial surrogate comparison) and use Abe to motivate treating the gap as a capacity/tuning artifact, not a class law.",
+      "origin": "contradiction-graph",
+      "decision_relevance": "medium"
+    },
+    {
+      "name": "NTK/spectral-bias 'nets behave like smooth GPs' vs. the paper's 'ensemble mean is jagged'",
+      "side_a": {
+        "position": "Infinite-width networks converge to Gaussian processes and finite networks are spectrally biased toward smooth, low-frequency functions.",
+        "evidence": "Jacot (NTK), Lee (infinite-width -> GP), Rahaman (spectral bias toward low frequencies).",
+        "proponents": ["180607572-neural-tangent-kernel-convergence-and-generalization-in-neural-network", "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165", "on-the-spectral-bias-of-neural-networks-icml-2019-arxiv180608734"]
+      },
+      "side_b": {
+        "position": "The paper's finite deep-ensemble posterior mean is jagged and this jaggedness is a surrogate-class property causing the gap.",
+        "evidence": "The paper's mechanism claim (Section 5) that the ensemble mean is rougher than the GP's.",
+        "proponents": ["design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20"]
+      },
+      "resolution": "Side A is a WIDTH statement (n -> infinity) and does not license the paper's use of ITS K-sweep (ensemble cardinality) as finite-width evidence — that is a category error. The honest reading: the spectral-bias literature actually predicts that a sufficiently wide, well-trained net SHOULD be smooth, so the paper's jagged ensemble is evidence of an under-parameterized/under-trained finite net (HID=96, 35 epochs), i.e., a fixable implementation confound (favouring D), not an intrinsic class property (favouring C). The missing experiment that would adjudicate is a WIDTH ablation, which the paper does not run. The report must flag this as the strongest theoretical objection to a mechanism (C) paper and note it is answerable only with an experiment not yet in the paper.",
+      "origin": "orphan-scan",
+      "decision_relevance": "high"
+    }
+  ]
+}

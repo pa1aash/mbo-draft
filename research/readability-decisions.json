@@ -1,0 +1,8 @@
+{
+  "total_recommendations": 14,
+  "applied": ["rec-1","rec-2","rec-3","rec-4","rec-5","rec-6","rec-7","rec-8","rec-9","rec-10","rec-11","rec-12","rec-13","rec-14"],
+  "skipped": [],
+  "edit_failures": [],
+  "net_char_delta_actual": 62,
+  "notes": "All 14 low-risk recommendations applied: 9 paragraph breaks at rhetorical hinges (before bolded verdicts / First-Second pivots), 1 make-list (N1 four-audit parallel enumeration -> bulleted with bold author labels), 2 bold-keyterms (K-sweep values, 0.37->0.405 headline), 2 semicolon->period sentence splits. No make-table/remove-hr/add-whitespace/merge-paragraphs were recommended. Protected content (verdict table, N6 rule-out table, A/C/D table, exact NONE-FOUND query lists, 50 Sources, H2 headings) untouched."
+}

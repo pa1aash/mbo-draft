@@ -1,0 +1,27 @@
+[
+  {
+    "claim": "The reality-check SHAPE — name an unreported confound, impose a controlled protocol, show that published rankings/effects change — is an established, venue-accepted genre (since ~2017).",
+    "independent_sources": ["are-we-really-making-much-progress (Ferrari Dacrema RecSys19)", "deep-reinforcement-learning-that-matters (Henderson AAAI18)", "a-metric-learning-reality-check (Musgrave ECCV20)", "are-gans-created-equal (Lucic NeurIPS18)", "deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice (Agarwal NeurIPS21)", "on-the-state-of-the-art-of-evaluation (Melis ICLR18)"],
+    "use": "Assert confidently: N1's SHAPE is PRIOR WORK FOUND. The paper's novelty is NOT the shape; it is the offline-MBO residual + the de-confounding direction (N9)."
+  },
+  {
+    "claim": "Standard deep nets / deep ensembles are OVERCONFIDENT far from the training data (they assign low uncertainty to inputs far from the data); GP-style distance-aware variance grows away from the data.",
+    "independent_sources": ["simple-and-principled-uncertainty-estimation (SNGP)", "uncertainty-estimation-using-a-single-deep-deterministic (DUQ)", "on-feature-collapse-and-deep-kernel-learning (DUE)"],
+    "use": "Assert confidently for N4's mechanism ingredient. But note the qualifier: DUE shows a GP does NOT automatically inherit variance growth."
+  },
+  {
+    "claim": "Infinite-width neural networks converge to Gaussian processes / the neural tangent kernel regime; finite networks are spectrally biased toward low-frequency (smooth) functions.",
+    "independent_sources": ["jacot-ntk (NeurIPS18)", "deep-neural-networks-as-gaussian-processes (Lee ICLR18)", "on-the-spectral-bias-of-neural-networks (Rahaman ICML19)"],
+    "use": "Assert confidently for N5. This is the theoretical spine of the finite-width objection: the 'jagged ensemble mean' may be a width/capacity artifact, cutting against C-mechanism and for D-taxonomy."
+  },
+  {
+    "claim": "No prior offline-MBO work runs a crossed surrogate-class x optimizer factorial with a variance decomposition; the field has not separated surrogate from optimizer contributions.",
+    "independent_sources": ["design-bench (Trabucco ICML22)", "offline-model-based-optimization-via-policy-guided-gradient-search (Chemingui AAAI24)", "offline-model-based-optimization-by-learning-to-rank (Tan ICLR25)", "offline-model-based-optimization-comprehensive-review (Kim TMLR26 — 'whether observed gains stem from superior surrogate modeling, improved optimization strategies, or mere chance')"],
+    "use": "Assert confidently: N6 = NONE FOUND. This is a NEGATIVE consensus — the survey itself names the gap. Load-bearing for candidates A and D."
+  },
+  {
+    "claim": "Implementation / execution-environment details (codebase choice, GPU nondeterminism, hyperparameter reporting, benchmark determinism) can move deep-RL benchmark results by a magnitude comparable to or larger than the method differences under study.",
+    "independent_sources": ["deep-reinforcement-learning-that-matters (Henderson AAAI18)", "the-impact-of-nondeterminism-on-reproducibility (Nagarajan 2018)", "reproducibility-of-benchmarked-deep-reinforcement-learning (Islam ICML17-ws)", "revisiting-the-arcade-learning-environment (Machado JAIR18)"],
+    "use": "Assert for N8's general phenomenon (PRIOR WORK FOUND, partial). Residual = offline-MBO domain + the specific cross-platform (macOS vs Linux) axis + a stated same-order ratio."
+  }
+]

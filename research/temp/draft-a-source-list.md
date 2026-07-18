@@ -1,0 +1,37 @@
+# Draft A — must_read_note_ids (n=34)
+Angle: The case FOR novelty. Defend the NONE-FOUND verdicts (N6, N7, N9-narrow) and the offline-MBO residual; recommend D. Lead with gap-naming + nearest-miss-that-falls-short.
+
+- interim-report-k-and-finite-width-artifact-vs-class-property
+- interim-report-n4-sigma-mechanism-scope-and-ovadia
+- interim-report-audit-strengthens-and-n9-integrity
+- interim-report-n7-roughening-beyond-offline-mbo
+- interim-report-optimizer-reversal-unearned-and-candidate-a-credit
+- interim-report-n3-classic-bo-beta-calibration
+- miss-catcher-search-log-n2-n3-n6-n9-n1-residual
+- aaai-27-areas-and-topics-aaai
+- a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization-iclr-202
+- offline-model-based-optimization-comprehensive-review-kim-et-al-tmlr-2026-arxiv2
+- offline-model-based-optimization-via-policy-guided-gradient-search-aaai-2024-arx
+- offline-model-based-optimization-by-learning-to-rank-iclr-2025-arxiv241011502
+- design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20
+- deep-reinforcement-learning-that-matters-aaai-2018-arxiv170906560
+- a-metric-learning-reality-check-eccv-2020-arxiv200308505
+- are-we-really-making-much-progress-a-worrying-analysis-of-recent-neural-recommen
+- do-imagenet-classifiers-generalize-to-imagenet-icml-2019-arxiv190210811
+- on-the-state-of-the-art-of-evaluation-in-neural-language-models-iclr-2018-arxiv1
+- simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi
+- scalable-global-optimization-via-local-bayesian-optimization-turbo-neurips-2019
+- 180607572-neural-tangent-kernel-convergence-and-generalization-in-neural-network
+- the-impact-of-nondeterminism-on-reproducibility-in-deep-reinforcement-learning-n
+- taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-shahriari-et
+- an-efficient-approach-for-assessing-hyperparameter-importance-icml-2014-hutterho
+- benchmarking-the-performance-of-bayesian-optimization-across-multiple-experiment
+- extrapolative-bayesian-optimization-with-gaussian-process-and-neural-network-ens
+- ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec
+- ms-ddeo-offline-data-driven-evolutionary-optimization-based-on-model-selection-z
+- root-rethinking-offline-optimization-as-distributional-translation-via-probabili
+- confounds-in-failed-replications-bressan-frontiers-in-psychology-2019-doi103389f
+- validating-the-validation-reanalyzing-a-large-scale-comparison-of-deep-learning
+- gaussian-process-optimization-in-the-bandit-setting-no-regret-and-experimental-d
+- why-so-pessimistic-estimating-uncertainties-for-offline-rl-through-ensembles-and
+- state-of-the-art-reproducibility-in-artificial-intelligence-proceedings-of-the-a

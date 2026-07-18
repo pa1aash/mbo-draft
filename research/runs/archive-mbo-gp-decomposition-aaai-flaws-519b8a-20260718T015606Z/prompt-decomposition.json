@@ -1,0 +1,70 @@
+{
+  "sub_questions": [
+    "What is the prior art on decomposing offline-MBO performance into surrogate class vs acquisition optimizer factors, and is a controlled surrogate x optimizer factorial decomposition novel?",
+    "Is the 'GP smooth posterior mean vs jagged ensemble mean' / inductive-bias mechanism already established in the literature (NTK, spectral bias, Lipschitz smoothness of ensembles vs GPs)?",
+    "Is coverage-based or conformal diagnosis of LCB pessimism in offline MBO already published?",
+    "What is the state of offline model selection in offline MBO and offline RL, is it a recognized open problem, and is a coverage-driven offline surrogate x optimizer selection rule novel?",
+    "Is the synthetic-to-Design-Bench validity collapse / benchmark non-discriminativeness already documented?",
+    "What are the known criticisms and limitations of Design-Bench as a benchmark?",
+    "What are the known criticisms of deep-ensemble uncertainty quality?",
+    "What are the known criticisms of ANOVA-on-normalized-scores effect sizes in ML benchmarking?",
+    "What do AAAI reviewers demand of measurement and null-result papers, and what is the acceptance evidence for controlled-study-without-a-new-method papers at AAAI/NeurIPS/ICML?",
+    "What flaws exist at the manuscript level (claims, framing, positioning, prose, figures, related work)?",
+    "What flaws exist at the experiment level (identifiability, controls, confounds, optimizer query budgets, baselines)?",
+    "What flaws exist at the statistics level (two-way ANOVA on min-max-normalized scores, Friedman/Nemenyi CD, TOST equivalence, bootstrap, Holm)?",
+    "What flaws exist at the artifact level (reproducibility, code quality, what a reviewer running it would find)?",
+    "For each core claim, what are the adversarial criticisms and limitations?"
+  ],
+  "entities": [
+    {"name": "Design-Bench (Trabucco et al. 2022)", "type": "benchmark", "required_fields": ["known criticisms", "saturation", "oracle protocol", "non-discriminativeness evidence"]},
+    {"name": "COMs (Trabucco et al. 2021)", "type": "method", "required_fields": ["reported numbers", "reproduction variance", "hyperparameters"]},
+    {"name": "PGS (Chen et al., AAAI 2024)", "type": "method", "required_fields": ["claim about search strategy", "relation to optimizer-as-factor"]},
+    {"name": "GAMBO (NeurIPS 2024)", "type": "method", "required_fields": ["optimizer-as-contribution framing"]},
+    {"name": "RaM / LTR (Tan et al. 2025)", "type": "method", "required_fields": ["surrogate-class comparison with optimizer fixed"]},
+    {"name": "Match-OPT", "type": "method", "required_fields": ["gradient-field discrepancy bound"]},
+    {"name": "Li, Rudner, Wilson 2024 (BNN surrogates)", "type": "study", "required_fields": ["surrogate comparison with acquisition fixed", "deep ensembles weakest finding"]},
+    {"name": "Stanton et al. 2022 (conformal BO)", "type": "study", "required_fields": ["conformal + BO overlap with premise coverage"]},
+    {"name": "Deshpande & Kuleshov 2024", "type": "study", "required_fields": ["calibration improves BO", "online vs offline scope"]},
+    {"name": "Tibshirani et al. 2019 (weighted conformal)", "type": "theory", "required_fields": ["covariate-shift weighting", "overlap with Proposition 2"]},
+    {"name": "CCC / Choi 2026 (conformal certification, offline MBO)", "type": "method", "required_fields": ["post-hoc certification", "distinction from premise coverage"]},
+    {"name": "UNIQ 2026 (conformal-LCB, offline RL)", "type": "method", "required_fields": ["global-scalar conformal LCB", "distinction"]},
+    {"name": "kim2025mbosurvey", "type": "survey", "required_fields": ["named open problems", "offline model selection", "realistic benchmarking"]},
+    {"name": "NTK / spectral bias literature", "type": "theory", "required_fields": ["smoothness of wide nets", "relation to GP prior"]},
+    {"name": "offline model selection (offline RL + offline MBO)", "type": "problem", "required_fields": ["is it a recognized open problem", "existing approaches", "novelty of coverage-driven selection"]}
+  ],
+  "required_formats": [
+    "severity-rated finding list (P0/P1/P2/P3)",
+    "per-finding: evidence, reviewer's phrasing of the objection, cost to fix (hours/CPU), fixable pre-deadline yes/no",
+    "novelty status marked as prior-work-found / none-found / NOT VERIFIABLE HERE"
+  ],
+  "required_sections": [
+    "## Opinionated Synthesis"
+  ],
+  "required_section_headings": [
+    "## 1. Prior Art on Surrogate x Optimizer Decomposition in Offline MBO",
+    "## 2. Is the Smooth-Mean / Inductive-Bias Mechanism Already Established?",
+    "## 3. Prior Art on Coverage and Conformal Diagnosis of LCB Pessimism",
+    "## 4. Offline Model Selection as an Open Problem, and the Novelty of Coverage-Driven Selection",
+    "## 5. Design-Bench: Known Criticisms, Saturation, and Documented Non-Discriminativeness",
+    "## 6. Deep-Ensemble Uncertainty Quality: Known Criticisms",
+    "## 7. Statistical Validity: ANOVA on Normalized Scores, Friedman/Nemenyi, TOST",
+    "## 8. What AAAI Rewards in Measurement and Null-Result Papers",
+    "## 9. Manuscript-Level Findings (a)",
+    "## 10. Experiment-Level Findings (b)",
+    "## 11. Statistics-Level Findings (c)",
+    "## 12. Artifact-Level Findings (d)",
+    "## 13. Adversarial Case Against Each Core Claim",
+    "## Opinionated Synthesis"
+  ],
+  "time_horizons": ["literature through 2026-07", "AAAI-27 submission cycle"],
+  "time_periods": [],
+  "scope_conditions": [
+    "offline model-based optimization specifically, not online BO — but online BO literature is in scope as prior art for the calibration/conformal claims",
+    "AAAI-27 main technical track acceptance standards specifically",
+    "evaluation is of an existing manuscript + artifact, not a general literature survey",
+    "novelty must be checked, never asserted unverified"
+  ],
+  "pipeline_tier": "full",
+  "response_format": "argumentative",
+  "citation_style": "inline"
+}
