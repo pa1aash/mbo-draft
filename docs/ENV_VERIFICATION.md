@@ -36,20 +36,22 @@ were flipped to True but the artifact was never regenerated under them.
 
 **Impact on AAAI_BLUEPRINT.md (correctness).** This session's four-corners analysis took the
 committed camera *as* the (on,on) corner. It is off_off. Consequences:
-- The four-corners table's **on_on row (η²_surr=0.369, ρ=+0.536) is a second off_off measurement**,
-  which is exactly why it came out nearly identical to the independently-run off_off corner (0.367)
-  — they are the same engine.
-- The **true (on,on) corner was never computed** this session. The "X1 and X3 are real but
-  *offsetting*, netting back to 0.369" narrative is therefore **unverified**: the X1-alone (0.283)
-  and X3-alone (0.450) corners are correct (they were run with explicit `MBO_X1/X3`), but the claim
-  that they *cancel* rested on the mislabeled camera.
-- The **reproduction gate is unaffected** — it compared the off_off corner to the published Table 1
-  (also off_off) and passed 63/63; that comparison is apples-to-apples and stands.
+- The four-corners table's **on_on row that an earlier draft read as η²_surr=0.369 is a second
+  off_off measurement** — which is exactly why it came out nearly identical to the independently-run
+  off_off corner (0.367); they are the same engine.
+- The **true (on,on) corner was never computed until now.** The earlier "X1 and X3 are real but
+  *offsetting*, netting back to 0.369" narrative was **wrong**: X1-alone (0.283) and X3-alone
+  (0.450) were correct, but the "cancellation" rested on the mislabeled camera.
+- The **reproduction gate is unaffected** — it compared off_off to the published Table 1 (also
+  off_off) and passed 63/63.
 
-**Correction in progress.** The true on_on grid (7 tasks × 30 seeds, X1/X3 on) is being computed on
-mac-synth (to scratch, not `results/`); the four-corners table and the offsetting-cancellation
-claim will be corrected once it lands. **No number is being inferred in the meantime** — the on_on
-row is marked UNVERIFIED.
+**Correction APPLIED (2026-07-18).** The true on_on grid (7 tasks × 30 seeds, X1/X3 on) was computed
+on mac-synth to scratch, then persisted as `results/corners/corner_on_on.json` (a NEW file;
+`results_camera.json` remains byte-identical). **True on_on: η²_surr = 0.405, η²_opt = 0.005,
+η²_inter = 0.160, ρ = +0.500.** The confounds do NOT cancel — X3's inflation dominates and there is a
++0.04 interaction, so the fully de-confounded headline (0.405) is **stronger** than the published
+0.37. `code/analyze_corners.py` now reads `corner_on_on.json` (not the camera); the blueprint
+four-corners table and narrative are corrected.
 
 ---
 

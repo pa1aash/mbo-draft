@@ -69,12 +69,13 @@ Griewank-30D-under-X1). The ledger's "trust closes it 3/4" was the PRE-AUDIT 4-t
 audit flips it. Collapse is majority-genuine surrogate geometry, not an untuned optimizer.
 
 **Four-corners verdict (η²_surr / ρ(gap,log|y|)):** off_off 0.367/+0.54 · on_off(X1) **0.283/−0.11** ·
-off_on(X3) 0.450/+0.57 · on_on 0.369/+0.54. X1 alone drops η²_surr ~23% and kills the
-scale-correlation (target-scaling confound P0-2 CONFIRMED real); X3 alone raises it; the audited
-engine nets to 0.369≈published 0.37 — an OFFSETTING cancellation of two real confounds, not their
-absence. Both confounds move the answer individually → validates Identity D; headline survives audit.
+off_on(X3) 0.450/+0.57 · **on_on 0.405/+0.50 (TRUE, corrected)**. X1 alone drops η²_surr ~23% and
+kills the scale-correlation (P0-2 CONFIRMED real); X3 alone raises it; the fully-audited engine nets
+UP to **0.405 > published 0.37** (not a cancellation — that was a mislabeled-camera error; see
+ENV_VERIFICATION.md). The audit STRENGTHENS the headline; both confounds move the answer → validates D.
+NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2026-07-18).
 | A.1.4 do-nothing baseline | DONE | results/dobest.json | grid beats do-nothing 7/7 |
-| Gate analyzer | DONE | code/analyze_corners.py | (on,on) preview η²_surr=0.369, ρ=+0.536 |
+| Gate analyzer | DONE | code/analyze_corners.py | now reads corner_on_on.json (camera was off_off) |
 | A.1.2 gradtune 2×2 (script) | READY | code/gradtune.py | run after corners |
 | A.1.3 held-out RMSE/NLL (script) | READY | code/heldout.py | run after corners |
 | A.1.5 x0 inversion (script) | READY | code/x0_inversion.py | run after corners |

@@ -49,7 +49,11 @@ CORNER_FILES = {
     'off_off': os.path.join(CORN, 'corner_off_off.json'),
     'on_off':  os.path.join(CORN, 'corner_on_off.json'),
     'off_on':  os.path.join(CORN, 'corner_off_on.json'),
-    'on_on':   os.path.join(RES, 'results_camera.json'),      # committed camera
+    # TRUE on_on, freshly computed. NOTE: results/results_camera.json is NOT (on,on) -- it is
+    # the pre-audit OFF_OFF engine (the prior X1/X3 "relaunch" scheduled 0 cells via merge-safe
+    # resume and never recomputed the grid). Verified on macOS: camera reproduces only in off_off
+    # mode. See docs/ENV_VERIFICATION.md.
+    'on_on':   os.path.join(CORN, 'corner_on_on.json'),
 }
 X1_ON = {'off_off': False, 'on_off': True, 'off_on': False, 'on_on': True}
 
