@@ -14,10 +14,11 @@ Linux pod (RunPod ubuntu-2404, 32 vCPU EPYC 9655P, 64 GB). Env: envs/pod-synth
 | P0 runner safety | DONE | code/run_all.py | f947783; guards tested (no-op=2, camera=3, engine-match=4, meta+loader OK) |
 | P0 X1/X3 switch proof | DONE | (test) | off_off ens:perturb Branin=-0.776~=-0.78; X3-on=-4.54 |
 | P1 pod-synth env + lock | DONE | envs/pod-synth-requirements.lock | ce6dabb |
-| P2 reproduction gate | RUNNING | results/corners/pod_off_off.json | off_off grid, 9 cells x 7 tasks x 30 seeds |
+| P2 reproduction gate | **PASS** | results/corners/pod_off_off.json | eta2_surr=0.3689 (pub 0.367), Friedman p=6.086e-5 (pub 6.09e-5), published 63/63; camera bit-diff <=1.47% rel on svgp/cma cells only (disclosed) |
+| P3 K-beta gate | RUNNING | results/kbeta/ | 5 beta grids + kbeta ens sweep + bootstrap + analysis |
 
-**RESUME (P2 if interrupted):** merge-safe, just re-run the launch command in
-logs/pod_off_off.log header (nohup bash <scratchpad>/run_off_off.sh).
+**RESUME (P3 if interrupted):** `nohup bash <scratchpad>/run_phase3.sh > logs/pod_phase3.log 2>&1 &`
+(run_all merge-safe; kbeta re-runs whole). Then re-run kbeta_analyze.py.
 
 ## Environment reality (load-bearing)
 - This macOS machine had **no working torch/sklearn/botorch env** at session start. The
