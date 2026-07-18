@@ -23,7 +23,9 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 import numpy as np
 
-CELLS = ['ens:grad', 'ens:perturb', 'botorchgp:grad', 'svgp:grad']
+# All 9 grid cells (Phase 7.2), both X3 states. X1 held on (audited engine); the probe is
+# about X3's candidate-pooling (grad_opt pools x0 under X3-on).
+CELLS = [f'{s}:{o}' for s in ('ens', 'botorchgp', 'svgp') for o in ('grad', 'perturb', 'cma')]
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'results', 'x0_inversion.json')
 
@@ -31,11 +33,11 @@ OUT = os.path.join(HERE, '..', 'results', 'x0_inversion.json')
 def _cell(spec):
     import torch
     torch.set_num_threads(1)
-    os.environ['MBO_X1'] = '1'; os.environ['MBO_X3'] = '1'      # audited camera engine
+    os.environ['MBO_X1'] = '1'; os.environ['MBO_X3'] = '1' if spec['x3'] else '0'
     import importlib
     import mbo
     importlib.reload(mbo)
-    assert mbo.X1_STANDARDIZE_Y and mbo.X3_MATCHED_PROTOCOL
+    assert mbo.X1_STANDARDIZE_Y and mbo.X3_MATCHED_PROTOCOL == bool(spec['x3'])
     t = mbo.make_tasks([spec['task']])[0]
     seed = spec['seed']
     np.random.seed(seed); torch.manual_seed(seed)
@@ -47,6 +49,12 @@ def _cell(spec):
         if f_torch is None:
             return {**spec, 'metrics': None}
         xf = mbo.grad_opt(f_torch, torch.FloatTensor(x0), steps=mbo.OPT_STEPS)
+    elif opt == 'cma':
+        if f_np is None:
+            return {**spec, 'metrics': None}
+        xf = mbo.cma_opt(f_np, x0, seed=seed)
+        if xf is None:
+            return {**spec, 'metrics': None}
     else:
         if f_np is None:
             return {**spec, 'metrics': None}
@@ -66,10 +74,10 @@ def main():
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 2))
     ap.add_argument('--out', default=OUT)
     a = ap.parse_args()
-    import mbo
+    import mbo, run_all
     tasks = [T().name for T in mbo.ALL_TASKS]
-    specs = [{'task': tk, 'cell': c, 'seed': s}
-             for tk in tasks for c in CELLS for s in range(a.seeds)]
+    specs = [{'task': tk, 'cell': c, 'seed': s, 'x3': x3}
+             for tk in tasks for c in CELLS for x3 in (0, 1) for s in range(a.seeds)]
     R = {}
     t0 = time.time()
     print(f'{len(specs)} cells, {a.jobs} workers', flush=True)
@@ -78,7 +86,7 @@ def main():
             r = fut.result()
             if r['metrics'] is None:
                 continue
-            key = f"{r['task']}|{r['cell']}"
+            key = f"{r['task']}|{r['cell']}|x3={r['x3']}"
             R.setdefault(key, []).append(r['metrics'])
     agg = {}
     for key, vs in R.items():
@@ -89,15 +97,17 @@ def main():
             mean_frac_worse=float(np.mean([v['frac_worse'] for v in vs])),
             mean_x0_best=float(np.mean([v['x0_best'] for v in vs])),
             mean_ret_best=float(np.mean([v['ret_best'] for v in vs])))
+    agg['meta'] = run_all.engine_meta(a.seeds, mbo.BETA, mbo.K_ENS)  # X1 stamp; X3 is per-key
     json.dump(agg, open(a.out, 'w'), indent=1)
     print(f'done in {(time.time()-t0)/60:.1f} min -> {a.out}')
-    print(f'\n{"task":16}{"cell":18}{"inv_rate":>9}{"magnitude":>11}{"x0_best":>10}{"ret_best":>10}')
+    print(f'\n{"task":16}{"cell":18}{"x3":>4}{"inv_rate":>9}{"magnitude":>11}{"x0_best":>10}{"ret_best":>10}')
     for tk in tasks:
         for c in CELLS:
-            v = agg.get(f'{tk}|{c}')
-            if v:
-                print(f'{tk:16}{c:18}{v["inversion_rate"]:9.2f}{v["mean_magnitude"]:11.2f}'
-                      f'{v["mean_x0_best"]:10.2f}{v["mean_ret_best"]:10.2f}')
+            for x3 in (0, 1):
+                v = agg.get(f'{tk}|{c}|x3={x3}')
+                if v:
+                    print(f'{tk:16}{c:18}{x3:>4}{v["inversion_rate"]:9.2f}{v["mean_magnitude"]:11.2f}'
+                          f'{v["mean_x0_best"]:10.2f}{v["mean_ret_best"]:10.2f}')
 
 
 if __name__ == '__main__':

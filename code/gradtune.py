@@ -52,7 +52,8 @@ def main():
     a = ap.parse_args()
     specs = [{'task': t, 'cfg': c, 'seed': s, 'ep': a.ep}
              for t in a.tasks for c in CONFIGS for s in range(a.seeds)]
-    R = {}
+    import run_all
+    R = {'meta': run_all.engine_meta(a.seeds, mbo.BETA, mbo.K_ENS)}   # engine stamp (STANDING rule)
     t0 = time.time()
     print(f'{len(specs)} cells, {a.jobs} workers', flush=True)
     with ProcessPoolExecutor(max_workers=a.jobs) as ex:
