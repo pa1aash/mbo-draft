@@ -214,6 +214,83 @@ C → ML or RU (uncertainty/GP mechanism) with SO cross-listing. VENUE-FIT MAPPI
 - A's skip_loci: N1-residual (crisp), N6 (greps done), N8-ratio, PGS-vs-η²opt (internal recompute),
   Abe-vs-Laksh (subsumed), MS-DDEO access (exhausted).
 
+## DEPTH INVESTIGATOR RETURNS (step 5)
+- **N9 (audit-strengthens + integrity) DONE.** INTEGRITY FIX: unverified citation = Robinson/Glen/
+  Lee "Validating the Validation" (arXiv:1905.11681) — now fetched+grepped, confirmed CLEAN SHRINK
+  (reverses "DL outperforms" → "SVM competitive"; no confound-strengthens). VERDICT: N9's NARROW
+  claim ("a confound-controlled audit whose corrected SCALAR effect-size EXCEEDS its published
+  value, within ML/CS") = UNCLAIMED, safe to assert (~75-80%, 16 adversarial queries). N9's BROAD
+  claim ("reality-checks always shrink, ours is the exception") = FALSE — Recht (relative-slope
+  growth) + Agarwal (power-revealed effect) are partial ML/CS counter-instances that MUST be
+  engaged directly, not omitted; Bressan = closest full-shape precedent but outside ML/CS. => the
+  draft must state N9 NARROWLY and pre-empt Recht/Agarwal.
+
+- **N3 (classic BO beta-calibration) DONE.** Fetched Srinivas GP-UCB (ICML2010, arXiv:0912.3995):
+  β_t is a SINGLE-surrogate, time-indexed confidence-width schedule (0 hits "surrogate"/"ensemble"/
+  "calibrat") — does NOT own N3. Lu et al. (TPAMI2023 "beyond a single GP") + Benechehab et al.
+  bring multiple estimator classes into contact but fuse/winner-pick, never hold one shared β fixed
+  to diagnose effective-conservatism mismatch. VERDICT: **N3 = NONE FOUND** (>80% classic BO
+  doesn't own it; ~70% broadly; S2 rate-limit cut the Srinivas forward-cite route). Now the
+  best-stress-tested claim, not the thinnest. Open: conformal/statistical-calibration lit unfetched
+  (adjacent) → terminal "could not verify" candidate.
+
+- **K/finite-width fork (N2+N5) DONE — the C-vs-D decider.** SHARP finding: the N5 "K-sweep proves
+  finite-width artifact" argument is a **category error — ensemble cardinality K ≠ per-member width
+  n**. Confirmed by code: `mbo.py:140-141` each member = 2-hidden-layer MLP width **HID=96**, ReLU;
+  `K_ENS=5`, `TRAIN_EP=35`. The K-sweep varies the NUMBER of width-96 nets (2→10), not width.
+  Jacot/Lee/Rahaman are about WIDTH→∞, mention ensembles 0 times. Our K-decline (0.95→0.18 as K
+  rises) runs BACKWARD from Lakshminarayanan's & L/R/W's own K-sweeps (which improve/flatten) → most
+  parsimonious read = small-K σ-estimation noise (K=2 → noisy std → weird LCB), NOT a width law.
+  VERDICT: favors **D (taxonomy)** over C, but via K≠width + direction-reversal, not "finite-width."
+  N2 stays NONE FOUND (pre-empted in STRENGTH not existence by L/R/W K-robustness). Confidence ~65%.
+  Fetched Fort/Hu/Lakshminarayanan (loss-landscape, 1912.02757) + Lee et al. (wide nets as linear,
+  1902.06720). IMPLICATION FOR DRAFT: the paper should NOT frame the K-sweep as finite-width
+  evidence; the honest N5 verdict is that the NTK/spectral OBJECTION exists but the paper's own
+  K-evidence for it is a category error → a reviewer risk to defuse, and a reason a WIDTH ablation
+  (sweep HID) is the missing experiment. NOTE β=0 control (PROVENANCE.md:277 verbatim): "the gap is
+  unchanged with pessimism off (β=0 ... CI [−0.02,0.10]) ... the edge is the surrogate's posterior
+  MEAN, not σ-calibration or data" → supports mean-smoothness (C) over σ-mechanism (undercuts N4).
+- **N7 (roughening beyond MBO) DONE.** VERDICT: **N7 = NONE FOUND at BROADEST scope** (BO/kernel/GP
+  regression), ~20 API + 7 WebSearch queries, all negative. Structural: within-GP smoothness sweeps
+  and cross-surrogate-class comparisons exist SEPARATELY, never combined into one controlled
+  bidirectionally-manipulated causally-attributed experiment. Closest prior (NEW find): **Lim et al.,
+  "Extrapolative BO with GP and NN Ensemble Surrogate Models" (Adv. Intell. Syst. 2021)** — real
+  GP-vs-NN-ensemble BO comparison that HYPOTHESIZES the GP wins "due to the ability of GP to smoothly
+  map out the uncertainty manifolds" but never manipulates smoothness (GP side = lengthscale-bounds
+  widening only; NN side = none). => C can claim "first at all" to bidirectionally manipulate
+  smoothness, citing Lim et al. as closest prior + naming what it stops short of. Confidence med-high.
+
+- **N4 (sigma-scope + Ovadia) DONE.** DUE scope-catch HOLDS in paper's favor: DUE's "GP not
+  automatically variance-growing" is about DEEP-KERNEL GPs (learned features); paper's exact-GP/SVGP
+  use vanilla Matern on raw inputs (verified code/mbo.py) → corpus was over-citing DUE. Raw
+  distance-aware mechanism (variance grows away; ensembles overconfident far) = PRIOR WORK FOUND
+  (SNGP formal proof, DUQ two-moons). Causal "LCB + variance growth = implicit trust region
+  explaining the win" = NONE FOUND, and CONTRADICTED by β=0 control (gap persists) + TuRBO (built an
+  EXPLICIT fix because unconstrained variance growth under myopic acquisition is a PROBLEM, not a
+  free mechanism). **Ovadia 2019 (fetched, arXiv:1906.02530) COMPLICATES "ensembles confidently
+  wrong far from data"** — mixed MNIST/CIFAR, and its "far" = corruption-severity, not spatial
+  distance. **β=0 NUMBERS NOT VERIFIABLE:** investigator's quick repro = 0.504→0.511 (flat/slightly
+  UP), not the query's "0.51→0.47" — qualitatively agree gap survives σ-removal but exact
+  numbers/direction unresolved (repro-gate being recomputed; recent git commits re eta2_surr=0.405).
+  => N4 verdict: mechanism PARTLY prior-owned; offline-MBO-LCB-TR synthesis NONE FOUND; exact β=0 →
+  terminal "could not verify".
+
+- **Optimizer-reversal + candidate-A-credit DONE.** No offline-MBO paper owns A's "surrogate
+  effect, NOT an optimizer effect" attribution: PGS fixes surrogate-focus, L/R/W holds optimizer as
+  a fixed nuisance, Tan bundles both, Design-Bench doesn't decompose; Kim TMLR26 survey NAMES the
+  attribution as unresolved. => **candidate A is UNDER-credited** by a "just an ablation" reading.
+  BUT the "field innovates on the axis that doesn't matter" REVERSAL OVERCLAIMS: **Shahriari et al.
+  2016 "Taking the Human Out of the Loop"** (most-cited BO survey, ~5948 cites; fetched) already
+  holds AS DOCTRINE that surrogate choice matters more than acquisition/search choice. => honest
+  framing: the paper FALSIFIES **PGS's LOCAL premise** ("search strategy is the neglected decisive
+  axis in offline BBO"), NOT the field's belief. **The ONE sentence A owns:** "the first
+  offline-MBO-specific, ANOVA-quantified attribution of the surrogate-vs-optimizer variance under a
+  shared protocol." Open: corrected η²_opt (post budget-equalization + trust-region isolation) may
+  move from 0.01 → could moot the reversal (N1 territory / repro-gate).
+
+## ALL 6 DEPTH INVESTIGATORS DONE. Committed positions captured for N2/N5, N3, N4, N7, N9, and the
+## optimizer-reversal/A-credit synthesis. Ready for step 6 reconciliation.
+
 ## Process
 8 fetchers dispatched (A-E readers over local text; W1 Kim/IGNITE/MS-DDEO; W2 AAAI-27+Gundersen;
 W3 miss-catchers N2/N3/N6/N9). Awaiting completions. Tooling reality: CLI PDF fetch broken;
