@@ -190,6 +190,30 @@ C → ML or RU (uncertainty/GP mechanism) with SO cross-listing. VENUE-FIT MAPPI
 ## TRUE CORPUS: 33 note files on disk (note-list display caps at 20). Every claim N1-N9 has >=3
 ## grep-verified primary sources. Appropriate for a focused prior-art audit.
 
+## Candidate depth loci (orchestrator's pre-merge list, from contradiction graph)
+- L1 **K-dependence & finite-width (N2+N5)** — dialectical. Read L/R/W Fig A.7 K-ablation closely
+  (they found K-robustness; we found K-flip). Confirms N2 novelty + strength of the finite-width
+  objection to C. HIGHEST priority (composite ~34).
+- L2 **σ-mechanism / distance-aware (N4)** — dialectical/technical. SNGP/TuRBO/DUE bodies; pin the
+  offline-MBO-LCB-implicit-TR residual; ready both β=0 outcomes (~30).
+- L3 **N1 residual + N9 direction** — synthesis/dialectical. Henderson/Musgrave/Agarwal + Recht/
+  Bressan; exact residual + is audit-strengthens unclaimed in ML/CS (~30).
+- L4 **N6 crossed-factorial confirmation** — technical. Design-Bench/Chemingui/Tan/Kim: none run
+  the factorial (one counterexample fatal; Kim names the gap) (~26).
+- L5 **Which candidate A/C/D is strongest + one-sentence test** — synthesis. The integrating
+  deliverable (~30).
+
+## Loci analyst A returned (6 loci) — distinctive adds beyond my candidate list:
+- **N3 gap:** classic GP-UCB β_t calibration literature (Srinivas et al. 2010 GP-UCB) never checked
+  → may partially own N3 (matched/unmatched pessimism). Candidate for a gap-fetch.
+- **DUE scope catch:** DUE's "GP not automatically variance-growing" caveat is about DEEP-KERNEL GPs
+  (learned features), but our surrogates = exact GP + SVGP with STANDARD kernels → corpus may be
+  OVER-citing DUE against the σ-mechanism. Sharpens N4.
+- **L/R/W third mechanism:** "small BO datasets prevent ensemble mode-diversity" — a K-explanation
+  neither our K-artifact nor C's smoothness story accounts for. Sharpens N2.
+- A's skip_loci: N1-residual (crisp), N6 (greps done), N8-ratio, PGS-vs-η²opt (internal recompute),
+  Abe-vs-Laksh (subsumed), MS-DDEO access (exhausted).
+
 ## Process
 8 fetchers dispatched (A-E readers over local text; W1 Kim/IGNITE/MS-DDEO; W2 AAAI-27+Gundersen;
 W3 miss-catchers N2/N3/N6/N9). Awaiting completions. Tooling reality: CLI PDF fetch broken;

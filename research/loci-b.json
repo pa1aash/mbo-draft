@@ -1,0 +1,124 @@
+{
+  "analyst_id": "b",
+  "loci": [
+    {
+      "name": "optimizer-matters-vs-doesnt-reversal-unearned",
+      "flavor": "dialectical",
+      "one_line": "Does the paper's rhetorical hook (\"the field innovated on the optimizer axis, but eta^2_optimizer=0.01\") survive contact with PGS's premise and with the paper's own confounded-protocol admission, or is the reversal currently unearned?",
+      "rationale": "This is contradiction-graph cluster 'optimizer-matters-vs-doesnt' (decision_relevance: high) but it is ABSENT from the orchestrator's pre-merge L1-L5 shortlist in research/temp/orchestrator-notes.md -- a genuine gap. I independently confirmed the fight is real by reading the Chemingui note in full: its explicit framing is 'This perspective is aimed at improving the search strategy in offline BBO, which complements prior methods that have focused on improving surrogate models while using fixed search strategies' (Summary and Future Work) -- i.e. PGS's entire premise is that the optimizer/search axis is the neglected, decisive one. That premise sits in direct tension with the audited paper's headline eta^2_optimizer=0.01. But per the contradiction graph's own evidence_quality_delta, eta^2_opt=0.01 is 'itself confounded per FLAW_LEDGER P0-0/P0-1 (unequal oracle budgets; a trust region closes the gradient collapse 15x on Branin) -- so the reversal is currently unearned until X1/X3 re-run.' This is a THREE-way tension (PGS says optimizer matters; our raw number says it doesn't; our own audit says the number isn't yet trustworthy) that is directly load-bearing for whether candidates A and D can claim the 'named belief, refuted' framing as a strength rather than a liability a reviewer will spot immediately. It also complicates N6: Chemingui's own baseline comparisons are leaderboard-style (numbers 'imported wholesale from other papers,' not run under a shared protocol -- see design-bench note for the same uncontrolled-bundle pattern), so PGS's own evidence that 'optimizer matters' is itself an uncontrolled comparison, symmetric to the flaw the audited paper claims to fix. Depth investigation should determine: (a) does PGS's own internal ablation (CQL vs IQL, Table 4, surrogate held fixed) constitute real evidence that the optimizer axis has non-trivial variance explanatory power, independent of its leaderboard claims; (b) after X1/X3 recompute with equalized oracle budgets, is eta^2_optimizer plausibly larger than 0.01 (i.e., is the 'optimizer doesn't matter' claim itself a confound-driven artifact, mirroring N1's own logic turned on itself)?",
+      "corpus_evidence": [
+        "offline-model-based-optimization-via-policy-guided-gradient-search-aaai-2024-arx",
+        "design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20"
+      ],
+      "opposing_positions": [
+        {"position": "The search/optimizer strategy is the neglected, decisive axis in offline BBO -- surrogate-model quality has absorbed all prior attention while search strategy was left to fixed, naive schedules; a learned search policy materially improves outcomes with the surrogate held fixed.", "sources": ["offline-model-based-optimization-via-policy-guided-gradient-search-aaai-2024-arx"]},
+        {"position": "The optimizer main effect is negligible (eta^2_optimizer=0.01) relative to the surrogate main effect (eta^2_surrogate=0.37) and the interaction (eta^2_interaction=0.17) -- the field has been innovating on an axis that barely moves the outcome. (Caveat: this number is computed under a candidate/oracle-protocol confound not yet resolved, per the audit's own FLAW_LEDGER P0-0/P0-1.)", "sources": ["repo (paper's own two-way ANOVA); design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20 (context: uncontrolled end-to-end baseline bundling is the field norm PGS also inherits)"]}
+      ],
+      "suggested_starting_urls": [
+        "https://arxiv.org/abs/2405.05349",
+        "https://arxiv.org/abs/2107.06882"
+      ],
+      "suggested_searches": [
+        "does search strategy matter offline black-box optimization ablation surrogate fixed",
+        "trust region gradient ascent offline model-based optimization high-dimensional collapse",
+        "conservative objective models COMs gradient ascent trust region offline optimization",
+        "optimizer choice variance explained offline model-based optimization benchmark"
+      ]
+    },
+    {
+      "name": "n7-non-mbo-roughening-precedent",
+      "flavor": "convergent",
+      "one_line": "Outside offline MBO entirely -- in the Bayesian-optimization / kernel-methods literature -- has anyone manipulated model smoothness in BOTH directions (e.g. GP length-scale up AND down, or smooth-vs-rough kernel choice) to establish smoothness as a causal performance axis, which would narrow candidate C's N7 claim from 'first at all' to 'first in offline MBO'?",
+      "rationale": "This exact question is flagged TWICE in the width-sweep's own internal audit trail as an OPEN exposure that was never closed: research/temp/coverage-gaps.md ends with 'Remaining N7 exposure for step-8 corpus critic: a NON-offline-MBO paper that ROUGHENS a smooth model to prove a smoothness-performance causal link (BO / kernel-method literature)' and research/temp/redundancy-audit.md repeats the identical flag verbatim. The corpus currently only checked offline-MBO-specific papers (IGNITE, MS-DDEO, ROOT, Boosting-Offline-Optimizers) and confirmed all are one-directional (smooth only) or use smoothness as data augmentation, not causal ablation -- I independently verified this by reading the ROOT and IGNITE note bodies in full: ROOT varies GP length-scale only 'as a data-augmentation mechanism to produce varied synthetic oracle functions,' never as a paired causal arm against a smoothed network (root-rethinking note); IGNITE 'operates exclusively in one direction: it always reduces (smooths) surrogate sharpness... no experiment that deliberately increases sharpness/roughness as a comparison arm' (ignite note). But NONE of the fetched sources are from the broader BO/kernel-methods world (e.g. kernel-bandwidth/length-scale sensitivity studies, RBF-vs-Matern robustness papers, GP regression smoothness-mismatch literature) where a bidirectional smoothness manipulation is much more likely to already exist as a methods contribution unrelated to offline MBO. If such a paper exists, candidate C's claim narrows materially (from 'nobody has shown this' to 'nobody has shown this IN offline MBO, but the causal-axis idea itself is not new') -- which changes the exact one-sentence C gets to claim.",
+      "corpus_evidence": [
+        "root-rethinking-offline-optimization-as-distributional-translation-via-probabili",
+        "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec",
+        "boosting-offline-optimizers-with-surrogate-sensitivity-icml-2024-arxiv250304181"
+      ],
+      "suggested_starting_urls": [
+        "https://arxiv.org/abs/1910.01739"
+      ],
+      "suggested_searches": [
+        "Gaussian process length-scale ablation Bayesian optimization performance causal",
+        "kernel smoothness bandwidth manipulation optimization benchmark both directions",
+        "surrogate roughness regularization black-box optimization ablation",
+        "RBF versus Matern kernel smoothness Bayesian optimization performance comparison",
+        "oversmoothing undersmoothing Gaussian process regression optimization performance"
+      ]
+    },
+    {
+      "name": "n9-unverified-citation-and-qsar-genre",
+      "flavor": "convergent",
+      "one_line": "N9's NONE-FOUND verdict currently rests partly on a source (Robinson/Glen/Lee, bioactivity-prediction reanalysis) that was checked via search-summary only, NOT fetched and grepped -- a violation of the audit's own anti-fabrication protocol -- and the adjacent QSAR/cheminformatics benchmark-reanalysis literature was never swept at all.",
+      "rationale": "research/notes/miss-catcher-search-log-n2-n3-n6-n9-n1-residual.md documents, in its own words: 'Robinson, Glen, Lee. \"Validating the Validation: Reanalyzing a large-scale comparison of Deep Learning and Machine Learning models for bioactivity prediction.\" (2019/2020), arXiv:1905.11681. Checked via search summary (not downloaded...)' -- this is exactly the practice the query's CRITICAL METHOD REQUIREMENTS section forbids ('Do not trust search snippets or abstracts. Four fabricated citations have already been caught on this project'). N9 is the single highest-leverage claim for the paper (it is D's differentiator from the entire reality-check genre -- 'if N9 shape is unclaimed, D is the strongest of the three,' per research/temp/orchestrator-notes.md), so a verdict resting even partly on an unverified secondary summary is fragile precisely where the paper cannot afford fragility. Separately, the QSAR/cheminformatics benchmark-reanalysis literature (of which Robinson/Glen/Lee is one instance) is a DISTINCT reality-check genre from the ML/CS papers already swept (RecSys, GANs, DRL, metric learning, language models) and was never searched as its own vein -- it is plausible a bioactivity/QSAR reanalysis exists where a corrected comparison strengthens rather than shrinks a reported gap, given that dataset-splitting and applicability-domain corrections in that field sometimes cut in favor of the more complex model once naive train/test leakage is removed. Depth investigation should (a) fetch and grep arXiv:1905.11681 directly and (b) run 2-3 targeted searches into the QSAR/bioactivity reanalysis vein specifically.",
+      "corpus_evidence": [
+        "miss-catcher-search-log-n2-n3-n6-n9-n1-residual",
+        "do-imagenet-classifiers-generalize-to-imagenet-icml-2019-arxiv190210811",
+        "confounds-in-failed-replications-bressan-frontiers-in-psychology-2019-doi103389f"
+      ],
+      "suggested_starting_urls": [
+        "https://arxiv.org/abs/1905.11681"
+      ],
+      "suggested_searches": [
+        "Validating the Validation bioactivity prediction deep learning reanalysis Robinson Glen Lee",
+        "QSAR benchmark reanalysis corrected comparison effect size increased",
+        "cheminformatics deep learning versus machine learning reanalysis applicability domain",
+        "molecular property prediction benchmark reanalysis train test leakage corrected gap larger"
+      ]
+    },
+    {
+      "name": "candidate-a-not-an-optimizer-effect-residual",
+      "flavor": "convergent",
+      "one_line": "Li/Rudner/Wilson (ICLR 2024) holds acquisition/optimizer fixed throughout their ENTIRE paper -- so can they logically be said to OWN the 'not an optimizer effect' half of candidate A's compound claim, or does A's causal-attribution machinery (ANOVA-based eta^2 decomposition across a genuinely crossed optimizer axis) survive as novel even after LRW's surrogate-ranking half is conceded?",
+      "rationale": "research/temp/orchestrator-notes.md's own preliminary read is stark: A's one-sentence claim is 'the reported GP advantage in offline MBO is a surrogate-class effect, not an optimizer effect' but 'Li/Rudner/Wilson (ICLR 2024) already owns \"deep ensembles perform relatively poorly\" + \"ranking is problem-dependent -> tailored inductive biases.\" Residual after stripping that: the factorial design + the offline setting -- \"an ablation.\" Repo's own read: P(accept) low-to-moderate.' But the LRW note itself documents, via direct quote, that acquisition/optimizer is a fixed nuisance variable never manipulated: 'no crossed surrogate x acquisition-function (or surrogate x optimizer) factorial -- acquisition strategy is a fixed nuisance variable, not a manipulated factor' (a-study-of-bayesian-neural-network-surrogates note). If LRW never varies the optimizer, it CANNOT have empirically tested (confirmed or refuted) whether the surrogate-class gap is a pure surrogate effect versus an interaction with optimizer choice -- LRW's 'ranking is problem-dependent' finding describes surrogate-vs-surrogate variation under ONE optimizer, not a decomposition of surrogate main effect vs. optimizer main effect vs. interaction. This means the orchestrator's own harsh self-read ('an ablation,' 'low-to-moderate') may be UNDER-crediting A: the specific causal-attribution claim (eta^2_surrogate=0.37 vs eta^2_optimizer=0.01 vs eta^2_interaction=0.17, decomposed via a genuinely crossed 3x3 design) is a categorically different kind of evidence than LRW's single-optimizer surrogate comparison, and LRW logically cannot own it. Depth investigation should pin down exactly how much of A's compound sentence survives clause-by-clause against LRW's actual (not paraphrased) scope, which materially changes whether A is publishable as a standalone contribution or purely a subset of D.",
+      "corpus_evidence": [
+        "a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization-iclr-202"
+      ],
+      "suggested_starting_urls": [
+        "https://arxiv.org/abs/2305.20028"
+      ],
+      "suggested_searches": [
+        "variance decomposition surrogate optimizer interaction Bayesian optimization ANOVA",
+        "surrogate model comparison acquisition function held fixed limitations",
+        "does surrogate ranking depend on optimizer Bayesian optimization interaction effect"
+      ]
+    },
+    {
+      "name": "n4-ovadia-distribution-shift-primary-source-gap",
+      "flavor": "convergent",
+      "one_line": "Ovadia et al. 2019 (ensemble uncertainty under distribution shift) is cited as foundational inside THREE already-fetched N4 papers but was never itself fetched and grepped as a primary source -- and offline MBO's gradient-ascent candidates ARE a distribution-shift scenario, so this is a first-hand-read gap on exactly the paper most mechanistically relevant to N4.",
+      "rationale": "research/temp/orchestrator-notes.md's own 'Extra citations named by prior (worthless) passes' section explicitly flags 'Ovadia 2019 (ensembles under shift -> N4)' as a citation that 'ensure the corpus/critic covers' -- i.e. the orchestrator itself marked this as required coverage. I confirmed via corpus search that Ovadia appears only as a bibliography citation INSIDE three already-fetched papers (on-feature-collapse-and-deep-kernel-learning / DUE, uncertainty-estimation-using-a-single-deep-deterministic / DUQ, and scalable-global-optimization-via-local-bayesian-optimization / TuRBO note bodies) -- it has never been fetched and grepped in its own right. This matters specifically for N4 because the audited paper's mechanism hypothesis ('ensembles assign low uncertainty to OOD examples even if far from the data') is currently sourced only from OTHER papers' summaries of Ovadia-adjacent findings (SNGP/DUQ's own framing), not from Ovadia's primary text, and Ovadia's actual subject -- predictive uncertainty calibration under DATASET SHIFT -- is a closer structural match to offline MBO's setting (gradient-ascent-proposed candidates ARE distribution-shifted relative to the offline training set) than SNGP/DUQ's classification-OOD framing. A first-hand read could either (a) sharpen and strengthen the N4 mechanism ingredient with a more precise, offline-MBO-relevant quote, or (b) surface a caveat/qualifier (analogous to DUE's finding that GPs do not automatically inherit variance growth) that further complicates the sigma-mediated story already in tension per the beta=0 control (gap 0.51->0.47).",
+      "corpus_evidence": [
+        "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty",
+        "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi",
+        "scalable-global-optimization-via-local-bayesian-optimization-turbo-neurips-2019"
+      ],
+      "suggested_starting_urls": [
+        "https://arxiv.org/abs/1906.02530"
+      ],
+      "suggested_searches": [
+        "Ovadia can you trust your model's uncertainty dataset shift ensembles calibration",
+        "deep ensemble calibration under distribution shift offline optimization candidates",
+        "predictive uncertainty dataset shift ensembles versus Gaussian process comparison"
+      ]
+    }
+  ],
+  "skip_loci": [
+    {
+      "slug": "n6-crossed-factorial-reverification",
+      "reason": "Already exhaustively resolved to a very high confidence level: five named papers (Li/Rudner/Wilson, Tan, Chemingui, Design-Bench, Kim survey) were each fetched in full and grepped for 'factorial'/'ANOVA'/'crossed'/'two-way'/'main effect' with 0 hits each, independently corroborated across two passes (see miss-catcher-search-log-n2-n3-n6-n9-n1-residual note, which documents its own re-confirmation of pre-existing vault notes). This is also the orchestrator's own L4 pre-merge locus. A third redundant depth-investigation pass here would spend budget re-confirming a verdict with essentially no live ambiguity, at the expense of the genuinely open gaps I identified (N7 non-MBO precedent, N9 unverified citation, Ovadia primary-source gap)."
+    },
+    {
+      "slug": "n1-shape-ownership-reconfirmation",
+      "reason": "N1's reality-check-shape verdict rests on 6 independently grepped, well-matched sources (Ferrari Dacrema, Balduzzi, Henderson, Musgrave, Lucic, Agarwal) and is flagged 'Well-covered' in research/temp/coverage-gaps.md; consensus-claims.json independently corroborates it as a stable cross-source consensus. No corpus signal (contradiction graph, redundancy audit, or my own reading) suggests this verdict is fragile or contested. Not worth a depth-investigator slot."
+    },
+    {
+      "slug": "n3-exact-mechanism-reconfirmation",
+      "reason": "Ghasemipour et al. was fetched in full (~21,600 words) and directly quoted for the precise mechanism distinction (target-sharing-within-one-ensemble vs. cross-surrogate-class sigma-scale mismatch); the miss-catcher note documents an exhaustive 11-query adversarial search with no closer analog surfaced. The verdict (NONE FOUND, Ghasemipour as honest nearest analog) has no live contestable edge I could find in this corpus."
+    },
+    {
+      "slug": "n2-n5-k-dependence-dialectic-duplicate",
+      "reason": "This is the orchestrator's own top-priority pre-merge locus (L1, composite ~34, the highest-ranked item in research/temp/orchestrator-notes.md) and is independently the strongest, most concretely evidenced dialectical fight in the entire corpus (verbatim Fig. A.7 quote from Li/Rudner/Wilson directly contradicting the audited paper's K=2-vs-K=5 framing). Duplicating it as one of my own loci would not add marginal value; I am confident my sibling analyst and/or the orchestrator's own pre-baked list will carry it forward, so I redirected my budget to gaps that list does not cover."
+    }
+  ]
+}

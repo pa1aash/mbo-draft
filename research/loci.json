@@ -1,0 +1,77 @@
+{
+  "loci": [
+    {
+      "name": "k-and-finite-width-artifact-vs-class-property",
+      "one_line": "Is the ensemble's underperformance a K/finite-width/capacity artifact (favouring candidate D, taxonomy) or an intrinsic surrogate-class property (favouring candidate C, mechanism)? Reconcile our K-flip with Li/Rudner/Wilson's K-robustness and with NTK/spectral-bias theory.",
+      "flavor": "dialectical",
+      "claims": ["N2", "N5", "N1(iv)"],
+      "corpus_evidence": ["a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization-iclr-202", "deep-ensembles-work-but-are-they-necessary-neurips-2022-arxiv220206985", "180607572-neural-tangent-kernel-convergence-and-generalization-in-neural-network", "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165", "on-the-spectral-bias-of-neural-networks-icml-2019-arxiv180608734", "miss-catcher-search-log-n2-n3-n6-n9-n1-residual"],
+      "opposing_positions": "Us: ranking flips with K (K=2 ensemble 0.95 > GP 0.846; K=5 weakest) -> the gap is a tuning/capacity confound, ranking-flip is NONE FOUND. L/R/W: K=5-vs-10 ablation shows 'the different ensembles perform similarly... robustness of our results to this hyperparameter'; plus a third, unchased L/R/W mechanism ('small BO datasets prevent ensemble mode-diversity'). NTK/spectral: infinite-width nets ARE GPs, finite nets spectrally biased toward smooth -> jaggedness is a width artifact (undercuts C). Question: does the NTK/spectral REGIME (width thresholds, training) actually match this paper's ensemble architecture, or is it a suggestive analogy?",
+      "importance": 10, "uncertainty": 8, "disagreement": 9, "decision_impact": 10,
+      "composite_score": 37, "source_budget": 12,
+      "rationale": "The single fork that decides C-vs-D and N2 novelty. If K/width is the driver, D (taxonomy) is the strongest paper and C's mechanism story is undercut by our own K-sweep."
+    },
+    {
+      "name": "n4-sigma-mechanism-scope-and-ovadia",
+      "one_line": "How much of the distance-aware / implicit-trust-region mechanism (N4) is owned by SNGP/DUQ, and does DUE's 'a GP is not automatically variance-growing' caveat even apply to our EXACT GP + SVGP (standard kernels, not deep-kernel)? Fetch+grep Ovadia 2019.",
+      "flavor": "dialectical",
+      "claims": ["N4"],
+      "corpus_evidence": ["simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi", "uncertainty-estimation-using-a-single-deep-deterministic-neural-network-duq", "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty", "scalable-global-optimization-via-local-bayesian-optimization-turbo-neurips-2019"],
+      "opposing_positions": "SNGP OWNS the raw distance-aware mechanism (variance grows away from data; ensembles confidently wrong far from data). But: (a) DUE's caveat that a GP doesn't automatically get variance growth is about DEEP-KERNEL GPs with learned features -- may NOT apply to our exact-GP+SVGP with standard kernels, so the corpus may be OVER-citing DUE against the sigma-mechanism; (b) our own beta=0 control (0.51->0.47) argues sigma is not the mediator; (c) TuRBO uses Thompson not LCB. Ovadia 2019 (cited by DUE/DUQ/TuRBO, never fetched) is the foundational 'ensembles-under-shift' source -- fetch+grep it to pin what is owned.",
+      "importance": 8, "uncertainty": 7, "disagreement": 7, "decision_impact": 8,
+      "composite_score": 30, "source_budget": 8,
+      "rationale": "Determines the N4 verdict and whether C's mechanism survives on the sigma side. The DUE scope catch could change a FOUND to a NONE-FOUND. Requires fetching Ovadia 2019."
+    },
+    {
+      "name": "audit-strengthens-and-n9-integrity",
+      "one_line": "Is 'a de-confounding audit that STRENGTHENS the effect' genuinely unclaimed within ML/CS (N9, D's differentiator)? Resolve the one N9 source flagged as checked-by-summary-only (anti-fabrication violation) by fetch+grep or mark NOT VERIFIABLE.",
+      "flavor": "dialectical",
+      "claims": ["N9", "N1"],
+      "corpus_evidence": ["do-imagenet-classifiers-generalize-to-imagenet-icml-2019-arxiv190210811", "confounds-in-failed-replications-bressan-frontiers-in-psychology-2019-doi103389f", "on-the-state-of-the-art-of-evaluation-in-neural-language-models-iclr-2018-arxiv1", "a-metric-learning-reality-check-eccv-2020-arxiv200308505", "miss-catcher-search-log-n2-n3-n6-n9-n1-residual"],
+      "opposing_positions": "Reality-check genre norm: audit SHRINKS the effect (Melis, Musgrave, Lucic, Ferrari). Us + partials: audit GROWS it (eta^2 0.37->0.405; Recht relative-slope; Bressan psychology). INTEGRITY: the miss-catcher log admits one N9 candidate (Robinson/Glen/Lee, QSAR genre) was 'checked via search summary' only, NOT fetched -- must be fetched+grepped or explicitly moved to NOT VERIFIABLE, since N9 is candidate D's rhetorical differentiator and this project has caught 4 fabricated citations.",
+      "importance": 9, "uncertainty": 7, "disagreement": 7, "decision_impact": 9,
+      "composite_score": 32, "source_budget": 7,
+      "rationale": "N9 is what separates D from 'yet another ablation'. The verdict is currently 'mixed' and rests partly on an unverified citation -- resolving it is high-leverage and an integrity requirement."
+    },
+    {
+      "name": "n7-roughening-beyond-offline-mbo",
+      "one_line": "Has ANYONE (in BO / kernel methods / any field, not just offline MBO) roughened a smooth model to prove smoothness is the CAUSAL axis of a performance gap? Decides whether candidate C's bidirectional-manipulation claim is 'first at all' or merely 'first in offline MBO'.",
+      "flavor": "convergent",
+      "claims": ["N7"],
+      "corpus_evidence": ["ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec", "ms-ddeo-offline-data-driven-evolutionary-optimization-based-on-model-selection-z", "root-rethinking-offline-optimization-as-distributional-translation-via-probabili", "offline-model-based-optimization-by-learning-to-rank-iclr-2025-arxiv241011502"],
+      "opposing_positions": "Within offline MBO: IGNITE/MS-DDEO/ROOT/Boosting-sensitivity all smooth or select-by-smoothness in ONE direction (NONE FOUND for bidirectional). Untested: BO/GP kernel-lengthscale ablations, Matern-nu sweeps, RKHS-smoothness studies OUTSIDE offline MBO that vary smoothness in both directions to establish causality. This is a NEW search within the depth budget, flagged verbatim in redundancy-audit.md and by both loci analysts.",
+      "importance": 7, "uncertainty": 6, "disagreement": 4, "decision_impact": 7,
+      "composite_score": 24, "source_budget": 6,
+      "rationale": "C's sharpest remaining exposure: a kernel-lengthscale or Matern-nu ablation elsewhere could partially pre-empt the 'smoothness is causal' claim. Requires a targeted new search + fetch."
+    },
+    {
+      "name": "optimizer-reversal-unearned-and-candidate-a-credit",
+      "one_line": "Is the 'field innovates on the axis that doesn't matter' reversal (eta^2_opt=0.01 vs PGS's premise that search strategy is the neglected axis) a defensible literature claim, and does L/R/W's 'optimizer as fixed nuisance' mean candidate A is UNDER-credited for the not-an-optimizer-effect half?",
+      "flavor": "dialectical",
+      "claims": ["N1(iii)", "N6", "candidate-A"],
+      "corpus_evidence": ["offline-model-based-optimization-via-policy-guided-gradient-search-aaai-2024-arx", "a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization-iclr-202", "design-bench-benchmarks-for-data-driven-offline-model-based-optimization-icml-20"],
+      "opposing_positions": "PGS (Chemingui AAAI24) premise: 'offline BBO has focused on improving surrogate models while using fixed search strategies' -- the search strategy is the neglected axis. Our eta^2_opt=0.01 contradicts it (the named belief, refuted). BUT our own FLAW_LEDGER says 0.01 is confounded (unequal oracle budgets, trust-region closes gradient collapse) -> reversal 'currently unearned'. Separately, L/R/W held optimizer as a FIXED NUISANCE VARIABLE, so it cannot own A's 'not-an-optimizer-effect' half -> A may be under-credited relative to the orchestrator's harsh self-rating.",
+      "importance": 8, "uncertainty": 6, "disagreement": 7, "decision_impact": 7,
+      "composite_score": 28, "source_budget": 4,
+      "rationale": "Bears directly on the A/C/D recommendation and on the paper's strongest rhetorical hook (named belief refuted). Literature side (PGS premise, L/R/W design) is verifiable now."
+    },
+    {
+      "name": "n3-classic-bo-beta-calibration",
+      "one_line": "Does the classic BO acquisition-calibration literature (GP-UCB beta_t schedules, Srinivas et al. 2010; kappa tuning) already own N3's 'a shared beta delivers different effective conservatism across surrogates with different sigma scales'?",
+      "flavor": "convergent",
+      "claims": ["N3"],
+      "corpus_evidence": ["why-so-pessimistic-estimating-uncertainties-for-offline-rl-through-ensembles-and", "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi", "miss-catcher-search-log-n2-n3-n6-n9-n1-residual"],
+      "opposing_positions": "N3 is the thinnest-covered claim (2-3 sources). Ghasemipour is the closest analog but different mechanism (target independence, not cross-class sigma scale). The foundational GP-UCB beta_t literature (Srinivas 2010) and BO practice of tuning kappa/beta per surrogate were NEVER checked by the miss-catcher -- they might own the 'nominal beta != effective conservatism' idea (though for a SINGLE surrogate, not ACROSS surrogate classes). Check + fetch Srinivas 2010 if it bears.",
+      "importance": 6, "uncertainty": 6, "disagreement": 4, "decision_impact": 5,
+      "composite_score": 21, "source_budget": 3,
+      "rationale": "N3's NONE FOUND is currently the least-stress-tested; the classic BO beta literature is the obvious place a reviewer would point. Cheap to check, closes the thinnest gap."
+    }
+  ],
+  "skip_loci": [
+    {"name": "n6-crossed-factorial-reconfirmation", "reason": "Already exhaustively resolved: 0 'factorial/ANOVA/crossed' grep hits across all 5 named papers, independently re-confirmed by two fetchers, and the Kim survey itself names the gap. Depth adds nothing."},
+    {"name": "n1-genre-residual", "reason": "Already crisp and well-covered (6 reality-check papers + 2 chased): shape is PRIOR WORK FOUND, residual = offline-MBO vocabulary + eta^2-net-up. Folded into the audit-strengthens locus."},
+    {"name": "n8-quantified-ratio", "reason": "Phenomenon existence resolved (Henderson/Nagarajan own 'implementation ~ method-difference variance'); residual is domain-specific (offline MBO + cross-platform axis + stated ratio), which is a drafting point, not a depth-read."},
+    {"name": "abe-vs-lakshminarayanan-ensemble-size", "reason": "Medium relevance, subsumed by the K/finite-width locus which reads both."},
+    {"name": "ms-ddeo-alternate-access", "reason": "Closed-access confirmed via S2/OpenAlex/Unpaywall/author homepage/ScienceDirect 403 -- every legitimate channel exhausted; goes to the NOT VERIFIABLE terminal section."}
+  ]
+}
