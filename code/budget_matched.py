@@ -59,6 +59,15 @@ class Counter:
         return g
 
 
+def _chunked(score_np, a, chunk=4096):
+    """Score a large array in slices. At the UP level CMA's pool reaches ~51k points, and
+    scoring that in one call through a GP posterior is a large transient allocation -- with
+    several workers hitting it at once it took down the pool (BrokenProcessPool). The
+    incumbent mbo.cma_opt never sees this because its pool is ~3k. Chunking is numerically
+    identical (the scorers are pointwise)."""
+    return np.concatenate([score_np(a[i:i + chunk]) for i in range(0, len(a), chunk)])
+
+
 def _cma_fixed(mbo, score_np, x0, fevals, seed):
     """CMA spending a FIXED feval budget, via restarts.
 
@@ -99,7 +108,7 @@ def _cma_fixed(mbo, score_np, x0, fevals, seed):
             break
         restart += 1
     allc = np.concatenate(pool)
-    return allc[np.argsort(score_np(allc))[-mbo.TOP:]]
+    return allc[np.argsort(_chunked(score_np, allc))[-mbo.TOP:]]
 
 
 def _cell(spec):
