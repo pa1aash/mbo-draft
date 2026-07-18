@@ -109,3 +109,36 @@ NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2
 | Phase B hyperresearch 2-16 | RUNNING | docs/hyperresearch/ | 2 agents |
 | A.2 prereg contingent arms | DONE | docs/PREREGISTRATION_V2.md | M1/X11/X4 added, timestamped |
 | Phase E blueprint v1 | DONE | docs/AAAI_BLUEPRINT.md | Part I PENDING; Part III pre-committed |
+
+---
+
+## Stage-0 experiments (branch `stage0-experiments`, 2026-07-18)
+
+| unit | status | artifact | one-line |
+|---|---|---|---|
+| 0A.1 beta=0 reconciliation | **DONE** | docs/BETA0_RECONCILE.md, results/beta0_reconcile.json | disagreement was ENGINE (off_off vs on_on), not estimator |
+| 0A.2 width ablation (W1/W2) | RUNNING | code/width_ablation.py -> results/width/width_grid.json | 4 widths x 7 tasks x 30 seeds, K=5 fixed |
+| 0A.3 budget-matched (BM1) | RUNNING | code/budget_matched.py -> results/budget/budget_matched.json | 2 levels x 7 tasks x 30 seeds |
+| V3 pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 55ced44) | committed BEFORE both launches |
+
+**0A.1 verdict.** GATE_KBETA's 0.378 and the novelty audit's 0.504->0.511 are the same
+estimator on different engines. Holding the estimator fixed and switching engine flips the
+direction (off_off 0.496->0.516); holding engine fixed and switching estimator moves it
+<0.02. Cause is X1: off_off the ensemble regresses raw y while both GPs z-score, which
+handicaps it most at beta=0 where the mean fit is all that matters. on_on is correct.
+
+`_gp_ens_gap` refits its min-max normalizer per beta, so 0.378 and 0.556 are in different
+units. On a beta-invariant normalizer: gap(beta=0) = **0.319 [0.196, 0.460]**,
+gap(beta=2) = **0.525 [0.406, 0.614]**, increment **0.203 [0.007, 0.396]**, p(<=0)=0.020
+(task+seed bootstrap, 10k, normalizer refit inside each resample).
+
+**Effect on C2.** Mean-quality base SURVIVES (CI excludes zero; 61% of the advantage is
+present with sigma fully removed). "Independent of pessimism" DOES NOT: the increment is
+significant. `paper/aaai27/main.tex:198` claims the paired difference has 95% CI
+[-0.02, 0.10], "indistinguishable from zero" — refuted on the audited engine; that passage
+and `supplement.tex:106` need rewriting to a base-plus-amplification claim. The cited
+"0.51 -> 0.47" pair is reproduced by no traced computation and should be struck.
+
+**Carry-forward.** Both V3 arms report on the beta-invariant normalizer for the same reason;
+the incumbent per-condition estimator is reported alongside only where comparability with a
+published figure is required.
