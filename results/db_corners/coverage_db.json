@@ -1,0 +1,334 @@
+{
+ "meta": {
+  "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "os_release": "6.17.0-35-generic",
+  "python": "3.9.23",
+  "torch": "2.8.0+cpu",
+  "numpy": "1.23.5",
+  "botorch": "0.10.0",
+  "gpytorch": "1.11",
+  "cma": "4.4.4",
+  "git_sha": "17d04658efaa0f9a5c56fc4b90f23ec517eea506",
+  "X1": true,
+  "X3": true,
+  "K": 5,
+  "beta": 2.0,
+  "TOP": 128,
+  "OPT_STEPS": 100,
+  "LR_OPT": 0.05,
+  "n_seeds": 4,
+  "seed": "0..3",
+  "timestamp": "2026-07-18T07:09:34"
+ },
+ "per_cell": {
+  "TFBind8|ens:grad": {
+   "c_in": 0.8354999999999999,
+   "c_ood": 0.5,
+   "n": 4
+  },
+  "TFBind8|ens:perturb": {
+   "c_in": 0.8354999999999999,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind8|ens:cma": {
+   "c_in": 0.8354999999999999,
+   "c_ood": 0.982421875,
+   "n": 4
+  },
+  "TFBind8|botorchgp:grad": {
+   "c_in": 0.97,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind8|botorchgp:perturb": {
+   "c_in": 0.97,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind8|botorchgp:cma": {
+   "c_in": 0.97,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind8|svgp:grad": {
+   "c_in": 0.735,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind8|svgp:perturb": {
+   "c_in": 0.735,
+   "c_ood": 0.998046875,
+   "n": 4
+  },
+  "TFBind8|svgp:cma": {
+   "c_in": 0.735,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind10|botorchgp:grad": {
+   "c_in": 0.988,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind10|botorchgp:perturb": {
+   "c_in": 0.988,
+   "c_ood": 0.9453125,
+   "n": 4
+  },
+  "TFBind10|botorchgp:cma": {
+   "c_in": 0.988,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind10|ens:grad": {
+   "c_in": 0.9265,
+   "c_ood": 0.228515625,
+   "n": 4
+  },
+  "TFBind10|ens:perturb": {
+   "c_in": 0.9265,
+   "c_ood": 0.888671875,
+   "n": 4
+  },
+  "TFBind10|ens:cma": {
+   "c_in": 0.9265,
+   "c_ood": 0.51171875,
+   "n": 4
+  },
+  "TFBind10|svgp:grad": {
+   "c_in": 0.9550000000000001,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "TFBind10|svgp:perturb": {
+   "c_in": 0.9550000000000001,
+   "c_ood": 0.978515625,
+   "n": 4
+  },
+  "TFBind10|svgp:cma": {
+   "c_in": 0.9550000000000001,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "Superconductor|ens:grad": {
+   "c_in": 0.6875,
+   "c_ood": 0.0,
+   "n": 4
+  },
+  "Superconductor|ens:perturb": {
+   "c_in": 0.6875,
+   "c_ood": 0.75390625,
+   "n": 4
+  },
+  "Superconductor|ens:cma": {
+   "c_in": 0.6875,
+   "c_ood": 0.0,
+   "n": 4
+  },
+  "Superconductor|botorchgp:grad": {
+   "c_in": 0.9655,
+   "c_ood": 0.84375,
+   "n": 4
+  },
+  "Superconductor|botorchgp:perturb": {
+   "c_in": 0.9655,
+   "c_ood": 0.912109375,
+   "n": 4
+  },
+  "Superconductor|botorchgp:cma": {
+   "c_in": 0.9655,
+   "c_ood": 0.916015625,
+   "n": 4
+  },
+  "Superconductor|svgp:grad": {
+   "c_in": 0.636,
+   "c_ood": 0.0,
+   "n": 4
+  },
+  "Superconductor|svgp:perturb": {
+   "c_in": 0.636,
+   "c_ood": 0.322265625,
+   "n": 4
+  },
+  "Superconductor|svgp:cma": {
+   "c_in": 0.636,
+   "c_ood": 0.5703125,
+   "n": 4
+  },
+  "GFP|ens:grad": {
+   "c_in": 0.4725,
+   "c_ood": 0.015625,
+   "n": 4
+  },
+  "GFP|ens:perturb": {
+   "c_in": 0.4725,
+   "c_ood": 0.5625,
+   "n": 4
+  },
+  "GFP|ens:cma": {
+   "c_in": 0.4725,
+   "c_ood": 0.240234375,
+   "n": 4
+  },
+  "GFP|botorchgp:grad": {
+   "c_in": 0.508,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "GFP|botorchgp:perturb": {
+   "c_in": 0.508,
+   "c_ood": 0.595703125,
+   "n": 4
+  },
+  "GFP|botorchgp:cma": {
+   "c_in": 0.508,
+   "c_ood": 0.595703125,
+   "n": 4
+  },
+  "GFP|svgp:grad": {
+   "c_in": 0.46799999999999997,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "GFP|svgp:perturb": {
+   "c_in": 0.46799999999999997,
+   "c_ood": 0.57421875,
+   "n": 4
+  },
+  "GFP|svgp:cma": {
+   "c_in": 0.46799999999999997,
+   "c_ood": 0.57421875,
+   "n": 4
+  },
+  "UTR|ens:grad": {
+   "c_in": 0.688,
+   "c_ood": 0.0,
+   "n": 4
+  },
+  "UTR|ens:perturb": {
+   "c_in": 0.688,
+   "c_ood": 0.04296875,
+   "n": 4
+  },
+  "UTR|ens:cma": {
+   "c_in": 0.688,
+   "c_ood": 0.0,
+   "n": 4
+  },
+  "UTR|svgp:grad": {
+   "c_in": 0.998,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "UTR|svgp:perturb": {
+   "c_in": 0.998,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "UTR|svgp:cma": {
+   "c_in": 0.998,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "UTR|botorchgp:grad": {
+   "c_in": 0.9484999999999999,
+   "c_ood": 1.0,
+   "n": 4
+  },
+  "UTR|botorchgp:perturb": {
+   "c_in": 0.9484999999999999,
+   "c_ood": 0.06640625,
+   "n": 4
+  },
+  "UTR|botorchgp:cma": {
+   "c_in": 0.9484999999999999,
+   "c_ood": 0.06640625,
+   "n": 4
+  }
+ },
+ "per_task_surrogate": {
+  "TFBind8|ens": {
+   "c_in": 0.8355,
+   "c_ood": 0.8274739583333334
+  },
+  "TFBind8|botorchgp": {
+   "c_in": 0.9700000000000001,
+   "c_ood": 1.0
+  },
+  "TFBind8|svgp": {
+   "c_in": 0.735,
+   "c_ood": 0.9993489583333334
+  },
+  "TFBind10|ens": {
+   "c_in": 0.9265,
+   "c_ood": 0.54296875
+  },
+  "TFBind10|botorchgp": {
+   "c_in": 0.988,
+   "c_ood": 0.9817708333333334
+  },
+  "TFBind10|svgp": {
+   "c_in": 0.9550000000000001,
+   "c_ood": 0.9928385416666666
+  },
+  "Superconductor|ens": {
+   "c_in": 0.6875,
+   "c_ood": 0.2513020833333333
+  },
+  "Superconductor|botorchgp": {
+   "c_in": 0.9655,
+   "c_ood": 0.890625
+  },
+  "Superconductor|svgp": {
+   "c_in": 0.636,
+   "c_ood": 0.2975260416666667
+  },
+  "GFP|ens": {
+   "c_in": 0.4725,
+   "c_ood": 0.2727864583333333
+  },
+  "GFP|botorchgp": {
+   "c_in": 0.508,
+   "c_ood": 0.73046875
+  },
+  "GFP|svgp": {
+   "c_in": 0.46799999999999997,
+   "c_ood": 0.7161458333333334
+  },
+  "UTR|ens": {
+   "c_in": 0.6880000000000001,
+   "c_ood": 0.014322916666666666
+  },
+  "UTR|botorchgp": {
+   "c_in": 0.9484999999999998,
+   "c_ood": 0.3776041666666667
+  },
+  "UTR|svgp": {
+   "c_in": 0.9979999999999999,
+   "c_ood": 1.0
+  }
+ },
+ "noise_floor": {
+  "TFBind8": {
+   "max_var_repeat": 3.552713678800501e-15,
+   "score_std_over_D": 0.12544801831245422
+  },
+  "TFBind10": {
+   "max_var_repeat": 3.552713678800501e-15,
+   "score_std_over_D": 0.11040099710226059
+  },
+  "Superconductor": {
+   "max_var_repeat": 3.552713678800501e-15,
+   "score_std_over_D": 0.30873194336891174
+  },
+  "GFP": {
+   "max_var_repeat": 2.2737367544323206e-13,
+   "score_std_over_D": 3.3359031677246094
+  },
+  "UTR": {
+   "max_var_repeat": 3.552713678800501e-15,
+   "score_std_over_D": 0.03633859008550644
+  }
+ }
+}
