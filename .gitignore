@@ -35,6 +35,8 @@ paper/aaai27/kit.zip
 # manuscript's headline numbers and are now tracked.
 results/*.log
 results/*.tmp
+results/scratch/
+results/smoke.json
 
 # hyperresearch vault internals (audit trail lives in docs/)
 .hyperresearch/
@@ -46,6 +48,16 @@ logs/
 # hyperresearch regenerable index
 research/index/
 
-# built macOS environments (the .lock files + mac-db-patches/ ARE committed; the venvs are not)
+# built environments (the .lock files + mac-db-patches/ ARE committed; the venvs are not).
+# NB: intentionally NOT a blanket `envs/` — git cannot re-include the committed .lock
+# files once their parent dir is excluded, so built env dirs are listed individually.
 envs/mac-synth/
 envs/mac-db/
+envs/pod-synth/
+envs/pod-db/
+envs/pod-db-torch28/
+envs/conda/
+envs/miniforge/
+
+# agent scratch
+*.agent.md
