@@ -16,11 +16,15 @@ Linux pod (RunPod ubuntu-2404, 32 vCPU EPYC 9655P, 64 GB). Env: envs/pod-synth
 | P1 pod-synth env + lock | DONE | envs/pod-synth-requirements.lock | ce6dabb |
 | P2 reproduction gate | **PASS** | results/corners/pod_off_off.json | eta2_surr=0.3689 (pub 0.367), Friedman p=6.086e-5 (pub 6.09e-5), published 63/63; camera bit-diff <=1.47% rel on svgp/cma cells only (disclosed) |
 | P3 K-beta gate | **DONE** | docs/GATE_KBETA.md | KB1 confirmed/no-reverse; KB2 smooth-mean survives; KB3 GP robust; KB4 median ratio 1.19 (per-task 0.07-1.44); KB5 corners overlap (underpowered) |
-| P4 Design-Bench env | DELEGATED | (subagent) | rebuild from mac lock torch 2.8; broken first attempt (unpinned botorch) |
-| P7 synthetic re-runs | RUNNING | results/ | gradtune 2x2, x0inv, coverage33, calibration, gpcov |
+| P4 Design-Bench env | **DONE** | docs/POD_ENV.md, envs/pod-db-*.lock | env `dbm` torch 2.8; 5 non-mujoco tasks verified; unpinned-botorch fix bug documented |
+| P5 DB verification | **DONE** | docs/POD_DB_VERIFICATION.md | results_db.json is OFF_OFF (empirically); TFBind8/10, Superconductor, UTR match; GFP diverges 18% (decode artifact) |
+| P6 DB at scale | **DONE** | docs/POD_DB_SCALE.md | DB four corners eta2_surr~0.001-0.03 (NULL, unlike synthetic 0.28-0.45); mujoco ran; X11 null survives on exact-oracle subset |
+| P7 synthetic re-runs | **DONE** | docs/POD_PHASE7.md | gradtune 2x2 X3-driven; x0 inversion ens-specific; grad~cma is X3 artifact; sigma=distance not error |
+| P8 report | DONE | docs/POD_RESULTS.md | consolidated |
 
-**RESUME (P3 if interrupted):** `nohup bash <scratchpad>/run_phase3.sh > logs/pod_phase3.log 2>&1 &`
-**RESUME (P7):** `nohup bash <scratchpad>/run_phase7.sh > logs/pod_phase7.log 2>&1 &`
+**RESUME commands (if any unit interrupted):** run_phase3.sh / run_phase7.sh for the synthetic
+grids (merge-safe); envs/build_pod_db.sh for the DB env; the DB corner runs are merge-safe under
+results/db_corners/. All launch commands are in logs/ headers.
 
 ## Environment reality (load-bearing)
 - This macOS machine had **no working torch/sklearn/botorch env** at session start. The
