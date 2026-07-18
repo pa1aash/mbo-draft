@@ -135,13 +135,23 @@ def make_tasks(names=None):
 
 # ---------------- ensemble surrogates --------------------------------------
 class MLP(nn.Module):
-    def __init__(s, d, hid=HID):
+    def __init__(s, d, hid=HID, spectral=False):
         super().__init__()
         s.net = nn.Sequential(nn.Linear(d, hid), nn.ReLU(),
                               nn.Linear(hid, hid), nn.ReLU(), nn.Linear(hid, 1))
+        if spectral:
+            # C2-SWING (SM1): constrain each layer's largest singular value to 1, which
+            # bounds the network's Lipschitz constant by 1 (product over layers; ReLU is
+            # 1-Lipschitz). An architectural smoothness constraint -- no loss term, so it
+            # cannot trade off against the MSE fit the way a penalty can.
+            from torch.nn.utils.parametrizations import spectral_norm
+            for i, mod in enumerate(s.net):
+                if isinstance(mod, nn.Linear):
+                    s.net[i] = spectral_norm(mod)
     def forward(s, x): return s.net(x).squeeze(-1)
 
-def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None, hid=HID):
+def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None, hid=HID,
+                   grad_pen=None, spectral=False):
     """coms_alpha=None -> plain MSE ensemble; float -> COMs conservative term.
     Seed conventions preserved from legacy (coms members offset by +500).
 
@@ -153,7 +163,14 @@ def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None, hid=H
     fixed lr/epoch budget. That asymmetry is an alternative explanation for the
     surrogate main effect and had to be removed before the effect could be read.
     Inverting on prediction is an affine monotone map, so the acquisition RANKING is
-    unchanged by this; only the fit changes. Mirrors svgp's existing treatment."""
+    unchanged by this; only the fit changes. Mirrors svgp's existing treatment.
+
+    C2-SWING (SM1) smoothness knobs, both default-off so the incumbent path is
+    bit-identical: grad_pen=lam adds lam * E||d f/d x||^2 on the training batch (a
+    double-backprop penalty, so create_graph=True); spectral=True wraps every Linear in
+    spectral normalization. Both act on the MEMBER functions only -- sigma is still the
+    plain member std (ens_moments_raw), so the sigma-formation rule is held fixed and any
+    movement in the gap is attributable to mean geometry, not to a changed uncertainty."""
     y = np.asarray(y, dtype=np.float32)
     if X1_STANDARDIZE_Y:
         ym, ys = float(y.mean()), float(y.std() + 1e-8)
@@ -164,13 +181,17 @@ def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None, hid=H
     ms = []
     for k in range(K):
         torch.manual_seed(seed*100 + k + (500 if coms_alpha is not None else 0))
-        m = MLP(d, hid=hid)
+        m = MLP(d, hid=hid, spectral=spectral)
         o = optim.Adam(m.parameters(), lr=LR, weight_decay=WD)
         dl = DataLoader(ds, batch_size=256, shuffle=True)
         m.train()
         for _ in range(ep):
             for xb, yb in dl:
                 loss = nn.MSELoss()(m(xb), yb)
+                if grad_pen is not None:
+                    xg = xb.detach().clone().requires_grad_(True)
+                    g = torch.autograd.grad(m(xg).sum(), xg, create_graph=True)[0]
+                    loss = loss + grad_pen * (g ** 2).sum(dim=1).mean()
                 if coms_alpha is not None:
                     xn = xb.detach().clone().requires_grad_(True)
                     g = torch.autograd.grad(m(xn).sum(), xn)[0]
@@ -300,7 +321,7 @@ def gp_lcb_np(gp, beta):
         return mu - beta*sd
     return g
 
-def fit_botorch_gp(x, y, seed, max_train=800, matched=False):
+def fit_botorch_gp(x, y, seed, max_train=800, matched=False, nu=None, lengthscale=None):
     """BoTorch GP -> differentiable posterior, enables the GP+gradient cell.
     Returns None if botorch isn't installed (runner skips the cell).
     matched=True skips the marginal-likelihood fit so the GP keeps its prior/default
@@ -322,7 +343,34 @@ def fit_botorch_gp(x, y, seed, max_train=800, matched=False):
     xt = torch.DoubleTensor(x)
     yt = torch.DoubleTensor(y).unsqueeze(-1)
     yt = (yt - yt.mean()) / (yt.std() + 1e-8)
-    gp = SingleTaskGP(xt, yt)
+    if nu is None and lengthscale is None:
+        gp = SingleTaskGP(xt, yt)                      # incumbent: BoTorch default Matern-5/2
+    else:
+        # C2-SWING (SM2): the ROUGHENED GP. nu=0.5 is Matern-1/2 (Ornstein-Uhlenbeck) --
+        # sample paths continuous but nowhere differentiable, the roughest standard Matern.
+        # Everything else (subsample, standardization, LCB closure, beta) is held at the
+        # smooth-GP baseline so the kernel is the only thing that moves.
+        #
+        # lengthscale MUST usually be supplied and is FROZEN (raw_lengthscale grad off)
+        # while outputscale/noise still refit. Reason, measured not assumed: letting the
+        # marginal likelihood refit the lengthscale UNDOES the manipulation -- at nu=0.5
+        # the MLL compensates for the lost smoothness order by inflating the lengthscale
+        # (Branin 0.40 -> 15.93, Ackley 1.51 -> 9.49 in the pre-launch probe), yielding a
+        # mean that is effectively SMOOTHER, the opposite of the intervention. Freezing
+        # the lengthscale at the smooth GP's fitted value isolates the smoothness order.
+        # nu=None keeps the incumbent RBF (BoTorch 0.18's SingleTaskGP default) so a
+        # lengthscale-only arm moves lengthscale alone.
+        import gpytorch
+        d = xt.shape[-1]
+        k = (gpytorch.kernels.RBFKernel(ard_num_dims=d) if nu is None
+             else gpytorch.kernels.MaternKernel(nu=nu, ard_num_dims=d))
+        if lengthscale is not None:
+            ls = np.atleast_1d(np.asarray(lengthscale, dtype=np.float64)).reshape(1, -1)
+            if ls.shape[1] == 1:
+                ls = np.repeat(ls, d, axis=1)
+            k.lengthscale = torch.as_tensor(ls, dtype=k.raw_lengthscale.dtype)
+            k.raw_lengthscale.requires_grad_(False)    # frozen: the fit must not undo it
+        gp = SingleTaskGP(xt, yt, covar_module=gpytorch.kernels.ScaleKernel(k))
     if not matched:
         fit_gpytorch_mll(ExactMarginalLogLikelihood(gp.likelihood, gp))
     gp.eval()
@@ -361,7 +409,7 @@ def cma_opt(score_np, x0, budget=3000, seed=0):
     return allc[np.argsort(score_np(allc))[-TOP:]]
 
 # ---------------- SVGP surrogate (3rd surrogate axis, scales past exact GP) --
-def fit_svgp(x, y, dim, seed, n_ind=128, iters=250, max_train=2000):
+def fit_svgp(x, y, dim, seed, n_ind=128, iters=250, max_train=2000, nu=2.5, lengthscale=None):
     """Stochastic variational GP (gpytorch). Differentiable posterior -> pairs with
     every optimizer. Returns None if gpytorch is missing."""
     try:
@@ -386,7 +434,14 @@ def fit_svgp(x, y, dim, seed, n_ind=128, iters=250, max_train=2000):
             vd = CholeskyVariationalDistribution(n_ind)
             super().__init__(VariationalStrategy(s, ind, vd, learn_inducing_locations=True))
             s.mean = gpytorch.means.ConstantMean()
-            s.cov = gpytorch.kernels.ScaleKernel(gpytorch.kernels.MaternKernel(nu=2.5, ard_num_dims=dim))
+            base = gpytorch.kernels.MaternKernel(nu=nu, ard_num_dims=dim)   # nu=0.5 -> SM2 rough
+            if lengthscale is not None:
+                ls = np.atleast_1d(np.asarray(lengthscale, dtype=np.float64)).reshape(1, -1)
+                if ls.shape[1] == 1:
+                    ls = np.repeat(ls, dim, axis=1)
+                base.lengthscale = torch.as_tensor(ls, dtype=base.raw_lengthscale.dtype)
+                base.raw_lengthscale.requires_grad_(False)   # frozen; see fit_botorch_gp
+            s.cov = gpytorch.kernels.ScaleKernel(base)
         def forward(s, x):
             return gpytorch.distributions.MultivariateNormal(s.mean(x), s.cov(x))
 

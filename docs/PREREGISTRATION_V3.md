@@ -93,6 +93,159 @@ silently accepted.
 
 ---
 
+## C2-SWING — the bidirectional smoothness manipulation (SM1/SM2/SM3), branch `c2-swing`
+
+Registered BEFORE launch. Same engine and suite as 0A.2/0A.3: X1=on, X3=on, beta=2, K=5,
+seeds `0..29`, the 7 synthetic tasks, envs/pod-synth, 19-field engine stamp on every
+record, primary metric p100. Runner `code/smooth_swing.py`, analyzer `code/analyze_swing.py`.
+
+**Why this arm exists.** C2 is currently DIAGNOSTIC. The GP beats the ensemble at
+optimization while fitting worse on held-out data (0A.2 W2), the advantage survives
+removing sigma (0A.1) and survives more search pressure (0A.3). "Mean geometry under
+optimization" is the last explanation standing, but every result so far is observational —
+we have never MOVED the proposed axis and watched the outcome follow. This arm moves it in
+BOTH directions. A one-directional result is a much weaker claim: smoothing the net could
+close the gap for reasons unrelated to smoothness (capacity, optimization difficulty), and
+a rough GP staying strong would show smoothness was never the operative variable. Only the
+bidirectional pair licenses a causal reading, which is why all three predictions must hold.
+
+**Manipulations.** SM1 constrains each ensemble MEMBER's smoothness, leaving the
+sigma-formation rule untouched (sigma is still the plain member std,
+`mbo.ens_moments_raw`), so any movement in the gap is attributable to mean geometry rather
+than to a changed uncertainty. Two mechanisms, because they fail differently: a gradient
+penalty `lam * E||d f/d x||^2` (`lam` in {0.01, 0.1, 1.0}, log-spaced across three decades)
+trades smoothness against fit through the loss; spectral normalization bounds the Lipschitz
+constant architecturally and cannot be traded off.
+
+SM2 roughens the GP by kernel only, holding subsample, standardization, LCB closure and
+beta at the smooth-GP baseline. Two corrections to the naive design, both forced by
+pre-launch calibration on seeds 100/101 (`code/swing_calib.py`, `code/swing_calib2.py`):
+
+1. The incumbent `botorchgp` is **RBF**, not Matern-5/2 — BoTorch 0.18's `SingleTaskGP`
+   default is `RBFKernel` (verified by inspection). RBF is infinitely differentiable, so
+   the incumbent "smooth GP" is maximally smooth, which if anything sharpens C2's framing.
+   Repo comments calling it Matern-5/2 are wrong; the paper makes no kernel claim.
+2. The lengthscale must be **FROZEN** at the smooth GP's fitted value `L`, with only
+   outputscale/noise refit. Letting the marginal likelihood refit it UNDOES the
+   manipulation: at `nu=0.5` the MLL compensates for the lost smoothness order by inflating
+   the lengthscale (Branin 0.40 -> 15.93, Ackley 1.51 -> 9.49), returning a mean that is
+   effectively SMOOTHER than baseline. An absolute short lengthscale (0.05) is separately
+   DEGENERATE in high d — the mean reverts to the prior between points, so it is flat, not
+   rough. Shortening is therefore RELATIVE (`L/3`).
+
+Registered SM2 variants: `botorchgp_m12L` (`nu=0.5`, `L` frozen — isolates smoothness
+order), `botorchgp_lsL3` (RBF, `L/3` frozen — isolates lengthscale), `svgp_m12` (`nu=0.5`).
+Roughness uses TWO instruments, because at-data gradients understate spikiness (a sum of
+sharp bumps is locally flat AT the bump centres): `rough_D` on points drawn from D, and
+`rough_seg` on points BETWEEN data (convex combinations of random D pairs).
+
+**Declared prior on SM2, recorded before launch.** Calibration already indicates the SM2
+manipulation may not be deliverable at all. Across 18 configurations (`nu` in
+{0.5, 1.5, 2.5, inf} x lengthscale in {L, L/3, L/5, 0.05}, plus additive
+`RBF@L + a*Matern12@L/m` kernels at `a` in {0.3, 1, 3}), on 3–4 tasks and both instruments,
+NO setting raised the mean's roughness by the registered 25% while preserving the fit:
+`nu` changes moved roughness 0.78–1.10x, and every setting that roughened between-data
+structure did so by degrading the posterior mean's amplitude toward the prior (fit falls to
+0.30–0.71x). The apparent reason is structural: **a GP posterior mean conditioned on ~800
+observations is smooth because of the conditioning, not because of the kernel**, so
+roughness and fit quality are not independently manipulable in a fitted GP — whereas the
+ensemble has excess roughness it can afford to lose (0A.2 W2 shows it is the MORE accurate
+surrogate). The arm is nevertheless RUN at 30 seeds so that "SM2 is not deliverable" rests
+on CIs over scores, coverage and both roughness instruments rather than on a 2-seed probe.
+If the registered VOID rule fires, the binary call is SHIP-PURE-D and non-deliverability is
+reported as a methodological finding — NOT as evidence for or against C2, which it is not.
+
+This prior is recorded because concealing known calibration results would make the
+pre-registration ceremonial. The VOID rule and the binary call were fixed before any of it
+was run, and neither is being adjusted now to accommodate the expected outcome.
+
+**Estimand.** Every gap is the beta-invariant/pooled normalizer of `docs/BETA0_RECONCILE.md`
+(`analyze_v3.pooled_norm`): ONE per-task min–max fit over the pooled seed-mean cells of
+EVERY condition in the comparison set, never refit per condition. CIs are task+seed
+hierarchical bootstrap, 10,000 resamples, normalizer refit inside each resample. The
+smooth-GP reference is the incumbent `botorchgp`+`svgp` pair, matching `_gp_ens_gap`.
+
+| ID | Prediction |
+|---|---|
+| **SM1** | Constraining the ensemble mean's smoothness (spectral norm OR gradient penalty per member) toward the GP's, holding sigma formation fixed, CLOSES the GP–ensemble gap and stops gradient collapse. **GROUNDS:** if the GP's advantage is that its mean admits fewer off-distribution maximizers, then making the ensemble's mean comparably smooth should transfer the advantage. **KILL:** gap unchanged -> mean-smoothness is not the axis, C2 stays diagnostic (no causal upgrade), ship pure D. |
+| **SM2** | A Matern-1/2 GP (or short fixed lengthscale) COLLAPSES under aggressive optimization and its own-proposal premise coverage drops from the smooth-GP baseline. This is the RISKED prediction — theory FORBIDS a rough GP staying robust. **KILL:** rough GP stays robust -> smoothness-as-causal-axis falsified, ship pure D. |
+| **SM3** | SM1 holds at w=1024 (Stage 0's widest ensemble) — the mechanism is not a width confound. **KILL:** SM1 vanishes at wide width -> it was width, ship pure D. |
+
+**Manipulation check (gates everything, fixed in advance).** `roughness` = normalized mean
+gradient norm of the surrogate's MEAN function, `E||d mu/d x||_2 / std(f)`, measured on 500
+points drawn FROM D (not uniform — the P0-5 fix) and separately on each optimizer's own
+proposals. A manipulation that does not move its target is not evidence about the target:
+
+- SM1 is **VOID** (neither confirmed nor killed) unless at least one smoothing variant
+  reduces on-D roughness by >=25% vs the `base` ensemble, pooled across tasks.
+- SM2 is **VOID** unless at least one roughened kernel raises on-D roughness by >=25% vs
+  its own smooth counterpart.
+- A VOID arm is reported as VOID and forces SHIP-PURE-D, exactly as a KILL does. It does
+  NOT license a retuned second attempt inside this arm.
+
+**Decision rules, fixed in advance.**
+
+- `gap(v)` = mean over tasks of [mean of the 6 normalized smooth-GP cells] − [mean of the 3
+  normalized cells of ensemble variant `v`], all on the pooled normalizer.
+  `shrinkage(v) = 1 − gap(v)/gap(base)`.
+- **SM1 CONFIRMED** iff some smoothing variant `v` has (a) the CI on `gap(base) − gap(v)`
+  excluding 0 in the CLOSING direction, and (b) point `shrinkage(v) >= 0.50`. Because 4
+  variants are screened, (a) uses a Bonferroni-corrected 98.75% CI (`1 − 0.05/4`). The
+  variant satisfying both with the largest shrinkage is the **SM1 winner**, carried to SM3.
+- **SM1 PARTIAL** iff some variant closes significantly (a) but no variant reaches 50%
+  shrinkage. PARTIAL is NOT confirmation and forces SHIP-PURE-D.
+- **SM1 KILL** iff no variant's closing CI excludes 0.
+- **SM1b (supporting, not decisive):** the `grad` optimizer's inversion rate — the fraction
+  of (task, seed) cells whose returned set is worse than the x0 already held
+  (`x0_inversion.py`'s estimand) — falls for the SM1 winner vs `base`. Reported with its CI
+  whatever SM1 does; it cannot rescue a KILL and cannot veto a CONFIRM.
+- **SM2 CONFIRMED** iff at least 2 of the 3 roughened variants show BOTH (i) a significant
+  DROP in normalized p100 vs their smooth counterpart, paired by (task, seed), 95% CI on
+  the paired difference excluding 0, and (ii) a significant drop in own-proposal coverage
+  `c_ood` on the same cells. Both axes, because a score drop alone is consistent with the
+  rough kernel simply fitting worse; the coverage drop is what ties it to the premise.
+- **SM2 KILL** iff no roughened variant shows a significant score drop — i.e. the rough GP
+  stays robust, which the smoothness account forbids.
+- **SM2 PARTIAL** (score drops but coverage does not, or only 1 of 3): forces SHIP-PURE-D.
+- **SM2b (supporting):** whether the roughened GP still beats the `base` ensemble. The
+  sharpest reading of "collapse" is that it stops doing so; reported, not decisive.
+- **SM3 CONFIRMED** iff the SM1 winner, re-evaluated at w=1024 against the same smooth-GP
+  reference, again satisfies both SM1 clauses (closing CI excluding 0 at the corrected
+  level, and shrinkage >= 0.50).
+- **SM3 KILL** iff the SM1 winner's closing CI at w=1024 includes 0. If SM1 itself is
+  KILLED or VOID, SM3 is reported UNTESTABLE (there is no winner to carry), and the binary
+  call is SHIP-PURE-D regardless.
+
+**The binary call.** `docs/MECHANISM_SWING.md` records the three verdicts and exactly one
+of:
+- **FOLD** — iff SM1 CONFIRMED **and** SM2 CONFIRMED **and** SM3 CONFIRMED. C2 upgrades to
+  a scoped causal section and this branch merges at Gate 2.
+- **SHIP-PURE-D** — iff ANY arm is KILLED, PARTIAL, VOID, or UNTESTABLE. The paper ships as
+  pure Identity D and this branch touches nothing in the draft.
+
+There is no third outcome and no post-hoc reweighting of the three arms. In particular, SM1
+confirming while SM2 kills is SHIP-PURE-D, not "partial mechanism evidence" — that
+combination is precisely the falsification the bidirectional design was built to detect.
+
+**Declared post-hoc robustness check (NOT a decision rule).** SM1's pooled normalizer spans
+the smooth GPs and all five ensemble variants, and min–max is sensitive to its extremes: a
+variant that collapses becomes a task's new minimum and compresses every other condition's
+normalized spread, which could manufacture or mask shrinkage. `analyze_swing.py` therefore
+also recomputes the SM1 winner's gap on a normalizer pooled over only {smooth GPs, base,
+winner}. This was written before launch but is explicitly a robustness check on the
+estimand, not a registered criterion: it cannot change a verdict, and if it disagrees with
+the pooled-normalizer result that disagreement is reported in `MECHANISM_SWING.md` as a
+caveat on the headline.
+
+**Pre-launch calibration (declared).** Knob ranges (`lam` decades, `nu=0.5`, lengthscale
+0.05) and the grid's compute size were chosen from a smoke run on seeds **100/101**, which
+are DISJOINT from the analysis seeds `0..29`; `code/swing_smoke.py` also asserts that the
+default (knobs-off) path reproduces `results/kbeta/grid_b2.0.json` bit-exactly, since both
+knobs default to off and any drift would invalidate the Stage-0 corpus. No pre-registered
+contrast on seeds 0..29 was computed before this document was committed.
+
+---
+
 ## Shared commitments
 
 - MISSING means MISSING. Any cell that fails to run is reported as absent; no imputation,
