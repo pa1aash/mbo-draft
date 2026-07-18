@@ -1,0 +1,95 @@
+{
+ "meta": {
+  "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "os_release": "6.17.0-35-generic",
+  "python": "3.12.3",
+  "torch": "2.11.0+cpu",
+  "numpy": "2.4.4",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "cma": "4.4.4",
+  "git_sha": "812bcb9249aaddde1acd389f99a0b0020668332e",
+  "X1": true,
+  "X3": true,
+  "K": 5,
+  "beta": 2.0,
+  "TOP": 128,
+  "OPT_STEPS": 100,
+  "LR_OPT": 0.05,
+  "n_seeds": 30,
+  "seed": "0..29",
+  "timestamp": "2026-07-18T03:46:01"
+ },
+ "sigma": {
+  "Branin-2D": {
+   "botorchgp": {
+    "sigma_train": 0.1282350926271537,
+    "sigma_prop": 0.09029473726631873
+   },
+   "svgp": {
+    "sigma_train": 3.3257915019989013,
+    "sigma_prop": 3.0581307649612426
+   }
+  },
+  "Styblinski-5D": {
+   "botorchgp": {
+    "sigma_train": 3.1642798191452512,
+    "sigma_prop": 1.80207324756238
+   },
+   "svgp": {
+    "sigma_train": 2.7313400665918985,
+    "sigma_prop": 1.9042213122049967
+   }
+  },
+  "Levy-8D": {
+   "botorchgp": {
+    "sigma_train": 1.0037261376846207,
+    "sigma_prop": 0.43275180820281367
+   },
+   "svgp": {
+    "sigma_train": 1.1510655840237936,
+    "sigma_prop": 0.7610148270924886
+   }
+  },
+  "Rosenbrock-10D": {
+   "botorchgp": {
+    "sigma_train": 0.40249179659784123,
+    "sigma_prop": 0.12804297291386682
+   },
+   "svgp": {
+    "sigma_train": 0.5295314013957977,
+    "sigma_prop": 0.3009077509244283
+   }
+  },
+  "Rastrigin-15D": {
+   "botorchgp": {
+    "sigma_train": 0.8727607933979672,
+    "sigma_prop": 0.4360798747274531
+   },
+   "svgp": {
+    "sigma_train": 0.9495445032914479,
+    "sigma_prop": 0.58892489473025
+   }
+  },
+  "Ackley-20D": {
+   "botorchgp": {
+    "sigma_train": 0.13777611522541763,
+    "sigma_prop": 0.05624130808849207
+   },
+   "svgp": {
+    "sigma_train": 0.2959955056508382,
+    "sigma_prop": 0.18330017278591793
+   }
+  },
+  "Griewank-30D": {
+   "botorchgp": {
+    "sigma_train": 13.720696369884804,
+    "sigma_prop": 4.78867047625388
+   },
+   "svgp": {
+    "sigma_train": 67.639027150472,
+    "sigma_prop": 48.627000172932945
+   }
+  }
+ }
+}

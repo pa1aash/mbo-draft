@@ -15,10 +15,12 @@ Linux pod (RunPod ubuntu-2404, 32 vCPU EPYC 9655P, 64 GB). Env: envs/pod-synth
 | P0 X1/X3 switch proof | DONE | (test) | off_off ens:perturb Branin=-0.776~=-0.78; X3-on=-4.54 |
 | P1 pod-synth env + lock | DONE | envs/pod-synth-requirements.lock | ce6dabb |
 | P2 reproduction gate | **PASS** | results/corners/pod_off_off.json | eta2_surr=0.3689 (pub 0.367), Friedman p=6.086e-5 (pub 6.09e-5), published 63/63; camera bit-diff <=1.47% rel on svgp/cma cells only (disclosed) |
-| P3 K-beta gate | RUNNING | results/kbeta/ | 5 beta grids + kbeta ens sweep + bootstrap + analysis |
+| P3 K-beta gate | **DONE** | docs/GATE_KBETA.md | KB1 confirmed/no-reverse; KB2 smooth-mean survives; KB3 GP robust; KB4 median ratio 1.19 (per-task 0.07-1.44); KB5 corners overlap (underpowered) |
+| P4 Design-Bench env | DELEGATED | (subagent) | rebuild from mac lock torch 2.8; broken first attempt (unpinned botorch) |
+| P7 synthetic re-runs | RUNNING | results/ | gradtune 2x2, x0inv, coverage33, calibration, gpcov |
 
 **RESUME (P3 if interrupted):** `nohup bash <scratchpad>/run_phase3.sh > logs/pod_phase3.log 2>&1 &`
-(run_all merge-safe; kbeta re-runs whole). Then re-run kbeta_analyze.py.
+**RESUME (P7):** `nohup bash <scratchpad>/run_phase7.sh > logs/pod_phase7.log 2>&1 &`
 
 ## Environment reality (load-bearing)
 - This macOS machine had **no working torch/sklearn/botorch env** at session start. The
