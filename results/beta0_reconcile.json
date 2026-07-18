@@ -1,0 +1,103 @@
+{
+  "tasks": [
+    "Branin-2D",
+    "Styblinski-5D",
+    "Levy-8D",
+    "Rosenbrock-10D",
+    "Rastrigin-15D",
+    "Ackley-20D",
+    "Griewank-30D"
+  ],
+  "cells": [
+    "ens:perturb",
+    "ens:grad",
+    "ens:cma",
+    "botorchgp:perturb",
+    "botorchgp:grad",
+    "botorchgp:cma",
+    "svgp:perturb",
+    "svgp:grad",
+    "svgp:cma"
+  ],
+  "n_seeds": 30,
+  "engine": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.12.3",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.4.4",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "cma": "4.4.4",
+    "git_sha": "812bcb9249aaddde1acd389f99a0b0020668332e",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 0.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 30,
+    "seed": "0..29",
+    "timestamp": "2026-07-18T02:41:28"
+  },
+  "path_A_per_beta_minmax": {
+    "0.0": 0.37816960996556614,
+    "2.0": 0.5562725368404503
+  },
+  "path_raw_task_zscore": {
+    "0.0": 0.9037381309733463,
+    "2.0": 1.472715067175011
+  },
+  "path_C_beta_invariant_minmax": {
+    "0.0": 0.3192184949960276,
+    "2.0": 0.5251935454349869
+  },
+  "bootstrap": {
+    "gap_beta0.0_ci": [
+      0.19636072244212116,
+      0.4595034706658749
+    ],
+    "gap_beta2.0_ci": [
+      0.406405136312044,
+      0.6138864585385433
+    ],
+    "gap_delta_b2_minus_b0": 0.20321478931053472,
+    "gap_delta_ci": [
+      0.0071569834820917055,
+      0.39552388634432706
+    ],
+    "p_delta_le_0": 0.0204,
+    "nboot": 10000
+  },
+  "per_task_pathC": {
+    "Branin-2D": {
+      "beta0.0": 0.663936480357447,
+      "beta2.0": 0.4682139602977804
+    },
+    "Styblinski-5D": {
+      "beta0.0": 0.28620879781994035,
+      "beta2.0": 0.22930809132633784
+    },
+    "Levy-8D": {
+      "beta0.0": 0.19928976445866897,
+      "beta2.0": 0.659008701147356
+    },
+    "Rosenbrock-10D": {
+      "beta0.0": 0.22630443874280937,
+      "beta2.0": 0.558695008552762
+    },
+    "Rastrigin-15D": {
+      "beta0.0": 0.4849476469509737,
+      "beta2.0": 0.5085555467290005
+    },
+    "Ackley-20D": {
+      "beta0.0": 0.27539320653781674,
+      "beta2.0": 0.5873512383630537
+    },
+    "Griewank-30D": {
+      "beta0.0": 0.09844913010453671,
+      "beta2.0": 0.6652222716286174
+    }
+  }
+}

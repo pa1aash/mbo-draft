@@ -109,3 +109,87 @@ NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2
 | Phase B hyperresearch 2-16 | RUNNING | docs/hyperresearch/ | 2 agents |
 | A.2 prereg contingent arms | DONE | docs/PREREGISTRATION_V2.md | M1/X11/X4 added, timestamped |
 | Phase E blueprint v1 | DONE | docs/AAAI_BLUEPRINT.md | Part I PENDING; Part III pre-committed |
+
+---
+
+## Stage-0 experiments (branch `stage0-experiments`, 2026-07-18)
+
+| unit | status | artifact | one-line |
+|---|---|---|---|
+| 0A.1 beta=0 reconciliation | **DONE** | docs/BETA0_RECONCILE.md, results/beta0_reconcile.json | disagreement was ENGINE (off_off vs on_on), not estimator |
+| 0A.2 width ablation (W1/W2) | **DONE** | docs/WIDTH_ABLATION.md, results/width/ | W1 CONFIRMED: gap does not close with width |
+| 0A.3 budget-matched (BM1) | **DONE** | docs/BUDGET_MATCHED.md, results/budget/ | BM1 CONFIRMED: eta2_opt 0.038 matched (was 0.005) |
+| V3 pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 55ced44) | committed BEFORE both launches |
+
+**0A.1 verdict.** GATE_KBETA's 0.378 and the novelty audit's 0.504->0.511 are the same
+estimator on different engines. Holding the estimator fixed and switching engine flips the
+direction (off_off 0.496->0.516); holding engine fixed and switching estimator moves it
+<0.02. Cause is X1: off_off the ensemble regresses raw y while both GPs z-score, which
+handicaps it most at beta=0 where the mean fit is all that matters. on_on is correct.
+
+`_gp_ens_gap` refits its min-max normalizer per beta, so 0.378 and 0.556 are in different
+units. On a beta-invariant normalizer: gap(beta=0) = **0.319 [0.196, 0.460]**,
+gap(beta=2) = **0.525 [0.406, 0.614]**, increment **0.203 [0.007, 0.396]**, p(<=0)=0.020
+(task+seed bootstrap, 10k, normalizer refit inside each resample).
+
+**Effect on C2.** Mean-quality base SURVIVES (CI excludes zero; 61% of the advantage is
+present with sigma fully removed). "Independent of pessimism" DOES NOT: the increment is
+significant. `paper/aaai27/main.tex:198` claims the paired difference has 95% CI
+[-0.02, 0.10], "indistinguishable from zero" — refuted on the audited engine; that passage
+and `supplement.tex:106` need rewriting to a base-plus-amplification claim. The cited
+"0.51 -> 0.47" pair is reproduced by no traced computation and should be struck.
+
+**Carry-forward.** Both V3 arms report on the beta-invariant normalizer for the same reason;
+the incumbent per-condition estimator is reported alongside only where comparability with a
+published figure is required.
+
+**0A.2 verdict.** W1 CONFIRMED. At fixed K=5, sweeping member width 96 -> 1024 (10.7x) leaves
+the GP-ensemble gap statistically unchanged: 0.480 [0.365, 0.576] at w=96 vs 0.476
+[0.208, 0.647] at w=1024; shrinkage -0.006 [-0.210, 0.161], 99.1% of the w=96 value. The curve
+is flat with noise, not a monotone decay, and no pre-registered KILL condition fires. The
+NTK/spectral-bias objection (N5) is answered at practical widths; C2 mean-quality is a class
+property, not a capacity artifact. Caveat: CI widens with w (0.211 -> 0.439), so "does not
+close" is supported but "identical at w=1024" is not; nothing asymptotic in w may be claimed.
+
+W2 SUPPORTED. Held-out normRMSE improves monotonically with w (0.4446 -> 0.3877). On the
+registered tie-cell test (Styblinski-5D at w=256/512) the gap is 0.375. Non-registered but
+stronger: the ensemble BEATS the GP's held-out RMSE on 7/7 tasks and 26/28 (task,w) cells and
+at every width (0.388-0.445 vs 0.479) while still losing the optimization gap - the more
+accurate surrogate is the one that loses, so accuracy is not the bottleneck. NLL is NOT a usable
+second axis (GP mean NLL 202.7 vs ensemble 5.7-6.4 is a calibration artifact, not accuracy).
+
+Validity: w=96 reproduces results/kbeta/grid_b2.0.json bit-exactly for grad and cma; perturb
+differs within noise (median 0.0 SE, max 2.29 SE) because perturb_opt draws from the global
+numpy RNG without reseeding, so its stream position depends on call order.
+
+**C2 consequence.** Stop describing the GP advantage as "fits the function better" - it does not.
+Describe it as: the ensemble's mean, though more accurate on-distribution, admits
+off-distribution maximizers the oracle scores poorly. Combined with 0A.1 (survives sigma removal)
+and 0A.2 (survives width increase), mean geometry under optimization is the remaining live
+explanation.
+
+**0A.3 verdict.** BM1 CONFIRMED at the primary (UP) level. Native budgets are grossly unequal --
+grad 51,456 vs perturb 4,352 vs cma 6,528 median (11.8x), measured not derived because cma's
+maxfevals cap rarely binds. Matched at Q=51,456 (achieved within 0.5%, 0/630 cells >5% off),
+eta2_opt = **0.038 [0.003, 0.123]**, below the 0.10 confirm threshold; KILL (>0.15) excluded at
+95%. The optimizer null survives.
+
+Three qualifications: (i) the published 0.005 understates the effect ~8x -- 0.038 is the honest
+number and should replace it; (ii) the CI upper bound 0.123 sits inside the pre-registered
+[0.10,0.15] inconclusive band, so confirmation is not comfortable (n=7 precision limit, same as
+KB5); (iii) the DOWN level (Q=4,352) gives eta2_opt 0.066 CI [0.014, 0.340], upper bound above
+the KILL threshold -- per prereg the primary decides, but the null is best described as
+established at high budget, underpowered at low budget.
+
+Two findings the unmatched grid concealed. (a) The optimizer RANKING flips with budget: grad best
+at DOWN (0.731), perturb best at UP (0.732). Low eta2_opt licenses "explains little variance",
+NOT "choice is arbitrary". (b) eta2_surr more than doubles with budget (0.243 -> 0.526) because
+the ensemble marginal FALLS as budget rises (0.361 -> 0.240) while both GPs rise. More search
+pressure on the ensemble's mean finds more off-distribution maxima -- independent corroboration
+of C2's mechanism from a third axis (after sigma in 0A.1 and width in 0A.2). Not pre-registered;
+report as observation.
+
+**Paper actions.** Replace eta2_opt 0.005 with 0.038 [0.003, 0.123] (budget-matched, cite the
+query-budget table); scope the optimizer-null claim to a stated budget; report the DOWN-level
+disagreement as a limitation; state budget alongside K and beta whenever eta2_surr is quoted.
+
