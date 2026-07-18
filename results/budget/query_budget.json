@@ -1,0 +1,779 @@
+{
+  "meta": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.12.3",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.4.4",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "cma": "4.4.4",
+    "git_sha": "6b289253a1bcf2868cbc2a19f139e2178f7652f2",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 3,
+    "seed": "0..2",
+    "timestamp": "2026-07-18T12:17:10"
+  },
+  "definition": "Q = candidate points scored by the surrogate during search, excluding the shared _select_top pass",
+  "rows": [
+    {
+      "task": "Branin-2D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1436,
+      "grad_secs": 0.33,
+      "perturb_secs": 0.01,
+      "cma_secs": 7.61
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1304,
+      "grad_secs": 0.23,
+      "perturb_secs": 0.01,
+      "cma_secs": 8.81
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2656,
+      "grad_secs": 0.24,
+      "perturb_secs": 0.01,
+      "cma_secs": 7.94
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3296,
+      "grad_secs": 0.25,
+      "perturb_secs": 0.01,
+      "cma_secs": 6.79
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3984,
+      "grad_secs": 0.21,
+      "perturb_secs": 0.01,
+      "cma_secs": 6.72
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2636,
+      "grad_secs": 0.31,
+      "perturb_secs": 0.01,
+      "cma_secs": 8.01
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3212,
+      "grad_secs": 0.46,
+      "perturb_secs": 0.03,
+      "cma_secs": 7.66
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3212,
+      "grad_secs": 0.49,
+      "perturb_secs": 0.03,
+      "cma_secs": 6.83
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3056,
+      "grad_secs": 0.49,
+      "perturb_secs": 0.03,
+      "cma_secs": 6.76
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1792,
+      "grad_secs": 9.35,
+      "perturb_secs": 0.23,
+      "cma_secs": 2.69
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1064,
+      "grad_secs": 9.62,
+      "perturb_secs": 0.24,
+      "cma_secs": 2.27
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.24,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.38
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1028,
+      "grad_secs": 10.12,
+      "perturb_secs": 0.25,
+      "cma_secs": 2.38
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.23,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.62
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1712,
+      "grad_secs": 11.6,
+      "perturb_secs": 0.28,
+      "cma_secs": 2.41
+    },
+    {
+      "task": "Branin-2D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 932,
+      "grad_secs": 11.96,
+      "perturb_secs": 0.2,
+      "cma_secs": 1.99
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.39,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.62
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6528,
+      "grad_secs": 0.54,
+      "perturb_secs": 0.04,
+      "cma_secs": 1.44
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6528,
+      "grad_secs": 0.76,
+      "perturb_secs": 0.05,
+      "cma_secs": 1.54
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2612,
+      "grad_secs": 3.56,
+      "perturb_secs": 0.17,
+      "cma_secs": 0.45
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6528,
+      "grad_secs": 0.86,
+      "perturb_secs": 0.06,
+      "cma_secs": 1.62
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2672,
+      "grad_secs": 3.78,
+      "perturb_secs": 0.19,
+      "cma_secs": 0.47
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.47,
+      "perturb_secs": 0.03,
+      "cma_secs": 0.81
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.46,
+      "perturb_secs": 0.03,
+      "cma_secs": 1.4
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.24,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.41
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.87,
+      "perturb_secs": 0.06,
+      "cma_secs": 1.59
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.22,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.38
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.51,
+      "perturb_secs": 0.03,
+      "cma_secs": 0.9
+    },
+    {
+      "task": "Styblinski-5D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 1984,
+      "grad_secs": 6.11,
+      "perturb_secs": 0.28,
+      "cma_secs": 0.47
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.52,
+      "perturb_secs": 0.03,
+      "cma_secs": 1.04
+    },
+    {
+      "task": "Levy-8D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2672,
+      "grad_secs": 5.81,
+      "perturb_secs": 0.25,
+      "cma_secs": 0.76
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.58,
+      "perturb_secs": 0.04,
+      "cma_secs": 1.12
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.38,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.65
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.28,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.45
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.23,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.33
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.28,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.42
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.5,
+      "perturb_secs": 0.03,
+      "cma_secs": 1.13
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 4040,
+      "grad_secs": 3.81,
+      "perturb_secs": 0.18,
+      "cma_secs": 0.67
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.76,
+      "perturb_secs": 0.05,
+      "cma_secs": 1.12
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.23,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.49
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3968,
+      "grad_secs": 3.82,
+      "perturb_secs": 0.18,
+      "cma_secs": 0.97
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.64,
+      "perturb_secs": 0.03,
+      "cma_secs": 0.82
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2832,
+      "grad_secs": 5.79,
+      "perturb_secs": 0.29,
+      "cma_secs": 0.69
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.22,
+      "perturb_secs": 0.01,
+      "cma_secs": 0.54
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 2852,
+      "grad_secs": 3.68,
+      "perturb_secs": 0.18,
+      "cma_secs": 0.44
+    },
+    {
+      "task": "Rosenbrock-10D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 3772,
+      "grad_secs": 4.42,
+      "perturb_secs": 0.25,
+      "cma_secs": 1.04
+    },
+    {
+      "task": "Rastrigin-15D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 4208,
+      "grad_secs": 5.58,
+      "perturb_secs": 0.22,
+      "cma_secs": 0.92
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.49,
+      "perturb_secs": 0.03,
+      "cma_secs": 0.78
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.44,
+      "perturb_secs": 0.03,
+      "cma_secs": 0.71
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.36,
+      "perturb_secs": 0.02,
+      "cma_secs": 0.5
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 4520,
+      "grad_secs": 3.68,
+      "perturb_secs": 0.17,
+      "cma_secs": 0.68
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6536,
+      "grad_secs": 0.98,
+      "perturb_secs": 0.06,
+      "cma_secs": 2.01
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 4928,
+      "grad_secs": 4.86,
+      "perturb_secs": 0.2,
+      "cma_secs": 5.22
+    },
+    {
+      "task": "Ackley-20D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 4304,
+      "grad_secs": 5.92,
+      "perturb_secs": 1.08,
+      "cma_secs": 6.01
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "ens",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.28,
+      "perturb_secs": 0.01,
+      "cma_secs": 21.07
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "svgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.46,
+      "perturb_secs": 0.03,
+      "cma_secs": 22.83
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "svgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.49,
+      "perturb_secs": 0.03,
+      "cma_secs": 22.93
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "svgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 1.82,
+      "perturb_secs": 0.14,
+      "cma_secs": 24.05
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "ens",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.54,
+      "perturb_secs": 0.02,
+      "cma_secs": 19.92
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "botorchgp",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6196,
+      "grad_secs": 4.02,
+      "perturb_secs": 0.18,
+      "cma_secs": 21.82
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "ens",
+      "seed": 2,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6532,
+      "grad_secs": 0.24,
+      "perturb_secs": 0.01,
+      "cma_secs": 7.15
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "botorchgp",
+      "seed": 0,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 5916,
+      "grad_secs": 4.27,
+      "perturb_secs": 0.17,
+      "cma_secs": 8.09
+    },
+    {
+      "task": "Griewank-30D",
+      "surr": "botorchgp",
+      "seed": 1,
+      "grad": 51456,
+      "perturb": 4352,
+      "cma": 6028,
+      "grad_secs": 11.03,
+      "perturb_secs": 0.9,
+      "cma_secs": 3.81
+    }
+  ],
+  "aggregate": {
+    "grad": {
+      "median": 51456.0,
+      "mean": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "n": 63
+    },
+    "perturb": {
+      "median": 4352.0,
+      "mean": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "n": 63
+    },
+    "cma": {
+      "median": 6528.0,
+      "mean": 4927.238095238095,
+      "min": 932,
+      "max": 6536,
+      "n": 63
+    }
+  },
+  "per_task": {
+    "Branin-2D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 1436.0
+    },
+    "Styblinski-5D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 3296.0
+    },
+    "Levy-8D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6532.0
+    },
+    "Rosenbrock-10D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6532.0
+    },
+    "Rastrigin-15D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6536.0
+    },
+    "Ackley-20D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6536.0
+    },
+    "Griewank-30D": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6532.0
+    }
+  }
+}

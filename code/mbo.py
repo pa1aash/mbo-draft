@@ -141,7 +141,7 @@ class MLP(nn.Module):
                               nn.Linear(hid, hid), nn.ReLU(), nn.Linear(hid, 1))
     def forward(s, x): return s.net(x).squeeze(-1)
 
-def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None):
+def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None, hid=HID):
     """coms_alpha=None -> plain MSE ensemble; float -> COMs conservative term.
     Seed conventions preserved from legacy (coms members offset by +500).
 
@@ -164,7 +164,7 @@ def train_ensemble(x, y, d, seed=0, K=K_ENS, ep=TRAIN_EP, coms_alpha=None):
     ms = []
     for k in range(K):
         torch.manual_seed(seed*100 + k + (500 if coms_alpha is not None else 0))
-        m = MLP(d)
+        m = MLP(d, hid=hid)
         o = optim.Adam(m.parameters(), lr=LR, weight_decay=WD)
         dl = DataLoader(ds, batch_size=256, shuffle=True)
         m.train()
