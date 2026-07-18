@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Tan et al. (ICLR 2025) compares BO-qEI, CMA-ES, REINFORCE, and Gradient Ascent (plus mean/min ensemble variants) as optimizers against a roughly-fixed regression-based surrogate class, making it the closest one-axis optimizer sweep found in this audit, but it never tests a Gaussian process surrogate class and embeds the comparison inside a 22-method confounded leaderboard rather than a controlled 2-factor design.",
+    "stance": "refutes",
+    "stance_target": "N6: a crossed surrogate x optimizer factorial in offline MBO already exists in prior work",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench, 5 tasks (Ant, D'Kitty, Superconductor, TF-Bind-8, TF-Bind-10), ICLR 2025",
+    "quoted_support": "The first category involves baselines that optimize a trained regression-based model, such as BO-qEI (Garnett, 2023; Shahriari et al., 2016), CMA-ES (Hansen, 2016), REINFORCE (Williams, 1992), Gradient Ascent and its variants of mean ensemble and min ensemble.",
+    "numbers": ["22 compared methods", "5 Design-Bench tasks", "8 seeds per experiment"],
+    "entities": ["Rong-Xi Tan", "Chao Qian", "BO-qEI", "CMA-ES", "REINFORCE", "Gradient Ascent", "Design-Bench"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-tan-et-al-iclr-2025-arxiv24"
+  },
+  {
+    "claim": "Grepping Tan et al.'s full text for factorial/ANOVA/crossed/two-way/variance-decomposition terminology returns zero hits, confirming no statistical variance decomposition between surrogate-class and optimizer-class effects is computed anywhere in the paper.",
+    "stance": "refutes",
+    "stance_target": "N6: Tan et al. runs a two-way ANOVA or equivalent variance decomposition",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep of arXiv:2410.11502v3",
+    "quoted_support": "",
+    "numbers": ["0 hits for factorial/ANOVA/crossed/two-way/variance decomposition terms"],
+    "entities": ["Tan et al."],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-tan-et-al-iclr-2025-arxiv24"
+  },
+  {
+    "claim": "Tan et al. finds only weak correlation (Spearman 0.23 on D'Kitty, -0.24 on TF-Bind-8) between a surrogate's out-of-distribution MSE and the final optimization score obtained via gradient ascent on that surrogate, arguing MSE is a poor proxy for surrogate quality in offline MBO.",
+    "stance": "neutral",
+    "stance_target": "surrogate evaluation methodology in offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "D'Kitty (continuous) and TF-Bind-8 (discrete) Design-Bench tasks, 5 surrogate variants, 8 seeds",
+    "quoted_support": "This scattered nature of the data points is also reflected in the low Spearman correlation coefficients (0.23 for D'Kitty and −0.24 for TF-Bind-8), indicating weak correlations between",
+    "numbers": ["Spearman correlation 0.23 (D'Kitty)", "Spearman correlation -0.24 (TF-Bind-8)", "5 surrogate models tested", "8 seeds"],
+    "entities": ["OOD-MSE", "D'Kitty", "TF-Bind-8", "COMs", "IOM", "ICT", "Tri-Mentoring"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-tan-et-al-iclr-2025-arxiv24"
+  }
+]

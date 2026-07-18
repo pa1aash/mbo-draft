@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "The ICML 2024 'Surrogate Sensitivity' paper, by the same author group as IGNITE, regulates surrogate sensitivity to seek a 'less sensitive' surrogate only -- never a deliberately more-sensitive/rougher one -- and contains no Gaussian process experiment, only a single bibliography citation to an unrelated GP kernel-robustness paper.",
+    "stance": "refutes",
+    "stance_target": "N7: the Dao/Nguyen/Truong/Hoang author lineage has manipulated smoothness bidirectionally across its 2024-2025 papers",
+    "evidence_type": "theoretical",
+    "scope_conditions": "arXiv:2503.04181, ICML 2024",
+    "quoted_support": "This raises the following questions: (1) how to regulate the sensitivity of a surrogate model; and (2) whether conditioning an offline optimizer with such less sensitive surrogate will lead to better optimization performance.",
+    "numbers": [],
+    "entities": ["Manh Cuong Dao", "Trong Nghia Hoang", "ICML 2024", "surrogate sensitivity"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boosting-offline-optimizers-with-surrogate-sensitivity-icml-2024-arxiv250304181"
+  }
+]

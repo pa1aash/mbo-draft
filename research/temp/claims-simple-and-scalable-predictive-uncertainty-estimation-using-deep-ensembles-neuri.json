@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Lakshminarayanan et al. recommend M=5 ensemble members as a practical default in Algorithm 1, not as an empirically-derived accuracy-optimal ensemble size.",
+    "stance": "neutral",
+    "stance_target": "N1(iv): the audited paper cites Lakshminarayanan 2017 as justification for K=5 as 'standard'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Algorithm 1 pseudocode, applies across regression/classification benchmarks tested",
+    "quoted_support": "Use a proper scoring rule as the training criterion `(theta, x, y). Recommended default values are M = 5 and epsilon = 1% of the input range of the corresponding dimension (e.g 2.55 if input range is [0,255]).",
+    "numbers": ["M = 5", "epsilon = 1%"],
+    "entities": ["Algorithm 1", "deep ensembles"],
+    "time_period": "NeurIPS 2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"
+  },
+  {
+    "claim": "The paper's own ensemble-size sweeps show predictive-uncertainty quality improving monotonically as M increases beyond 5, on MNIST/SVHN/ImageNet, without identifying M=5 as an accuracy-optimal stopping point.",
+    "stance": "supports",
+    "stance_target": "N1(iv): K=5 is not empirically justified as optimal by its own citation source, consistent with the audited paper finding K=5 as the weakest setting in its own ablation",
+    "evidence_type": "empirical",
+    "scope_conditions": "MNIST 3-layer MLP, SVHN VGG-style convnet, ImageNet Inception network",
+    "quoted_support": "We observe that as M increases, both the accuracy and the quality of predictive uncertainty improve significantly.",
+    "numbers": ["M = 1 through ~10 in Fig. 2/3 sweeps"],
+    "entities": ["MNIST", "SVHN", "ImageNet", "Inception network"],
+    "time_period": "NeurIPS 2017",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"
+  },
+  {
+    "claim": "The paper never introduces or compares against a Gaussian process as a competing surrogate/predictor class; 'Gaussian process' and 'GP' have zero hits in the full text.",
+    "stance": "refutes",
+    "stance_target": "N2: an ensemble-vs-GP surrogate-class ranking claim exists in this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep, ~9,300 words",
+    "quoted_support": "N/A -- absence-of-term finding (0 hits for 'Gaussian process', 'GP', 'surrogate', 'ranking')",
+    "numbers": ["0 hits: Gaussian process/GP", "0 hits: surrogate", "0 hits: ranking"],
+    "entities": [],
+    "time_period": "NeurIPS 2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"
+  },
+  {
+    "claim": "Ensembles even at the recommended default M=5 significantly improve uncertainty quality relative to a single network, per the paper's own discussion.",
+    "stance": "neutral",
+    "stance_target": "N1(iv): baseline framing for the field-standard K=5 setting",
+    "evidence_type": "empirical",
+    "scope_conditions": "Across all classification/regression benchmarks tested",
+    "quoted_support": "Ensembles, even for M = 5, significantly improve uncertainty quality in all the cases.",
+    "numbers": ["M = 5"],
+    "entities": ["deep ensembles"],
+    "time_period": "NeurIPS 2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"
+  },
+  {
+    "claim": "The only citation in the paper related to Bayesian optimization is a single bibliography entry (Springenberg et al.), never discussed in the body text, and 'model-based optimization'/'MBO'/'offline' do not otherwise appear.",
+    "stance": "refutes",
+    "stance_target": "N2: this paper engages Bayesian optimization or offline MBO surrogate comparisons",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep, bibliography only",
+    "quoted_support": "J. T. Springenberg, A. Klein, S. Falkner, and F. Hutter. Bayesian optimization with robust...",
+    "numbers": ["1 bibliography hit"],
+    "entities": ["Springenberg et al."],
+    "time_period": "NeurIPS 2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles-neuri"
+  }
+]

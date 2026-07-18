@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Machado et al. name the ALE's underlying simulator determinism as a specific, previously under-addressed confound that enables score inflation via memorization of a fixed action sequence rather than genuine policy learning.",
+    "stance": "supports",
+    "stance_target": "N1 sub-claim (a): prior work names a specific unreported implementation confound individually decisive for a headline benchmark result",
+    "evidence_type": "empirical",
+    "scope_conditions": "Arcade Learning Environment, Atari 2600 games, general-competency RL agents",
+    "quoted_support": "The Arcade Learning Environment is also fully deterministic -- each game starts in the same state and outcomes are fully determined by the state and the action. As such, it is possible to achieve high scores by learning an open-loop policy, i.e., by simply memorizing a good action sequence, rather than learning to make good decisions in a variety of game scenarios.",
+    "numbers": [],
+    "entities": ["Machado", "Bellemare", "Talvitie", "Veness", "Hausknecht", "Bowling", "JAIR 2018", "Arcade Learning Environment", "the Brute"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "revisiting-the-arcade-learning-environment-evaluation-protocols-and-open-problem"
+  },
+  {
+    "claim": "Machado et al. propose 'sticky actions' as a single standardized protocol to remove the determinism confound and empirically show it distinguishes the Brute's memorization-based competitiveness from genuinely robust policies.",
+    "stance": "supports",
+    "stance_target": "N1 sub-claims (b) and (c): a protocol that removes a named confound, demonstrated to change an algorithm's apparent competitiveness",
+    "evidence_type": "empirical",
+    "scope_conditions": "Five Atari 2600 games, Brute algorithm vs traditional RL methods",
+    "quoted_support": "We then introduce the sticky actions method for injecting stochasticity into the ALE and show that it effectively distinguishes the Brute from methods that learn more robust policies.",
+    "numbers": ["five Atari 2600 games"],
+    "entities": ["Machado", "sticky actions", "the Brute"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "revisiting-the-arcade-learning-environment-evaluation-protocols-and-open-problem"
+  },
+  {
+    "claim": "Machado et al. document that the field used inconsistent ad hoc protocol variants (no-ops, human starts, random frame skips, whole-suite vs per-game hyperparameter selection) to patch the determinism confound, making cross-paper comparison invalid before their standardization proposal.",
+    "stance": "supports",
+    "stance_target": "N1 sub-claim (a), candidate-protocol-analogue: prior work names inconsistent evaluation/selection protocols as a confound",
+    "evidence_type": "empirical",
+    "scope_conditions": "ALE literature circa 2013-2017",
+    "quoted_support": "this wide range of experimental protocols makes direct comparison of results difficult. We believe the research community would benefit from a single standard protocol that empirically distinguishes between brittle, open-loop solutions and robust, closed-loop solutions.",
+    "numbers": [],
+    "entities": ["Machado"],
+    "time_period": "2013-2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "revisiting-the-arcade-learning-environment-evaluation-protocols-and-open-problem"
+  },
+  {
+    "claim": "Machado et al. never run a quantitative variance decomposition (ANOVA/eta^2) and their confound taxonomy is limited to a single audited axis (determinism/protocol standardization), not a multi-confound taxonomy with individual and joint attribution.",
+    "stance": "refutes",
+    "stance_target": "N1: the eta^2-style multi-confound quantitative decomposition is already owned by this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full paper structure",
+    "quoted_support": "In this section we discuss the Brute (first briefly introduced in Bellemare et al., 2015) as an example of an algorithm that explicitly and effectively exploits the environment's determinism.",
+    "numbers": [],
+    "entities": ["Machado"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "revisiting-the-arcade-learning-environment-evaluation-protocols-and-open-problem"
+  },
+  {
+    "claim": "Machado et al. is a third independent 2017-2018 instance (alongside Henderson AAAI 2018 and Islam et al. 2017) of the RL-reproducibility 'name a confound, standardize a protocol, show scores change' shape, cited by both Henderson AAAI 2018 and Balduzzi NeurIPS 2018.",
+    "stance": "neutral",
+    "stance_target": "N1: field-level prevalence of the confound-taxonomy SHAPE in the RL reality-check literature circa 2017-2018",
+    "evidence_type": "historical",
+    "scope_conditions": "RL reproducibility literature, 2017-2018",
+    "quoted_support": "Several of the ideas presented in this article were first discussed at this workshop, such as the need for standardizing evaluation and for distinguishing open-loop behaviours from closed-loop ones.",
+    "numbers": [],
+    "entities": ["Machado", "Henderson", "Balduzzi"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "revisiting-the-arcade-learning-environment-evaluation-protocols-and-open-problem"
+  }
+]
