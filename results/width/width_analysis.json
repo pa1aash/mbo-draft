@@ -1,0 +1,157 @@
+{
+  "widths": [
+    96,
+    256,
+    512,
+    1024
+  ],
+  "gap_by_width": {
+    "96": {
+      "gap": 0.4800500788585303,
+      "ci": [
+        0.36476960736084124,
+        0.5755819204073246
+      ]
+    },
+    "256": {
+      "gap": 0.33606620378568375,
+      "ci": [
+        0.13180079964390326,
+        0.4828242169980034
+      ]
+    },
+    "512": {
+      "gap": 0.4138429104123413,
+      "ci": [
+        0.1865962793965033,
+        0.5646629844052784
+      ]
+    },
+    "1024": {
+      "gap": 0.4759153476831201,
+      "ci": [
+        0.2079704005418995,
+        0.646710183035051
+      ]
+    }
+  },
+  "shrinkage": {
+    "delta_wmax_minus_wmin": -0.005767681271622753,
+    "ci": [
+      -0.21036600925101054,
+      0.16100321088411385
+    ],
+    "frac_of_w96": 0.9913868753334197
+  },
+  "monotone_nonincreasing": false,
+  "gap_wmax_ci_excludes_zero": true,
+  "W1_verdict": "W1 CONFIRMED \u2014 the gap persists at w=1024 (95% CI excludes 0); the NTK/spectral-bias objection is empirically answered and C2 mean-quality is a class property at practical widths",
+  "heldout_norm_rmse": {
+    "ens_w96": {
+      "per_task": {
+        "Branin-2D": 0.08311947410305341,
+        "Styblinski-5D": 0.657641863822937,
+        "Levy-8D": 0.6337663610776265,
+        "Rosenbrock-10D": 0.290360497434934,
+        "Rastrigin-15D": 0.7388807634512583,
+        "Ackley-20D": 0.37082628210385643,
+        "Griewank-30D": 0.33763753548155095
+      },
+      "mean": 0.44460468249645946
+    },
+    "ens_w256": {
+      "per_task": {
+        "Branin-2D": 0.06593446508049965,
+        "Styblinski-5D": 0.5946092585722605,
+        "Levy-8D": 0.6350453595320383,
+        "Rosenbrock-10D": 0.23669479588667552,
+        "Rastrigin-15D": 0.7367659827073415,
+        "Ackley-20D": 0.31237947940826416,
+        "Griewank-30D": 0.2517740513296615
+      },
+      "mean": 0.40474334178810584
+    },
+    "ens_w512": {
+      "per_task": {
+        "Branin-2D": 0.06418936053911845,
+        "Styblinski-5D": 0.5740655740102132,
+        "Levy-8D": 0.6360860029856364,
+        "Rosenbrock-10D": 0.22262433171272278,
+        "Rastrigin-15D": 0.7411844491958618,
+        "Ackley-20D": 0.3006066461404165,
+        "Griewank-30D": 0.21494311609126762
+      },
+      "mean": 0.3933856400964624
+    },
+    "ens_w1024": {
+      "per_task": {
+        "Branin-2D": 0.06885689521829287,
+        "Styblinski-5D": 0.5506685127814611,
+        "Levy-8D": 0.6361154119173685,
+        "Rosenbrock-10D": 0.2181042954325676,
+        "Rastrigin-15D": 0.746271812915802,
+        "Ackley-20D": 0.30139501492182413,
+        "Griewank-30D": 0.19238151277777923
+      },
+      "mean": 0.38768477942358504
+    },
+    "botorchgp": {
+      "per_task": {
+        "Branin-2D": 0.11839722841978073,
+        "Styblinski-5D": 0.5915277600288391,
+        "Levy-8D": 0.6742902000745138,
+        "Rosenbrock-10D": 0.3965826998154322,
+        "Rastrigin-15D": 0.7635405162970225,
+        "Ackley-20D": 0.4348719318707784,
+        "Griewank-30D": 0.3769741198058055
+      },
+      "mean": 0.47945492233031034
+    }
+  },
+  "rmse_tie_cells": [
+    {
+      "task": "Styblinski-5D",
+      "w": 256,
+      "ens_rmse": 0.5946092585722605,
+      "gp_rmse": 0.5915277600288391,
+      "diff_ci": [
+        -0.02065300740301609,
+        0.02777293612559635
+      ]
+    },
+    {
+      "task": "Styblinski-5D",
+      "w": 512,
+      "ens_rmse": 0.5740655740102132,
+      "gp_rmse": 0.5915277600288391,
+      "diff_ci": [
+        -0.043245932186643285,
+        0.010259393900632841
+      ]
+    }
+  ],
+  "n_seeds": 30,
+  "nboot": 10000,
+  "engine": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.12.3",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.4.4",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "cma": "4.4.4",
+    "git_sha": "dc1bdd71457f0fcbc3b5396c66b79d365e1efcca",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 30,
+    "seed": "0..29",
+    "timestamp": "2026-07-18T13:37:03"
+  },
+  "W2_verdict": "W2 SUPPORTED \u2014 2 RMSE-tie cells; mean gap at those widths 0.375"
+}
