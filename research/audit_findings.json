@@ -1,0 +1,14 @@
+[
+  {
+    "mode": "hyperresearch-v8",
+    "run_id": "2026-07-18-offline-mbo-novelty-audit-6d8cd4",
+    "pipeline_tier": "full",
+    "loci_count": 6,
+    "critical_findings_applied": 1,
+    "critical_findings_skipped": 0,
+    "polish_escalations": 1,
+    "polish_escalation_reason": "length-accepted-by-orchestrator (dense 9-claim audit; all mandated substance)",
+    "final_word_count": 10024,
+    "sources": 50
+  }
+]
