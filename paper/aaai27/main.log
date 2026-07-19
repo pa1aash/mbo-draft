@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 01:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 17:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -444,120 +444,108 @@ pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.0pt on input line 71.
- [2]
-Underfull \hbox (badness 1577) in paragraph at lines 102--103
- \T1/ntxtlf/b/n/10 Matched tun-ing (iden-ti-fi-a-bil-ity con-trol). \T1/ntxtlf/
-m/n/10 Ex-act and
+
+Underfull \hbox (badness 1708) in paragraph at lines 85--86
+ \T1/ntxtlf/b/n/10 Cal-i-bra-tion and cov-er-age. \T1/ntxtlf/m/n/10 Con-for-mal
+ meth-ods give
  []
 
 
-Underfull \hbox (badness 5217) in paragraph at lines 102--103
-\T1/ntxtlf/m/n/10 sparse GPs, un-like en-sem-bles, can spend per-run
+Underfull \hbox (badness 1270) in paragraph at lines 87--88
+ \T1/ntxtlf/b/n/10 Eval-u-a-tion cri-tiques and con-trolled de-com-po-si-tions.
+
  []
 
-
-Underfull \hbox (badness 1259) in paragraph at lines 102--103
-\T1/ntxtlf/m/n/10 hyperparameter-optimization bud-get. The \T1/ntxtlf/m/it/10 m
-atched \T1/ntxtlf/m/n/10 arm
- []
-
-<figures/fig1_grid_heatmap.pdf, id=22, 450.9073pt x 222.15425pt>
-File: figures/fig1_grid_heatmap.pdf Graphic file (type pdf)
-<use figures/fig1_grid_heatmap.pdf>
-Package pdftex.def Info: figures/fig1_grid_heatmap.pdf  used on input line 135.
-
-(pdftex.def)             Requested size: 465.41786pt x 229.31633pt.
-
-Overfull \hbox (12.2147pt too wide) in paragraph at lines 149--158
- [][] 
- []
-
-<figures/fig2_optimizer_spread.pdf, id=23, 357.88141pt x 208.56984pt>
-File: figures/fig2_optimizer_spread.pdf Graphic file (type pdf)
-<use figures/fig2_optimizer_spread.pdf>
-Package pdftex.def Info: figures/fig2_optimizer_spread.pdf  used on input line 
-162.
-(pdftex.def)             Requested size: 237.00174pt x 138.12434pt.
-<figures/fig6_cd_diagram.pdf, id=24, 467.19098pt x 320.8788pt>
-File: figures/fig6_cd_diagram.pdf Graphic file (type pdf)
-<use figures/fig6_cd_diagram.pdf>
-Package pdftex.def Info: figures/fig6_cd_diagram.pdf  used on input line 174.
-(pdftex.def)             Requested size: 234.60545pt x 161.12936pt.
-[3]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 228.
-
-Overfull \hbox (13.39647pt too wide) in paragraph at lines 221--232
- [][] 
- []
-
-<figures/fig8_crossproposal.pdf, id=28, 337.08435pt x 245.80904pt>
-File: figures/fig8_crossproposal.pdf Graphic file (type pdf)
-<use figures/fig8_crossproposal.pdf>
-Package pdftex.def Info: figures/fig8_crossproposal.pdf  used on input line 236
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 92
 .
-(pdftex.def)             Requested size: 237.00174pt x 172.82654pt.
-[4]
-<figures/fig3_coverage.pdf, id=34, 426.69916pt x 233.50839pt>
-File: figures/fig3_coverage.pdf Graphic file (type pdf)
-<use figures/fig3_coverage.pdf>
-Package pdftex.def Info: figures/fig3_coverage.pdf  used on input line 254.
-(pdftex.def)             Requested size: 404.71353pt x 221.47896pt.
-<figures/fig4_beta_sweep.pdf, id=35, 364.96051pt x 228.24672pt>
-File: figures/fig4_beta_sweep.pdf Graphic file (type pdf)
-<use figures/fig4_beta_sweep.pdf>
-Package pdftex.def Info: figures/fig4_beta_sweep.pdf  used on input line 261.
-(pdftex.def)             Requested size: 196.30513pt x 122.77077pt.
- [5 <./figures/fig1_grid_heatmap.pdf> <./figures/fig2_optimizer_spread.pdf> <./
-figures/fig6_cd_diagram.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
-\T1/ntxtlf/b/n/10 Output\T1/ntxtlf/m/n/10 : mul-ti-plier $[]$, cov-er-ages $\OT
-1/cmr/m/n/10 ([]\OML/cmm/m/it/10 ; []\OT1/cmr/m/n/10 )$\T1/ntxtlf/m/n/10 ,
+(/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+ \T1/ntxtlf/b/n/10 Con-found 2: can-di-date/oracle pro-to-col. \T1/ntxtlf/m/n/1
+0 Two of
  []
 
 
-Underfull \vbox (badness 5147) has occurred while \output is active []
-
- [6 <./figures/fig8_crossproposal.pdf>]
-Underfull \hbox (badness 1067) in paragraph at lines 297--298
- \T1/ntxtlf/b/n/10 An-tic-i-pated ob-jec-tions. \T1/ntxtlf/m/n/10 Three ob-jec-
-tions de-serve di-
+Underfull \hbox (badness 1215) in paragraph at lines 100--101
+\T1/ntxtlf/m/n/10 three op-ti-miz-ers pro-pose 256 de-signs and re-port the
  []
 
-[7 <./figures/fig3_coverage.pdf> <./figures/fig4_beta_sweep.pdf>] (./main.bbl
-[8]) [9] (./main.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+\T1/ntxtlf/m/n/10 (\T1/pcr/m/n/10 mbo.py:384--389,188,198--201,292,392--394\T1/
+ntxtlf/m/n/10 ).
+ []
+
+
+Overfull \hbox (14.25383pt too wide) in paragraph at lines 114--125
+ [][] 
+ []
+
+<figures_v3/fig_sensitivity.pdf, id=23, 250.09076pt x 113.16725pt>
+File: figures_v3/fig_sensitivity.pdf Graphic file (type pdf)
+<use figures_v3/fig_sensitivity.pdf>
+Package pdftex.def Info: figures_v3/fig_sensitivity.pdf  used on input line 129
+.
+(pdftex.def)             Requested size: 237.00174pt x 107.24925pt.
+[3]
+Underfull \hbox (badness 1194) in paragraph at lines 143--144
+ \T1/ntxtlf/b/n/10 The firmer re-sult is a sen-si-tiv-ity, led by $\OML/cmm/m/i
+t/10 ^^L$\T1/ntxtlf/b/n/10 . $\OML/cmm/m/it/10 ^^Q[]$
+ []
+
+
+Underfull \hbox (badness 3058) in paragraph at lines 143--144
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 214$\T1/ntxtlf/m/n/10 , $\OT
+1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 282$\T1/ntxtlf/m/n/10 , $\OT1/c
+mr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 406$ $[0\OML/cmm/m/it/10 :\OT1/cmr
+/m/n/10 285\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/1
+0 564]$\T1/ntxtlf/m/n/10 , $\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 
+408$ \T1/ntxtlf/m/n/10 at $\OML/cmm/m/it/10 ^^L \OT1/cmr/m/n/10 =
+ []
+
+[4 <./figures_v3/fig_sensitivity.pdf>]
+<figures_v3/fig_width.pdf, id=49, 250.91116pt x 118.58867pt>
+File: figures_v3/fig_width.pdf Graphic file (type pdf)
+<use figures_v3/fig_width.pdf>
+Package pdftex.def Info: figures_v3/fig_width.pdf  used on input line 184.
+(pdftex.def)             Requested size: 237.00174pt x 112.0162pt.
+ [5] [6 <./figures_v3/fig_width.pdf>]
+(./main.bbl [7] [8]) [9
+
+] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 7739 strings out of 469006
- 124281 string characters out of 5454813
- 560198 words of memory out of 5000000
- 36302 multiletter control sequences out of 15000+600000
- 669244 words of font info for 78 fonts, out of 8000000 for 9000
+ 7685 strings out of 469006
+ 122824 string characters out of 5454813
+ 543265 words of memory out of 5000000
+ 36242 multiletter control sequences out of 15000+600000
+ 667008 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 89i,13n,117p,2067b,562s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,117p,2005b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
-s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></Users/palaa
-sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaash/Libr
-ary/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Library/texm
-f/fonts/type1/public/amsfonts/cm/cmmi9.pfb></Users/palaash/Library/texmf/fonts/
-type1/public/amsfonts/cm/cmr10.pfb></Users/palaash/Library/texmf/fonts/type1/pu
-blic/amsfonts/cm/cmr6.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsf
-onts/cm/cmr7.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/c
-mr9.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy6.pfb></Users
-/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/palaash
-/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb></Users/palaash/Library
-/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/fonts/ty
-pe1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/newt
-x/ztmri.pfb>
-Output written on main.pdf (9 pages, 426105 bytes).
+s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaa
+sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Libra
+ry/texmf/fonts/type1/public/amsfonts/cm/cmmi9.pfb></Users/palaash/Library/texmf
+/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/palaash/Library/texmf/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></Users/palaash/Library/texmf/fonts/type1/publ
+ic/amsfonts/cm/cmr7.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfon
+ts/cm/cmr9.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy6.pfb>
+</Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb></Users/
+palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texl
+ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
+rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
+s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
+newtx/ztmri.pfb>
+Output written on main.pdf (9 pages, 326365 bytes).
 PDF statistics:
- 498 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 152 PDF objects out of 1000 (max. 8388607)
+ 90 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
