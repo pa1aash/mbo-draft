@@ -26,7 +26,7 @@ quantities (percentages, ratios, nets) recomputed from components.
 | PASS | **288** |
 | **FAIL — fixed** | **23** |
 | UNVERIFIABLE — external (cited from another paper) | 3 |
-| UNVERIFIABLE — internal, no artifact anywhere | **1** |
+| UNVERIFIABLE — internal, no artifact anywhere | **1 — resolved** |
 | Artifacts recovered from unmerged branches | 2 sets |
 
 Every FAIL is fixed. No FAIL was resolved by weakening a number that was correct.
@@ -187,14 +187,18 @@ vs 7.1). Corrected to "one of the sharpest … five other cells tie it". The att
 
 ## UNVERIFIABLE
 
-### Internal — 1
+### Internal — 1 (RESOLVED)
 
 **"whose maximum is attained by seven tied rows already in the data"** (`main.tex` §6, TF-Bind-8).
 No `results/*.json` records a tie count at the dataset maximum, and the Design-Bench offline set
 is not vendored (`code/db_tasks.py` loads it externally), so it cannot be recomputed here. The
 only source is narrative in `docs/DEGENERATE_CELLS.md`. **The claims around it do verify** — four
-frozen cells, exact value 1.0, zero variance across 16 seeds. Only the tie count is unbacked.
-*Recommendation: emit the tie count as an artifact, or drop the specific number.*
+frozen cells, exact value 1.0, zero variance across 16 seeds. Only the tie count was unbacked.
+
+**RESOLVED** — the specific count was dropped: the text now reads "multiple tied rows already in
+the data". The verified surrounding claim (four frozen cells returning exactly 1.0 with zero
+variance across 16 seeds) is unchanged, and the argument it supports — that a cell reporting
+$1.0$ returned nothing better than its input — does not depend on the exact tie count.
 
 ### External — 3
 
