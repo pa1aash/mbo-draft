@@ -148,13 +148,6 @@ def gp_lcb(arm, beta):
 
 
 # ------------------------------------------------------------------ statistics
-def _pcts(a):
-    a = np.asarray(a, float)
-    return dict(mean=float(a.mean()), sd=float(a.std()),
-                p10=float(np.percentile(a, 10)), p50=float(np.percentile(a, 50)),
-                p90=float(np.percentile(a, 90)))
-
-
 def _cell_record(mu, sd, f, dhat, sd_y, ym_D, lcb):
     """Everything PM1/PM3 need from one cell's 128 returned designs.
     x*   = argmax of the surrogate MEAN (the pre-registered returned optimum)
