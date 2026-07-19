@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 20:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  20 JUL 2026 00:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -479,45 +479,73 @@ Overfull \hbox (14.25383pt too wide) in paragraph at lines 110--121
  [][] 
  []
 
-<figures_v3/fig_sensitivity.pdf, id=23, 250.09076pt x 113.16725pt>
-File: figures_v3/fig_sensitivity.pdf Graphic file (type pdf)
-<use figures_v3/fig_sensitivity.pdf>
-Package pdftex.def Info: figures_v3/fig_sensitivity.pdf  used on input line 125
-.
-(pdftex.def)             Requested size: 237.00174pt x 107.24925pt.
-[3] [4 <./figures_v3/fig_sensitivity.pdf>] [5] [6]
-Underfull \hbox (badness 1043) in paragraph at lines 204--205
+<figures_v3/fig_confounds.pdf, id=23, 248.5285pt x 143.31229pt>
+File: figures_v3/fig_confounds.pdf Graphic file (type pdf)
+<use figures_v3/fig_confounds.pdf>
+Package pdftex.def Info: figures_v3/fig_confounds.pdf  used on input line 125.
+(pdftex.def)             Requested size: 237.00174pt x 136.6707pt.
+[3]
+<figures_v3/fig_beta_resolution.pdf, id=27, 218.7673pt x 140.69734pt>
+File: figures_v3/fig_beta_resolution.pdf Graphic file (type pdf)
+<use figures_v3/fig_beta_resolution.pdf>
+Package pdftex.def Info: figures_v3/fig_beta_resolution.pdf  used on input line
+ 143.
+(pdftex.def)             Requested size: 237.00174pt x 152.42531pt.
+ [4 <./figures_v3/fig_confounds.pdf> <./figures_v3/fig_beta_resolution.pdf>]
+<figures_v3/fig_width_rmse.pdf, id=64, 218.46931pt x 184.81937pt>
+File: figures_v3/fig_width_rmse.pdf Graphic file (type pdf)
+<use figures_v3/fig_width_rmse.pdf>
+Package pdftex.def Info: figures_v3/fig_width_rmse.pdf  used on input line 181.
+
+(pdftex.def)             Requested size: 237.00174pt x 200.49591pt.
+[5 <./figures_v3/fig_width_rmse.pdf>]
+<figures_v3/fig_landscape.pdf, id=85, 423.80823pt x 153.67625pt>
+File: figures_v3/fig_landscape.pdf Graphic file (type pdf)
+<use figures_v3/fig_landscape.pdf>
+Package pdftex.def Info: figures_v3/fig_landscape.pdf  used on input line 194.
+(pdftex.def)             Requested size: 500.83388pt x 181.61545pt.
+<figures_v3/fig_x0_inversion.pdf, id=86, 447.62291pt x 168.49435pt>
+File: figures_v3/fig_x0_inversion.pdf Graphic file (type pdf)
+<use figures_v3/fig_x0_inversion.pdf>
+Package pdftex.def Info: figures_v3/fig_x0_inversion.pdf  used on input line 20
+8.
+(pdftex.def)             Requested size: 500.83388pt x 188.53497pt.
+ [6] [7 <./figures_v3/fig_landscape.pdf>]
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 235--236
  \T1/ntxtlf/b/n/10 In-ter-pret-ing the op-ti-mizer ef-fect. \T1/ntxtlf/m/n/10 U
 n-der a matched
  []
 
 
-Underfull \hbox (badness 1596) in paragraph at lines 204--205
+Underfull \hbox (badness 1596) in paragraph at lines 235--236
 \T1/ntxtlf/m/n/10 surrogate-query bud-get of $\OML/cmm/m/it/10 Q[]\OT1/cmr/m/n/
 10 51[]456$\T1/ntxtlf/m/n/10 , $\OML/cmm/m/it/10 ^^Q[] \OT1/cmr/m/n/10 = 0\OML/
 cmm/m/it/10 :\OT1/cmr/m/n/10 038$
  []
 
-(./main.bbl [7] [8]) [9
+[8 <./figures_v3/fig_x0_inversion.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./main.bbl [9] [10]) [11
 
 ] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 7674 strings out of 469006
- 122513 string characters out of 5454813
- 545222 words of memory out of 5000000
- 36231 multiletter control sequences out of 15000+600000
+ 7717 strings out of 469006
+ 124023 string characters out of 5454813
+ 545312 words of memory out of 5000000
+ 36274 multiletter control sequences out of 15000+600000
  667008 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 89i,13n,117p,2306b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,117p,2306b,376s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
 s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaa
 sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Libra
@@ -533,10 +561,10 @@ ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
 rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
 s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
 newtx/ztmri.pfb>
-Output written on main.pdf (9 pages, 312102 bytes).
+Output written on main.pdf (11 pages, 436260 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 237 PDF objects out of 1000 (max. 8388607)
+ 135 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
