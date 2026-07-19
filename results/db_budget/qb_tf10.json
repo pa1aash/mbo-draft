@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.9.23",
+    "torch": "2.8.0+cpu",
+    "numpy": "1.23.5",
+    "botorch": "0.10.0",
+    "gpytorch": "1.11",
+    "cma": "4.4.4",
+    "git_sha": "9460093a3547e848870ae2e4867924b187dba0e5",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 3,
+    "seed": "0..2",
+    "timestamp": "2026-07-19T14:53:37"
+  },
+  "definition": "Q = candidate points scored by the surrogate per cell, search plus the final _select_top selection pass (identical to code/budget_probe.py, so DB and synthetic Q are comparable)",
+  "db_subsample": 8000,
+  "task_dims": {
+    "TFBind10": {
+      "dim": 40,
+      "n": 8000
+    }
+  },
+  "corner": "on_on",
+  "aggregate": {
+    "grad": {
+      "median": 51456.0,
+      "mean": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "n": 9,
+      "median_secs": 0.54
+    },
+    "perturb": {
+      "median": 4352.0,
+      "mean": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "n": 9,
+      "median_secs": 0.03
+    },
+    "cma": {
+      "median": 6542.0,
+      "mean": 6542.0,
+      "min": 6542,
+      "max": 6542,
+      "n": 9,
+      "median_secs": 1.1
+    }
+  },
+  "per_task": {
+    "TFBind10": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6542.0
+    }
+  },
+  "per_task_secs": {
+    "TFBind10": {
+      "grad": 0.54,
+      "perturb": 0.03,
+      "cma": 1.1
+    }
+  },
+  "rows": [
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.23,
+      "fit_secs": 24.49
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 24.49
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6542,
+      "secs": 1.1,
+      "fit_secs": 24.49
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.24,
+      "fit_secs": 13.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.17,
+      "fit_secs": 13.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6542,
+      "secs": 1.28,
+      "fit_secs": 13.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.54,
+      "fit_secs": 4.54
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 4.54
+    },
+    {
+      "task": "TFBind10",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6542,
+      "secs": 0.69,
+      "fit_secs": 4.54
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.21,
+      "fit_secs": 23.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 23.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6542,
+      "secs": 1.21,
+      "fit_secs": 23.3
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.52,
+      "fit_secs": 14.21
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.19,
+      "fit_secs": 14.21
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6542,
+      "secs": 1.49,
+      "fit_secs": 14.21
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.54,
+      "fit_secs": 4.82
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 4.82
+    },
+    {
+      "task": "TFBind10",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6542,
+      "secs": 0.88,
+      "fit_secs": 4.82
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.22,
+      "fit_secs": 23.89
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 23.89
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6542,
+      "secs": 1.1,
+      "fit_secs": 23.89
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.52,
+      "fit_secs": 14.32
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.19,
+      "fit_secs": 14.32
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 6542,
+      "secs": 1.49,
+      "fit_secs": 14.32
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.54,
+      "fit_secs": 4.82
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 4.82
+    },
+    {
+      "task": "TFBind10",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6542,
+      "secs": 0.88,
+      "fit_secs": 4.82
+    }
+  ]
+}
