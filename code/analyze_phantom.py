@@ -209,6 +209,32 @@ def landscape(d):
                 pooled_spearman_dhat_vs_infl=float(spearmanr(pooled_dh, pooled_i).statistic))
 
 
+def matched_bins(d, arm_a='ens', arm_b='botorchgp', nbin=5):
+    """The comparison PM1's marginals cannot make: within bins of distance-to-D, is the
+    ensemble's returned optimum worth less than the GP's? Bins are cut on the pooled
+    distances of both arms, so each bin holds points that sit equally far off-support."""
+    def cat(a, f):
+        return np.concatenate([per_seed(d, a, o, 'star', f).ravel() for o in OPT3])
+    A = {f: cat(arm_a, f) for f in ('dhat', 'z', 'infl')}
+    B = {f: cat(arm_b, f) for f in ('dhat', 'z', 'infl')}
+    edges = np.percentile(np.concatenate([A['dhat'], B['dhat']]),
+                          np.linspace(0, 100, nbin + 1))
+    out = []
+    for i in range(nbin):
+        lo, hi = edges[i], edges[i + 1]
+        ma = (A['dhat'] >= lo) & (A['dhat'] <= hi)
+        mb = (B['dhat'] >= lo) & (B['dhat'] <= hi)
+        if ma.sum() < 10 or mb.sum() < 10:
+            continue
+        out.append(dict(lo=float(lo), hi=float(hi), n_a=int(ma.sum()), n_b=int(mb.sum()),
+                        z_a=float(A['z'][ma].mean()), z_b=float(B['z'][mb].mean()),
+                        z_diff=float(A['z'][ma].mean() - B['z'][mb].mean()),
+                        infl_a=float(A['infl'][ma].mean()),
+                        infl_b=float(B['infl'][mb].mean())))
+    return dict(arm_a=arm_a, arm_b=arm_b, bins=out,
+                n_bins_a_worse=int(sum(b['z_diff'] < 0 for b in out)), n_bins=len(out))
+
+
 def _pct(a):
     return dict(mean=float(a.mean()), sd=float(a.std()),
                 p10=float(np.percentile(a, 10)), p50=float(np.percentile(a, 50)),
@@ -320,6 +346,7 @@ def main():
                       verdict=primary.replace(' on this arm', '') if 'PM2' in primary else primary)
 
     rep['PM3']['landscape'] = landscape(d)
+    rep['PM3']['distance_matched'] = matched_bins(d)
 
     # ---- the binary call ----
     pm1_ok = v1.startswith('PM1 CONFIRMED')

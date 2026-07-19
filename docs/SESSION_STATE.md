@@ -120,6 +120,7 @@ NB: `results_camera.json` is the OFF_OFF engine, NOT on_on (env-build finding, 2
 | 0A.2 width ablation (W1/W2) | **DONE** | docs/WIDTH_ABLATION.md, results/width/ | W1 CONFIRMED: gap does not close with width |
 | 0A.3 budget-matched (BM1) | **DONE** | docs/BUDGET_MATCHED.md, results/budget/ | BM1 CONFIRMED: eta2_opt 0.038 matched (was 0.005) |
 | V3 pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 55ced44) | committed BEFORE both launches |
+| 0B positive mechanism (PM1/PM2/PM3) | **DONE** | docs/MECHANISM_POSITIVE.md, results/mechanism/ | **KEEP-ELIMINATION**: PM1 KILL, PM2 UNINFORMATIVE, PM3 delivered |
 
 **0A.1 verdict.** GATE_KBETA's 0.378 and the novelty audit's 0.504->0.511 are the same
 estimator on different engines. Holding the estimator fixed and switching engine flips the
@@ -193,3 +194,27 @@ report as observation.
 query-budget table); scope the optimizer-null claim to a stated budget; report the DOWN-level
 disagreement as a limitation; state budget alongside K and beta whenever eta2_surr is quoted.
 
+
+**0B verdict.** KEEP-ELIMINATION. PM1 KILL fires: the ensemble's returned optima sit at
+distance +0.116 [-0.004, +0.333] and inflation +0.043 [-0.652, +1.085] relative to the GP's,
+both covering zero; the distance limb is Branin-2D alone (+0.743 against ~0 on the other six).
+PM2 UNINFORMATIVE: raising the GP's prior mean 20 standardized units above every observation
+moves its far-field posterior mean 1% of the way to the constant (R=0.009 [0.006, 0.013]), and
+the same on the far-field maximum -- the fitted lengthscales are on the order of the domain
+diameter, so the exact GP is nowhere in a prior-reversion regime inside the feasible set. The
+only arm that does remove reversion (short lengthscale + raised constant) passes MC-1 at
+R=0.859 and shrinks the gap +0.274 [+0.136, +0.428], but is reported CONFOUNDED: held-out
+normRMSE 211x the incumbent's.
+
+**What 0B adds.** (a) A seventh elimination -- the ensemble loses at MATCHED distance-to-data
+and matched inflation (worse in 4 of 5 distance bins, tied in the fifth), so distance-to-support
+and over-prediction are now measured non-explanations. (b) The landscape law is quantified over
+5,040 returned optima: Spearman(distance, oracle value) = -0.818, Spearman(distance, inflation)
+= +0.758 -- off-support maxima ARE inflated and worthless, that property just does not separate
+the two surrogate classes. (c) A negative structural fact: any account of the GP's advantage
+resting on prior-mean reversion is unavailable at this operating point, not merely untested.
+
+**Paper action.** No claim change. Add the seventh elimination to the eliminations list and one
+sentence to the limitations paragraph (main.tex:232) recording that the one positive mechanism
+we pre-registered was refuted on its first limb and untestable on its second. C2 stays an
+elimination result.
