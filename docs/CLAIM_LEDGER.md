@@ -12,7 +12,10 @@ Sources: `docs/NOVELTY_V3.md` (citations `[n]` throughout), `docs/GATE_KBETA.md`
 `docs/BETA0_RECONCILE.md` (0-A.1), `docs/WIDTH_ABLATION.md` (0-A.2),
 `docs/BUDGET_MATCHED.md` (0-A.3).
 
-**Row count: 23.** LANDED 19 · PROVISIONAL 2 · PROVISIONAL-REPORTABLE 2 · **BLOCKED 0.**
+**Row count: 24.** LANDED 20 · PROVISIONAL 2 · PROVISIONAL-REPORTABLE 2 · **BLOCKED 0.**
+
+**D25 added 2026-07-20** (x0-inversion, §5). It is a descriptive within-grid demonstration, not a
+mechanism, and it carries its counting rule inside the asserted sentence.
 
 **D13 carries two asserted sentences** — W1 (the width result) and **D13-W2** (accuracy is not the
 bottleneck). W2 is a **sub-claim of D13, not a 24th row**: it has no independent status, it falls
@@ -133,6 +136,8 @@ of existing pod data against a kill criterion registered in `docs/GP_FREEZE.md`.
 | **D15** | "The ensemble's gradient-ascent collapse is genuine surrogate geometry on the majority of tasks under the audited engine, and its genuineness is driven by the candidate/oracle protocol (X3) rather than by target scaling (X1)." | Genuine-collapse count by corner: off_off 2/7, on_off 0/7, off_on 5/7, on_on 4/7, by `gradtune.py:73`'s own >5% rule; `results/results_gradtune_{off_off,on_off,off_on,on_on}.json`; `docs/POD_PHASE7.md` §7.1 | Genre-shape [2]; the optimizer/SO reviewer pool | **"Your own released `gradtune.py` concludes the collapse is a tuning artifact — a trust region closes it on 3 of 4 tasks. That result is absent from the paper."** (FLAW_LEDGER P0-0, rated an unconditional submission blocker.) | The sweep is **reported in full, including the corner where it fires against us** (on_off: 0/7 genuine). The pre-audit (X3-off) engine is where the original "tuning closes it" verdict came from — we confirm that and show it does not hold on the audited engine. Disclosure converts P0-0 from a reject-driver into a 2×2 attribution result. The pre-registered structure (genuine at d≤10, tuning closes at d≥15) is reported as holding. | **LANDED** |
 | **D16** | "Under the matched protocol the ensemble's coverage collapse is not gradient-specific: gradient and CMA proposals differ in out-of-distribution coverage by 0.010 under X3-on versus 0.117 under X3-off, because both optimizers pool every iterate and return the top-128 by surrogate LCB." | 0.010 (X3-on) vs 0.117 (X3-off); `results/coverage33.json`, `docs/POD_PHASE7.md` §7.3 | Genre-shape [2]; our own pre-registration X7 | "You framed this as an ensemble×gradient interaction; now you say it is not." | **We report our own X7 prediction as refuted.** The claim is narrowed to "ensemble × any aggressive selector under the matched protocol," and the gradient-specific framing is retracted by name. A refuted pre-registered prediction is evidence of a real test (cf. D24). | **LANDED** |
 | **D17** | "The premise-coverage value of 0.97 in the prior analysis is the scikit-learn exact GP, not the differentiable GP the grid actually scores, whose real coverage is 0.831 and falls to 0.38 on Styblinski." | sklearn GP 0.97 (reproduces published), grid botorchgp 0.831 mean / 0.38 Styblinski, ensemble 0.14 own-proposal; `results/gpcov.json`, `results/coverage33.json`, `docs/POD_PHASE7.md` §7.4 | Genre-shape [2]; FLAW_LEDGER P0-3 | "The interaction claim rests on a comparison where surrogate and optimizer move together, evaluated with a GP that is not the GP in the grid." | Both numbers reported side by side, with the model each belongs to named. This settles P0-3 rather than arguing it. | **LANDED** |
+
+| **D25** | "The candidate/oracle correction leaves each cell's seed designs---the top-128 of the offline data plus perturbed copies---inside the returned pool, so a cell returning something worse than what it was handed has had its own acquisition rank an invented design above a real one it was holding; on the audited engine the ensemble does this on at least one optimizer on **7/7** tasks, against **3/7** for SVGP and **2/7** for the exact GP, and on Branin-2D under ensemble gradient ascent all **30/30** seeds invert with **100%** of the 128 returned designs worse than the best design the cell started with." | Inversion rate per (task, surrogate, optimizer, X3) over 30 seeds; `results/x0_inversion.json` (`code/x0_inversion.py`, X1/X3 on, K=5, β=2, TOP=128, git_sha `9843dfc8`). Task counts read on the **ANY-optimizer** rule, stated as such. Branin ens:grad `inversion_rate` 1.0, `mean_frac_worse` 1.0. GP inversions are Styblinski-5D + Rastrigin-15D (exact GP) and Branin-2D + Styblinski-5D + Rastrigin-15D (SVGP) | SNGP [12]; Fan [13] (UCB-as-local-search) bounds any acquisition-geometry reading | "You are counting a task as inverting if *any* of three optimizers does. Under an ALL-optimizer rule your own numbers are 3/7, 1/7, 2/7 and the contrast largely disappears." Also: "n=7, descriptive, no test." | **The counting rule is named in the same breath as the counts**, and the figure shows every one of the 63 cells so a reader can apply either rule. The claim is asserted as a **demonstration within this grid, descriptive at n=7**, never as a mechanism or a field result — the paper says so in the asserting paragraph. It is placed as a **concretization of Elimination 7's localization** (the loss sits at the returned optimum's oracle quality), not as independent evidence for any η² magnitude. **Rule 2 binds:** no sentence generalizes this beyond our grid. | **LANDED** — descriptive; added 2026-07-20 |
 
 ### D12 — three hard constraints the drafter may not soften
 
@@ -283,10 +288,10 @@ downstream references to "D21" are stale and must be deleted, not repointed.
 | 5 — strengthening is the net of two protocol confounds | **D09**, D10, D11 |
 | 6 — K-prominence: sensitivity **and** non-reversal, equal weight | **D06**, D09, D11, D13 |
 
-## Status roll-up (23 rows, one status each)
+## Status roll-up (24 rows, one status each)
 
-- **LANDED — 19:** D01, D02, D03, D04, D05, D06, D09, D10, **D11**, **D12**, **D13** (incl. the
-  D13-W2 sub-claim), D14, D15, D16, D17, **D18**, D20, D22, D24.
+- **LANDED — 20:** D01, D02, D03, D04, D05, D06, D09, D10, **D11**, **D12**, **D13** (incl. the
+  D13-W2 sub-claim), D14, D15, D16, D17, **D18**, D20, D22, D24, **D25**.
 - **PROVISIONAL — 2:** D07 (survives only narrowed to its per-task form; the aggregate refutes
   it), D19 (the null is landed; its **optimizer half stays gated** — 0-A.3 matched budgets on the
   synthetic tasks only, and Design-Bench was not re-run under matching).
