@@ -27,8 +27,8 @@ import os
 
 import matplotlib.pyplot as plt
 
-from style import (ACCENT, COL, EGP, ENS, FAINT, INK, MUTE, RESULTS, despine,
-                   save, use_style)
+from style import (ACCENT, ACCENT_DK, COL, EGP, EGP_DK, ENS, ENS_DK, INK,
+                   MUTE, RESULTS, despine, save, use_style)
 
 use_style()
 
@@ -62,13 +62,13 @@ labels = []
 for i, (lab, ref, val) in enumerate(ROWS):
     yy = y[i]
     delta = val - ref
-    col = EGP if delta > 0 else ENS
-    ax.barh(yy, delta, left=ref, height=0.52, color=col, alpha=0.85, lw=0,
-            zorder=3)
+    col, edge = (EGP, EGP_DK) if delta > 0 else (ENS, ENS_DK)
+    ax.barh(yy, delta, left=ref, height=0.54, color=col, alpha=0.95,
+            edgecolor=edge, lw=0.5, zorder=3)
     ha = "left" if delta > 0 else "right"
     off = 0.008 if delta > 0 else -0.008
-    ax.text(val + off, yy, f"{val:.3f}  ({delta:+.3f})", fontsize=6.2,
-            color=col, ha=ha, va="center", zorder=5)
+    ax.text(val + off, yy, f"{val:.3f}  ({delta:+.3f})", fontsize=6.5,
+            color=edge, ha=ha, va="center", zorder=5, fontweight="bold")
     if ref != BASE:                       # C3 carries its own reference
         ax.plot([ref], [yy], "|", color=INK, ms=8, mew=1.0, zorder=5)
         ax.text(ref + 0.010, yy + 0.42, f"vs its own $K{{=}}5$  {ref:.3f}",
@@ -83,16 +83,17 @@ for j, (lab, note) in enumerate(NOBAR):
     labels.append(lab)
 
 # the published baseline
-ax.axvline(BASE, color=INK, lw=0.8, zorder=4)
-ax.text(BASE - 0.012, len(y) - 0.32, f"published  {BASE:.3f}", fontsize=6.3,
-        color=INK, ha="right", va="bottom")
+ax.axvline(BASE, color=INK, lw=1.2, zorder=4)
+ax.text(BASE - 0.012, len(y) - 0.32, f"published  {BASE:.3f}", fontsize=6.6,
+        color=INK, ha="right", va="bottom", fontweight="bold")
 
 # the corrected corner, with its interval — never shown without it (D10)
-ax.axvspan(CORR_CI[0], CORR_CI[1], color=ACCENT, alpha=0.14, lw=0, zorder=1)
-ax.axvline(CORR, color=ACCENT, lw=1.1, zorder=4)
+ax.axvspan(CORR_CI[0], CORR_CI[1], color=ACCENT, alpha=0.24, lw=0, zorder=1)
+ax.axvline(CORR, color=ACCENT_DK, lw=1.7, zorder=4)
 ax.text(CORR + 0.012, len(y) - 0.32,
         f"corrected  {CORR:.3f}  [{CORR_CI[0]:.3f}, {CORR_CI[1]:.3f}]",
-        fontsize=6.3, color=ACCENT, ha="left", va="bottom")
+        fontsize=6.6, color=ACCENT_DK, ha="left", va="bottom",
+        fontweight="bold")
 
 ax.set_yticks(y)
 ax.set_yticklabels(labels, fontsize=6.8)

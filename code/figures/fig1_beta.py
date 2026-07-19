@@ -19,8 +19,8 @@ import os
 
 import matplotlib.pyplot as plt
 
-from style import (ACCENT, COL, EGP, INK, MUTE, OUT, RESULTS, despine, save,
-                   use_style)
+from style import (ACCENT, ACCENT_DK, BAND_LEAD, COL, EGP, EGP_DK, GHOST,
+                   GHOST_DK, INK, MUTE, RESULTS, despine, save, use_style)
 
 use_style()
 
@@ -42,22 +42,26 @@ fig, (ax, bx) = plt.subplots(
 
 # ---------------- left: the beta trace -----------------------------------
 x = list(range(len(BETAS)))
-ax.plot(x, eta, "-", color=EGP, lw=1.1, zorder=3)
-ax.plot(x, eta, "o", color=EGP, ms=3.4, mec="white", mew=0.6, zorder=4)
+ax.plot(x, eta, "-", color=EGP, lw=1.9, zorder=3)
+ax.plot(x, eta, "o", color=EGP, ms=4.0, mec="white", mew=0.7, zorder=4)
 
 for b, ci in CI.items():
     i = BETAS.index(b)
     ax.errorbar(i, eta[i], yerr=[[eta[i] - ci[0]], [ci[1] - eta[i]]],
-                fmt="none", ecolor=EGP, elinewidth=1.0, capsize=2.2,
-                capthick=1.0, zorder=5)
+                fmt="none", ecolor=EGP, elinewidth=1.6, capsize=3.0,
+                capthick=1.6, zorder=5)
+    ax.plot(i, eta[i], "o", color=EGP, ms=4.6, mec=EGP_DK, mew=0.9, zorder=6)
 
 # the near-separation: beta=0 upper bound against beta=2 lower bound
 hi0, lo2 = CI[0.0][1], CI[2.0][0]
-ax.axhspan(lo2, hi0, color=ACCENT, alpha=0.20, lw=0, zorder=1)
+ax.axhspan(lo2, hi0, color=ACCENT, alpha=BAND_LEAD, lw=0, zorder=1)
+for edge in (lo2, hi0):
+    ax.axhline(edge, color=ACCENT_DK, lw=0.7, zorder=2)
 ax.annotate(f"intervals overlap\nby only {hi0 - lo2:.3f}",
-            xy=(2.0, (lo2 + hi0) / 2), xytext=(1.62, 0.062),
-            fontsize=6.0, color=INK, ha="center", va="bottom",
-            arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTE,
+            xy=(1.05, (lo2 + hi0) / 2), xytext=(1.30, 0.045),
+            fontsize=6.4, color=ACCENT_DK, ha="center", va="bottom",
+            fontweight="bold",
+            arrowprops=dict(arrowstyle="-", lw=0.6, color=ACCENT_DK,
                             shrinkA=0, shrinkB=1))
 
 ax.set_xticks(x)
@@ -73,16 +77,19 @@ for j, (key, lab) in enumerate(CORNER_ORDER):
     e = corners[key]["eta2"]
     pt, ci = e["point"]["surr"], e["surr"]["ci95"]
     on = key == "on_on"
-    c = ACCENT if on else MUTE
+    c, ce = (ACCENT, ACCENT_DK) if on else (GHOST, GHOST_DK)
     bx.errorbar(j, pt, yerr=[[pt - ci[0]], [ci[1] - pt]], fmt="none",
-                ecolor=c, elinewidth=1.0, capsize=2.2, capthick=1.0, zorder=3)
-    bx.plot(j, pt, "o", color=c, ms=3.4, mec="white", mew=0.6, zorder=4)
+                ecolor=c, elinewidth=1.5 if on else 1.1,
+                capsize=2.8 if on else 2.2, capthick=1.5 if on else 1.1,
+                zorder=4 if on else 3)
+    bx.plot(j, pt, "o", color=c, ms=4.2 if on else 3.4, mec=ce, mew=0.8,
+            zorder=5 if on else 4)
 
 # every corner point estimate falls inside the corrected corner's interval
 lo, hi = corners["on_on"]["eta2"]["surr"]["ci95"]
-bx.axhspan(lo, hi, color=ACCENT, alpha=0.12, lw=0, zorder=1)
+bx.axhspan(lo, hi, color=ACCENT, alpha=0.16, lw=0, zorder=1)
 bx.annotate("the corrected interval\ncontains every corner",
-            xy=(1.5, hi), xytext=(1.5, 0.70), fontsize=6.0, color=INK,
+            xy=(1.5, hi), xytext=(1.5, 0.70), fontsize=6.2, color=ACCENT_DK,
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTE,
                             shrinkA=0, shrinkB=1))

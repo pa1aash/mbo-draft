@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  20 JUL 2026 00:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  20 JUL 2026 00:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -492,19 +492,19 @@ Package pdftex.def Info: figures_v3/fig_beta_resolution.pdf  used on input line
  143.
 (pdftex.def)             Requested size: 237.00174pt x 152.42531pt.
  [4 <./figures_v3/fig_confounds.pdf> <./figures_v3/fig_beta_resolution.pdf>]
-<figures_v3/fig_width_rmse.pdf, id=64, 218.46931pt x 184.81937pt>
+<figures_v3/fig_width_rmse.pdf, id=78, 218.46931pt x 184.81937pt>
 File: figures_v3/fig_width_rmse.pdf Graphic file (type pdf)
 <use figures_v3/fig_width_rmse.pdf>
 Package pdftex.def Info: figures_v3/fig_width_rmse.pdf  used on input line 181.
 
 (pdftex.def)             Requested size: 237.00174pt x 200.49591pt.
 [5 <./figures_v3/fig_width_rmse.pdf>]
-<figures_v3/fig_landscape.pdf, id=85, 423.80823pt x 153.67625pt>
+<figures_v3/fig_landscape.pdf, id=106, 423.80823pt x 153.67625pt>
 File: figures_v3/fig_landscape.pdf Graphic file (type pdf)
 <use figures_v3/fig_landscape.pdf>
 Package pdftex.def Info: figures_v3/fig_landscape.pdf  used on input line 194.
 (pdftex.def)             Requested size: 500.83388pt x 181.61545pt.
-<figures_v3/fig_x0_inversion.pdf, id=86, 447.62291pt x 168.49435pt>
+<figures_v3/fig_x0_inversion.pdf, id=107, 447.62291pt x 168.49435pt>
 File: figures_v3/fig_x0_inversion.pdf Graphic file (type pdf)
 <use figures_v3/fig_x0_inversion.pdf>
 Package pdftex.def Info: figures_v3/fig_x0_inversion.pdf  used on input line 20
@@ -561,10 +561,10 @@ ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
 rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
 s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
 newtx/ztmri.pfb>
-Output written on main.pdf (11 pages, 436260 bytes).
+Output written on main.pdf (11 pages, 541963 bytes).
 PDF statistics:
- 237 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
+ 280 PDF objects out of 1000 (max. 8388607)
+ 159 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

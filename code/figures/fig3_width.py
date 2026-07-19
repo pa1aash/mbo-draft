@@ -19,8 +19,8 @@ import os
 
 import matplotlib.pyplot as plt
 
-from style import (ACCENT, COL, EGP, ENS, INK, MUTE, RESULTS, despine, save,
-                   use_style)
+from style import (ACCENT, ACCENT_DK, BAND_LEAD, COL, EGP, EGP_DK, ENS,
+                   ENS_DK, INK, MUTE, RESULTS, despine, save, use_style)
 
 use_style()
 
@@ -39,17 +39,18 @@ fig, (ax, bx) = plt.subplots(
     gridspec_kw={"height_ratios": [1.15, 1.0], "hspace": 0.16})
 
 # ---- top: the gap does not close ----------------------------------------
-ax.fill_between(x, lo, hi, color=EGP, alpha=0.16, lw=0, zorder=2)
-ax.plot(x, gap, "-", color=EGP, lw=1.2, zorder=4)
-ax.plot(x, gap, "o", color=EGP, ms=3.4, mec="white", mew=0.6, zorder=5)
+ax.fill_between(x, lo, hi, color=EGP, alpha=BAND_LEAD, lw=0, zorder=2)
+ax.plot(x, gap, "-", color=EGP, lw=2.0, zorder=4)
+ax.plot(x, gap, "o", color=EGP, ms=4.0, mec=EGP_DK, mew=0.8, zorder=5)
 ax.axhline(0.0, color=MUTE, lw=0.5, ls=(0, (3, 2)), zorder=1)
 
 ax.annotate("", xy=(x[0], gap[0]), xytext=(x[-1], gap[-1]),
-            arrowprops=dict(arrowstyle="-", lw=0.6, color=ACCENT,
-                            ls=(0, (2, 1.6))))
+            arrowprops=dict(arrowstyle="-", lw=1.0, color=ACCENT_DK,
+                            ls=(0, (2.4, 1.8))))
 ax.text(0.50, 0.93,
         rf"$0.480 \rightarrow 0.476$   ($99.1\%$ retained)",
-        transform=ax.transAxes, ha="center", va="top", fontsize=6.6, color=INK)
+        transform=ax.transAxes, ha="center", va="top", fontsize=7.0,
+        color=ACCENT_DK, fontweight="bold")
 ax.text(0.97, 0.10, "interval widens with $w$:\n$0.211 \\rightarrow 0.439$",
         transform=ax.transAxes, ha="right", va="bottom", fontsize=6.0,
         color=MUTE)
@@ -59,20 +60,21 @@ ax.set_ylim(-0.05, 0.78)
 despine(ax)
 
 # ---- bottom: the ensemble is the more accurate surrogate ------------------
-bx.axhline(rmse_gp, color=EGP, lw=1.2, zorder=3)
+bx.axhline(rmse_gp, color=EGP, lw=1.9, zorder=3)
 bx.text(len(W) - 1.06, rmse_gp + 0.006, f"Exact GP  {rmse_gp:.3f}",
-        fontsize=6.2, color=EGP, ha="right", va="bottom")
+        fontsize=6.5, color=EGP, ha="right", va="bottom", fontweight="bold")
 
-bx.plot(x, rmse_ens, "-", color=ENS, lw=1.2, zorder=4)
-bx.plot(x, rmse_ens, "o", color=ENS, ms=3.4, mec="white", mew=0.6, zorder=5)
+bx.plot(x, rmse_ens, "-", color=ENS, lw=2.0, zorder=4)
+bx.plot(x, rmse_ens, "o", color=ENS, ms=4.0, mec=ENS_DK, mew=0.8, zorder=5)
 bx.text(0.06, rmse_ens[0] - 0.010,
         f"Ensemble  {rmse_ens[0]:.3f} $\\rightarrow$ {rmse_ens[-1]:.3f}",
-        fontsize=6.2, color=ENS, ha="left", va="top")
+        fontsize=6.5, color=ENS_DK, ha="left", va="top", fontweight="bold")
 
-bx.fill_between(x, rmse_ens, rmse_gp, color=ACCENT, alpha=0.14, lw=0, zorder=2)
+bx.fill_between(x, rmse_ens, rmse_gp, color=ACCENT, alpha=0.26, lw=0,
+                zorder=2)
 bx.text(0.97, 0.40, "the more accurate surrogate\nis the one that loses",
-        transform=bx.transAxes, ha="right", va="center", fontsize=6.3,
-        color=INK)
+        transform=bx.transAxes, ha="right", va="center", fontsize=6.8,
+        color=ACCENT_DK, fontweight="bold")
 
 bx.set_ylabel("held-out norm. RMSE")
 bx.set_xlabel("per-member hidden width $w$  (fixed $K{=}5$)")
