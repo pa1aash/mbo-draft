@@ -55,9 +55,18 @@ D_X1 = pt["on_off"] - BASE          # -0.084, down
 D_X3 = pt["off_on"] - BASE          # +0.083, up
 D_NET = pt["on_on"] - BASE          # +0.038, the joint correction
 
-# the region every corner's interval contains — KB5 made concrete
-SHARED_LO = max(c[0] for c in ci.values())
-SHARED_HI = min(c[1] for c in ci.values())
+# The region every corner's interval contains — KB5 made concrete.
+# Rounded INWARD (lo up, hi down). Nearest-rounding the endpoints would push
+# the printed region outside the tightest interval and make the stated
+# containment false: on_off's upper bound is 0.4439559, so a printed 0.444
+# is not contained by it.
+import math
+
+_LO = max(c[0] for c in ci.values())
+_HI = min(c[1] for c in ci.values())
+SHARED_LO = math.ceil(_LO * 1000) / 1000
+SHARED_HI = math.floor(_HI * 1000) / 1000
+assert all(v[0] <= SHARED_LO and SHARED_HI <= v[1] for v in ci.values())
 
 fig, (ax, kx) = plt.subplots(
     1, 2, figsize=(COL, 2.15), sharey=True,
@@ -67,7 +76,7 @@ fig, (ax, kx) = plt.subplots(
 ax.axhspan(SHARED_LO, SHARED_HI, color=MUTE, alpha=0.16, lw=0, zorder=1)
 for edge in (SHARED_LO, SHARED_HI):
     ax.axhline(edge, color=MUTE, lw=0.6, ls=(0, (3, 2)), zorder=2)
-ax.annotate(f"every interval contains [{SHARED_LO:.2f}, {SHARED_HI:.2f}]",
+ax.annotate(f"every interval contains [{SHARED_LO:.3f}, {SHARED_HI:.3f}]",
             xy=(1.5, SHARED_LO), xytext=(1.5, 0.205), fontsize=5.9,
             color=INK, ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTE, shrinkA=1,
