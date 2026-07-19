@@ -85,10 +85,13 @@ for j, (key, lab) in enumerate(CORNER_ORDER):
     bx.plot(j, pt, "o", color=c, ms=4.2 if on else 3.4, mec=ce, mew=0.8,
             zorder=5 if on else 4)
 
-# every corner point estimate falls inside the corrected corner's interval
-lo, hi = corners["on_on"]["eta2"]["surr"]["ci95"]
+# the region every corner's interval contains — the four do not separate.
+# NOT the on_on interval: on_off's 0.283 sits 0.007 below its lower bound, so
+# "the corrected interval contains every corner" is false and is not drawn.
+lo = max(corners[k]["eta2"]["surr"]["ci95"][0] for k in corners)
+hi = min(corners[k]["eta2"]["surr"]["ci95"][1] for k in corners)
 bx.axhspan(lo, hi, color=ACCENT, alpha=0.16, lw=0, zorder=1)
-bx.annotate("the corrected interval\ncontains every corner",
+bx.annotate("every interval\ncontains this band",
             xy=(1.5, hi), xytext=(1.5, 0.70), fontsize=6.2, color=ACCENT_DK,
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTE,

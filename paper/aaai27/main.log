@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  20 JUL 2026 01:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  20 JUL 2026 02:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -478,11 +478,11 @@ Overfull \hbox (14.25383pt too wide) in paragraph at lines 110--121
  [][] 
  []
 
-<figures_v3/fig_confounds.pdf, id=23, 248.5285pt x 143.31229pt>
+<figures_v3/fig_confounds.pdf, id=23, 218.7673pt x 157.1878pt>
 File: figures_v3/fig_confounds.pdf Graphic file (type pdf)
 <use figures_v3/fig_confounds.pdf>
 Package pdftex.def Info: figures_v3/fig_confounds.pdf  used on input line 125.
-(pdftex.def)             Requested size: 237.00174pt x 136.6707pt.
+(pdftex.def)             Requested size: 237.00174pt x 170.29034pt.
 [3]
 <figures_v3/fig_beta_resolution.pdf, id=27, 218.7673pt x 140.69734pt>
 File: figures_v3/fig_beta_resolution.pdf Graphic file (type pdf)
@@ -490,33 +490,30 @@ File: figures_v3/fig_beta_resolution.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures_v3/fig_beta_resolution.pdf  used on input line
  143.
 (pdftex.def)             Requested size: 237.00174pt x 152.42531pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [4 <./figures_v3/fig_confounds.pdf> <./figures_v3/fig_beta_resolution.pdf>]
-<figures_v3/fig_width_rmse.pdf, id=78, 218.46931pt x 184.81937pt>
+<figures_v3/fig_width_rmse.pdf, id=76, 218.46931pt x 184.81937pt>
 File: figures_v3/fig_width_rmse.pdf Graphic file (type pdf)
 <use figures_v3/fig_width_rmse.pdf>
 Package pdftex.def Info: figures_v3/fig_width_rmse.pdf  used on input line 181.
 
 (pdftex.def)             Requested size: 237.00174pt x 200.49591pt.
-
-Underfull \vbox (badness 5417) has occurred while \output is active []
-
- [5 <./figures_v3/fig_width_rmse.pdf>]
-<figures_v3/fig_landscape.pdf, id=106, 423.80823pt x 153.67625pt>
+[5]
+<figures_v3/fig_landscape.pdf, id=82, 423.80823pt x 153.67625pt>
 File: figures_v3/fig_landscape.pdf Graphic file (type pdf)
 <use figures_v3/fig_landscape.pdf>
 Package pdftex.def Info: figures_v3/fig_landscape.pdf  used on input line 194.
 (pdftex.def)             Requested size: 500.83388pt x 181.61545pt.
-<figures_v3/fig_x0_inversion.pdf, id=107, 447.62291pt x 168.49435pt>
+<figures_v3/fig_x0_inversion.pdf, id=83, 447.62291pt x 168.49435pt>
 File: figures_v3/fig_x0_inversion.pdf Graphic file (type pdf)
 <use figures_v3/fig_x0_inversion.pdf>
 Package pdftex.def Info: figures_v3/fig_x0_inversion.pdf  used on input line 20
 8.
 (pdftex.def)             Requested size: 500.83388pt x 188.53497pt.
- [6] [7 <./figures_v3/fig_landscape.pdf>]
-Underfull \vbox (badness 1142) has occurred while \output is active []
+ [6 <./figures_v3/fig_width_rmse.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7 <./figures_v3/fig_landscape.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8 <./figures_v3/fig_x0_inversion.pdf>]
 Underfull \hbox (badness 1043) in paragraph at lines 239--240
@@ -531,7 +528,15 @@ Underfull \hbox (badness 1596) in paragraph at lines 239--240
 cmm/m/it/10 :\OT1/cmr/m/n/10 038$
  []
 
-[9] (./main.bbl [10]) [11] (./main.aux)
+
+Underfull \vbox (badness 4886) has occurred while \output is active []
+
+ [9]
+(./main.bbl
+Underfull \vbox (badness 6094) has occurred while \output is active []
+
+ [10])
+[11] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -544,7 +549,7 @@ Here is how much of TeX's memory you used:
  36275 multiletter control sequences out of 15000+600000
  669865 words of font info for 80 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 89i,13n,117p,2412b,376s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,117p,2412b,378s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
 s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaa
 sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Libra
@@ -560,7 +565,7 @@ ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
 rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
 s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
 newtx/ztmri.pfb>
-Output written on main.pdf (11 pages, 546483 bytes).
+Output written on main.pdf (11 pages, 548179 bytes).
 PDF statistics:
  280 PDF objects out of 1000 (max. 8388607)
  159 compressed objects within 2 object streams
