@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 17:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 19:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,12 +419,12 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 9.0pt on input line 46.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 48.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
 
  (/Users/palaash/Library/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 49.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
 
 
 (/Users/palaash/Library/texmf/tex/latex/amsfonts/umsb.fd
@@ -435,7 +435,7 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.0pt on input line 50.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 10.0pt on input line 63.
+(Font)              scaled to size 10.0pt on input line 61.
  [1{/Users/palaash/Library/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/
 pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
@@ -445,88 +445,77 @@ pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.0pt on input line 71.
 
-Underfull \hbox (badness 1708) in paragraph at lines 85--86
- \T1/ntxtlf/b/n/10 Cal-i-bra-tion and cov-er-age. \T1/ntxtlf/m/n/10 Con-for-mal
- meth-ods give
+Underfull \hbox (badness 1163) in paragraph at lines 83--84
+ \T1/ntxtlf/b/n/10 Of-fline MBO and its eval-u-a-tion. \T1/ntxtlf/m/n/10 The co
+nservative-
  []
 
-
-Underfull \hbox (badness 1270) in paragraph at lines 87--88
- \T1/ntxtlf/b/n/10 Eval-u-a-tion cri-tiques and con-trolled de-com-po-si-tions.
-
- []
-
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 92
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 88
 .
 (/usr/local/texlive/2026basic/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
  \T1/ntxtlf/b/n/10 Con-found 2: can-di-date/oracle pro-to-col. \T1/ntxtlf/m/n/1
 0 Two of
  []
 
 
-Underfull \hbox (badness 1215) in paragraph at lines 100--101
+Underfull \hbox (badness 1215) in paragraph at lines 96--97
 \T1/ntxtlf/m/n/10 three op-ti-miz-ers pro-pose 256 de-signs and re-port the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 \T1/ntxtlf/m/n/10 (\T1/pcr/m/n/10 mbo.py:384--389,188,198--201,292,392--394\T1/
 ntxtlf/m/n/10 ).
  []
 
 
-Overfull \hbox (14.25383pt too wide) in paragraph at lines 114--125
+Overfull \hbox (14.25383pt too wide) in paragraph at lines 110--121
  [][] 
  []
 
 <figures_v3/fig_sensitivity.pdf, id=23, 250.09076pt x 113.16725pt>
 File: figures_v3/fig_sensitivity.pdf Graphic file (type pdf)
 <use figures_v3/fig_sensitivity.pdf>
-Package pdftex.def Info: figures_v3/fig_sensitivity.pdf  used on input line 129
+Package pdftex.def Info: figures_v3/fig_sensitivity.pdf  used on input line 125
 .
 (pdftex.def)             Requested size: 237.00174pt x 107.24925pt.
 [3]
-Underfull \hbox (badness 1194) in paragraph at lines 143--144
- \T1/ntxtlf/b/n/10 The firmer re-sult is a sen-si-tiv-ity, led by $\OML/cmm/m/i
-t/10 ^^L$\T1/ntxtlf/b/n/10 . $\OML/cmm/m/it/10 ^^Q[]$
- []
-
-
-Underfull \hbox (badness 3058) in paragraph at lines 143--144
-\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 214$\T1/ntxtlf/m/n/10 , $\OT
-1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 282$\T1/ntxtlf/m/n/10 , $\OT1/c
-mr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 406$ $[0\OML/cmm/m/it/10 :\OT1/cmr
-/m/n/10 285\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/1
-0 564]$\T1/ntxtlf/m/n/10 , $\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 
-408$ \T1/ntxtlf/m/n/10 at $\OML/cmm/m/it/10 ^^L \OT1/cmr/m/n/10 =
+Underfull \hbox (badness 1087) in paragraph at lines 139--140
+\T1/ntxtlf/b/n/10 not. $\OML/cmm/m/it/10 ^^Q[]$ \T1/ntxtlf/m/n/10 rises mono-to
+n-i-cally with pessimism---$\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 
+184$
  []
 
 [4 <./figures_v3/fig_sensitivity.pdf>]
 <figures_v3/fig_width.pdf, id=49, 250.91116pt x 118.58867pt>
 File: figures_v3/fig_width.pdf Graphic file (type pdf)
 <use figures_v3/fig_width.pdf>
-Package pdftex.def Info: figures_v3/fig_width.pdf  used on input line 184.
+Package pdftex.def Info: figures_v3/fig_width.pdf  used on input line 180.
 (pdftex.def)             Requested size: 237.00174pt x 112.0162pt.
- [5] [6 <./figures_v3/fig_width.pdf>]
-(./main.bbl [7] [8]) [9
+ [5 <./figures_v3/fig_width.pdf>]
+[6] (./main.bbl [7] [8]) [9
 
 ] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  7685 strings out of 469006
  122824 string characters out of 5454813
- 543265 words of memory out of 5000000
+ 546265 words of memory out of 5000000
  36242 multiletter control sequences out of 15000+600000
  667008 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 89i,13n,117p,2005b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,117p,2363b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
 s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaa
 sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Libra
@@ -542,7 +531,7 @@ ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
 rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
 s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
 newtx/ztmri.pfb>
-Output written on main.pdf (9 pages, 326365 bytes).
+Output written on main.pdf (9 pages, 326352 bytes).
 PDF statistics:
  152 PDF objects out of 1000 (max. 8388607)
  90 compressed objects within 1 object stream
