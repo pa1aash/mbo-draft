@@ -49,6 +49,12 @@ not a material divergence. Synthetic is platform-invariant to within library noi
   on_off [0.186,0.444], off_on [0.312,0.649], on_on [0.290,0.556]. All four overlap; the on_on CI
   contains every other corner point estimate. 0.405 must not be reported without its CI. (Bootstrap
   validated: off_off width 0.305 ~ the published 0.32.)
+  > **CORRECTED 2026-07-20 — the second sentence above is false and was propagated into D10 and
+  > the paper before being caught.** on_off's point estimate is **0.2828**, which is **0.0069
+  > below** on_on's lower bound of **0.28970**, so the on_on CI does *not* contain every other
+  > corner point estimate. The true and stronger statement is the shared region
+  > **[0.3116, 0.4440]**, contained in all four intervals. See `docs/CLAIM_LEDGER.md` D10. The
+  > KB5 verdict itself — underpowered, corners not separable — is unaffected.
 
 ## Phase 4 — Design-Bench env. docs/POD_ENV.md
 Built env `dbm` from the known-good stack (torch 2.8.0; py3.9 caps torch at 2.8, so latest-torch
