@@ -29,6 +29,17 @@ paper/latex_source/*.blg
 paper/latex_source/*.synctex.gz
 paper/aaai27/kit.zip
 
+# paper/aaai27: build products only. *.tex, *.bib, *.sty, *.bst and the
+# figures/ + figures_v3/ PDFs are source and stay tracked.
+paper/aaai27/*.aux
+paper/aaai27/*.log
+paper/aaai27/*.fls
+paper/aaai27/*.fdb_latexmk
+paper/aaai27/*.synctex.gz
+paper/aaai27/*.blg
+paper/aaai27/*.out
+paper/aaai27/*.bbl
+
 # --- run scratch ---
 # NOTE: results/results_camera.json and results/results_db.json were previously
 # ignored here as "preview/scratch". They are the primary artifacts backing the
