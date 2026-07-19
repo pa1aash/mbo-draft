@@ -10,26 +10,40 @@ stop us spending pod hours on things pod hours cannot buy.
 
 Ordered by how much of a reviewer objection each removes per pod-hour.
 
-### A1. Design-Bench optimizer axis is provisional — **DB budget re-run — IN FLIGHT**
+### A1. Design-Bench optimizer axis is provisional — **DONE, FOLDED 2026-07-20**
 
-**What the paper says now.** "The optimizer half of this section stays provisional: budget
+**Status: DONE.** Run as 0-C (`docs/DB_BUDGET_MATCH.md`, `results/db_budget/`, pre-registered
+at `100d2ed` before launch). Folded into the paper and the ledger on 2026-07-20: D19 promoted
+PROVISIONAL → **LANDED**, §6 gained a matched-budget paragraph plus a validity paragraph, and
+the provisional language was struck from §6 and from the limitations paragraph.
+
+**What the paper said before.** "The optimizer half of this section stays provisional: budget
 matching ran on the synthetic tasks only, so Design-Bench carries Confound 5 unremoved on
 exactly the axis carrying the effect here, and we do not promote it on a synthetic-only arm."
-(§ Design-Bench Results; ledger row D19.)
+That sentence no longer exists in the paper.
 
-**The experiment.** Re-run the four Design-Bench engine corners under the matched
-surrogate-query budget already built for the synthetic grid (`code/budget_matched.py`, Q
-matched at the gradient level), 16 seeds, all 9 defined cells, 7 tasks. Reuse the counting
-proxy in `code/budget_probe.py` to measure native DB budgets first — the synthetic spread was
-11.8x and there is no reason to assume DB's is the same.
+**What it bought — more than was scoped.** The scoping note below predicted the claim bought
+would be *unconfounded, not larger*. **The measurement bought both.** Matching roughly doubles
+eta2_opt in every corner (0.096→0.180, 0.145→0.255, 0.193→0.282, 0.181→0.281) while eta2_surr
+falls in all four, and off_off moves from non-rejecting (p=0.140) to rejecting (p=0.0179), so
+all four corners reject where three did. The presumed confound ran **backwards**: gradient's
+11.8x native budget was masking the optimizer effect, not manufacturing it. That gives the
+paper a second axis on which correcting a confound strengthens the effect, which is now stated
+alongside the synthetic 0.37→0.405 result in the limitations section.
 
-**What it buys.** D19 promotes from PROVISIONAL to LANDED, and the §6 optimizer-axis
-inversion stops carrying a caveat that a reviewer can read as "they know their headline DB
-number is confounded and shipped it anyway." This is the single highest-value pod job open.
+**Two scope limits carried into the paper, both mandatory.** (i) Established at **high budget**
+— at the matched DOWN level eta2_surr reaches 0.126 in on_off (above the 0.10 floor) and the
+two axes tie in off_off (0.085 against 0.081). (ii) **Within-corner CIs overlap**, so the
+licensed claim stays point-estimate localization across corners, never a within-corner
+separation.
 
-**What it cannot buy.** It does not touch the *surrogate* null on DB, which is power-bound
-(see C1). Matching the budget could raise, lower, or leave eta2_opt unchanged; the claim
-being bought is *unconfounded*, not *larger*.
+**Also landed:** the GFP budget catch (native CMA 570 queries against gradient's 51,456, a 90x
+imbalance, now matched to 25,472) and the native control, which reproduces the published
+corners to within 0.004 on every eta2 and the same side of 0.05 on every Friedman p — so the
+native-vs-matched contrast is a budget contrast alone, not an RNG-order artifact.
+
+**What it did not buy.** It does not touch the *surrogate* null on DB, which remains
+power-bound (see C1).
 
 ### A2. The MuJoCo rejection rests on point estimates, not separated intervals
 
@@ -218,5 +232,5 @@ it. The mitigation is B5 — more search — not compute.
 
 ## One-line scheduling call
 
-Run **A1** (in flight), then **A4** (cheap, generalizes M-A), then **A2**. Hold A5 and A3
+**A1 is done and folded.** Run **A4** next (cheap, generalizes M-A), then **A2**. Hold A5 and A3
 unless a reviewer asks. Do not schedule A6. Never schedule anything against list (C).

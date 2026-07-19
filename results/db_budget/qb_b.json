@@ -1,0 +1,750 @@
+{
+  "meta": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.9.23",
+    "torch": "2.8.0+cpu",
+    "numpy": "1.23.5",
+    "botorch": "0.10.0",
+    "gpytorch": "1.11",
+    "cma": "4.4.4",
+    "git_sha": "9460093a3547e848870ae2e4867924b187dba0e5",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 3,
+    "seed": "0..2",
+    "timestamp": "2026-07-19T14:52:37"
+  },
+  "definition": "Q = candidate points scored by the surrogate per cell, search plus the final _select_top selection pass (identical to code/budget_probe.py, so DB and synthetic Q are comparable)",
+  "db_subsample": 8000,
+  "task_dims": {
+    "AntMorphology": {
+      "dim": 60,
+      "n": 8000
+    },
+    "DKitty": {
+      "dim": 56,
+      "n": 8000
+    },
+    "GFP": {
+      "dim": 4740,
+      "n": 5000
+    }
+  },
+  "corner": "on_on",
+  "aggregate": {
+    "grad": {
+      "median": 51456.0,
+      "mean": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "n": 27,
+      "median_secs": 3.77
+    },
+    "perturb": {
+      "median": 4352.0,
+      "mean": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "n": 27,
+      "median_secs": 0.21
+    },
+    "cma": {
+      "median": 6528.0,
+      "mean": 5205.777777777777,
+      "min": 570,
+      "max": 6544,
+      "n": 27,
+      "median_secs": 2.59
+    }
+  },
+  "per_task": {
+    "AntMorphology": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6528.0
+    },
+    "DKitty": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6528.0
+    },
+    "GFP": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 570.0
+    }
+  },
+  "per_task_secs": {
+    "AntMorphology": {
+      "grad": 0.61,
+      "perturb": 0.04,
+      "cma": 3.59
+    },
+    "DKitty": {
+      "grad": 0.69,
+      "perturb": 0.04,
+      "cma": 2.05
+    },
+    "GFP": {
+      "grad": 6.02,
+      "perturb": 0.5,
+      "cma": 0.21
+    }
+  },
+  "rows": [
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.21,
+      "fit_secs": 25.4
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 25.4
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 1.43,
+      "fit_secs": 25.4
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.77,
+      "fit_secs": 14.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.19,
+      "fit_secs": 14.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 3.0,
+      "fit_secs": 14.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.61,
+      "fit_secs": 5.81
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.05,
+      "fit_secs": 5.81
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 5.99,
+      "fit_secs": 5.81
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.42,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.02,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 3.63,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.67,
+      "fit_secs": 9.28
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.21,
+      "fit_secs": 9.28
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 2.31,
+      "fit_secs": 9.28
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.56,
+      "fit_secs": 5.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 5.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 6.26,
+      "fit_secs": 5.79
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.21,
+      "fit_secs": 25.41
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 25.41
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 2.59,
+      "fit_secs": 25.41
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 4.08,
+      "fit_secs": 13.94
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.22,
+      "fit_secs": 13.94
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 3.59,
+      "fit_secs": 13.94
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.74,
+      "fit_secs": 6.48
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 6.48
+    },
+    {
+      "task": "AntMorphology",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 7.75,
+      "fit_secs": 6.48
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.32,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.02,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 1.25,
+      "fit_secs": 29.15
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 5.78,
+      "fit_secs": 13.23
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.3,
+      "fit_secs": 13.23
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 4.61,
+      "fit_secs": 13.23
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.97,
+      "fit_secs": 8.05
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.06,
+      "fit_secs": 8.05
+    },
+    {
+      "task": "DKitty",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 2.05,
+      "fit_secs": 8.05
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.21,
+      "fit_secs": 25.43
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 25.43
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 1.42,
+      "fit_secs": 25.43
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 4.0,
+      "fit_secs": 18.03
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.21,
+      "fit_secs": 18.03
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 4.36,
+      "fit_secs": 18.03
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.68,
+      "fit_secs": 5.78
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 5.78
+    },
+    {
+      "task": "DKitty",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 5.75,
+      "fit_secs": 5.78
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.21,
+      "fit_secs": 25.67
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 25.67
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6528,
+      "secs": 1.75,
+      "fit_secs": 25.67
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 5.49,
+      "fit_secs": 20.38
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.22,
+      "fit_secs": 20.38
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6528,
+      "secs": 6.73,
+      "fit_secs": 20.38
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.69,
+      "fit_secs": 5.55
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 5.55
+    },
+    {
+      "task": "DKitty",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6528,
+      "secs": 0.99,
+      "fit_secs": 5.55
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 5.77,
+      "fit_secs": 39.4
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.5,
+      "fit_secs": 39.4
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6544,
+      "secs": 3.94,
+      "fit_secs": 39.4
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 41.16,
+      "fit_secs": 38.5
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 1.29,
+      "fit_secs": 38.5
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 570,
+      "secs": 0.21,
+      "fit_secs": 38.5
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 5.09,
+      "fit_secs": 42.81
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.37,
+      "fit_secs": 42.81
+    },
+    {
+      "task": "GFP",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 570,
+      "secs": 0.08,
+      "fit_secs": 42.81
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 6.3,
+      "fit_secs": 39.72
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.5,
+      "fit_secs": 39.72
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6544,
+      "secs": 3.81,
+      "fit_secs": 39.72
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 40.45,
+      "fit_secs": 42.73
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 1.31,
+      "fit_secs": 42.73
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 570,
+      "secs": 0.2,
+      "fit_secs": 42.73
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 5.02,
+      "fit_secs": 43.5
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.37,
+      "fit_secs": 43.5
+    },
+    {
+      "task": "GFP",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 570,
+      "secs": 0.08,
+      "fit_secs": 43.5
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 6.02,
+      "fit_secs": 21.43
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.9,
+      "fit_secs": 21.43
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6544,
+      "secs": 2.73,
+      "fit_secs": 21.43
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 39.93,
+      "fit_secs": 29.32
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 1.9,
+      "fit_secs": 29.32
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 570,
+      "secs": 0.32,
+      "fit_secs": 29.32
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 4.96,
+      "fit_secs": 76.96
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.38,
+      "fit_secs": 76.96
+    },
+    {
+      "task": "GFP",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 570,
+      "secs": 0.07,
+      "fit_secs": 76.96
+    }
+  ]
+}
