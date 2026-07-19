@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 19:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.10)  19 JUL 2026 20:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -436,6 +436,9 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.0pt on input line 50.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 (Font)              scaled to size 10.0pt on input line 61.
+
+Underfull \vbox (badness 4505) has occurred while \output is active []
+
  [1{/Users/palaash/Library/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/
 pdftex.map}{/Users/palaash/Library/texmf/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}
 
@@ -482,21 +485,20 @@ File: figures_v3/fig_sensitivity.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures_v3/fig_sensitivity.pdf  used on input line 125
 .
 (pdftex.def)             Requested size: 237.00174pt x 107.24925pt.
-[3]
-Underfull \hbox (badness 1087) in paragraph at lines 139--140
-\T1/ntxtlf/b/n/10 not. $\OML/cmm/m/it/10 ^^Q[]$ \T1/ntxtlf/m/n/10 rises mono-to
-n-i-cally with pessimism---$\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 
-184$
+[3] [4 <./figures_v3/fig_sensitivity.pdf>] [5] [6]
+Underfull \hbox (badness 1043) in paragraph at lines 204--205
+ \T1/ntxtlf/b/n/10 In-ter-pret-ing the op-ti-mizer ef-fect. \T1/ntxtlf/m/n/10 U
+n-der a matched
  []
 
-[4 <./figures_v3/fig_sensitivity.pdf>]
-<figures_v3/fig_width.pdf, id=49, 250.91116pt x 118.58867pt>
-File: figures_v3/fig_width.pdf Graphic file (type pdf)
-<use figures_v3/fig_width.pdf>
-Package pdftex.def Info: figures_v3/fig_width.pdf  used on input line 180.
-(pdftex.def)             Requested size: 237.00174pt x 112.0162pt.
- [5 <./figures_v3/fig_width.pdf>]
-[6] (./main.bbl [7] [8]) [9
+
+Underfull \hbox (badness 1596) in paragraph at lines 204--205
+\T1/ntxtlf/m/n/10 surrogate-query bud-get of $\OML/cmm/m/it/10 Q[]\OT1/cmr/m/n/
+10 51[]456$\T1/ntxtlf/m/n/10 , $\OML/cmm/m/it/10 ^^Q[] \OT1/cmr/m/n/10 = 0\OML/
+cmm/m/it/10 :\OT1/cmr/m/n/10 038$
+ []
+
+(./main.bbl [7] [8]) [9
 
 ] (./main.aux)
  ***********
@@ -509,13 +511,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 7685 strings out of 469006
- 122824 string characters out of 5454813
- 546265 words of memory out of 5000000
- 36242 multiletter control sequences out of 15000+600000
+ 7674 strings out of 469006
+ 122513 string characters out of 5454813
+ 545222 words of memory out of 5000000
+ 36231 multiletter control sequences out of 15000+600000
  667008 words of font info for 79 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 89i,13n,117p,2363b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,117p,2306b,368s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmbx9.pfb></User
 s/palaash/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/palaa
 sh/Library/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></Users/palaash/Libra
@@ -531,10 +533,10 @@ ive/2026basic/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></Users/palaash/Lib
 rary/texmf/fonts/type1/public/newtx/ztmb.pfb></Users/palaash/Library/texmf/font
 s/type1/public/newtx/ztmr.pfb></Users/palaash/Library/texmf/fonts/type1/public/
 newtx/ztmri.pfb>
-Output written on main.pdf (9 pages, 326352 bytes).
+Output written on main.pdf (9 pages, 312102 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 134 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
