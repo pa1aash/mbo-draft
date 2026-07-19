@@ -193,3 +193,41 @@ report as observation.
 query-budget table); scope the optimizer-null claim to a stated budget; report the DOWN-level
 disagreement as a limitation; state budget alongside K and beta whenever eta2_surr is quoted.
 
+
+## 0C — Design-Bench budget-matched optimizer arm (branch `db-budget-match`, 2026-07-19)
+
+| unit | status | artifact | one-line |
+|---|---|---|---|
+| 0C pre-registration | **DONE** | docs/PREREGISTRATION_V3.md (commit 100d2ed) | committed BEFORE the matched run |
+| 0C DB query-budget probe | **DONE** | results/db_budget/qb_*.json | grad 51,456 / perturb 4,352 (X3-on), 25,600 / 4,096 (X3-off); GFP cma 570 (90x) |
+| 0C matched grid | **DONE** | results/db_budget/corner_*.json | 4 corners x 3 levels x 7 tasks x 9 cells x 16 seeds; 24/24 files, 0 failures |
+| 0C analysis | **DONE** | docs/DB_BUDGET_MATCH.md, results/db_budget/db_budget_analysis.json | **PROMOTE**: DBM1 + DBM2 both CONFIRMED |
+
+**0C verdict. PROMOTE.** DBM1 CONFIRMED: perturbation leads the optimizer marginal in all four
+corners at all three budget levels (12/12), and eta2_opt exceeds eta2_surr by 4.2-7.6x in every
+corner at the primary level. DBM2 CONFIRMED: eta2_surr 0.037-0.062, below the 0.10 floor in all
+four corners. Achieved-Q audit clean (grad exactly on target, perturb -0.50%, cma +0.05..0.09%;
+0% of cells >5% off anywhere).
+
+**The direction is the finding.** Matching does not weaken the optimizer axis, it roughly
+doubles it: eta2_opt 0.096->0.180, 0.145->0.255, 0.193->0.282, 0.181->0.281, while eta2_surr
+falls in every corner. off_off moves from non-rejecting (p=0.140) to rejecting (p=0.0179), so
+under matched budget ALL FOUR corners reject where three did before. The presumed D08 confound
+-- gradient's 11.8x budget manufacturing the optimizer effect -- runs backwards: the native
+imbalance was MASKING it.
+
+**Validity.** The native control level reproduces the published corners to within 0.004 on every
+eta2 and the same side of 0.05 on every Friedman p, so the RNG-call-order concern that motivated
+the control is immaterial and the native-vs-matched contrast is a budget contrast alone.
+
+**Qualification that must travel with the promotion.** At the secondary DOWN level (Q~4,100-4,400)
+the picture weakens in BOTH directions: eta2_surr reaches 0.126 in on_off, ABOVE the pre-registered
+floor, and eta2_opt falls to 0.085-0.160 with off_off's two axes effectively tied. Both results are
+established at high budget only. Within-corner surr/opt bootstrap intervals overlap, as
+pre-registered and as MUJOCO_CHECK.md already records; the licensed claim is point-estimate
+localization plus cross-corner tracking, never "significantly exceeds".
+
+**Paper action.** D19's optimizer half is no longer gated and its PROVISIONAL qualifier is
+discharged; D08 is removed on Design-Bench. Section 6 can state that the omnibus rejects in all
+four corners under matched budget and localizes to the optimizer axis in each. Add the
+budget-conditionality caveat wherever eta2_opt or eta2_surr is quoted. NOT merged to main.

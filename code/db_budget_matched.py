@@ -238,12 +238,22 @@ def main():
                 e['frac_cells_over_5pct'] = float(np.mean(
                     np.abs(np.array(qs) - L['Q']) / L['Q'] > 0.05))
             qa[o] = e
+        path = os.path.join(OUT, f'corner_{a.corner}_{lv}{suffix}.json')
+        new = {t: {c: {m: agg(v) for m, v in d.items()} for c, d in cs.items()}
+               for t, cs in tsk.items()}
+        # MERGE by task: TFBind10 runs in its own low-concurrency pass (its 4^10 build is
+        # hostile to a wide fork pool), so a corner's file is filled by more than one
+        # invocation. Task keys are disjoint across passes; a repeated task is overwritten,
+        # never blended, so a re-run of one task cannot silently mix two engines' seeds.
+        prev = json.load(open(path)) if os.path.exists(path) else {}
+        if prev.get('corner') not in (None, a.corner) or prev.get('level') not in (None, lv):
+            raise SystemExit(f'{path}: refusing to merge {prev.get("corner")}/'
+                             f'{prev.get("level")} with {a.corner}/{lv}')
+        merged = {**prev.get('mbo', {}), **new}
         out = {'meta': run_all.engine_meta(a.seeds, mbo.BETA, mbo.K_ENS),
                'level': lv, 'corner': a.corner, 'level_config': L,
-               'achieved_q': qa, 'db_subsample': DB_SUB,
-               'mbo': {t: {c: {m: agg(v) for m, v in d.items()} for c, d in cs.items()}
-                       for t, cs in tsk.items()}}
-        path = os.path.join(OUT, f'corner_{a.corner}_{lv}{suffix}.json')
+               'achieved_q': {**prev.get('achieved_q', {}), **qa},
+               'db_subsample': DB_SUB, 'mbo': merged}
         with open(path, 'w') as f:
             json.dump(out, f, indent=2)
         print(f'--- {a.corner}/{lv} target Q={L["Q"]} params={L} ---')
