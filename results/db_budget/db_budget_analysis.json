@@ -1,0 +1,5242 @@
+{
+ "primary_level": "up",
+ "alpha": 0.05,
+ "eta2_floor": 0.1,
+ "by_corner": {
+  "off_off": {
+   "native": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:23:33"
+    },
+    "level_config": {
+     "Q": null,
+     "grad_steps": 100,
+     "perturb_rounds": 5,
+     "cma_fevals": null
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": null
+     },
+     "grad": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": null
+     },
+     "cma": {
+      "median": 6542.0,
+      "min": 6182,
+      "max": 6542,
+      "target": null
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.05061683700902003,
+     "opt": 0.09606125829632514,
+     "inter": 0.015887555078803853,
+     "surr_marg": {
+      "ens": 0.5312,
+      "botorchgp": 0.7406,
+      "svgp": 0.6467
+     },
+     "opt_marg": {
+      "perturb": 0.8008,
+      "grad": 0.5955,
+      "cma": 0.5221
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.14011345113983198,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 4.143,
+      "ens:grad": 5.143,
+      "ens:cma": 7.0,
+      "botorchgp:perturb": 3.5,
+      "botorchgp:grad": 4.143,
+      "botorchgp:cma": 5.5,
+      "svgp:perturb": 3.643,
+      "svgp:grad": 5.929,
+      "svgp:cma": 6.0
+     }
+    },
+    "rejects": false,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.05061683700902003,
+      "opt": 0.09606125829632514,
+      "inter": 0.015887555078803853,
+      "surr_marg": {
+       "ens": 0.5312,
+       "botorchgp": 0.7406,
+       "svgp": 0.6467
+      },
+      "opt_marg": {
+       "perturb": 0.8008,
+       "grad": 0.5955,
+       "cma": 0.5221
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.002457347920720029,
+       0.3249366204483709
+      ],
+      "width": 0.32247927252765085
+     },
+     "opt": {
+      "ci95": [
+       0.007079537409878465,
+       0.30916953413074083
+      ],
+      "width": 0.30208999672086234
+     },
+     "inter": {
+      "ci95": [
+       0.004807440429137784,
+       0.12333268243988751
+      ],
+      "width": 0.11852524201074974
+     }
+    }
+   },
+   "up": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:23:33"
+    },
+    "level_config": {
+     "Q": 25600,
+     "grad_steps": 100,
+     "perturb_rounds": 33,
+     "cma_fevals": 12544
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": 25600,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": 25600,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 25622.0,
+      "min": 25622,
+      "max": 25622,
+      "target": 25600,
+      "pct_dev_median": 0.09,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.04278436913745966,
+     "opt": 0.1804046645566432,
+     "inter": 0.022394427799326263,
+     "surr_marg": {
+      "ens": 0.5181,
+      "botorchgp": 0.7022,
+      "svgp": 0.627
+     },
+     "opt_marg": {
+      "perturb": 0.8092,
+      "grad": 0.6091,
+      "cma": 0.429
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.017900161812792744,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 4.286,
+      "ens:grad": 5.143,
+      "ens:cma": 7.0,
+      "botorchgp:perturb": 3.571,
+      "botorchgp:grad": 3.857,
+      "botorchgp:cma": 6.071,
+      "svgp:perturb": 2.643,
+      "svgp:grad": 5.5,
+      "svgp:cma": 6.929
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.04278436913745966,
+      "opt": 0.1804046645566432,
+      "inter": 0.022394427799326263,
+      "surr_marg": {
+       "ens": 0.5181,
+       "botorchgp": 0.7022,
+       "svgp": 0.627
+      },
+      "opt_marg": {
+       "perturb": 0.8092,
+       "grad": 0.6091,
+       "cma": 0.429
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.0029346785121533167,
+       0.34119225475097326
+      ],
+      "width": 0.3382575762388199
+     },
+     "opt": {
+      "ci95": [
+       0.05533151384137531,
+       0.39454762470402366
+      ],
+      "width": 0.33921611086264836
+     },
+     "inter": {
+      "ci95": [
+       0.013589647358849426,
+       0.10180896746458809
+      ],
+      "width": 0.08821932010573866
+     }
+    }
+   },
+   "down": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:23:34"
+    },
+    "level_config": {
+     "Q": 4096,
+     "grad_steps": 16,
+     "perturb_rounds": 5,
+     "cma_fevals": 1792
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": 4096,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": 4096,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 4112.0,
+      "min": 4112,
+      "max": 4112,
+      "target": 4096,
+      "pct_dev_median": 0.39,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.08083768280160082,
+     "opt": 0.08508927141966609,
+     "inter": 0.017940528825117284,
+     "surr_marg": {
+      "ens": 0.5196,
+      "botorchgp": 0.7764,
+      "svgp": 0.7072
+     },
+     "opt_marg": {
+      "perturb": 0.7962,
+      "grad": 0.6822,
+      "cma": 0.5248
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.0489011512109332,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 4.5,
+      "ens:grad": 6.429,
+      "ens:cma": 7.143,
+      "botorchgp:perturb": 3.286,
+      "botorchgp:grad": 3.5,
+      "botorchgp:cma": 4.857,
+      "svgp:perturb": 3.857,
+      "svgp:grad": 5.214,
+      "svgp:cma": 6.214
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.08083768280160082,
+      "opt": 0.08508927141966609,
+      "inter": 0.017940528825117284,
+      "surr_marg": {
+       "ens": 0.5196,
+       "botorchgp": 0.7764,
+       "svgp": 0.7072
+      },
+      "opt_marg": {
+       "perturb": 0.7962,
+       "grad": 0.6822,
+       "cma": 0.5248
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.006619580691655263,
+       0.37934410125830886
+      ],
+      "width": 0.3727245205666536
+     },
+     "opt": {
+      "ci95": [
+       0.0061553076826982266,
+       0.3542694215125543
+      ],
+      "width": 0.3481141138298561
+     },
+     "inter": {
+      "ci95": [
+       0.005845120381532583,
+       0.11894847810156693
+      ],
+      "width": 0.11310335772003435
+     }
+    }
+   }
+  },
+  "on_off": {
+   "native": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:56:27"
+    },
+    "level_config": {
+     "Q": null,
+     "grad_steps": 100,
+     "perturb_rounds": 5,
+     "cma_fevals": null
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": null
+     },
+     "grad": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": null
+     },
+     "cma": {
+      "median": 6542.0,
+      "min": 6182,
+      "max": 6542,
+      "target": null
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.09389340137177489,
+     "opt": 0.14549989870735758,
+     "inter": 0.04086535890801729,
+     "surr_marg": {
+      "ens": 0.4702,
+      "botorchgp": 0.7622,
+      "svgp": 0.6647
+     },
+     "opt_marg": {
+      "perturb": 0.8159,
+      "grad": 0.6352,
+      "cma": 0.4459
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.02343609971302953,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.786,
+      "ens:grad": 5.857,
+      "ens:cma": 7.857,
+      "botorchgp:perturb": 3.143,
+      "botorchgp:grad": 4.5,
+      "botorchgp:cma": 5.286,
+      "svgp:perturb": 3.5,
+      "svgp:grad": 5.357,
+      "svgp:cma": 5.714
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.09389340137177489,
+      "opt": 0.14549989870735758,
+      "inter": 0.04086535890801729,
+      "surr_marg": {
+       "ens": 0.4702,
+       "botorchgp": 0.7622,
+       "svgp": 0.6647
+      },
+      "opt_marg": {
+       "perturb": 0.8159,
+       "grad": 0.6352,
+       "cma": 0.4459
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.006690564330893036,
+       0.37136065638822885
+      ],
+      "width": 0.3646700920573358
+     },
+     "opt": {
+      "ci95": [
+       0.031076609700744242,
+       0.3536970480845648
+      ],
+      "width": 0.3226204383838206
+     },
+     "inter": {
+      "ci95": [
+       0.022688862032511962,
+       0.14793698950097403
+      ],
+      "width": 0.12524812746846206
+     }
+    }
+   },
+   "up": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:56:27"
+    },
+    "level_config": {
+     "Q": 25600,
+     "grad_steps": 100,
+     "perturb_rounds": 33,
+     "cma_fevals": 12544
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": 25600,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 25600.0,
+      "min": 25600,
+      "max": 25600,
+      "target": 25600,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 25622.0,
+      "min": 25622,
+      "max": 25622,
+      "target": 25600,
+      "pct_dev_median": 0.09,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.06213479505556051,
+     "opt": 0.2549996575583854,
+     "inter": 0.045002484694768655,
+     "surr_marg": {
+      "ens": 0.519,
+      "botorchgp": 0.7385,
+      "svgp": 0.689
+     },
+     "opt_marg": {
+      "perturb": 0.8626,
+      "grad": 0.6837,
+      "cma": 0.4001
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.0008245467818491735,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.714,
+      "ens:grad": 5.571,
+      "ens:cma": 8.286,
+      "botorchgp:perturb": 3.286,
+      "botorchgp:grad": 3.857,
+      "botorchgp:cma": 6.071,
+      "svgp:perturb": 2.5,
+      "svgp:grad": 5.214,
+      "svgp:cma": 6.5
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.06213479505556051,
+      "opt": 0.2549996575583854,
+      "inter": 0.045002484694768655,
+      "surr_marg": {
+       "ens": 0.519,
+       "botorchgp": 0.7385,
+       "svgp": 0.689
+      },
+      "opt_marg": {
+       "perturb": 0.8626,
+       "grad": 0.6837,
+       "cma": 0.4001
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.004467737366149136,
+       0.36547544263935766
+      ],
+      "width": 0.3610077052732085
+     },
+     "opt": {
+      "ci95": [
+       0.12502589655521668,
+       0.46758115405331757
+      ],
+      "width": 0.3425552574981009
+     },
+     "inter": {
+      "ci95": [
+       0.03223271592971766,
+       0.13385910288785316
+      ],
+      "width": 0.1016263869581355
+     }
+    }
+   },
+   "down": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T15:56:28"
+    },
+    "level_config": {
+     "Q": 4096,
+     "grad_steps": 16,
+     "perturb_rounds": 5,
+     "cma_fevals": 1792
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": 4096,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 4096.0,
+      "min": 4096,
+      "max": 4096,
+      "target": 4096,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 4112.0,
+      "min": 4112,
+      "max": 4112,
+      "target": 4096,
+      "pct_dev_median": 0.39,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.1255196717644252,
+     "opt": 0.15977006966610685,
+     "inter": 0.05282342649866852,
+     "surr_marg": {
+      "ens": 0.4927,
+      "botorchgp": 0.7993,
+      "svgp": 0.7572
+     },
+     "opt_marg": {
+      "perturb": 0.8363,
+      "grad": 0.7389,
+      "cma": 0.4739
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.012191104702272632,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.857,
+      "ens:grad": 5.857,
+      "ens:cma": 8.143,
+      "botorchgp:perturb": 3.357,
+      "botorchgp:grad": 3.857,
+      "botorchgp:cma": 4.857,
+      "svgp:perturb": 3.714,
+      "svgp:grad": 5.214,
+      "svgp:cma": 6.143
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.1255196717644252,
+      "opt": 0.15977006966610685,
+      "inter": 0.05282342649866852,
+      "surr_marg": {
+       "ens": 0.4927,
+       "botorchgp": 0.7993,
+       "svgp": 0.7572
+      },
+      "opt_marg": {
+       "perturb": 0.8363,
+       "grad": 0.7389,
+       "cma": 0.4739
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.024911667033894865,
+       0.4049004180547651
+      ],
+      "width": 0.37998875102087026
+     },
+     "opt": {
+      "ci95": [
+       0.031558584974425805,
+       0.44441119821198155
+      ],
+      "width": 0.41285261323755573
+     },
+     "inter": {
+      "ci95": [
+       0.019808130508238764,
+       0.17094721022853118
+      ],
+      "width": 0.15113907972029242
+     }
+    }
+   }
+  },
+  "off_on": {
+   "native": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T16:38:05"
+    },
+    "level_config": {
+     "Q": null,
+     "grad_steps": 100,
+     "perturb_rounds": 5,
+     "cma_fevals": null
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": null
+     },
+     "grad": {
+      "median": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "target": null
+     },
+     "cma": {
+      "median": 6542.0,
+      "min": 6182,
+      "max": 6542,
+      "target": null
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.04552302857408959,
+     "opt": 0.19335283792272087,
+     "inter": 0.007796501236416358,
+     "surr_marg": {
+      "ens": 0.4815,
+      "botorchgp": 0.6879,
+      "svgp": 0.619
+     },
+     "opt_marg": {
+      "perturb": 0.8211,
+      "grad": 0.389,
+      "cma": 0.5784
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.013944574203944475,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.857,
+      "ens:grad": 7.286,
+      "ens:cma": 5.857,
+      "botorchgp:perturb": 2.643,
+      "botorchgp:grad": 6.5,
+      "botorchgp:cma": 4.429,
+      "svgp:perturb": 3.429,
+      "svgp:grad": 6.357,
+      "svgp:cma": 4.643
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.04552302857408959,
+      "opt": 0.19335283792272087,
+      "inter": 0.007796501236416358,
+      "surr_marg": {
+       "ens": 0.4815,
+       "botorchgp": 0.6879,
+       "svgp": 0.619
+      },
+      "opt_marg": {
+       "perturb": 0.8211,
+       "grad": 0.389,
+       "cma": 0.5784
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.00309781961366107,
+       0.27561778949779364
+      ],
+      "width": 0.2725199698841326
+     },
+     "opt": {
+      "ci95": [
+       0.038421975115345015,
+       0.45437815892684147
+      ],
+      "width": 0.41595618381149646
+     },
+     "inter": {
+      "ci95": [
+       0.0038357020219192055,
+       0.08889548945309622
+      ],
+      "width": 0.08505978743117702
+     }
+    }
+   },
+   "up": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T16:38:05"
+    },
+    "level_config": {
+     "Q": 51456,
+     "grad_steps": 100,
+     "perturb_rounds": 66,
+     "cma_fevals": 25472
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 51200.0,
+      "min": 51200,
+      "max": 51200,
+      "target": 51456,
+      "pct_dev_median": -0.5,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "target": 51456,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 51482.0,
+      "min": 51482,
+      "max": 51482,
+      "target": 51456,
+      "pct_dev_median": 0.05,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.036556280525074245,
+     "opt": 0.2815434543700641,
+     "inter": 0.0177176617669631,
+     "surr_marg": {
+      "ens": 0.4689,
+      "botorchgp": 0.6503,
+      "svgp": 0.5645
+     },
+     "opt_marg": {
+      "perturb": 0.8497,
+      "grad": 0.386,
+      "cma": 0.448
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.0014485717215671895,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.286,
+      "ens:grad": 7.143,
+      "ens:cma": 5.857,
+      "botorchgp:perturb": 2.429,
+      "botorchgp:grad": 6.286,
+      "botorchgp:cma": 5.143,
+      "svgp:perturb": 2.429,
+      "svgp:grad": 6.214,
+      "svgp:cma": 6.214
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.036556280525074245,
+      "opt": 0.2815434543700641,
+      "inter": 0.0177176617669631,
+      "surr_marg": {
+       "ens": 0.4689,
+       "botorchgp": 0.6503,
+       "svgp": 0.5645
+      },
+      "opt_marg": {
+       "perturb": 0.8497,
+       "grad": 0.386,
+       "cma": 0.448
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.002916312103258672,
+       0.31596952972774484
+      ],
+      "width": 0.3130532176244862
+     },
+     "opt": {
+      "ci95": [
+       0.15585708744100174,
+       0.46273674578808677
+      ],
+      "width": 0.306879658347085
+     },
+     "inter": {
+      "ci95": [
+       0.003026509957162894,
+       0.08491010371778314
+      ],
+      "width": 0.08188359376062025
+     }
+    }
+   },
+   "down": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T16:38:06"
+    },
+    "level_config": {
+     "Q": 4352,
+     "grad_steps": 8,
+     "perturb_rounds": 5,
+     "cma_fevals": 1920
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": 4352,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": 4352,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 4382.0,
+      "min": 4382,
+      "max": 4382,
+      "target": 4352,
+      "pct_dev_median": 0.69,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.039643891241762645,
+     "opt": 0.11080383279750419,
+     "inter": 0.007276290419686723,
+     "surr_marg": {
+      "ens": 0.521,
+      "botorchgp": 0.7135,
+      "svgp": 0.6223
+     },
+     "opt_marg": {
+      "perturb": 0.8015,
+      "grad": 0.4975,
+      "cma": 0.5578
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.01970143779636502,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.857,
+      "ens:grad": 7.0,
+      "ens:cma": 6.571,
+      "botorchgp:perturb": 2.643,
+      "botorchgp:grad": 6.0,
+      "botorchgp:cma": 4.214,
+      "svgp:perturb": 3.429,
+      "svgp:grad": 6.143,
+      "svgp:cma": 5.143
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.039643891241762645,
+      "opt": 0.11080383279750419,
+      "inter": 0.007276290419686723,
+      "surr_marg": {
+       "ens": 0.521,
+       "botorchgp": 0.7135,
+       "svgp": 0.6223
+      },
+      "opt_marg": {
+       "perturb": 0.8015,
+       "grad": 0.4975,
+       "cma": 0.5578
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.0025148609169217237,
+       0.2599905890976946
+      ],
+      "width": 0.2574757281807729
+     },
+     "opt": {
+      "ci95": [
+       0.03519034007526188,
+       0.33912867621994275
+      ],
+      "width": 0.30393833614468085
+     },
+     "inter": {
+      "ci95": [
+       0.004494523777438905,
+       0.11888286911698114
+      ],
+      "width": 0.11438834533954223
+     }
+    }
+   }
+  },
+  "on_on": {
+   "native": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T17:21:47"
+    },
+    "level_config": {
+     "Q": null,
+     "grad_steps": 100,
+     "perturb_rounds": 5,
+     "cma_fevals": null
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": null
+     },
+     "grad": {
+      "median": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "target": null
+     },
+     "cma": {
+      "median": 6542.0,
+      "min": 6182,
+      "max": 6542,
+      "target": null
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.06150068890199109,
+     "opt": 0.1810948959726408,
+     "inter": 0.02790299645977332,
+     "surr_marg": {
+      "ens": 0.4502,
+      "botorchgp": 0.6832,
+      "svgp": 0.6353
+     },
+     "opt_marg": {
+      "perturb": 0.8297,
+      "grad": 0.433,
+      "cma": 0.506
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.007613519842885226,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 4.071,
+      "ens:grad": 6.429,
+      "ens:cma": 7.143,
+      "botorchgp:perturb": 2.571,
+      "botorchgp:grad": 6.429,
+      "botorchgp:cma": 4.214,
+      "svgp:perturb": 3.429,
+      "svgp:grad": 6.5,
+      "svgp:cma": 4.214
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.06150068890199109,
+      "opt": 0.1810948959726408,
+      "inter": 0.02790299645977332,
+      "surr_marg": {
+       "ens": 0.4502,
+       "botorchgp": 0.6832,
+       "svgp": 0.6353
+      },
+      "opt_marg": {
+       "perturb": 0.8297,
+       "grad": 0.433,
+       "cma": 0.506
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.005738177827513584,
+       0.3042270992457786
+      ],
+      "width": 0.29848892141826505
+     },
+     "opt": {
+      "ci95": [
+       0.007336959234142776,
+       0.4677814452756875
+      ],
+      "width": 0.4604444860415447
+     },
+     "inter": {
+      "ci95": [
+       0.01444875043517992,
+       0.1273686379877099
+      ],
+      "width": 0.11291988755252998
+     }
+    }
+   },
+   "up": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T17:21:47"
+    },
+    "level_config": {
+     "Q": 51456,
+     "grad_steps": 100,
+     "perturb_rounds": 66,
+     "cma_fevals": 25472
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 51200.0,
+      "min": 51200,
+      "max": 51200,
+      "target": 51456,
+      "pct_dev_median": -0.5,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "target": 51456,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 51482.0,
+      "min": 51482,
+      "max": 51482,
+      "target": 51456,
+      "pct_dev_median": 0.05,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.04999697658441114,
+     "opt": 0.2809356147428546,
+     "inter": 0.02890463744403399,
+     "surr_marg": {
+      "ens": 0.4582,
+      "botorchgp": 0.6551,
+      "svgp": 0.6167
+     },
+     "opt_marg": {
+      "perturb": 0.8606,
+      "grad": 0.462,
+      "cma": 0.4074
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.0005695478674404473,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.286,
+      "ens:grad": 6.286,
+      "ens:cma": 7.857,
+      "botorchgp:perturb": 2.429,
+      "botorchgp:grad": 6.143,
+      "botorchgp:cma": 5.0,
+      "svgp:perturb": 2.429,
+      "svgp:grad": 5.929,
+      "svgp:cma": 5.643
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.04999697658441114,
+      "opt": 0.2809356147428546,
+      "inter": 0.02890463744403399,
+      "surr_marg": {
+       "ens": 0.4582,
+       "botorchgp": 0.6551,
+       "svgp": 0.6167
+      },
+      "opt_marg": {
+       "perturb": 0.8606,
+       "grad": 0.462,
+       "cma": 0.4074
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.004145197306529749,
+       0.33940528951747917
+      ],
+      "width": 0.33526009221094943
+     },
+     "opt": {
+      "ci95": [
+       0.1370229037493158,
+       0.49039079983731215
+      ],
+      "width": 0.35336789608799635
+     },
+     "inter": {
+      "ci95": [
+       0.011491072561462761,
+       0.10888985971763275
+      ],
+      "width": 0.09739878715617
+     }
+    }
+   },
+   "down": {
+    "status": "ok",
+    "engine_meta": {
+     "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+     "os_release": "6.17.0-35-generic",
+     "python": "3.9.23",
+     "torch": "2.8.0+cpu",
+     "numpy": "1.23.5",
+     "botorch": "0.10.0",
+     "gpytorch": "1.11",
+     "cma": "4.4.4",
+     "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+     "X1": true,
+     "X3": true,
+     "K": 5,
+     "beta": 2.0,
+     "TOP": 128,
+     "OPT_STEPS": 100,
+     "LR_OPT": 0.05,
+     "n_seeds": 16,
+     "seed": "0..15",
+     "timestamp": "2026-07-19T17:21:47"
+    },
+    "level_config": {
+     "Q": 4352,
+     "grad_steps": 8,
+     "perturb_rounds": 5,
+     "cma_fevals": 1920
+    },
+    "achieved_q": {
+     "perturb": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": 4352,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "grad": {
+      "median": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "target": 4352,
+      "pct_dev_median": 0.0,
+      "frac_cells_over_5pct": 0.0
+     },
+     "cma": {
+      "median": 4382.0,
+      "min": 4382,
+      "max": 4382,
+      "target": 4352,
+      "pct_dev_median": 0.69,
+      "frac_cells_over_5pct": 0.0
+     }
+    },
+    "used_tasks": [
+     "TFBind8",
+     "TFBind10",
+     "Superconductor",
+     "GFP",
+     "UTR",
+     "AntMorphology",
+     "DKitty"
+    ],
+    "eta2": {
+     "n_tasks": 7,
+     "surr": 0.0658247087000727,
+     "opt": 0.12576703867050087,
+     "inter": 0.05163998776939284,
+     "surr_marg": {
+      "ens": 0.4812,
+      "botorchgp": 0.7211,
+      "svgp": 0.6642
+     },
+     "opt_marg": {
+      "perturb": 0.8181,
+      "grad": 0.5593,
+      "cma": 0.4891
+     }
+    },
+    "friedman": {
+     "friedman_p": 0.007360942998329267,
+     "n_tasks": 7,
+     "mean_rank": {
+      "ens:perturb": 3.786,
+      "ens:grad": 6.5,
+      "ens:cma": 7.571,
+      "botorchgp:perturb": 2.643,
+      "botorchgp:grad": 6.0,
+      "botorchgp:cma": 4.214,
+      "svgp:perturb": 3.357,
+      "svgp:grad": 6.0,
+      "svgp:cma": 4.929
+     }
+    },
+    "rejects": true,
+    "opt_leader": "perturb",
+    "opt_exceeds_surr": true,
+    "bootstrap": {
+     "n_tasks": 7,
+     "B": 10000,
+     "tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR",
+      "AntMorphology",
+      "DKitty"
+     ],
+     "point": {
+      "n_tasks": 7,
+      "surr": 0.0658247087000727,
+      "opt": 0.12576703867050087,
+      "inter": 0.05163998776939284,
+      "surr_marg": {
+       "ens": 0.4812,
+       "botorchgp": 0.7211,
+       "svgp": 0.6642
+      },
+      "opt_marg": {
+       "perturb": 0.8181,
+       "grad": 0.5593,
+       "cma": 0.4891
+      }
+     },
+     "surr": {
+      "ci95": [
+       0.008138458340974979,
+       0.3030193004409866
+      ],
+      "width": 0.29488084210001164
+     },
+     "opt": {
+      "ci95": [
+       0.030077530193957782,
+       0.3811345654772749
+      ],
+      "width": 0.35105703528331716
+     },
+     "inter": {
+      "ci95": [
+       0.016892673038496713,
+       0.20869500093341958
+      ],
+      "width": 0.19180232789492288
+     }
+    }
+   }
+  }
+ },
+ "secondary_tasksets": {
+  "5task": {
+   "off_off": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:33"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": null
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.0007992470939017286,
+      "opt": 0.04960117085382546,
+      "inter": 0.0073399926313125995,
+      "surr_marg": {
+       "ens": 0.6387,
+       "botorchgp": 0.6617,
+       "svgp": 0.6597
+      },
+      "opt_marg": {
+       "perturb": 0.7592,
+       "grad": 0.6411,
+       "cma": 0.5599
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.7011891454478316,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 4.0,
+       "ens:grad": 4.2,
+       "ens:cma": 6.2,
+       "botorchgp:perturb": 4.2,
+       "botorchgp:grad": 5.0,
+       "botorchgp:cma": 5.8,
+       "svgp:perturb": 3.9,
+       "svgp:grad": 5.9,
+       "svgp:cma": 5.8
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.0007992470939017286,
+       "opt": 0.04960117085382546,
+       "inter": 0.0073399926313125995,
+       "surr_marg": {
+        "ens": 0.6387,
+        "botorchgp": 0.6617,
+        "svgp": 0.6597
+       },
+       "opt_marg": {
+        "perturb": 0.7592,
+        "grad": 0.6411,
+        "cma": 0.5599
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.001044999826813506,
+        0.23616296424700775
+       ],
+       "width": 0.23511796442019425
+      },
+      "opt": {
+       "ci95": [
+        0.0023607250504380814,
+        0.3783462585228377
+       ],
+       "width": 0.3759855334723996
+      },
+      "inter": {
+       "ci95": [
+        0.004926781260749466,
+        0.16580347880200672
+       ],
+       "width": 0.16087669754125725
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:33"
+     },
+     "level_config": {
+      "Q": 25600,
+      "grad_steps": 100,
+      "perturb_rounds": 33,
+      "cma_fevals": 12544
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 25622.0,
+       "min": 25622,
+       "max": 25622,
+       "target": 25600,
+       "pct_dev_median": 0.09,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.0007594941254351626,
+      "opt": 0.18041000656018716,
+      "inter": 0.020201443699409512,
+      "surr_marg": {
+       "ens": 0.6417,
+       "botorchgp": 0.6207,
+       "svgp": 0.6411
+      },
+      "opt_marg": {
+       "perturb": 0.8085,
+       "grad": 0.6537,
+       "cma": 0.4412
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.17814949511842468,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.8,
+       "ens:grad": 4.2,
+       "ens:cma": 6.4,
+       "botorchgp:perturb": 4.4,
+       "botorchgp:grad": 4.6,
+       "botorchgp:cma": 6.3,
+       "svgp:perturb": 2.7,
+       "svgp:grad": 5.7,
+       "svgp:cma": 6.9
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.0007594941254351626,
+       "opt": 0.18041000656018716,
+       "inter": 0.020201443699409512,
+       "surr_marg": {
+        "ens": 0.6417,
+        "botorchgp": 0.6207,
+        "svgp": 0.6411
+       },
+       "opt_marg": {
+        "perturb": 0.8085,
+        "grad": 0.6537,
+        "cma": 0.4412
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0009411823696654501,
+        0.2966435544734382
+       ],
+       "width": 0.29570237210377276
+      },
+      "opt": {
+       "ci95": [
+        0.028051752586210756,
+        0.5555886351347256
+       ],
+       "width": 0.5275368825485148
+      },
+      "inter": {
+       "ci95": [
+        0.015423094810186116,
+        0.15623983000316805
+       ],
+       "width": 0.14081673519298193
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:34"
+     },
+     "level_config": {
+      "Q": 4096,
+      "grad_steps": 16,
+      "perturb_rounds": 5,
+      "cma_fevals": 1792
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4112.0,
+       "min": 4112,
+       "max": 4112,
+       "target": 4096,
+       "pct_dev_median": 0.39,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.014756178168677452,
+      "opt": 0.05408115096868965,
+      "inter": 0.014038794794548396,
+      "surr_marg": {
+       "ens": 0.6162,
+       "botorchgp": 0.7142,
+       "svgp": 0.7178
+      },
+      "opt_marg": {
+       "perturb": 0.7647,
+       "grad": 0.7263,
+       "cma": 0.5573
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.7356616472262553,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 4.3,
+       "ens:grad": 5.8,
+       "ens:cma": 6.4,
+       "botorchgp:perturb": 3.9,
+       "botorchgp:grad": 4.1,
+       "botorchgp:cma": 5.3,
+       "svgp:perturb": 4.2,
+       "svgp:grad": 5.1,
+       "svgp:cma": 5.9
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.014756178168677452,
+       "opt": 0.05408115096868965,
+       "inter": 0.014038794794548396,
+       "surr_marg": {
+        "ens": 0.6162,
+        "botorchgp": 0.7142,
+        "svgp": 0.7178
+       },
+       "opt_marg": {
+        "perturb": 0.7647,
+        "grad": 0.7263,
+        "cma": 0.5573
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0019339211790898368,
+        0.25830877422219384
+       ],
+       "width": 0.256374853043104
+      },
+      "opt": {
+       "ci95": [
+        0.004886433838934829,
+        0.472620289319836
+       ],
+       "width": 0.4677338554809012
+      },
+      "inter": {
+       "ci95": [
+        0.007152688889727978,
+        0.17453949289657983
+       ],
+       "width": 0.16738680400685185
+      }
+     }
+    }
+   },
+   "on_off": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:27"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": null
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.03367275341574653,
+      "opt": 0.11624077324000072,
+      "inter": 0.03638506452313504,
+      "surr_marg": {
+       "ens": 0.5382,
+       "botorchgp": 0.6957,
+       "svgp": 0.69
+      },
+      "opt_marg": {
+       "perturb": 0.7796,
+       "grad": 0.6871,
+       "cma": 0.4573
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.3780273797848388,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.7,
+       "ens:grad": 5.2,
+       "ens:cma": 7.4,
+       "botorchgp:perturb": 3.9,
+       "botorchgp:grad": 4.9,
+       "botorchgp:cma": 5.7,
+       "svgp:perturb": 3.7,
+       "svgp:grad": 5.1,
+       "svgp:cma": 5.4
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.03367275341574653,
+       "opt": 0.11624077324000072,
+       "inter": 0.03638506452313504,
+       "surr_marg": {
+        "ens": 0.5382,
+        "botorchgp": 0.6957,
+        "svgp": 0.69
+       },
+       "opt_marg": {
+        "perturb": 0.7796,
+        "grad": 0.6871,
+        "cma": 0.4573
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0012272341757628151,
+        0.3341059909531943
+       ],
+       "width": 0.3328787567774315
+      },
+      "opt": {
+       "ci95": [
+        0.011926020292153667,
+        0.4219466120554424
+       ],
+       "width": 0.41002059176328876
+      },
+      "inter": {
+       "ci95": [
+        0.021866047960213523,
+        0.19443485710964764
+       ],
+       "width": 0.17256880914943412
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:27"
+     },
+     "level_config": {
+      "Q": 25600,
+      "grad_steps": 100,
+      "perturb_rounds": 33,
+      "cma_fevals": 12544
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 25622.0,
+       "min": 25622,
+       "max": 25622,
+       "target": 25600,
+       "pct_dev_median": 0.09,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.013303165690725175,
+      "opt": 0.27802729907037005,
+      "inter": 0.052805460028492984,
+      "surr_marg": {
+       "ens": 0.6233,
+       "botorchgp": 0.6741,
+       "svgp": 0.7299
+      },
+      "opt_marg": {
+       "perturb": 0.8776,
+       "grad": 0.7446,
+       "cma": 0.405
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.02290323019913303,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.0,
+       "ens:grad": 4.8,
+       "ens:cma": 8.0,
+       "botorchgp:perturb": 4.2,
+       "botorchgp:grad": 4.4,
+       "botorchgp:cma": 6.3,
+       "svgp:perturb": 2.5,
+       "svgp:grad": 5.3,
+       "svgp:cma": 6.5
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.013303165690725175,
+       "opt": 0.27802729907037005,
+       "inter": 0.052805460028492984,
+       "surr_marg": {
+        "ens": 0.6233,
+        "botorchgp": 0.6741,
+        "svgp": 0.7299
+       },
+       "opt_marg": {
+        "perturb": 0.8776,
+        "grad": 0.7446,
+        "cma": 0.405
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0017607479943220566,
+        0.31621045487660365
+       ],
+       "width": 0.3144497068822816
+      },
+      "opt": {
+       "ci95": [
+        0.09717780607029886,
+        0.617724858149635
+       ],
+       "width": 0.520547052079336
+      },
+      "inter": {
+       "ci95": [
+        0.03476748726665043,
+        0.18218136828299586
+       ],
+       "width": 0.14741388101634542
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:28"
+     },
+     "level_config": {
+      "Q": 4096,
+      "grad_steps": 16,
+      "perturb_rounds": 5,
+      "cma_fevals": 1792
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4112.0,
+       "min": 4112,
+       "max": 4112,
+       "target": 4096,
+       "pct_dev_median": 0.39,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.06761916719391081,
+      "opt": 0.13793658690168067,
+      "inter": 0.04787796284936297,
+      "surr_marg": {
+       "ens": 0.5512,
+       "botorchgp": 0.7465,
+       "svgp": 0.7878
+      },
+      "opt_marg": {
+       "perturb": 0.8117,
+       "grad": 0.7865,
+       "cma": 0.4873
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.3159815295114593,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.8,
+       "ens:grad": 5.2,
+       "ens:cma": 7.8,
+       "botorchgp:perturb": 4.0,
+       "botorchgp:grad": 4.4,
+       "botorchgp:cma": 5.3,
+       "svgp:perturb": 4.0,
+       "svgp:grad": 4.9,
+       "svgp:cma": 5.6
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.06761916719391081,
+       "opt": 0.13793658690168067,
+       "inter": 0.04787796284936297,
+       "surr_marg": {
+        "ens": 0.5512,
+        "botorchgp": 0.7465,
+        "svgp": 0.7878
+       },
+       "opt_marg": {
+        "perturb": 0.8117,
+        "grad": 0.7865,
+        "cma": 0.4873
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.01060441040113802,
+        0.3652347269144329
+       ],
+       "width": 0.35463031651329485
+      },
+      "opt": {
+       "ci95": [
+        0.014179850821941961,
+        0.5550835432107225
+       ],
+       "width": 0.5409036923887806
+      },
+      "inter": {
+       "ci95": [
+        0.020832218261650784,
+        0.22600534713553866
+       ],
+       "width": 0.2051731288738879
+      }
+     }
+    }
+   },
+   "off_on": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:05"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": null
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.003033717932171794,
+      "opt": 0.16627088588629857,
+      "inter": 0.010208732100031629,
+      "surr_marg": {
+       "ens": 0.5842,
+       "botorchgp": 0.626,
+       "svgp": 0.6349
+      },
+      "opt_marg": {
+       "perturb": 0.8052,
+       "grad": 0.406,
+       "cma": 0.6339
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.20051332984726503,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.8,
+       "ens:grad": 6.6,
+       "ens:cma": 5.0,
+       "botorchgp:perturb": 3.2,
+       "botorchgp:grad": 6.9,
+       "botorchgp:cma": 4.7,
+       "svgp:perturb": 3.8,
+       "svgp:grad": 6.7,
+       "svgp:cma": 4.3
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.003033717932171794,
+       "opt": 0.16627088588629857,
+       "inter": 0.010208732100031629,
+       "surr_marg": {
+        "ens": 0.5842,
+        "botorchgp": 0.626,
+        "svgp": 0.6349
+       },
+       "opt_marg": {
+        "perturb": 0.8052,
+        "grad": 0.406,
+        "cma": 0.6339
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0014648522840179088,
+        0.2289059127332629
+       ],
+       "width": 0.227441060449245
+      },
+      "opt": {
+       "ci95": [
+        0.025804706417721753,
+        0.533700259676358
+       ],
+       "width": 0.5078955532586363
+      },
+      "inter": {
+       "ci95": [
+        0.006921007564951839,
+        0.12801615365897434
+       ],
+       "width": 0.1210951460940225
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:05"
+     },
+     "level_config": {
+      "Q": 51456,
+      "grad_steps": 100,
+      "perturb_rounds": 66,
+      "cma_fevals": 25472
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 51200.0,
+       "min": 51200,
+       "max": 51200,
+       "target": 51456,
+       "pct_dev_median": -0.5,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": 51456,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 51482.0,
+       "min": 51482,
+       "max": 51482,
+       "target": 51456,
+       "pct_dev_median": 0.05,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.0006826576206732977,
+      "opt": 0.3033081783132688,
+      "inter": 0.028308429861561103,
+      "surr_marg": {
+       "ens": 0.5941,
+       "botorchgp": 0.5971,
+       "svgp": 0.5742
+      },
+      "opt_marg": {
+       "perturb": 0.8886,
+       "grad": 0.3989,
+       "cma": 0.4779
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.017256710787300202,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 2.4,
+       "ens:grad": 6.6,
+       "ens:cma": 5.2,
+       "botorchgp:perturb": 3.0,
+       "botorchgp:grad": 6.6,
+       "botorchgp:cma": 5.6,
+       "svgp:perturb": 2.6,
+       "svgp:grad": 6.7,
+       "svgp:cma": 6.3
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.0006826576206732977,
+       "opt": 0.3033081783132688,
+       "inter": 0.028308429861561103,
+       "surr_marg": {
+        "ens": 0.5941,
+        "botorchgp": 0.5971,
+        "svgp": 0.5742
+       },
+       "opt_marg": {
+        "perturb": 0.8886,
+        "grad": 0.3989,
+        "cma": 0.4779
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0012111432448496887,
+        0.32531630321840643
+       ],
+       "width": 0.32410515997355677
+      },
+      "opt": {
+       "ci95": [
+        0.13302230259118691,
+        0.5625443794694928
+       ],
+       "width": 0.42952207687830585
+      },
+      "inter": {
+       "ci95": [
+        0.00454415449542195,
+        0.12446967550125473
+       ],
+       "width": 0.11992552100583279
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:06"
+     },
+     "level_config": {
+      "Q": 4352,
+      "grad_steps": 8,
+      "perturb_rounds": 5,
+      "cma_fevals": 1920
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4382.0,
+       "min": 4382,
+       "max": 4382,
+       "target": 4352,
+       "pct_dev_median": 0.69,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.0005929453745187555,
+      "opt": 0.09399401933677556,
+      "inter": 0.004872276067137094,
+      "surr_marg": {
+       "ens": 0.6087,
+       "botorchgp": 0.6295,
+       "svgp": 0.6296
+      },
+      "opt_marg": {
+       "perturb": 0.7814,
+       "grad": 0.4787,
+       "cma": 0.6077
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.17061913734341502,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.8,
+       "ens:grad": 6.8,
+       "ens:cma": 5.6,
+       "botorchgp:perturb": 3.1,
+       "botorchgp:grad": 6.8,
+       "botorchgp:cma": 4.7,
+       "svgp:perturb": 3.6,
+       "svgp:grad": 6.4,
+       "svgp:cma": 4.2
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.0005929453745187555,
+       "opt": 0.09399401933677556,
+       "inter": 0.004872276067137094,
+       "surr_marg": {
+        "ens": 0.6087,
+        "botorchgp": 0.6295,
+        "svgp": 0.6296
+       },
+       "opt_marg": {
+        "perturb": 0.7814,
+        "grad": 0.4787,
+        "cma": 0.6077
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0008834807258234613,
+        0.1420080636321829
+       ],
+       "width": 0.14112458290635946
+      },
+      "opt": {
+       "ci95": [
+        0.02423626159965622,
+        0.4069284263408506
+       ],
+       "width": 0.3826921647411944
+      },
+      "inter": {
+       "ci95": [
+        0.004566342911299345,
+        0.1678969673334068
+       ],
+       "width": 0.16333062442210747
+      }
+     }
+    }
+   },
+   "on_on": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": null
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.017323250772461583,
+      "opt": 0.13052136518899116,
+      "inter": 0.033300723152573417,
+      "surr_marg": {
+       "ens": 0.5312,
+       "botorchgp": 0.6242,
+       "svgp": 0.659
+      },
+      "opt_marg": {
+       "perturb": 0.8112,
+       "grad": 0.4708,
+       "cma": 0.5325
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.18044986578715028,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 4.1,
+       "ens:grad": 5.4,
+       "ens:cma": 6.8,
+       "botorchgp:perturb": 3.1,
+       "botorchgp:grad": 6.8,
+       "botorchgp:cma": 4.6,
+       "svgp:perturb": 3.8,
+       "svgp:grad": 6.5,
+       "svgp:cma": 3.9
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.017323250772461583,
+       "opt": 0.13052136518899116,
+       "inter": 0.033300723152573417,
+       "surr_marg": {
+        "ens": 0.5312,
+        "botorchgp": 0.6242,
+        "svgp": 0.659
+       },
+       "opt_marg": {
+        "perturb": 0.8112,
+        "grad": 0.4708,
+        "cma": 0.5325
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.002003499763430103,
+        0.27093863084911185
+       ],
+       "width": 0.26893513108568173
+      },
+      "opt": {
+       "ci95": [
+        0.0049202716037884,
+        0.5243645099345329
+       ],
+       "width": 0.5194442383307445
+      },
+      "inter": {
+       "ci95": [
+        0.015481363837601195,
+        0.18884819024218444
+       ],
+       "width": 0.17336682640458323
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": 51456,
+      "grad_steps": 100,
+      "perturb_rounds": 66,
+      "cma_fevals": 25472
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 51200.0,
+       "min": 51200,
+       "max": 51200,
+       "target": 51456,
+       "pct_dev_median": -0.5,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": 51456,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 51482.0,
+       "min": 51482,
+       "max": 51482,
+       "target": 51456,
+       "pct_dev_median": 0.05,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.007144549969418116,
+      "opt": 0.28953832522353057,
+      "inter": 0.04245461037065596,
+      "surr_marg": {
+       "ens": 0.5721,
+       "botorchgp": 0.6065,
+       "svgp": 0.651
+      },
+      "opt_marg": {
+       "perturb": 0.8968,
+       "grad": 0.5074,
+       "cma": 0.4253
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.0147017834491615,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 2.4,
+       "ens:grad": 5.6,
+       "ens:cma": 7.4,
+       "botorchgp:perturb": 3.0,
+       "botorchgp:grad": 6.4,
+       "botorchgp:cma": 5.4,
+       "svgp:perturb": 2.6,
+       "svgp:grad": 6.3,
+       "svgp:cma": 5.9
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.007144549969418116,
+       "opt": 0.28953832522353057,
+       "inter": 0.04245461037065596,
+       "surr_marg": {
+        "ens": 0.5721,
+        "botorchgp": 0.6065,
+        "svgp": 0.651
+       },
+       "opt_marg": {
+        "perturb": 0.8968,
+        "grad": 0.5074,
+        "cma": 0.4253
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0009989694805561731,
+        0.32570667531585956
+       ],
+       "width": 0.3247077058353034
+      },
+      "opt": {
+       "ci95": [
+        0.10037587281191943,
+        0.5915544146289129
+       ],
+       "width": 0.4911785418169935
+      },
+      "inter": {
+       "ci95": [
+        0.016498107030158485,
+        0.15978770600561326
+       ],
+       "width": 0.1432895989754548
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": 4352,
+      "grad_steps": 8,
+      "perturb_rounds": 5,
+      "cma_fevals": 1920
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4382.0,
+       "min": 4382,
+       "max": 4382,
+       "target": 4352,
+       "pct_dev_median": 0.69,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "GFP",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 5,
+      "surr": 0.023717917464168205,
+      "opt": 0.09153568948698831,
+      "inter": 0.056463777766297935,
+      "surr_marg": {
+       "ens": 0.5393,
+       "botorchgp": 0.6435,
+       "svgp": 0.6922
+      },
+      "opt_marg": {
+       "perturb": 0.8003,
+       "grad": 0.5601,
+       "cma": 0.5146
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.0985103380139561,
+      "n_tasks": 5,
+      "mean_rank": {
+       "ens:perturb": 3.7,
+       "ens:grad": 6.1,
+       "ens:cma": 7.0,
+       "botorchgp:perturb": 3.1,
+       "botorchgp:grad": 6.8,
+       "botorchgp:cma": 4.7,
+       "svgp:perturb": 3.5,
+       "svgp:grad": 6.2,
+       "svgp:cma": 3.9
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 5,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "GFP",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 5,
+       "surr": 0.023717917464168205,
+       "opt": 0.09153568948698831,
+       "inter": 0.056463777766297935,
+       "surr_marg": {
+        "ens": 0.5393,
+        "botorchgp": 0.6435,
+        "svgp": 0.6922
+       },
+       "opt_marg": {
+        "perturb": 0.8003,
+        "grad": 0.5601,
+        "cma": 0.5146
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0015242325656884103,
+        0.21665853741261
+       ],
+       "width": 0.21513430484692161
+      },
+      "opt": {
+       "ci95": [
+        0.016591265988870566,
+        0.4554614055804101
+       ],
+       "width": 0.43887013959153953
+      },
+      "inter": {
+       "ci95": [
+        0.025472272233715613,
+        0.28503321353953975
+       ],
+       "width": 0.25956094130582413
+      }
+     }
+    }
+   }
+  },
+  "noGFP": {
+   "off_off": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:33"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": null
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.021804175545175667,
+      "opt": 0.04893404128290372,
+      "inter": 0.025276658080943065,
+      "surr_marg": {
+       "ens": 0.6901,
+       "botorchgp": 0.5772,
+       "svgp": 0.5777
+      },
+      "opt_marg": {
+       "perturb": 0.699,
+       "grad": 0.6378,
+       "cma": 0.5082
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.5736785842543053,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 4.125,
+       "ens:grad": 3.0,
+       "ens:cma": 5.75,
+       "botorchgp:perturb": 4.375,
+       "botorchgp:grad": 5.375,
+       "botorchgp:cma": 6.375,
+       "svgp:perturb": 4.0,
+       "svgp:grad": 5.625,
+       "svgp:cma": 6.375
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.021804175545175667,
+       "opt": 0.04893404128290372,
+       "inter": 0.025276658080943065,
+       "surr_marg": {
+        "ens": 0.6901,
+        "botorchgp": 0.5772,
+        "svgp": 0.5777
+       },
+       "opt_marg": {
+        "perturb": 0.699,
+        "grad": 0.6378,
+        "cma": 0.5082
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0009502365794838157,
+        0.2692561102176268
+       ],
+       "width": 0.26830587363814296
+      },
+      "opt": {
+       "ci95": [
+        0.002882992588510874,
+        0.5262916240360489
+       ],
+       "width": 0.523408631447538
+      },
+      "inter": {
+       "ci95": [
+        0.011031318648959383,
+        0.18071488952294024
+       ],
+       "width": 0.16968357087398087
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:33"
+     },
+     "level_config": {
+      "Q": 25600,
+      "grad_steps": 100,
+      "perturb_rounds": 33,
+      "cma_fevals": 12544
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 25622.0,
+       "min": 25622,
+       "max": 25622,
+       "target": 25600,
+       "pct_dev_median": 0.09,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.04145195540464564,
+      "opt": 0.25610914023668485,
+      "inter": 0.04368353219087233,
+      "surr_marg": {
+       "ens": 0.6858,
+       "botorchgp": 0.5258,
+       "svgp": 0.5545
+      },
+      "opt_marg": {
+       "perturb": 0.7607,
+       "grad": 0.6536,
+       "cma": 0.3518
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.09557046263415232,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 3.875,
+       "ens:grad": 3.0,
+       "ens:cma": 6.0,
+       "botorchgp:perturb": 4.625,
+       "botorchgp:grad": 4.875,
+       "botorchgp:cma": 7.0,
+       "svgp:perturb": 2.5,
+       "svgp:grad": 5.375,
+       "svgp:cma": 7.75
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.04145195540464564,
+       "opt": 0.25610914023668485,
+       "inter": 0.04368353219087233,
+       "surr_marg": {
+        "ens": 0.6858,
+        "botorchgp": 0.5258,
+        "svgp": 0.5545
+       },
+       "opt_marg": {
+        "perturb": 0.7607,
+        "grad": 0.6536,
+        "cma": 0.3518
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.013957217784243525,
+        0.48164904448955315
+       ],
+       "width": 0.4676918267053096
+      },
+      "opt": {
+       "ci95": [
+        0.033467543328358725,
+        0.6330084004088559
+       ],
+       "width": 0.5995408570804971
+      },
+      "inter": {
+       "ci95": [
+        0.026298725308182076,
+        0.17709339532719504
+       ],
+       "width": 0.15079467001901295
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:23:34"
+     },
+     "level_config": {
+      "Q": 4096,
+      "grad_steps": 16,
+      "perturb_rounds": 5,
+      "cma_fevals": 1792
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4112.0,
+       "min": 4112,
+       "max": 4112,
+       "target": 4096,
+       "pct_dev_median": 0.39,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.0007279372952982851,
+      "opt": 0.07034311220667737,
+      "inter": 0.01463697896988045,
+      "surr_marg": {
+       "ens": 0.6679,
+       "botorchgp": 0.6428,
+       "svgp": 0.6515
+      },
+      "opt_marg": {
+       "perturb": 0.7059,
+       "grad": 0.7454,
+       "cma": 0.5109
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.8838824934257236,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 4.5,
+       "ens:grad": 5.0,
+       "ens:cma": 6.0,
+       "botorchgp:perturb": 4.0,
+       "botorchgp:grad": 4.25,
+       "botorchgp:cma": 5.75,
+       "svgp:perturb": 4.375,
+       "svgp:grad": 4.625,
+       "svgp:cma": 6.5
+      }
+     },
+     "rejects": false,
+     "opt_leader": "grad",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.0007279372952982851,
+       "opt": 0.07034311220667737,
+       "inter": 0.01463697896988045,
+       "surr_marg": {
+        "ens": 0.6679,
+        "botorchgp": 0.6428,
+        "svgp": 0.6515
+       },
+       "opt_marg": {
+        "perturb": 0.7059,
+        "grad": 0.7454,
+        "cma": 0.5109
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0007708672224203192,
+        0.26202285589200325
+       ],
+       "width": 0.26125198866958294
+      },
+      "opt": {
+       "ci95": [
+        0.003785274910330977,
+        0.6490303412276461
+       ],
+       "width": 0.6452450663173152
+      },
+      "inter": {
+       "ci95": [
+        0.007326964793737205,
+        0.18290280690708385
+       ],
+       "width": 0.17557584211334665
+      }
+     }
+    }
+   },
+   "on_off": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:27"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": null
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.0019183953142122491,
+      "opt": 0.14386232176102626,
+      "inter": 0.04558060617542304,
+      "surr_marg": {
+       "ens": 0.5818,
+       "botorchgp": 0.6197,
+       "svgp": 0.6162
+      },
+      "opt_marg": {
+       "perturb": 0.7245,
+       "grad": 0.6959,
+       "cma": 0.3973
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.5034137514151569,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 3.75,
+       "ens:grad": 4.25,
+       "ens:cma": 7.25,
+       "botorchgp:perturb": 4.0,
+       "botorchgp:grad": 5.25,
+       "botorchgp:cma": 6.25,
+       "svgp:perturb": 3.75,
+       "svgp:grad": 4.625,
+       "svgp:cma": 5.875
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.0019183953142122491,
+       "opt": 0.14386232176102626,
+       "inter": 0.04558060617542304,
+       "surr_marg": {
+        "ens": 0.5818,
+        "botorchgp": 0.6197,
+        "svgp": 0.6162
+       },
+       "opt_marg": {
+        "perturb": 0.7245,
+        "grad": 0.6959,
+        "cma": 0.3973
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0010643802726513609,
+        0.27361701746883377
+       ],
+       "width": 0.2725526371961824
+      },
+      "opt": {
+       "ci95": [
+        0.030392981739050796,
+        0.5495007590243143
+       ],
+       "width": 0.5191077772852635
+      },
+      "inter": {
+       "ci95": [
+        0.039521338215329556,
+        0.21337140263385979
+       ],
+       "width": 0.17385006441853024
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:27"
+     },
+     "level_config": {
+      "Q": 25600,
+      "grad_steps": 100,
+      "perturb_rounds": 33,
+      "cma_fevals": 12544
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 25600.0,
+       "min": 25600,
+       "max": 25600,
+       "target": 25600,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 25622.0,
+       "min": 25622,
+       "max": 25622,
+       "target": 25600,
+       "pct_dev_median": 0.09,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.012010398321331711,
+      "opt": 0.3606875190416181,
+      "inter": 0.055931616644629874,
+      "surr_marg": {
+       "ens": 0.687,
+       "botorchgp": 0.5926,
+       "svgp": 0.6656
+      },
+      "opt_marg": {
+       "perturb": 0.8471,
+       "grad": 0.7585,
+       "cma": 0.3396
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.03268607613146687,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 2.875,
+       "ens:grad": 4.0,
+       "ens:cma": 7.75,
+       "botorchgp:perturb": 4.375,
+       "botorchgp:grad": 4.625,
+       "botorchgp:cma": 7.0,
+       "svgp:perturb": 2.25,
+       "svgp:grad": 4.875,
+       "svgp:cma": 7.25
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.012010398321331711,
+       "opt": 0.3606875190416181,
+       "inter": 0.055931616644629874,
+       "surr_marg": {
+        "ens": 0.687,
+        "botorchgp": 0.5926,
+        "svgp": 0.6656
+       },
+       "opt_marg": {
+        "perturb": 0.8471,
+        "grad": 0.7585,
+        "cma": 0.3396
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0015261888134682551,
+        0.4161153125728087
+       ],
+       "width": 0.4145891237593404
+      },
+      "opt": {
+       "ci95": [
+        0.11123522107162462,
+        0.693140310297601
+       ],
+       "width": 0.5819050892259764
+      },
+      "inter": {
+       "ci95": [
+        0.04522337755638876,
+        0.18019997606913354
+       ],
+       "width": 0.1349765985127448
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T15:56:28"
+     },
+     "level_config": {
+      "Q": 4096,
+      "grad_steps": 16,
+      "perturb_rounds": 5,
+      "cma_fevals": 1792
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4096.0,
+       "min": 4096,
+       "max": 4096,
+       "target": 4096,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4112.0,
+       "min": 4112,
+       "max": 4112,
+       "target": 4096,
+       "pct_dev_median": 0.39,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.023491328768157793,
+      "opt": 0.16738131463490985,
+      "inter": 0.03166329977342254,
+      "surr_marg": {
+       "ens": 0.5912,
+       "botorchgp": 0.6832,
+       "svgp": 0.739
+      },
+      "opt_marg": {
+       "perturb": 0.7647,
+       "grad": 0.8063,
+       "cma": 0.4424
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.5535497958633031,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 3.875,
+       "ens:grad": 4.5,
+       "ens:cma": 7.5,
+       "botorchgp:perturb": 4.125,
+       "botorchgp:grad": 4.625,
+       "botorchgp:cma": 5.75,
+       "svgp:perturb": 4.125,
+       "svgp:grad": 4.375,
+       "svgp:cma": 6.125
+      }
+     },
+     "rejects": false,
+     "opt_leader": "grad",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.023491328768157793,
+       "opt": 0.16738131463490985,
+       "inter": 0.03166329977342254,
+       "surr_marg": {
+        "ens": 0.5912,
+        "botorchgp": 0.6832,
+        "svgp": 0.739
+       },
+       "opt_marg": {
+        "perturb": 0.7647,
+        "grad": 0.8063,
+        "cma": 0.4424
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0010894096060371403,
+        0.3014059291182168
+       ],
+       "width": 0.30031651951217964
+      },
+      "opt": {
+       "ci95": [
+        0.02224817726009743,
+        0.7122317261859255
+       ],
+       "width": 0.689983548925828
+      },
+      "inter": {
+       "ci95": [
+        0.019477194579628685,
+        0.20404954899200628
+       ],
+       "width": 0.1845723544123776
+      }
+     }
+    }
+   },
+   "off_on": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:05"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": null
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.01100519081673091,
+      "opt": 0.18190886330446684,
+      "inter": 0.021956600166112727,
+      "surr_marg": {
+       "ens": 0.6293,
+       "botorchgp": 0.5366,
+       "svgp": 0.5465
+      },
+      "opt_marg": {
+       "perturb": 0.7565,
+       "grad": 0.3477,
+       "cma": 0.608
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.48464359517706856,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 4.0,
+       "ens:grad": 6.0,
+       "ens:cma": 4.25,
+       "botorchgp:perturb": 3.25,
+       "botorchgp:grad": 6.875,
+       "botorchgp:cma": 5.125,
+       "svgp:perturb": 4.0,
+       "svgp:grad": 6.875,
+       "svgp:cma": 4.625
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.01100519081673091,
+       "opt": 0.18190886330446684,
+       "inter": 0.021956600166112727,
+       "surr_marg": {
+        "ens": 0.6293,
+        "botorchgp": 0.5366,
+        "svgp": 0.5465
+       },
+       "opt_marg": {
+        "perturb": 0.7565,
+        "grad": 0.3477,
+        "cma": 0.608
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0035626622177651955,
+        0.29534063232520913
+       ],
+       "width": 0.29177797010744394
+      },
+      "opt": {
+       "ci95": [
+        0.03376817935403535,
+        0.635019891347302
+       ],
+       "width": 0.6012517119932667
+      },
+      "inter": {
+       "ci95": [
+        0.014458485221026966,
+        0.1518437440927183
+       ],
+       "width": 0.13738525887169134
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:05"
+     },
+     "level_config": {
+      "Q": 51456,
+      "grad_steps": 100,
+      "perturb_rounds": 66,
+      "cma_fevals": 25472
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 51200.0,
+       "min": 51200,
+       "max": 51200,
+       "target": 51456,
+       "pct_dev_median": -0.5,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": 51456,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 51482.0,
+       "min": 51482,
+       "max": 51482,
+       "target": 51456,
+       "pct_dev_median": 0.05,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.03531029186718768,
+      "opt": 0.3733432051986638,
+      "inter": 0.026127577190572134,
+      "surr_marg": {
+       "ens": 0.6345,
+       "botorchgp": 0.5005,
+       "svgp": 0.4705
+      },
+      "opt_marg": {
+       "perturb": 0.8607,
+       "grad": 0.3388,
+       "cma": 0.406
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.03307762951908259,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 2.25,
+       "ens:grad": 6.0,
+       "ens:cma": 4.5,
+       "botorchgp:perturb": 3.0,
+       "botorchgp:grad": 6.5,
+       "botorchgp:cma": 6.25,
+       "svgp:perturb": 2.5,
+       "svgp:grad": 6.875,
+       "svgp:cma": 7.125
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.03531029186718768,
+       "opt": 0.3733432051986638,
+       "inter": 0.026127577190572134,
+       "surr_marg": {
+        "ens": 0.6345,
+        "botorchgp": 0.5005,
+        "svgp": 0.4705
+       },
+       "opt_marg": {
+        "perturb": 0.8607,
+        "grad": 0.3388,
+        "cma": 0.406
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.010964207643687546,
+        0.4456875934350314
+       ],
+       "width": 0.43472338579134384
+      },
+      "opt": {
+       "ci95": [
+        0.1359396378413642,
+        0.6827084779105136
+       ],
+       "width": 0.5467688400691494
+      },
+      "inter": {
+       "ci95": [
+        0.0031585921900814584,
+        0.10811840673849851
+       ],
+       "width": 0.10495981454841706
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T16:38:06"
+     },
+     "level_config": {
+      "Q": 4352,
+      "grad_steps": 8,
+      "perturb_rounds": 5,
+      "cma_fevals": 1920
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4382.0,
+       "min": 4382,
+       "max": 4382,
+       "target": 4352,
+       "pct_dev_median": 0.69,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.0040364472101953545,
+      "opt": 0.14749328009214618,
+      "inter": 0.026066382601703745,
+      "surr_marg": {
+       "ens": 0.5943,
+       "botorchgp": 0.5414,
+       "svgp": 0.5394
+      },
+      "opt_marg": {
+       "perturb": 0.7268,
+       "grad": 0.3555,
+       "cma": 0.5929
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.4604568497175351,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 4.0,
+       "ens:grad": 7.0,
+       "ens:cma": 4.75,
+       "botorchgp:perturb": 3.125,
+       "botorchgp:grad": 6.5,
+       "botorchgp:cma": 5.125,
+       "svgp:perturb": 3.75,
+       "svgp:grad": 6.25,
+       "svgp:cma": 4.5
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.0040364472101953545,
+       "opt": 0.14749328009214618,
+       "inter": 0.026066382601703745,
+       "surr_marg": {
+        "ens": 0.5943,
+        "botorchgp": 0.5414,
+        "svgp": 0.5394
+       },
+       "opt_marg": {
+        "perturb": 0.7268,
+        "grad": 0.3555,
+        "cma": 0.5929
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.0010395195776647752,
+        0.20997248255959172
+       ],
+       "width": 0.20893296298192696
+      },
+      "opt": {
+       "ci95": [
+        0.06956568148944675,
+        0.5036784570021932
+       ],
+       "width": 0.4341127755127464
+      },
+      "inter": {
+       "ci95": [
+        0.013215472192791141,
+        0.1812744877975391
+       ],
+       "width": 0.16805901560474795
+      }
+     }
+    }
+   },
+   "on_on": {
+    "native": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": null,
+      "grad_steps": 100,
+      "perturb_rounds": 5,
+      "cma_fevals": null
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": null
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": null
+      },
+      "cma": {
+       "median": 6542.0,
+       "min": 6182,
+       "max": 6542,
+       "target": null
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.0016651087839196178,
+      "opt": 0.13032180946561864,
+      "inter": 0.05715789679772177,
+      "surr_marg": {
+       "ens": 0.5617,
+       "botorchgp": 0.5364,
+       "svgp": 0.5766
+      },
+      "opt_marg": {
+       "perturb": 0.764,
+       "grad": 0.4307,
+       "cma": 0.4799
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.4712045744881397,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 4.375,
+       "ens:grad": 4.5,
+       "ens:cma": 6.5,
+       "botorchgp:perturb": 3.125,
+       "botorchgp:grad": 6.75,
+       "botorchgp:cma": 5.0,
+       "svgp:perturb": 4.0,
+       "svgp:grad": 6.625,
+       "svgp:cma": 4.125
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.0016651087839196178,
+       "opt": 0.13032180946561864,
+       "inter": 0.05715789679772177,
+       "surr_marg": {
+        "ens": 0.5617,
+        "botorchgp": 0.5364,
+        "svgp": 0.5766
+       },
+       "opt_marg": {
+        "perturb": 0.764,
+        "grad": 0.4307,
+        "cma": 0.4799
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.001333553587291531,
+        0.28267218102121977
+       ],
+       "width": 0.28133862743392823
+      },
+      "opt": {
+       "ci95": [
+        0.0015838435008105449,
+        0.6197805315785265
+       ],
+       "width": 0.618196688077716
+      },
+      "inter": {
+       "ci95": [
+        0.042195424493830645,
+        0.2080852675568517
+       ],
+       "width": 0.16588984306302104
+      }
+     }
+    },
+    "up": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": 51456,
+      "grad_steps": 100,
+      "perturb_rounds": 66,
+      "cma_fevals": 25472
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 51200.0,
+       "min": 51200,
+       "max": 51200,
+       "target": 51456,
+       "pct_dev_median": -0.5,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 51456.0,
+       "min": 51456,
+       "max": 51456,
+       "target": 51456,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 51482.0,
+       "min": 51482,
+       "max": 51482,
+       "target": 51456,
+       "pct_dev_median": 0.05,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.01124011413453819,
+      "opt": 0.360028836537698,
+      "inter": 0.05450120700141901,
+      "surr_marg": {
+       "ens": 0.6109,
+       "botorchgp": 0.5142,
+       "svgp": 0.5666
+      },
+      "opt_marg": {
+       "perturb": 0.871,
+       "grad": 0.4765,
+       "cma": 0.3441
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.038889529436223834,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 2.25,
+       "ens:grad": 4.75,
+       "ens:cma": 7.25,
+       "botorchgp:perturb": 3.0,
+       "botorchgp:grad": 6.25,
+       "botorchgp:cma": 6.0,
+       "svgp:perturb": 2.5,
+       "svgp:grad": 6.375,
+       "svgp:cma": 6.625
+      }
+     },
+     "rejects": true,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.01124011413453819,
+       "opt": 0.360028836537698,
+       "inter": 0.05450120700141901,
+       "surr_marg": {
+        "ens": 0.6109,
+        "botorchgp": 0.5142,
+        "svgp": 0.5666
+       },
+       "opt_marg": {
+        "perturb": 0.871,
+        "grad": 0.4765,
+        "cma": 0.3441
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.006914086707013376,
+        0.4125572470359629
+       ],
+       "width": 0.40564316032894954
+      },
+      "opt": {
+       "ci95": [
+        0.10671649486956898,
+        0.6921653430490925
+       ],
+       "width": 0.5854488481795235
+      },
+      "inter": {
+       "ci95": [
+        0.022856001355009987,
+        0.1700046731419348
+       ],
+       "width": 0.1471486717869248
+      }
+     }
+    },
+    "down": {
+     "status": "ok",
+     "engine_meta": {
+      "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+      "os_release": "6.17.0-35-generic",
+      "python": "3.9.23",
+      "torch": "2.8.0+cpu",
+      "numpy": "1.23.5",
+      "botorch": "0.10.0",
+      "gpytorch": "1.11",
+      "cma": "4.4.4",
+      "git_sha": "100d2edc3432d7f27afa4e3fcbfc0fa9c24ebb41",
+      "X1": true,
+      "X3": true,
+      "K": 5,
+      "beta": 2.0,
+      "TOP": 128,
+      "OPT_STEPS": 100,
+      "LR_OPT": 0.05,
+      "n_seeds": 16,
+      "seed": "0..15",
+      "timestamp": "2026-07-19T17:21:47"
+     },
+     "level_config": {
+      "Q": 4352,
+      "grad_steps": 8,
+      "perturb_rounds": 5,
+      "cma_fevals": 1920
+     },
+     "achieved_q": {
+      "perturb": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "grad": {
+       "median": 4352.0,
+       "min": 4352,
+       "max": 4352,
+       "target": 4352,
+       "pct_dev_median": 0.0,
+       "frac_cells_over_5pct": 0.0
+      },
+      "cma": {
+       "median": 4382.0,
+       "min": 4382,
+       "max": 4382,
+       "target": 4352,
+       "pct_dev_median": 0.69,
+       "frac_cells_over_5pct": 0.0
+      }
+     },
+     "used_tasks": [
+      "TFBind8",
+      "TFBind10",
+      "Superconductor",
+      "UTR"
+     ],
+     "eta2": {
+      "n_tasks": 4,
+      "surr": 0.011757855260572474,
+      "opt": 0.10636629933014223,
+      "inter": 0.029000992354062904,
+      "surr_marg": {
+       "ens": 0.5074,
+       "botorchgp": 0.5584,
+       "svgp": 0.6167
+      },
+      "opt_marg": {
+       "perturb": 0.7503,
+       "grad": 0.4555,
+       "cma": 0.4766
+      }
+     },
+     "friedman": {
+      "friedman_p": 0.31094712493374455,
+      "n_tasks": 4,
+      "mean_rank": {
+       "ens:perturb": 3.75,
+       "ens:grad": 6.75,
+       "ens:cma": 6.5,
+       "botorchgp:perturb": 3.0,
+       "botorchgp:grad": 6.5,
+       "botorchgp:cma": 5.0,
+       "svgp:perturb": 3.5,
+       "svgp:grad": 6.0,
+       "svgp:cma": 4.0
+      }
+     },
+     "rejects": false,
+     "opt_leader": "perturb",
+     "opt_exceeds_surr": true,
+     "bootstrap": {
+      "n_tasks": 4,
+      "B": 10000,
+      "tasks": [
+       "TFBind8",
+       "TFBind10",
+       "Superconductor",
+       "UTR"
+      ],
+      "point": {
+       "n_tasks": 4,
+       "surr": 0.011757855260572474,
+       "opt": 0.10636629933014223,
+       "inter": 0.029000992354062904,
+       "surr_marg": {
+        "ens": 0.5074,
+        "botorchgp": 0.5584,
+        "svgp": 0.6167
+       },
+       "opt_marg": {
+        "perturb": 0.7503,
+        "grad": 0.4555,
+        "cma": 0.4766
+       }
+      },
+      "surr": {
+       "ci95": [
+        0.004869359729952523,
+        0.2407271347761653
+       ],
+       "width": 0.23585777504621278
+      },
+      "opt": {
+       "ci95": [
+        0.034489967835131426,
+        0.5421791415208297
+       ],
+       "width": 0.5076891736856982
+      },
+      "inter": {
+       "ci95": [
+        0.020891039560423763,
+        0.21814439724585608
+       ],
+       "width": 0.1972533576854323
+      }
+     }
+    }
+   }
+  }
+ },
+ "q_audit_failures": {},
+ "DBM1": {
+  "rejecting_corners": [
+   "off_off",
+   "on_off",
+   "off_on",
+   "on_on"
+  ],
+  "opt_leader": {
+   "off_off": "perturb",
+   "on_off": "perturb",
+   "off_on": "perturb",
+   "on_on": "perturb"
+  },
+  "opt_exceeds_surr": {
+   "off_off": true,
+   "on_off": true,
+   "off_on": true,
+   "on_on": true
+  },
+  "verdict": "DBM1 CONFIRMED \u2014 in every corner that rejects under matched budget, perturbation still leads the optimizer marginal AND eta2_opt still exceeds eta2_surr; the inversion is not a budget artifact"
+ },
+ "DBM2": {
+  "eta2_surr_by_corner": {
+   "off_off": 0.04278436913745966,
+   "on_off": 0.06213479505556051,
+   "off_on": 0.036556280525074245,
+   "on_on": 0.04999697658441114
+  },
+  "over_floor": {},
+  "verdict": "DBM2 CONFIRMED \u2014 eta2_surr stays below 0.1 in all four corners under matched budget ({'off_off': 0.043, 'on_off': 0.062, 'off_on': 0.037, 'on_on': 0.05}); the surrogate null is not a budget artifact"
+ },
+ "CALL": "PROMOTE \u2014 the inversion and the surrogate null both survive budget matching on the full 7-task Design-Bench grid; section 6 can assert rather than qualify"
+}

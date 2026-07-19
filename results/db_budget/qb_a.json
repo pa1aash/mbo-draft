@@ -1,0 +1,749 @@
+{
+  "meta": {
+    "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+    "os_release": "6.17.0-35-generic",
+    "python": "3.9.23",
+    "torch": "2.8.0+cpu",
+    "numpy": "1.23.5",
+    "botorch": "0.10.0",
+    "gpytorch": "1.11",
+    "cma": "4.4.4",
+    "git_sha": "9460093a3547e848870ae2e4867924b187dba0e5",
+    "X1": true,
+    "X3": true,
+    "K": 5,
+    "beta": 2.0,
+    "TOP": 128,
+    "OPT_STEPS": 100,
+    "LR_OPT": 0.05,
+    "n_seeds": 3,
+    "seed": "0..2",
+    "timestamp": "2026-07-19T14:46:53"
+  },
+  "definition": "Q = candidate points scored by the surrogate per cell, search plus the final _select_top selection pass (identical to code/budget_probe.py, so DB and synthetic Q are comparable)",
+  "db_subsample": 8000,
+  "task_dims": {
+    "TFBind8": {
+      "dim": 32,
+      "n": 8000
+    },
+    "UTR": {
+      "dim": 200,
+      "n": 8000
+    },
+    "Superconductor": {
+      "dim": 86,
+      "n": 8000
+    }
+  },
+  "aggregate": {
+    "grad": {
+      "median": 51456.0,
+      "mean": 51456.0,
+      "min": 51456,
+      "max": 51456,
+      "n": 27,
+      "median_secs": 0.61
+    },
+    "perturb": {
+      "median": 4352.0,
+      "mean": 4352.0,
+      "min": 4352,
+      "max": 4352,
+      "n": 27,
+      "median_secs": 0.04
+    },
+    "cma": {
+      "median": 6530.0,
+      "mean": 6308.148148148148,
+      "min": 648,
+      "max": 6532,
+      "n": 27,
+      "median_secs": 2.06
+    }
+  },
+  "per_task": {
+    "TFBind8": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6532.0
+    },
+    "Superconductor": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6530.0
+    },
+    "UTR": {
+      "grad": 51456.0,
+      "perturb": 4352.0,
+      "cma": 6516.0
+    }
+  },
+  "per_task_secs": {
+    "TFBind8": {
+      "grad": 0.6,
+      "perturb": 0.03,
+      "cma": 1.2
+    },
+    "Superconductor": {
+      "grad": 0.59,
+      "perturb": 0.03,
+      "cma": 2.06
+    },
+    "UTR": {
+      "grad": 0.67,
+      "perturb": 0.04,
+      "cma": 2.36
+    }
+  },
+  "rows": [
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.18,
+      "fit_secs": 18.67
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 18.67
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6532,
+      "secs": 1.5,
+      "fit_secs": 18.67
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.97,
+      "fit_secs": 13.33
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.2,
+      "fit_secs": 13.33
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6532,
+      "secs": 2.07,
+      "fit_secs": 13.33
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.56,
+      "fit_secs": 4.77
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 4.77
+    },
+    {
+      "task": "TFBind8",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6532,
+      "secs": 0.72,
+      "fit_secs": 4.77
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.18,
+      "fit_secs": 18.84
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 18.84
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6532,
+      "secs": 0.94,
+      "fit_secs": 18.84
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.81,
+      "fit_secs": 14.5
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.19,
+      "fit_secs": 14.5
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6532,
+      "secs": 3.18,
+      "fit_secs": 14.5
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.6,
+      "fit_secs": 5.16
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 5.16
+    },
+    {
+      "task": "TFBind8",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6532,
+      "secs": 0.75,
+      "fit_secs": 5.16
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.23,
+      "fit_secs": 20.73
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 20.73
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6532,
+      "secs": 1.2,
+      "fit_secs": 20.73
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 5.44,
+      "fit_secs": 14.08
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.27,
+      "fit_secs": 14.08
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 6532,
+      "secs": 1.5,
+      "fit_secs": 14.08
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.76,
+      "fit_secs": 5.46
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 5.46
+    },
+    {
+      "task": "TFBind8",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6532,
+      "secs": 1.09,
+      "fit_secs": 5.46
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.4,
+      "fit_secs": 18.91
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 18.91
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6516,
+      "secs": 2.97,
+      "fit_secs": 18.91
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 4.41,
+      "fit_secs": 8.21
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.25,
+      "fit_secs": 8.21
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 6516,
+      "secs": 6.75,
+      "fit_secs": 8.21
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.89,
+      "fit_secs": 6.52
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.06,
+      "fit_secs": 6.52
+    },
+    {
+      "task": "UTR",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6516,
+      "secs": 2.36,
+      "fit_secs": 6.52
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.38,
+      "fit_secs": 19.5
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 19.5
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6516,
+      "secs": 2.2,
+      "fit_secs": 19.5
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 4.38,
+      "fit_secs": 8.06
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.22,
+      "fit_secs": 8.06
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6516,
+      "secs": 5.56,
+      "fit_secs": 8.06
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.67,
+      "fit_secs": 6.31
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 6.31
+    },
+    {
+      "task": "UTR",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6516,
+      "secs": 5.92,
+      "fit_secs": 6.31
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.24,
+      "fit_secs": 20.95
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 20.95
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6530,
+      "secs": 1.73,
+      "fit_secs": 20.95
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.92,
+      "fit_secs": 26.94
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.21,
+      "fit_secs": 26.94
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6530,
+      "secs": 6.58,
+      "fit_secs": 26.94
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.59,
+      "fit_secs": 5.27
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 5.27
+    },
+    {
+      "task": "Superconductor",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6530,
+      "secs": 0.94,
+      "fit_secs": 5.27
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.24,
+      "fit_secs": 20.84
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 20.84
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "ens:cma",
+      "q": 6530,
+      "secs": 3.46,
+      "fit_secs": 20.84
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.95,
+      "fit_secs": 28.96
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.2,
+      "fit_secs": 28.96
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "botorchgp:cma",
+      "q": 6530,
+      "secs": 4.44,
+      "fit_secs": 28.96
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.7,
+      "fit_secs": 5.42
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.05,
+      "fit_secs": 5.42
+    },
+    {
+      "task": "Superconductor",
+      "seed": 0,
+      "cell": "svgp:cma",
+      "q": 6530,
+      "secs": 2.06,
+      "fit_secs": 5.42
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.38,
+      "fit_secs": 9.01
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 9.01
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "ens:cma",
+      "q": 6516,
+      "secs": 1.67,
+      "fit_secs": 9.01
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 4.02,
+      "fit_secs": 1.79
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.23,
+      "fit_secs": 1.79
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "botorchgp:cma",
+      "q": 6516,
+      "secs": 2.2,
+      "fit_secs": 1.79
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.61,
+      "fit_secs": 5.47
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.04,
+      "fit_secs": 5.47
+    },
+    {
+      "task": "UTR",
+      "seed": 2,
+      "cell": "svgp:cma",
+      "q": 6516,
+      "secs": 1.14,
+      "fit_secs": 5.47
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "ens:grad",
+      "q": 51456,
+      "secs": 0.32,
+      "fit_secs": 20.54
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "ens:perturb",
+      "q": 4352,
+      "secs": 0.01,
+      "fit_secs": 20.54
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "ens:cma",
+      "q": 6530,
+      "secs": 2.76,
+      "fit_secs": 20.54
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "botorchgp:grad",
+      "q": 51456,
+      "secs": 3.58,
+      "fit_secs": 46.57
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "botorchgp:perturb",
+      "q": 4352,
+      "secs": 0.18,
+      "fit_secs": 46.57
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "botorchgp:cma",
+      "q": 648,
+      "secs": 0.05,
+      "fit_secs": 46.57
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "svgp:grad",
+      "q": 51456,
+      "secs": 0.56,
+      "fit_secs": 5.08
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "svgp:perturb",
+      "q": 4352,
+      "secs": 0.03,
+      "fit_secs": 5.08
+    },
+    {
+      "task": "Superconductor",
+      "seed": 1,
+      "cell": "svgp:cma",
+      "q": 6530,
+      "secs": 0.97,
+      "fit_secs": 5.08
+    }
+  ]
+}
