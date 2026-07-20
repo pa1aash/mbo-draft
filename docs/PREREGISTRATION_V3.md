@@ -101,3 +101,61 @@ silently accepted.
   outside the pre-registered decision rules, that is reported as such rather than
   reinterpreted.
 - `docs/SESSION_STATE.md` updated after each unit.
+
+---
+
+## 0C — Far-field functional form (FF1/FF2) and member independence (MI1)
+
+Six controls have eliminated sigma, width, budget, held-out accuracy, mean smoothness and
+premise coverage. What survives is a diagnosis: what differs is WHICH off-distribution
+maximizers a surrogate's mean admits. 0B tried to turn that into a causal claim by
+manipulating the GP's prior-mean reversion. 0C attacks the same target from the other side —
+the FUNCTIONAL FORM the two mean-functions take outside the training support.
+
+**Grounds.** Xu et al. (arXiv:2009.11848), Theorem 1: a ReLU MLP converges to a LINEAR
+function along any ray from the origin outside the training support, at rate O(1/t). If that
+holds here the diagnosis becomes mechanical rather than descriptive — an ensemble mean growing
+linearly without bound admits unbounded maximizers at the box boundary; a GP mean reverting
+toward its prior constant does not.
+
+**Compatibility with Elimination 2.** Elimination 2 cites NTK to argue width does not matter.
+0C is not inconsistent with it. The two asymptotics are in DIFFERENT variables: Xu is
+asymptotic in far-field DISTANCE t along a ray at fixed width; Elimination 2 is asymptotic in
+WIDTH at fixed input. A network can be width-insensitive and still linearly extrapolating.
+This is recorded here so the pairing is not later read as a contradiction.
+
+**Stated assumption.** The FF1/FF2 verdicts presuppose that the w=96 ensemble is approximately
+in the NTK regime, which is what licenses the transfer of Xu's result. Where the artifacts
+permit, this is checked directly by measuring ray-linearity AT the training boundary and
+reporting it; where they do not, it is carried as a named assumption and not as a finding.
+
+| ID | Prediction |
+|---|---|
+| **FF1** | Fitting ensemble-mean and GP-mean against a linear function along rays from the data centroid, the ENSEMBLE mean is well-fit by a linear ray-function in the far field (high R2) while the GP mean is NOT (low R2, because it reverts to its prior constant). **KILL:** if both classes are equally linear or equally non-linear far from D, the linear-extrapolation mechanism does not distinguish the classes; the paper stays a pure elimination and the diagnosis ships as a diagnosis. |
+| **FF2** | The ensemble's returned optima sit preferentially at the BOX BOUNDARY — where an unbounded-growth mean is maximized — more than the GP's do. **KILL:** equal boundary-proximity between classes -> boundary-seeking is not the mechanism. |
+| **MI1** | Pairwise prediction correlation across the K=5 ensemble members, measured AT the returned optima, is LOWER (members disagree more) where inversion occurs — member disagreement tracks the failure. **GROUNDS:** Ghasemipour et al. show shared targets can render an ensemble paradoxically optimistic, so member independence is load-bearing. **KILL:** no relation between member correlation and inversion -> independence is not the axis. |
+
+**Required inputs, fixed in advance.** Each prediction is computable only from the artifact
+listed against it. If an input is absent from `results/`, that arm is reported as
+NOT-COMPUTABLE and STOPPED. No new training run is launched to manufacture a missing input;
+manufacturing the input would make the test a fresh experiment rather than a reanalysis, and
+the pre-registered verdict would no longer be the one being tested.
+
+- FF1 requires evaluating each surrogate's posterior/ensemble mean at NEW points along rays
+  (points not in D and not among the 128 returned designs). This needs a RECONSTRUCTABLE
+  surrogate — ensemble member weights, or a GP fitted state_dict plus its standardization
+  constants.
+- FF2 requires the COORDINATES of the returned optimum x* per (task, seed, surrogate,
+  optimizer), to measure distance to the box boundary. Distance-to-D (`dhat`) is not a
+  substitute: it measures off-support-ness, not boundary-proximity, and the two come apart.
+- MI1 requires PER-MEMBER predictions at the returned optima — the K=5 individual member
+  outputs, not the collapsed ensemble mean and std.
+
+**Decision rules, fixed in advance.**
+- The binary is POSITIVE-MECHANISM iff FF1 and FF2 BOTH hold. Anything else is
+  KEEP-ELIMINATION.
+- A KEEP-ELIMINATION reached because an arm was NOT-COMPUTABLE is reported as
+  KEEP-ELIMINATION-BY-DEFAULT and explicitly distinguished from a KEEP-ELIMINATION reached
+  because a KILL condition fired on observed data. An untested mechanism is not a refuted
+  mechanism, and the write-up must not let the two read alike.
+- MI1 is independent of the binary: it neither establishes nor blocks POSITIVE-MECHANISM.
