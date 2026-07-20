@@ -51,6 +51,50 @@ This is the single most informative negative in the gap-fill wave: the SAEA comm
 best remaining bet for a kill, and its most directly-titled comparison paper does not perform the
 analysis.
 
+### Full sweep result across all three regions: NO KILL
+
+Eight primaries fetched and grepped, no verdict taken from a snippet:
+
+| Source | Region | Verdict |
+|---|---|---|
+| Kudela & Dobrovsky 2024 (arXiv:2402.16455) | SAEA | IRRELEVANT — 11 **bundled** surrogate+optimizer methods compared by Friedman/Wilcoxon on method identity, not crossed; mostly online |
+| Gorissen, Dhaene & De Turck 2009, "Evolutionary Model Type Selection for Global Surrogate Modeling" (JMLR 10) | SAEA | IRRELEVANT — the GA selects among surrogate classes but is the **fitting** mechanism, never crossed with a black-box optimizer over the design space |
+| EXPObench (Bliek et al. 2023), independently re-fetched via `pure.tue.nl` | SAEA/AutoML | IRRELEVANT — 7 bundled algorithms, not crossed. **Independently corroborates the vault's existing verdict via a different provider** |
+| Biedenkapp et al. 2017, "Efficient Parameter Importance Analysis via Ablation with Surrogates" (AAAI-17) | AutoML | IRRELEVANT — single RF surrogate; compares ablation *methods*, not surrogate × optimizer |
+| **Park, Cheon et al., "BOOST"** (arXiv:2508.02332) | AutoML | **NEAR-MISS** — the closest structural match found anywhere: crosses **kernel choice × acquisition function** with an isolating ablation (App. C.5). Fails conjunct (a) because Matérn/RBF/RQ are all one GP **model class**, and the setting is online BO with a "no-extra-query" internal step **misleadingly labelled "offline"** |
+| Mukhtar et al. 2023 (Heliyon, PMC10405017) | sim-opt | IRRELEVANT — PR vs Kriging compared but only **one** optimizer ever run; `factorial`/`main effect`/`interaction` hits are all DOE-sampling and physical-parameter homonyms |
+| Dao et al. 2025 (arXiv:2503.04181) | offline MBO | IRRELEVANT across 24,875 words — a regularizer plugin that ablates only its own hyperparameters |
+| Conformal Candidate Certification (arXiv:2606.15217) | 2026 re-check | IRRELEVANT — independently re-verified, matches the existing note |
+
+**Note on BOOST:** its "offline" label is a false friend. A grep-count sweep would flag it; reading
+it shows the term denotes an internal no-extra-query step inside an online loop, not the offline
+setting. That is a **fourth** trap of the same family as the three homonyms.
+
+### ⚠ ONE UNRESOLVED LEAD — and it has the most N6-shaped title in the entire audit
+
+**Elsayed & Lacor (2014), "Robust parameter design optimization using Kriging, RBF and RBFNN with
+gradient-based and evolutionary optimization techniques"**, *Applied Mathematics and Computation*
+236:325–344, DOI 10.1016/j.amc.2014.03.082.
+
+The title names **three surrogate classes** (Kriging, RBF, RBFNN) **and** two optimizer families
+(gradient-based, evolutionary) — the only title found in this entire audit that names both axes
+explicitly.
+
+**Primary text could not be obtained.** Every free-access route was exhausted: ScienceDirect
+direct, Unpaywall (closed, no OA location), Crossref, Semantic Scholar (abstract elided by the
+publisher), Academia.edu, ResearchGate, and the VUB repository. **Per the method constraint, the
+fetcher refused to render a verdict from secondary snippets**, which is the correct call.
+
+**The open question is precise:** whether the crossing is genuine (each surrogate run with each
+optimizer) or **sequential** (surrogates compared first, then one winner optimized two ways). A
+sequential design is not a kill; a genuine crossing with a variance decomposition would be.
+
+**This must be disclosed in the N6 verdict itself, not buried in the terminal section.** N6 is
+CONFIRMED NONE-FOUND *with one paywalled lead unresolved*, and the honest statement names it so
+the author can obtain it through institutional access in minutes. Recorded in the vault as
+`elsayed-lacor-2014-robust-parameter-design-kriging-rbf-rbfnn-unverified` with every access
+attempt logged.
+
 ---
 
 ## gap-3 (high) — N9 overturning search in its exact framing

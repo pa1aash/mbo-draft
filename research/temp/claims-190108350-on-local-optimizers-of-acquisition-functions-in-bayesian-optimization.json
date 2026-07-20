@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Convergence guarantees for Bayesian optimization (including GP-UCB) are only valid when the GLOBAL optimizer of the acquisition function is found at each round; in practice local optimizers are used instead, creating an instantaneous regret gap governed by the probability beta_g that a local optimizer collapses with the global optimizer.",
+    "stance": "neutral",
+    "stance_target": "Gap 5: candidate owner of the acquisition-stalling failure mode, touching GP-UCB directly but addressing a different sub-problem",
+    "evidence_type": "theoretical",
+    "scope_conditions": "PI, EI, and GP-UCB acquisition functions induced by Gaussian process regression; ECML-PKDD 2020",
+    "quoted_support": "\"Convergence guarantees are only valid when the global optimizer of the acquisition function is found at each round and selected as the next query point. In practice, however, local optimizers of an acquisition function are also used ... beta_g is the probability that a local optimizer of the acquisition function collapses with its global optimizer.\"",
+    "numbers": [],
+    "entities": ["Jungtaek Kim", "Seungjin Choi", "GP-UCB", "PI", "EI"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190108350-on-local-optimizers-of-acquisition-functions-in-bayesian-optimization"
+  },
+  {
+    "claim": "This paper's 'collapse' concept refers to within-round numerical fidelity of the acquisition-function optimizer (local vs. true global optimizer of the acquisition surface at a single round), not to the acquisition surface's global maximum being structurally located at previously observed data points across rounds.",
+    "stance": "refutes",
+    "stance_target": "Any implication that Kim & Choi (2020) owns the paper-under-audit's outer-loop stuck-at-the-data claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Standard online/iterative BO, no offline/frozen-dataset discussion in the paper",
+    "quoted_support": "\"Theorem 1. ... the regret difference for a local optimizer x_{t,l} at round t, |r_{t,g} - r_{t,l}| is less than epsilon_l with a probability at least 1 - delta_l ... where beta_g is the probability that a local optimizer of the acquisition function collapses with its global optimizer.\"",
+    "numbers": [],
+    "entities": ["GP-UCB", "PI", "EI"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "190108350-on-local-optimizers-of-acquisition-functions-in-bayesian-optimization"
+  }
+]

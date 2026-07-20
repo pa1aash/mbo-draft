@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Expected Improvement and its variants (EHVI, and their constrained/noisy/parallel/multi-objective forms) have acquisition values and gradients that vanish numerically (to floating-point zero) in large regions of the search space, an effect that worsens as the number of observations, dimensionality, or number of constraints grow.",
+    "stance": "neutral",
+    "stance_target": "Gap 5: candidate owner of the acquisition-stalling failure mode -- ruled out as a DIFFERENT (numerical, EI-specific) pathology",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Improvement-based acquisition functions (EI, EHVI, parallel/constrained/noisy variants), online/iterative BO with growing observation count",
+    "quoted_support": "\"EI and its variants, including for the parallel and multi-objective settings, are challenging to optimize because their acquisition values vanish numerically in many regions. This difficulty generally increases as the number of observations, dimensionality of the search space, or the number of constraints grow.\"",
+    "numbers": ["gradient of EI vanishes to <10^-10 as a function of number of randomly generated data points (per Figure 1 description)"],
+    "entities": ["Ament", "Daulton", "Eriksson", "Balandat", "Bakshy", "Expected Improvement", "LogEI", "BoTorch"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unexpected-improvements-to-expected-improvement-for-bayesian-optimization-ament"
+  },
+  {
+    "claim": "As a BO algorithm collects more data, gradient-based optimization of the acquisition function with multiple random restarts eventually degenerates into random search when gradients at all starting points are numerically zero.",
+    "stance": "neutral",
+    "stance_target": "Gap 5: distinguishes an EI-numerical degeneration story from the paper-under-audit's outer-loop stuck-at-the-data claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Gradient-based multi-start optimization of improvement-based acquisition functions in online BO",
+    "quoted_support": "\"gradient-based optimization with multiple random starting points will eventually degenerate into random search when the gradients at the starting points are numerically zero. This problem is particularly acute in high dimensions and for objectives with a large range.\"",
+    "numbers": [],
+    "entities": ["Expected Improvement"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unexpected-improvements-to-expected-improvement-for-bayesian-optimization-ament"
+  },
+  {
+    "claim": "Expected Improvement is mathematically zero exactly at any point perfectly correlated with a previous noiseless observation, and (with noiseless observations) never mathematically zero elsewhere -- the acquisition value is minimal, not maximal, at repeated/observed points, which cuts against a 'locally maximal at the data' framing for EI specifically.",
+    "stance": "refutes",
+    "stance_target": "Any implication that Ament et al. 2023 documents an acquisition function whose landscape is maximal at observed data",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Analytic EI, Gaussian posterior, noiseless observations",
+    "quoted_support": "\"Although EI is never mathematically zero under a Gaussian posterior distribution, [footnote] except at any point that is perfectly correlated with a previous noiseless observation.\"",
+    "numbers": [],
+    "entities": ["Expected Improvement"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "unexpected-improvements-to-expected-improvement-for-bayesian-optimization-ament"
+  },
+  {
+    "claim": "qEI (parallel/Monte Carlo Expected Improvement) empirically and theoretically often gets stuck in local minima of the ACQUISITION-OPTIMIZATION subproblem on the Ackley test function, and additional random restarts improve results but do not close the fundamental optimality gap.",
+    "stance": "neutral",
+    "stance_target": "Gap 5: adjacent but distinct 'gets stuck' vocabulary (acquisition-optimizer local minima, not the outer BO loop staying at the data)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Batch qEI on the synthetic Ackley function",
+    "quoted_support": "\"qEI often gets stuck in local minima for the Ackley test function, and additional random restarts often improve results but do not compensate for the fundamental optimality gap.\"",
+    "numbers": [],
+    "entities": ["qEI", "Ackley function"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "unexpected-improvements-to-expected-improvement-for-bayesian-optimization-ament"
+  }
+]
