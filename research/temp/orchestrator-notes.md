@@ -293,6 +293,24 @@ somewhere, and the first things a synthesizer cuts are the qualifications — wh
 load-bearing. If the report is 8,000 words of confident findings with the caveats trimmed, it is
 worse than a 10,000-word report that keeps them.
 
+## A curation error of mine, disclosed
+
+Draft A reported that **two of the 54 IDs I curated do not exist in the vault** — the `-4` and
+`-2` suffixed variants of the Liang npj and Ovadia notes. Draft B hit the same two. Both drafters
+handled it correctly: they read the canonical counterparts (same body, same summary) and
+disclosed the substitution rather than silently dropping the sources.
+
+**The error is mine.** My curation script extracted IDs from note frontmatter without verifying
+each resolves through `note show`. The duplicate-cluster problem the redundancy audit found
+(21 clusters, same paper fetched twice by different routes) produced sibling notes with
+numeric-suffixed IDs, and my extraction picked up suffixed variants that the CLI does not
+resolve.
+
+**Impact: nil on evidence** — the canonical notes carry identical content, and 52 of 54 resolved
+directly. **Impact on method: worth recording**, because it is the same class of defect this
+audit criticises in the paper — an artifact reference that does not resolve to what it claims to
+point at. It goes in the terminal section alongside the audit's other self-inflicted findings.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
