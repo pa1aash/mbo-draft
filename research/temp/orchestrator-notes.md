@@ -86,6 +86,46 @@ credit. So the wave is capable of returning against the brief.
 **Standing correction for later steps:** the critics in step 12 must be pointed at my
 findings, not just at the draft, with an explicit instruction to attack the ones I predicted.
 
+## The thesis that has emerged (written at end of step 2, before steps 3-9)
+
+Recording this now so later steps can attack it rather than inherit it.
+
+**The paper's evidence is sound and its scholarship is not.** Every quantitative claim I could
+check against a repo artifact reproduced — four corner η² values and CIs, Elimination 1's
+seven figures, both frozen-cell claims *to the seed* including "ten of sixteen", the inversion
+counts across three surrogate classes, the `mbo.py` line traces, the engine stamps. One
+integer recount is wrong. That is an extraordinarily clean record for a paper this
+numerically dense.
+
+Against that, **nine mandatory citation fixes**, of which two are severe:
+- `demsar2006statistical` is cited for a "more than ten datasets" threshold **that does not
+  exist in the paper**. A fabricated numeric warrant attributed to a real source.
+- `fan2024minucb` is cited three ways, all wrong, and one of them **inverts the source's
+  central theorem** — a convergence result cited as authority for a failure mode.
+- `liu2020sngp` is cited to bound a claim SNGP's own Figure 1 contradicts.
+- `li2024bnnsurrogates` — the K-range claim is simply false; they tested K=2.
+- `abe2022ensembles` — runs no K-sweep at all.
+- `melis2018sota` — one instance asked to certify a genre-wide law.
+
+**This asymmetry is the report's most useful finding**, more useful than any single fix. It
+tells the author exactly where the remaining pre-deadline hours belong: in related work and
+scoping prose, not in re-running anything. And it means none of the nine fixes threatens a
+result — every one of them can be fixed by rewriting a sentence.
+
+**The one exception, and it is not a citation problem:** the RaM Table 3 near-miss. That is a
+substantive scoping issue, because the closest crossed design in offline MBO sits inside a
+paper the submission already cites, and the submission does not mention it. N6 survives on
+three grounds, but all three have to be argued on the page.
+
+**Where I might be wrong.** The strongest counter-reading is that I am grading scholarship
+harshly because it is the easy thing to grade — citation checking is mechanical and always
+yields hits, whereas the hard question (is the decomposition *right*?) resists a literature
+audit. A reviewer who does not care about attribution would find this report beside the
+point. Mitigation: deliverable (iii) has to carry real weight, not be a coda. The Xu et al.
+extrapolation result and the budget-axis reframing are the two items that would change the
+paper rather than merely correct it, and they should be ranked above the citation fixes in
+the "stronger paper" section even though the citation fixes are mandatory.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and

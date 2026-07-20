@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Safe Policy Improvement (SPI) is formally defined as a probabilistic guarantee that the trained policy's true performance is at least the baseline's performance minus a slack zeta, with probability at least 1-delta.",
+    "stance": "neutral",
+    "stance_target": "the named formal property that an offline optimizer with a returned-worse-than-baseline failure would violate",
+    "evidence_type": "theoretical",
+    "scope_conditions": "batch/offline reinforcement learning, MDP setting",
+    "quoted_support": "P(rho(pi,M) >= rho(pi_b,M) - zeta | M ~ P_mdp(.|D)) >= 1-delta, where P_mdp(.|D) is the posterior probability of the MDP parameters, 1-delta is the high probability meta-parameter, and zeta is the approximation meta-parameter.",
+    "numbers": ["1-delta", "zeta"],
+    "entities": ["Romain Laroche", "Paul Trichelair", "Remi Tachet des Combes"],
+    "time_period": "2017-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171206924-safe-policy-improvement-with-baseline-bootstrapping-2"
+  },
+  {
+    "claim": "SPIBB's Theorem 2 proves the trained policy pi_spibb is a zeta-approximate safe policy improvement over the baseline pi_b with high probability 1-delta, where zeta is given in closed form depending on the bootstrapping threshold N_wedge and the empirical value gap in the MLE MDP.",
+    "stance": "neutral",
+    "stance_target": "formal guarantee structure that names and bounds the 'return worse than baseline' failure mode",
+    "evidence_type": "theoretical",
+    "scope_conditions": "tabular MDPs with maximum-likelihood model estimation",
+    "quoted_support": "Theorem 2 (Safe policy improvement). ... pi_spibb is a zeta-approximate safe policy improvement over the baseline pi_b with high probability 1-delta.",
+    "numbers": ["N_wedge", "1-delta"],
+    "entities": ["Petrik et al. 2016"],
+    "time_period": "2017-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171206924-safe-policy-improvement-with-baseline-bootstrapping-2"
+  },
+  {
+    "claim": "SPIBB's empirical benchmark explicitly measures algorithm safety via the 1%-CVaR (worst-percentile) of normalized policy performance across ~100,000 randomly generated MDPs, because algorithms lacking an SPI guarantee return policies performing below the baseline in a nontrivial fraction of random datasets/seeds.",
+    "stance": "supports",
+    "stance_target": "the audited paper's 'inversion' finding is a specific instance of the general SPI/no-safety-guarantee failure mode measured via worst-case/tail statistics across seeds",
+    "evidence_type": "empirical",
+    "scope_conditions": "gridworld and randomly generated MDP benchmarks, tabular setting",
+    "quoted_support": "we evaluate their ability to generate policies that consistently outperform the baseline ... 1%-CVaR heatmap ... Mean & 1%-CVaR",
+    "numbers": ["100,000 repetitions", "1%-CVaR"],
+    "entities": [],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "171206924-safe-policy-improvement-with-baseline-bootstrapping-2"
+  },
+  {
+    "claim": "SPIBB is explicitly framed as a 'knows-what-it-knows' / pessimistic algorithm that falls back to the baseline action when data-count uncertainty is too high, positioning safety (never getting worse than baseline) and pessimism as the same design principle rather than separate add-ons.",
+    "stance": "neutral",
+    "stance_target": "connection between pessimism and the specific no-regression-vs-incumbent guarantee",
+    "evidence_type": "theoretical",
+    "scope_conditions": "batch RL algorithm design",
+    "quoted_support": "One can see it as a knows-what-it-knows algorithm, asking for help from the baseline when it does not know whether it knows. As such, our algorithms can be seen as pessimistic, the flip side of optimism in the face of uncertainty.",
+    "numbers": [],
+    "entities": ["Li et al. 2008"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171206924-safe-policy-improvement-with-baseline-bootstrapping-2"
+  }
+]
