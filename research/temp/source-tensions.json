@@ -1,0 +1,100 @@
+{
+  "tensions": [
+    {
+      "name": "Is a deep ensemble's variance informative about error?",
+      "side_a": {
+        "position": "Ensemble/committee disagreement tracks predictive error strongly in regression, and is the practical uncertainty tool of choice.",
+        "evidence": "Carrete et al. 2023 (J. Chem. Phys. 158:204801), neural-network force fields: 'the Spearman correlation coefficient between uncertainty and error over the validation data set is 0.90 for the committee and 0.91 for the bootstrap-aggregation ensemble.' Ovadia et al. 2019 find ensembles the most robust UQ method under dataset shift. Ghasemipour et al. (ICML 2022) treat standard init-seed-diversified ensembles as the RELIABLE reference, citing Ovadia; what fails in their study is weight-shared 'efficient' approximations.",
+        "proponents": ["230208805-deep-ensembles-vs-committees", "190602530-can-you-trust-your-models-uncertainty", "220513703-why-so-pessimistic"]
+      },
+      "side_b": {
+        "position": "Standard deep ensembles are not distance-aware and their variance is systematically miscalibrated; that deficiency is why alternative methods were invented.",
+        "evidence": "SNGP (Liu et al. 2020), Figure 1: 'deep ensembles ... are based on dense output layers that are not distance aware ... assigning low uncertainty to OOD examples even if they are far from the data.' DUQ (van Amersfoort et al.), Figure 1: 'Deep Ensembles is uncertain only along the decision boundary, and certain elsewhere.' Lakshminarayanan et al. 2017 on the MSE + empirical-variance construction: it 'consistently underestimates the true predictive uncertainty' (80% nominal interval covering ~20% of test points). D'Angelo & Fortuin (NeurIPS 2021): standard deep ensembles 'do not offer any guarantees for diversity.'",
+        "proponents": ["200610108-sngp", "200302037-duq", "161201474-lakshminarayanan-deep-ensembles", "210611642-repulsive-deep-ensembles-are-bayesian"]
+      },
+      "resolution": "Both are right and the corpus is scoped, not confused. The load-bearing variable is WHERE uncertainty is measured. In-distribution, distance and error largely coincide, and ensemble variance tracks error well (Carrete's 0.90-0.91 is validation-set, near-manifold). Far off-support, the SNGP/DUQ counterexamples bite: a dense output layer measures distance from a decision boundary, not from the data manifold, so uncertainty can be low exactly where the model is worst. This resolution matters directly for the paper under audit, which reports rho=0.07 between its ensemble's sigma and pointwise error and frames it as a corrected general measurement. It is neither general nor a correction: it is a measurement at ONE operating point, on ONE ensemble construction (MSE-trained, cross-member empirical variance) that Lakshminarayanan's own paper flags as the weaker of two options. The paper's dichotomy -- sigma is a distance signal 'not' an error signal -- is a false opposition the literature does not support, and SNGP cannot be cited to bound it because SNGP's thesis is that ensembles lack the property being attributed to them. Note the one genuinely unresolved thread: Ghasemipour treats this exact construction as reliable while Lakshminarayanan flags it, and nobody has reconciled that directly.",
+      "origin": "contradiction-graph",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Does de-confounding that raises an effect indicate validity or leakage?",
+      "side_a": {
+        "position": "An upward move after confound removal is unremarkable -- corrections go up about as often as down.",
+        "evidence": "Maassen et al. 2020 (PLOS ONE), systematic recomputation of 500 effect sizes across 33 psychology meta-analyses: 'We did not find any evidence for systematic bias in meta-analytic results; we estimated 19 pooled effect sizes to be larger than originally reported and 14 to be smaller than originally reported.' Statistical suppression is a standard, well-understood phenomenon: removing a suppressor variable increases an effect.",
+        "proponents": ["reproducibility-of-individual-effect-sizes-in-meta-analyses-in-psychology-plos-o"]
+      },
+      "side_b": {
+        "position": "In ML specifically, confound removal that amplifies an effect is a documented ARTIFACT signature, not a validity signal.",
+        "evidence": "Hamdan et al. 2022 (arXiv:2210.09232), abstract: 'this common approach to confound removal biases ML models, leading to misleading results. Specifically, this common deconfounding approach can leak information such that what are null or moderate effects become amplified to near-perfect prediction when nonlinear ML approaches are subsequently applied.' Demonstrated concretely on clinical data. Against this, the canonical ML reality-check audits (Melis, Ferrari Dacrema, Musgrave, Lucic, Recht) all move the claimed advantage DOWN.",
+        "proponents": ["221009232-confound-leakage", "melis2018-state-of-the-art-evaluation-neural-lm-fulltext", "171110337-lucic-gans", "190706902-ferraridacrema", "200308505-musgrave"]
+      },
+      "resolution": "Side B carries more weight for a paper making an ML claim, but the resolution is a burden-shift rather than a verdict. Maassen establishes that upward corrections are not intrinsically surprising in empirical science, which defeats the rhetorical framing that an increase is anomalous -- and the paper under audit already half-concedes this ('Nor is the direction statistically surprising'). What Maassen does NOT do is transfer to ML benchmark auditing, where the only studied instance of the exact directional signature is diagnosed by its own authors as leakage. So the paper's narrow scalar claim survives -- nobody found an ML reality-check reporting a corrected variance-explained statistic above its published value -- while acquiring a new obligation: affirmatively rule out leakage. It can, cheaply and convincingly, because its two corrections are a target rescaling and a candidate-selection rule, neither of which regresses a confound out of features, which is the mechanism Hamdan's leakage requires. That argument is currently nowhere on the page, and a reviewer who knows Hamdan will supply the leakage explanation for free if the paper does not pre-empt it.",
+      "origin": "contradiction-graph",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Min-max normalization: field convention or known-broken instrument?",
+      "side_a": {
+        "position": "Per-task min-max normalization to the dataset's own range is the established convention for aggregating scores across heterogeneous benchmark tasks.",
+        "evidence": "Design-Bench (Trabucco et al. 2022) adopts it as the benchmark's scoring convention, which is why the paper under audit inherits it. Its lineage runs to Bellemare et al. 2013 (ALE), where human-normalized scoring was introduced to make heterogeneous games comparable. Adoption is near-universal in the offline-MBO and RL-benchmark literatures.",
+        "proponents": ["220208450-design-bench", "bellemare2013-ale"]
+      },
+      "side_b": {
+        "position": "The exact endogenous min-max form is outlier-exploitable and its own originators documented it flipping a ranking.",
+        "evidence": "Jordan et al. 2020 ('Evaluating the Performance of Reinforcement Learning Algorithms') gives a verbatim critique of this precise functional form as outlier-exploitable. Bellemare et al. 2013 -- the origin of the technique -- documents a concrete case (Zaxxon) where the normalization flips a ranking. Agarwal et al. 2021's central thesis is that point-estimate aggregation over few tasks is unreliable and normalization choice is load-bearing. Benavoli et al. 2016 closes the obvious escape: rank statistics are pool-dependent.",
+        "proponents": ["200616958-evaluating-the-performance-of-reinforcement-learning-algorithms-2", "bellemare2013-ale", "agarwal2021-deep-rl-edge-statistical-precipice-fulltext", "should-we-really-use-post-hoc-tests-based-on-mean-ranks"]
+      },
+      "resolution": "Side B is correct on the methodology and side A is correct about practice, which is itself the finding: a technique whose originating paper documented it reversing a ranking became a field convention anyway, and the offline-MBO literature inherited it without revisiting. For the paper under audit the practical resolution is empirical rather than rhetorical -- a depth investigator recomputed eta-squared under five alternative normalizers across four corners, five beta levels and both budget levels (33 combinations plus leave-one-task-out) and EVERY combination preserved eta2_surr > eta2_opt. So direction is robust and magnitude is not, which is exactly what the paper already says about its own headline with respect to four other coordinates. The correct move is therefore not defensive: name the normalizer as a fifth operating-point coordinate, cite Jordan and Bellemare for why it deserves the status, and report the robustness sweep. Note the irony worth stating in the report -- the repository's own FLAW_LEDGER P1-2 flagged this and an abandoned script (FREE_WIN_5_3) got most of the way to the answer.",
+      "origin": "orphan-scan",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Local BO: does acquisition-driven search over-explore or get trapped?",
+      "side_a": {
+        "position": "Vanilla global Bayesian optimization OVER-explores and fails to exploit; locality must be imposed deliberately.",
+        "evidence": "TuRBO (Eriksson et al. 2019) diagnoses vanilla global BO as suffering 'an overemphasized exploration that results from global acquisition' and 'a failure to exploit promising areas', and imposes explicit trust regions borrowed from stochastic-optimization TR methods. Full-text grep: 'trapped'=0, 'greedy'=0.",
+        "proponents": ["191001739-turbo"]
+      },
+      "side_b": {
+        "position": "A confidence-bound acquisition can be locally maximal at the data, so the optimizer never leaves -- the opposite failure.",
+        "evidence": "The paper under audit's own frozen cells: on TF-Bind-8, three exact-GP cells return exactly 1.0 on all 16 seeds with zero variance in every corner; on Ant, two GP cells return the bit-identical constant 1.5287419557571411 across all 16 seeds, on a continuous task with no argmax decode. Fan et al. 2024 sits with neither side: it PROPOSES minimizing UCB as a local-search strategy and its Theorem 1 proves CONVERGENCE to a local optimum, under an increasing beta schedule and continual active resampling. Full-text grep of Fan: 0 hits for 'offline', 'LCB', 'stuck', 'paralysis'.",
+        "proponents": ["paper-under-audit-frozen-cells", "240515285-minimizing-ucb", "210611899-gibo"]
+      },
+      "resolution": "Nobody in the literature owns the trapped-at-the-data failure mode, and the paper under audit should stop trying to borrow an owner. TuRBO diagnoses the opposite pathology; Fan proves convergence under conditions a static offline dataset structurally cannot meet (continual active resampling is unavailable when there are no further oracle queries); GIBO's exploitation step involves no confidence bound at all. The correct resolution is that the ONLINE local-BO literature has studied over-exploration because that is the failure mode that appears when you can keep querying, and the OFFLINE setting exhibits the mirror-image failure because you cannot. That is a genuine gap and the paper's frozen-cell evidence is strong enough to claim it outright -- bit-identical constants across 16 seeds in two GP classes on a continuous task is not a subtle result. Citing fan2024minucb for it is a mandatory fix in three separate places, and the fix costs the paper nothing because its own evidence is stronger than the borrowed authority.",
+      "origin": "comparisons",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Is pessimism the source of offline gains, or an amplifier of base-model quality?",
+      "side_a": {
+        "position": "Pessimism is the load-bearing principle: a valid lower bound prevents the optimizer exploiting model error, provably.",
+        "evidence": "Jin, Yang & Wang (PEVI, ICML 2021) decompose offline-RL suboptimality into intrinsic uncertainty, spurious correlation and optimization error, and prove pessimism eliminates spurious correlation and is minimax-optimal. This is the theoretical foundation the conservative-surrogate lineage rests on.",
+        "proponents": ["201215085-is-pessimism-provably-efficient-for-offline-rl-2"]
+      },
+      "side_b": {
+        "position": "Empirically the base model carries most of the advantage, and pessimism implemented through insufficiently independent ensemble members can invert into optimism.",
+        "evidence": "Ghasemipour, Gu & Nachum (ICML 2022) prove that shared pessimistic Bellman targets across ensemble members can render an ensemble PARADOXICALLY OPTIMISTIC; member independence is the load-bearing condition. Fujimoto & Gu (TD3+BC) show RL alone is insufficient without the behaviour-cloning term, with performance robust across a broad alpha range -- the same base-versus-regularisation decomposition. The paper under audit's own beta=0 control: 61% of the GP advantage survives with pessimism removed entirely (0.319 [0.196,0.460] vs 0.525 [0.406,0.614]), with a significant increment of 0.203 [0.007,0.396], p=0.020.",
+        "proponents": ["220513703-why-so-pessimistic", "210606860-a-minimalist-approach-to-offline-reinforcement-learning-2", "paper-under-audit-elimination-1"]
+      },
+      "resolution": "The tension is real but the sides are answering different questions, and separating them is what the paper under audit needs. PEVI establishes that pessimism is SUFFICIENT for a guarantee; it contains no empirical base-versus-conservatism ablation, so it cannot speak to attribution. Side B's three independent decompositions all point the same way: conservatism amplifies rather than creates. The paper's own 61%-survives-at-beta-zero result is a fourth instance and it currently cites no precedent for the shape of that finding, which TD3+BC supplies cheaply. Ghasemipour is the entry that matters most, and not for the citation it is currently attached to: it supplies a candidate POSITIVE MECHANISM for the paper's inversion result -- if members are insufficiently independent, the LCB's intended pessimism can inverting into effective optimism, which is exactly a surrogate ranking its own inventions above real data. None of the paper's seven eliminations rules this out, and it is testable on stored per-member predictions.",
+      "origin": "contradiction-graph",
+      "decision_relevance": "high"
+    },
+    {
+      "name": "Landscape-driven surrogate selection: mature method or unresolved thread?",
+      "side_a": {
+        "position": "Landscape-feature-driven algorithm selection is a mature, validated methodology.",
+        "evidence": "The Rice (1976) framework through SATzilla to Kerschke & Trautmann's automated algorithm selection for continuous black-box optimization is a well-developed line operating at BBOB scale -- dozens of functions, many instances and dimensions, with standard ELA feature sets (flacco/pflacco).",
+        "proponents": ["kerschke-trautmann-automated-algorithm-selection", "satzilla"]
+      },
+      "side_b": {
+        "position": "It is mature for SOLVER selection and explicitly unresolved for SURROGATE selection -- and there is a measurement problem at the heart of it.",
+        "evidence": "Malan's 2021 ELA survey concludes the surrogate-selection sub-thread remains unresolved. Werth et al. 2019 report that surrogate-computed landscape features are 'more indicative of the surrogate model than the original landscape' -- a circularity that undercuts the whole approach when the object being selected is itself the instrument of measurement. Rodriguez et al. 2024, the nearest structural cousin, does surrogate switching online, per-iteration, inside a multi-objective EA, not offline and once.",
+        "proponents": ["malan-2021-ela-survey", "werth-2019", "rodriguez-2024-surrogate-switching"]
+      },
+      "resolution": "Side B is decisive and the Werth finding is the load-bearing one: if landscape features computed through a surrogate tell you more about the surrogate than about the problem, then using them to CHOOSE a surrogate is close to circular. That is a genuine methodological obstacle, not a gap awaiting effort, and it explains why the mature solver-selection literature never extended here. For the paper under audit this resolves cleanly into a cheap negative worth reporting: a depth investigator tested dimension, textbook multimodality and separability against the paper's own per-task gaps and found correlations indistinguishable from zero (dimension rho < 0.11, p > 0.8) with modality and separability actively mis-sorting -- while the per-task gap ranking is itself highly stable across optimizers (Spearman 0.84-0.96). Reporting that closes a hostile reviewer's 'isn't this just landscape?' objection with a falsifiable computed answer rather than a hedge, and it is two or three sentences from numbers already in the supplement. The full study is a different paper at BBOB scale, and Werth suggests it would face a circularity problem the paper should not inherit.",
+      "origin": "orphan-scan",
+      "decision_relevance": "medium"
+    }
+  ]
+}
