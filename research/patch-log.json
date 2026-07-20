@@ -1,1 +1,237 @@
-{"patches": [], "escalations": [], "status": "pre-stubbed by orchestrator; the patcher is Edit-locked and cannot create files"}
+{
+  "status": "complete",
+  "draft_path": "research/notes/final_report_mbo-gauntlet-r4-adversarial-0f06f1.md",
+  "findings_total": 42,
+  "findings_applied": 42,
+  "findings_skipped": 0,
+  "findings_partial": 2,
+  "escalations_count": 0,
+  "edits_applied": 51,
+  "sources_added": ["91", "92", "93", "94", "95", "96", "97", "98", "99", "100", "101", "102"],
+  "citation_integrity": "102 cited / 102 listed. All twelve new identifiers are cited in the body before appearing in ## Sources. Dao [73] and Ghasemipour [49] retain 'venue unverified'. Choi [80] retains 'venue unverified'.",
+  "structure_check": "Five required H2 headings preserved verbatim and in order (N6 Verdict / (i) / (ii) / (iii) / What I could not verify and why), plus ## Sources. No heading levels changed. No table column counts changed. Zero AI/agent/assistant/co-authored strings.",
+  "withdrawn_claims_check": "None of the five withdrawn claims re-inflated. Conformal proposition still 'formally correct with a scoping omission'; RaM still 'incomplete not false'; 7/7 still carries its floor-effect confound (now strengthened, see P2); Griewank still the smallest lever; Yarotsky still credited and now additionally load-bearing at new RANK 8a.",
+
+  "patches": [
+    {
+      "id": "P1",
+      "severity": "critical",
+      "source": "orchestrator brief + dialectic finding 2 (research/temp/interaction-ordering-test.md)",
+      "location": "(iii) RANK 1 — the ordering sentence and reason (4)",
+      "issue": "Rank 1 asserted `surrogate > interaction > optimizer` 'without exception' on the strength of a sweep that had only verified eta2_surr > eta2_opt. The three-way ordering was never tested.",
+      "action": "Struck 'without exception'. Inserted the 12-row corner x normalizer robustness table from interaction-ordering-test.md and the precise surviving claim: the interaction exceeds the optimizer main effect in 11 of 12 combinations, by 1.1x to 71.3x, inverting only under rank normalization in the on/off corner (eta2_opt 0.075 vs eta2_inter 0.049) — the corner with the largest optimizer main effect under every normalizer. Stated what holds in all twelve: eta2_surr > eta2_opt, and eta2_surr largest. Recorded as a FALSIFIED-claim item. Reason (4) rescoped from 'cannot be dismissed as an operating-point artifact' to invariance across the four named coordinates but not the fifth. Promotion retained.",
+      "integrate_not_caveat": "yes — scoped by domain (11 of 12, named exception, named cause) rather than hedged"
+    },
+    {
+      "id": "P2",
+      "severity": "critical",
+      "source": "orchestrator brief + dialectic finding 1",
+      "location": "(iii) A. The boundary condition — opening sentence, pairing table row, closing recommendation; plus front-matter paragraph 4",
+      "issue": "The 'each survives exactly the challenge the other fails' pairing double-counts: the interaction's normalizer-immune form IS the raw-units contrast (same measurement, same seven tasks), and 'the interaction survives the floor-effect challenge' was asserted, never argued, and is plausibly backwards.",
+      "action": "Recorded as FALSIFIED with both defects named. Replaced with the narrower surviving version: the two are two views of one asymmetry, visible in both normalized and raw units, whose causal reading is unestablished because the floor-effect confound is unresolved for both halves at once. Table cell changed from 'yes — unaffected' to 'existence yes, mechanism no'. Front-matter paragraph 4 aligned so the most-read part of the report no longer states a positive the body poses as a question."
+    },
+    {
+      "id": "P3",
+      "severity": "critical",
+      "source": "orchestrator brief + dialectic finding 3 + depth finding 4",
+      "location": "N6 Verdict section D — the 'free result' paragraph",
+      "issue": "RaM's eta2 ~= 0.577 method axis was offered as independent evidence for ground (1). That axis is bundled methods, which the report's own conjunct (b) rejects as a clean factor; the two grids' axes are not commensurable.",
+      "action": "Recorded as FALSIFIED. Struck the 'independent evidence for ground (1)' inference. Retained the bare cross-grid observation. Added the complete decomposition (method 0.577 [0.134-0.958], loss 0.027 [0.0004-0.076], interaction 0.055, within 0.341) so a reader can see it sums and see the per-task instability. Added RaM Appendix E.5's exclusion fact (COMs, RoMA, IOM, BDI, ICT excluded — the crossing is opportunistic, not designed) as an independent structural point for the residual. Carried the computed-once caveat into the paragraph. Stated that ground (1) now rests on the UQ taxonomy and the estimator-family criterion alone."
+    },
+    {
+      "id": "P4",
+      "severity": "critical",
+      "source": "orchestrator brief + instruction finding 1 and 2",
+      "location": "(iii) B preamble; RANK 6 header; RANK 8 header; new RANK 8a",
+      "issue": "UNEXPLORED appeared zero times — the second drop of the same category. UNDER-EXPLAINED also unlabelled despite being substantively delivered.",
+      "action": "Label-only edits plus one new short item. RANK 6 labelled 'The UNEXPLORED finding — the paper does not attempt this analysis at all'. RANK 8 labelled 'The clearest under-explained finding'. Added a category-map sentence to the ### B preamble covering all four categories. Added RANK 8a (frozen cells / LCB paralysis) as the second under-explained item, tagged FOLD-INTO-THIS-PAPER / CHEAP, built from Yarotsky [24], Ament [87] and Kim & Choi [25] already in the report."
+    },
+    {
+      "id": "P5",
+      "severity": "major",
+      "source": "instruction finding 3",
+      "location": "(iii) new RANK 3a",
+      "issue": "The query names two under-stated candidates by name; only the budget axis was answered. 'two-strengthenings' had zero hits.",
+      "action": "Added RANK 3a answering it explicitly with the RANK 4 numbers (0.351->0.395, +0.0437, against the reported 0.367->0.405, +0.0376) and rendering a verdict — real, mildly under-framed, smaller than the budget axis — tagged FOLD-INTO-THIS-PAPER / CHEAP, subordinate."
+    },
+    {
+      "id": "P6",
+      "severity": "major",
+      "source": "instruction finding 4",
+      "location": "(iii) RANK 1a, RANK 1b, and (iii) A recommendation",
+      "issue": "Three ranked items untagged: 1a and 1b said 'Free' rather than a contract tag; (iii).A carried an untagged recommendation.",
+      "action": "RANK 1a and 1b now read `FOLD-INTO-THIS-PAPER / CHEAP` with 'free, zero computation' kept as the cost gloss. (iii).A now states explicitly that it is a boundary condition governing the ranked items rather than a ranked finding, so its untagged status is deliberate and visible."
+    },
+    {
+      "id": "P7",
+      "severity": "major",
+      "source": "instruction finding 5",
+      "location": "N6 section B (adversarial regions) and (ii) Kills",
+      "issue": "Section heading claims 'run verbatim' but the three adversarial-region queries were named by region only; (ii) cited 'fourteen verbatim query formulations' and listed none.",
+      "action": "Inserted all fourteen grow-direction query strings verbatim from research/temp/corpus-critic-results.md into (ii). For the three regions, stated explicitly that they were dispatched as region-scoped fetch-and-grep briefs rather than fixed strings and are therefore not reproducible verbatim — per the critic's own fallback instruction — and named the primary list and term set as what IS reproducible."
+    },
+    {
+      "id": "P8",
+      "severity": "major",
+      "source": "instruction finding 6",
+      "location": "(i) preamble and item M",
+      "issue": "M bundles six defects excluded from the stated count of twelve; two of them stated no inline FIX.",
+      "action": "Preamble now states the real accounting: twelve primary items (A-L) plus a cluster (M) carrying six further defects. Added imperative Fix clauses to all four previously implicit or deferred defects in M (bibliography/gao2022reward; the tie recount; the eta2 bias; the normalizer coordinate)."
+    },
+    {
+      "id": "P9",
+      "severity": "minor",
+      "source": "instruction finding 7",
+      "location": "(iii) RANK 9 table rows 2, 6, 7",
+      "issue": "Invented cost level MEDIUM; abbreviated scope tag FOLLOW-UP.",
+      "action": "Row 2 'FOLLOW-UP' -> 'FOLLOW-UP-PAPER / EXPENSIVE'. Row 6 'CHEAP-to-MEDIUM' -> 'CHEAP' with '(a day of modelling, no new runs)' moved into the description. Row 7 'FOLD-INTO-THIS-PAPER / MEDIUM' -> 'FOLLOW-UP-PAPER / EXPENSIVE', 'or state the limit and defer' retained."
+    },
+    {
+      "id": "P10",
+      "severity": "major",
+      "source": "instruction finding 8",
+      "location": "N6 section D; (iii) RANK 8, RANK 9 row 8, RANK 10; (ii) near-miss ledger",
+      "issue": "Undefined on first use: SPIBB, CVaR, MDPs, CQL, PEVI, TD3+BC, CMA-ES, ListNet, bi-Lipschitz.",
+      "action": "Added brief inline parentheticals matching the existing NTK/ELA/TOST style. No glossary section added. Roughly 45 words total."
+    },
+    {
+      "id": "P11",
+      "severity": "major",
+      "source": "depth finding 1",
+      "location": "(iii) RANK 1 'Precedent check'",
+      "issue": "The report stated the version its own interim note warns is contestable — 'no ML benchmark study reports and interprets a component-by-component interaction' — while Hutter 2014, cited as [3], has 20 grep hits for 'interaction' because fANOVA decomposes into interactions by construction.",
+      "action": "Replaced with the interim's stronger framing. Concedes up front that interaction reporting is routine in the fANOVA lineage the design descends from, cites the 20 hits in [3], adds van Rijn & Hutter's per-algorithm-in-isolation pattern, then states the residual: never between surrogate model class and search routine as two independently manipulated components. Schmidt/Choi/Steiner evidence unchanged."
+    },
+    {
+      "id": "P12",
+      "severity": "major",
+      "source": "depth findings 5, 8, 9 (the 'shows what failed, asserts what passed' pattern)",
+      "location": "(i) M inversion paragraph; (i) M presentation-gaps paragraph; (i) N code-trace row",
+      "issue": "The report showed the number that failed and asserted the numbers that passed, in a report whose front-matter thesis is 'severity to the results is NIL'.",
+      "action": "Three fixes. (a) Stated the verified ladder — ensemble 7/7, SVGP 3/7 (Branin, Rastrigin, Styblinski), exact GP 2/7 (Rastrigin, Styblinski) — before the off-by-one, and noted it independently corroborates the surrogate-axis result on a different statistic. (b) Added Elimination 1's two gaps with intervals and the z-score cross-check (0.904 / 1.473 -> 0.614 against 0.608 raw), an independent recomputation on a different scale landing within 0.006. (c) Replaced the bare 'PASS' code-trace grade with the two decisive Confound 1 lines (157-162 vs 293/379-381) and the verbatim mbo.py comment ending 'Two estimands, one column.', noting the paper's own phrase is lifted from it."
+    },
+    {
+      "id": "P13",
+      "severity": "major",
+      "source": "depth finding 3 + width finding 4",
+      "location": "(iii) RANK 1b",
+      "issue": "One corner of four reported, one CI of three, and the '2 main effects and 6 simple effects' / 'main effects can mislead' claims carried zero citation in a report about citation fidelity.",
+      "action": "Added the full four-corner simple-effects table with CIs (perturbation column 0.004-0.020 everywhere against 0.388-0.814 for the aggressive optimizers) plus the note on why the two X1-off corners have the widest intervals. Attributed both methodological claims verbatim to LibreTexts 3.4 [91] and NIST 5.4.7.1 [92]."
+    },
+    {
+      "id": "P14",
+      "severity": "major",
+      "source": "depth finding 7",
+      "location": "(i) E — new closing paragraph",
+      "issue": "Li/Rudner/Wilson predict GPs lose ground in high dimensions; this paper's measured dimension-gap Spearman is ~0. Deliverable-(i) material appearing nowhere.",
+      "action": "Added as a short second item inside (i.E), with both verbatim quotes and the three measured Spearmans (0.107 / -0.109 / 0.071), framed as a measured falsifiable refinement of a named prior expectation — the same shape as the Fannjiang reframing — with an explicit Fix."
+    },
+    {
+      "id": "P15",
+      "severity": "major",
+      "source": "depth finding 2",
+      "location": "(i) B2",
+      "issue": "The self-declared most serious miscitation paraphrased the theorem it convicts Fan with.",
+      "action": "Quoted Fan's Section 6 verbatim ('we need to iteratively increase the UCB coefficient beta_t and batch size...') and gave the rate O(sigma d^(3/2) T^(-1/2) log^(1/2) delta^(-1)). Named both offline-impossible preconditions separately."
+    },
+    {
+      "id": "P16",
+      "severity": "major",
+      "source": "depth finding 6",
+      "location": "(iii) RANK 6",
+      "issue": "'Separability fares no better' was a three-word dismissal where a quantified contrast exists, and a self-refuted alternative hypothesis was omitted.",
+      "action": "Replaced with the 10x-versus-13,600x span contrast and the point that the non-separable group holds both extremes. Added the code/mbo.py native-textbook-domain verification (Branin, Styblinski, Levy, Rastrigin, Griewank ranges named) that forecloses the flattening-reparametrization rescue. Attached pairings and p-values to the 0.84-0.96 stability range."
+    },
+    {
+      "id": "P17",
+      "severity": "major",
+      "source": "depth finding 10",
+      "location": "(iii) RANK 6 ELA claim; (iii) closing Xu-compatibility paragraph",
+      "issue": "Two interim notes attached explicit confidence downgrades to positions the draft stated flatly.",
+      "action": "ELA claim narrowed to 'in this exact offline, one-shot, GP-versus-ensemble framing' with Yu et al. 2016 named as the unread lead at the point of claim. Xu paragraph now states the undemonstrated assumption (that the width-96 ensemble is already approximately NTK-regime) and names the R-squared ray-extrapolation falsifier on existing checkpoints."
+    },
+    {
+      "id": "P18",
+      "severity": "minor",
+      "source": "depth findings 11 and 12",
+      "location": "N6 section D grounds table; (i) G",
+      "issue": "NIST cited twice as bare authority without the concession that makes ground (1) honest; the kernel-limit cluster named one caveat where two exist.",
+      "action": "Ground (1) now leads with the concession that no statistical theory adjudicates what counts as one factor, quoting NIST 5.3.2 [93], before presenting the domain precedent. Ground (2) now quotes the NIST aliasing definition so 'aliased in the strict sense' is a test rather than a label. (i.G) adds Lee 2018's own SGD-is-not-Bayes disclaimer and Jacot's 6.1 n=500-vs-n=10000 finite-width ablation."
+    },
+    {
+      "id": "P19",
+      "severity": "major",
+      "source": "dialectic findings 4, 5, 6",
+      "location": "Front matter paragraphs 2 and 3; N6 section D ground (1) row",
+      "issue": "Three front-loaded absolutes contradicted by the report's own terminal sections 300+ lines later.",
+      "action": "'not one touches a number the paper computed' -> 'no direction, interval or conclusion the paper reports is overturned', with the two precise qualifications (the tie count does not reproduce; every eta2 carries +0.0099 to +0.0184 upward bias). 'nothing needs re-running' -> bounded to deliverable (i), with the unaudited-implementation and no-experiment-reproduced condition attached where the verdict is given. Ground (1) row now states its evidentiary base — one UQ taxonomy plus the comparator's convention, criterion proposed rather than sourced, region not searched for the taxonomic question — where the verdict appears."
+    },
+    {
+      "id": "P20",
+      "severity": "major",
+      "source": "dialectic findings 7, 9, 10, 12",
+      "location": "(i) D; (iii) RANK 1; (iii) RANK 3",
+      "issue": "Ghasemipour scoped two incompatible ways; three-route convergence banked as corroboration; the Design-Bench boundary condition explained away by an untested frozen-cell mechanism; the Lucic tension inside RANK 3 left unreconciled.",
+      "action": "(i.D) Ghasemipour now carries the same offline-RL Q-ensemble scoping (i.I) applies, cross-referenced. RANK 1 convergence sentence now discounts itself — three observers reading the same conspicuous cell — and points the warrant at the four-corner intervals and the DOE argument. The frozen-cell clause demoted from explanation to hypothesis, with the TF-Bind-8/Ant-only scope and the nonzero Design-Bench eta2_opt stated as counter-evidence. RANK 3 now resolves the Lucic/COCO tension in the paper's favour but honestly: a measured instance of a named phenomenon, not novelty."
+    },
+    {
+      "id": "P21",
+      "severity": "minor",
+      "source": "dialectic finding 11",
+      "location": "(i) D 'Net:' sentence",
+      "issue": "A settled 'Net:' over a thread the vault records as genuinely unreconciled.",
+      "action": "Appended one sentence noting that the reliability of the MSE-plus-empirical-variance construction is itself unreconciled between [49] and [29], which is a further reason to scope rather than arbitrate."
+    },
+    {
+      "id": "P22",
+      "severity": "major",
+      "source": "width findings 1-5",
+      "location": "(iii) RANK 10, RANK 9 rows 8 and 9, RANK 1 and 1b, (i) M and RANK 5",
+      "issue": "Deliverable (iii) named experiments without the motivating primary the query mandates; five vault sources uncited, two of them dropped by the synthesizer from draft A line 336.",
+      "action": "RANK 10 now names Manheim & Garrabrant's Extremal Goodhart (Model Insufficiency) with its verbatim sub-case definition as the category Gao's scaling law applies [94]. RANK 9 row 9 restores the BCQ three-protocol template (final-buffer / concurrent / imitation) and the demonstrates-positively-not-by-elimination point [95]. RANK 9 row 8 names Deep Kernel Learning as the transplant arm [96] and DUE as the failure half with its verbatim 'certain even far away from the training data' [97]. RANK 1/1b cite NIST 5.4.7.1 [92] and LibreTexts 3.4 [91]. (i.M) attributes pool-dependence to Balduzzi with the redundant-task quote and the 63-Elo example, and notes Jordan's non-exploitability criterion descends from it [98]; RANK 5 notes leave-one-task-out is the paper's de facto redundancy-sensitivity analysis in that sense."
+    },
+    {
+      "id": "P23",
+      "severity": "minor",
+      "source": "width findings 6, 7, 8",
+      "location": "Terminal section A; (i) B correction paragraph; N6 section B",
+      "issue": "Montgomery self-contradiction (terminal section says unreachable while the vault holds the SAS/JMP companion excerpt); the local-BO vocabulary sweep missing Wu et al.; two verified region negatives unreported.",
+      "action": "Terminal section A narrowed rather than deleted: the official SAS/JMP companion excerpt was obtained and quotes the OFAT-cannot-detect-interactions point with attribution [102], but Montgomery's own Ch. 5 prose was not independently verified. (i.B) adds Wu et al.'s independent GIBO convergence-rate analysis, the lemma Fan's Theorem 1 builds on, with zero stalling vocabulary [99]. N6 section B adds Mukhtar (declined two available optimizers — conjunct (b) fails by the authors' own choice) [100] and Biedenkapp (one surrogate class, compares ablation methods) [101]."
+    },
+    {
+      "id": "P24",
+      "severity": "major-partial",
+      "source": "width findings 9 and 10 (bloat)",
+      "location": "(ii) Kills table RaM row; (iii) RANK 9 row 7; N6 section A; front matter",
+      "issue": "109KB against a 45-55KB norm; RaM analysis stated three times, normalizer critique twice, Rahaman scope limitation twice, and two verbatim phrase reuses between the front matter and (iii).A / N6 section A.",
+      "action": "Applied the restatement-only cuts the critic names. (ii) Kills RaM row reduced to verdict plus a pointer to N6 section D, deleting the restated four-versus-five breakdown and the eta2 pair. RANK 9 row 7 reduced to a pointer at (i.G). N6 section A's paywalled-lead justification de-duplicated against the front matter. The two 'survives exactly what the other fails' sentences differentiated (front matter now states the recommendation, (iii).A the mechanism). See conflict_resolutions for why the RANK 5 cut was not made and why no broader cuts were made."
+    }
+  ],
+
+  "conflict_resolutions": [
+    {
+      "conflict": "width findings 9 and 10 recommend consolidation (109KB vs a 45-55KB norm) while depth (12 findings) and instruction (8 findings) add material. Net effect of this patch pass is a longer report.",
+      "resolution": "Coverage and correction findings take priority over bloat findings — the width critic states this itself. Applied only the consolidations width names by location, all of which remove restatement and no evidence. Made no broader cuts. Net length increased; the added material is evidence (a 12-row robustness table, a 4-row simple-effects table, twelve source attributions, fourteen verbatim query strings) that the report previously asserted without showing, which is the exact defect three depth findings convict it of. Flagged for the polish auditor: if a length cut is required at step 15, the safe surface is restatement, not the new evidence."
+    },
+    {
+      "conflict": "width finding 3 grades the double-dissociation transplant CHEAP per the vault note; the report grades it FOLLOW-UP-PAPER / EXPENSIVE.",
+      "resolution": "Kept EXPENSIVE and stated the reason explicitly on the row rather than silently overriding: a double dissociation requires BOTH arms trained and scored to be a dissociation at all. The existing 'borderline CHEAP if scoped to one 2D task' clause is retained, which is where the vault's assessment lands."
+    },
+    {
+      "conflict": "dialectic finding 2's recommendation was to qualify the ordering claim to 'under the paper's min-max normalizer' and add the check to RANK 9 as a to-do. The orchestrator brief supplied the completed computation.",
+      "resolution": "Applied the orchestrator's version, which is strictly stronger: the check was run, so the report now reports its result (11 of 12, with the inverting combination named) rather than deferring it as future work. The finding's underlying issue is fully addressed; its literal recommendation is superseded by evidence."
+    },
+    {
+      "conflict": "instruction finding 5 demands verbatim adversarial-region query strings; research/temp/corpus-critic-results.md records the regions and the primaries but not the strings.",
+      "resolution": "Applied the finding's own stated fallback — state explicitly at that spot that the strings are not recoverable — rather than fabricating them. A report whose subject is citation fidelity cannot invent its own method record. The fourteen strings that ARE recorded verbatim were inserted in full."
+    }
+  ],
+
+  "escalations": [],
+
+  "notes_for_polish_auditor": [
+    "Do not cut the 12-row corner x normalizer table in RANK 1, the 4-row simple-effects table in RANK 1b, the fourteen query strings in (ii), or the verbatim mbo.py comment in (i.N). These are the evidence three depth findings and one instruction finding exist to add.",
+    "Three FALSIFIED-claim records (RANK 1 ordering, the (iii).A pairing, the N6 free result) are self-corrections of this audit's own positions and are logged as items (6), (7) and (8) in terminal section G. Keep the cross-reference intact.",
+    "New source identifiers run [91]-[102]. Every one is cited in the body. Dao [73], Ghasemipour [49] and Choi [80] must keep 'venue unverified'."
+  ]
+}
