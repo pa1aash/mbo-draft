@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "SNGP formally defines 'input distance awareness' (Definition 1) as a necessary condition for minimax-optimal deterministic-DNN uncertainty, and proves a GP-RBF posterior variance is a monotonic function of distance from training data.",
+    "stance": "supports",
+    "stance_target": "N4: the GP's posterior variance grows away from the data (the mechanism our paper's LCB/trust-region hypothesis depends on)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Classification / calibration / OOD detection setting; no optimization loop",
+    "quoted_support": "A classic model that satisfies the distance-awareness property is a Gaussian process (GP) with a radial basis function (RBF) kernel... Then u(x*) increases monotonically toward 1 as x* moves further away from X_IND.",
+    "numbers": ["u(x*) = var(g(x*)) = 1 - k*^T V k*", "k*_i = exp(-1/(2l) ||x* - x_i||^2)"],
+    "entities": ["Gaussian process", "RBF kernel", "SNGP", "spectral normalization"],
+    "time_period": "NeurIPS 2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi"
+  },
+  {
+    "claim": "Deep ensembles and MC Dropout are shown to lack the input-distance-awareness property: their confidence is governed by distance to the decision boundary, not distance to training data, so they assign low uncertainty to OOD points far from training data.",
+    "stance": "supports",
+    "stance_target": "N4: deep ensembles are confidently wrong far from the data",
+    "evidence_type": "empirical",
+    "scope_conditions": "2D synthetic two-ovals / two-moons classification benchmarks (Figure 1)",
+    "quoted_support": "deep ensembles (Figures 1b, 1g) and MC Dropout (Figures 1c, 1h) are based on dense output layers that are not distance aware. As a result, both methods quantify their predictive uncertainty based on the distance from the decision boundaries, assigning low uncertainty to OOD examples even if they are far from the data.",
+    "numbers": [],
+    "entities": ["deep ensembles", "MC Dropout", "DNN-GP", "SNGP"],
+    "time_period": "NeurIPS 2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi"
+  },
+  {
+    "claim": "SNGP never connects distance-aware variance growth to an acquisition function, LCB, trust region, or optimization loop; the paper is entirely a one-shot classification/calibration/OOD-detection paper.",
+    "stance": "refutes",
+    "stance_target": "N4: the implicit-trust-region-via-LCB framing is owned by SNGP",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of extracted PDF, ~14,500 words",
+    "quoted_support": "N/A -- absence-of-term finding from exhaustive grep (0 hits for 'trust region', 'LCB', 'acquisition function'; 'Bayesian optimization' appears once, as a bibliography title only, never engaged in the body)",
+    "numbers": ["0 hits: trust region", "0 hits: acquisition function", "1 hit: Bayesian optimization (bibliography title only)"],
+    "entities": [],
+    "time_period": "NeurIPS 2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi"
+  },
+  {
+    "claim": "When deep classifiers make predictions far from the support of the training set, their performance can be arbitrarily bad -- motivating the need for distance-aware uncertainty methods.",
+    "stance": "supports",
+    "stance_target": "N4: standard deep nets are unreliable/overconfident far from the data",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General motivation, citing Hein et al. 2019 and Choi et al. as upstream evidence",
+    "quoted_support": "When deep classifiers make predictions on input examples that are far from the support of the training set, their performance can be arbitrarily bad [4, 14].",
+    "numbers": [],
+    "entities": ["Hein et al. 2019"],
+    "time_period": "NeurIPS 2020",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi"
+  },
+  {
+    "claim": "SNGP has zero mentions of offline model-based optimization, design-bench, or model-based optimization applications anywhere in the text.",
+    "stance": "neutral",
+    "stance_target": "N4: does any paper tie the distance-awareness mechanism specifically to offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of extracted PDF",
+    "quoted_support": "N/A -- absence-of-term finding (0 hits: offline, model-based optim, design-bench)",
+    "numbers": ["0 hits each"],
+    "entities": [],
+    "time_period": "NeurIPS 2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "simple-and-principled-uncertainty-estimation-with-deterministic-deep-learning-vi"
+  }
+]

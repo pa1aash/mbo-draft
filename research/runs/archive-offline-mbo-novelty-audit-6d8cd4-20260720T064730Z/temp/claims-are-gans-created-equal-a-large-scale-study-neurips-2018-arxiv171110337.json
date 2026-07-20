@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Lucic et al. name computational/hyperparameter-search budget as the confound that drives apparent differences between GAN algorithms, showing that most models reach similar FID scores given enough tuning budget.",
+    "stance": "supports",
+    "stance_target": "N1 sub-claim (a): naming a single specific unreported implementation choice as individually decisive for a headline comparison",
+    "evidence_type": "empirical",
+    "scope_conditions": "Generative adversarial networks: MM GAN, NS GAN, WGAN, WGAN-GP, LS-GAN, DRAGAN, BEGAN, VAE",
+    "quoted_support": "We find that most models can reach similar scores with enough hyperparameter optimization and random restarts. This suggests that improvements can arise from a higher computational budget and tuning more than fundamental algorithmic changes.",
+    "numbers": [],
+    "entities": ["Lucic", "Kurach", "Michalski", "Gelly", "Bousquet", "NeurIPS 2018", "Google Brain"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "are-gans-created-equal-a-large-scale-study-neurips-2018-arxiv171110337"
+  },
+  {
+    "claim": "Lucic et al. give and execute a controlled protocol (shared architecture, matched hyperparameter-search budget k, bootstrap-CI result distributions instead of best-of-N) and show the published 'best algorithm' ranking dissolves once budget is controlled and honestly reported.",
+    "stance": "supports",
+    "stance_target": "N1 sub-claims (b) and (c): a protocol removing a confound and a demonstrated ranking change under control",
+    "evidence_type": "empirical",
+    "scope_conditions": "GAN comparison, FID metric, multiple datasets",
+    "quoted_support": "there is no algorithm which clearly dominates others. Secondly, for an interesting range of FIDs, a 'bad' model trained on a large budget can out perform a 'good' model trained on a small budget.",
+    "numbers": ["5000 bootstrap resamples", "100 runs", "95% confidence interval"],
+    "entities": ["Lucic", "FID"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "are-gans-created-equal-a-large-scale-study-neurips-2018-arxiv171110337"
+  },
+  {
+    "claim": "Lucic et al. isolate exactly one confound (compute/hyperparameter budget), not a taxonomy of multiple distinct confounds, and never run a variance decomposition (ANOVA/eta^2) attributing effect size to each of several confounds individually and jointly.",
+    "stance": "refutes",
+    "stance_target": "N1: the multi-confound taxonomy with eta^2 quantification is already owned by this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full paper structure and methodology section",
+    "quoted_support": "Computational budget: Depending on the budget to optimize the parameters, different algorithms can achieve the best results. We explore how the results vary depending on the budget k, where k is the number of hyperparameter settings for a fixed model.",
+    "numbers": ["budget k = number of hyperparameter settings per model"],
+    "entities": ["Lucic"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "are-gans-created-equal-a-large-scale-study-neurips-2018-arxiv171110337"
+  },
+  {
+    "claim": "Lucic et al.'s single-axis confound (compute/hyperparameter budget) is the closest analogue among the four batch papers to N1's factor (iii) optimizer tuning, but does not touch surrogate-side confounds specific to offline MBO (target scaling, candidate/oracle protocol, ensemble size K, acquisition pessimism beta).",
+    "stance": "neutral",
+    "stance_target": "residual specific to offline MBO not owned by this paper",
+    "evidence_type": "theoretical",
+    "scope_conditions": "cross-domain comparison, GAN evaluation vs offline MBO surrogate/optimizer decomposition",
+    "quoted_support": "instead of random search it might be beneficial to apply (carefully tuned) sequential Bayesian optimization which is computationally beyond the scope of this study",
+    "numbers": [],
+    "entities": ["Lucic", "offline MBO"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "are-gans-created-equal-a-large-scale-study-neurips-2018-arxiv171110337"
+  },
+  {
+    "claim": "Lucic et al. find no evidence that any tested GAN algorithm consistently outperforms the non-saturating GAN (NS-GAN) baseline once budget and variance are properly accounted for.",
+    "stance": "supports",
+    "stance_target": "N9-adjacent: reality-check papers typically find effects shrink or vanish under audit (the opposite direction from the offline MBO paper's claimed effect growth)",
+    "evidence_type": "empirical",
+    "scope_conditions": "GAN comparison across datasets and architectures",
+    "quoted_support": "we did not find evidence that any of the tested algorithms consistently outperforms the non-saturating GAN introduced in [9].",
+    "numbers": [],
+    "entities": ["Lucic", "NS-GAN"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "are-gans-created-equal-a-large-scale-study-neurips-2018-arxiv171110337"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Islam et al. (2017) attribute divergent published TRPO/DDPG baseline results directly to under-reported hyperparameters, one year before Henderson et al. (AAAI 2018) formalized the same reality-check lineage.",
+    "stance": "supports",
+    "stance_target": "N1: prior work already names unreported implementation choices as the cause of inconsistent published results, predating the specific paper Henderson AAAI 2018",
+    "evidence_type": "empirical",
+    "scope_conditions": "Continuous control RL, TRPO and DDPG, Hopper and HalfCheetah environments",
+    "quoted_support": "Our analysis shows that due to the under-reporting of hyper-parameters, different works often report different baseline results and performance measures for both TRPO and DDPG. This leads to an unfair comparison of baselines in continuous control environments.",
+    "numbers": [],
+    "entities": ["Islam", "Henderson", "Gomrokchi", "Precup", "TRPO", "DDPG", "ICML 2017 RML workshop"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "reproducibility-of-benchmarked-deep-reinforcement-learning-tasks-for-continuous"
+  },
+  {
+    "claim": "Islam et al. demonstrate difficulty of fine-tuning hyperparameters causes large variance in reported results, but the paper documents intra-algorithm variance, not a cross-algorithm ranking reversal (which algorithm wins does not flip in this paper).",
+    "stance": "refutes",
+    "stance_target": "N1 sub-claim (c): a published ranking change is shown when confounds are controlled",
+    "evidence_type": "empirical",
+    "scope_conditions": "TRPO and DDPG variance analysis",
+    "quoted_support": "We also highlight that there can be difficulty in properly fine-tuning hyper-parameter settings, leading to large variations of reported results across a wide range of works as different hyper-parameters are used.",
+    "numbers": [],
+    "entities": ["Islam", "TRPO", "DDPG"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "reproducibility-of-benchmarked-deep-reinforcement-learning-tasks-for-continuous"
+  },
+  {
+    "claim": "Islam et al. find HalfCheetah is more susceptible to hyperparameter-driven performance variation than Hopper, attributing the difference to environment dynamics stability -- an environment-dependent confound sensitivity, echoing N1's factor (iii) optimizer/tuning interacting differently by task dimensionality.",
+    "stance": "supports",
+    "stance_target": "N1 factor (iii): optimizer tuning effects are task/dimensionality dependent, not uniform",
+    "evidence_type": "empirical",
+    "scope_conditions": "Hopper vs HalfCheetah MuJoCo continuous control",
+    "quoted_support": "We find that Half-Cheetah is more susceptible to performance variations from hyper-parameter tuning, while Hopper is not. We posit that this may be due to the difference in stochasticity within the environments themselves.",
+    "numbers": [],
+    "entities": ["Islam", "HalfCheetah", "Hopper"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "reproducibility-of-benchmarked-deep-reinforcement-learning-tasks-for-continuous"
+  },
+  {
+    "claim": "Islam et al.'s recommendations are reporting guidelines (report hyperparameter ranges, trial counts, all metrics) rather than a single unified corrective protocol with a quantitative before/after decomposition of a headline effect.",
+    "stance": "refutes",
+    "stance_target": "N1: a formal protocol-plus-eta^2-decomposition shape is owned by this precursor paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Discussion and Conclusion section",
+    "quoted_support": "we provide the aforementioned recommendations in reporting implementation details",
+    "numbers": [],
+    "entities": ["Islam"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "reproducibility-of-benchmarked-deep-reinforcement-learning-tasks-for-continuous"
+  }
+]

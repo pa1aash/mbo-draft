@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Gundersen & Kjensmo define three degrees of reproducibility (R1 experiment-reproducible, R2 method+data-reproducible, R3 method-only-reproducible) that explicitly separate hardware/implementation noise from AI-method signal.",
+    "stance": "neutral",
+    "stance_target": "N8: is the platform/implementation-vs-method distinction documented anywhere in the reproducibility literature?",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General AI/ML reproducibility framework, not benchmark-specific",
+    "quoted_support": "Results that are R1 reproducible require the same software and data used for conducting the experiment... Any differences can only be attributed to differences in hardware given that the ancillary software is the same.",
+    "numbers": [],
+    "entities": ["Gundersen", "Kjensmo", "AAAI 2018"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "state-of-the-art-reproducibility-in-artificial-intelligence-proceedings-of-the-a"
+  },
+  {
+    "claim": "Gundersen & Kjensmo state that differences in software and hardware could have significant impact on results because of rounding errors in floating point arithmetic, citing Hong et al. 2013 (a global atmospheric model study, not ML) as their sole evidentiary source.",
+    "stance": "supports",
+    "stance_target": "N8: is platform/implementation variance documented as capable of moving results?",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General claim, not quantified, not ML-benchmark-specific",
+    "quoted_support": "However, differences in software and hardware could have significant impact on results because of rounding errors in floating point arithmetic (Hong et al. 2013).",
+    "numbers": [],
+    "entities": ["Gundersen", "Kjensmo", "Hong et al. 2013"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "state-of-the-art-reproducibility-in-artificial-intelligence-proceedings-of-the-a"
+  },
+  {
+    "claim": "Gundersen & Kjensmo never quantify how much platform, implementation, or library-version variation moves a benchmark result, and never compare such variance to the magnitude of method differences under study.",
+    "stance": "refutes",
+    "stance_target": "N8: does prior work document 'platform/library variance moves results by the SAME ORDER as method differences under study'?",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full text grep of 6526-word AAAI-18 paper",
+    "quoted_support": "None of the papers document all of the variables. The metrics show that between 20% and 30% of the variables for each factor are documented.",
+    "numbers": ["0 hits for 'platform'", "0 hits for 'GPU'", "2 hits for 'library'/'libraries' (both generic)"],
+    "entities": ["Gundersen", "Kjensmo"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "state-of-the-art-reproducibility-in-artificial-intelligence-proceedings-of-the-a"
+  },
+  {
+    "claim": "Only 20-30% of variables required for reproducibility (R1D=0.24, R2D=0.25, R3D=0.26) are documented across a survey of 325 empirical AI papers from IJCAI/AAAI, with only R1D showing statistically significant improvement over time.",
+    "stance": "neutral",
+    "stance_target": "General state-of-reproducibility finding, background context",
+    "evidence_type": "statistical",
+    "scope_conditions": "400 papers surveyed (325 empirical) from IJCAI and AAAI conference series",
+    "quoted_support": "Only 24% of the variables required for R1D reproducibility, 25% of the variables required for R2D reproducibility and 26% of the variables required for R3D reproducibility are documented.",
+    "numbers": ["400 papers", "325 empirical papers", "R1D=0.24", "R2D=0.25", "R3D=0.26"],
+    "entities": ["Gundersen", "Kjensmo", "IJCAI", "AAAI"],
+    "time_period": "survey period through 2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "state-of-the-art-reproducibility-in-artificial-intelligence-proceedings-of-the-a"
+  }
+]

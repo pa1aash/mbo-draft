@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Infinitely wide, deep, fully-connected neural networks with i.i.d. priors over parameters are exactly equivalent to Gaussian processes.",
+    "stance": "supports",
+    "stance_target": "N5: infinite-width networks ARE Gaussian processes",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Fully-connected deep networks, i.i.d. weight/bias priors, infinite-width limit",
+    "quoted_support": "It has long been known that a single-layer fully-connected neural network with an i.i.d. prior over its parameters is equivalent to a Gaussian process (GP), in the limit of infinite network width...In this work, we derive the exact equivalence between infinitely wide deep networks and GPs.",
+    "numbers": [],
+    "entities": ["Gaussian process", "NNGP", "Neal 1994"],
+    "time_period": "ICLR 2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165"
+  },
+  {
+    "claim": "SGD-trained finite-width neural network accuracy approaches that of the corresponding NNGP as layer width increases -- an empirical, monotonic width-to-GP convergence result.",
+    "stance": "supports",
+    "stance_target": "N5 adversarial reading: finite-width nets converge toward GP-like (smooth) behavior as width grows, so a finite ensemble's departure from smooth GP behavior is a width artifact",
+    "evidence_type": "empirical",
+    "scope_conditions": "MNIST and CIFAR-10 classification, fully-connected networks, varying layer width",
+    "quoted_support": "We additionally find the performance of the best finite-width NNs, trained with a variant of SGD, approaches that of the NNGP with increasing layer width.",
+    "numbers": [],
+    "entities": ["NNGP", "SGD", "MNIST", "CIFAR-10"],
+    "time_period": "ICLR 2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165"
+  },
+  {
+    "claim": "The best-generalizing neural networks in practice are the widest, and the limit of infinite network width is not a disadvantage relative to finite-width representation learning.",
+    "stance": "supports",
+    "stance_target": "N5 adversarial reading: wider (closer to GP) is better, undercutting a jaggedness-as-intrinsic-property story",
+    "evidence_type": "empirical",
+    "scope_conditions": "CIFAR-10, 180 fully-connected 5-hidden-layer networks with varying width",
+    "quoted_support": "The similarity of the performance of the widest NN in Figure 1 with the NNGP suggests that the limit of infinite network width, which is inherent to the GP, is far from being a disadvantage. Indeed, in practice it is found that the best generalizing NNs are in fact the widest.",
+    "numbers": ["180 networks", "5 hidden layers"],
+    "entities": ["width", "generalization gap"],
+    "time_period": "ICLR 2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165"
+  },
+  {
+    "claim": "The NNGP's predictive uncertainty estimate is highly correlated with prediction error.",
+    "stance": "neutral",
+    "stance_target": "N5: whether the GP-limit posterior's uncertainty behaves well, relevant background for surrogate-quality arguments",
+    "evidence_type": "empirical",
+    "scope_conditions": "MNIST and CIFAR-10",
+    "quoted_support": "In our experiments, we observe that the NNGP uncertainty estimate is highly correlated with prediction error (Figure 3).",
+    "numbers": [],
+    "entities": ["NNGP", "uncertainty estimate"],
+    "time_period": "ICLR 2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165"
+  },
+  {
+    "claim": "Lee et al. never construct a finite ensemble of independently trained networks and measure the smoothness of its posterior mean as a function of ensemble size K or width -- the paper compares exact NNGP inference to point-estimate SGD-trained networks, not to ensembles.",
+    "stance": "neutral",
+    "stance_target": "N5/N6: scope boundary -- this paper does not test the specific ensemble-posterior-jaggedness claim",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of extracted PDF (2253 lines)",
+    "quoted_support": "N/A -- absence-of-term finding: 0 hits for 'ensemble', 0 hits for 'acquisition', 0 hits for 'surrogate', 0 hits for 'spectral'.",
+    "numbers": ["0 hits: ensemble", "0 hits: acquisition", "0 hits: surrogate", "0 hits: spectral"],
+    "entities": [],
+    "time_period": "ICLR 2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "deep-neural-networks-as-gaussian-processes-iclr-2018-arxiv171100165"
+  }
+]

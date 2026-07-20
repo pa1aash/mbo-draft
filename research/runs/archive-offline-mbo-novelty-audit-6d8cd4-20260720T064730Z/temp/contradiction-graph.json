@@ -1,0 +1,104 @@
+[
+  {
+    "cluster_id": "k-dependence-of-ranking",
+    "fight": "Does the ensemble-vs-GP surrogate-class ranking depend on ensemble size K, or is it robust to K?",
+    "side_a": {
+      "position": "The surrogate-class ranking FLIPS with K: at K=2 the ensemble's task-normalized marginal (0.95) EXCEEDS the exact GP's (0.846); the field-standard K=5 is where the ensemble is weakest (0.52→0.32→0.18 at K=3/5/10).",
+      "claims": ["our K-sweep: ensemble marginal 0.95/0.52/0.32/0.18 at K=2/3/5/10"],
+      "sources": ["repo (paper's own ablation; N2/N1(iv))"]
+    },
+    "side_b": {
+      "position": "Ensemble size is NOT a decisive hyperparameter for the surrogate comparison: rankings are robust to it.",
+      "claims": ["\"the different ensembles perform similarly across many experiments, showing the robustness of our results to this hyperparameter\" (Fig A.7)"],
+      "sources": ["a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization (Li/Rudner/Wilson, ICLR 2024)"]
+    },
+    "evidence_quality_delta": "Both empirical. L/R/W ablate K=5-vs-10 (never tested K=2, where our flip occurs); our sweep includes K=2. Scope-limited disagreement — the flip may live in the small-K regime L/R/W did not probe.",
+    "scope_overlap": "genuine disagreement at the claim level, but possibly reconcilable: L/R/W's 'robustness' is over K∈{5,10}; our flip is driven by K=2. This SHARPENS N2 (nobody reports a ranking flip) while ARMING a reviewer who cites L/R/W's robustness claim.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "smoothness-mechanism-vs-finite-width-artifact",
+    "fight": "Is the ensemble's jagged posterior mean an intrinsic surrogate-CLASS property (mechanism), or a finite-width / under-training / low-K artifact (taxonomy)?",
+    "side_a": {
+      "position": "Prior-task smoothness match is the surrogate-class axis governing the GP-ensemble gap (candidate C's thesis).",
+      "claims": ["the GP wins because its posterior mean is smooth; smoothing the ensemble should close the gap (M1)"],
+      "sources": ["repo (candidate C / MECHANISM_EXPERIMENTS.md)"]
+    },
+    "side_b": {
+      "position": "Jaggedness is a finite-width/capacity artifact, not a class property: infinite-width nets ARE Gaussian processes and finite nets are spectrally biased toward low-frequency (smooth) functions; our own K=2≫K=5 result is capacity evidence.",
+      "claims": ["infinite-width nets converge to a GP/NTK", "finite nets exhibit spectral bias toward smooth functions", "K=2 ensemble beats K=5 → capacity/averaging, not class geometry"],
+      "sources": ["jacot-ntk", "deep-neural-networks-as-gaussian-processes (Lee)", "on-the-spectral-bias-of-neural-networks (Rahaman)", "a-study-of-bayesian-neural-network-surrogates (L/R/W: '∞-width BNNs particularly promising, esp. high-dim')", "abe-ensembles (capacity)"]
+    },
+    "evidence_quality_delta": "Side B is theoretically stronger (NTK/GP equivalence is a theorem; spectral bias is broadly replicated) and is corroborated by our OWN K-sweep. Side A currently rests on unmanipulated correlation (M1/M2 not yet run per MECHANISM_EXPERIMENTS.md).",
+    "scope_overlap": "Genuine and internal: the same evidence (K-sweep) that makes N2 novel also undercuts C's mechanism framing and supports D's taxonomy framing. The draft must engage this as the central self-inflicted risk (N5).",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "sigma-mediated-vs-sigma-irrelevant",
+    "fight": "Does the GP win because its posterior VARIANCE grows away from data (σ-mediated, LCB as implicit trust region), or is σ largely irrelevant to the gap?",
+    "side_a": {
+      "position": "Distance-aware variance growth is real and standard nets/ensembles lack it — the GP's growing σ makes LCB an implicit trust region (the N4 hypothesis-at-risk).",
+      "claims": ["GP-RBF variance 'increases monotonically toward 1 as x* moves further away'", "ensembles 'assign low uncertainty to OOD examples even if far from the data'"],
+      "sources": ["simple-and-principled-uncertainty-estimation (SNGP)", "uncertainty-estimation-using-a-single-deep-deterministic (DUQ)"]
+    },
+    "side_b": {
+      "position": "σ is NOT the mediator: removing the σ term (β=0) barely moves the gap (0.51→0.47); and a GP does not automatically get variance growth (needs bi-Lipschitz features); TuRBO uses Thompson (not LCB) and treats unchecked variance growth as a problem.",
+      "claims": ["β=0 control: gap 0.51→0.47", "unconstrained deep-kernel GP is 'certain even far away from the training data' (DUE)", "TuRBO: 0 LCB hits; explicit TR counters variance-driven over-exploration"],
+      "sources": ["repo (β=0 control, being recomputed)", "on-feature-collapse-and-deep-kernel-learning (DUE)", "scalable-global-optimization-via-local-bayesian-optimization (TuRBO)"]
+    },
+    "evidence_quality_delta": "Side B has our own β=0 control + DUE's counterexample; Side A has the established distance-aware-uncertainty mechanism but no offline-MBO/LCB tie. Note the β=0 control 'has no generator in the codebase and is being recomputed' — evidence quality on side B is provisional.",
+    "scope_overlap": "Partly genuine, partly scoped: SNGP owns the general mechanism; the offline-MBO 'LCB + growing variance = implicit trust region' synthesis is NONE FOUND. Resolution shapes N4 verdict and whether C's mechanism survives on the σ side.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "optimizer-matters-vs-doesnt",
+    "fight": "Does the optimizer / search strategy matter in offline MBO (PGS premise), or is it near-irrelevant (our η²_opt=0.01)?",
+    "side_a": {
+      "position": "Offline BBO has focused on surrogates while using fixed search strategies; the SEARCH strategy is the neglected, decisive axis.",
+      "claims": ["PGS premise: search strategy is the neglected axis worth improving"],
+      "sources": ["offline-model-based-optimization-via-policy-guided-gradient-search (Chemingui, AAAI 2024)"]
+    },
+    "side_b": {
+      "position": "The optimizer main effect is 0.01 — the field has been innovating on the axis that does not matter.",
+      "claims": ["η²_optimizer = 0.01 vs η²_surrogate = 0.37/0.405"],
+      "sources": ["repo (paper headline)"]
+    },
+    "evidence_quality_delta": "Side B's η²_opt=0.01 is itself confounded per FLAW_LEDGER P0-0/P0-1 (unequal oracle budgets; a trust region closes the gradient collapse 15× on Branin) — so the reversal is 'currently unearned' until X1/X3 re-run. A three-way tension: PGS says optimizer matters; our raw number says it doesn't; our own audit says the number isn't yet identified.",
+    "scope_overlap": "Genuine — and it is the paper's rhetorical 'named belief, refuted' hook. Directly relevant to whether A/D can claim the reversal.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "audit-shrinks-vs-strengthens",
+    "fight": "When you de-confound a benchmarked comparison, does the headline effect SHRINK (reality-check norm) or can it GROW?",
+    "side_a": {
+      "position": "Auditing/de-confounding SHRINKS or vanishes the effect — the reality-check genre norm.",
+      "claims": ["tuned LSTMs overturn newer SOTA; 'effect sizes tend to be much smaller' (Melis)", "DML gains 'marginal at best' once controlled (Musgrave)", "6/7 neural recommenders lose to simple baselines (Ferrari Dacrema)", "GANs: 'no algorithm clearly dominates' (Lucic)"],
+      "sources": ["on-the-state-of-the-art-of-evaluation (Melis)", "a-metric-learning-reality-check (Musgrave)", "are-we-really-making-much-progress (Ferrari Dacrema)", "are-gans-created-equal (Lucic)"]
+    },
+    "side_b": {
+      "position": "De-confounding can GROW the effect: fixing target-scaling + candidate-protocol nets η²_surr UP from 0.37 to 0.405.",
+      "claims": ["η²_surr 0.367→0.405 after fixing confounds (i)+(ii)", "Recht: 'increased advantage over earlier models' (relative slope >1)", "Bressan: stricter spec 'came out stronger'"],
+      "sources": ["repo (our result)", "do-imagenet-classifiers-generalize (Recht, relative)", "confounds-in-failed-replications (Bressan, psychology)"]
+    },
+    "evidence_quality_delta": "Side A is the dominant, well-replicated genre pattern; Side B has our result + two PARTIAL precedents (Recht = relative not absolute; Bressan = psychology, no effect-size stat). No ML/CS paper shows an audited headline exceeding its published value.",
+    "scope_overlap": "Genuine genre-level tension. This is N9: the de-confounding DIRECTION is the rhetorical asset if it is unclaimed within ML/CS (it appears to be).",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "ensemble-gain-real-vs-capacity",
+    "fight": "Are deep-ensemble advantages a genuine class benefit or a capacity effect a single larger model reproduces?",
+    "side_a": {
+      "position": "Deep ensembles give simple, scalable predictive-uncertainty and accuracy gains.",
+      "claims": ["ensembles give well-calibrated uncertainty; recommend M=5 members"],
+      "sources": ["simple-and-scalable-predictive-uncertainty-estimation (Lakshminarayanan)"]
+    },
+    "side_b": {
+      "position": "Ensemble gains are largely a capacity effect that a single larger model reproduces.",
+      "claims": ["a single larger model matches ensemble accuracy gains"],
+      "sources": ["deep-ensembles-work-but-are-they-necessary (Abe)"]
+    },
+    "evidence_quality_delta": "Both empirical; Abe is the more recent, targeted test. Neither ties to a surrogate-CLASS RANKING in BO/offline-MBO — so both stop short of N2.",
+    "scope_overlap": "Scoped: about ensemble-vs-single-net accuracy, not ensemble-vs-GP ranking. Supports the 'K/capacity is the confound' reading (N5) without owning N2.",
+    "decision_relevance": "medium"
+  }
+]

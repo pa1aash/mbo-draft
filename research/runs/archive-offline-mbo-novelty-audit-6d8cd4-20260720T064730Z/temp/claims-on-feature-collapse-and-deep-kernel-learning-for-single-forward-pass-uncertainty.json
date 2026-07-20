@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Neural networks extrapolate overconfidently and cannot express their own uncertainty; a distance-aware output function such as a GP with a stationary kernel increases uncertainty as inputs move further from training data.",
+    "stance": "supports",
+    "stance_target": "N4: standard deep nets are overconfident far from training data, and distance-awareness (GP-like variance growth) fixes it",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General motivation for single-forward-pass uncertainty methods",
+    "quoted_support": "Unfortunately, neural networks extrapolate overconfidently and are not able to express their uncertainty (Gal, 2016)... This can in principle be achieved by using a distance-aware output function, such as a Gaussian process (GP) with a stationary kernel, which increases its uncertainty as a particular input gets further away from the training data.",
+    "numbers": [],
+    "entities": ["Gal 2016", "Gaussian process", "stationary kernel"],
+    "time_period": "arXiv preprint, posted Feb 2021, v3 Mar 2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty"
+  },
+  {
+    "claim": "An unconstrained deep-kernel GP (GPDNN) is 'certain even far away from the training data' -- i.e. simply having a GP output layer does not guarantee the distance-aware variance-growth property; the feature extractor must be constrained (bi-Lipschitz / spectral normalization) for it to hold.",
+    "stance": "refutes",
+    "stance_target": "N4: a GP posterior automatically/necessarily grows variance away from the data (relevant to whether a sigma-mediated mechanism is guaranteed just because a GP is used)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Two-moons synthetic benchmark, deep kernel learning with unconstrained feature extractor (GPDNN, Bradshaw et al. 2017 architecture)",
+    "quoted_support": "In Figure 3b, we see that GPDNN, which uses a simple Feed-Forward Network as feature extractor, is certain even far away from the training data. In Figure 3c, we show DUE, which has the appropriate restrictions on the feature extractor (residual connections and spectral normalization) and obtains close to ideal uncertainty on this dataset.",
+    "numbers": [],
+    "entities": ["GPDNN", "DUE", "Bradshaw et al. 2017", "spectral normalization"],
+    "time_period": "arXiv preprint, posted Feb 2021, v3 Mar 2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty"
+  },
+  {
+    "claim": "Feature collapse -- the DKL training objective pushing far-away (OOD) inputs into the same feature-space region as training points -- is the named mechanism that breaks GP distance-awareness when composed with an unconstrained deep feature extractor.",
+    "stance": "supports",
+    "stance_target": "N4: distance-awareness is fragile and requires explicit architectural constraints, not an automatic property of GPs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Deep Kernel Learning (inducing-point GP on learned features)",
+    "quoted_support": "we show that with no constraints, the DKL objective pushes \"far-away\" data points to be mapped to the same features as those of training-set points.",
+    "numbers": [],
+    "entities": ["Deep Kernel Learning", "feature collapse", "bi-Lipschitz constraint"],
+    "time_period": "arXiv preprint, posted Feb 2021, v3 Mar 2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty"
+  },
+  {
+    "claim": "DUE has zero mentions of Bayesian optimization, acquisition functions, trust regions, or offline model-based optimization anywhere in the text.",
+    "stance": "refutes",
+    "stance_target": "N4: the implicit-trust-region-via-LCB optimization framing is owned by DUE",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of extracted PDF, ~9,575 words",
+    "quoted_support": "N/A -- absence-of-term finding from exhaustive grep (0 hits: trust region, acquisition, Bayesian optimization, offline, model-based optim, design-bench)",
+    "numbers": ["0 hits each"],
+    "entities": [],
+    "time_period": "arXiv preprint, posted Feb 2021, v3 Mar 2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "on-feature-collapse-and-deep-kernel-learning-for-single-forward-pass-uncertainty"
+  }
+]

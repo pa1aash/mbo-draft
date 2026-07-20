@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "IGNITE regularizes offline-MBO neural-network surrogates by penalizing a defined 'surrogate sharpness' measure, always reducing (never increasing) it relative to an unregularized baseline.",
+    "stance": "supports",
+    "stance_target": "N7: IGNITE establishes only the 'smooth the network' direction of smoothness manipulation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "offline model-based optimization, neural-network surrogates, NeurIPS 2024",
+    "quoted_support": "Our approach is supported by a new theoretical analysis demonstrating that reducing surrogate sharpness on the offline dataset provably reduces its generalized sharpness on unseen data.",
+    "numbers": ["91% probability of not degrading baseline performance", "79.55% probability of improving it", "9.6% peak improvement"],
+    "entities": ["IGNITE", "Manh Cuong Dao", "Trong Nghia Hoang", "NeurIPS 2024"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec"
+  },
+  {
+    "claim": "IGNITE's sharpness measure is applied only to the surrogate's prediction/output function, never to a Gaussian process kernel or posterior, and the paper contains no Gaussian process experiments at all.",
+    "stance": "refutes",
+    "stance_target": "N7: prior work has manipulated GP surrogate smoothness (roughening direction)",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep of arXiv:2503.04242, 4127 lines",
+    "quoted_support": "Instead, our sharpness measure is accessed on the surrogate prediction. Empirically, we also notice that surrogate sharpness often appears to be more effective than loss sharpness in boosting the offline optimization performance",
+    "numbers": ["0 hits for 'Gaussian process' or 'GP' in full text"],
+    "entities": ["IGNITE", "Gaussian process"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec"
+  },
+  {
+    "claim": "Forward-citation sweep of IGNITE's 8 Semantic-Scholar-tracked citing papers (2024-2026) finds none that manipulates surrogate smoothness in both directions (smoothing a network and roughening a GP) to identify smoothness as a causal axis of a surrogate-class performance gap.",
+    "stance": "refutes",
+    "stance_target": "N7: bidirectional smoothness manipulation already exists in 2025-2026 literature citing IGNITE",
+    "evidence_type": "empirical",
+    "scope_conditions": "Semantic Scholar citation graph for arXiv:2503.04242, retrieved 2026-07-18",
+    "quoted_support": "",
+    "numbers": ["8 citing papers total", "0 papers manipulating smoothness in both directions"],
+    "entities": ["IGNITE", "ROOT", "OptBias", "Kim et al. survey", "DEMO"],
+    "time_period": "2024-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec"
+  },
+  {
+    "claim": "The nearest forward citation to a GP-smoothness manipulation, ROOT (NeurIPS 2025, same author lineage as IGNITE), varies Gaussian process parameterizations only to generate synthetic ensembled training functions, not as a controlled smooth-vs-rough causal comparison against a network-smoothing arm.",
+    "stance": "refutes",
+    "stance_target": "N7: ROOT satisfies the bidirectional smoothness manipulation ask",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv:2509.16300, NeurIPS 2025",
+    "quoted_support": "These synthetic functions are constructed as the mean posterior of multiple Gaussian processes fitted with different parameterizations on the offline data, alleviating the data bottleneck.",
+    "numbers": [],
+    "entities": ["ROOT", "Manh Cuong Dao", "Trong Nghia Hoang"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec"
+  },
+  {
+    "claim": "A companion paper by the same IGNITE author group, 'Boosting Offline Optimizers with Surrogate Sensitivity' (ICML 2024), pursues the same one-directional sensitivity-reduction theme and is also neural-network-only, confirming this research lineage has not crossed into GP-surrogate smoothness manipulation.",
+    "stance": "supports",
+    "stance_target": "N7: the IGNITE/Hoang author lineage has never manipulated GP surrogate smoothness",
+    "evidence_type": "theoretical",
+    "scope_conditions": "ICML 2024, arXiv:2503.04181",
+    "quoted_support": "This development is both orthogonal and synergistic to prior research on offline optimization.",
+    "numbers": [],
+    "entities": ["Manh Cuong Dao", "Phi Le Nguyen", "Thao Nguyen Truong", "Trong Nghia Hoang", "ICML 2024"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "ignite-incorporating-surrogate-gradient-norm-to-improve-offline-optimization-tec"
+  }
+]
