@@ -363,9 +363,16 @@ contradiction the task asked to hunt for.
 > **sharing its two upper points and adding $K{=}2,3$**."
 
 **What Li/Rudner/Wilson actually did.** Figure A.7 tests ensemble size at **K = {2, 5, 10}**.
-Verified twice over — textually in the full text (16,554 words, fetched via the arXiv HTML
-rendering) and visually by rendering PDF page 28, whose legend reads "2 Models / 5 Models /
-10 Models" across 15 BO benchmarks. Their verbatim finding:
+
+**VERIFIED FIRST-HAND BY THE ORCHESTRATOR — this finding is not relay-dependent.** I fetched
+arXiv:2305.20028v2 directly (39 pages, 111,042 chars) and extracted the Figure A.7 legend
+tokens from page 28: `['2 Models', '5 Models', '10 Models']`. Independently, the batch reached
+the same result by rendering that page as an image. Corroborating grep counts on the same
+full text: `offline` = **0**, `ANOVA` = 0, `factorial` = 0, `crossed` = 0, `variance
+decomposition` = 0 — which simultaneously confirms the paper's N6 defence (L/R/W is online BO
+with no decomposition) and refutes its K-range claim.
+
+Their verbatim finding, from the Figure A.7 caption on the same page:
 
 > "We compare the behavior of ensembles with different numbers of models, and we find that
 > **the different ensembles perform similarly across many experiments, showing the robustness
