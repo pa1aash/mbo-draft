@@ -314,6 +314,40 @@ number the paper computed.
 That distinction is actionable. It says the remaining pre-deadline effort belongs in the
 related-work and scoping prose, not in re-running anything.
 
+## L2.11 — TOST verified, plus a numeric coincidence I could NOT resolve
+
+**Verified from `docs/ARTIFACT_INVENTORY.md`**, which reports the released `stats.py` output:
+> TOST bounds (`equivalence`): best `botorchgp:perturb` vs worst `ens:cma`; gap
+> **0.3762254599365316**; ci90 **[−0.10776105394391278, 0.860211973816976]**; effect_bound
+> **0.4839865138804444**; `equiv_margin_0p5 = false`, `equiv_margin_0p3 = false` —
+> **equivalence NOT established at either margin.**
+
+The supplement's entire treatment is one clause: *"Per-task Wilcoxon signed-rank tests with
+Holm correction and paired TOST equivalence tests are computed by the released `stats.py`."*
+**No bound, no interval, no verdict.** Fix already logged: report them, and cite Lakens (2017).
+
+### The coincidence — flagged, NOT asserted as a finding
+
+Two quantities in the paper sit within rounding of two TOST outputs, and they come from
+different analyses:
+
+| Paper's text | Value | Artifact quantity | Value |
+|---|---|---|---|
+| Elimination 3: *"the mean gap is still 0.375"* | 0.375 | TOST `gap` (Design-Bench, best vs worst cell) | 0.3762 |
+| Elimination 3: *"loses the optimization comparison by roughly 0.48"* | 0.48 | TOST `effect_bound` (Design-Bench) | 0.4840 |
+
+Elimination 3's figures are described as **synthetic-grid** quantities from the width/RMSE
+analysis. The TOST figures are **Design-Bench** quantities from `results_db.json`. If the two
+pairs are genuinely independent, this is a coincidence of two numbers to three significant
+figures, which is possible but notable. If instead a Design-Bench TOST figure has been
+transplanted into a synthetic-grid sentence, that is a real error in a load-bearing paragraph.
+
+**I could not resolve this**, and I am not asserting it either way. Resolving it needs the
+width-sweep artifact traced to the specific sentence, which I did not do. **It goes in the
+terminal section as an open item for the author, phrased as a question rather than a finding**
+— the author can settle it in one lookup, and an audit that has already caught two of its own
+overstatements should not manufacture a third.
+
 ## L3 — Citation-year and venue defects visible without fetching
 
 **L3a — `kim2025mbosurvey` key/prose mismatch.** The bib entry is
