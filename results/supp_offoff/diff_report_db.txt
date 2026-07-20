@@ -1,0 +1,37 @@
+================================================================================================
+tab:cov DESIGN-BENCH block   OLD (results_db.json, unstamped)  ->  NEW (stamped off_off)
+================================================================================================
+  NEW stamp: 19 fields  X1=False X3=False  n_seeds=16  python=3.9.23  torch=2.8.0+cpu
+
+  Validation - does results_db.json reproduce tab:cov as printed?
+    35/35 entries reproduce  [OK]
+
+  Task                          c_in             c_ood              qhat             cf_in            cf_ood
+  TF-Bind-8               0.92->0.92        0.71->0.71          1.7->1.7        0.90->0.90        0.70->0.70
+  TF-Bind-10              1.00->1.00       0.53->0.51*        -1.6->-1.6        0.89->0.89       0.45->0.44*
+  Superconductor          1.00->1.00        0.01->0.01       -2.0->-2.1*        0.90->0.90       0.01->0.00*
+  GFP                     0.00->0.00        0.00->0.00       88.4->67.4*        0.90->0.90       0.99->1.00*
+  UTR                     1.00->1.00        0.00->0.00       -2.5->-2.6*        0.91->0.91        0.00->0.00
+  Ant                    0.94->0.96*        0.00->0.00         1.2->0.9*        0.90->0.90        0.00->0.00
+  D'Kitty                0.51->0.53*        0.00->0.00         8.0->7.7*        0.90->0.90        0.00->0.00
+
+  entries whose PRINTED value changes: 11/35
+    TF-Bind-10      c_ood    0.53  ->  0.51
+    TF-Bind-10      cf_ood   0.45  ->  0.44
+    Superconductor  qhat     -2.0  ->  -2.1
+    Superconductor  cf_ood   0.01  ->  0.0
+    GFP             qhat     88.4  ->  67.4
+    GFP             cf_ood   0.99  ->  1.0
+    UTR             qhat     -2.5  ->  -2.6
+    Ant             c_in     0.94  ->  0.96
+    Ant             qhat     1.2  ->  0.9
+    D'Kitty         c_in     0.51  ->  0.53
+    D'Kitty         qhat     8.0  ->  7.7
+
+  Claim check - cf_ood == 0.00 exactly (DB contribution to "five of the fourteen"):
+    old: 3  ['UTR', 'Ant', "D'Kitty"]
+    new: 4  ['Superconductor', 'UTR', 'Ant', "D'Kitty"]
+
+  Negative qhat rows (feeds "on several real tasks above nominal"):
+    old: ['TF-Bind-10', 'Superconductor', 'UTR']
+    new: ['TF-Bind-10', 'Superconductor', 'UTR']
