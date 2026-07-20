@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Eta-squared is a positively biased estimator of the population effect size, with the bias remaining considerably large even at n=100 per group.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9: eta-squared is positively biased at small n",
+    "evidence_type": "statistical",
+    "scope_conditions": "One-way fixed-effect ANOVA with independent samples; Monte Carlo simulation with 1,000,000 replications per condition across six population-effect-size x variability conditions, n=10 to 100 per group",
+    "quoted_support": "\"eta2 has a considerable large positive bias, even when sample size is 100.\" \"Note that for all three effect size indices, the absolute bias becomes larger when the sample size is small.\"",
+    "numbers": ["bias(eta^2) = +0.05439 at n=10/group", "bias(eta^2) = +0.00529 at n=100/group", "bias(epsilon^2) = -0.00235 at n=10/group", "bias(omega^2) = -0.00686 at n=10/group", "1,000,000 replications per condition"],
+    "entities": ["Okada", "Kelley 1935", "Hays 1963", "Keselman 1975", "eta-squared", "epsilon-squared", "omega-squared"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "is-omega-squared-less-biased-a-comparison-of-three-major-effect-size-indices-in"
+  },
+  {
+    "claim": "Epsilon-squared and omega-squared are inferential, bias-corrected effect size indices constructed by substituting bias-corrected sample estimators for the variance component parameters that eta-squared estimates naively.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9: omega-squared/epsilon-squared as bias-corrected alternatives to eta-squared",
+    "evidence_type": "theoretical",
+    "scope_conditions": "One-way ANOVA, independent samples",
+    "quoted_support": "\"eta2 was developed as a descriptive index while epsilon2 and omega2 were intended for inferential purposes ... epsilon2 and omega2 are inferential indices which correct the bias in estimating the population effect size, eta2. Both epsilon2 and omega2 are constructed by substituting the variance component parameters of eta2 with its bias-corrected sample estimators.\"",
+    "numbers": [],
+    "entities": ["Maxwell et al. 1981", "Kelley 1935", "Hays 1963"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "is-omega-squared-less-biased-a-comparison-of-three-major-effect-size-indices-in"
+  },
+  {
+    "claim": "Contrary to the decades-old common belief that omega-squared is the least biased of the three indices, Okada's Monte Carlo study finds epsilon-squared has the least absolute bias in every sampled condition, with omega-squared's negative bias always larger in magnitude than epsilon-squared's.",
+    "stance": "neutral",
+    "stance_target": "Mandatory Fix 9's characterization of which correction is 'the' bias-corrected alternative",
+    "evidence_type": "statistical",
+    "scope_conditions": "One-way ANOVA, six simulated population-effect-size x variability conditions, n=10-100/group",
+    "quoted_support": "\"epsilon2 has the least absolute bias among the three indices, surpassing omega2 in all the conditions, in contrast with the commonly-held belief that omega2 is less biased than epsilon2 (Grissom & Kim, 2004; D. Matsumoto, et al., 2011).\"",
+    "numbers": ["|bias(epsilon^2)| < |bias(omega^2)| < |bias(eta^2)| in all conditions"],
+    "entities": ["Grissom & Kim 2004", "Matsumoto et al. 2011", "Keselman 1975"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "is-omega-squared-less-biased-a-comparison-of-three-major-effect-size-indices-in"
+  },
+  {
+    "claim": "Eta-squared's bias, while smallest in standard deviation among the three indices (making it 'efficient' in Keselman's 1975 terms), is nonetheless large enough in magnitude at small n that standard deviation alone is an insufficient quality criterion; RMSE is needed.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9's small-n bias framing",
+    "evidence_type": "statistical",
+    "scope_conditions": "One-way ANOVA Monte Carlo study",
+    "quoted_support": "\"it is important to remember that eta2 has a considerably large bias when the sample size is small, and that an estimator would have a small standard deviation even if its estimates were consistently off deviate from the true value. It is therefore insufficient to determine the quality of an estimator based only on its standard deviation.\"",
+    "numbers": [],
+    "entities": ["Keselman 1975"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "is-omega-squared-less-biased-a-comparison-of-three-major-effect-size-indices-in"
+  },
+  {
+    "claim": "None of the three sample effect-size estimators (eta-squared, epsilon-squared, omega-squared) is an unbiased estimator of the population effect size parameter, though all three converge to the same value as sample size tends to infinity.",
+    "stance": "neutral",
+    "stance_target": "Precision of the bias-correction claim (correction reduces but does not eliminate bias)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "One-way ANOVA, asymptotic and finite-sample",
+    "quoted_support": "\"it is shown that none of the three sample effect size measures (eta2, epsilon2, and omega2 ...) is an unbiased estimator of eta2 (Darlington, 1968). It is also shown that as sample size tends to infinity, eta2, epsilon2, and omega2 all converge toward the same value (Maxwell et al, 1981).\"",
+    "numbers": [],
+    "entities": ["Darlington 1968", "Maxwell et al. 1981"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "is-omega-squared-less-biased-a-comparison-of-three-major-effect-size-indices-in"
+  }
+]

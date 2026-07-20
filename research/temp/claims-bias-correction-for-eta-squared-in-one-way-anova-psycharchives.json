@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Eta-squared is not an unbiased estimate of the population effect size and is known to have positive bias that depends on sample size and population effect size, and can be substantial.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9: eta-squared is positively biased at small n",
+    "evidence_type": "theoretical",
+    "scope_conditions": "One-way ANOVA",
+    "quoted_support": "\"Despite its popularity, eta squared is not an unbiased estimate and is known to have positive bias. ... The bias of eta squared is well documented in the literature (Keselman, 1975; Okada, 2013). The bias depends on the sample size and the population effect size, and it can be substantial in some cases.\"",
+    "numbers": [],
+    "entities": ["Liu 2022", "Keselman 1975", "Okada 2013"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "bias-correction-for-eta-squared-in-one-way-anova-psycharchives"
+  },
+  {
+    "claim": "Epsilon-squared corrects eta-squared's bias using degrees-of-freedom adjustments per Kelley (1935), and omega-squared corrects it similarly per Hays (1963); both are less positively biased than eta-squared but remain non-unbiased and can underestimate.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9: omega-squared/epsilon-squared as bias-corrected alternatives, with primary attribution to Kelley 1935",
+    "evidence_type": "theoretical",
+    "scope_conditions": "One-way ANOVA",
+    "quoted_support": "\"The epsilon squared includes degrees of freedom to correct potential bias in estimating the population effect size (Kelley, 1935). ... In a similar vein, Hays (1963) derived omega squared to decrease the positive bias in eta squared. ... Although omega^2 and epsilon^2 have less positive bias than eta^2, they are not unbiased and can underestimate the population effect size.\"",
+    "numbers": [],
+    "entities": ["Kelley 1935", "Hays 1963"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "bias-correction-for-eta-squared-in-one-way-anova-psycharchives"
+  },
+  {
+    "claim": "In a worked applied example (one-way ANOVA on a real dataset), eta-squared's positive bias relative to epsilon-squared was 26.8% of the eta-squared value, and a distribution-free bootstrap bias estimate independently converged to a comparable magnitude (0.032 vs. epsilon-squared-implied 0.0354).",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9's claim that the bias can be substantial in magnitude",
+    "evidence_type": "empirical",
+    "scope_conditions": "Single applied one-way ANOVA dataset (three-group 'Time' outcome), non-normal data per the paper's own histogram check",
+    "quoted_support": "\"The percentage of the bias in eta^2 is (eta^2 - epsilon^2)/eta^2 = .268 or 26.8%. So, there is a sizable bias in the estimated eta squared.\" \"The bootstrap bias estimate converges to .0320 as the number of bootstrap replicates gradually increases.\"",
+    "numbers": ["eta^2 = 0.1321", "epsilon^2 = 0.0966", "bias = 0.0354", "26.8% relative bias", "bootstrap bias estimate = 0.0320"],
+    "entities": ["Liu 2022"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "bias-correction-for-eta-squared-in-one-way-anova-psycharchives"
+  },
+  {
+    "claim": "The three effect-size estimators follow a strict descending order eta-squared >= epsilon-squared >= omega-squared for any given dataset, and it is recommended that epsilon-squared be used in place of eta-squared.",
+    "stance": "supports",
+    "stance_target": "Mandatory Fix 9's ranking/recommendation framing",
+    "evidence_type": "theoretical",
+    "scope_conditions": "One-way ANOVA",
+    "quoted_support": "\"The three effect size estimates generally follow a descending order, eta^2 >= epsilon^2 >= omega^2. It is recommended that epsilon^2 be used in lieu of eta^2 (Okada, 2013).\"",
+    "numbers": [],
+    "entities": ["Okada 2013"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "bias-correction-for-eta-squared-in-one-way-anova-psycharchives"
+  }
+]
