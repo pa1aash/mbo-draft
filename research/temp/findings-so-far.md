@@ -497,20 +497,47 @@ is no "more than ten datasets" recommendation anywhere in the paper.** The only 
 "ten data sets" describe **Demšar's own power-simulation sampling procedure** — the setup of
 his simulation study — not a usage threshold for the Friedman test.
 
-**This is a fabricated threshold attributed to a real source.** It is the most serious
-miscitation class in the audit: not an over-read of something the source says loosely, but a
-specific numeric recommendation the source does not make.
+**VERIFIED FIRST-HAND by the orchestrator**, not via relay. I fetched the JMLR PDF (30 pages,
+103,393 chars) and grepped it directly:
 
-**Why it matters beyond the citation.** The claim is doing real work — it is the paper's stated
-justification for reporting the Design-Bench result as "no detectable difference at this power"
-rather than as equivalence. The *conclusion* is right and well-supported by the rest of the
-sentence (the paired-test power calculation, `|d_z| ≥ 1.27` for 80% power at n=7, and the
-Agarwal citation, all verified). Only the Demšar threshold is unsupported.
+| Pattern | Occurrences |
+|---|---|
+| `more than ten` | **0** |
+| `at least ten` | **0** |
+| `ten or more` | **0** |
+| `ten data sets` | 2 — **both describing Demšar's own simulation sampling** ("samples of ten data sets were randomly selected…", "1000 random selections of ten data sets") |
 
-**Fix (mandatory).** Delete "recommended for more than ten datasets" and the Demšar citation
-from that clause. The power argument stands without it: keep `|d_z| ≥ 1.27` and Agarwal. If a
-Demšar citation is wanted, cite him for what he does say — the Friedman-plus-post-hoc
-methodology itself. **The claim survives; only its false warrant has to go.**
+**This is a fabricated threshold attributed to a real source** — not an over-read of something
+stated loosely, but a specific numeric recommendation the source does not make.
+
+**And it inverts Demšar's actual rationale, which is the part that matters.** What he does
+recommend, verbatim:
+
+> "we recommend a set of simple, yet safe and robust non-parametric tests… **the Friedman test
+> with the corresponding post-hoc tests for comparison of more classifiers over multiple data
+> sets**"
+
+No dataset-count floor is attached anywhere. And his stated design context is explicitly the
+*small-n* regime:
+
+> "The nature of our problems does not give any provisions for normality and **the number of
+> data sets is usually much less than 30**."
+
+**Demšar recommends the non-parametric route precisely because n is small.** The paper cites
+him as establishing that the omnibus needs n > 10 — the opposite of his reasoning.
+
+**Fix (mandatory), and it is a net gain for the paper.** Delete "recommended for more than ten
+datasets" and the Demšar citation from that clause. Then note that the *conclusion* is
+unaffected and better supported without it:
+
+- The power limitation is real and independently established by the rest of the same sentence
+  — the paired-test calculation (`|d_z| ≥ 1.27` for 80% power at α=0.05, n=7) and Agarwal's
+  never-claim-equivalence point, both verified.
+- Demšar's recommendation, correctly read, **endorses** using Friedman at n=7 rather than
+  disqualifying it. The paper was conceding a methodological weakness it does not have.
+
+So the fix removes a false warrant *and* removes an unnecessary self-deprecation. **The claim
+survives; the paper's standing improves.**
 
 ## MANDATORY FIX 9 — η² is a biased estimator at n=7 and the paper never says so
 

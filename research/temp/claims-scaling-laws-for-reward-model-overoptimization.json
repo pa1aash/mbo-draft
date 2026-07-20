@@ -1,0 +1,50 @@
+[
+  {
+    "claim": "The audited AAAI-27 paper's bib entry for gao2022reward contains a page-range error independent of the year/key mismatch: it lists pages 10909-10934, but the true PMLR v202 pages (verified against proceedings.mlr.press/v202/gao23h.html) are 10835-10866.",
+    "stance": "neutral",
+    "stance_target": "Bibliography-accuracy audit of the audited paper's uncited entries",
+    "evidence_type": "empirical",
+    "scope_conditions": "Citation-key/venue/page verification against the canonical PMLR record",
+    "quoted_support": "PMLR record: 'Proceedings of the 40th International Conference on Machine Learning, PMLR 202:10835-10866, 2023.' BibTeX: '@InProceedings{pmlr-v202-gao23h, ... pages = {10835--10866}, year = {2023}, ...}'",
+    "numbers": [
+      "true pages 10835-10866",
+      "audited bib pages 10909-10934",
+      "ICML 2023",
+      "PMLR vol 202"
+    ],
+    "entities": [
+      "Leo Gao",
+      "John Schulman",
+      "Jacob Hilton",
+      "PMLR",
+      "ICML 2023"
+    ],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "Gao et al.'s scaling law establishes that proxy-optimization degradation curves are class-dependent (differing functional form by optimization method, and coefficients scaling with model parameter count within one architecture family) but never tests whether entirely different model architectures/classes at matched distance produce different degradation -- leaving open exactly the axis (surrogate architecture class) that the audited paper's Elimination 7 tests.",
+    "stance": "supports",
+    "stance_target": "The audited paper's Elimination-7 finding (two surrogate classes at matched distance-to-data but different true oracle loss) as a natural extension of, not a counterexample to, Gao et al.'s scaling-law framework",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Gao et al. vary only reward-model SIZE within the GPT-3 architecture family and vary optimization METHOD (RL vs BoN); they do not cross different surrogate architectures at fixed distance",
+    "quoted_support": "\"alpha_RL, beta_RL, alpha_bon and beta_bon are parameters that may depend on the number of proxy reward model parameters, the size of the proxy reward model dataset, and so on.\"",
+    "numbers": [
+      "d = sqrt(KL(pi||pi_init))",
+      "alpha/beta scale with RM parameter count"
+    ],
+    "entities": [
+      "Gao et al. 2023",
+      "reward model",
+      "audited paper Elimination 7",
+      "ensemble surrogate",
+      "GP surrogate"
+    ],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "scaling-laws-for-reward-model-overoptimization"
+  }
+]
