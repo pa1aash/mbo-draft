@@ -279,15 +279,33 @@ which is precisely the ID/OOD distinction that matters here.
 1. The framing "σ is a distance signal, **not** an error signal" cannot stand as a general
    property. **Fix: scope it to this grid** — "on our tasks, σ tracks distance more than
    error" — rather than as a correction to a general belief.
-2. **A confound the paper should check, flagged by Lakshminarayanan's own paper**
-   (arXiv:1612.01474): an ensemble trained with plain MSE using cross-member empirical
-   variance as σ *"consistently underestimates the true predictive uncertainty"* (an 80%
-   nominal interval covering ~20% of test points), whereas the NLL-trained heteroscedastic
-   variant is well calibrated. **The paper's ensemble is exactly the MSE/empirical-variance
-   construction** (supplement: "K=5 MLPs... MSE"). So ρ=0.07 may be a property of a
-   known-inferior uncertainty construction rather than of ensembles per se. **This is a live
-   alternative explanation for Elimination 1 that the paper has not eliminated** — and it is
-   cheap to test.
+2. **A confound the paper should check — stated more carefully than I first had it.**
+   Lakshminarayanan et al. (arXiv:1612.01474) report that an ensemble trained with plain MSE
+   using cross-member empirical variance as σ *"consistently underestimates the true
+   predictive uncertainty"* (an 80% nominal interval covering ~20% of test points), whereas
+   their NLL-trained heteroscedastic variant is well calibrated. **The paper's ensemble is
+   exactly the MSE/empirical-variance construction** (supplement: "K=5 MLPs… MSE").
+
+   **CORRECTION to my first framing, supplied by wave 2.** I initially generalised this into
+   "MSE-trained ensembles underestimate uncertainty", full stop. That over-reaches, and a
+   later batch caught it. Ghasemipour et al. (ICML 2022) treat standard init-seed-diversified
+   deep ensembles — *the audited paper's construction* — as the **reliable reference**, citing
+   Ovadia 2019; what fails in their study is weight-shared "efficient" ensemble
+   approximations, which the paper does not use. So the two sources are not saying the same
+   thing, and only one of them indicts this construction.
+
+   **What survives, precisely:** the MSE-vs-NLL comparison in Lakshminarayanan's own paper is
+   a real, in-scope caveat about σ *magnitude* calibration for exactly this construction; it
+   is **not** a general finding that init-seed ensembles are unreliable. Two further sources
+   add texture without settling it — Fu & Levine's NEMO (ICLR 2021, offline MBO, uncited)
+   report that bootstrap ensembles *"underestimate uncertainty and produce overconfident
+   predictions"* out-of-support, and D'Angelo & Fortuin (NeurIPS 2021) note standard deep
+   ensembles *"do not offer any guarantees for diversity"* — though their own Table 1 shows
+   standard ensembles winning OOD detection in one setup, so it is not a uniform indictment.
+
+   **Net:** ensemble construction remains a live, unexamined alternative explanation for
+   ρ=0.07, worth one paragraph of scoping — but the claim must be "this specific σ
+   construction has a known calibration caveat", not "MSE ensembles are broken."
 
 Also worth stating: the literature does **not** treat distance-awareness and error-tracking
 as mutually exclusive. SNGP explicitly ties distance-awareness to calibration. The paper's
@@ -673,11 +691,23 @@ and already in Table 2 of the paper.
 
 **Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii).
 
-**One honest caveat to carry with it.** η² for an interaction is subject to the same small-n
-upward bias as the main effects (Mandatory Fix 9), and I have not computed the bias correction
-for the interaction term specifically — only for the surrogate effect. The author should run
-the same `2·θ̂ − mean(θ*)` correction on the interaction before promoting it, and I flag in the
-terminal section that I did not.
+### The obvious objection, pre-empted — it survives bias correction
+
+η² for an interaction carries the same small-n upward bias as the main effects (Mandatory Fix
+9), so promoting the interaction without correcting it would repeat the error this audit
+raises elsewhere. **I computed the correction rather than flagging it as unchecked:**
+
+| Corner | point | bootstrap mean | bias | bias-corrected |
+|---|---|---|---|---|
+| off/off | 0.1646 | 0.1734 | +0.0089 | **0.1557** |
+| on/off | 0.1463 | 0.1585 | +0.0122 | **0.1341** |
+| off/on | 0.1521 | 0.1571 | +0.0050 | **0.1471** |
+| on/on | 0.1603 | 0.1650 | +0.0047 | **0.1556** |
+
+**The finding survives intact.** Bias-corrected, the interaction is **0.134–0.156**, still the
+second-largest effect in every corner, still an order of magnitude above the optimizer main
+effect, and still tightly stable (range 0.022). Correcting it costs the paper nothing and
+inoculates the result against the one statistical objection a reviewer would reach for.
 
 ## H5 CONFIRMED — the budget axis is an instance of a NAMED line, and the paper doesn't know it
 
@@ -896,6 +926,66 @@ law, not a counterexample.** Two surrogate classes at matched distance-to-data w
 true loss is exactly what a class-dependent degradation curve predicts, and the paper has
 5,040 instrumented optima to fit it on. **Tag: FOLD-INTO-THIS-PAPER / CHEAP** — the citation
 and framing cost two sentences; fitting the curve is the CHEAP experiment already logged above.
+
+## MANDATORY FIX 11 — `ghasemipour2022pessimistic` is an over-extended analogy
+
+**The paper's claim (Confound 4):** *"The general principle that a fixed multiplier on an
+uncalibrated interval is not comparable across model classes is owned by the interval-validity
+literature \citep{dewolf2022intervals} and **its offline-RL instance**
+\citep{ghasemipour2022pessimistic}."*
+
+**What Ghasemipour, Gu & Nachum actually do.** Their entire scope is **one** surrogate class
+(Q-ensembles). Their axis of comparison is an *internal training-procedure* choice — shared
+versus independent Bellman targets, and full versus weight-shared "efficient" ensembles. **They
+never compare across distinct model families**, so they are not an instance of a
+*cross-model-class* incomparability principle.
+
+Their actual finding is **stronger and different in kind**: shared targets can flip the LCB's
+**sign** — pessimism becomes optimism — rather than merely rescaling an interval.
+
+**Fix.** Either drop the "offline-RL instance" framing, or restate it accurately: *a
+training-procedure choice within one surrogate class can invalidate, not merely miscalibrate,
+nominal pessimism.* **The accurate version is more useful to the paper than the inaccurate
+one** — it is the same source that supplies the candidate positive mechanism for the inversion
+result (see the under-explained section), and stating what it really shows sets that up.
+
+## VERIFIED CLEAN — `dewolf2022intervals` is correctly and narrowly cited
+
+Fetched fresh (Dewolf, De Baets & Waegeman, *Artificial Intelligence Review* 55:577–613, 2022;
+23,271 words). Their central empirical finding — uncalibrated methods across four regression-UQ
+families do **not** deliver matched effective coverage at a shared nominal level (*"the
+uncalibrated models do not approximately saturate the validity constraint… either underestimate
+the uncertainty or produce overconservative prediction intervals"*) — **genuinely supports the
+general principle the paper cedes to it.**
+
+Grep confirms **0 hits** for `acquisition`, `Bayesian optimization`, `pessimis`, `lower
+confidence bound` — the source never enters acquisition-function territory, so the paper's
+claim to the offline-MBO acquisition-comparison application as its own residual is correctly
+scoped. **No fix needed.** This closes one of the two coverage gaps from step 2.
+
+## Deliverable (iii) — the paper already computed a TOST bound and does not report it
+
+**Wave 2's confirmed negative, plus a finding inside it.** There is no ML-benchmark-specific
+equivalence-testing literature — OpenAlex and arXiv searches for equivalence/TOST/non-inferiority
+in ML benchmarking return only clinical hits. That closes the thread cleanly and confirms wave
+1's negative.
+
+**But `docs/ARTIFACT_INVENTORY.md` shows the paper's own `stats.py` already computed a TOST
+bound**: gap ≈ 0.376, 90% CI [−0.108, 0.860], effect bound ≈ 0.484 — **not equivalent at either
+a 0.5 or a 0.3 margin.** The supplement currently says only that TOST tests "are computed",
+without stating the bound or the verdict. And **Lakens (2017)**, the standard reference, which
+covers paired-means TOST with Cohen's *d_z* — exactly this design — is **not in the
+bibliography.**
+
+**Why this matters.** The paper is scrupulous about never claiming equivalence on Design-Bench,
+and correctly says a failure to reject is not a demonstration of absence. **It has the actual
+equivalence test in hand, and it is informative:** the data are *not* equivalent at either
+margin, which is a positive statement about what the null does and does not license — stronger
+than the disclaimer currently in its place. Lakens's own caution applies and should travel with
+it: *"Rejecting small effects in an equivalence test requires large samples."*
+
+**Fix: report the computed TOST bound and verdict in the supplement, and cite Lakens (2017).**
+Zero new computation. **Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
 
 ## VERIFIED CLEAN — Shahriari and Chemingui (batch 7)
 
