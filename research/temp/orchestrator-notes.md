@@ -246,6 +246,53 @@ grading** on the two genuinely serious items (the Demšar fabrication, the Fan i
   ranked section must stay honest that the strongest candidate (the raw-units attenuation) has an
   unresolved confound.
 
+## What the step-12 critics must be pointed at (written while the synthesizer runs)
+
+The default critic brief attacks the draft. That is not enough here, because the draft's most
+likely failure mode is **inheriting my errors**, not making new ones. I predicted four of four
+early findings correctly, which I flagged at the time as a warning sign rather than a comfort.
+The critics must be pointed at *my* positions, with an explicit instruction to attack the ones I
+was most confident about.
+
+### Specific things to attack, ranked
+
+1. **The five withdrawn claims — check they stayed withdrawn.** The synthesis brief forbids
+   re-inflating them, and a re-inflation is the single most likely defect because the withdrawn
+   versions are more dramatic. Check specifically: the conformal proposition is described as a
+   *scoping omission*, not a missing hypothesis; RaM is *incomplete*, not false; the 7/7
+   attenuation carries its floor-effect confound; Griewank is named as the *smallest* lever;
+   Yarotsky is credited as closest prior art for acquisition-stalling.
+
+2. **The interaction finding — is it over-promoted?** Three independent routes converged on it,
+   which is exactly the condition under which I would over-weight something. It is
+   synthetic-grid-specific (Design-Bench 0.006–0.041), rides on min–max, and survives the
+   floor-effect challenge only because it is a different quantity from the raw-units analysis.
+   A critic should test whether the report's enthusiasm exceeds that evidence.
+
+3. **The severity split — is it a dodge?** I instructed the synthesizer to report both "high to
+   reader trust" and "nil to results". A hostile reading is that this lets the report have it
+   both ways. Test whether the split is doing analytical work or providing cover.
+
+4. **N6's three grounds — is the residual gerrymandered?** One ground was falsified on contact.
+   The other two now carry all the weight, and one of them (loss type ≠ model class) rests on a
+   single domain citation (Abdar 2021) plus an η² I computed once from RaM's table without a
+   second implementation. That is thinner than the confident verdict suggests.
+
+5. **Citation count discipline.** The report recommends adding roughly fifteen citations. Every
+   one needs an identifier, and the two venue-unverified ones (Dao, Ghasemipour) must be marked.
+   A report about citation fidelity that ships a bad citation is self-refuting.
+
+6. **Did the passes survive?** Constraint 4 requires reporting Shahriari, Chemingui, Dewolf and
+   the three year traps as passing. If the synthesizer dropped them for length, the severity
+   grading loses its calibration and the report reads as an indictment.
+
+### The failure mode I most expect
+
+**Length.** Inputs were 11k–15.6k words against a 7–8k target. The compression has to come from
+somewhere, and the first things a synthesizer cuts are the qualifications — which here are
+load-bearing. If the report is 8,000 words of confident findings with the caveats trimmed, it is
+worse than a 10,000-word report that keeps them.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
