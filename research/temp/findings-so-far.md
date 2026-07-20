@@ -45,19 +45,39 @@ and %Gain, zero ANOVA or variance-decomposition language.
    re-checked rather than trusted** — the instruction to treat NOVELTY_V3 as prior rather
    than fact paid for itself here.
 
-**The residual survives on THREE grounds, not one — and none of them is currently on the page.**
+**THE THREE GROUNDS, AFTER DEPTH INVESTIGATION — one is FALSIFIED, two survive with new support.**
 
-| Ground | Why RaM Table 3 is not a kill |
+**Locus 1 re-fetched RaM's full text including Appendix E.5 and tested each ground. Verdict:
+DEFENSIBLE-BUT-MUST-BE-ARGUED. My ground (2) was wrong and is withdrawn.**
+
+| Ground | Status after investigation |
 |---|---|
-| **Loss type ≠ model class** | Table 3 swaps the surrogate *training objective* (MSE vs ListNet). N6 is about surrogate *model class* (GP posterior vs ensemble disagreement). A loss swap inside one model family is not a class comparison. |
-| **Bundled methods ≠ an optimizer factor** | The nine are whole *methods* — BO-qEI, CMA-ES, REINFORCE, Grad. Ascent, CbAS, MINs, Tri-Mentoring, PGS, Match-OPT. CbAS is generative, MINs is inverse modelling, PGS is policy search. These bundle a search routine with a modelling strategy; they are not nine settings of a clean optimizer factor. The paper's own grid deliberately isolates three *numerical search routines* against one shared protocol. |
-| **Descriptive reporting** | Score±std and %Gain per cell. Zero ANOVA, zero variance decomposition (0 grep hits). |
+| **(1) Loss type ≠ model class** | **SURVIVES, now with empirical + domain support.** The investigator computed η² directly from RaM's own published Table 3 (mean±std, N=8 seeds/cell): the **loss axis explains η²≈0.027 against the method/optimizer axis's η²≈0.577** — the near-mirror-opposite of the audited paper's own pattern. That is empirical evidence that training-objective and model-class behave as genuinely different *kinds* of factor, not merely different labels. Domain citation found: Abdar et al. 2021's UQ survey catalogues method-family and loss-function as **orthogonal, separately-tabulated axes**. |
+| **(2) Bundled methods ≠ a clean optimizer factor** | **FALSIFIED AS STATED — my error, withdrawn.** RaM's own appendix describes **four of the nine** (BO-qEI, CMA-ES, REINFORCE, Grad. Ascent) as *"baselines that optimize a trained model"* — precisely the clean optimizer sub-grid I claimed did not exist. **A 4×2 clean crossed sub-grid is present inside RaM Table 3.** The ground survives only for the *other five*: CbAS and MINs are genuinely aliased (model-class × search-paradigm confounded), and Tri-Mentoring, PGS and Match-OPT bundle extra machinery. NIST's DOE handbook confirms confounding/aliasing is a real technical concept and that factor identification is domain judgment rather than statistical derivation. |
+| **(3) Descriptive reporting** | **SURVIVES.** Score±std and %Gain per cell; zero ANOVA, zero variance-decomposition language. Note the investigator *did* compute η² from the published table, which shows the decomposition is derivable — so this ground is about what RaM **reports**, not about what its data could support. State it that way or a reviewer will. |
 
-**Fix (mandatory, and it is a strengthening).** Name RaM Table 3 explicitly as the nearest
-crossed design in offline MBO, and state the three grounds above. This is *better* for the
-paper than silence: a residual defended on three independent grounds against the closest real
-competitor reads as rigour, whereas an unmentioned near-miss discovered by a reviewer reads as
-an omission. The reviewer most likely to find it is Tan et al.
+**Net effect on N6: it holds, but the defence is narrower and must be argued explicitly.** The
+honest statement is that RaM Table 3 contains a **4×2 crossed optimizer × training-loss grid**
+in offline MBO, reported descriptively. N6's residual is the crossed **surrogate-model-class** ×
+optimizer factorial with a two-way decomposition — and the model-class axis is what RaM does not
+vary.
+
+**Fix (mandatory), with the investigator's exact prescription:**
+1. **Relocate the `tan2025ltr` citation.** It currently sits in the "surrogate-class comparisons
+   hold the optimizer constant" bucket. Move it to a **training-objective comparisons** bucket
+   alongside `trabucco2021coms` — which is what RaM actually is.
+2. **Add a footnote naming RaM Table 3** as the nearest near-miss, with the precise **4-versus-5
+   breakdown** (four clean optimizer baselines, five bundled/aliased methods) and the observation
+   that its loss axis carries η²≈0.027 against the method axis's η²≈0.577.
+
+**This is now a stronger position than the one I started with**, because it concedes the real
+thing (a clean 4×2 sub-grid exists) and defends the actual residual (model class is never
+varied) rather than a claim that would not have survived contact with Tan et al.
+
+**Two open questions the investigator flagged and I am carrying forward:** the AutoML /
+kernel-selection literature was not searched and could contain a source treating model-class and
+training-objective as one factor, which would attack ground (1); and the η² computation from
+RaM's table has not been cross-checked by a second implementation.
 
 **NM-B — DiBO (arXiv:2603.17919, 2026), Table 2.** Crosses backbone (diffusion vs
 autoregressive) × training stage (DA / SFT / RL) in a genuine 2×3 grid. Descriptive only
@@ -930,6 +950,87 @@ decomposition is a small edit, not a new experiment.
 **Tag: still FOLD-INTO-THIS-PAPER / CHEAP**, now with a robustness check attached rather than
 a bare promotion. Promoting an unqualified 0.15 into the abstract without it would import the
 exact fragility the paper spends its Discussion warning about.
+
+### RESOLUTION of the normalization challenge (locus 2): direction robust, magnitude fragile
+
+The dialectical locus recomputed η² under **5 alternative normalizers across all 4 corners, 5
+β-levels and both budget levels — 33 combinations, plus leave-one-task-out** — directly on the
+paper's own raw result files. Verdict: **methodologically fragile, empirically robust in
+direction, and fixable at near-zero cost.**
+
+- **Every one of the 33 combinations preserves η²_surr > η²_opt.** Not most — all.
+- **The magnitudes — especially η² — are normalizer-dependent.**
+- **AND MY OWN FRAMING WAS WRONG.** I built this concern on Griewank-30D's 2,780× outlier
+  spread. The investigator's recomputation finds **Griewank is empirically the *smallest*
+  lever on the headline number, not the largest.** The task I picked as the worst case is the
+  least influential one. Recorded because I raised the alarm on it.
+
+**Two sources make this a citable engagement rather than a general worry:**
+- **Jordan et al. 2020** names **this exact endogenous min–max functional form** as
+  outlier-exploitable.
+- **Bellemare et al. 2013 (ALE)** — the origin of the technique — documents it **actually
+  flipping a ranking** (the Zaxxon case). That is the concrete failure this concern is about,
+  from the paper that introduced the normalizer.
+
+**This lands almost exactly where the paper's own framing already sits.** It writes: *"the
+direction is invariant to all four [coordinates]… Only the size of the gap moves."* The finding
+is that this sentence is **true of a fifth coordinate the paper never names** — the per-task
+normalizer. So the fix is not a retraction; it is extending an argument the paper already makes
+to one more axis, and the extension is *supportive*.
+
+**Three things the investigator surfaced that sharpen it:**
+1. **Jordan et al. 2020** ("Evaluating the Performance of RL Algorithms") gives a **verbatim
+   critique of the exact endogenous min–max functional form** the paper uses. That is a direct,
+   citable engagement rather than a general worry.
+2. **The repo already knew.** `docs/FLAW_LEDGER.md` P1-2 (threat T6) flags this, and
+   `docs/scripts_eta_robustness.py` / `FREE_WIN_5_3_eta_robustness_raw.txt` are a **prior,
+   abandoned attempt** at exactly this robustness check. The work was started and dropped.
+3. **"Just use ranks" is not a clean escape** — Benavoli shows rank statistics are pool-dependent,
+   which is the same class of problem.
+
+**Fix: report the normalizer robustness check** (the machinery exists twice over — the abandoned
+script, and the per-task z-score cross-check already used for Elimination 1) **and name the
+normalizer as the fifth operating-point coordinate.** Cite Jordan et al. **Tag:
+FOLD-INTO-THIS-PAPER / CHEAP.**
+
+**Honest limit the investigator declared:** no proper mixed-effects model with task as a random
+effect was fitted under any normalizer — which is the fix `FLAW_LEDGER.md` P1-2 actually calls
+for. So this is a robustness demonstration, not the full statistical repair.
+
+### Deliverable (iii) UNEXPLORED — landscape does NOT predict the gap (locus 5): a decisive negative
+
+The "unexplored paper" locus returned a **quantified negative**, which is more useful than the
+speculative positive I was expecting.
+
+Tested directly against the paper's own Table `tab:sfull` under all three optimizers: **no
+standard landscape covariate predicts the GP-vs-ensemble gap.** Dimension correlates
+indistinguishably from zero; textbook multimodality and separability classifications **actively
+mis-sort** the ordering. This is a decisive negative from looking, not an absence of looking.
+
+**But the heterogeneity is not noise.** The per-task gap ranking is **stable across optimizers
+(Spearman 0.84–0.96)** — a real, reproducible per-task property the paper currently leaves
+unnamed.
+
+**And the literature gap is real:** the mature ELA / algorithm-selection tradition (Rice 1976 →
+SATzilla → Kerschke & Trautmann) has **never been pointed at surrogate-class choice**. It
+operates at BBOB scale to select *solvers*, not surrogates. The nearest structural cousin,
+Rodriguez et al. 2024, does surrogate-switching **online, per-iteration, inside a multi-objective
+EA** — not offline, once, for GP-versus-ensemble.
+
+**Two moves, only one before the deadline:**
+- **FOLD-INTO-THIS-PAPER / CHEAP:** two or three sentences reporting exactly this — the gap
+  ranking is stable across optimizers, and is uncorrelated with dimension, modality class, or
+  separability. **This closes a hostile reviewer's "isn't this just landscape?" objection with a
+  falsifiable, already-computed answer** instead of the current one-line hedge. Every number is
+  already in `tab:sfull`.
+- **FOLLOW-UP-PAPER / EXPENSIVE:** the genuine test needs BBOB/COCO-scale corpora with
+  `flacco`/`pflacco` ELA features across many functions, instances and dimensions. Not foldable
+  before a deadline.
+
+**Note the sharpened reason:** my prior was FOLLOW-UP-PAPER on grounds of "too little data to
+tell." The evidence confirms the tag but changes the reason to **"the data we have already rules
+out the simple versions of the hypothesis"** — which is a stronger and more useful thing to tell
+the authors.
 
 ### The obvious objection, pre-empted — it survives bias correction
 
