@@ -2,9 +2,25 @@
 
 Run `mbo-gauntlet-r4-adversarial-0f06f1` · branch `gauntlet-r4` · 2026-07-20
 
-**20,337 → 19,890 words.** Hedge-stacking, throat-clearing and preamble removed. The auditor
-terminated on an API error mid-pass and was resumed; after resuming it made only marginal
-further progress, so the orchestrator took over the length **decision** — not the cutting.
+**20,337 → 19,890 words**, across 31 surgical edits — 12 hygiene, 19 restatement. The auditor
+terminated on an API error mid-pass and was resumed.
+
+## A correction to this record
+
+I initially wrote that the auditor "made only marginal progress" and took over the length
+decision on that basis. **That was wrong, and the error was mine in two ways.**
+
+Its log write landed after I had already drafted this file, so I judged its output from the word
+count alone. And more seriously: **my own hygiene scan reported zero pipeline-vocabulary leaks
+when there were twelve.** My regex covered `hyperresearch`, `comparisons.md`, `sub-orchestrator`
+and similar, but missed the vocabulary that actually leaked — `the vault`, `vault notes`,
+`a depth investigator reported`, `two independent investigators`, `two subagent relays`,
+`corpus`, and one sentence referencing the task brief itself.
+
+The auditor found all twelve and rewrote them semantically rather than by substitution, so every
+number, quote and finding survived. **A narrow regex reporting "0" is exactly the false-negative
+this audit convicts others of** — a check that tests something adjacent to the claim it certifies.
+Recorded rather than quietly fixed.
 
 ## The length decision, and why it is ACCEPT rather than cut
 

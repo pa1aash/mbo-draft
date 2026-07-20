@@ -6,7 +6,45 @@
     {
       "by": "polish-auditor",
       "description": "Hedge-stacking, throat-clearing and preamble removed across the report. Two runs: the first terminated on an API error mid-pass and was resumed.",
-      "words_removed": 447
+      "words_removed": 447,
+      "hygiene_edits": [
+        "RANK 9 item 8: 'the vault's own CHEAP assessment' -> 'an initial CHEAP assessment'",
+        "terminal B: 'A depth investigator reported' -> 'A secondhand note recorded'",
+        "terminal B: 'Two separate investigators gave' -> 'Two secondhand notes gave'",
+        "terminal B: removed the sentence referencing the task brief; kept the substantive finding that the fabrications caught were in this audit's own secondhand notes",
+        "terminal C: three vault references (vault's fetch path, vault notes, outside the vault) rewritten to automated fetch path / stored notes; all numbers and the consequence kept",
+        "terminal D: 'two independent investigators named it as their falsifier' -> 'named as a falsifier twice independently'",
+        "terminal D: 'the investigator who computed it flagged' -> 'with the absence of a cross-check flagged at the time'",
+        "terminal G: 'Two subagent relays' -> 'Two secondhand summaries'; 'a relayed summary' -> 'a secondhand summary'. Falsification record itself untouched.",
+        "(ii) residual kill risk: 'in the corpus' -> 'in the literature searched'",
+        "RANK 9 compatibility note: 'the paper or the corpus' -> 'the paper or in the literature searched'",
+        "(i.E): 'Verified first-hand rather than by relay' -> 'Verified first-hand'",
+        "(i.L): 'on a relayed report' -> 'on a secondhand report'"
+      ],
+      "restatement_and_filler_edits": [
+        "front matter: cut the meta sentence about how to read the report (an indictment of sound work / an apology for real defects); the HIGH-to-trust vs NIL-to-results split is stated plainly two sentences earlier",
+        "front matter: compressed the audit's-most-actionable-output framing; the scope bound is developed in full at terminal F",
+        "N6 B: cut the aside 'the half a re-audit usually skips'",
+        "N6 B: cut the rationale clause for the three adversarial regions; stated in the front matter and paid off at N6 C",
+        "N6 D: 'The uncomfortable finding, which the paper should state before a reviewer does' -> 'The uncomfortable finding'",
+        "N6 D: cut the third statement of 0.027 vs 0.577 (as percentages) and the sentence restating what ground (1) rests on; both figures survive twice in the same subsection and the evidentiary base is stated at ground (1) and again at terminal E",
+        "(i) preamble: cut the proportionality meta-commentary; item counts and the pointer to the PASS list kept",
+        "(i.D): compressed the (i.I) scoping pointer; the offline-RL Q-ensemble scope is developed at (i.I)",
+        "(i.D): cut trailing clause restating the scope-to-your-own-grid instruction the item's own Fix already gives",
+        "(i.G): cut two throat-clearing clauses (most likely to be assumed sloppy; naming both is what makes a PASS credible)",
+        "(i.M): cut the sentence noting both fixes strengthen the paper and that (iii) ranks them; the Fix already carries the RANK 5 pointer",
+        "(iii) A: compressed the recommendation paragraph, which restated the non-independence finding developed two paragraphs above",
+        "RANK 1: cut the passage discounting the convergence of three independent routes onto the interaction finding",
+        "RANK 1: compressed reason (4), which restated the stability argument made two paragraphs earlier; moved the promote-as-existence-and-ordering instruction into the qualifications close so it appears once, with the rank exception and disclosed-normalizer conditions preserved",
+        "RANK 3a: replaced the verbatim duplicate of the bias-correction figures with a pointer to RANK 4, which owns them",
+        "RANK 3: compressed the tension paragraph, which restated the Lucic and COCO premises from the preceding paragraph",
+        "RANK 8a: replaced the near-verbatim second statement of the Ament and Kim-and-Choi bracketing with a pointer to (i.B); both citation markers retained in place",
+        "RANK 6: trimmed the Yu et al. access note; the access failure is recorded in full at terminal A",
+        "(iii) C: replaced three sentences restating RANK 9 items 10, 8 and 1 with a pointer to RANK 9; the novel material (the missing attribution benchmark) kept"
+      ],
+      "citation_check_after_cuts": "No citation marker was deleted. The only markers dropped from a cut passage were [67][71][74][76][72] in (iii) C; each was verified to survive at two or more other locations before the cut. 102/102 holds.",
+      "length_finding_if_reopened": "Concurs with the orchestrator's ACCEPT. The residual length is evidence, not restatement: length is proportional to the NUMBER OF FINDINGS (12 mandatory items plus a 6-defect cluster, 21 tagged ranked items, 6 N6 subsections) at roughly 350-600 words per fully-evidenced finding. If a cut is ever forced, lowest value per word in order: (i.N) verified-clean PASS table (~700 words, would lose quotes); (iii) C Forward implications (~550, the only non-work-item section); RANK 3a (~200, self-described as subordinate to RANK 3); RANK 11 venue framing (~350); the (i.M) three-presentation-gaps paragraph (~400, would lose a Fix). Those five total ~2,200 and still leave ~17,700. Reaching 12,000 means dropping roughly a third of the findings — a structural decision, not a hunk.",
+      "readability_flag_not_acted_on": "Two dense stacked-citation clusters remain: [14]-[19] in the (ii) opening and [67][68][69] in RANK 6. Left intact deliberately — in (ii) the full stack IS the evidentiary inventory backing the no-kill verdict, so thinning it would weaken the claim it supports. Citation integrity outranks the readability preference here."
     },
     {
       "by": "orchestrator",
