@@ -201,9 +201,22 @@ convergence result as authority for an "optimizer never leaves" **failure** mode
 **Fix (mandatory).** Drop `fan2024minucb` from the LCB-paralysis sentence. The freeze is the
 paper's own empirical finding — bit-identical constants across 16 seeds, in two GP classes,
 on a continuous task with no decode step — and it is *stronger* unattributed than
-mis-attributed. If a precedent is wanted for generic BO stalling, TuRBO's *"shrink [the trust
-region] when the optimizer appears stuck"* is closer, though still not the same claim.
-**Note this fix costs the paper nothing and removes a reviewer's cleanest kill.**
+mis-attributed. **Note this fix costs the paper nothing and removes a reviewer's cleanest kill.**
+
+**Correction to my own earlier suggestion.** I first proposed TuRBO as a closer precedent for
+generic BO stalling. **A later check shows that is wrong and I withdraw it.** TuRBO's grep
+counts: `trapped`=0, `greedy`=0, `local search`=2, `trust region`=20. Its diagnosis of vanilla
+global BO is the **opposite** of trapped-near-the-data — verbatim: *"an overemphasized
+exploration that results from global acquisition"* and *"a failure to exploit promising
+areas."* TuRBO's locality is a mechanism it deliberately **imposes** (explicit trust regions
+borrowed from stochastic-optimization TR methods), not an intrinsic acquisition behaviour it
+diagnoses.
+
+**So no one owns "LCB is locally maximal at the data so the optimizer never leaves."** Not Fan
+(who proves convergence), not TuRBO (who diagnoses the opposite), not GIBO (whose exploitation
+step is plain gradient descent). **The right move is to claim it as the paper's own observation
+on its own grid** — which the evidence fully supports — rather than hunting for a citation that
+does not exist. That is a *better* outcome for the paper than the fix I first proposed.
 
 ### 1c. The distance-aware co-citation is unsupported
 Scope paragraph: *"Nor do we claim... distance-aware uncertainty as ours
@@ -699,6 +712,89 @@ correlation and optimization error, and proving pessimism eliminates spurious co
 is minimax-optimal. **It contains no empirical base-vs-conservatism ablation**, so it supports
 the framing but is not a precedent for the experiment. Worth stating precisely rather than
 citing loosely — that distinction is the whole subject of this audit.
+
+## MANDATORY FIX 10 — `fannjiang2020autofocused` articulated the core diagnosis in 2020, uncited
+
+**The sharpest missing-related-work finding in the audit**, and the one most likely to be
+raised by a reviewer from the offline-design community.
+
+The paper's central diagnosis, offered as its own: *"What differs is **which** off-distribution
+maximizers a surrogate's mean admits"* — the optimizer pushes designs where the surrogate is
+unconstrained and its uncertainty estimates stop meaning anything.
+
+**Fannjiang & Listgarten, "Autofocused Oracles for Model-Based Design" (NeurIPS 2020,
+arXiv:2006.08052)**, verbatim:
+
+> "oracle-based design… **will query the oracle in regions of the design space that are not
+> well-represented by the oracle training data**… **its outputs, including its uncertainty
+> estimates, become unreliable beyond the training data**"
+> "sub-optimality can be extreme due to **pathological behavior of the oracle when the search
+> model… strays too far from the training distribution**"
+
+That is the founding articulation, from 2020, of substantially the paper's own diagnosis —
+including the uncertainty-estimates clause. **It sits in the paper's bibliography, uncited.**
+
+**It does not kill anything.** No factorial machinery, no surrogate-class comparison, so N6 is
+untouched, and no numeric claim is threatened.
+
+**But it does two things the paper must handle.** First, it dents any implicit novelty in the
+*diagnostic vocabulary* — a reviewer will note the paper describes as its own contribution a
+framing Fannjiang published six years earlier. Second, and more usefully: **Fannjiang's fix
+implicitly treats distance-from-data as the driver of oracle unreliability, and the paper's
+Elimination 7 complicates exactly that.** Distance predicts aggregate loss (ρ=−0.818) but
+**does not discriminate between surrogate classes at matched distance** (medians 0.87 / 0.86 /
+0.84, ensemble still worse by −1.406).
+
+**Fix, and it converts a liability into the paper's best related-work paragraph.** Cite
+Fannjiang as the origin of the diagnosis, then state the refinement: the off-support story is
+right in aggregate and *insufficient* as an explanation of the class gap, because at matched
+distance the classes still differ. **That is a genuine advance on a named prior position** and
+is far stronger than presenting the diagnosis as unprecedented. **Tag: FOLD-INTO-THIS-PAPER /
+CHEAP.**
+
+## `lu2022revisiting` — N6 NOT killed, but name it
+
+Full-text grep (37 pages, 102,811 chars): `factorial`=0, `crossed`=0, `ANOVA`=0, `analysis of
+variance`=0, `eta squared`=0, `variance decomposition`=0, `main effect`=0, `two-way`=0.
+
+It varies uncertainty-penalty heuristics and hyperparameters (model count, rollout horizon)
+**while holding the policy optimizer fixed** — verbatim (Appendix G): *"our implementation uses
+the same probabilistic dynamics models… and policy optimizer (SAC) as MOPO, differing from
+MOReL, which uses Natural Policy Gradient."* MOReL's differing optimizer is flagged only as an
+unresolved implementation confound in an appendix, never crossed. Their Bayesian optimization
+is used purely as a **hyperparameter tuner within one fixed algorithm**, not to compare
+optimizer classes.
+
+**Verdict: one-factor-at-a-time within a fixed optimizer family — structurally the same pattern
+the paper already cites and excludes, just in offline model-based RL.** N6 stands.
+
+**Fix (light): name it in related work.** It is the closest sibling-genre "revisiting design
+choices" study, it is in the bibliography already, and naming it *strengthens* the no-prior-
+instance claim by showing the adjacent field's closest attempt also held an axis fixed.
+
+## `gao2022reward` — three bib defects, and a sharper frame the paper is not using
+
+**Bib defects (all three verified against PMLR).** True venue: **ICML 2023, PMLR
+202:10835–10866**.
+1. Citation key says `gao2022`; the year is 2023.
+2. The `year` field is correct at 2023, so key and field disagree internally.
+3. **The page range in the bib is wrong**: `10909--10934` against the true `10835--10866`.
+   *(This third defect was not on my list; the batch found it independently.)*
+
+**The substantive point.** Gao et al. give closed forms for proxy-reward overoptimization with
+`d := sqrt(KL(π‖π_init))`:
+> `R_bon(d) = d(α_bon − β_bon·d)` and `R_RL(d) = d(α_RL − β_RL·log(d))`
+
+Degradation is **class-dependent** — the functional form differs by optimization method (RL vs
+best-of-n) — but Gao et al. vary only *scale within one architecture family* (the GPT-3
+series), never across architectures.
+
+**So the paper's Elimination 7 is a refinement of Gao's principle onto a new axis (surrogate
+architecture class, not scale) in a new domain (offline MBO) — consistent with the scaling
+law, not a counterexample.** Two surrogate classes at matched distance-to-data with different
+true loss is exactly what a class-dependent degradation curve predicts, and the paper has
+5,040 instrumented optima to fit it on. **Tag: FOLD-INTO-THIS-PAPER / CHEAP** — the citation
+and framing cost two sentences; fitting the curve is the CHEAP experiment already logged above.
 
 ## VERIFIED CLEAN — Shahriari and Chemingui (batch 7)
 

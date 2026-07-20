@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Without a post-hoc calibration step, four classes of regression prediction-interval methods (Bayesian, ensemble, direct-interval, conformal) do not deliver matched effective coverage at an identical shared nominal confidence level; some are overconservative, others underestimate uncertainty.",
+    "stance": "supports",
+    "stance_target": "The audited paper's Confound 4 general principle that a fixed multiplier on an uncalibrated interval is not comparable across model classes",
+    "evidence_type": "empirical",
+    "scope_conditions": "i.i.d. regression benchmark datasets across multiple domains, nominal confidence fixed at 0.90, four method classes compared under an identical un-normalized construction rule",
+    "quoted_support": "the uncalibrated models do not approximately saturate the validity constraint. They either underestimate the uncertainty or produce overconservative prediction intervals.",
+    "numbers": ["nominal confidence level 0.90"],
+    "entities": ["Nicolas Dewolf", "Bernard De Baets", "Willem Waegeman", "Bayesian methods", "ensemble methods", "conformal prediction", "direct interval estimation"],
+    "time_period": "2022 (Artificial Intelligence Review); arXiv v1 2021, v4 2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems"
+  },
+  {
+    "claim": "The paper frames a single fixed/uniform interval-construction rule as producing 'uniform (or homoscedastic) prediction intervals,' explicitly contrasted with 'most bona fide interval estimators,' and recommends normalizing by a dispersion function to fix this.",
+    "stance": "supports",
+    "stance_target": "The general statistical premise that a shared/fixed multiplier does not track true local (or cross-method) uncertainty scale without calibration",
+    "evidence_type": "theoretical",
+    "scope_conditions": "conformal-prediction nonconformity-measure construction, regression setting",
+    "quoted_support": "The above procedure gives uniform (or homoscedastic) prediction intervals, which is in stark contrast with most bona fide interval estimators. Although computationally simple, it ought to be clear that this is not the generic situation.",
+    "numbers": [],
+    "entities": ["dispersion function sigma", "nonconformity measure", "conformal prediction"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems"
+  },
+  {
+    "claim": "The paper never discusses acquisition functions, Bayesian optimization, pessimism, lower/upper confidence bounds, or surrogate models in an optimization-search context anywhere in its ~23,000-word body (0 grep hits for all these terms).",
+    "stance": "refutes",
+    "stance_target": "Any implication that Dewolf et al. 2022 itself makes the offline-MBO/acquisition-function extension of its calibration principle",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text grep of the extracted arXiv HTML body (23,271 words)",
+    "quoted_support": "N/A -- grep-based absence finding, not a quotable passage; confirmed via `grep -in` for 'acquisition', 'bayesian optimization', 'pessimis', 'surrogate model', 'lower confidence bound', 'upper confidence bound' returning 0 hits.",
+    "numbers": ["0 hits across 6 search terms", "23271 words total"],
+    "entities": ["acquisition function", "Bayesian optimization", "lower confidence bound"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems"
+  },
+  {
+    "claim": "The audited paper's citation of dewolf2022intervals for 'the general principle that a fixed multiplier on an uncalibrated interval is not comparable across model classes,' scoped explicitly to 'the general principle' and not the acquisition-comparison application, is an accurate and appropriately narrow use of the source.",
+    "stance": "neutral",
+    "stance_target": "Citation-verification verdict for dewolf2022intervals in Confound 4",
+    "evidence_type": "theoretical",
+    "scope_conditions": "N/A -- verification verdict",
+    "quoted_support": "the uncalibrated models do not approximately saturate the validity constraint. They either underestimate the uncertainty or produce overconservative prediction intervals. When comparing between the models trained on half of the data set and the full data set...",
+    "numbers": [],
+    "entities": ["dewolf2022intervals", "Confound 4"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems"
+  },
+  {
+    "claim": "The paper is a review of four method classes for regression uncertainty quantification specifically noting no prior study had jointly analyzed all four classes at once.",
+    "stance": "neutral",
+    "stance_target": "Novelty framing of Dewolf et al. 2022 itself",
+    "evidence_type": "theoretical",
+    "scope_conditions": "regression prediction-interval literature as of 2021-2022",
+    "quoted_support": "So far, no study has analysed this issue whilst simultaneously considering these four classes of methods.",
+    "numbers": [],
+    "entities": ["Bayesian methods", "ensemble methods", "direct interval estimation", "conformal prediction"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "valid-prediction-intervals-for-regression-problems"
+  }
+]
