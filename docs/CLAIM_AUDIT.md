@@ -257,3 +257,84 @@ checkable from the repository, which is exactly the standard this paper holds it
 the task set and corner it was computed on. Never derive a percentage from displayed values.
 Cite a number from `results/*.json`, never from a `docs/*.md` restatement of it. When a claim
 spans conditions, compute the extremes over all of them rather than the two you have to hand.
+
+---
+
+# Post-R4-fold re-audit
+
+**Date: 2026-07-20.** Stage 2.5-EDIT folded 14 citation fixes (A–M), 3 falsified-claim
+corrections (B1–B3), the N6 reframe, and 8 promotions (D1–D4, E1–E4) into the paper, which grew
+12→16pp. A pass that size is where errors breed; the earlier comparable pass introduced 23. This
+section re-verifies every number the fold added or changed, by the same method: load the JSON,
+recompute in Python, compare — never accepting the fold's own figure as evidence for itself.
+The two-way ANOVA, the simple-effects decomposition and the raw-units gaps were **independently
+reimplemented** rather than read back from the audit that proposed them.
+
+## Failures found and fixed: 6
+
+| # | Failure | Severity | Fix |
+|---|---|---|---|
+| **R1** | **`tab:sfull` engine undisclosed.** Captioned only "Full synthetic grid" but is the **uncorrected** X1-off/X3-off engine, while the body reports X1/X3-on throughout. Traced to `results/results_camera.json`, matching **63/63** cells. In a paper whose thesis is that a number without its operating point is not reproducible, this is a self-standard failure. | High (self-standard) | Caption states the corner; added §Engine Map (`tab:enginemap`) covering every supplementary number |
+| **R2** | **Sweep found three more undisclosed-corner items**, all tracing to the same unstamped file: `tab:srank` (derived from `tab:sfull`), `tab:cross` (= `05_findings.json:gp_coverage`, all six values), `tab:cov` (7/7 synthetic rows), plus the §Significance Friedman `p=6.1e-5` (off_off; audited is `8.1e-4`) and the matched-tuning `0.37→0.28` pair. | High (self-standard) | Each caption/sentence now states its engine; audited counterparts given where they differ materially |
+| **R3** | **GP-gap definition inconsistent across two adjacent new claims.** `tab:rawgap` and the D2 body paragraph used *best-of-the-two-GP-classes*; the landscape paragraph's ρ and stability figures used *exact-GP-only*. Same named quantity, two definitions. The two disagree materially: stability is 0.89–0.96 (all significant) under best-of, 0.71–0.96 (grad-vs-perturb *p*=0.071) under exact-GP. | High | Standardized on the **exact GP** throughout — it is the canonical "GP" of `tab:sfull`, and a per-cell maximum would be a selection statistic. `tab:rawgap` and D2 values corrected; 7/7 and ~10× attenuation hold under all three candidate definitions |
+| **R4** | **`tab:cross` mischaracterized in the new RANK-1a text** as "the same ensemble covers at 0.97 on one optimizer's proposals and 0.41 on another's." The table's columns are *own* vs *the other surrogate's* proposals — a surrogate×proposal-source contrast, not a surrogate×optimizer read-out. The fold also called it "the same phenomenon" as η²_inter. | Medium | Restated as a surrogate×proposal-source contrast and downgraded from "same measurement" to corroborating evidence that premise validity is pair-dependent |
+| **R5** | **Conformal "0.00 on five tasks" was engine-specific.** True of `tab:cov` as printed (uncorrected, incl. 3 Design-Bench rows), but on the audited engine **no** task reaches 0.00 (cf_ood spans 0.105–1.000). The new "free win" leaned on an engine-specific floor while reading as general. | Medium | Claim rescoped to the printed table, and the **engine-robust** form added: cf_in hits 0.90 on every task and cf_ood scatters on *both* engines. The qualitative point is what the argument rests on |
+| **R6** | **β-sweep seed count wrong.** The fold said the β=2 endpoint was "10 seeds" (inherited from the audit and from the supplement's own config line). `results/kbeta/grid_b2.0.json` is stamped **30 seeds**, X1/X3 on — as are all five β grids and the K sweep. | Low (understated own evidence) | Corrected. The claim is now **stronger and true**: two independent 30-seed runs at the *same* operating point, differing on 58/63 per-cell means, giving 0.40636 vs 0.40455. Config line corrected (β/K/calibration = 30 seeds; the 33-combination artifact = 8) |
+| **R7** | `p\geq0.82` for the dimension nulls; the gradient value is **0.8192**. | Trivial | Corrected to `p\geq0.81` |
+
+One reported failure was a **false alarm in the checker, not the paper**: the `on_off`/rank
+int/opt ratio is 0.6495, which prints correctly as `0.6×` at the table's one-decimal precision.
+
+## Verified clean (recomputed, 18 checks)
+
+- **Interaction** — 0.165/0.146/0.152/0.160 recomputed from the per-seed grids; all four bootstrap
+  intervals exclude zero (lower bounds 0.107/0.088/0.094/0.087); bias-corrected 0.134–0.156;
+  range 0.018 against the headline's 0.167 (9.2×); 4.0–32.8× the optimizer main effect.
+- **`tab:normrob`** — all **12** rows reproduce to <6e-4; η²_surr > η²_opt in all 12; the
+  interaction inverts in **exactly one** cell, `on_off`/rank, at 0.65 (prints 0.6×).
+- **`tab:simple`** — reproduces on the **shared omnibus normalizer**. Confirmed *not* per-column:
+  re-normalizing within each optimizer's three cells inflates the audited perturbation figure
+  from 0.007 to 0.735, which is the trap the caption warns about.
+- **Bias-corrected strengthening** — 0.3509→0.3946, +0.0437 against the uncorrected +0.0376.
+- **TOST** — gap 0.3762, bound 0.4840, not equivalent at either 0.5 or 0.3.
+- **RANK 2 / RANK 6 provenance** — confirmed **audited engine, not `results_camera.json`**. The
+  discriminating check: camera gives Styblinski 14.3% and ~16× attenuation, the audited engine
+  gives 39.6% and ~10×. The paper carries the audited figures. This was the critical item.
+- **Off-by-one** — the stated criterion returns **7** cells at `x3=1`, i.e. Branin ens:grad plus
+  **six** others.
+- **Dimension-decay** — ρ = +0.1071 / +0.0357 / +0.0714, exactly as printed.
+- **Leave-one-out** — 0.373–0.485; Griewank the *smallest* lever (→0.3948), Styblinski the
+  largest (→0.4847).
+
+## Falsified claims — confirmed absent
+
+`without exception` (B1): **0 uses**. The pairing framing (B2): "two independent findings"
+appears **only inside its own negation** ("two views of one asymmetry rather than two independent
+findings"). RaM's 0.577 (B3): appears once, as a bare observation about RaM's own grid, with the
+non-commensurability stated in the same sentence. N6 reads "**reports**" and explicitly disclaims
+the "design space permits" version.
+
+## Scope constraints — all hold
+
+`0.378` absent (0 uses); `0.556` appears only as a CI upper bound; 0.319/0.525 present as the
+cross-β units; PGS falsification scoped `local` in all four occurrences; no field reversal
+(Shahriari doctrine "we do not contest"); DB null phrased "no detectable difference at this
+power", never equivalence; K sensitivity **and** non-reversal both present; the β–σ kill fired;
+GP coverage reported both ways (0.97 sklearn / 0.831 differentiable); GFP both ways; DB η²_opt
+established-at-high-budget. The two `0.283`s remain explicitly disambiguated in-text.
+
+## What this pass says about the previous one
+
+The fold introduced **four** new defects (R3–R6) and inherited **three** (R1–R2, R7). None
+changed a direction, an interval, or a conclusion, and none was fabricated. But the pattern is
+the previous audit's pattern repeating: R3 and R4 are **scope/definition drift** — the same named
+quantity computed two ways, and a table's axes misread — and R5 and R6 are **provenance**, a
+figure carried over from the source that proposed it without re-deriving it from the artifact.
+R6 is the instructive one: the fold *understated* its own evidence because it trusted a
+secondhand seed count over the engine stamp sitting in the file.
+
+**Standing rules this pass adds.** Define a derived quantity (a "gap") once, in one place, and
+recompute every downstream use from that definition. Before citing a stored table, check its
+engine stamp — and if it has none, say so. When a new claim leans on an existing table, re-read
+that table's column semantics rather than the sentence describing it. Re-derive every number an
+upstream audit hands you, including the ones that look like metadata.
