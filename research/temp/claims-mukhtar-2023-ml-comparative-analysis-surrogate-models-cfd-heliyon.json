@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Mukhtar et al. (Heliyon 2023) compare polynomial regression (PR) and a Kriging-based surrogate model class for CFD-based ventilation-rate design optimization of an underground shelter, but use exactly one optimizer throughout (Shifted Hammersley Sampling), explicitly declining to run the two other available optimizers (MOGA, NLPQL) -- failing the requirement that the optimizer axis be varied and crossed with surrogate class.",
+    "stance": "refutes",
+    "stance_target": "Mukhtar 2023 as a candidate KILL or near-miss of N6",
+    "evidence_type": "empirical",
+    "scope_conditions": "CFD-based engineering design optimization, ANSYS Design Explorer, 2023",
+    "quoted_support": "there are three optimisation methods available in ANSYS Design Explorer, i.e. Shifted Hammersly Sampling (SHS), Multi-objective Genetic Algorithm (MOGA) and Non-linear Programming by Quadratic Lagrangian (NLPQL) ... In the current study, we have decided to use SHS method.",
+    "numbers": [],
+    "entities": ["Azfarizal Mukhtar", "polynomial regression", "Kriging", "SHS", "MOGA", "NLPQL"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "mukhtar-2023-ml-comparative-analysis-surrogate-models-cfd-heliyon"
+  },
+  {
+    "claim": "The paper's uses of 'factorial' refer exclusively to the design-of-experiments sampling scheme (Central Composite Design, Box-Behnken Design) used to generate training data for the surrogates, not to a factorial crossing of surrogate class with optimizer over the optimization outcome -- confirming the audit's warned-of homonym trap.",
+    "stance": "refutes",
+    "stance_target": "surface-level 'factorial' keyword matches indicate a genuine crossed surrogate x optimizer design",
+    "evidence_type": "theoretical",
+    "scope_conditions": "design of experiments terminology in engineering surrogate modeling",
+    "quoted_support": "Central Composite Design (CCD) is the most popular experimental design method for fitting a PR model ... It has a five-level fractional factorial designs, which is developed for fitting a second-order polynomial.",
+    "numbers": [],
+    "entities": ["Central Composite Design", "Box-Behnken Design"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "mukhtar-2023-ml-comparative-analysis-surrogate-models-cfd-heliyon"
+  },
+  {
+    "claim": "The paper's uses of 'main effect' and 'interaction' refer to sensitivity analysis of the physical design variables (P1, P2, P3) on the ventilation-rate response, not to a variance decomposition of optimizer performance across surrogate model classes -- a second confirmed homonym trap.",
+    "stance": "refutes",
+    "stance_target": "surface-level 'main effect'/'interaction' keyword matches indicate a genuine surrogate x optimizer ANOVA",
+    "evidence_type": "theoretical",
+    "scope_conditions": "sensitivity analysis of engineering design variables",
+    "quoted_support": "PR models are better suited for estimating interaction and quadratic effects of the input parameters, while Kriging-based models are better suited for identifying the main effects of the input parameters.",
+    "numbers": [],
+    "entities": ["polynomial regression", "Kriging"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "mukhtar-2023-ml-comparative-analysis-surrogate-models-cfd-heliyon"
+  }
+]

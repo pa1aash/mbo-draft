@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "BOSS (2025) is a sensitivity-based regularizer applied as a plug-in on top of existing offline model-based optimization baselines (COMs, RoMA, ICT, MINs, REINFORCE, CMA-ES, and three gradient-ascent variants), stabilizing each baseline's own bundled surrogate against out-of-distribution adversarial perturbation rather than crossing surrogate class with optimizer routine.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial in offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "offline model-based optimization, Design-Bench-style tasks (Superconductor, TF-Bind-8, Ant Morphology, D'Kitty Morphology), 2025",
+    "quoted_support": "RoMA (Yu et al., 2021), ICT (Yuan et al., 2023), CMA-ES (Hansen), COMs (Trabucco et al., 2021), MINs (Kumar & Levine, 2020), REINFORCE (Williams, 1992), and 3 variants of gradient ascent (GA, ENS-MIN, ENS-MEAN)",
+    "numbers": ["200.9% new SOTA on Ant Morphology with CMA-ES+BOSS vs 191.5% baseline CMA-ES", "variance reduction from 0.9% to 0.5% with ENS-MEAN baseline on D'Kitty Morphology"],
+    "entities": ["BOSS", "COMs", "RoMA", "ICT", "MINs", "REINFORCE", "CMA-ES"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boosting-offline-optimizers-with-surrogate-sensitivity"
+  },
+  {
+    "claim": "BOSS's ablation studies vary its own regularizer hyperparameters (sensitivity threshold alpha, number of perturbation samples m, and perturbation-bound ranges omega), not surrogate model class crossed with optimizer routine, and the full 24,875-word text yields zero grep hits for factorial, crossed, ANOVA, or variance decomposition terminology.",
+    "stance": "supports",
+    "stance_target": "N6: absence of a crossed surrogate x optimizer variance decomposition in offline MBO literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "BOSS ablation experiments, Section 5.3 and Appendix D",
+    "quoted_support": "we also conduct ablation studies to investigate the effects of specific hyperparameters of BOSS ... including the sensitivity threshold alpha, the no. of sampled perturbations m, and the effective value ranges for omega_mu, omega_sigma^2, on the performance.",
+    "numbers": ["alpha=0.1", "m=100", "lambda=10^-3"],
+    "entities": ["BOSS"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boosting-offline-optimizers-with-surrogate-sensitivity"
+  }
+]

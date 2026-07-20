@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Kudela & Dobrovsky (2024) benchmark eleven state-of-the-art single-objective surrogate-assisted evolutionary algorithms (SAEAs) on two real-world CFD problems, comparing complete bundled surrogate+optimizer methods rather than crossing a surrogate-model-class factor with an optimizer factor.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial in offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "SAEA / expensive black-box optimization literature, CFD applications, 2024",
+    "quoted_support": "In this paper, we use two real-world computational fluid dynamics problems to compare the performance of eleven state-of-the-art single-objective SAEAs.",
+    "numbers": ["11 SAEAs", "2 CFD problems (PitzDaily, ESP)", "budgets B=500 and B=1,000"],
+    "entities": ["Jakub Kudela", "Ladislav Dobrovsky", "LSADE", "ESA", "TS-DDEO", "IKAEA", "SAMSO", "SHPSO", "TL-SSLPSO"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "performance-comparison-of-surrogate-assisted-evolutionary-algorithms-on-computat"
+  },
+  {
+    "claim": "Table 1 of the paper shows the eleven compared SAEA methods each pair one fixed surrogate model (mostly RBF) with one fixed evolutionary optimizer mechanism (mostly PSO or DE), confirming these are complete bundled pipelines rather than independently crossable factors.",
+    "stance": "supports",
+    "stance_target": "N6 defence: existing SAEA benchmarks compare bundled methods (one-factor-at-a-time on method identity), not a crossed surrogate x optimizer factorial",
+    "evidence_type": "empirical",
+    "scope_conditions": "SAEA literature",
+    "quoted_support": "Table 1 shows a brief overview of the SAEAs selected for the computational comparison in chronological order. We can find that the most used surrogate model was RBF, and the most utilized EAs were PSO and DE.",
+    "numbers": ["11 methods"],
+    "entities": ["RBF", "PSO", "DE"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "performance-comparison-of-surrogate-assisted-evolutionary-algorithms-on-computat"
+  },
+  {
+    "claim": "The SAEA literature formally distinguishes 'offline SAEAs' (build the best surrogate from available historical data with no further real evaluations) from 'online SAEAs' (iteratively sample and re-evaluate on the real expensive function), and most benchmarked methods in this paper are online, not offline.",
+    "stance": "neutral",
+    "stance_target": "definition of offline vs online black-box/surrogate-assisted optimization",
+    "evidence_type": "theoretical",
+    "scope_conditions": "surrogate-assisted evolutionary computation taxonomy",
+    "quoted_support": "Depending on whether real function evaluations can be performed during the optimization process, SAEAs can be further divided into two categories: offline SAEAs and online SAEAs. The offline SAEAs prioritize building the most suitable surrogate model based on available historical data to predict the position of the optimal solution.",
+    "numbers": [],
+    "entities": ["offline SAEA", "online SAEA"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "performance-comparison-of-surrogate-assisted-evolutionary-algorithms-on-computat"
+  },
+  {
+    "claim": "Statistical comparison of the eleven SAEA methods used the Friedman test followed by Wilcoxon signed-rank tests with Holm-Bonferroni correction on method rankings, not a two-way ANOVA or variance decomposition over a surrogate x optimizer design matrix.",
+    "stance": "supports",
+    "stance_target": "N6: no crossed factorial variance decomposition exists for surrogate x optimizer in this literature",
+    "evidence_type": "statistical",
+    "scope_conditions": "SAEA benchmarking methodology",
+    "quoted_support": "First, we used the Friedman test to find if significant differences are present among all the algorithms ... we utilized the Wilcoxon signed-rank test ... we applied the Holm-Bonferroni correction method which counteracts the effect of multiple comparisons by controlling the family-wise error rate.",
+    "numbers": ["p=1.16E-18", "p=2.37E-21", "alpha=0.05"],
+    "entities": ["Friedman test", "Wilcoxon signed-rank test", "Holm-Bonferroni correction"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "performance-comparison-of-surrogate-assisted-evolutionary-algorithms-on-computat"
+  }
+]

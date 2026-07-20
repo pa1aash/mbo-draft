@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Biedenkapp, Lindauer, Eggensperger, Hutter, Fawcett & Hoos (AAAI-17) speed up ablation analysis for algorithm configuration by replacing expensive real algorithm runs with predictions from a single random-forest empirical performance model (EPM) surrogate, using only one surrogate model class throughout and never crossing it with a second optimizer/search routine over the ablation path itself.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial in offline MBO/algorithm configuration",
+    "evidence_type": "empirical",
+    "scope_conditions": "algorithm configuration (SAT, MIP, ASP, AI planning), AAAI-17",
+    "quoted_support": "Hutter et al. (2014b) showed that random forests are currently the best known machine learning model for this task, with better results obtained when predicting log-transformed running time. Therefore, we follow this approach.",
+    "numbers": ["speed-up factors between 33 and 14,727", "6 configuration benchmarks", "up to 200,000 training data points"],
+    "entities": ["random forest EPM", "SMAC", "Spear", "CPLEX", "Clasp", "LPG"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "efficient-parameter-importance-analysis-via-ablation-with-surrogates-proceedings"
+  },
+  {
+    "claim": "The paper's related-work discussion of fANOVA (Hutter, Hoos & Leyton-Brown 2014) describes it as a one-way, single-model (random-forest EPM) variance decomposition over the algorithm's OWN hyperparameter configuration space, not a two-way crossing of surrogate model class against a separately varied optimizer/search routine.",
+    "stance": "supports",
+    "stance_target": "fANOVA does not constitute a crossed surrogate x optimizer factorial (consistent with prior audit passes marking fANOVA as one-way-only)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "algorithm configuration parameter-importance literature",
+    "quoted_support": "A related approach is fANOVA (Hutter, Hoos, and Leyton-Brown 2014), which uses an EPM (based on random forests (Breiman 2001)) to analyze how much of the performance variance in the configuration space is explained by single parameters or combinations of few parameters.",
+    "numbers": [],
+    "entities": ["fANOVA", "random forest"],
+    "time_period": "2014",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "efficient-parameter-importance-analysis-via-ablation-with-surrogates-proceedings"
+  },
+  {
+    "claim": "Ablation analysis (Fawcett and Hoos 2016), the base method this paper accelerates, can 'only partially identify interactions between parameters' via forward and backward passes -- an explicit acknowledgment that the ablation methodology itself is not designed to produce a full interaction/variance decomposition.",
+    "stance": "supports",
+    "stance_target": "existing ablation-based parameter importance methods do not produce a crossed factorial variance decomposition",
+    "evidence_type": "theoretical",
+    "scope_conditions": "ablation analysis methodology",
+    "quoted_support": "Due to its iterative nature, it can also only partially identify interactions between parameters (e.g., by using a forward and backward pass of ablation).",
+    "numbers": [],
+    "entities": ["ablation analysis"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "efficient-parameter-importance-analysis-via-ablation-with-surrogates-proceedings"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Expected-Improvement Bayesian optimization with a sufficiently smooth (e.g. Gaussian) covariance kernel, started at the point where the objective's true minimum is already attained, produces a trajectory that converges back to that single point and is provably not dense in the search domain.",
+    "stance": "supports",
+    "stance_target": "Gap 5: prior existence of an acquisition-driven-search-gets-stuck-and-never-leaves-the-neighborhood-of-observed-data failure mode",
+    "evidence_type": "theoretical",
+    "scope_conditions": "1D Expected Improvement optimization, online/iterative oracle-querying BO, Gaussian process with spectral density decaying faster than exponentially (e.g. Gaussian/RBF kernel), adversarial worst-case starting condition at the true optimum",
+    "quoted_support": "\"Theorem 3. ... Suppose that the EI optimization with the kernel G starts from the point x1 = 0 (i.e., the point where the minimum is already attained). Then the optimization trajectory {xk} converges to 0; in particular the trajectory is not dense in [-1, 1].\"",
+    "numbers": ["trajectory points shrink from x2=-0.63 to x10=7.9e-44", "expected improvement value shrinks from I=0.16 at K=2 to I=1.7e-87 at K=10"],
+    "entities": ["Yarotsky", "Expected Improvement", "Gaussian process", "Vazquez and Bect", "Bull 2011"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "examples-of-inconsistency-in-optimization-by-expected-improvement-yarotsky-2013"
+  },
+  {
+    "claim": "The mechanism behind EI's inconsistency is that Gaussian-kernel GPs violate the No-Empty-Ball (NEB) property, causing posterior variance (and hence the exploration term of EI) to vanish in a shrinking neighborhood of sampled points before the optimizer can escape it; Matern-family kernels with polynomial spectral falloff retain NEB and hence consistency.",
+    "stance": "neutral",
+    "stance_target": "Mechanistic explanation for acquisition-function stalling, offered as a candidate mechanism the paper-under-audit's elimination experiments could test",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Stationary Gaussian processes; NEB property per Vazquez and Bect",
+    "quoted_support": "\"Vazquez and Bect prove that the NEB property is violated by Gaussian processes with a Gaussian covariance function. They show, however, that the NEB property holds for a stationary process provided its spectral density goes to zero sufficiently slowly ... It appears that for practical numerical optimization of generic objective functions, if EI is to be applied, then a more reliable choice for the covariance would be a rough kernel with an inverse polynomial falloff of the spectral density, for example from the Matern family.\"",
+    "numbers": [],
+    "entities": ["Vazquez and Bect", "Matern kernel", "Gaussian kernel"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "examples-of-inconsistency-in-optimization-by-expected-improvement-yarotsky-2013"
+  },
+  {
+    "claim": "This EI-inconsistency result is scoped to Expected Improvement specifically, to online (iterative, oracle-querying) Bayesian optimization, and to an adversarially constructed starting condition -- it does not address confidence-bound acquisitions (UCB/LCB) or the offline/frozen-dataset regime, and is a worst-case existence proof rather than an empirical seed-robust observation.",
+    "stance": "refutes",
+    "stance_target": "Any claim that this paper directly owns the paper-under-audit's specific confidence-bound-acquisition-stuck-in-offline-MBO failure mode",
+    "evidence_type": "theoretical",
+    "scope_conditions": "1D EI, online BO, Gaussian/analytic kernels",
+    "quoted_support": "\"there are certain caveats to their practical interpretation. First, we consider only the simplest version of the EI optimization in 1D, while real applications are mostly higher-dimensional. Second, realistic optimization budgets may be too low in many problems for the indicated asymptotic behavior to be relevant.\"",
+    "numbers": [],
+    "entities": ["Expected Improvement", "UCB", "LCB"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "examples-of-inconsistency-in-optimization-by-expected-improvement-yarotsky-2013"
+  },
+  {
+    "claim": "Bull (2011) showed that when GP prior hyperparameters are estimated from data rather than held fixed, EI-based optimization procedures may never discover the true minimum of the objective function.",
+    "stance": "supports",
+    "stance_target": "Broader BO-convergence-theory literature on conditions under which acquisition-driven search stalls",
+    "evidence_type": "theoretical",
+    "scope_conditions": "EI optimization with estimated (not fixed) GP hyperparameters",
+    "quoted_support": "\"though in this article we don't consider covariance functions with adaptively adjusted parameters, we mention that these more general kinds of EI optimization are known to be inconsistent in some cases [1,9].\" (reference [1] = Bull 2011, JMLR)",
+    "numbers": [],
+    "entities": ["Bull 2011", "JMLR"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "examples-of-inconsistency-in-optimization-by-expected-improvement-yarotsky-2013"
+  }
+]

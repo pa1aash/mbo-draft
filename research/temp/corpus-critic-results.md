@@ -64,7 +64,41 @@ recomputation). The distinct framing sought was an **ML benchmark audit whose co
 size grew**, including the reproducibility-track literature (ML Reproducibility Challenge,
 ReScience C) as the natural home for such a result.
 
-*Result pending fetcher return; see the final report's N9 section for the verdict and queries.*
+**RESULT: CONFIRMED NONE-FOUND, exhaustively.**
+
+**Queries run, verbatim** (arXiv API + targeted web search; OpenAlex hit a hard budget wall and
+Semantic Scholar was rate-limited, so those two carried almost nothing):
+`reproducibility effect size larger than originally reported machine learning benchmark`,
+`reality check machine learning confound`,
+`re-evaluation confirms strengthens original finding benchmark`,
+`audit increased measured advantage neural network comparison`,
+`reanalysis larger effect machine learning evaluation`,
+`ML reproducibility challenge reported`, `attenuation correction benchmark machine learning`,
+`underestimate true effect performance gap benchmark`, `metric learning reality check`,
+`stronger than originally reported`, `corrected confound larger gap deep learning`,
+plus `"ML Reproducibility Challenge" report found effect stronger than original paper claimed`,
+`"re-evaluation confirms and strengthens" OR "reanalysis found a larger" machine learning benchmark`,
+`ReScience C reproducibility report "stronger" OR "larger" effect than original paper`.
+
+**Zero grow-direction hits.** And one new directly-on-target shrink-direction reanalysis fetched:
+
+**Robinson, Glen & Lee, "Validating the validation: reanalyzing a large-scale comparison of deep
+learning and machine learning models for bioactivity prediction"**, *J. Comput. Aided Mol. Des.*
+2020;34(7):717–730, DOI 10.1007/s10822-019-00274-0, PMCID PMC7292817. **Venue verified** from the
+publisher-hosted PMC header. It reanalyses Mayr et al.'s ChEMBL benchmark (which had claimed
+"deep learning significantly outperforms all competing methods") and reports the shrink
+direction: *"we show that support vector machines achieve competitive performance compared to
+feed-forward deep neural networks."*
+
+**A re-fetch discipline note worth keeping.** This paper was already in the vault from the
+**prior** audit pass, via its arXiv preprint. The fetcher re-obtained it independently through a
+different domain and provider (publisher PMC HTML rather than arXiv PDF), which **cross-validates
+the prior pass's verdict rather than inheriting it** — exactly what the query's
+do-not-reuse-a-cached-source constraint is for.
+
+**Net for N9:** three independent, directly-on-target ML benchmark reanalyses — Robinson,
+Musgrave, Ferrari Dacrema — **all shrink-direction, zero grow-direction**, after an exhaustive
+fresh sweep. The narrow claim stands and is now better evidenced than when the paper made it.
 
 ## gap-4 (high) — precedent for interpreting a component-by-component interaction
 
@@ -76,10 +110,41 @@ widens it to ML benchmarking generally — optimizer-versus-architecture studies
 "Descending through a Crowded Valley"; Choi et al. on optimizer comparisons), and the deep-learning
 benchmarking literature.
 
-**Either outcome is useful:** a precedent found narrows the novelty claim and must be cited; none
-found strengthens the recommendation and is reported with the queries.
+**RESULT: NO PRECEDENT FOUND — a positive finding that strengthens the recommendation.**
 
-*Result pending fetcher return.*
+**Queries run, verbatim:** `interaction optimizer architecture deep learning benchmark`,
+`descending through a crowded valley`, `empirical comparison optimizers deep learning`,
+`best optimizer depend on architecture`, `component interaction ANOVA machine learning pipeline`,
+`data augmentation architecture interaction ANOVA`, `tokenizer model size interaction`,
+`factorial design deep learning benchmark components`,
+`crossed design machine learning benchmark two-way ANOVA`,
+`how to train your vit data augmentation regularization`,
+`data augmentation model size interaction vision transformer`,
+`scaling laws interaction between hyperparameters and architecture`.
+
+Three primaries fetched and full-text grepped (`interaction`, `ANOVA`, `analysis of variance`,
+`factorial`, `crossed`, `eta squared`, `main effect`, `depends on`), across **three** candidate
+regions rather than the two the brief named:
+
+| Paper | Venue | Result |
+|---|---|---|
+| **Schmidt, Schneider & Hennig, "Descending through a Crowded Valley"** | **ICML 2021, PMLR 139** — verified from the PMLR copyright footer in the extracted PDF | **Zero hits** on all formal terms. Only qualitative *"depends on the problem"* language. |
+| **Choi, Shallue, Nado, Lee, Maddison & Dahl, "On Empirical Comparisons of Optimizers for Deep Learning"** | arXiv:1910.05446 — **VENUE UNVERIFIED** (no Comments or Journal-ref field on arXiv, no proceedings footer in the PDF) | **Zero hits.** Argues rankings are confounded by asymmetric hyperparameter-search-space tuning — not an interaction term. |
+| **Steiner et al., "How to train your ViT?"** | **TMLR 05/2022** — verified from the PDF header and OpenReview link | Explicitly runs a grid crossing AugReg strength × model size × data budget and calls it *"interplay"* — but **never computes a formal interaction or ANOVA statistic.** |
+
+**All three regions return a clean negative.** No ML benchmark study reports and interprets a
+component-by-component interaction. That is a positive finding: it means the paper's unreported
+interaction term would be, so far as an exhaustive sweep can establish, **without precedent in ML
+benchmarking** — which raises the cost of leaving it uninterpreted.
+
+**THE THIRD HOMONYM TRAP, caught by the fetcher.** In the ViT paper, `ANOVA` false-matched inside
+**"Toutanova"** (the BERT citation). The fetcher read the hit and discarded it rather than
+counting it. This audit has now caught three distinct homonym traps — *Crossed barrel* (Liang),
+*Usmanova/Bozhanova* (COMs, Design-Bench, Kim review), and *Toutanova* (ViT). Any grep-count-only
+methodology would have produced false positives in five separate papers.
+
+**The venue discipline held.** The fetcher flagged Choi et al. as venue-unverified rather than
+guessing — the exact failure mode that produced two bad citations earlier in this audit.
 
 ## gap-5 (high) — the acquisition-stalling vocabulary itself
 

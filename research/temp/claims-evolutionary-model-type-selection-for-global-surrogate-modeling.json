@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Gorissen, Dhaene & De Turck (JMLR 2009) use a Genetic Algorithm to evolve a heterogeneous population spanning genuinely distinct surrogate model classes (SVM, Kriging, RBF, Neural Networks) that compete on approximation accuracy, but the GA here is the surrogate MODEL-SELECTION mechanism itself, not a black-box optimizer that searches the design/decision-variable space using the winning surrogate.",
+    "stance": "refutes",
+    "stance_target": "Gorissen 2009 as a candidate KILL of N6 (surrogate class is varied, but no independently-crossed optimizer routine over the black-box design problem exists)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "global surrogate modeling for expensive simulation codes, JMLR 2009",
+    "quoted_support": "Different model types are evolved cooperatively using a Genetic Algorithm (heterogeneous evolution) and compete to approximate the iteratively selected data. In this way the optimal model type and complexity for a given data set or simulation code can be dynamically determined.",
+    "numbers": [],
+    "entities": ["Dirk Gorissen", "Tom Dhaene", "Filip De Turck", "SVM", "Kriging", "RBF", "Neural Networks"],
+    "time_period": "2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "evolutionary-model-type-selection-for-global-surrogate-modeling"
+  },
+  {
+    "claim": "The paper's only other mention of an 'optimization algorithm' (BFGS, PSO, GA, DIRECT, NSGA-II) refers to fitting each surrogate candidate's own internal hyperparameters (e.g. kernel widths), not to a downstream black-box optimizer searching the design space using the fitted surrogate -- confirming this paper never crosses surrogate class with a decision-space optimizer.",
+    "stance": "refutes",
+    "stance_target": "Gorissen 2009 as a candidate KILL of N6",
+    "evidence_type": "theoretical",
+    "scope_conditions": "surrogate model hyperparameter fitting",
+    "quoted_support": "a chosen hyperparameter optimization algorithm (e.g., BFGS, Particle Swarm Optimization (PSO), Genetic Algorithm (GA), DIRECT, NSGA-II, etc.). Models are assigned a score based on one or more criteria.",
+    "numbers": [],
+    "entities": ["BFGS", "PSO", "GA", "DIRECT", "NSGA-II"],
+    "time_period": "2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "evolutionary-model-type-selection-for-global-surrogate-modeling"
+  },
+  {
+    "claim": "A full-text grep of the complete 40-page JMLR paper for factorial, crossed, ANOVA, analysis of variance, eta-squared, main effect, interaction, variance decomposition, and two-way returned zero hits, confirming no crossed factorial variance decomposition of surrogate class x optimizer exists in this paper.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial with variance decomposition in this literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text search, PyMuPDF extraction",
+    "quoted_support": "Zero hits for: factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, interaction, variance decomposition, two-way.",
+    "numbers": ["40 pages", "0 hits"],
+    "entities": [],
+    "time_period": "2009",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "evolutionary-model-type-selection-for-global-surrogate-modeling"
+  }
+]

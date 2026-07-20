@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "BOOST (Park & Cheon et al.) jointly selects a Gaussian-process kernel (Matern, RBF, or Rational Quadratic) and an acquisition function (EI, PI, LCB, or Posterior Mean) at each iteration of a standard online Bayesian optimization loop, making it the closest identified near-miss to a crossed surrogate x optimizer selection scheme in the BO/AutoML literature.",
+    "stance": "neutral",
+    "stance_target": "N6 near-miss inventory: kernel x acquisition-function joint selection in Bayesian optimization",
+    "evidence_type": "empirical",
+    "scope_conditions": "online Bayesian optimization, synthetic benchmarks and ML hyperparameter tuning tasks, 2025-2026",
+    "quoted_support": "BOOST: A Data-Driven Framework for the Automated Joint Selection of Kernel and Acquisition Functions in Bayesian Optimization.",
+    "numbers": [],
+    "entities": ["Joon-Hyun Park", "Mujin Cheon", "Matern kernel", "RBF kernel", "Rational Quadratic kernel", "Expected Improvement", "Probability of Improvement", "Lower Confidence Bound", "Posterior Mean"],
+    "time_period": "2025-2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boost-a-data-driven-framework-for-the-automated-joint-selection-of-kernel-and-ac"
+  },
+  {
+    "claim": "All three kernels compared in BOOST (Matern, RBF, Rational Quadratic) are covariance functions for a single Gaussian Process surrogate model class, not distinct model architectures (e.g. GP vs neural network vs random forest), so the paper's kernel variation does not satisfy a surrogate-model-CLASS crossing requirement.",
+    "stance": "refutes",
+    "stance_target": "BOOST as a candidate KILL of N6",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Gaussian process kernel family",
+    "quoted_support": "The kernel functions considered in this work are defined as follows: k_Matern(r), k_RBF(r), k_RQ(r) ... The Matern kernel offers tunable smoothness, the Radial Basis Function (RBF) kernel assumes infinite differentiability, and the Rational Quadratic (RQ) kernel accommodates multiple characteristic length scales.",
+    "numbers": [],
+    "entities": ["Matern kernel", "RBF kernel", "Rational Quadratic kernel", "Gaussian Process"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boost-a-data-driven-framework-for-the-automated-joint-selection-of-kernel-and-ac"
+  },
+  {
+    "claim": "BOOST's 'offline evaluation' terminology refers to a no-extra-query meta-selection subroutine run inside an otherwise fully online Bayesian optimization loop with live oracle queries every iteration, not to offline model-based optimization over a fixed static dataset.",
+    "stance": "refutes",
+    "stance_target": "BOOST operates in the offline/fixed-dataset MBO setting required for an N6 kill",
+    "evidence_type": "theoretical",
+    "scope_conditions": "online Bayesian optimization loop terminology",
+    "quoted_support": "BOOST utilizes a simple offline evaluation stage to predict the performance of ... BOOST performs offline evaluation using previously observed points",
+    "numbers": [],
+    "entities": ["BOOST"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "boost-a-data-driven-framework-for-the-automated-joint-selection-of-kernel-and-ac"
+  },
+  {
+    "claim": "BOOST includes an ablation (Appendix C.5, 'Effect of fixing the kernel function or acquisition function') that isolates the individual contribution of the kernel axis versus the acquisition-function axis, which is the closest approach to a two-factor ablation found across all three searched regions -- but it lacks a genuine cross-model-class factor and a formal variance decomposition (ANOVA/eta-squared).",
+    "stance": "neutral",
+    "stance_target": "closest structural near-miss to N6's crossed-factorial requirement",
+    "evidence_type": "empirical",
+    "scope_conditions": "BOOST appendix ablations",
+    "quoted_support": "C.5 Effect of fixing the kernel function or acquisition function",
+    "numbers": [],
+    "entities": ["BOOST"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "boost-a-data-driven-framework-for-the-automated-joint-selection-of-kernel-and-ac"
+  }
+]
