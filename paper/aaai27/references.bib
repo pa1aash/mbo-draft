@@ -110,8 +110,9 @@
 @article{kim2025mbosurvey,
   title={Offline Model-Based Optimization: Comprehensive Review},
   author={Kim, Minsu and Gu, Jiayao and Yuan, Ye and Yun, Taeyoung and Liu, Zixuan and Bengio, Yoshua and Chen, Can},
-  journal={arXiv preprint arXiv:2503.17286},
-  year={2025}
+  journal={Transactions on Machine Learning Research},
+  year={2026},
+  note={Survey Certification}
 }
 @inproceedings{tan2025ltr,
   title={Offline Model-Based Optimization by Learning to Rank},
@@ -187,11 +188,13 @@
   volume={36},
   year={2023}
 }
-@inproceedings{gao2022reward,
+@inproceedings{gao2023reward,
   title={Scaling Laws for Reward Model Overoptimization},
   author={Gao, Leo and Schulman, John and Hilton, Jacob},
-  booktitle={International Conference on Machine Learning},
-  pages={10909--10934},
+  booktitle={Proceedings of the 40th International Conference on Machine Learning},
+  series={Proceedings of Machine Learning Research},
+  volume={202},
+  pages={10835--10866},
   year={2023},
   organization={PMLR}
 }
@@ -519,4 +522,119 @@
   volume={10},
   pages={1884},
   year={2019}
+}
+
+% ===== Added in the R4 citation pass =====
+
+% (i.B) Closest prior formalization of acquisition-stalling.
+@article{yarotsky2013inconsistency,
+  title={Examples of Inconsistency in Optimization by Expected Improvement},
+  author={Yarotsky, Dmitry},
+  journal={Journal of Global Optimization},
+  volume={56},
+  number={4},
+  pages={1773--1790},
+  year={2013}
+}
+
+% (i.H) Recomputation of 500 primary effect sizes: corrections go both ways.
+@article{maassen2020reproducibility,
+  title={Reproducibility of Individual Effect Sizes in Meta-Analyses in Psychology},
+  author={Maassen, Esther and van Assen, Marcel A. L. M. and Nuijten, Mich{\`e}le B. and Olsson-Collentine, Anton and Wicherts, Jelte M.},
+  journal={PLOS ONE},
+  volume={15},
+  number={5},
+  pages={e0233107},
+  year={2020}
+}
+
+% (RANK 1) Positive design-of-experiments authority for the crossed design.
+@book{box1978statistics,
+  title={Statistics for Experimenters: An Introduction to Design, Data Analysis, and Model Building},
+  author={Box, George E. P. and Hunter, William G. and Hunter, J. Stuart},
+  publisher={Wiley},
+  year={1978}
+}
+
+@misc{nist2012handbook,
+  title={{NIST/SEMATECH} e-Handbook of Statistical Methods},
+  author={{NIST/SEMATECH}},
+  howpublished={\url{https://www.itl.nist.gov/div898/handbook/}},
+  year={2012},
+  note={Section 5: Process Improvement}
+}
+
+% (RANK 3) Budget-dependent benchmarking as a named methodological category.
+@article{hansen2021coco,
+  title={{COCO}: A Platform for Comparing Continuous Optimizers in a Black-Box Setting},
+  author={Hansen, Nikolaus and Auger, Anne and Ros, Raymond and Mersmann, Olaf and Tu{\v{s}}ar, Tea and Brockhoff, Dimo},
+  journal={Optimization Methods and Software},
+  volume={36},
+  number={1},
+  pages={114--144},
+  year={2021}
+}
+
+% (RANK 4) Small-n bias in variance-explained statistics; epsilon^2 is least-biased.
+@article{okada2013epsilon,
+  title={Is Omega Squared Less Biased? A Comparison of Three Major Effect Size Indices to Eta Squared},
+  author={Okada, Kensuke},
+  journal={Behaviormetrika},
+  volume={40},
+  number={2},
+  pages={129--147},
+  year={2013}
+}
+
+% (RANK 5) Normalizer / pool-dependence critiques.
+@inproceedings{jordan2024position,
+  title={Position: Benchmarking is Limited in Reinforcement Learning Research},
+  author={Jordan, Scott M. and White, Adam and Castro, Pablo Samuel and Bellemare, Marc G. and Machado, Marlos C. and Precup, Doina},
+  booktitle={International Conference on Machine Learning},
+  year={2024}
+}
+
+@article{bellemare2013ale,
+  title={The Arcade Learning Environment: An Evaluation Platform for General Agents},
+  author={Bellemare, Marc G. and Naddaf, Yavar and Veness, Joel and Bowling, Michael},
+  journal={Journal of Artificial Intelligence Research},
+  volume={47},
+  pages={253--279},
+  year={2013}
+}
+
+% (RANK 7) Equivalence testing.
+@article{lakens2017equivalence,
+  title={Equivalence Tests: A Practical Primer for t Tests, Correlations, and Meta-Analyses},
+  author={Lakens, Dani{\"e}l},
+  journal={Social Psychological and Personality Science},
+  volume={8},
+  number={4},
+  pages={355--362},
+  year={2017}
+}
+
+% (RANK 8) Safe policy improvement: the named category the x0-inversion instantiates.
+@inproceedings{laroche2019spibb,
+  title={Safe Policy Improvement with Baseline Bootstrapping},
+  author={Laroche, Romain and Trichelair, Paul and Tachet des Combes, R{\'e}mi},
+  booktitle={International Conference on Machine Learning},
+  year={2019}
+}
+
+@inproceedings{thomas2015hcpi,
+  title={High Confidence Policy Improvement},
+  author={Thomas, Philip S. and Theocharous, Georgios and Ghavamzadeh, Mohammad},
+  booktitle={International Conference on Machine Learning},
+  year={2015}
+}
+
+% (N6) The one title naming both axes; primary text not obtained, cited as a stated conditional.
+@article{elsayed2014robust,
+  title={Robust Parameter Design Optimization Using {K}riging, {RBF} and {RBFNN} with Gradient-Based and Evolutionary Optimization Techniques},
+  author={Elsayed, Khairy and Lacor, Chris},
+  journal={Applied Mathematics and Computation},
+  volume={236},
+  pages={325--344},
+  year={2014}
 }
