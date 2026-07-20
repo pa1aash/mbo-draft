@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "draft_path": "research/notes/final_report_mbo-gauntlet-r4-adversarial-0f06f1.md",
+    "pipeline_step": 16,
+    "role": "readability recommender (advisory only; report not modified)",
+    "document_type": "adversarial audit written as a work list for the audited paper's author under deadline pressure",
+    "total_recommendations": 21,
+    "by_category": {
+      "make-list": 6,
+      "make-table": 1,
+      "break-paragraph": 10,
+      "split-sentence": 2,
+      "remove-hr": 1,
+      "merge-paragraphs": 0,
+      "bold-keyterms": 1,
+      "add-whitespace": 0
+    },
+    "highest_severity": "high",
+    "expected_net_char_delta": 620,
+    "notes": "No content is cut anywhere. Every number, interval, verbatim quote, citation marker [N], tag and FALSIFIED/WITHDRAWN record is preserved verbatim in every suggested_replacement. No H2 heading, no existing table, and no citation marker is altered."
+  },
+  "recommendations": [
+    {
+      "id": "r1",
+      "category": "make-list",
+      "severity": "high",
+      "location_hint": "## N6 Verdict — section A, 'The verdict, and what a kill would require'",
+      "existing_text": "A kill requires four conjuncts simultaneously, in an offline or fixed-dataset setting: **(a)** surrogate **model class** varied across at least two genuinely distinct classes; **(b)** optimizer or search routine varied across at least two routines; **(c)** the two axes genuinely **crossed**, every surrogate run with every optimizer; **(d)** a **two-way variance decomposition** of the outcome — an attribution of variance to each axis and their interaction — rather than a leaderboard. Conjunct (a) matters",
+      "suggested_replacement": "A kill requires four conjuncts simultaneously, in an offline or fixed-dataset setting:\n\n- **(a)** surrogate **model class** varied across at least two genuinely distinct classes;\n- **(b)** optimizer or search routine varied across at least two routines;\n- **(c)** the two axes genuinely **crossed**, every surrogate run with every optimizer;\n- **(d)** a **two-way variance decomposition** of the outcome — an attribution of variance to each axis and their interaction — rather than a leaderboard.\n\nConjunct (a) matters",
+      "rationale": "These four conjuncts are the definitional spine every ledger row, kill test and near-miss verdict in the report refers back to by letter, and the author will re-consult them repeatedly — as bullets they are addressable at a glance instead of parsed out of a semicolon run."
+    },
+    {
+      "id": "r2",
+      "category": "make-list",
+      "severity": "high",
+      "location_hint": "## (iii) Scope of Novelty — RANK 1, 'Four reasons it is major rather than technical'",
+      "existing_text": "Four reasons it is major rather than technical. **(1) It is the strongest available vindication of N6.** The entire case for a crossed factorial over one-factor-at-a-time is that OFAT cannot estimate interactions — a point the standard reference states in the paper's own notation: *\"OFAT experimentation leaves us in the dark about factor interactions,\"* and under an interaction the optimal setting of one factor *reverses* depending on the other's level [58]. Every near-miss in the ledger is structurally incapable of producing this number. **It is the answer to \"why did anyone need to run this?\"** **(2) It reframes the optimizer null, the paper's weakest passage.**",
+      "suggested_replacement": "Four reasons it is major rather than technical.\n\n- **(1) It is the strongest available vindication of N6.** The entire case for a crossed factorial over one-factor-at-a-time is that OFAT cannot estimate interactions — a point the standard reference states in the paper's own notation: *\"OFAT experimentation leaves us in the dark about factor interactions,\"* and under an interaction the optimal setting of one factor *reverses* depending on the other's level [58]. Every near-miss in the ledger is structurally incapable of producing this number. **It is the answer to \"why did anyone need to run this?\"**\n- **(2) It reframes the optimizer null, the paper's weakest passage.**",
+      "rationale": "This is the single densest paragraph in the report (~1,900 characters carrying four separately actionable arguments); bulleting the enumerated reasons the author must decide among converts a wall into a checklist — apply together with r3 and r4, which complete the same conversion."
+    },
+    {
+      "id": "r3",
+      "category": "make-list",
+      "severity": "high",
+      "location_hint": "## (iii) Scope of Novelty — RANK 1, continuation of the four reasons (reason 3)",
+      "existing_text": "at 0.005–0.036 against η²_inter at 0.146–0.165. **(3) It is a positive, quantitative, significant result in a paper whose mechanism section is seven negatives.** **(4) It is invariant across the four operating-point coordinates the paper names**",
+      "suggested_replacement": "at 0.005–0.036 against η²_inter at 0.146–0.165.\n- **(3) It is a positive, quantitative, significant result in a paper whose mechanism section is seven negatives.**\n- **(4) It is invariant across the four operating-point coordinates the paper names**",
+      "rationale": "Completes the list conversion begun in r2 so reasons (3) and (4) become their own scannable bullets rather than trailing clauses buried behind a NIST quotation; must be applied together with r2."
+    },
+    {
+      "id": "r4",
+      "category": "make-list",
+      "severity": "high",
+      "location_hint": "## What I could not verify and why — section G, 'Corrections this audit made to itself'",
+      "existing_text": "Each time a finding of this audit was tested, it weakened. (1) The 7/7 raw-units result was promoted as the audit's strongest finding, then demoted when the Styblinski data point supported the floor-effect alternative. (2) The normalization alarm was raised on Griewank-30D's outlier spread; the recomputation found Griewank is the *smallest* lever on the headline. (3) The RaM ground-(2) defence was falsified for four of the nine methods by RaM's own appendix. (4) \"Nobody owns acquisition-stalling\" was withdrawn in favour of Yarotsky as closest prior art [24]. (5) The conformal proposition was initially recorded as missing a hypothesis; reading the supplement directly showed it is formally correct, and the severe framing was withdrawn. **(6) The interaction ordering `surrogate > interaction > optimizer` was asserted \"without exception\" on the strength of a sweep that had only ever tested `η²_surr > η²_opt`. Run directly across four corners × three normalizers, it holds in 11 of 12 and inverts in one; the absolutism is struck and the 11-of-12 form reported instead.** That is the same defect class this audit convicts the paper of throughout — a warrant that does not cover the claim attached to it — committed in the audit's own lead recommendation. **(7) The two positive findings were paired on \"each survives exactly what the other fails.\" The interaction's normalizer-immune form is the same measurement as the raw-units attenuation, and a perturbation floor effect would generate an interaction of that shape, so the pairing is FALSIFIED and replaced by one asymmetry seen two ways.** **(8) The RaM method-axis η² was offered as independent evidence for ground (1); because that axis is bundled methods, which this report's own conjunct (b) rejects as a clean factor, the inference is FALSIFIED and the figure is now reported as a bare cross-grid observation.** Separately, the paper's characterisation",
+      "suggested_replacement": "Each time a finding of this audit was tested, it weakened.\n\n- **(1)** The 7/7 raw-units result was promoted as the audit's strongest finding, then demoted when the Styblinski data point supported the floor-effect alternative.\n- **(2)** The normalization alarm was raised on Griewank-30D's outlier spread; the recomputation found Griewank is the *smallest* lever on the headline.\n- **(3)** The RaM ground-(2) defence was falsified for four of the nine methods by RaM's own appendix.\n- **(4)** \"Nobody owns acquisition-stalling\" was withdrawn in favour of Yarotsky as closest prior art [24].\n- **(5)** The conformal proposition was initially recorded as missing a hypothesis; reading the supplement directly showed it is formally correct, and the severe framing was withdrawn.\n- **(6) The interaction ordering `surrogate > interaction > optimizer` was asserted \"without exception\" on the strength of a sweep that had only ever tested `η²_surr > η²_opt`. Run directly across four corners × three normalizers, it holds in 11 of 12 and inverts in one; the absolutism is struck and the 11-of-12 form reported instead.** That is the same defect class this audit convicts the paper of throughout — a warrant that does not cover the claim attached to it — committed in the audit's own lead recommendation.\n- **(7) The two positive findings were paired on \"each survives exactly what the other fails.\" The interaction's normalizer-immune form is the same measurement as the raw-units attenuation, and a perturbation floor effect would generate an interaction of that shape, so the pairing is FALSIFIED and replaced by one asymmetry seen two ways.**\n- **(8) The RaM method-axis η² was offered as independent evidence for ground (1); because that axis is bundled methods, which this report's own conjunct (b) rejects as a clean factor, the inference is FALSIFIED and the figure is now reported as a bare cross-grid observation.**\n\nSeparately, the paper's characterisation",
+      "rationale": "Eight distinct self-falsification records — the report's credibility ledger — are currently fused into one ~2,400-character block where items (6), (7) and (8) each carry a FALSIFIED verdict the author must be able to find; every word, including all three verdicts, is preserved verbatim as bullets."
+    },
+    {
+      "id": "r5",
+      "category": "make-table",
+      "severity": "high",
+      "location_hint": "## N6 Verdict — section B, the 2026 recency sweep",
+      "existing_text": "The failures are not uniform, which strengthens the negative: SPADE ablates only its surrogate backbone against a fixed optimizer [14]; the diffusion-language-model optimizer's ablation is leave-one-component-out rather than crossed [15]; CliqueFlowmer varies the optimizer but holds one surrogate fixed [16]; the ranking-learnability paper varies training loss with a single fixed gradient-ascent optimizer in every experiment [17]; and the meta-learning and conformal-certification papers each bundle surrogate and optimizer into one method identity per row [18][19]. The subfield's own review returns zero hits",
+      "suggested_replacement": "The failures are not uniform, which strengthens the negative:\n\n| 2026 paper | Why it is not a crossed design |\n|---|---|\n| SPADE [14] | Ablates only its surrogate backbone against a fixed optimizer |\n| The diffusion-language-model optimizer [15] | Ablation is leave-one-component-out rather than crossed |\n| CliqueFlowmer [16] | Varies the optimizer but holds one surrogate fixed |\n| The ranking-learnability paper [17] | Varies training loss with a single fixed gradient-ascent optimizer in every experiment |\n| The meta-learning and conformal-certification papers [18][19] | Each bundles surrogate and optimizer into one method identity per row |\n\nThe subfield's own review returns zero hits",
+      "rationale": "Five 2026 papers compared on one dimension (how each fails the crossing test) are currently a semicolon chain; the report already uses this exact ledger-table idiom for the near-miss ledger and the kill candidates, so a table here makes the recency sweep consistent with the rest of the document and directly reusable as related-work material."
+    },
+    {
+      "id": "r6",
+      "category": "make-list",
+      "severity": "high",
+      "location_hint": "## (iii) Scope of Novelty — the 'Explicitly `NOT-WORTH-IT`' paragraph at the end of section B",
+      "existing_text": "**Explicitly `NOT-WORTH-IT`.** Adding meta-commentary citing the venue's own review criteria *into the paper* — it reads as reviewer-gaming and the argument is stronger on the merits. Hunting further for an owner of the LCB-paralysis claim, since Yarotsky is a scoping obligation rather than an owner [24]. Defaulting to ω² as the bias correction on folk grounds, since the simulation evidence names ε² [61]. Retracting the K-sensitivity result or the seven eliminations — both are real; what needs narrowing is the priority claim on the first and the scope statement on the second. And expanding the N9 no-precedent claim: it is defensible but bracketed on both sides and requires an affirmative leakage rebuttal to hold its current weight, so **downgrade, do not delete.**",
+      "suggested_replacement": "**Explicitly `NOT-WORTH-IT`.**\n\n- **Meta-commentary citing the venue's own review criteria *into the paper*** — it reads as reviewer-gaming and the argument is stronger on the merits.\n- **Hunting further for an owner of the LCB-paralysis claim**, since Yarotsky is a scoping obligation rather than an owner [24].\n- **Defaulting to ω² as the bias correction** on folk grounds, since the simulation evidence names ε² [61].\n- **Retracting the K-sensitivity result or the seven eliminations** — both are real; what needs narrowing is the priority claim on the first and the scope statement on the second.\n- **Expanding the N9 no-precedent claim** — it is defensible but bracketed on both sides and requires an affirmative leakage rebuttal to hold its current weight, so **downgrade, do not delete.**",
+      "rationale": "This is the only place carrying the `NOT-WORTH-IT` triage tag and it holds five separate do-not-do decisions in flat prose; every other tagged item in deliverable (iii) is a headed block or a table row, so this paragraph is the one triage surface the author cannot scan."
+    },
+    {
+      "id": "r7",
+      "category": "break-paragraph",
+      "severity": "high",
+      "location_hint": "## (i) — item B, 'A correction this audit owes itself'",
+      "existing_text": "so local Bayesian optimization as a literature proves progress rather than paralysis [99]. **Swept, the \"no prior art\" phrasing is WITHDRAWN.**",
+      "suggested_replacement": "so local Bayesian optimization as a literature proves progress rather than paralysis [99].\n\n**Swept, the \"no prior art\" phrasing is WITHDRAWN.**",
+      "rationale": "A ~2,100-character paragraph currently runs the exclusion argument, a WITHDRAWN verdict, the Yarotsky citation obligation and two adjacent candidates together; the WITHDRAWN sentence is the hinge and a load-bearing verdict the author must not miss inside the flow."
+    },
+    {
+      "id": "r8",
+      "category": "break-paragraph",
+      "severity": "high",
+      "location_hint": "## N6 Verdict — section D, 'The uncomfortable finding' continuation",
+      "existing_text": "attribute variance differently is a reportable observation. **It is not independent evidence for ground (1), and the earlier framing of it as such is FALSIFIED.**",
+      "suggested_replacement": "attribute variance differently is a reportable observation.\n\n**It is not independent evidence for ground (1), and the earlier framing of it as such is FALSIFIED.**",
+      "rationale": "Separates a reportable observation from the FALSIFIED record that qualifies it, in a ~2,400-character paragraph where the falsification verdict is currently the fourth sentence of a block and reads as a subordinate aside rather than a standing correction."
+    },
+    {
+      "id": "r9",
+      "category": "break-paragraph",
+      "severity": "high",
+      "location_hint": "## (i) — item M, the per-task normalizer paragraph",
+      "existing_text": "and Bellemare et al., the *origin* of the technique, document it flipping a ranking [64]. Ranks are not a clean escape,",
+      "suggested_replacement": "and Bellemare et al., the *origin* of the technique, document it flipping a ranking [64].\n\nRanks are not a clean escape,",
+      "rationale": "This ~2,600-character paragraph is the longest in the report and contains two distinct arguments — the min-max normalizer critique (Jordan/Bellemare) and the rank-statistic pool-dependence critique (Balduzzi) — that lead to different citations in the same Fix; splitting at the pivot makes both findable."
+    },
+    {
+      "id": "r10",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (i) — item M, the inversion-count paragraph",
+      "existing_text": "Branin-2D ens:grad verifies at `inversion_rate 1.0` and `mean_frac_worse 1.0` exactly. **The single exception: \"five other cells tie it\" should be six.**",
+      "suggested_replacement": "Branin-2D ens:grad verifies at `inversion_rate 1.0` and `mean_frac_worse 1.0` exactly.\n\n**The single exception: \"five other cells tie it\" should be six.**",
+      "rationale": "Splits the reproduces-cleanly half from the one figure in the entire numeric sweep that does not reproduce — the twelfth mandatory item and the only number in deliverable (i) the author actually has to recompute."
+    },
+    {
+      "id": "r11",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (i) — item M, 'Three presentation gaps invite false arithmetic catches'",
+      "existing_text": "but a reader who subtracts thinks they caught an error. **The strongest single piece of evidence for this report's \"the numbers hold\" verdict",
+      "suggested_replacement": "but a reader who subtracts thinks they caught an error.\n\n**The strongest single piece of evidence for this report's \"the numbers hold\" verdict",
+      "rationale": "The z-score cross-check is a positive finding the author should advertise, and it is currently buried mid-paragraph inside a discussion of presentation defects that reads as entirely negative."
+    },
+    {
+      "id": "r12",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (i) — item D, 'A narrower caveat survives'",
+      "existing_text": "**The paper's ensemble is exactly that construction.** But the counterweights must travel with it:",
+      "suggested_replacement": "**The paper's ensemble is exactly that construction.**\n\nBut the counterweights must travel with it:",
+      "rationale": "Separates the Lakshminarayanan caveat that applies to the paper from the four-source counterweight roster that qualifies it, in a paragraph that currently runs five sources and an unreconciled-thread disclosure without a break."
+    },
+    {
+      "id": "r13",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (iii) — RANK 1, 'Precedent check, and it must be made in its defensible form'",
+      "existing_text": "as two independently manipulated pipeline components.** A widened sweep across ML benchmarking finds no instance of that.",
+      "suggested_replacement": "as two independently manipulated pipeline components.**\n\nA widened sweep across ML benchmarking finds no instance of that.",
+      "rationale": "Splits the concession (interactions are routine in fANOVA) from the three-region sweep evidence that isolates the genuine residual, which are two different moves the author will reuse in two different places in the paper."
+    },
+    {
+      "id": "r14",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (iii) — RANK 6, the landscape negative",
+      "existing_text": "so the category does not sort the outcome at all. One reviewer rescue must be foreclosed before it is reached for:",
+      "suggested_replacement": "so the category does not sort the outcome at all.\n\nOne reviewer rescue must be foreclosed before it is reached for:",
+      "rationale": "Separates the landscape-covariate null itself from the domain-rescaling pre-emption that defends it — the second is a distinct, separately citable move the author needs to spot as an action item."
+    },
+    {
+      "id": "r15",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## (iii) — RANK 10, 'Reframe three results as refinements of named positions'",
+      "existing_text": "consistent with the scaling law rather than a counterexample [54]. **And cite the category, not only its application.**",
+      "suggested_replacement": "consistent with the scaling law rather than a counterexample [54].\n\n**And cite the category, not only its application.**",
+      "rationale": "RANK 10 packs four separate citation actions (Fannjiang, Gao, Manheim & Garrabrant, TD3+BC/PEVI) into one block; the break at the Extremal Goodhart pivot separates the two reframings from the two new-lineage citations."
+    },
+    {
+      "id": "r16",
+      "category": "break-paragraph",
+      "severity": "medium",
+      "location_hint": "## What I could not verify and why — section B, venue attributions",
+      "existing_text": "and is flagged venue-unverified rather than guessed [80]. **The fabrications this pass caught were not in the paper under audit",
+      "suggested_replacement": "and is flagged venue-unverified rather than guessed [80].\n\n**The fabrications this pass caught were not in the paper under audit",
+      "rationale": "Separates the three specific venue withdrawals from the methodological rule and the long verified-clean roster, in a paragraph that currently runs past 2,000 characters."
+    },
+    {
+      "id": "r17",
+      "category": "make-list",
+      "severity": "medium",
+      "location_hint": "## N6 Verdict — section B, 'The queries, run verbatim'",
+      "existing_text": "Direct-target queries across arXiv and OpenAlex: `crossed factorial surrogate optimizer offline model-based optimization`; `two-way ANOVA surrogate optimizer variance decomposition black-box optimization`; `factorial design surrogate model acquisition optimizer offline`; `eta squared surrogate main effect optimizer main effect benchmark`; `attribution surrogate versus optimizer offline MBO`; `variance decomposition benchmark components machine learning pipeline`; `crossed design machine learning benchmark two-way ANOVA`; `factorial design deep learning benchmark components`.",
+      "suggested_replacement": "Direct-target queries across arXiv and OpenAlex:\n\n- `crossed factorial surrogate optimizer offline model-based optimization`\n- `two-way ANOVA surrogate optimizer variance decomposition black-box optimization`\n- `factorial design surrogate model acquisition optimizer offline`\n- `eta squared surrogate main effect optimizer main effect benchmark`\n- `attribution surrogate versus optimizer offline MBO`\n- `variance decomposition benchmark components machine learning pipeline`\n- `crossed design machine learning benchmark two-way ANOVA`\n- `factorial design deep learning benchmark components`",
+      "rationale": "These queries exist to be re-run verbatim; as a semicolon chain inside a paragraph they are hard to copy individually, and a bullet per query makes the reproducibility claim actually usable."
+    },
+    {
+      "id": "r18",
+      "category": "make-list",
+      "severity": "medium",
+      "location_hint": "## (ii) Kills — the grow-direction sweep",
+      "existing_text": "returned **zero grow-direction hits** across fourteen query formulations, run verbatim: `reproducibility effect size larger than originally reported machine learning benchmark`; `reality check machine learning confound`; `re-evaluation confirms strengthens original finding benchmark`; `audit increased measured advantage neural network comparison`; `reanalysis larger effect machine learning evaluation`; `ML reproducibility challenge reported`; `attenuation correction benchmark machine learning`; `underestimate true effect performance gap benchmark`; `metric learning reality check`; `stronger than originally reported`; `corrected confound larger gap deep learning`; `\"ML Reproducibility Challenge\" report found effect stronger than original paper claimed`; `\"re-evaluation confirms and strengthens\" OR \"reanalysis found a larger\" machine learning benchmark`; and `ReScience C reproducibility report \"stronger\" OR \"larger\" effect than original paper` — the last three targeting the ML Reproducibility Challenge and ReScience C as the natural homes for such a result. Three independent,",
+      "suggested_replacement": "returned **zero grow-direction hits** across fourteen query formulations, run verbatim:\n\n- `reproducibility effect size larger than originally reported machine learning benchmark`\n- `reality check machine learning confound`\n- `re-evaluation confirms strengthens original finding benchmark`\n- `audit increased measured advantage neural network comparison`\n- `reanalysis larger effect machine learning evaluation`\n- `ML reproducibility challenge reported`\n- `attenuation correction benchmark machine learning`\n- `underestimate true effect performance gap benchmark`\n- `metric learning reality check`\n- `stronger than originally reported`\n- `corrected confound larger gap deep learning`\n- `\"ML Reproducibility Challenge\" report found effect stronger than original paper claimed`\n- `\"re-evaluation confirms and strengthens\" OR \"reanalysis found a larger\" machine learning benchmark`\n- `ReScience C reproducibility report \"stronger\" OR \"larger\" effect than original paper`\n\nThe last three target the ML Reproducibility Challenge and ReScience C as the natural homes for such a result. Three independent,",
+      "rationale": "Fourteen chained queries inside a single sentence are the least scannable passage in the report; listing them lets the author verify the exhaustiveness claim that carries the 'narrow scalar claim stands' verdict."
+    },
+    {
+      "id": "r19",
+      "category": "make-list",
+      "severity": "medium",
+      "location_hint": "## What I could not verify and why — section A, tail of the paywalled/access-blocked paragraph",
+      "existing_text": "McClelland & Judd (1993) was verified via metadata and abstract only. Yu et al. (2016) on landscape-driven surrogate selection was blocked by a bot challenge on IEEE Xplore — a genuine access failure, not a budget decision; Malan's survey quotes it [71]. Rudolph (1994) returned 403 on three hosts; the safe-policy-improvement framing carries the point instead and is fully verified [74][75]. Locatelli (2003) on Griewank: abstract only.",
+      "suggested_replacement": "Four further primaries were reached only partially:\n\n- **McClelland & Judd (1993)** — verified via metadata and abstract only.\n- **Yu et al. (2016)** on landscape-driven surrogate selection — blocked by a bot challenge on IEEE Xplore, a genuine access failure rather than a budget decision; Malan's survey quotes it [71].\n- **Rudolph (1994)** — returned 403 on three hosts; the safe-policy-improvement framing carries the point instead and is fully verified [74][75].\n- **Locatelli (2003)** on Griewank — abstract only.",
+      "rationale": "These four are chase-list items with institutional access; as bullets with bolded source names the author can triage them in seconds instead of extracting them from a 1,600-character paragraph."
+    },
+    {
+      "id": "r20",
+      "category": "split-sentence",
+      "severity": "low",
+      "location_hint": "## (iii) — RANK 5, the normalizer robustness check",
+      "existing_text": "A recomputation across five alternative normalizers over four corners, five β levels and both budget levels — 33 combinations plus leave-one-task-out, which is the paper's de facto redundancy-sensitivity analysis in Balduzzi's sense [98], run on the paper's own raw result files — finds **every one of the 33 preserves η²_surr > η²_opt.**",
+      "suggested_replacement": "A recomputation across five alternative normalizers over four corners, five β levels and both budget levels — 33 combinations plus leave-one-task-out, run on the paper's own raw result files — finds **every one of the 33 preserves η²_surr > η²_opt.** The leave-one-task-out arm is the paper's de facto redundancy-sensitivity analysis in Balduzzi's sense [98].",
+      "rationale": "A 52-word sentence with a nested clause and a citation between the subject and its verb currently delays the load-bearing 33-of-33 result to the very end; splitting puts the number the author must report in a short clause of its own without losing the Balduzzi framing or the citation."
+    },
+    {
+      "id": "r21",
+      "category": "split-sentence",
+      "severity": "low",
+      "location_hint": "## (iii) — RANK 9, the Xu/NTK compatibility paragraph",
+      "existing_text": "The falsifier is cheap and nameable — an R² ray-extrapolation diagnostic, fitting ensemble-mean and GP-mean against a linear function along rays from the data centroid, run on the paper's existing trained checkpoints — and it would upgrade the verdict from logically sound to empirically confirmed.",
+      "suggested_replacement": "The falsifier is cheap and nameable: an R² ray-extrapolation diagnostic, fitting ensemble-mean and GP-mean against a linear function along rays from the data centroid, run on the paper's existing trained checkpoints. It would upgrade the verdict from logically sound to empirically confirmed.",
+      "rationale": "A 46-word sentence describing a concrete runnable experiment; splitting after the experiment's specification separates the what-to-run from the why-it-matters, which is the shape every other RANK 9 item uses."
+    },
+    {
+      "id": "r22",
+      "category": "remove-hr",
+      "severity": "low",
+      "location_hint": "boundary between the executive summary and '## N6 Verdict' (pattern repeats at five further section boundaries)",
+      "existing_text": "do not touch the experiments.\n\n---\n\n## N6 Verdict: The Crossed Surrogate x Optimizer Factorial",
+      "suggested_replacement": "do not touch the experiments.\n\n## N6 Verdict: The Crossed Surrogate x Optimizer Factorial",
+      "rationale": "Horizontal rules directly above an H2 duplicate the visual break the heading already supplies; flagged for completeness at low severity, but in a 20,000-word work list these six rules arguably aid navigation, so the orchestrator may reasonably decline this one — the same pattern occurs before '## (i)', '## (ii)', '## (iii)', '## What I could not verify and why' and '## Sources'."
+    }
+  ]
+}

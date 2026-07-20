@@ -1,0 +1,23 @@
+{
+  "total_recommendations": 21,
+  "applied": 9,
+  "declined": 12,
+  "applied_ids": ["r1","r2","r3","r4","r5","r6","r7","r8","r9"],
+  "application_method": "Exact-substring Edit with a uniqueness check. Every anchor was required to match exactly once in the report before being replaced; a match count of 0 or 2+ would have been skipped. All nine matched exactly once. Zero skipped.",
+  "rationale_applied": "All nine high-severity items. The load-bearing one is the r2+r3 pair, which converts RANK 1's 'Four reasons it is major rather than technical' from a single ~1,900-character paragraph into bullets. That passage carries the strongest promotion case in the deliverable and was the least scannable text in a document the author must triage under deadline. r5 converts the 2026 recency sweep to a table; r1, r4 and r6 convert the kill-conjunct definition, the self-corrections record and the NOT-WORTH-IT block to lists; r7-r9 break three over-long analytical paragraphs.",
+  "rationale_declined": "The 10 medium and 3 low items are paragraph breaks and sentence splits in passages that are already navigable. Applying them would add churn to a document that has been through a patcher and two polish runs, for marginal gain. r22 (remove-hr) was declined because the recommender itself marked it explicitly declinable.",
+  "paired_constraint_honoured": "r2 and r3 complete one list conversion and had to be applied together or not at all. Both applied.",
+  "content_integrity": {
+    "nothing_cut": "Every recommendation was formatting-only. No number, interval, verbatim quote, citation marker, contract tag, bolded Fix, narrowing qualification, or FALSIFIED/WITHDRAWN record was altered.",
+    "word_count_before": 19890,
+    "word_count_after": 19937,
+    "delta": "+47 words, from list markers and table scaffolding",
+    "citations_after": "102 cited / 102 listed, zero orphans, zero numbering gaps",
+    "headings_after": "5 required H2s verbatim and in order, plus Sources"
+  },
+  "recommender_scope_notes_accepted": [
+    "The twelve mandatory items in (i) already carry a consistent four-field shape: eleven of twelve open with a bolded claim or verdict line and all twelve close with a bolded Fix. No format change warranted.",
+    "All twenty-one ranked items already carry their contract tag bolded in the lead sentence; RANK 9's ten sub-items carry tags in a dedicated table column. Triage was already visually solid. The sole exception was the NOT-WORTH-IT block, handled by r6.",
+    "All eight existing tables were judged well-formed and left untouched."
+  ]
+}
