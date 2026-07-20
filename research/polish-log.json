@@ -1,1 +1,47 @@
-{"edits": [], "status": "pre-stubbed by orchestrator; polish-auditor is Edit-locked"}
+{
+  "status": "complete",
+  "word_count_before": 20337,
+  "word_count_after": 19890,
+  "edits": [
+    {
+      "by": "polish-auditor",
+      "description": "Hedge-stacking, throat-clearing and preamble removed across the report. Two runs: the first terminated on an API error mid-pass and was resumed.",
+      "words_removed": 447
+    },
+    {
+      "by": "orchestrator",
+      "description": "Hygiene verification rather than edit. Confirmed zero pipeline vocabulary. Three 'width sweep' hits at lines 157, 161 and 433 were checked individually and all refer to the AUDITED PAPER's own per-member width ablation in Elimination 2, not to any pipeline stage. Deliberately left in place; removing them would have corrupted a technical description.",
+      "words_removed": 0
+    }
+  ],
+  "length_decision": {
+    "target": "7000-8000 words (pipeline default for argumentative format)",
+    "actual": 19890,
+    "decision": "ACCEPT. No further cutting.",
+    "reasoning": [
+      "ZERO literal duplication. A scan for sentences over 100 characters appearing more than once returned no repeats at all. The four suspected repeat offenders (RaM analysis, normalizer critique, interaction stability, severity split) are cross-referenced, not restated.",
+      "Section balance is proportionate to the deliverable contract rather than skewed: N6 verdict 2,525 words; (i) 5,931 across twelve mandatory items each carrying the four fields the query mandates, about 490 words per item; (ii) 892, correctly short because the finding is zero kills; (iii) 6,735 across twenty-one tagged ranked items, about 320 words per item; terminal section 1,543; Sources 1,746.",
+      "The query says 'Do not abbreviate' and specifies a per-item field contract. Twelve mandatory items times four required fields, plus twenty-one tagged ranked items, plus a verdict carrying its verbatim queries, plus a seven-category terminal section, has an irreducible size.",
+      "Three independent judgements converged here. Draft A flagged its own over-length rather than silently trimming, on the grounds that further cuts would have amputated findings rather than prose. The width critic graded the length only partly defensible and deliberately targeted two consolidatable passages rather than recommending broad cuts. The patcher, which grew the report, flagged that the added mass is evidence the report previously asserted without showing.",
+      "The standing instruction through every stage was that reaching a word target by removing evidence is a worse outcome than missing the target. That instruction is honoured here."
+    ],
+    "what_was_NOT_cut": "No number, interval, verbatim quote, table, citation marker, tag, bolded Fix, narrowing qualification, or falsification record was removed at any point."
+  },
+  "escalations": [
+    {
+      "issue": "The polish-auditor subagent terminated on an API error mid-pass and, after resuming, made only marginal further progress (34 words across a full window).",
+      "resolution": "The orchestrator took over the length DECISION rather than the length CUTTING. Verified there was no duplication to cut, then accepted the length with the reasoning recorded above. No regeneration occurred; the patch-not-regenerate invariant holds, since the report was modified only by Edit hunks from the patcher and the polish auditor."
+    }
+  ],
+  "integrity_at_close": {
+    "citations_cited": 102,
+    "citations_listed": 102,
+    "orphans": 0,
+    "numbering_gaps": 0,
+    "h2_headings": "5 required, verbatim and in order, plus Sources",
+    "yaml_frontmatter": "absent",
+    "pipeline_vocabulary": 0,
+    "ai_agent_authorship_strings": 0,
+    "venue_unverified_retained": ["Dao arXiv:2503.04181", "Ghasemipour arXiv:2205.13703", "Choi arXiv:1910.05446"]
+  }
+}
