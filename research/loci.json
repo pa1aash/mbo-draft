@@ -1,0 +1,108 @@
+{
+  "loci": [
+    {
+      "name": "n6-residual-scoping-legitimate-or-gerrymandered",
+      "one_line": "Is N6's four-conjunct residual (crossed x surrogate-class x optimizer x two-way decomposition, offline) a load-bearing scoping or a circle drawn around the answer to dodge RaM Table 3 and DiBO Table 2?",
+      "flavor": "dialectical",
+      "source": "analyst A",
+      "importance": 10,
+      "uncertainty": 7,
+      "disagreement": 6,
+      "decision_impact": 10,
+      "composite_score": 33,
+      "source_budget": 12,
+      "rationale": "The existential claim's survival now rests entirely on scoping rather than on absence, because RaM Table 3 IS a genuine 9x2 crossed grid in offline MBO. The three defences (loss type is not model class; bundled methods are not a clean optimizer factor; descriptive reporting is not a decomposition) are individually reasonable and collectively look like post-hoc circle-drawing to a hostile reviewer. This locus must argue BOTH sides properly and reach a committed verdict on whether the residual is defensible, because the report's N6 section stands or falls on it. Specifically needs: what does the experimental-design literature say about when a factor level counts as the same factor? Is there a principled basis for 'surrogate class' excluding 'surrogate training loss'?"
+    },
+    {
+      "name": "minmax-normalization-outlier-fragility",
+      "one_line": "Every eta-squared in the paper is computed on per-task min-max normalized cell means over n=9 cells, and on outlier-dominated tasks the normalizer's range is set by a catastrophic collapse -- is the whole decomposition fragile to this analysis choice?",
+      "flavor": "dialectical",
+      "source": "analyst B",
+      "importance": 8,
+      "uncertainty": 8,
+      "disagreement": 5,
+      "decision_impact": 8,
+      "composite_score": 29,
+      "source_budget": 9,
+      "rationale": "Verified arithmetically by the orchestrator on Griewank-30D: the normalizer range is set by a 2780x spread, compressing the three perturbation cells into a 0.048 band despite a 46% raw difference, while stretching gradient/CMA cells across the full unit interval. This is a genuine threat to EVERY eta-squared the paper reports, including the interaction. The paper names four operating-point coordinates that determine its headline's magnitude; this is a fifth, it is an analysis rather than experimental choice, and it is unnamed. Needs the literature on normalization choice in benchmark aggregation, Agarwal et al. 2021 being the obvious anchor since the paper already cites it but does not engage its central thesis."
+    },
+    {
+      "name": "interaction-term-buried-and-its-methodological-grounding",
+      "one_line": "The interaction is significant in all four corners, second-largest effect throughout, 9.2x more stable than the headline, and never interpreted -- what authority establishes that a significant interaction is the specific payoff a crossed design buys over one-factor-at-a-time?",
+      "flavor": "convergent",
+      "source": "analysts A and B independently, plus orchestrator",
+      "importance": 9,
+      "uncertainty": 5,
+      "disagreement": 4,
+      "decision_impact": 10,
+      "composite_score": 28,
+      "source_budget": 8,
+      "rationale": "MERGED from analyst A's 'buried-interaction-effect-methodological-grounding', analyst B's 'interaction-term-buried-in-plain-sight', and analyst B's 'proposal-distribution-fix-in-table-cross' (which the orchestrator has already connected: tab:cross's 0.41-vs-0.97 coverage contrast is the mechanism of the interaction, measured in probabilities and therefore immune to the normalization challenge). The empirical work is done -- the orchestrator established the numbers, the bias correction, the 7/7 raw-units attenuation result, and the tab:cross connection. What is MISSING is authority: the paper currently has only Moosbauer's negative framing (OFAT cannot detect interactions). This locus should find the positive statement in the experimental-design/factorial literature that a crossed design's payoff IS interaction estimation, so the report can cite it rather than assert it. Also needs: is there precedent in ML benchmarking for reporting a surrogate-by-optimizer interaction at all? THIRD REQUIREMENT, raised by analyst A and accepted: an ANOVA-literate reviewer will want a SIMPLE-EFFECTS DECOMPOSITION before a significant interaction is promoted to the abstract -- i.e. the surrogate effect computed separately within each optimizer level. The orchestrator's 7/7 raw-units result (perturbation gap averaging 5.9% of the aggressive-optimizer gap) is effectively an informal simple-effects analysis already, so the locus should determine whether the formal version is required and whether the paper can run it on stored data."
+    },
+    {
+      "name": "ntk-width-citations-never-verified",
+      "one_line": "Jacot (NTK), Lee (DNN-as-GP), Lee (wide-nets), and Rahaman (spectral bias) motivate Elimination 2's entire width ablation and were never fetched anywhere in this re-audit -- do they say what the paper cites them for, and does Xu et al.'s NTK extrapolation result create a tension with Elimination 2?",
+      "flavor": "convergent",
+      "source": "analyst A",
+      "importance": 7,
+      "uncertainty": 6,
+      "disagreement": 3,
+      "decision_impact": 6,
+      "composite_score": 22,
+      "source_budget": 5,
+      "rationale": "A genuine coverage gap the orchestrator's own coverage-gaps.md missed. Four citations carry Elimination 2's motivation ('wide networks approach GP behaviour', 'finite networks show spectral bias') and none was verified in this pass. Given that the audit's hit rate on load-bearing citations is roughly 8 of 15, the prior that at least one of these is misused is substantial. There is also a live tension: the audit recommends Xu et al.'s ICLR 2021 NTK linear-extrapolation theorem as the paper's best positive mechanism, while Elimination 2 cites the NTK lineage to argue width does NOT explain the gap. Both can be true -- asymptotic width convergence and far-field linear extrapolation are different claims -- but the report must not recommend a citation that contradicts an existing elimination without saying so."
+    },
+    {
+      "name": "landscape-predicts-which-surrogate-wins",
+      "one_line": "The per-task GP-vs-ensemble gaps are wildly heterogeneous and the paper treats that as unstructured variance -- does landscape structure predict which surrogate wins, and is that the unexplored paper?",
+      "flavor": "convergent",
+      "source": "analyst B",
+      "importance": 6,
+      "uncertainty": 7,
+      "disagreement": 2,
+      "decision_impact": 6,
+      "composite_score": 21,
+      "source_budget": 4,
+      "rationale": "The 'genuinely UNEXPLORED' category from the query's deliverable (iii), which step 1's coverage audit caught as a dropped atomic item. The orchestrator's raw-units computation shows the gap ranges from 0.19 (Rosenbrock) to 2591 (Griewank) under gradient, and the paper offers no account of the heterogeneity. Exploratory landscape analysis (ELA) and algorithm-selection literature is the obvious frame: if landscape features predict the gap, the paper has a per-task selection rule rather than a global average. Likely a FOLLOW-UP-PAPER rather than a fold-in at n=7 tasks, and the locus should reach a verdict on which."
+    },
+    {
+      "name": "aaai-venue-fit-for-the-audit-genre",
+      "one_line": "Does an audit/decomposition paper with no proposed method survive AAAI main-track review on its own terms, and does diagnosis-by-seven-eliminations read as a contribution or as a null result?",
+      "flavor": "convergent",
+      "source": "analyst B",
+      "importance": 5,
+      "uncertainty": 6,
+      "disagreement": 3,
+      "decision_impact": 5,
+      "composite_score": 19,
+      "source_budget": 2,
+      "rationale": "The report's recommendations are worthless if they optimise for the wrong reviewer. The paper names Henderson et al. as having appeared at this venue, which is a deliberate framing move. Low budget because it is closer to strategy than to verifiable literature, and because the orchestrator's standing worry about elimination-as-null-result is already recorded. Should return a framing recommendation, not a survey."
+    }
+  ],
+  "skip_loci": [
+    {"slug": "sigma-distance-vs-error-ensemble-construction", "source": "analyst A", "reason": "Already resolved in depth. Mandatory Fixes 2 and 3 verify SNGP/DUQ as an inverted citation, and the Carrete regression contradiction is established. Wave 2 further corrected the orchestrator's over-generalisation about MSE-trained ensembles."},
+    {"slug": "k-robustness-vs-k-sensitivity", "source": "analyst A", "reason": "Fully resolved (Mandatory Fix 5), verified first-hand twice independently -- orchestrator PDF legend-token extraction and subagent image render of page 28."},
+    {"slug": "audit-direction-melis-maassen-hamdan", "source": "analyst A", "reason": "Fully resolved (Fixes 4 and 7), including Melis as ranking-reversal-not-shrinkage, Maassen's 19-up-vs-14-down, and Hamdan's leakage burden."},
+    {"slug": "ucb-local-search-ownership-fan-turbo-gibo", "source": "analyst A", "reason": "Fully resolved (Mandatory Fix 1) with zero-hit greps on Fan for offline/LCB/paralysis, plus a theorem running the opposite direction, plus TuRBO diagnosing over-exploration."},
+    {"slug": "budget-axis-under-stated", "source": "analysts A and B", "reason": "Fully resolved (H5 CONFIRMED) with COCO/BBOB section 3.5, Lucic's verbatim precedent, and Kazikova's sibling-field confirmation."},
+    {"slug": "pessimism-creates-or-amplifies-ghasemipour-mechanism", "source": "analyst A", "reason": "Resolved: Mandatory Fix 11 corrects the co-citation as an over-extended analogy and restates what Ghasemipour actually shows."},
+    {"slug": "conformal-shift-transfer-tibshirani", "source": "analyst A", "reason": "Resolved (Fix 7.5), including a self-correction after the orchestrator read the supplement directly rather than trusting the relay."},
+    {"slug": "eta2-demsar-threshold-fabrication", "source": "analyst A", "reason": "Resolved (Fixes 8 and 9), verified first-hand against the 30-page JMLR PDF: zero hits for 'more than ten', 'at least ten', 'ten or more'."},
+    {"slug": "improvement-guarantee-safe-policy-improvement-reframing", "source": "analyst A", "reason": "Resolved under deliverable (iii) UNDER-EXPLAINED with Thomas/Theocharous/Ghavamzadeh and SPIBB Theorem 2."},
+    {"slug": "surrogate-vs-optimizer-doctrine-shahriari", "source": "analyst A", "reason": "Contradiction graph rates this low relevance and reports no fight -- Shahriari corroborates the paper twice and more strongly than it paraphrases."},
+    {"slug": "eta-squared-bias-primary-source-verification", "source": "analyst A", "reason": "DEMOTED rather than dropped. Kelley 1935 and Olejnik & Algina 2003 are paywalled everywhere attempted, and the JOSS effectsize documentation quotes both verbatim. More importantly the empirical half is first-hand: the orchestrator computed the bias directly from the paper's own bootstrap artifacts (+0.0099 to +0.0184 across corners). The provenance limitation is already recorded for the terminal section, so a dedicated locus would spend budget re-confirming a limitation rather than resolving it."},
+    {"slug": "contradiction-graph-high-relevance-clusters", "source": "analyst B", "reason": "The contradiction graph already contains validated high-relevance clusters; re-promoting them as loci would duplicate resolved work."},
+    {"slug": "single-dataset-draw-variance", "source": "analyst B", "reason": "The paper's Limitations section already discloses that synthetic datasets are drawn once at seed 0, so reported variance excludes data-draw variance. Disclosed, not hidden."},
+    {"slug": "k-beta-crossed-sweep", "source": "analyst B", "reason": "Considered asking whether an unexplored K x beta interaction exists, since both are swept only marginally and never crossed. Rejected because the paper treats K strictly as a nuisance coordinate and a K x beta result would invite exactly the K-as-mechanism reading the claim ledger's first hard rule forbids."},
+    {"slug": "proposal-distribution-fix-in-table-cross", "source": "analyst B", "reason": "MERGED into the interaction locus rather than skipped. The orchestrator established that tab:cross's 0.41-vs-0.97 coverage contrast IS the mechanism of the interaction, and that being a probability rather than a normalized score it survives the min-max challenge. It is one finding with the interaction, not two."}
+  ],
+  "meta": {
+    "analysts_run": 2,
+    "loci_proposed": 9,
+    "loci_retained": 6,
+    "merges": 2,
+    "dialectical_loci": 2,
+    "total_source_budget": 40,
+    "note": "Both analysts independently surfaced the interaction term, which the orchestrator had also found from the artifacts. Convergence from three directions on a result the paper never discusses is itself evidence. The two dialectical loci come one from each analyst and challenge different things -- A challenges whether N6's scoping is honest, B challenges whether any eta-squared in the paper is stable. Neither was suggested by the orchestrator's briefing."
+  }
+}
