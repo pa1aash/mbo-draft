@@ -161,6 +161,34 @@ Stress-Testing" contribution type that pre-authorises negative results. So the p
 genre-membership framing is **necessary but not sufficient** at this venue — which raises the
 stakes on leading with something positive.
 
+## NEAR-MISS: the global-vault trap almost caught me, on the exact axis the query warned about
+
+I set a background waiter for "six `interim-*` notes exist", it fired, and I began reading
+committed positions. **Six of the seven files were stale interim notes from the PRIOR audit
+run** — `n3-classic-bo-beta-calibration`, `n4-sigma-mechanism-scope-and-ovadia`,
+`n7-roughening-beyond-offline-mbo`, `k-and-finite-width-artifact-vs-class-property`,
+`audit-strengthens-and-n9-integrity`, `optimizer-reversal-unearned-and-candidate-a-credit`.
+Only `aaai-venue-fit` was from this run.
+
+Their committed positions are *seductively relevant* — they discuss N9's integrity, the K/width
+question, σ mechanism scope, N7's roughening gap. Read carelessly, I would have reconciled the
+**previous pass's verdicts** into this run's step 6 and presented them as freshly established.
+That is precisely the failure the query's method constraints forbid: *"The vault at
+~/.hyperresearch is GLOBAL and holds the previous pass's corpus — do NOT reuse a cached source
+for a verdict; re-fetch and note it."*
+
+**What caught it:** the filenames follow the prior run's `nN-` claim-numbering convention rather
+than this run's locus names, which did not match the six loci I dispatched. Checking the tag
+confirmed it.
+
+**Fix applied:** every waiter and every read now filters on
+`grep -l 'mbo-gauntlet-r4-adversarial-0f06f1'`, not on a filename glob. The vault-tag exists for
+exactly this reason and I had stopped using it.
+
+**Worth reporting in the deliverable's methodology note.** The instruction to distrust the prior
+pass has now paid for itself twice: once when RaM Table 3 turned out to have been missed by
+three prior fetches of the same paper, and once here.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
