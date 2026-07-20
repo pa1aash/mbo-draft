@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Deep ensemble diversity arises because independently initialized/trained members converge to different modes of the loss landscape, producing genuine functional diversity that single-model subspace-sampling methods (MC-dropout, SWAG) fail to replicate.",
+    "stance": "neutral",
+    "stance_target": "mechanistic explanation for why ensemble disagreement (sigma) exists at all",
+    "evidence_type": "theoretical",
+    "scope_conditions": "image classification (CIFAR-10 etc.), comparison of ensembling vs. subspace-sampling methods",
+    "quoted_support": "improving accuracy, uncertainty and out-of-distribution robustness of deep learning",
+    "numbers": [],
+    "entities": ["Fort", "Huang", "Lakshminarayanan", "loss landscape", "MC-dropout", "SWAG"],
+    "time_period": "2019",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "191202757-deep-ensembles-a-loss-landscape-perspective"
+  },
+  {
+    "claim": "This paper does not measure or discuss input-space distance-to-training-data as a construct at all (only cosmetic mentions of KL-divergence between output distributions in an ablation), and offers no direct evidence on whether ensemble sigma correlates with distance vs. error.",
+    "stance": "neutral",
+    "stance_target": "whether this paper can be used to bound the audited paper's distance-signal claim",
+    "evidence_type": "empirical",
+    "scope_conditions": "N/A - absence-of-evidence finding from full-text grep",
+    "quoted_support": "we also computed the KL-divergence and other distances between the output probability [distributions, for simplicity]",
+    "numbers": [],
+    "entities": ["KL-divergence"],
+    "time_period": "2019",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "191202757-deep-ensembles-a-loss-landscape-perspective"
+  }
+]

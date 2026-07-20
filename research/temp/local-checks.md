@@ -204,6 +204,58 @@ code does this specific thing" — passes without exception. That is unusual and
 stated, both because it is true and because it calibrates the severity of everything else:
 the defects found elsewhere are framing and attribution defects, not fabricated evidence.
 
+## L2.7 — The inversion result (D25) verifies, with one off-by-one
+
+Checked `results/x0_inversion.json` (engine-stamped, `git_sha 9843dfc8`, X1/X3 both on) at
+the audited engine `x3=1`.
+
+**Verified exactly** — the figure caption's headline counts:
+
+| Claim (fig:x0 caption) | Artifact | ✓ |
+|---|---|---|
+| ensemble inverts on ≥1 optimizer on **7/7** tasks | 7/7 (all seven) | ✓ |
+| SVGP **3/7** | 3/7 (Branin, Rastrigin, Styblinski) | ✓ |
+| exact GP **2/7** | 2/7 (Rastrigin, Styblinski) | ✓ |
+| Branin-2D ens:grad — all 30 seeds invert | `inversion_rate: 1.0` | ✓ |
+| …and every one of the 128 returned designs is worse | `mean_frac_worse: 1.0` | ✓ |
+
+**L2.7a — DISCREPANCY: "five other cells tie it" should be six.**
+The paper writes: "One of the sharpest cells is Branin-2D under ensemble gradient ascent
+---**five** other ensemble and SVGP cells tie it---where all 30 seeds invert and, on average,
+every one of the 128 returned designs scores below the best design the cell started with."
+
+Applying that stated criterion (`inversion_rate == 1.0` AND `mean_frac_worse == 1.0`) at
+x3=1 returns **seven** cells, i.e. Branin ens:grad plus **six** others:
+
+| Task | Cell | mean magnitude |
+|---|---|---|
+| Branin-2D | ens:cma | 6.890 |
+| Styblinski-5D | ens:cma | 22.312 |
+| Styblinski-5D | ens:grad | 22.018 |
+| Styblinski-5D | ens:perturb | 4.190 |
+| Styblinski-5D | svgp:cma | 22.737 |
+| Styblinski-5D | svgp:grad | 22.466 |
+
+**Fix: recount and change "five" to "six", or state the additional criterion that excludes
+the seventh cell.** Severity is low — the claim is a parenthetical and the direction is
+unaffected — but it is a bare integer that a reviewer with the released artifact can check
+in one line, and the paper's whole credibility posture rests on such checks passing. It is
+also the only figure I found in the entire numeric sweep that does not reproduce.
+
+**Note for the author:** the discrepancy may be a stale count from before a re-run. The
+inversion artifact carries `git_sha 9843dfc8` while `beta0_reconcile.json` carries
+`812bcb92` — different commits, as expected for different experiments, but worth confirming
+the count was recomputed on the final one.
+
+## L2.8 — The engine-stamping claim VERIFIES
+
+The paper asserts as part of its protocol: "Stamp the engine---library versions, flags,
+commit---with every number." Checked: `beta0_reconcile.json` and `x0_inversion.json` both
+carry a `meta`/`engine` block with platform, OS release, Python, torch, numpy, botorch,
+gpytorch and cma versions, `git_sha`, the X1/X3 flags, K, beta, TOP, seed range and an ISO
+timestamp. **The protocol the paper prescribes is one it actually followed.** Worth stating
+in the report — it is the claim most likely to be assumed rhetorical and it is not.
+
 ## L3 — Citation-year and venue defects visible without fetching
 
 **L3a — `kim2025mbosurvey` key/prose mismatch.** The bib entry is

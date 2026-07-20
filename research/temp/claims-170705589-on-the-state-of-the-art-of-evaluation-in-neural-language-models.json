@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Melis et al. (ICLR 2018) find that a properly-regularized vanilla LSTM outperforms the Recurrent Highway Network and NAS architectures once hyperparameters are controlled via black-box tuning, reversing the published ranking.",
+    "stance": "neutral",
+    "stance_target": "N9 premise: 'audits in this genre usually shrink the effect they audit (melis2018sota)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Language modeling benchmarks: Penn Treebank, Wikitext-2, Hutter Prize (enwik8); single paper, single domain",
+    "quoted_support": "\"Once hyperparameters have been properly controlled for, we find that LSTMs outperform the more recent models, contra the published claims.\"",
+    "numbers": [],
+    "entities": ["Gábor Melis", "Chris Dyer", "Phil Blunsom", "LSTM", "Recurrent Highway Network", "NAS"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170705589-on-the-state-of-the-art-of-evaluation-in-neural-language-models"
+  },
+  {
+    "claim": "Melis et al. frame their finding as one instance joining two other single-paper warnings about replication failure in deep learning, not as evidence of a genre-wide directional pattern.",
+    "stance": "refutes",
+    "stance_target": "N9 premise: audits in this genre 'usually' shrink the effect they audit, as a general rule",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Self-characterization by the authors within the discussion/conclusion section",
+    "quoted_support": "\"Our result is therefore a demonstration that replication failures can happen due to poorly controlled hyperparameter variation, and this paper joins other recent papers in warning of the under-acknowledged existence of replication failure in deep learning (Henderson et al., 2017; Reimers & Gurevych, 2017).\"",
+    "numbers": [],
+    "entities": ["Melis", "Henderson", "Reimers", "Gurevych"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170705589-on-the-state-of-the-art-of-evaluation-in-neural-language-models"
+  },
+  {
+    "claim": "Melis et al.'s paper contains no sentence asserting a general statistical law about the direction (shrink vs. grow) that audits/reanalyses run in machine learning as a field.",
+    "stance": "refutes",
+    "stance_target": "N9 premise as sourced to melis2018sota",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Full-text search of the paper (introduction, results, discussion, conclusion, references) for general claims about audit direction",
+    "quoted_support": "No such sentence found in full text; the paper's only generalizing statement is a caution that 'there is little reason to expect that the problem of unreliable evaluation is unique to the tasks discussed here' -- a claim about the existence of the problem, not its direction.",
+    "numbers": [],
+    "entities": ["Melis", "Dyer", "Blunsom"],
+    "time_period": "2017",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170705589-on-the-state-of-the-art-of-evaluation-in-neural-language-models"
+  },
+  {
+    "claim": "Melis et al.'s specific finding is a ranking reversal (which architecture is best) attributable to hyperparameter-tuning confounds, not a report of a 'shrinking variance-explained statistic' in the sense N9 uses.",
+    "stance": "neutral",
+    "stance_target": "precise characterization of what Melis measured, for downstream fidelity of the N9 citation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Language modeling perplexity benchmarks",
+    "quoted_support": "\"We reevaluate several popular architectures and regularisation methods with large-scale automatic black-box hyperparameter tuning and arrive at the somewhat surprising conclusion that standard LSTM architectures, when properly regularised, outperform more recent models.\"",
+    "numbers": [],
+    "entities": ["LSTM", "Penn Treebank", "Wikitext-2", "Hutter Prize"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170705589-on-the-state-of-the-art-of-evaluation-in-neural-language-models"
+  }
+]

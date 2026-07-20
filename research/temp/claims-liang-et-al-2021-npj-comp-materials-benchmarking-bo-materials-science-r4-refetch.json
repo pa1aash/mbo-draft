@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Liang et al. 2021 (npj Comput Mater 7:188) run a genuinely crossed grid of surrogate models (RF, GP with 5 kernel choices, GP-ARD) x acquisition functions (EI, PI, LCB) across 5 materials domains, but report results only via two custom descriptive ratio metrics (Enhancement Factor, Acceleration Factor) against a random-search baseline -- never an ANOVA, fANOVA, or eta-squared variance-attribution statistic.",
+    "stance": "supports",
+    "stance_target": "N6 near-miss confirmation: structural crossing present, statistical method (ANOVA) absent",
+    "evidence_type": "empirical",
+    "scope_conditions": "5 experimental materials-science datasets: carbon nanotube-polymer blends, silver nanoparticles, lead-halide perovskites, additively manufactured polymer structures (Crossed barrel), plus a fifth",
+    "quoted_support": "\"We then pair the selected surrogate model with one of three acquisition functions, including expected improvement (EI), probability of improvement (PI), and lower confidence bound (LCB)... Enhancement Factor (EF) EF(i) = Top%_BO(i) / Top%_random(i) shows how much improvement in a metric one would receive at cycle i, and Acceleration Factor (AF) AF(Top%=a) = i_BO / i_random is the ratio of cycle numbers showing how much faster one could reach a specific value.\"",
+    "numbers": ["EF formula (eq.3)", "AF formula (eq.4)", "5 materials domains", "50-run ensembles", "3 acquisition functions (EI, PI, LCB)"],
+    "entities": ["Qiaohao Liang", "Aldair E. Gongora", "Zekun Ren", "Armi Tiihonen", "npj Computational Materials"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "liang-et-al-2021-npj-comp-materials-benchmarking-bo-materials-science-r4-refetch"
+  },
+  {
+    "claim": "Liang et al. 2021 explicitly frames Bayesian optimization as a closed-loop, online active-learning method operating in real experimental campaigns, not offline (fixed-dataset) model-based optimization.",
+    "stance": "supports",
+    "stance_target": "N6 near-miss confirmation: domain mismatch (online vs offline MBO)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Autonomous/high-throughput materials experimentation",
+    "quoted_support": "\"BO has been shown to be a data-efficient closed-loop active learning method for navigating complex design spaces... Fig. 2: Benchmarking framework including a simulation of BO performing closed-loop optimization with alternating inference and planning stages.\"",
+    "numbers": [],
+    "entities": ["Bayesian optimization", "active learning"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "liang-et-al-2021-npj-comp-materials-benchmarking-bo-materials-science-r4-refetch"
+  },
+  {
+    "claim": "Full-text grep of Liang et al. 2021 (70,875-char HTML body) confirms zero hits for 'ANOVA', 'fANOVA', 'analysis of variance', 'eta squared'/'eta-squared', 'factorial', 'two-way', 'main effect', 'interaction', or 'OFAT'/'one-factor-at-a-time' anywhere in the paper; the 14 hits for 'crossed' are exclusively references to the 'Crossed barrel dataset' (a materials-science dataset name), a homonym unrelated to factorial-design terminology.",
+    "stance": "supports",
+    "stance_target": "N6 near-miss confirmation via exhaustive grep, disambiguating a potential false-positive lead ('crossed')",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full HTML text of npj Comput Mater 7:188",
+    "quoted_support": "Grep counts: factorial=0, crossed=14 (all 'Crossed barrel dataset'), ANOVA=0, fANOVA=0, 'analysis of variance'=0, eta squared/eta-squared=0, two-way=0, main effect=0, interaction=0, OFAT=0, one-factor-at-a-time=0, offline=0, closed-loop=6, acceleration=12, enhancement=10.",
+    "numbers": ["crossed: 14 (all dataset-name homonym)", "ANOVA: 0", "closed-loop: 6"],
+    "entities": ["Crossed barrel dataset"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "liang-et-al-2021-npj-comp-materials-benchmarking-bo-materials-science-r4-refetch"
+  },
+  {
+    "claim": "Liang et al. 2021 cite Rohr et al., Graff et al., and Gongora et al. (Crossed barrel dataset, self-citation) as prior studies that evaluated BO performance using multiple surrogate models and acquisition functions within a single materials domain each -- narrower structural analogs worth citation-chasing but not the crossed multi-domain design of Liang et al. itself.",
+    "stance": "neutral",
+    "stance_target": "Lead generation for further citation-chain verification",
+    "evidence_type": "empirical",
+    "scope_conditions": "Reference list of npj Comput Mater 7:188, refs [24],[28],[29]",
+    "quoted_support": "\"Rohr et al. [28], Graff et al. [29], and Gongora et al. [24] have evaluated the performance of BO using multiple surrogate models and acquisition functions within specific electrocatalyst, ligand, and mechanical structures design spaces, respectively. However, comprehensive benchmarking of the performance of BO algorithms across a broad array of experimental materials systems, as we present [here]...\"",
+    "numbers": ["ref [24]", "ref [28]", "ref [29]"],
+    "entities": ["Rohr", "Graff", "Gongora"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "liang-et-al-2021-npj-comp-materials-benchmarking-bo-materials-science-r4-refetch"
+  }
+]

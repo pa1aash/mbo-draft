@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Shahriari et al. 2016 explicitly states, as the review's own framing of its purpose, that the choice of statistical model is often far more important than the choice of acquisition function heuristic.",
+    "stance": "supports",
+    "stance_target": "Audited paper's scope-guard claim that Shahriari (2016) establishes the doctrine 'the choice of statistical model often matters more than the acquisition heuristic'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Online/sequential Bayesian optimization literature as of 2016; review paper, not original empirical study",
+    "quoted_support": "We will see that the careful choice of statistical model is often far more important than the choice of acquisition function heuristic.",
+    "numbers": [],
+    "entities": ["Shahriari", "Swersky", "Wang", "Adams", "de Freitas", "Proceedings of the IEEE"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"
+  },
+  {
+    "claim": "Shahriari et al. restate the same doctrine in the paper's Conclusion, calling acquisition-function design 'secondary' to surrogate model choice.",
+    "stance": "supports",
+    "stance_target": "Audited paper's scope-guard claim re: Shahriari (2016) doctrine",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Conclusion section of the 2016 review, summarizing the field circa 2015",
+    "quoted_support": "There has been a great deal of work that has focussed heavily on designing acquisition functions, however we have taken the perspective that the importance of this plays a secondary role to the choice of the underlying surrogate model.",
+    "numbers": [],
+    "entities": ["Shahriari", "acquisition functions", "surrogate model"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"
+  },
+  {
+    "claim": "Shahriari et al. 2016 never discusses offline optimization or a fixed/frozen surrogate search setting; the review is entirely about the online/sequential BO query loop.",
+    "stance": "supports",
+    "stance_target": "Audited paper's scope-restriction that Shahriari's doctrine governs online BO / acquisition function FAMILY choice, not the numerical search routine in the offline setting",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 137,300-character extracted text of the 2016 review (24 pages)",
+    "quoted_support": "Grep of the full extracted text for 'offline' returns zero hits; 'sequential' appears 25 times, consistent with the review's exclusive focus on the query-update-acquire loop (Algorithm 1: select xn+1 by optimizing acquisition function; query objective; update statistical model; repeat).",
+    "numbers": ["0 hits for 'offline'", "25 hits for 'sequential'", "47 hits for 'acquisition function'", "5 hits for 'statistical model'", "10 hits for 'surrogate model'"],
+    "entities": ["Shahriari", "Bayesian optimization", "offline model-based optimization"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"
+  },
+  {
+    "claim": "The audited paper's paraphrase of Shahriari's doctrine is, if anything, a mild understatement of the review's own wording ('matters more' vs. the source's 'far more important'), so the paper is not over-disclaiming to a source that never made the claim.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that the audited paper is over-disclaiming novelty by attributing an unclaimed doctrine to Shahriari (2016)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Direct textual comparison between audited paper's paraphrase and Shahriari 2016's verbatim wording",
+    "quoted_support": "the careful choice of statistical model is often far more important than the choice of acquisition function heuristic",
+    "numbers": [],
+    "entities": ["Shahriari 2016", "acquisition function heuristic", "statistical model"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"
+  },
+  {
+    "claim": "Shahriari et al. 2016's own review structure (extensive treatment of parametric/non-parametric statistical models in Sections II-III vs. comparative treatment of acquisition functions in Section IV) is explicitly justified in the text by the model-matters-more doctrine, making it a structural organizing principle rather than a passing aside.",
+    "stance": "supports",
+    "stance_target": "Whether the doctrine is 'the organizing doctrine of the standard Bayesian-optimization review' vs. merely stated in passing",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Section I ('Overview') of Shahriari et al. 2016",
+    "quoted_support": "In particular, we focus on statistical modelling as this leads to general algorithms to solve a broad range tasks. We also provide an extensive comparison among popular acquisition functions.",
+    "numbers": [],
+    "entities": ["Shahriari 2016", "Section II", "Section III", "Section IV"],
+    "time_period": "2016",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"
+  }
+]

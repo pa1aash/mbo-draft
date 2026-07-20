@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Chemingui et al. 2024 (PG-GS) explicitly assert, in their own Summary/Future Work section, that prior offline BBO methods focused on improving surrogate models while using fixed search strategies -- confirming the falsification-target premise the audited paper attributes to this source.",
+    "stance": "supports",
+    "stance_target": "Audited paper's claim that it falsifies 'the local premise of one recent paper -- that offline black-box optimization has focused on improving surrogate models while using fixed search strategies (chemingui2024pggs)'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Summary and Future Work section of Chemingui et al., AAAI 2024",
+    "quoted_support": "This perspective is aimed at improving the search strategy in offline BBO, which complements prior methods that have focused on improving surrogate models while using fixed search strategies.",
+    "numbers": [],
+    "entities": ["Chemingui", "Deshwal", "Hoang", "Doppa", "PG-GS", "AAAI 2024"],
+    "time_period": "2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-via-policy-guided-gradient-search"
+  },
+  {
+    "claim": "Chemingui et al.'s Related Work section names the specific prior methods it characterizes as fixed-search-strategy-with-improving-surrogate: Trabucco et al. 2021 (COMs), Yu et al. 2021a, and Fu and Levine 2021.",
+    "stance": "neutral",
+    "stance_target": "Precision of the falsification-target premise -- is it a claim about the whole field or specific named prior works?",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Related Work section, second family of offline optimization methods",
+    "quoted_support": "The second family learns a surrogate model from the offline data which is then optimized directly using gradient updates (Trabucco et al. 2021; Yu et al. 2021a; Fu and Levine 2021). Conservative regularizers are typically designed to avoid overestimation for inputs which are far away from the offline training data.",
+    "numbers": [],
+    "entities": ["Trabucco et al. 2021", "Yu et al. 2021a", "Fu and Levine 2021", "conservative regularizers"],
+    "time_period": "2021-2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-via-policy-guided-gradient-search"
+  },
+  {
+    "claim": "Chemingui et al.'s abstract itself states the same premise in slightly different words, describing prior approaches' search strategies as 'derived from the surrogate model rather than the actual offline data' -- a second, independent verbatim confirmation.",
+    "stance": "supports",
+    "stance_target": "Robustness of the falsification-target premise attribution",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Abstract of Chemingui et al. 2024",
+    "quoted_support": "Prior approaches addressing this challenge have primarily focused on learning robust surrogate models. However, their search strategies are derived from the surrogate model rather than the actual offline data.",
+    "numbers": [],
+    "entities": ["Chemingui 2024", "surrogate model", "offline data"],
+    "time_period": "2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-via-policy-guided-gradient-search"
+  },
+  {
+    "claim": "PG-GS reformulates offline optimization as an offline RL problem, learning a policy that outputs a direction vector to replace the fixed step-size in a standard gradient update, explicitly to correct for non-smooth/sub-optimal surrogate gradients.",
+    "stance": "neutral",
+    "stance_target": "Mechanism description for accurate characterization of what PG-GS actually changes",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Method section, PG-GS core idea",
+    "quoted_support": "The key idea behind PGS is to reformulate the step-size in the standard gradient update into a direction vector. Such direction vector can be viewed as an output alpha = pi(x_k) of a guiding policy pi to direct the search space exploration from x_k in the direction of the high-performing input regions.",
+    "numbers": [],
+    "entities": ["PG-GS", "offline reinforcement learning", "gradient update"],
+    "time_period": "2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-via-policy-guided-gradient-search"
+  },
+  {
+    "claim": "PG-GS is evaluated on Design-Bench tasks (Trabucco et al. 2022), establishing Design-Bench as the shared empirical substrate across this offline-MBO evaluation surface.",
+    "stance": "neutral",
+    "stance_target": "Cross-referencing the evaluation benchmark landscape for the N6 kill-surface check",
+    "evidence_type": "empirical",
+    "scope_conditions": "Empirical evaluation section",
+    "quoted_support": "Empirical evaluation on diverse optimization tasks from the design-bench benchmark (Trabucco et al. 2022) demonstrates that PGS performs better than prior methods on many tasks.",
+    "numbers": [],
+    "entities": ["Design-Bench", "Trabucco et al. 2022", "PGS"],
+    "time_period": "2022-2024",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "offline-model-based-optimization-via-policy-guided-gradient-search"
+  }
+]
