@@ -141,13 +141,24 @@ changes — consistent with it being the task with the largest seed-to-seed spre
 
 ## 5. Per-cell diff — `tab:cov` (synthetic block)
 
-There is a complication here that is **not** about the engine, and it must be decided before
-the `.tex` pass.
+> **RESOLVED — ships at 30 seeds (Option A2).** The synthetic block was run at 30 seeds on the
+> stamped off_off engine and is now the shipped source: `results/supp_offoff/calibration_off_off.json`,
+> 7 tasks × 30 seeds, 19-field stamp (`X1=false X3=false`, β=2, K=5, `git_sha bf8d8d2`),
+> passes `run_all.load_checked()`. This matches what `enginemap` row 275 and the config
+> paragraph (`supplement.tex:287`) already claim ("30 seeds each"); the 10-seed column below is
+> retained only as the historical record of what was there before. Re-running the 30-seed
+> calibration reproduced this file **bit-exactly** (91 cells × 30 seeds, max abs diff 0.000e+00).
+>
+> **Resolved answer for `supplement.tex:56`: `cf_ood == 0.00` on `N = four` of the fourteen
+> tasks** (Superconductor, UTR, Ant, D'Kitty) at 30 seeds across the full synthetic + DB set.
+> **"Spanning $0.00$ to $1.00$" holds** — `cf_ood` min = 0.0000, max = 1.0000 exactly.
 
-**The current tab:cov synthetic block is 10 seeds, not 30.** But `enginemap` row
+The seed complication that forced this decision, for the record:
+
+**The tab:cov synthetic block as previously printed was 10 seeds, not 30.** But `enginemap` row
 (`supplement.tex:275`) says *30*, and the config paragraph (`supplement.tex:287`) says the
 calibration measurement is *"also 30 seeds each."* **The paper already claims 30.** So the
-existing table understates its own stated protocol.
+previously printed table understated its own stated protocol; running at 30 pays that off.
 
 I therefore ran 30 seeds and report **both** — `new10` is the seeds-0..9 prefix of the same
 run, which isolates the engine/stream effect from the seed-count effect:
@@ -162,9 +173,11 @@ run, which isolates the engine/stream effect from the seed-count effect:
 | Ackley | 0.92→0.92→0.92 | 1.00→1.00→1.00 | 1.8→1.8→**1.9** | 0.89→0.89→**0.90** | 1.00→1.00→1.00 |
 | Griewank | 0.57→0.57→0.57 | 0.00→0.00→0.00 | 16.1→16.1→**15.9** | 0.90→0.90→0.90 | 0.00→0.00→**0.07** |
 
-**Read the `10` column first: at matched seed count the table barely moves** (3 of 35 entries
-shift, all ≤0.04). Essentially every substantive change in tab:cov is a **seed-count** effect,
-not an engine effect. That matters for how the `.tex` pass frames it.
+The `10` column (seeds-0..9 prefix of the same run) isolates the engine/stream effect from the
+seed-count effect: at matched seed count **7 of 35 entries shift** vs the old print, all small
+except Levy `cf_ood` 0.28 → 0.44 (Δ0.16). So the engine/stream move is minor; the larger
+changes in the shipped `30` column are a **seed-count** effect, not an engine effect — which is
+why the shipped decision was to run the full 30 the protocol already claims rather than relabel.
 
 ### The one claim that breaks: the "five of the fourteen" count
 
@@ -175,12 +188,12 @@ Counted across all 14 rows (synthetic + Design-Bench), `cf_ood == 0.00` at print
 
 | reading | zeros / 14 | which |
 |---|---|---|
-| **old (as printed)** | **5** ✓ | Styblinski, Griewank, UTR, Ant, D'Kitty |
-| **new, A1** (synthetic at 10 seeds) | **6** | + Superconductor |
-| **new, A2** (synthetic at 30 seeds) | **4** | Superconductor, UTR, Ant, D'Kitty |
+| **old (as printed)** | **5** | Styblinski, Griewank, UTR, Ant, D'Kitty |
+| new, A1 (synthetic at 10 seeds) | 6 | + Superconductor |
+| **new, A2 — SHIPPED (synthetic at 30 seeds)** | **4** ✓ | Superconductor, UTR, Ant, D'Kitty |
 
-**The count changes under either option**, so this sentence must be edited regardless of the
-seed decision. Two independent causes:
+**The count changed regardless of the seed decision, so this sentence had to be edited; the
+shipped 30-seed answer is `four`.** Two independent causes:
 
 - At 30 seeds the synthetic zeros disappear (Styblinski 0.00 → **0.02**, Griewank 0.00 →
   **0.07**).
@@ -191,17 +204,27 @@ seed decision. Two independent causes:
 on all three readings — the Design-Bench zeros hold the floor even when the synthetic ones
 lift. Only the *count* needs changing, not the span.
 
-**The seed fork for the `.tex` pass:**
+**The seed fork — resolved:**
 
-- **Option A2 (30 seeds, recommended):** makes `enginemap` row 275 and the config paragraph
-  *true*; count becomes **four of the fourteen**.
-- **Option A1 (10 seeds):** synthetic table values stay essentially put, but `enginemap` row
-  275 ("30") and `supplement.tex:287` ("30 seeds each") must be corrected to 10; count
-  becomes **six of the fourteen**.
+- **Option A2 (30 seeds) — SHIPPED.** Makes `enginemap` row 275 and the config paragraph
+  (`supplement.tex:287`, "30 seeds each") *true* rather than relabeling a 10-seed table as 30;
+  count becomes **four of the fourteen**. This is the delivered `calibration_off_off.json`.
+- Option A1 (10 seeds) — *not taken*. Would have left synthetic values essentially put but
+  forced `enginemap` row 275 ("30") and `supplement.tex:287` ("30 seeds each") to be corrected
+  down to 10; count would have been six of the fourteen.
 
-**The seed-count discrepancy has to be paid off on one side or the other** — it cannot be left
-as-is. Both readings are available from the delivered JSON: the 10-seed reading is the
-seeds-0..9 prefix of the same 30-seed run.
+The 30-seed synthetic values that ship (the `30` column of the table above), for the `.tex`
+pass:
+
+| Task | `c_in` | `c_ood` | `q̂` | `cf_in` | `cf_ood` |
+|---|---|---|---|---|---|
+| Branin | 0.71 | 0.35 | 6.6 | 0.90 | 0.77 |
+| Styblinski | 0.66 | 0.00 | 7.2 | 0.90 | 0.02 |
+| Levy | 0.68 | 0.10 | 6.0 | 0.90 | 0.40 |
+| Rosenbrock | 0.86 | 0.69 | 2.5 | 0.90 | 0.71 |
+| Rastrigin | 0.73 | 0.79 | 4.8 | 0.90 | 0.83 |
+| Ackley | 0.92 | 1.00 | 1.9 | 0.90 | 1.00 |
+| Griewank | 0.57 | 0.00 | 15.9 | 0.90 | 0.07 |
 
 ### Claims that survive
 
@@ -287,9 +310,9 @@ this pass:
 | 2 | `supplement.tex:172` (**tab:cross**) | ensemble "own proposals" `0.41` → `0.42`. |
 | 3 | `supplement.tex:116`, `:118` | restated `0.41` → `0.42` (twice at `:118`). |
 | 4 | `supplement.tex:283` (**provenance paragraph**) | Now obsolete as written — see §8. |
-| 5 | `supplement.tex:275` (`enginemap` tab:cov row) | Seed count: currently "30" but source is 10. Fix to 30 (Option A2) or to 10 (A1). |
-| 6 | `supplement.tex:56` | "exactly 0.00 on **five** of the fourteen tasks" → **four** (A2) or **six** (A1). Required under **both** options (§5). The "spanning 0.00 to 1.00" clause is correct as-is — leave it. |
-| 7 | **tab:cov synthetic rows** `supplement.tex:176–182` | Per §5 (Option A2; A1 leaves them essentially unchanged). |
+| 5 | `supplement.tex:275` (`enginemap` tab:cov row) | Seed count "30" is now **correct** — source is the shipped 30-seed `calibration_off_off.json`. No edit. |
+| 6 | `supplement.tex:56` | "exactly 0.00 on **five** of the fourteen tasks" → **four** (resolved, 30 seeds; §5). The "spanning 0.00 to 1.00" clause is correct as-is — leave it. |
+| 7 | **tab:cov synthetic rows** `supplement.tex:176–182` | Set to the shipped 30-seed values in the §5 table. |
 | 8 | **tab:cov Design-Bench rows** `supplement.tex:184–190` | 11 entries per §5b, incl. GFP `q̂` 88.4→67.4. Required under **both** options. |
 
 ### MUST RE-VERIFY (recompute; expected to hold)
