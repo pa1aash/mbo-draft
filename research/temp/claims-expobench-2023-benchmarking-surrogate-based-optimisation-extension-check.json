@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "EXPObench (2023, Applied Soft Computing) benchmarks six surrogate-based optimization algorithms on four real-life expensive black-box problems and reports 'relative importance of exploration, the evaluation time of the objective, and the used model' -- but derives this via hypothesis testing and a post-hoc decision-tree classifier for rules of thumb, not a crossed factorial ANOVA/eta-squared variance decomposition.",
+    "stance": "refutes",
+    "stance_target": "Whether EXPObench extends/kills N6 (no prior crossed surrogate x optimizer factorial in offline MBO)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Six surrogate algorithms, four real-life expensive black-box optimization problems (includes Pitzdaily, ESP)",
+    "quoted_support": "\"...used to provide an extensive comparison of six different surrogate algorithms on four expensive optimisation problems from different real-life applications. This has led to new insights regarding the relative importance of exploration, the evaluation time of the objective, and the used model. We also provide rules of thumb for which surrogate algorithm to use in which situation.\"",
+    "numbers": ["6 surrogate algorithms", "4 optimization problems", "0 ANOVA/factorial/eta-squared/crossed/two-way hits (full-text grep)"],
+    "entities": ["EXPObench", "Pitzdaily", "ESP"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "expobench-2023-benchmarking-surrogate-based-optimisation-extension-check"
+  },
+  {
+    "claim": "EXPObench's use of the word 'offline' refers exclusively to a supplementary offline-supervised-learning experiment for testing surrogate model generalization error, not to offline model-based optimization; the paper's core benchmark is an online black-box optimization comparison with live oracle queries.",
+    "stance": "refutes",
+    "stance_target": "Whether EXPObench is an offline-MBO paper that could satisfy N6's domain scope",
+    "evidence_type": "empirical",
+    "scope_conditions": "Section 5.4 'Offline learning of surrogates' -- supplementary experiment only",
+    "quoted_support": "\"As a final experiment we investigate the choice of surrogate model in the different surrogate algorithms. We show how the dataset generated in this work can be used in a simple offline supervised learning framework by training and testing different models on the data and considering the resulting errors... the dataset allowed us to train surrogate models offline rather than online, giving insight into the generalisation capabilities of the surrogate models.\"",
+    "numbers": ["8 hits for 'offline' in full text, all in this sense"],
+    "entities": ["XGBoost", "random forests"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "expobench-2023-benchmarking-surrogate-based-optimisation-extension-check"
+  }
+]

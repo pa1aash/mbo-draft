@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "A March 2025 comprehensive review of offline model-based optimization explicitly states that existing benchmarks do not disentangle whether performance gains come from surrogate modeling improvements versus optimization-strategy improvements versus chance -- an independent, citable confirmation of the exact evaluation gap the audited paper's N6 claim targets.",
+    "stance": "supports",
+    "stance_target": "Audited paper's N6 claim that no prior work runs a crossed surrogate x optimizer factorial/attribution analysis in offline MBO",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "Discussion section 'Uncertainty Estimation of Surrogate Model', Offline Model-Based Optimization: Comprehensive Review, 2025",
+    "quoted_support": "Moreover, existing benchmarks often emphasize overall optimization performance without clarifying whether observed gains stem from superior surrogate modeling, improved optimization strategies, or mere chance. This lack of distinction underscores the need for independent and rigorous evaluations of the uncertainty estimation capabilities of the surrogate model in newly developed algorithms.",
+    "numbers": [],
+    "entities": ["Kim", "Gu", "Yuan", "Yun", "Liu", "Bengio", "Chen", "Mila", "KAIST", "offline MBO"],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The same review's full text contains zero genuine occurrences of factorial, crossed, ANOVA, eta-squared, variance-decomposition, main-effect, or two-way terminology across 192,049 characters, confirming that even the field's own 2025 survey of itself does not identify or reference any existing crossed-factorial attribution study.",
+    "stance": "supports",
+    "stance_target": "Audited paper's N6 claim -- absence of any crossed surrogate x optimizer factorial study in the offline MBO literature, verified against the field's own comprehensive review",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full text of the 2025 comprehensive review, the most field-encompassing secondary source checked in this batch",
+    "quoted_support": "0 genuine hits: factorial, crossed, analysis of variance, eta squared, variance decomposition, main effect, two-way (2 raw 'anova' substring hits are false positives from author surnames Usmanova/Bozhanova in the bibliography)",
+    "numbers": ["192,049 characters extracted", "0 genuine hits across all N6 target terms", "48 hits for 'benchmark'"],
+    "entities": ["offline MBO", "Design-Bench", "comprehensive review"],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The review notes a distinct limitation of scientific-design benchmarks -- 'the predetermined nature of the problem settings (e.g., fixed search spaces and objective counts) limits flexibility' -- which uses 'fixed search' to mean the dimensionality/objective-count of the search space, not a fixed search/optimization algorithm; this is a different concept from the audited paper's 'fixed search strategies' framing and should not be conflated with it.",
+    "stance": "neutral",
+    "stance_target": "Precision check -- distinguishing 'fixed search space' (dimensionality) from 'fixed search strategy' (optimizer/algorithm), relevant to avoiding a false-positive match on the N6/Chemingui premise",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Review's discussion of scientific design task benchmarks (limited scalability)",
+    "quoted_support": "Additionally, the predetermined nature of the problem settings (e.g., fixed search spaces and objective counts) limits flexibility in comprehensively benchmarking offline MBO methods.",
+    "numbers": [],
+    "entities": ["fixed search spaces", "scientific design tasks", "offline MBO benchmarks"],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The review identifies uncertainty-quantification techniques used across the field -- adversarial regularization (Trabucco et al. 2021), smoothness priors (Yu et al. 2021a), kernel-based methods (Chen et al. 2022b) -- as mitigating surrogate overestimation, situating COMs (Trabucco 2021) and Yu et al. 2021a as the same two works Chemingui 2024 cites for the 'fixed search strategy' family, cross-confirming these are the field's canonical named examples.",
+    "stance": "neutral",
+    "stance_target": "Cross-validating which specific named works instantiate the 'surrogate-focused, fixed-search' pattern across independent secondary sources",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Review's uncertainty estimation discussion",
+    "quoted_support": "Various techniques--such as adversarial regularization (Trabucco et al., 2021), smoothness priors (Yu et al., 2021a), and kernel-based methods (Chen et al., 2022b)--have been proposed to mitigate uncertainty and ensure safer optimization.",
+    "numbers": [],
+    "entities": ["Trabucco et al. 2021", "Yu et al. 2021a", "Chen et al. 2022b", "COMs"],
+    "time_period": "2021-2025",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "offline-model-based-optimization-comprehensive-review"
+  }
+]

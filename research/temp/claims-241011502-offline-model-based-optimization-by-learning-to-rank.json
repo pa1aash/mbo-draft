@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Tan et al.'s Table 3 ('Versatility of ranking loss', ICLR 2025, arXiv:2410.11502) crosses 9 distinct methods/optimizers (BO-qEI, CMA-ES, REINFORCE, Grad. Ascent, CbAS, MINs, Tri-Mentoring, PGS, Match-OPT) against 2 surrogate training-loss types (MSE vs. ListNet) in a genuine 9x2=18-cell controlled factorial grid, with every method run under both loss types.",
+    "stance": "neutral",
+    "stance_target": "N6 -- the closest near-miss found across the entire batch, not previously flagged by 3 other vault copies of this same paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "5 Design-Bench tasks: Ant, D'Kitty, Superconductor, TF-Bind-8, TF-Bind-10; 9 methods x 2 loss types",
+    "quoted_support": "In order to adapt the same parameters of the online optimizers (e.g., BO-qEI, Gradient Ascent) that optimize the trained model for a fair comparison, we also perform an output adaptation for ranking-based model after it is trained. All the replacements are conducted fixing their open-source codes by replacing MSE with ListNet when training the forward model.",
+    "numbers": ["9 methods", "2 loss types", "18 cells", "5 tasks"],
+    "entities": ["BO-qEI", "CMA-ES", "REINFORCE", "Grad. Ascent", "CbAS", "MINs", "Tri-Mentoring", "PGS", "Match-OPT", "ListNet", "MSE"],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "241011502-offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "Table 3's crossed 9x2 grid reports only descriptive Score+/-std and a color-coded percentage 'Gain' per cell; exhaustive grep of the 18303-word extracted PDF text of arXiv:2410.11502v3 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term -- confirming this is a NEAR-MISS (crossed but undecomposed), not a KILL.",
+    "stance": "refutes",
+    "stance_target": "N6 kill candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Table 3 reporting format, full PDF text",
+    "quoted_support": "Table 3: 100th percentile normalized score of different methods combined with the MSE or ListNet loss in Design-Bench, where positive and negative gain rates are Blue and Red.",
+    "numbers": ["0 hits across 10 statistical/factorial search terms", "e.g. CMA-ES +12.3% gain on Ant, REINFORCE +28.2% gain on Ant"],
+    "entities": [],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "241011502-offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "Whether Table 3 counts as a 'surrogate CLASS x optimizer' cross under N6's strict definition is definitionally ambiguous: under a broad reading (any axis of surrogate specification, including training objective) it is a genuine near-miss; under a narrow reading (surrogate class = model architecture family: GP/ensemble/single-NN/generative) it does not vary surrogate class at all, since architecture stays each baseline's own default (mostly MLP-based) and only the training loss changes.",
+    "stance": "neutral",
+    "stance_target": "precise scope of N6's claim as written in the audited paper",
+    "evidence_type": "theoretical",
+    "scope_conditions": "definitional/interpretive, requires the audited paper's own N6 wording to adjudicate",
+    "quoted_support": "Note that MSE is a regression loss, which thus can be viewed as a pointwise ranking loss.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "241011502-offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "This vault already contains 3 other independently-fetched copies of this exact paper from a prior audit pass, all of which analyzed only the paper's separate 'five surrogates, gradient-ascent held fixed' Spearman-correlation study (a different experiment, near line 283 of the PDF) and none of which mention or analyze Table 3 -- meaning the prior audit pass's N6 verification of this paper was incomplete.",
+    "stance": "neutral",
+    "stance_target": "completeness of the previous audit pass's coverage of this source",
+    "evidence_type": "empirical",
+    "scope_conditions": "vault provenance check via hyperresearch search",
+    "quoted_support": "N/A (vault search result, not a quoted passage from the source)",
+    "numbers": ["3 prior duplicate notes", "1 new finding (Table 3) not covered by any of them"],
+    "entities": ["offline-model-based-optimization-by-learning-to-rank-iclr-2025-arxiv241011502", "offline-model-based-optimization-by-learning-to-rank-iclr-2025-arxiv241011502-2", "offline-model-based-optimization-by-learning-to-rank-tan-et-al-iclr-2025-arxiv24"],
+    "time_period": "2025-2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "241011502-offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "Table 3 excludes several forward methods (COMs, RoMA, IOM, BDI, ICT) from the MSE-vs-ListNet crossing because their loss functions structurally depend on prediction-value scales or per-sample weighting that cannot be substituted with a ranking loss, meaning the crossing is not comprehensive across all Design-Bench baselines.",
+    "stance": "refutes",
+    "stance_target": "overstating the comprehensiveness of Table 3's crossing",
+    "evidence_type": "empirical",
+    "scope_conditions": "Appendix E.5 methodology notes",
+    "quoted_support": "We exclude many forward methods due to the inapplicability of directly replacing MSE with ListNet. For example, COMs (Trabucco et al., 2021), RoMA (Yu et al., 2021), IOM (Qi et al., 2022) use the prediction values to calculate the loss function... while BDI (Chen et al., 2022) and ICT (Yuan et al., 2023) assign weight to each sample, thus MSE in these methods cannot be directly replaced with a ranking loss like ListNet.",
+    "numbers": ["5 excluded methods: COMs, RoMA, IOM, BDI, ICT"],
+    "entities": ["COMs", "RoMA", "IOM", "BDI", "ICT"],
+    "time_period": "2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "241011502-offline-model-based-optimization-by-learning-to-rank"
+  }
+]

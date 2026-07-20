@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Bischl et al. 2023's 43-page landmark HPO survey (836 citations, titled with 'open challenges'), which cites Moosbauer et al. 2022 as related work, contains zero mentions of factorial design, ANOVA, fANOVA, eta-squared, two-way, or OFAT/one-factor-at-a-time anywhere in its text, and does not identify a crossed surrogate x optimizer factorial as an open challenge.",
+    "stance": "refutes",
+    "stance_target": "Whether the highest-cited forward citer of Moosbauer 2022 extends or kills N6",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 43-page survey text, WIREs Data Mining and Knowledge Discovery 13(2), 2023",
+    "quoted_support": "\"It was for example used by Moosbauer et al. (2022) to create a new HPO algorithm by optimizing over the space of various algorithm components. Their analysis showed that an alternative, simpler approach to scheduling multi-fidelity evaluations performed as well as the approach used by [BOHB]\" -- cited only as related-work summary, not extended.",
+    "numbers": ["0 factorial/ANOVA/fANOVA/eta-squared/two-way/OFAT hits", "1 'crossed' hit (false-positive homonym)", "1 'interaction' hit (unrelated to statistics)", "836 citations of the survey itself"],
+    "entities": ["Bischl", "Moosbauer", "YAHPO Gym"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "bischl-2023-hpo-foundations-open-challenges-extension-check"
+  },
+  {
+    "claim": "Bischl et al. 2023 use the term 'offline' exclusively in the algorithm-selection/algorithm-configuration sense (a configuration fixed for all future problem instances, or a meta-learning model trained offline on empirical meta-data) -- neither usage matches offline model-based optimization as scoped by the audited paper.",
+    "stance": "neutral",
+    "stance_target": "Domain-boundary clarification for N6's offline-MBO scope",
+    "evidence_type": "empirical",
+    "scope_conditions": "Section 7.2 Algorithm selection and traditional meta-learning",
+    "quoted_support": "\"In the related problem of algorithm selection (Rice, 1976), we usually train a meta-learning model offline to select an optimal element from a finite set of algorithms or HPCs... This is sometimes called offline configuration for a set of instances, and the obtained configuration is then kept fixed for all future problem instances from the same domain.\"",
+    "numbers": [],
+    "entities": ["Rice 1976", "algorithm selection"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "bischl-2023-hpo-foundations-open-challenges-extension-check"
+  }
+]

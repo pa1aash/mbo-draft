@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "OptBias/Sim4Opt (arXiv:2604.12325) proposes a meta-learned surrogate trained via gradient-matching feedback on simulated synthetic tasks to reduce optimization bias when the real offline dataset is small (1% of the standard offline dataset size).",
+    "stance": "neutral",
+    "stance_target": "surrogate learning for data-scarce offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "1% offline dataset regime, Design-Bench + RNA inverse-folding tasks",
+    "quoted_support": "This paper proposes Surrogate Learning with Optimization Bias process, and then fine-tunes the surrogate ... a robust procedure Sim4Opt to generate training signals for gradient matching from them",
+    "numbers": ["1% of offline dataset", "K=128 candidates"],
+    "entities": ["OptBias", "Sim4Opt", "Design-Bench"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260412325-black-box-optimization-from-small-offline-datasets-via-meta-learning-w"
+  },
+  {
+    "claim": "Table 1/2/5 compare 15 baseline methods (COMs, Batch BO q-EI, REINFORCE, gradient-matching methods, etc.), each bundling its own fixed surrogate+optimizer pairing as a single method identity -- a standard flat leaderboard rather than a controlled crossed factorial isolating surrogate class from optimizer/search routine.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench + RNA tasks, limited-data settings",
+    "quoted_support": "Baselines. We compare against several recent baselines... find optimal input designs that maximize the surrogate... Batch BO (q-EI) which adopts batch Bayesian optimization... REINFORCE which learns",
+    "numbers": ["9 baselines in main text", "6 additional baselines in appendix (15 total)"],
+    "entities": ["COMs", "Batch BO (q-EI)", "REINFORCE"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260412325-black-box-optimization-from-small-offline-datasets-via-meta-learning-w"
+  },
+  {
+    "claim": "Table 4 is a single-factor ablation on GP design choices (kernel/acquisition function) used only in the Sim4Opt synthetic-task-generation procedure, not a surrogate-class x optimizer cross applied to the main offline optimization task.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Sim4Opt synthetic task generation only",
+    "quoted_support": "Table 4: Ablation study on GP design choices used in the Sim4Opt synthetic task generation procedure. Results ... box function optimization. BO relies on two key elements",
+    "numbers": [],
+    "entities": ["Gaussian Process", "Sim4Opt"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "260412325-black-box-optimization-from-small-offline-datasets-via-meta-learning-w"
+  },
+  {
+    "claim": "Exhaustive grep of the 10154-word extracted PDF text of arXiv:2604.12325 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found in this specific paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260412325-black-box-optimization-from-small-offline-datasets-via-meta-learning-w"
+  }
+]

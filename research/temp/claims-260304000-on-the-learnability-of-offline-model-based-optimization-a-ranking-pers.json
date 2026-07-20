@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Lyu, Tan, Xue, He, Huang, Zhang & Qian (arXiv:2603.04000, March 2026) prove that pairwise ranking losses admit strictly tighter generalization bounds than MSE regression for the optimization-oriented ranking error in offline MBO.",
+    "stance": "neutral",
+    "stance_target": "surrogate-objective choice in offline MBO",
+    "evidence_type": "theoretical",
+    "scope_conditions": "PAC-style Rademacher-complexity bound, offline MBO setting",
+    "quoted_support": "By comparing Theorem 5 and 7, we can find that the pairwise ranking loss provably outperforms MSE in offline MBO, when the following conditions are satisfied...",
+    "numbers": ["Theorem 5", "Theorem 7", "Lemma 6"],
+    "entities": ["Shen-Huan Lyu", "Chao Qian", "Nanjing University", "Hohai University"],
+    "time_period": "2026",
+    "region": "China",
+    "confidence": "high",
+    "source_note_id": "260304000-on-the-learnability-of-offline-model-based-optimization-a-ranking-pers"
+  },
+  {
+    "claim": "The paper's Distribution-Aware Ranking (DAR) method and its comparison surrogates (MSE, RaM/RankCosine, DAR) are all optimized with the same single gradient-ascent procedure on a two-layer 2048-unit MLP; no alternative optimizer (CMA-ES, BO, REINFORCE, evolution strategies) is ever substituted.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench experiments (Ant, D'Kitty, Superconductor, TF-Bind-8, TF-Bind-10) and Branin toy function",
+    "quoted_support": "we instantiate the surrogate model h_theta as an MLP with two hidden layers, each of which contains 2048 units... Implementation details and hyperparameters. Following recent works in offline MBO (Trabucco et al., 2021; Tan et al., 2025), we instantiate the surrogate model h_theta as an MLP",
+    "numbers": ["2048 units", "2 hidden layers", "5 Design-Bench tasks"],
+    "entities": ["Design-Bench", "Branin function", "DAR", "RaM", "RankCosine"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260304000-on-the-learnability-of-offline-model-based-optimization-a-ranking-pers"
+  },
+  {
+    "claim": "Table 1 of this paper compares DAR against RaM, ROOT, PGS, FGM, Match-OPT, and GTG as whole pre-existing methods with average-rank scoring -- a standard leaderboard, not a controlled crossed surrogate x optimizer factorial.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench evaluation, 5 tasks",
+    "quoted_support": "Our method, DAR, achieves the best average rank of 1.6, while the second and third best methods, RaM and ROOT, obtain average ranks of 2.6 and 3.0, respectively.",
+    "numbers": ["1.6 avg rank (DAR)", "2.6 avg rank (RaM)", "3.0 avg rank (ROOT)"],
+    "entities": ["RaM", "ROOT", "PGS", "FGM", "Match-OPT", "GTG"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260304000-on-the-learnability-of-offline-model-based-optimization-a-ranking-pers"
+  },
+  {
+    "claim": "Exhaustive grep of the 12185-word extracted PDF text of arXiv:2603.04000 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term, and the paper cites 'M. Kim, J. Gu, Y. Yuan, T. Yun, Z. Liu, Y. Bengio, and C. Chen. Offline model-based optimization: Comprehensive review. Transactions on Machine Learning Research, 2026' -- independently corroborating the Kim survey's TMLR-2026 published status.",
+    "stance": "supports",
+    "stance_target": "venue/year verification of Kim et al. survey (arXiv:2503.17286)",
+    "evidence_type": "empirical",
+    "scope_conditions": "bibliography, full PDF text",
+    "quoted_support": "M. Kim, J. Gu, Y. Yuan, T. Yun, Z. Liu, Y. Bengio, and C. Chen. Offline model-based optimization: Comprehensive review. Transactions on Machine Learning Research, 2026.",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": ["Minsu Kim", "Transactions on Machine Learning Research"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260304000-on-the-learnability-of-offline-model-based-optimization-a-ranking-pers"
+  }
+]

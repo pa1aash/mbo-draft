@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Conformal Candidate Certification (CCC), arXiv:2606.15217 (Seungjin Choi, ICML 2026 workshop), attaches a calibrated one-sided lower bound to each offline-MBO candidate using importance weights derived from a Gibbs-tilted proposal distribution induced by entropy-regularized surrogate maximization.",
+    "stance": "neutral",
+    "stance_target": "N6 (crossed surrogate x optimizer factorial existence)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "1D synthetic controlled study only",
+    "quoted_support": "We propose Conformal Candidate Certification (CCC), a post-hoc wrapper that attaches a calibrated one-sided lower bound to each candidate and advances only those whose bound exceeds the target.",
+    "numbers": ["16.7% certified pool", "0.990 empirical coverage vs 0.90 nominal", "0.416 coverage for unweighted CP"],
+    "entities": ["Seungjin Choi", "CROID Research", "aSSIST University"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260615217-conformal-candidate-certification-for-offline-model-based-optimization"
+  },
+  {
+    "claim": "CCC uses a single fixed synthetic surrogate (GP-like mean/uncertainty) and a single fixed Boltzmann/Gibbs proposal distribution throughout its only empirical study; no surrogate class or optimizer/search routine is varied at all.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "the paper's only experimental section (Section 5, Synthetic Validation)",
+    "quoted_support": "The training support is [-1.5, 1.5], while candidates are proposed in the OOD region [1.55, 3.0]. ... Candidates are sampled from a Gibbs proposal proportional to exp{µ(x)/Tprop} with Tprop = 0.35",
+    "numbers": ["1 surrogate", "1 proposal distribution", "40 seeds"],
+    "entities": ["Gibbs-tilt proposal", "GP-like uncertainty"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260615217-conformal-candidate-certification-for-offline-model-based-optimization"
+  },
+  {
+    "claim": "Exhaustive grep of the full 4295-word extracted PDF text of arXiv:2606.15217 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found in this specific paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260615217-conformal-candidate-certification-for-offline-model-based-optimization"
+  }
+]

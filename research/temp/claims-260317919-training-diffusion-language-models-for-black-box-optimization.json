@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "DiBO (arXiv:2603.17919) trains a diffusion language model for offline black-box optimization via a three-stage DA (denoising alignment) -> SFT -> RL post-training curriculum, outperforming ~10 baselines on Design-Bench discrete and continuous tasks.",
+    "stance": "neutral",
+    "stance_target": "diffusion-LM methods for offline BBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "TF Bind 8/10, Ant Morphology, D'Kitty Morphology",
+    "quoted_support": "As shown in Table 2, the diffusion backbone outperforms... mization, achieving strong performance across both discrete",
+    "numbers": ["10.25 mean rank (CMA-ES baseline)"],
+    "entities": ["DiBO", "LLaDA-8B-Instruct"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260317919-training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Table 2 ('Matched comparison between diffusion and autoregressive backbones') is a genuinely crossed 2x3 grid: 2 backbone architectures (diffusion vs. LLaMA-3.1-8B-Instruct autoregressive) x 3 training stages (DA, SFT, RL), with prompt construction, dataset, delimiter tokens, and context-selection strategy held identical across both backbones -- every backbone is run at every stage, not one-factor-at-a-time.",
+    "stance": "neutral",
+    "stance_target": "N6 near-miss candidacy of this paper -- the closest structural match found in this batch",
+    "evidence_type": "empirical",
+    "scope_conditions": "TF Bind 8, TF Bind 10, Ant Morphology, D'Kitty Morphology",
+    "quoted_support": "Matched comparison between diffusion and autoregressive (AR) backbones. We construct an autoregressive counterpart (LLaMA-3.1-8B-Instruct) by keeping the prompt construction, dataset, delimiter tokens, context selection strategy, and the full post-training pipeline (DA->SFT->RL) unchanged, and replacing only the backbone architecture (diffusion vs. AR).",
+    "numbers": ["2 backbones", "3 training stages", "0.080 max performance gain on TF Bind 8 DA stage"],
+    "entities": ["LLaMA-3.1-8B-Instruct", "DiBO"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260317919-training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Table 2's crossed backbone x stage grid fails N6's strict two-conjunct test: axis-2 (DA/SFT/RL) is a training-curriculum stage for the generative surrogate, not a search/optimizer routine (gradient ascent/CMA-ES/BO) applied post-hoc to a fixed surrogate, and reporting is purely descriptive (mean+/-std plus an absolute 'Performance Gain' delta row) with zero ANOVA/variance-decomposition language.",
+    "stance": "refutes",
+    "stance_target": "N6 kill candidacy (this paper is NEAR-MISS, not KILL)",
+    "evidence_type": "empirical",
+    "scope_conditions": "full 11818-word PDF text",
+    "quoted_support": "Results report the 100-th percentile normalized oracle score (mean +/- std over seeds). The last row (\"Performance Gain\") shows the absolute improvement of the diffusion backbone over the matched AR backbone at each stage.",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260317919-training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Table 1's main leaderboard bundles ~10 baselines (CMA-ES, GP-based, forward-surrogate, generative methods) as fixed surrogate+optimizer identities, the same non-crossed pattern found throughout the batch.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy via the main leaderboard table",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench",
+    "quoted_support": "CMA-ES (Hansen, 2006), an evolutionary baseline that mod- ... guage model LLaDA-8B-Instruct (Nie et al., 2025).",
+    "numbers": ["10.25/9.0 CMA-ES rank"],
+    "entities": ["CMA-ES"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "260317919-training-diffusion-language-models-for-black-box-optimization"
+  }
+]

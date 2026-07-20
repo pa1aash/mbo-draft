@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Abe, Buchanan, Pleiss, Zemel & Cunningham's 'Deep Ensembles Work, But Are They Necessary?' was published at NeurIPS 2022 (confirmed via official NeurIPS proceedings page), matching the audited paper's citation year.",
+    "stance": "neutral",
+    "stance_target": "citation-year accuracy for abe2022ensembles",
+    "evidence_type": "empirical",
+    "scope_conditions": "N/A",
+    "quoted_support": "Recent work suggests that deep ensembles may offer distinct benefits beyond predictive power: namely, uncertainty quantification and robustness to dataset shift. In this work, we demonstrate limitations to these purported benefits",
+    "numbers": ["arXiv v1: 14 Feb 2022", "v2: 13 Oct 2022"],
+    "entities": ["Taiga Abe", "E. Kelly Buchanan", "Geoff Pleiss", "Richard Zemel", "John P. Cunningham", "NeurIPS 2022"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220206985-deep-ensembles-work-but-are-they-necessary"
+  },
+  {
+    "claim": "The paper's core thesis is that a single larger neural network can replicate the accuracy, uncertainty-quantification, and robustness benefits typically attributed to deep ensembles.",
+    "stance": "neutral",
+    "stance_target": "scope of abe2022ensembles's claims about ensembles",
+    "evidence_type": "empirical",
+    "scope_conditions": "CIFAR10 and ImageNet image classification",
+    "quoted_support": "we show that a single (but larger) neural network can replicate these qualities... these improvements can be replicated by a (larger) single model.",
+    "numbers": [],
+    "entities": ["deep ensembles", "single larger model"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220206985-deep-ensembles-work-but-are-they-necessary"
+  }
+]

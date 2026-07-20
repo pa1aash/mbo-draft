@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Design-Bench defines offline MBO as posing substantially different algorithmic challenges from online BO because no further queries to the true objective are allowed after the fixed dataset is collected.",
+    "stance": "neutral",
+    "stance_target": "Establishing the offline/online distinction load-bearing for the Shahriari scope-guard claim",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Design-Bench Abstract/Introduction, ICML 2022",
+    "quoted_support": "This setting--called offline MBO--poses substantial and different algorithmic challenges than more commonly studied online techniques.",
+    "numbers": [],
+    "entities": ["Design-Bench", "Trabucco", "Geng", "Kumar", "Levine", "offline MBO"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220208450-design-bench-benchmarks-for-data-driven-offline-model-based-optimizati"
+  },
+  {
+    "claim": "Design-Bench provides a unified evaluation protocol and reference implementations across realistic tasks in biology, materials science, and robotics, establishing itself as the field's standard benchmark.",
+    "stance": "neutral",
+    "stance_target": "Establishing Design-Bench's role as the canonical evaluation surface later cited by Chemingui, RaM, and SOO-Bench",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench full paper",
+    "quoted_support": "To address this, we present Design-Bench, a benchmark for offline MBO with a unified evaluation protocol and reference implementations of recent methods. Our benchmark includes a suite of diverse and realistic tasks derived from real-world optimization problems in biology, materials science, and robotics.",
+    "numbers": [],
+    "entities": ["Design-Bench", "biology", "materials science", "robotics"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220208450-design-bench-benchmarks-for-data-driven-offline-model-based-optimizati"
+  },
+  {
+    "claim": "Design-Bench's full text contains zero genuine occurrences of factorial, crossed, ANOVA, eta-squared, variance-decomposition, main-effect, or two-way terminology; the two raw 'anova' substring matches are false positives from author surnames in the reference list.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that Design-Bench itself performs a crossed surrogate-class x optimizer factorial analysis with formal variance decomposition",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 100,068-character extracted text",
+    "quoted_support": "Sarkisyan, K. S., Bolotin, D. A., Meer, M. V., Usmanova, D. R., Mishin, A. S., Sharonov, G. V., Ivankov, D. N., Bozhanova, N. G. -- (the 'anova' substrings occur only inside the surnames Usmanova and Bozhanova in the bibliography)",
+    "numbers": ["0 genuine hits: factorial, crossed, ANOVA, eta squared, variance decomposition, main effect, two-way", "2 raw substring 'anova' hits, both false positives"],
+    "entities": ["Design-Bench", "Bozhanova", "Usmanova"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220208450-design-bench-benchmarks-for-data-driven-offline-model-based-optimizati"
+  },
+  {
+    "claim": "Design-Bench evaluates each optimization method (e.g., gradient ascent, CMA-ES, COMs, MINs, CbAS, BO-qEI) as a bundled surrogate-plus-search algorithm across tasks, using 'baseline' (22 hits) and 'oracle' (29 hits) as its organizing vocabulary rather than any factorial design language.",
+    "stance": "supports",
+    "stance_target": "N6 kill-surface check -- Design-Bench treats methods atomically rather than crossing surrogate class against optimizer",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench full paper structure",
+    "quoted_support": "A number of recent works have demonstrated success with offline MBO for high-dimensional optimization problems using high-capacity deep neural networks. However, the lack of standardized benchmarks in this emerging field is making progress difficult to track.",
+    "numbers": ["22 hits: baseline", "29 hits: oracle", "26 hits: gradient ascent"],
+    "entities": ["Design-Bench", "gradient ascent", "CMA-ES", "COMs", "MINs", "CbAS"],
+    "time_period": "2022",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "220208450-design-bench-benchmarks-for-data-driven-offline-model-based-optimizati"
+  }
+]

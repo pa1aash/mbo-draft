@@ -154,6 +154,169 @@ dichotomy may be a false one, which is a framing fix independent of the numbers.
 
 ---
 
+## MANDATORY FIX 4 — the N9 "no precedent" claim has a serious methodological challenge
+
+Two sources bear directly on the paper's second-most load-bearing novelty claim: *"We
+searched the ML reality-check and reproducibility literature for a de-confounding audit
+reporting a corrected variance-explained statistic above its own published value and found
+none."*
+
+### 4a. Confound-leakage — the field's documented base-rate explanation for this exact direction
+**Hamdan, Love, von Polier, Weis, Schwender, Eickhoff, Patil, "Confound-leakage: Confound
+Removal in Machine Learning Leads to Leakage" (arXiv:2210.09232, 2022).** Verbatim abstract:
+
+> "this common approach to confound removal **biases ML models, leading to misleading
+> results**. Specifically, this common deconfounding approach **can leak information such
+> that what are null or moderate effects become amplified to near-perfect prediction** when
+> nonlinear ML approaches are subsequently applied."
+
+**This is not a kill on N9's novelty — different genre (confound-removal methodology, not a
+benchmark reality-check) — but it is worse than a kill in one respect.** It establishes that
+in the ML literature where "confound removal increased an effect" has actually been studied,
+the documented default diagnosis for that direction is **leakage artifact, not validity**.
+
+**Fix (mandatory, and it is a strengthening if done well).** The paper currently treats the
+upward direction as merely *unprecedented* and defends it as *not statistically surprising*
+(citing `bressan2019confounds` on suppression). That defence is now insufficient: there is a
+named ML failure mode that produces exactly this signature. The paper must **affirmatively
+rule out confound-leakage** as the mechanism for its own increase. Cheaply, it can: its
+corrections are a target rescaling and a candidate-selection rule, neither of which
+regresses out a confound from features, so the leakage mechanism does not apply — but that
+argument has to be *made on the page*, because a reviewer who knows this paper will
+otherwise supply the leakage explanation for free. **Add `hamdan2022confoundleakage` to the
+bibliography and dispatch it in two sentences.**
+
+### 4b. The broader rhetorical framing is contradicted (narrow claim survives)
+**Maassen, van Assen, Nuijten, Olsson-Collentine, Wicherts, PLOS ONE 2020** — systematic
+recomputation of 500 primary effect sizes across 33 psychology meta-analyses. Verbatim:
+
+> "We did not find any evidence for systematic bias in meta-analytic results; we estimated
+> **19 pooled effect sizes to be larger** than originally reported and **14 to be smaller**."
+
+Corrections go up about as often as down, with no systematic bias, in the one large-scale
+systematic audit of recomputed effect sizes in a mature empirical science.
+
+**This does not kill the paper's narrow claim**, which is explicitly scoped to "the ML
+reality-check and reproducibility literature". It does kill the *implication* the surrounding
+prose carries — that an upward correction is an intrinsically surprising direction. The paper
+half-anticipates this already ("Nor is the direction statistically surprising"), so the fix
+is small. **Fix: cite Maassen et al. at that sentence.** It converts a hedge into a supported
+statement and costs nothing.
+
+**Net assessment of N9 after both.** The narrow scalar claim ("no ML de-confounding audit
+reports a corrected variance-explained statistic above its published value") is **not killed**
+by anything found so far. But it is now bracketed on both sides — by a documented ML
+mechanism that produces upward moves illegitimately (4a), and by a documented non-ML
+literature where upward moves are unremarkable (4b). The honest framing is narrower and
+more defensible than the current one. See the ranked section for whether this claim is worth
+its prominence at all.
+
+## MANDATORY FIX 5 — **THE CONTRADICTION LANDS. L/R/W tested K=2 and found robustness.**
+
+This is the single most consequential deliverable-(i) finding so far, and it is exactly the
+contradiction the task asked to hunt for.
+
+**The paper's claim (Confound 3):**
+> "Our sweep runs over $K\in\{2,3,5,10\}$ and therefore **extends below** the $K\in\{5,10\}$
+> range over which ensemble surrogates were found robust \citep{li2024bnnsurrogates},
+> **sharing its two upper points and adding $K{=}2,3$**."
+
+**What Li/Rudner/Wilson actually did.** Figure A.7 tests ensemble size at **K = {2, 5, 10}**.
+Verified twice over — textually in the full text (16,554 words, fetched via the arXiv HTML
+rendering) and visually by rendering PDF page 28, whose legend reads "2 Models / 5 Models /
+10 Models" across 15 BO benchmarks. Their verbatim finding:
+
+> "We compare the behavior of ensembles with different numbers of models, and we find that
+> **the different ensembles perform similarly across many experiments, showing the robustness
+> of our results to this hyperparameter.**"
+
+A second K=2 appearance is in Figure A.5. The main text adds: *"we find that these
+hyperparameters generally have minimal effects on the performance."*
+
+**So the range is {2,5,10}, not {5,10}. L/R/W already went down to K=2, and found robustness
+there.** The paper's "extends below" claim is false as written, and the specific novelty it
+asserts — "sharing its two upper points and adding K=2,3" — collapses to "adding K=3".
+
+**Why this is worse than a wording error.** The paper's K-sensitivity framing exists to
+establish that its headline sits at the *maximum* of a sensitive curve. L/R/W is the closest
+prior work and it reports the opposite conclusion (robustness) over an overlapping range
+including the very endpoint the paper claims to have added. A reviewer from that group — a
+live possibility in a small community — reads this as the paper claiming credit for an
+experiment they ran.
+
+**Fix (mandatory, and it must be a real fix, not a hedge).**
+1. Correct the range to `K∈{2,5,10}` wherever `{5,10}` appears.
+2. Restate the residual honestly: the paper adds **K=3**, and, more importantly, reports
+   **η²-sensitivity** where L/R/W reports **performance robustness**. Those are different
+   quantities — L/R/W measures whether ensemble BO performance changes with model count; the
+   paper measures whether the *variance attributed to the surrogate axis* changes. **That
+   distinction is the paper's actual defence and it is currently not made anywhere.** Made
+   explicitly, the claim survives in a narrower and more interesting form: "L/R/W find
+   ensemble *performance* robust to model count over {2,5,10}; we find the *variance
+   decomposition* is not robust over {2,3,5,10}, which is a different and complementary
+   sensitivity."
+3. Do not delete the K-sensitivity result — it is real on this grid. Delete the "extends
+   below" priority claim.
+
+## MANDATORY FIX 6 — `abe2022ensembles` does not support the direction it is cited for
+
+**The paper's claim (Confound 3):** *"the decline with $K$ runs against **the direction
+reported for ensemble quality** \citep{abe2022ensembles}."*
+
+**What Abe et al. actually did.** Full text extracted (15,095 words). Abe et al.
+("Deep Ensembles Work, But Are They Necessary?", NeurIPS 2022, arXiv:2202.06985) runs **zero
+ensemble-size ablation**. Their configuration is fixed — M=4 on CIFAR-10 ("combining 4 out of
+the 5 random seeds") and M=5 on an ImageNet subset, fixed by seed availability rather than
+swept. Their thesis is *ensembles versus a single larger model*, not quality as a function of
+K. **There is no reported direction-with-K in this paper to run against.**
+
+**Fix.** Replace with the source that does report it: **Lakshminarayanan, Pritzel & Blundell
+(NeurIPS 2017, arXiv:1612.01474), Table 4**, ImageNet M=1→10, monotonic diminishing-but-never-
+negative improvement (Top-1 error 22.166% → 18.675%), verbatim: *"We observe that as M
+increases, both the accuracy and the quality of predictive uncertainty improve
+significantly."* Note the honest caveat: that is classification calibration, not offline-MBO
+reward, so the cross-domain transfer must be stated rather than assumed. `abe2022ensembles`
+can stay in the paper for what it does support (ensembles vs. a single larger model) or be
+dropped.
+
+## MANDATORY FIX 7 — `melis2018sota` cannot carry "audits normally shrink" (H4 confirmed)
+
+**The paper's claim, made twice and load-bearing for Contribution 2:**
+> "Audits in this genre **usually shrink** the effect they audit \citep{melis2018sota}."
+> "...a direction with no precedent we could find in the ML audit literature, **where audits
+> normally shrink** \citep{melis2018sota}."
+
+**What Melis et al. actually says.** Full text verified. Their finding: *"Once hyperparameters
+have been properly controlled for, we find that LSTMs outperform the more recent models,
+contra the published claims."* That is a **ranking reversal** — an old baseline beating newer
+architectures — **not a shrinking effect size**, and certainly not a law about the direction
+an entire genre runs. Melis explicitly frames itself as *one instance*: *"this paper joins
+other recent papers in warning of the under-acknowledged existence of replication failure in
+deep learning."* Full-text search found **no sentence anywhere** asserting a genre-wide
+directional pattern.
+
+**Fix.** The generalisation is the paper's own, and it must be labelled as such. Two options:
+(i) recast as an observation over named instances — Melis, Ferrari Dacrema, Musgrave, Lucic
+each independently show a *claimed advantage* shrinking or reversing, and cite all four for
+the pattern rather than one for a law; or (ii) drop the "normally" framing and say only that
+the audits the paper surveyed moved downward. **Option (i) is stronger and nearly free** —
+the paper already cites all four papers elsewhere in its genre paragraph. As written, one
+citation is asked to certify a claim about a literature, which is the exact defect this audit
+was commissioned to find.
+
+## VERIFIED CLEAN — citation traps and quoted figures (batch 6)
+
+All checked against primary full text. **These pass and should be reported as passing.**
+
+| Item | Status |
+|---|---|
+| Henderson = **AAAI 2018** | ✓ confirmed from the PDF copyright line, "Copyright © 2018, AAAI". The 2017 is the arXiv posting date |
+| Benavoli = **JMLR vol 17 (2016)**, arXiv 1505.02288 (2015) | ✓ both confirmed; trap real, paper has it right |
+| Li/Rudner/Wilson = **ICLR 2024** | ✓ "Comments: ICLR 2024" on the arXiv page; v1 May 2023, v2 camera-ready May 2024 |
+| Recht slopes **1.69** (CIFAR-10), **1.11** (ImageNet) | ✓ verbatim from the regression equations, and the paper's characterisation of their meaning is accurate |
+| Benavoli cited for "mean-rank conclusions depend on the pool" | ✓ verbatim: *"the outcome of the mean-ranks test depends on the pool of algorithms originally included in the experiment"* |
+| Agarwal cited for never-claim-equivalence | ✓ verbatim: *"lack of statistically significant results does not demonstrate the absence of effect"* |
+
 ## VERIFIED — the paper's own numbers and code (orchestrator, local)
 
 See `local-checks.md`. Summary: all four corner η² point estimates and CIs, the corner range,

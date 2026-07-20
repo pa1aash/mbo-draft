@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "CliqueFlowmer (Kuba, Miller, Levine, Abbeel; UC Berkeley/Meta FAIR; arXiv:2603.06082v4, April 2026) fuses transformer encoding, clique-decomposed property prediction, and flow-matching decoding for offline model-based optimization applied to computational materials discovery.",
+    "stance": "neutral",
+    "stance_target": "offline MBO applied to materials science",
+    "evidence_type": "empirical",
+    "scope_conditions": "MP-20 dataset materials, formation-energy and band-gap optimization tasks",
+    "quoted_support": "In this work, we offer an alternative CMD technique based on offline model-based optimization (MBO) that fuses direct optimization of a target material property into generation.",
+    "numbers": ["45K example materials (MP-20)", "7x10^5 gradient steps", "batch size 1024"],
+    "entities": ["Jakub Grudzien Kuba", "Benjamin Kurt Miller", "Sergey Levine", "Pieter Abbeel", "UC Berkeley", "Meta FAIR"],
+    "time_period": "2026",
+    "region": "USA",
+    "confidence": "high",
+    "source_note_id": "260306082-offline-materials-optimization-with-cliqueflowmer"
+  },
+  {
+    "claim": "Section 4.2 of CliqueFlowmer compares back-propagation (BP) vs. evolution-strategies (ES) as the search/optimizer axis, each with and without decoupled weight decay (BP, BP+W, ES+W), while holding a single fixed surrogate/model (CliqueFlowmer's clique-decomposed predictor) constant throughout -- a one-factor optimizer ablation, not a crossed surrogate x optimizer design.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "N=100 structures, T=1000 optimization steps, single model",
+    "quoted_support": "In our experiments, both gradients were applied by Adam optimization algorithm (Kingma, 2014), as well as by its decoupled weight decay variant (Loshchilov et al., 2017, BP+W, ES+W). Figure (6) shows that, instead of decreasing the minimized property, BP and BP+W have drastically increased it.",
+    "numbers": ["N=100 structures", "T=1000 steps", "4 gradient-estimator variants (BP, BP+W, ES, ES+W)"],
+    "entities": ["Evolution Strategies", "Adam", "AdamW", "back-propagation"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260306082-offline-materials-optimization-with-cliqueflowmer"
+  },
+  {
+    "claim": "Table 1 compares CliqueFlowmer against 4 whole-system generative baselines (CrystalFormer, DiffCSP, DiffCSP++, MatterGen) as complete pipelines rather than as surrogate options crossed with the BP/ES optimizer axis studied separately in Section 4.2.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "MP-20 formation-energy and band-gap tasks",
+    "quoted_support": "We compare our results to those of CrystalFormer (Cao et al., 2025), DiffCSP (Jiao et al., 2023), DiffCSP++ (Jiao et al., 2024), and MatterGen (Zeni et al., 2023), whose generated structures we obtained from Kazeev et al. (2025).",
+    "numbers": ["Eform reduced to -0.81 / -0.99", "Band Gap reduced to 0.03 / 0.07"],
+    "entities": ["CrystalFormer", "DiffCSP", "DiffCSP++", "MatterGen"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260306082-offline-materials-optimization-with-cliqueflowmer"
+  },
+  {
+    "claim": "Exhaustive grep of the 15698-word extracted PDF text of arXiv:2603.06082 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found in this specific paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260306082-offline-materials-optimization-with-cliqueflowmer"
+  }
+]

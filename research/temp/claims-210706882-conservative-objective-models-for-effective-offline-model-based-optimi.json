@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "COMs (Trabucco, Kumar, Geng, Levine, ICML 2021) trains the surrogate to systematically underestimate on adversarial out-of-distribution inputs found via gradient ascent, then optimizes the final design using ordinary gradient ascent on the regularized surrogate -- confirming Chemingui et al.'s characterization of this paper as an example of the 'fixed search strategy' family is accurate.",
+    "stance": "supports",
+    "stance_target": "Accuracy of Chemingui et al. 2024's characterization of Trabucco et al. 2021 (COMs) as a 'surrogate-focused, fixed-search-strategy' method, which is the premise the audited paper claims to falsify",
+    "evidence_type": "theoretical",
+    "scope_conditions": "COMs method description, ICML 2021",
+    "quoted_support": "gradient ascent",
+    "numbers": ["37 hits for 'gradient ascent' across the paper"],
+    "entities": ["Trabucco", "Kumar", "Geng", "Levine", "COMs", "gradient ascent"],
+    "time_period": "2021",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "210706882-conservative-objective-models-for-effective-offline-model-based-optimi"
+  },
+  {
+    "claim": "COMs' full text contains zero genuine occurrences of factorial, crossed, eta-squared, variance-decomposition, main-effect, or two-way terminology, and its 4 raw 'anova' hits are false positives from author surnames in the bibliography (same Usmanova/Bozhanova pattern as Design-Bench and the comprehensive review, indicating these three papers share overlapping bio-design citations).",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that COMs itself performs a crossed surrogate-class x optimizer factorial analysis (N6 kill-surface claim)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 113,284-character extracted text of COMs",
+    "quoted_support": "0 hits: factorial, crossed, analysis of variance, eta squared, variance decomposition, main effect, two-way",
+    "numbers": ["113,284 characters extracted", "4 raw 'anova' substring hits, all false positives", "4 hits for 'ablation'"],
+    "entities": ["COMs", "Trabucco et al. 2021"],
+    "time_period": "2021",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "210706882-conservative-objective-models-for-effective-offline-model-based-optimi"
+  },
+  {
+    "claim": "COMs addresses distributional shift in offline MBO -- the problem that a naive optimizer can easily find a design that 'fools' the surrogate into predicting an artificially high value -- by penalizing the surrogate's predictions at adversarially-identified out-of-distribution points.",
+    "stance": "neutral",
+    "stance_target": "Background mechanism context for why the 'improving surrogate models' family exists and what problem it solves",
+    "evidence_type": "theoretical",
+    "scope_conditions": "COMs core method motivation",
+    "quoted_support": "typical methods suffer from distributional shift: it is easy to find a design that 'fools' the model into predicting a high value",
+    "numbers": [],
+    "entities": ["COMs", "distributional shift", "surrogate model"],
+    "time_period": "2021",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "210706882-conservative-objective-models-for-effective-offline-model-based-optimi"
+  }
+]

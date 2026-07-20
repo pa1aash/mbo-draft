@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "dLLM (arXiv:2601.14446) proposes an in-context diffusion-LLM optimizer for offline BBO combined with masked diffusion tree search (MDTS), evaluated against ~16 baselines on Design-Bench tasks.",
+    "stance": "neutral",
+    "stance_target": "diffusion-LLM optimizers for offline BBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "Ant, D'Kitty, TF8, TF10",
+    "quoted_support": "In the second line, autoregressive LLMs have been employed directly as optimizers in BBO... demonstrate the potential of diffusion LLMs as general-purpose optimizers and open new directions",
+    "numbers": ["9.5/16 CMA-ES mean rank"],
+    "entities": ["dLLM", "MDTS", "LA-MCTS"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260114446-diffusion-large-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Table 2's ablation study removes components one at a time (Vanilla diffusion / w/o MDTS / w/o template / full dLLM) rather than fully crossing all pairwise combinations -- 'Vanilla diffusion' swaps the generative surrogate and 'w/o MDTS' removes the tree-search optimizer component, but these are never jointly combined in a 2x2 grid.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Ant, D'Kitty, TF8, TF10",
+    "quoted_support": "We ablate dLLM by replacing or removing its key modules, as detailed in Table 2. Vanilla diffusion We replace the diffusion LLM with a continuous diffusion model trained directly on the offline dataset... w/o MDTS We remove the masked diffusion tree search (MDTS) module",
+    "numbers": ["4 ablation rows (leave-one-out, not crossed)"],
+    "entities": ["MDTS", "vanilla diffusion"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260114446-diffusion-large-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Exhaustive grep of the 9208-word extracted PDF text of arXiv:2601.14446 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found in this specific paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260114446-diffusion-large-language-models-for-black-box-optimization"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "SPADE (arXiv:2605.11246, ICML 2026) trains a diffusion surrogate with calibration and support-proximity regularization terms and achieves the best mean/median rank (2.8/24 and 1.7/24 respectively) against 23 offline-BBO baselines on Design-Bench + an LLM data-mixture task.",
+    "stance": "neutral",
+    "stance_target": "diffusion-surrogate methods for offline BBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench tasks (SuperC, Ant, D'Kitty, TF8, TF10) plus LLM-DM task, K=128 candidates, 8 seeds",
+    "quoted_support": "SPADE (Ours) 0.546 +/- 0.013 0.978 +/- 0.006 0.981 +/- 0.003 1.019 +/- 0.064 0.923 +/- 0.015 0.915 +/- 0.010 2.8/24 1.5/24",
+    "numbers": ["23 baselines", "2.8/24 mean rank", "1.5/24 median rank", "K=128"],
+    "entities": ["SPADE", "Design-Bench"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260511246-support-proximity-augmented-diffusion-estimation-for-offline-black-box"
+  },
+  {
+    "claim": "Table 1/4 splits its 24-method leaderboard into 'Standard Optimization Baselines' (CMA-ES, REINFORCE, BO-qEI), 'Forward Surrogate Methods' (11 methods incl. Standard GA, GA-on-GP, COMs, RoMA, BDI, LTR, MATCH-OPT, PGS), and 'Inverse Generative Methods' (9 methods incl. CbAS, MINs, DDOM, GABO, GTG, RGD, BONET, DEMO, ROOT) -- each row bundles its own fixed surrogate+optimizer identity, never crossed with any other row's optimizer.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench, 24-method comparison table",
+    "quoted_support": "Standard Optimization Baselines. (1) CMA-ES (Hansen, 2006) iteratively adapts a multivariate normal distribution... Forward Surrogate-Based Approaches: (4) Standard GA searches for optimal designs using gradient ascent applied to a deterministic neural network surrogate. (5) GA on GP employs gradient ascent to maximize the",
+    "numbers": ["24 total methods", "3 standard-optimization baselines", "11 forward-surrogate methods", "9 inverse-generative methods"],
+    "entities": ["CMA-ES", "REINFORCE", "BO-qEI", "COMs", "RoMA", "ROOT"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260511246-support-proximity-augmented-diffusion-estimation-for-offline-black-box"
+  },
+  {
+    "claim": "Appendix G / Table 5 performs a single-factor ablation swapping ONLY the surrogate backbone (Gaussian Process vs. diffusion) while holding the same optimizer fixed (evolutionary algorithm + LCB acquisition) -- a one-axis-at-a-time swap, not a 2-way surrogate x optimizer cross.",
+    "stance": "refutes",
+    "stance_target": "N6 near-miss candidacy of this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Ant and TF10 tasks only, GP-backbone ablation",
+    "quoted_support": "In this section, we provide additional ablation study results in Table 5 by replacing the diffusion backbone to a standard Gaussian Process (GP) with RBF kernel. When adding the calibration loss (GP + Calib) and the support-proximity regularization (GP + Prox) separately, both ablated variants improve the vanilla GP backbone with the same evolutionary algorithm (EA) and LCB acquisition function",
+    "numbers": ["GP base 0.955 (Ant)", "SPADE 0.978 (Ant)", "GP base 0.734 (TF10)", "SPADE 0.915 (TF10)"],
+    "entities": ["Gaussian Process", "RBF kernel", "LCB acquisition", "evolutionary algorithm"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260511246-support-proximity-augmented-diffusion-estimation-for-offline-black-box"
+  },
+  {
+    "claim": "Exhaustive grep of the 11084-word extracted PDF text of arXiv:2605.11246 for factorial, crossed, ANOVA, analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found in this specific paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 hits across 10 statistical/factorial search terms"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "260511246-support-proximity-augmented-diffusion-estimation-for-offline-black-box"
+  }
+]

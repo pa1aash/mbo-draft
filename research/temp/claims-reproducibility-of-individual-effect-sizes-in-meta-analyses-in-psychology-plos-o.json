@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "In a systematic recomputation of 500 primary-study effect sizes from 33 psychology meta-analyses, recomputed pooled effect sizes came out larger than originally reported in 19 cases and smaller in 14 cases, with the authors finding no evidence of systematic bias in either direction.",
+    "stance": "refutes",
+    "stance_target": "N9's broader implication that a corrected effect coming out larger than published is an intrinsically improbable/unprecedented direction",
+    "evidence_type": "statistical",
+    "scope_conditions": "33 published meta-analyses in psychology, 500 sampled primary-study effect sizes, recomputation exercise, not an ML benchmark audit",
+    "quoted_support": "\"We did not find any evidence for systematic bias in meta-analytic results; we estimated 19 pooled effect sizes to be larger than originally reported and 14 to be smaller than originally reported.\"",
+    "numbers": ["19", "14", "33", "500"],
+    "entities": ["Maassen", "van Assen", "Nuijten", "Olsson-Collentine", "Wicherts"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "reproducibility-of-individual-effect-sizes-in-meta-analyses-in-psychology-plos-o"
+  },
+  {
+    "claim": "114 of 500 (23%) recalculated primary-study effect sizes showed discrepancies from the values reported in their source meta-analyses, with 31 (27% of discrepant cases) classified as large discrepancies.",
+    "stance": "neutral",
+    "stance_target": "background context on the scale of recomputation discrepancies in the meta-analytic literature",
+    "evidence_type": "statistical",
+    "scope_conditions": "500 sampled primary-study effect sizes across 33 meta-analyses",
+    "quoted_support": "\"In total, 114 out of 500 recalculated primary study effect sizes (23%) showed effect size discrepancies compared to the primary study effect sizes as reported in the meta-analytic articles. Of those 114 discrepancies, 62 were small (54%), 21 were moderate (18%), and 31 were large (27%).\"",
+    "numbers": ["114", "500", "23", "62", "54", "21", "18", "31", "27"],
+    "entities": ["Maassen et al."],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "reproducibility-of-individual-effect-sizes-in-meta-analyses-in-psychology-plos-o"
+  },
+  {
+    "claim": "14 of 33 (42%) reproduced meta-analyses showed discrepancies in their pooled effect size estimate, confidence interval, or heterogeneity estimate after recomputation.",
+    "stance": "neutral",
+    "stance_target": "background statistic on downstream impact of recomputation on meta-analytic conclusions",
+    "evidence_type": "statistical",
+    "scope_conditions": "33 meta-analyses in psychology",
+    "quoted_support": "\"14 out of 33 meta-analyses (42%) showed discrepancies in either the pooled effect size estimate, its confidence interval, or\" [heterogeneity estimate]",
+    "numbers": ["14", "33", "42"],
+    "entities": ["Maassen et al."],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "reproducibility-of-individual-effect-sizes-in-meta-analyses-in-psychology-plos-o"
+  }
+]

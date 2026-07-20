@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "RaM identifies that a common offline MBO approach trains a regression-based surrogate by minimizing MSE, then optimizes within that surrogate using different optimizers such as gradient ascent -- naming the surrogate-training-objective and the optimizer as two separable design choices.",
+    "stance": "neutral",
+    "stance_target": "Whether RaM itself treats surrogate objective and optimizer as independently variable axes (relevant to N6 kill-surface)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "RaM Abstract, ICLR 2025",
+    "quoted_support": "A common approach in offline MBO is to train a regression-based surrogate model by minimizing mean squared error (MSE) and then find the best design within this surrogate model by different optimizers (e.g., gradient ascent).",
+    "numbers": [],
+    "entities": ["RaM", "Tan", "Xue", "Qian", "MSE", "gradient ascent"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "RaM's actual contribution is replacing the MSE training objective for the surrogate with ranking losses (RankCosine, ListNet), not varying or comparing surrogate model architecture classes.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that RaM crosses surrogate model class against optimizer choice (N6 kill-surface claim)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "RaM method description",
+    "quoted_support": "Equipped with two popular ranking losses, i.e., RankCosine (Qin et al., 2008) and ListNet (Cao et al., 2007), our proposed method, RaM, performs better than state-of-the-art offline MBO methods.",
+    "numbers": [],
+    "entities": ["RaM", "RankCosine", "ListNet", "ranking loss"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "RaM explicitly fixes the surrogate model architecture to a simple MLP across all its experiments to keep the comparison fair against regression-based baselines, deliberately not varying surrogate model class.",
+    "stance": "refutes",
+    "stance_target": "N6 kill-surface claim -- whether RaM crosses surrogate class against optimizer",
+    "evidence_type": "empirical",
+    "scope_conditions": "RaM Appendix, discussion of surrogate parameterization",
+    "quoted_support": "However in this work, we parameterize the surrogate model as a simple MLP for a fair comparison to the regression-based methods, and we will consider more complex modeling in our future work.",
+    "numbers": [],
+    "entities": ["RaM", "MLP", "surrogate model"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "RaM's ablation studies (Tables 8-10) vary ranking loss function (10 losses tested; ListNet best at average rank 2.0, RankCosine runner-up at 3.2) crossed with two internal modules (data augmentation, output adaptation) -- a self-ablation of one method's own components, not a field-wide surrogate-class x optimizer factorial with formal variance decomposition.",
+    "stance": "refutes",
+    "stance_target": "N6 kill-surface claim -- whether RaM's ablation grid constitutes the missing crossed factorial+ANOVA analysis",
+    "evidence_type": "empirical",
+    "scope_conditions": "RaM Appendix F.2-F.3, ablation results tables",
+    "quoted_support": "The results in Table 8 in Appendix F.2 show that ListNet is the best-performing loss with an average rank of 2.0 over 10 losses, and RankCosine is the runner-up with an average rank of 3.2. Ablation of main modules. To better validate the effectiveness of the two moduels, data augmentation and output adaptation, of our method, we perform ablation studies based on the top-performing loss functions.",
+    "numbers": ["10 losses tested", "ListNet average rank 2.0", "RankCosine average rank 3.2", "11 total 'ablation' hits in full text"],
+    "entities": ["RaM", "ListNet", "RankCosine", "MSE", "data augmentation", "output adaptation"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "RaM's full text contains zero occurrences of factorial, crossed, ANOVA, eta-squared, variance-decomposition, main-effect, or two-way terminology despite being a 171,781-character paper with an extensive ablation appendix.",
+    "stance": "refutes",
+    "stance_target": "N6 kill-surface claim",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full extracted text of RaM, arXiv:2410.11502",
+    "quoted_support": "0 hits for: factorial, crossed, ANOVA, analysis of variance, eta squared, variance decomposition, main effect, two-way",
+    "numbers": ["171,781 characters extracted", "0 hits for all N6 target terms"],
+    "entities": ["RaM", "Tan et al. 2025"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  }
+]

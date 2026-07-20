@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "SOO-Bench's core benchmark contribution is a stability indicator measuring whether an algorithm stably surpasses the offline dataset during the optimization procedure, not a variance-attribution study of surrogate model class versus optimizer choice.",
+    "stance": "supports",
+    "stance_target": "Audited paper's characterization that SOO-Bench stress-tests optimizer STABILITY rather than attribution",
+    "evidence_type": "theoretical",
+    "scope_conditions": "SOO-Bench paper (ICLR 2025, double-blind preprint version), Abstract/Introduction",
+    "quoted_support": "Along with SOO-Bench, we also propose a stability indicator to measure the degree of stability. Specifically, SOO-Bench includes various real-world offline optimization tasks and offline datasets under different data distributions, involving the fields of satellites, materials science, structural mechanics and so on.",
+    "numbers": [],
+    "entities": ["SOO-Bench", "Zhu", "Qian", "stability indicator", "ICLR 2025"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "github-zhuyiyi-123soo-bench-github"
+  },
+  {
+    "claim": "SOO-Bench varies data-distribution narrowness level and constrained-vs-unconstrained problem setting as its experimental axes, treating each published algorithm as an atomic bundle of surrogate model plus search procedure rather than crossing model class against optimizer independently.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that SOO-Bench (or any prior offline-MBO benchmark) runs a crossed surrogate-class x optimizer factorial with variance decomposition (the N6 kill-surface claim)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 108,445-character extracted text of the SOO-Bench paper",
+    "quoted_support": "SOO-Bench provides (1) real-world offline optimization tasks including satellites, materials science, structural mechanics and so on, (2) customizable narrow distribution levels to tailor the difficulty levels of offline optimization datasets, (3) a novel stability indicator called stability improvement (SI) to measure the stability of algorithms.",
+    "numbers": ["0 hits: factorial, crossed, ANOVA, analysis of variance, eta squared, variance decomposition, main effect, two-way", "3 hits: model class (all describing individual baseline algorithms' internal components, not a benchmark-wide crossed design)", "31 pages / 108,445 characters extracted"],
+    "entities": ["SOO-Bench", "Grad", "COMs", "ROMA", "Tri-mentoring", "ARCOO", "CbAS", "Autofocusing CbAS", "MINs", "BDI"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "github-zhuyiyi-123soo-bench-github"
+  },
+  {
+    "claim": "Design-Bench (Trabucco et al. 2022) provides a unified evaluation protocol and reference implementations of methods across real-world tasks, but contains zero genuine occurrences of factorial/ANOVA/variance-decomposition terminology across its full text.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that Design-Bench runs a crossed surrogate-class x optimizer factorial with variance decomposition (N6 kill-surface claim)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 100,068-character text of Design-Bench extracted via ar5iv HTML mirror",
+    "quoted_support": "To address this, we present Design-Bench, a benchmark for offline MBO with a unified evaluation protocol and reference implementations of recent methods.",
+    "numbers": ["0 genuine hits: factorial, crossed, ANOVA (2 raw substring hits are false positives -- author surnames Bozhanova/Usmanova), eta squared, variance decomposition, main effect, two-way", "22 hits: baseline", "26 hits: gradient ascent"],
+    "entities": ["Design-Bench", "Trabucco", "Geng", "Kumar", "Levine", "ICML 2022"],
+    "time_period": "2021-2022",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "220208450-design-bench-benchmarks-for-data-driven-offline-model-based-optimizati"
+  },
+  {
+    "claim": "RaM (Tan et al., ICLR 2025) fixes its surrogate model architecture as a simple MLP and ablates only its own method's internal components (ranking loss choice, data augmentation, output adaptation), not surrogate model class against optimizer choice across the field.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that RaM's ablation studies constitute a crossed surrogate-class x optimizer factorial with variance decomposition (N6 kill-surface claim)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 171,781-character text of RaM extracted via arXiv HTML",
+    "quoted_support": "However in this work, we parameterize the surrogate model as a simple MLP for a fair comparison to the regression-based methods, and we will consider more complex modeling in our future work.",
+    "numbers": ["0 hits: factorial, crossed, ANOVA, eta squared, variance decomposition, main effect, two-way", "11 hits: ablation (all internal to RaM's own modules: 3 ranking losses x with/without augmentation x with/without adaptation)"],
+    "entities": ["RaM", "Tan", "Xue", "Lyu", "Qian", "ICLR 2025", "RankCosine", "ListNet", "MSE"],
+    "time_period": "2024-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank"
+  },
+  {
+    "claim": "Across all three of the field's primary offline-MBO evaluation/benchmark papers (Design-Bench, RaM, SOO-Bench), none runs a crossed surrogate-model-class times optimizer factorial design with a formal statistical variance decomposition.",
+    "stance": "supports",
+    "stance_target": "Audited paper's N6 claim that no prior work runs a crossed surrogate x optimizer factorial in offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "Cross-paper synthesis across Design-Bench (2022), RaM (2024/2025), SOO-Bench (2025) -- the three papers named in the task as the offline-MBO evaluation surface",
+    "quoted_support": "Net conclusion: across all three of the field's primary evaluation/benchmark papers (Design-Bench, RaM, SOO-Bench), none runs a crossed surrogate-model-class x optimizer factorial design with a formal variance decomposition (ANOVA / eta-squared / main-effect language). No KILL found for the audited paper's N6 claim in this evaluation-surface sweep.",
+    "numbers": ["0 genuine hits across all 3 papers combined for: factorial, crossed, ANOVA, eta squared, variance decomposition, main effect, two-way"],
+    "entities": ["Design-Bench", "RaM", "SOO-Bench", "offline model-based optimization"],
+    "time_period": "2022-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "github-zhuyiyi-123soo-bench-github"
+  }
+]

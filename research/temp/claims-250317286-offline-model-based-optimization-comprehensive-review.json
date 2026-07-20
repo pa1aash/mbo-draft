@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Kim, Gu, Yuan, Yun, Liu, Bengio & Chen's 'Offline Model-Based Optimization: Comprehensive Review' (arXiv:2503.17286) is now confirmed PUBLISHED in Transactions on Machine Learning Research, dated (01/2026), per the header printed on every page of v2 (dated 6 Jan 2026 on arXiv).",
+    "stance": "supports",
+    "stance_target": "resolving the audited paper's internal citation-year inconsistency for the Kim survey",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv v2, OpenReview forum id QcSZWo1TLl",
+    "quoted_support": "Published in Transactions on Machine Learning Research (01/2026)",
+    "numbers": ["v2 dated 6 Jan 2026", "arXiv:2503.17286v2"],
+    "entities": ["Minsu Kim", "Jiayao Gu", "Ye Yuan", "Taeyoung Yun", "Zixuan Liu", "Yoshua Bengio", "Can Chen", "Transactions on Machine Learning Research"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "250317286-offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The audited paper's characterization of the Kim survey as a '2026 survey' in prose is accurate and current; a bibliography entry citing it as a mere '2025 arXiv preprint' is stale and should be updated to reflect the TMLR 2026 publication.",
+    "stance": "refutes",
+    "stance_target": "treating the Kim et al. survey as an unpublished 2025 arXiv preprint",
+    "evidence_type": "empirical",
+    "scope_conditions": "citation-accuracy verification for the audited AAAI-27 draft",
+    "quoted_support": "Published in Transactions on Machine Learning Research (01/2026)",
+    "numbers": [],
+    "entities": ["TMLR", "arXiv:2503.17286"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "250317286-offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "arXiv:2603.04000's own bibliography independently corroborates the TMLR 2026 publication status by citing 'M. Kim, J. Gu, Y. Yuan, T. Yun, Z. Liu, Y. Bengio, and C. Chen. Offline model-based optimization: Comprehensive review. Transactions on Machine Learning Research, 2026.'",
+    "stance": "supports",
+    "stance_target": "venue/year verification of Kim et al. survey",
+    "evidence_type": "empirical",
+    "scope_conditions": "independent third-party citation, not the survey's own self-description",
+    "quoted_support": "M. Kim, J. Gu, Y. Yuan, T. Yun, Z. Liu, Y. Bengio, and C. Chen. Offline model-based optimization: Comprehensive review. Transactions on Machine Learning Research, 2026.",
+    "numbers": [],
+    "entities": ["arXiv:2603.04000"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "250317286-offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The exact sentence containing 'whether observed gains stem from' appears in Section 6 (Discussion and Future Direction), subsection 'Uncertainty Estimation of Surrogate Model', framed as a gap in evaluating uncertainty-quantification methods rather than as an explicit direct call for a crossed surrogate x optimizer factorial design.",
+    "stance": "neutral",
+    "stance_target": "precise use/citation of the Kim survey's motivating-gap sentence in the audited paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "Section 6, subsection on Uncertainty Estimation of Surrogate Model",
+    "quoted_support": "existing benchmarks often emphasize overall optimization performance without clarifying whether observed gains stem from superior surrogate modeling, improved optimization strategies, or mere chance. This lack of distinction underscores the need for independent and rigorous evaluations of the uncertainty estimation capabilities of the surrogate model in newly developed algorithms.",
+    "numbers": [],
+    "entities": ["Jain et al. 2022", "Kim et al. 2024a", "MC dropout", "deep ensembles"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "250317286-offline-model-based-optimization-comprehensive-review"
+  },
+  {
+    "claim": "The Kim et al. survey itself is a literature review and does not run or describe any crossed surrogate x optimizer experiment; exhaustive grep of the 25965-word extracted PDF text for factorial, crossed, ANOVA (excluding false-positive substring matches inside author surnames Usmanova/Bozhanova), analysis of variance, eta squared, main effect, variance decomposition, two-way, interaction effect, and attribution returns zero genuine hits for every term.",
+    "stance": "supports",
+    "stance_target": "N6 confirmed-none-found: the survey does not itself constitute or cite an executed crossed factorial",
+    "evidence_type": "empirical",
+    "scope_conditions": "full PDF text, pdftotext -layout extraction; word-boundary-corrected grep",
+    "quoted_support": "N/A (grep result, not a quoted passage)",
+    "numbers": ["0 genuine hits across 10 statistical/factorial search terms", "2 false-positive substring matches (Usmanova, Bozhanova author names) excluded"],
+    "entities": [],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "250317286-offline-model-based-optimization-comprehensive-review"
+  }
+]

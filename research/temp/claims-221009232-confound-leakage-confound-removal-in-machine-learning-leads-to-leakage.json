@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Standard featurewise confound removal by linear regression, applied before nonlinear ML models, can amplify null or moderate true effects to near-perfect prediction accuracy -- a documented case of a de-confounding procedure increasing a reported effect.",
+    "stance": "neutral",
+    "stance_target": "kill hunt for N9: does a de-confounding audit increasing an effect have ML precedent?",
+    "evidence_type": "empirical",
+    "scope_conditions": "Nonlinear ML models (e.g. random forests, kernel methods) applied after linear confound regression; demonstrated via simulation and a clinical dataset",
+    "quoted_support": "\"this common deconfounding approach can leak information such that what are null or moderate effects become amplified to near-perfect prediction when nonlinear ML approaches are subsequently applied.\"",
+    "numbers": [],
+    "entities": ["Sami Hamdan", "Bradley C. Love", "Kaustubh R. Patil"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221009232-confound-leakage-confound-removal-in-machine-learning-leads-to-leakage"
+  },
+  {
+    "claim": "The paper's own authors diagnose an effect-size increase following confound removal as a bias artifact ('confound-leakage'), not a legitimate corrected finding, and demonstrate this concretely by showing ADHD-prediction accuracy is overestimated when depression is used as the confound.",
+    "stance": "refutes",
+    "stance_target": "the implicit assumption that a corrected/de-confounded statistic increasing is presumptively valid",
+    "evidence_type": "empirical",
+    "scope_conditions": "Clinical dataset: ADHD prediction from speech-derived features with depression as confound",
+    "quoted_support": "\"We demonstrate the real-world importance of confound-leakage by analyzing a clinical dataset where accuracy is overestimated for predicting attention deficit hyperactivity disorder (ADHD) with depression as a confound.\"",
+    "numbers": [],
+    "entities": ["ADHD", "depression", "confound-leakage"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221009232-confound-leakage-confound-removal-in-machine-learning-leads-to-leakage"
+  },
+  {
+    "claim": "The paper concludes with an explicit caution against naive use of standard confound-removal approaches in ML workflows, given the risk of leakage-driven inflation of apparent effects.",
+    "stance": "neutral",
+    "stance_target": "general methodological caution relevant to any de-confounding audit claiming an increased effect",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General ML workflow deployment guidance",
+    "quoted_support": "\"Our results have wide-reaching implications for implementation and deployment of ML workflows and beg caution against naive use of standard confound removal approaches.\"",
+    "numbers": [],
+    "entities": ["confound removal", "ML workflows"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221009232-confound-leakage-confound-removal-in-machine-learning-leads-to-leakage"
+  }
+]
