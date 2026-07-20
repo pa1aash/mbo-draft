@@ -585,6 +585,100 @@ stronger.** Bias-corrected, the two protocol confounds move the surrogate effect
 supplementary column buys immunity from the single most obvious statistical objection to the
 paper's central number. **Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
 
+## ★ THE BURIED RESULT — the interaction term is significant, stable, and never interpreted
+
+**Found by the orchestrator directly from `results/bootstrap_eta_corners.json`. First-hand, not
+relayed. I believe this is the single most under-stated finding in the paper.**
+
+### The numbers
+
+| Corner | η²_surr | η²_opt | **η²_inter** | interaction 95% CI | inter/opt |
+|---|---|---|---|---|---|
+| off/off | 0.367 | 0.013 | **0.165** | [0.107, 0.260] | 12.4× |
+| on/off | 0.283 | 0.036 | **0.146** | [0.088, 0.249] | 4.0× |
+| off/on | 0.450 | 0.006 | **0.152** | [0.094, 0.230] | 26.9× |
+| on/on | 0.405 | 0.005 | **0.160** | [0.087, 0.236] | 32.8× |
+
+**The interaction's bootstrap interval excludes zero in ALL FOUR corners** (lower bounds
+0.087–0.107). It is the **second-largest effect in every corner**, ordered
+`surrogate > interaction > optimizer` without exception.
+
+### It is the most STABLE effect in the paper — more stable than the headline
+
+| Effect | Range across the four corners |
+|---|---|
+| Surrogate main effect (the headline) | 0.283–0.450, **range 0.167** |
+| Optimizer main effect | 0.005–0.036, range 0.031 |
+| **Interaction** | 0.146–0.165, **range 0.018** |
+
+**The interaction is 9.2× more stable across engine corners than the headline surrogate
+effect.** The paper's central methodological caution is that "any η²_surr here is a joint
+artifact of four operating-point coordinates" — and it never notices that the interaction is
+nearly *invariant* to the one coordinate (the engine corner) it demonstrates the headline is
+most sensitive to.
+
+### How the paper treats it
+
+`interaction` appears **exactly once** in `main.tex`. Here it is, in full:
+
+> "the closest two-axis design names fANOVA and *declines* it, **on the grounds that
+> one-factor-at-a-time analysis cannot detect interactions** \citep{moosbauer2022benchmarkdriven}"
+
+**So the paper argues that interaction detection is what justifies its design, runs the design,
+finds a significant interaction in all four corners, prints it in a table column — and never
+mentions it again.** The supplement gives it one clause ("the interaction stays large").
+
+### Why this is a major result and not a technicality
+
+**1. It is the strongest available vindication of N6.** The whole case for a crossed factorial
+over one-factor-at-a-time is that OFAT cannot estimate interactions. The paper *makes that
+argument*, citing Moosbauer's own reason for declining the analysis. A significant interaction
+is the empirical payoff of the design — it is the thing a fixed-one-axis study **could not have
+found**. Every prior near-miss (Hutter's one-way, Liang's descriptive, Moosbauer's OFAT, RaM's
+descriptive Table 3) is structurally incapable of producing this number. **It is the answer to
+"why did anyone need to run this?"**
+
+**2. It reframes the optimizer null, which is currently the paper's weakest passage.** The paper
+reports η²_opt = 0.038 and says "optimizer choice explains little of the variance." It then
+warns, correctly but without evidence, that this "licenses 'optimizer choice explains little
+variance' and never 'optimizer choice is arbitrary' — the second reading is false on our own
+data." **The interaction IS that evidence, and it is not cited there.** The precise statement
+the data supports: optimizer choice has a small *marginal* effect and a substantial
+*conditional* one — which optimizer is best depends on which surrogate you pair it with, by a
+factor of 4–33× the marginal effect.
+
+**3. It is a positive, quantitative, significant result in a paper whose mechanism section is
+seven negatives.** The audit's standing worry (see `orchestrator-notes.md`) is that
+diagnosis-by-elimination reads as a null result at a venue like AAAI. The interaction is a
+significant positive finding the paper already has, already computed, and already printed.
+
+**4. It cannot be dismissed as an operating-point artifact.** That is the paper's own stated
+vulnerability for every other number, and the interaction is the one quantity demonstrably
+robust to the corner axis.
+
+### The fix
+
+**Interpret the interaction, in the main text, with its interval.** Concretely:
+- State it where the optimizer null is stated: surrogate and optimizer are **not separable
+  choices**; the marginal optimizer effect is small while the conditional effect is not.
+- State it in the contribution paragraph as the empirical payoff of the crossed design — the
+  quantity no one-factor-at-a-time study could have produced, which is exactly Moosbauer's
+  stated reason for declining.
+- Report the four CIs, all of which exclude zero, and the cross-corner stability.
+- Consider promoting it to the abstract. It is more robust than the headline it would sit
+  beside.
+
+**Cost: zero new computation.** Every number is already in `results/bootstrap_eta_corners.json`
+and already in Table 2 of the paper.
+
+**Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii).
+
+**One honest caveat to carry with it.** η² for an interaction is subject to the same small-n
+upward bias as the main effects (Mandatory Fix 9), and I have not computed the bias correction
+for the interaction term specifically — only for the surrogate effect. The author should run
+the same `2·θ̂ − mean(θ*)` correction on the interaction before promoting it, and I flag in the
+terminal section that I did not.
+
 ## H5 CONFIRMED — the budget axis is an instance of a NAMED line, and the paper doesn't know it
 
 **COCO/BBOB (Hansen et al. 2016) §3.5 formally names budget-dependent benchmarking** as an

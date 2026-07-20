@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Standard deep ensembles, while allowing averaging of predictions over several hypotheses, do not offer any guarantees for the diversity between those hypotheses nor do they provably converge to the true Bayesian posterior under any meaningful limit.",
+    "stance": "refutes",
+    "stance_target": "Any implicit assumption that an ensemble trained by independent gradient descent with only random-init differences (the audited paper's own construction, per internal audit notes) is guaranteed to produce diverse, well-calibrated uncertainty estimates",
+    "evidence_type": "theoretical",
+    "scope_conditions": "deep ensembles of independently gradient-trained neural networks differing by random initialization only",
+    "quoted_support": "That being said, while they might allow for the averaging of predictions over several hypotheses, they do not offer any guarantees for the diversity between those hypotheses nor do they provably converge to the true Bayesian posterior under any meaningful limit.",
+    "numbers": [],
+    "entities": ["deep ensembles", "Francesco D'Angelo", "Vincent Fortuin"],
+    "time_period": "2021 (NeurIPS)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210611642-repulsive-deep-ensembles-are-bayesian"
+  },
+  {
+    "claim": "Lack of enforced diversity between ensemble members can lead to pathologies when adding more members, such as saturation of ensemble performance that converges to the performance of a single model, affecting uncertainty estimates and out-of-distribution performance in particular (not just point-prediction accuracy).",
+    "stance": "supports",
+    "stance_target": "A candidate mechanism-level explanation relevant to the audited paper's own K-sensitivity/ensemble-size framing and its finding that ensemble sigma is a weak error signal",
+    "evidence_type": "theoretical",
+    "scope_conditions": "deep ensembles trained via independent gradient descent",
+    "quoted_support": "This can lead to pathologies when adding more ensemble members, such as a saturation of the ensemble performance, which converges to the performance of a single model. Moreover, this does not only affect the quality of its predictions, but even more so the uncertainty estimates of the ensemble, and thus its performance on out-of-distribution data.",
+    "numbers": [],
+    "entities": ["ensemble size", "out-of-distribution performance"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210611642-repulsive-deep-ensembles-are-bayesian"
+  },
+  {
+    "claim": "Standard deep ensembles and weight-space Bayesian methods fail to properly account for uncertainty, especially 'in-between uncertainty', relative to function-space methods (SVGD, WGD) that more closely approach the HMC posterior, in a 1D BNN regression illustration.",
+    "stance": "neutral",
+    "stance_target": "Characterization of standard deep-ensemble uncertainty quality relative to more principled Bayesian alternatives",
+    "evidence_type": "empirical",
+    "scope_conditions": "1D BNN regression synthetic illustration (Figure 1)",
+    "quoted_support": "The function-space methods (SVGD and WGD) approach the HMC posterior more closely, while the standard deep ensembles and weight-space methods fail to properly account for the uncertainty, especially the in-between uncertainty.",
+    "numbers": [],
+    "entities": ["SVGD", "WGD", "HMC", "in-between uncertainty"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210611642-repulsive-deep-ensembles-are-bayesian"
+  },
+  {
+    "claim": "Bigger/wider models are harder to keep diverse in an ensemble: as parameter count increases, ensemble test error converges toward that of a single trained model, because larger models are less sensitive to initialization (fewer simultaneous positive second derivatives needed to get stuck in distinct local minima).",
+    "stance": "supports",
+    "stance_target": "A candidate confound for the audited paper's own width-sweep experiment (Elimination 2): does wider ensemble members reduce inter-member diversity and thus change sigma's informativeness, independent of the width-sweep's stated finding that the GP-ensemble score gap does not close with width?",
+    "evidence_type": "theoretical",
+    "scope_conditions": "citing Fort, Hu & Lakshminarayanan 2019 ('Deep ensembles: A loss landscape perspective'), general neural network ensembles as parameter count grows",
+    "quoted_support": "showed how the empirical test error of the ensemble converges to the one of a single trained model when the number of parameters goes to infinity, leading to deterioration of the performance. In other words, the bigger the model, the harder it is to maintain diversity in the ensemble and avoid collapse to the same solution.",
+    "numbers": [],
+    "entities": ["Fort, Hu & Lakshminarayanan 2019", "loss landscape"],
+    "time_period": "2019 (cited work); 2021 (this paper)",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210611642-repulsive-deep-ensembles-are-bayesian"
+  },
+  {
+    "claim": "In one of two experimental setups (weight-space regularization comparison), the standard (non-repulsive) deep ensemble achieves the best OOD detection performance using predictive entropy, despite the paper's overall thesis that standard deep ensembles lack diversity guarantees -- the empirical OOD-detection picture is mixed, not uniformly unfavorable to standard ensembles.",
+    "stance": "refutes",
+    "stance_target": "An overly strong reading of this paper as showing standard deep ensembles are empirically bad at OOD detection in all settings",
+    "evidence_type": "empirical",
+    "scope_conditions": "weight-space repulsion experimental comparison (Table 1, bottom), real-world prediction tasks",
+    "quoted_support": "Nevertheless, all our repulsive ensembles improve functional diversity, accuracy, and OOD detection when compared to standard SVGD, whereas the standard deep ensemble achieves the best OOD detection using the entropy.",
+    "numbers": [],
+    "entities": ["standard deep ensemble", "OOD detection", "entropy"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210611642-repulsive-deep-ensembles-are-bayesian"
+  }
+]

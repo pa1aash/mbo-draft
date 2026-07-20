@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "A bootstrap ensemble of 32 networks (resampled data plus randomized initializations) tends to underestimate uncertainty and produce overconfident predictions in out-of-support regions far from the training data, on a toy 1D illustration, whereas a quantized normalized-maximum-likelihood (NML) estimator correctly outputs diffuse, high-uncertainty predictions there.",
+    "stance": "refutes",
+    "stance_target": "Any general claim that ensemble sigma reliably grows with distance from training data (a distance-aware-uncertainty property) -- creates tension with, though does not strictly kill, the audited paper's positive rho=0.26 sigma-vs-k-NN-distance correlation",
+    "evidence_type": "empirical",
+    "scope_conditions": "toy 1-dimensional sin(x) regression task, 32-model bootstrap ensemble with resampling and randomized initialization, softmax cross-entropy over quantized outputs",
+    "quoted_support": "Predictions from a bootstrap ensemble of 32 models. In out-of-support regions far from the data, the bootstrap ensemble tends to underestimate uncertainty and produce overconfident predictions.",
+    "numbers": ["32 ensemble members", "1-dimensional illustration"],
+    "entities": ["Justin Fu", "Sergey Levine", "NEMO", "bootstrap ensemble", "quantized NML"],
+    "time_period": "2021 (ICLR)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210207970-offline-model-based-optimization-via-normalized-maximum-likelihood-est"
+  },
+  {
+    "claim": "Even with bootstrapping and random initializations (a MORE diversified construction than init-seed-only), the ensemble members tend to converge to outputting similar values away from the data, remaining highly confident even where wrong.",
+    "stance": "supports",
+    "stance_target": "A directly in-setting (offline MBO, Design-Bench) precedent for ensemble uncertainty collapsing/being overconfident out-of-distribution -- a good candidate citation for the audited paper's own measured OOD premise-coverage collapse (Table tab:cov)",
+    "evidence_type": "empirical",
+    "scope_conditions": "toy 1D regression illustration, same model class as NML backbone",
+    "quoted_support": "In contrast, the ensemble method, even with bootstrapping and random initializations, tends to produce an ensemble of models that all output similar values. Therefore, in regimes outside of the data, the ensemble still outputs highly confident estimates, even though they may be wrong.",
+    "numbers": [],
+    "entities": ["bootstrap ensemble", "out-of-support regions"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210207970-offline-model-based-optimization-via-normalized-maximum-likelihood-est"
+  },
+  {
+    "claim": "NEMO (Fu & Levine 2021) evaluates on early Design-Bench tasks -- the same benchmark family the audited paper uses -- proposing CNML as an alternative uncertainty-aware surrogate for offline MBO, but is not cited anywhere in the audited paper's bibliography despite being directly in-setting.",
+    "stance": "neutral",
+    "stance_target": "Citation completeness gap: a directly relevant, in-setting prior work absent from the audited paper's related-work/citations",
+    "evidence_type": "empirical",
+    "scope_conditions": "N/A -- bibliographic cross-check against paper/aaai27/main.tex, supplement.tex, references.bib (zero hits for 'Fu', 'Levine', 'NEMO', 'normalized maximum likelihood')",
+    "quoted_support": "We evaluated NEMO on a set of high-dimensional MBO problems... We evaluated on 6 tasks from the Design-bench.",
+    "numbers": ["6 Design-Bench tasks"],
+    "entities": ["Design-Bench", "NEMO", "CNML"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210207970-offline-model-based-optimization-via-normalized-maximum-likelihood-est"
+  },
+  {
+    "claim": "NEMO does not run a crossed surrogate-by-optimizer factorial design; it compares its proposed CNML surrogate against baseline offline MBO algorithms (including ensemble-based ones), not against a shared-optimizer grid varying both surrogate and optimizer independently.",
+    "stance": "neutral",
+    "stance_target": "N6 (the audited paper's load-bearing none-found claim of no prior crossed surrogate x optimizer factorial) -- confirms NEMO is not a near-miss or kill for N6",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text review of the paper's experimental design section",
+    "quoted_support": "In our experimental evaluation, we aim to 1) evaluate how well the proposed quantized NML estimator estimates uncertainty in an offline setting, and 2) compare the performance of NEMO to a number of recently proposed offline MBO algorithms on high-dimensional offline MBO benchmark problems.",
+    "numbers": [],
+    "entities": ["NEMO", "CNML"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210207970-offline-model-based-optimization-via-normalized-maximum-likelihood-est"
+  }
+]
