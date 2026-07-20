@@ -176,6 +176,37 @@ not from confirmed absence of a depth experiment.
 
 ---
 
+---
+
+## Step 8 update — adversarial gap-fill results and their effect on the positions above
+
+**No position above has been overturned.** Two changes in confidence, both upward.
+
+**Tension 2 (N6's residual) — CONFIDENCE RAISED.** The corpus critic identified three regions no
+prior pass had searched, all chosen because a crossed factorial with ANOVA was *more* likely
+there than in offline MBO: surrogate-assisted evolutionary computation, AutoML/CASH/kernel
+selection, and simulation-optimization. The strongest SAEA candidate —
+Kudela & Dobrovsky (arXiv:2402.16455), a multi-surrogate multi-algorithm comparison in the
+community with the strongest design-of-experiments culture — was checked **first-hand by the
+orchestrator** across 47,342 characters of full text: **zero hits on all nine decomposition
+terms** (`factorial`, `crossed`, `ANOVA`, `analysis of variance`, `eta squared`, `main effect`,
+`variance decomposition`, `two-way`, `interaction`).
+
+This is the most informative negative available: the region where the analysis was most likely to
+already exist does not contain it. Per the step-8 protocol, **an adversarial search for
+counter-evidence to N6 returned no substantive challenge, and the position gains confidence
+accordingly.**
+
+**Tension 5 (Elimination 2's scope) — UNCHANGED.** No gap targeted it; the Rahaman finding rests
+on locus 4's first-hand grep and the paper's own architecture description at `main.tex:88`.
+
+**Still in flight, and none can overturn anything above:** the N9 overturning search in its exact
+framing (an ML benchmark audit whose corrected effect size grew), precedent for interpreting a
+component-by-component interaction across ML benchmarking generally, the acquisition-stalling
+vocabulary sweep, and accessible primaries for the η² bias. Each can only *narrow or strengthen*
+a secondary claim. If they return after drafting begins, they fold in at step 13, which exists
+for exactly that.
+
 ## The convergence worth stating separately
 
 Three independent routes reached the interaction term: analyst A, analyst B, and the

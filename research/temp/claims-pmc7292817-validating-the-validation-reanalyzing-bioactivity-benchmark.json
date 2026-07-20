@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Robinson, Glen & Lee's reanalysis of Mayr et al.'s large-scale ChEMBL bioactivity-prediction benchmark reverses the original 'deep learning significantly outperforms all competing methods' claim to 'SVM is competitive with deep learning' -- a shrink-direction correction, not a growth-direction one.",
+    "stance": "refutes",
+    "stance_target": "Hypothetical existence of an ML benchmark audit whose corrected effect size GREW above its published value",
+    "evidence_type": "empirical",
+    "scope_conditions": "ChEMBL bioactivity/virtual-screening prediction, ~456,000 compounds, >1300 assays",
+    "quoted_support": "\"We build on the recent large-scale benchmarking study by Mayr and coworkers and reanalysed the reported performance data of different machine learning models, arriving at a different conclusion to Mayr and coworkers. We show that support vector machines achieve competitive performance compared to feed-forward deep neural networks.\"",
+    "numbers": ["~456,000 compounds", ">1300 assays"],
+    "entities": ["Matthew C. Robinson", "Robert C. Glen", "Alpha A. Lee", "Mayr et al.", "ChEMBL"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "pmc7292817-validating-the-validation-reanalyzing-bioactivity-benchmark"
+  },
+  {
+    "claim": "The reanalysis attributes the original overclaim to conflating statistical significance (driven by very small p-values from a large sample) with practical/effect-size significance, and to obscuring assay-to-assay variability.",
+    "stance": "supports",
+    "stance_target": "General pattern that ML benchmark reality-checks find overclaiming via statistical/practical significance conflation",
+    "evidence_type": "empirical",
+    "scope_conditions": "Mayr et al.'s ChEMBL benchmark reanalysis",
+    "quoted_support": "\"Our key conclusion is an alternative interpretation of their results that considers both statistical and practical significance -- we argue that deep learning methods do not significantly outperform all competing methods.\"",
+    "numbers": [],
+    "entities": ["Mayr et al."],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "pmc7292817-validating-the-validation-reanalyzing-bioactivity-benchmark"
+  },
+  {
+    "claim": "This paper is a genuine on-target instance of the exact literature gap-3 searched for (an ML benchmark reanalysis of a named prior ML comparison), unlike the two previously-checked adjacent-genre sources (Hamdan et al. 2022 confound-removal methodology; Maassen et al. 2020 psychology meta-analysis), and it still shows the shrink direction.",
+    "stance": "supports",
+    "stance_target": "N9: no ML de-confounding/reality-check audit reports a corrected variance-explained statistic above its own published value",
+    "evidence_type": "empirical",
+    "scope_conditions": "ML benchmark reanalysis literature",
+    "quoted_support": "\"Yet, a closer look at the data reveals that this conclusion is clearly erroneous and obscures much of the variability from assay to assay.\"",
+    "numbers": [],
+    "entities": ["Mayr et al.", "Robinson", "Glen", "Lee"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "pmc7292817-validating-the-validation-reanalyzing-bioactivity-benchmark"
+  },
+  {
+    "claim": "This exact paper (via its arXiv:1905.11681 preprint) had already been independently fetched, full-text-grepped, and verdict-confirmed as shrink-direction in a prior audit pass (offline-mbo-novelty-audit-6d8cd4, 2026-07-18); this note's independent re-fetch via a different provider/domain (publisher PMC HTML) cross-validates rather than merely repeats that verdict.",
+    "stance": "neutral",
+    "stance_target": "Re-fetch discipline / avoiding stale-cache reuse for a verdict",
+    "evidence_type": "empirical",
+    "scope_conditions": "Vault provenance for this specific source",
+    "quoted_support": "Prior note quote: \"No effect-size number is shown growing past its originally published value anywhere in the text -- grep for 'confound' returns 0 hits... grep for 'larger'/'stronger'/'increase' (30 hits) turns up no instance where a corrected effect exceeds the original.\"",
+    "numbers": ["30 hits for larger/stronger/increase, 0 matching growth-direction"],
+    "entities": ["Robinson", "Glen", "Lee"],
+    "time_period": "2019-2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "pmc7292817-validating-the-validation-reanalyzing-bioactivity-benchmark"
+  }
+]

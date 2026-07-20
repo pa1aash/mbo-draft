@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Schmidt, Schneider & Hennig's ICML 2021 large-scale optimizer benchmark (50,000+ runs, 15 optimizers) never reports or computes a formal interaction, ANOVA, factorial, or eta-squared statistic anywhere in its 37-page full text.",
+    "stance": "supports",
+    "stance_target": "Gap-4 target position: no prior ML-benchmarking paper reports and interprets a component-by-component interaction term",
+    "evidence_type": "empirical",
+    "scope_conditions": "Deep-learning optimizer benchmarking literature, 15 optimizers x multiple tasks, ICML 2021",
+    "quoted_support": "Full-text grep for interaction, ANOVA, analysis of variance, factorial, crossed, eta squared, main effect returned zero hits across all 125,317 characters of extracted PDF text.",
+    "numbers": ["50,000 individual runs", "15 optimizers", "0 hits for 7 formal statistical terms"],
+    "entities": ["Robin M. Schmidt", "Frank Schneider", "Philipp Hennig", "ICML 2021"],
+    "time_period": "2020-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200701547-descending-through-a-crowded-valley-benchmarking-deep-learning-optimiz"
+  },
+  {
+    "claim": "The paper's only task-dependence language is qualitative ('Optimizer performance varies greatly across tasks'; 'performance... depends on the problem'), never operationalized as a variance-decomposition or interaction effect size.",
+    "stance": "supports",
+    "stance_target": "Gap-4 target position",
+    "evidence_type": "empirical",
+    "scope_conditions": "Same paper, findings section and abstract",
+    "quoted_support": "\"Optimizer performance varies greatly across tasks.\" / \"performance highly depends on the problem (see Figure 4).\"",
+    "numbers": [],
+    "entities": ["Schmidt", "Schneider", "Hennig"],
+    "time_period": "2020-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200701547-descending-through-a-crowded-valley-benchmarking-deep-learning-optimiz"
+  },
+  {
+    "claim": "The paper explicitly declines to identify a single dominant optimizer across all tasks, instead identifying a reduced competitive subset with Adam remaining a strong contender.",
+    "stance": "neutral",
+    "stance_target": "General optimizer-benchmarking practice claims",
+    "evidence_type": "empirical",
+    "scope_conditions": "15 popular deep learning optimizers, standardized benchmark suite",
+    "quoted_support": "\"While we cannot discern an optimization method clearly dominating across all tested tasks, we identify a significantly reduced subset of specific optimizers and parameter choices that generally lead to competitive results in our experiments: Adam remains a strong contender, with newer methods failing to significantly and consistently outperform it.\"",
+    "numbers": ["15 optimizers", "50,000 runs"],
+    "entities": ["Adam"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200701547-descending-through-a-crowded-valley-benchmarking-deep-learning-optimiz"
+  },
+  {
+    "claim": "Venue for this paper is independently verifiable as ICML 2021 / PMLR 139 directly from a copyright footer embedded in the extracted PDF text, not merely inferred from the submission year.",
+    "stance": "neutral",
+    "stance_target": "Venue-verification discipline for this audit",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv:2007.01547v6",
+    "quoted_support": "\"Proceedings of the 38th International Conference on Machine Learning, PMLR 139, 2021. Copyright 2021 by the author(s).\"",
+    "numbers": ["PMLR 139"],
+    "entities": ["ICML 2021"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200701547-descending-through-a-crowded-valley-benchmarking-deep-learning-optimiz"
+  }
+]

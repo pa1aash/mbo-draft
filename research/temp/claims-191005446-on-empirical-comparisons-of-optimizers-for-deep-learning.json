@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Choi et al.'s optimizer-nesting critique paper never reports or computes a formal interaction, ANOVA, factorial, or eta-squared statistic across its full 27-page text, despite being a leading methodology critique of optimizer benchmarking.",
+    "stance": "supports",
+    "stance_target": "Gap-4 target position: no prior ML-benchmarking paper reports and interprets a component-by-component interaction term",
+    "evidence_type": "empirical",
+    "scope_conditions": "Deep-learning optimizer benchmarking methodology critique",
+    "quoted_support": "Full-text grep for interaction, ANOVA, analysis of variance, factorial, crossed, eta squared, main effect, depends on returned zero hits across all 68,441 characters of extracted PDF text.",
+    "numbers": ["68,441 characters", "27 pages", "0 hits for 8 formal terms"],
+    "entities": ["Dami Choi", "Christopher J. Shallue", "Zachary Nado", "Jaehoon Lee", "Chris J. Maddison", "George E. Dahl"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191005446-on-empirical-comparisons-of-optimizers-for-deep-learning"
+  },
+  {
+    "claim": "The paper argues that published optimizer rankings are driven by hyperparameter search-space asymmetry rather than any interaction effect, showing that general optimizers (e.g. Adam) should never underperform the more restricted optimizers they nest (e.g. Momentum, SGD) under sufficient tuning.",
+    "stance": "neutral",
+    "stance_target": "Optimizer benchmarking methodology",
+    "evidence_type": "empirical",
+    "scope_conditions": "Optimizers with formal nesting/inclusion relationships (Adam nests Momentum nests SGD)",
+    "quoted_support": "\"As tuning effort grows without bound, more general optimizers should never underperform the ones they can approximate (i.e., Adam should never perform worse than momentum)... we find that the popular adaptive gradient methods never underperform momentum or gradient descent.\"",
+    "numbers": [],
+    "entities": ["Adam", "Momentum", "SGD"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191005446-on-empirical-comparisons-of-optimizers-for-deep-learning"
+  },
+  {
+    "claim": "The paper finds that the single most important factor explaining published optimizer-ranking discrepancies in the literature is the hyperparameter search space, not architecture or task identity, and that rankings can be contradicted by changing the search space.",
+    "stance": "neutral",
+    "stance_target": "Reproducibility of optimizer benchmark rankings",
+    "evidence_type": "empirical",
+    "scope_conditions": "Recent empirical optimizer comparisons in the deep learning literature",
+    "quoted_support": "\"Our findings suggest that the hyperparameter search space may be the single most important factor explaining the rankings obtained by recent empirical comparisons in the literature. In fact, we show that these results can be contradicted when hyperparameter search spaces are changed.\"",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191005446-on-empirical-comparisons-of-optimizers-for-deep-learning"
+  },
+  {
+    "claim": "This paper's own venue is unverifiable: the arXiv abstract page carries no Comments or Journal-ref field, and the extracted PDF text contains no proceedings/copyright footer for its own publication (only for cited works), unlike the companion Schmidt et al. ICML 2021 paper.",
+    "stance": "neutral",
+    "stance_target": "Venue-verification discipline for this audit",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv:1910.05446",
+    "quoted_support": "Grep for \"Proceedings of\", \"International Conference\", \"workshop\", \"copyright\" in the extracted text returns only reference-list occurrences describing other cited papers' venues, never this paper's own.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191005446-on-empirical-comparisons-of-optimizers-for-deep-learning"
+  }
+]
