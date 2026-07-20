@@ -189,6 +189,63 @@ exactly this reason and I had stopped using it.
 pass has now paid for itself twice: once when RaM Table 3 turned out to have been missed by
 three prior fetches of the same paper, and once here.
 
+## Synthesis planning (written during step 10, before the drafts return)
+
+### The thesis the final report should commit to
+
+**Sound evidence, unsound scholarship — and the asymmetry is the actionable finding.** Twelve
+mandatory fixes; eleven concern what a *source* says; **none** concerns a number the paper
+computed. Every quantitative claim checkable against a repo artifact reproduced, including two
+frozen-cell claims to the seed. That tells the author exactly where the remaining hours go:
+related-work and scoping prose, not re-running anything.
+
+Draft A will press the defects, Draft B will press the verification, Draft C will price them.
+The synthesis should take **C's frame** — a priority ordering — while retaining **A's severity
+grading** on the two genuinely serious items (the Demšar fabrication, the Fan inversion) and
+**B's insistence** that severity be graded by what a fix costs the *results*, which is nothing.
+
+### Argumentative beats the final report must commit to, not gesture at
+
+1. **N6: CONFIRMED NONE-FOUND, with the Elsayed & Lacor lead named inside the verdict.** A
+   none-found that conceals its one unchecked lead is not a none-found. State the three surviving
+   grounds, state that ground (2) was falsified on contact, state the queries.
+2. **The Demšar threshold does not exist, and removing it *helps* the paper** — he recommends
+   Friedman *because* n is small. The paper is conceding a weakness it does not have.
+3. **The Fan citation inverts a convergence theorem into a failure mode**, and the fix costs
+   nothing because the paper's own frozen-cell evidence is stronger than the borrowed authority
+   — though it now owes Yarotsky (2013) a scoping sentence.
+4. **The interaction is the buried result**, with the boundary-condition table showing why it and
+   the raw-units analysis must be reported together.
+5. **Bias correction strengthens the headline** (0.351→0.395), and the correction to name is ε²
+   not ω².
+6. **The multiplicative-mechanism constraint** — the one positive structural statement, visible
+   only in cross-section.
+
+### Things the synthesis must NOT do
+
+- **Must not re-inflate the five withdrawn claims.** The conformal proposition is formally
+  correct; RaM's characterisation is incomplete not false; the 7/7 attenuation has a live
+  floor-effect confound; Griewank is the *smallest* normalization lever; "nobody owns
+  acquisition-stalling" is withdrawn in favour of Yarotsky.
+- **Must not present relay-only findings as first-hand.** Mark the two venue-unverified citations
+  (Dao, Ghasemipour) as such.
+- **Must not bury the audit's own error rate.** Five self-corrections and two subagent
+  fabrications caught belong in the methodology note — a report about citation fidelity that
+  hides its own misses has no standing.
+
+### Where the drafts will likely conflict, and how to resolve
+
+- **Severity of the citation defects.** A will call them severe, B cosmetic. Resolve by
+  distinguishing *severity to the reader's trust* (high — a fabricated threshold is the worst
+  class) from *severity to the results* (nil). Both are true and the report should say both.
+- **Whether to promote the interaction to the abstract.** Locus 3 says main text, ~65%
+  confidence; locus 6 says abstract. Resolve toward main text with the synthetic-grid scoping,
+  since Design-Bench η²_inter is an order of magnitude smaller and an unscoped abstract claim
+  would be the same overreach the audit criticises elsewhere.
+- **How hard to push the "stronger paper" framing.** C will push hardest. Keep it, but the
+  ranked section must stay honest that the strongest candidate (the raw-units attenuation) has an
+  unresolved confound.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
