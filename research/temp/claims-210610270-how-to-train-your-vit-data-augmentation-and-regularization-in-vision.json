@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Steiner et al.'s ViT training study explicitly crosses regularization/augmentation strength against model size and training-data size in a grid search but never reports a formal interaction, ANOVA, or eta-squared statistic for that grid.",
+    "stance": "supports",
+    "stance_target": "Gap-4 target position, widened to the data-augmentation-vs-architecture region",
+    "evidence_type": "empirical",
+    "scope_conditions": "Vision Transformer pretraining, ImageNet-1k/21k and JFT-300M, TMLR 2022",
+    "quoted_support": "\"We perform a grid search over the following parameters\" combined with zero grep hits for interaction, ANOVA, analysis of variance, factorial, crossed, eta squared, or main effect across the full 58,177-character extracted text.",
+    "numbers": ["58,177 characters", "16 pages", "0 genuine hits for 7 formal terms"],
+    "entities": ["Andreas Steiner", "Alexander Kolesnikov", "Xiaohua Zhai", "Ross Wightman", "Jakob Uszkoreit", "Lucas Beyer", "Vision Transformer"],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210610270-how-to-train-your-vit-data-augmentation-and-regularization-in-vision"
+  },
+  {
+    "claim": "The paper frames its entire contribution around the qualitative 'interplay' between data augmentation/regularization, model size, and data budget, stating the best augmentation settings 'vary a lot depending on model capacity and training schedule' -- narrative language, not a computed interaction effect size.",
+    "stance": "supports",
+    "stance_target": "Gap-4 target position",
+    "evidence_type": "empirical",
+    "scope_conditions": "Same paper, recommendations section",
+    "quoted_support": "\"there are no simple rules which AugReg settings to select. The best settings vary a lot depending on model capacity and training schedule, and one needs to be careful not to apply AugReg to a model that is too small.\"",
+    "numbers": [],
+    "entities": ["AugReg", "ViT"],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210610270-how-to-train-your-vit-data-augmentation-and-regularization-in-vision"
+  },
+  {
+    "claim": "A single grep match for 'ANOVA' in this paper is a homonym-trap false positive on the surname 'Toutanova' in a BERT citation, not a genuine statistical-method usage -- confirming the audit's own documented homonym-trap warning pattern generalizes beyond the previously caught 'crossed'-as-dataset-name case.",
+    "stance": "neutral",
+    "stance_target": "Methodological rigor of this gap-4 precedent search",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv:2106.10270 reference list",
+    "quoted_support": "\"Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. BERT: pre-training of deep bidirectional...\" -- the string 'anova' occurs inside 'Toutanova.'",
+    "numbers": [],
+    "entities": ["Kristina Toutanova", "BERT"],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210610270-how-to-train-your-vit-data-augmentation-and-regularization-in-vision"
+  },
+  {
+    "claim": "The paper's headline finding is that increased compute plus AugReg can match performance from an order-of-magnitude more training data, established via a large grid of ViT pretraining runs across ImageNet-1k, ImageNet-21k, and JFT-300M.",
+    "stance": "neutral",
+    "stance_target": "General ViT training methodology",
+    "evidence_type": "empirical",
+    "scope_conditions": "Vision Transformer pretraining at scale",
+    "quoted_support": "\"As one result of this study we find that the combination of increased compute and AugReg can yield models with the same performance as models trained on an order of magnitude more training data.\"",
+    "numbers": ["order of magnitude more training data"],
+    "entities": ["ImageNet-1k", "ImageNet-21k", "JFT-300M"],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210610270-how-to-train-your-vit-data-augmentation-and-regularization-in-vision"
+  }
+]
