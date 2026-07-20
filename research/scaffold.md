@@ -39,6 +39,19 @@ query is argumentative, has an existential falsification target (N6), requires a
 review, and demands primary-source verification of ~15 load-bearing citations across a
 67-entry bibliography. This is exactly the full-tier profile.
 
+**Step 1 confirmation (2026-07-20).** The classifier agrees with the declaration
+independently. `pipeline_tier: full`, `response_format: argumentative`. The query decomposes
+to 25 sub-questions and 25 entities across four deliverable blocks, carries an
+unrecoverable-failure target, and explicitly forbids snippet-level verdicts — none of which
+the light tier's 5-step path can serve. No tier conflict to resolve.
+
+`citation_style: inline` rather than the `wikilink` default. The deciding reason is
+mechanical: the deliverable is `docs/GAUNTLET_R4.md`, which sits outside `research/notes/`,
+so `[[note-id]]` wikilinks would not resolve from it. The supporting reason is that an audit
+whose whole method is primary-source verification must expose venue and year for every
+source it leans on — three confirmed year traps make an unnumbered, unresolvable citation
+apparatus actively unsafe here.
+
 ## Wrapper requirements (BINDING, separate from the query)
 
 1. **Save path:** `docs/GAUNTLET_R4.md` — NOT the default
