@@ -691,6 +691,69 @@ and already in Table 2 of the paper.
 
 **Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii).
 
+### THE DIALECTICAL CHALLENGE — is the interaction partly a normalization artifact?
+
+**Raised independently by loci-analyst B, and it has real force. I verified it arithmetically
+and it changes how this finding must be stated.**
+
+Every η² in the paper — the headline, all four corners, the β sweep, the budget sweep, and the
+interaction — is computed on **per-task min–max normalized cell means over only n=9 cells**.
+On tasks with a catastrophic outlier, that normalizer is set by the outlier.
+
+**Griewank-30D, recomputed from the supplement's own Table `tab:sfull`:**
+
+| Cell | raw | min–max |
+|---|---|---|
+| Ens+CMA | −2613.00 | 0.0000 |
+| Ens+Grad | −2592.00 | 0.0080 |
+| **Ens+Pert** | **−395.00** | **0.8491** |
+| **GP+Pert** | **−270.00** | **0.8970** |
+| **SVGP+Pert** | **−275.00** | **0.8951** |
+| SVGP+CMA | −2.17 | 0.9995 |
+| GP+Grad | −0.94 | 1.0000 |
+
+The normalizer's range is set by a **2,780× spread** between the worst and best cell. The
+consequence: **GP+Pert beats Ens+Pert by 46% in raw units (−270 vs −395), and by 0.048 after
+normalization.** The three perturbation cells compress into a 0.048 band while the
+gradient/CMA cells stretch across the full [0,1].
+
+**What survives, and what does not.**
+
+*Survives:* **the interaction is real in raw units, and it is enormous.** Ens+CMA is ~2,600×
+worse than GP+CMA, while Ens+Pert is only 1.46× worse than GP+Pert. The size of the surrogate
+gap genuinely depends on which optimizer it is paired with. That is an interaction in any
+units, and no normalization choice creates it.
+
+*Does not survive unqualified:* **the η² magnitude of 0.15.** Min–max on an outlier-dominated
+task simultaneously compresses the perturbation contrast toward zero and stretches the
+gradient/CMA contrast to the full range — which is precisely the pattern that inflates a
+measured interaction.
+
+**This makes the finding better, not weaker, and here is why.** The paper's own central
+methodological claim is that *"the magnitude of any headline η²_surr is a joint artifact of
+four chosen operating-point coordinates — K, β, the query budget, and the engine corner — so a
+headline that does not state all four is not reproducible."*
+
+**There is a fifth coordinate, and the paper does not name it: the per-task normalizer.** It is
+arguably the most consequential of the five, because unlike the other four it is an *analysis*
+choice rather than an experimental one, it is applied to every number in the paper, and its
+leverage scales with how outlier-dominated a task is. The paper already concedes the
+normalizer's slipperiness in two other places — the supplement warns that β-gaps computed on a
+per-condition normalizer *"are not comparable"* across β, and that the matched-subsample
+control *"is not on the same ruler"* — so it knows locally what it has not generalised.
+
+**Revised fix for the interaction finding.** Report and interpret the interaction, as above —
+but report it **with a normalization robustness check**, and add the normalizer as the fifth
+operating-point coordinate in the paper's own reproducibility argument. The cheap check: recompute
+η² under a rank-based or per-task z-score normalizer and show the interaction's direction holds.
+**The paper already has the machinery** — it ran exactly this kind of cross-check for
+Elimination 1 (the per-task z-score giving "the same 0.61 ratio"), so extending it to the
+decomposition is a small edit, not a new experiment.
+
+**Tag: still FOLD-INTO-THIS-PAPER / CHEAP**, now with a robustness check attached rather than
+a bare promotion. Promoting an unqualified 0.15 into the abstract without it would import the
+exact fragility the paper spends its Discussion warning about.
+
 ### The obvious objection, pre-empted — it survives bias correction
 
 η² for an interaction carries the same small-n upward bias as the main effects (Mandatory Fix

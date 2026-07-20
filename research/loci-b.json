@@ -1,0 +1,122 @@
+{
+  "analyst_id": "b",
+  "loci": [
+    {
+      "name": "interaction-term-buried-in-plain-sight",
+      "flavor": "convergent",
+      "one_line": "The paper reports eta^2_inter = 0.146-0.165 in all four engine corners (Table 'corners', main.tex) -- consistently larger than eta^2_opt (0.005-0.036) -- and never once discusses it in prose, despite the paper's own stated justification for running a crossed design over OFAT being precisely that OFAT cannot estimate interactions (the reason it gives for why Moosbauer 2022 declined the analysis). Is the interaction the paper's real headline, and is part of it a per-run GP-tuning artifact rather than genuine surrogate x optimizer synergy?",
+      "rationale": "main.tex Table 'tab:corners' reports eta^2_inter for all four X1/X3 corners: 0.165 (off/off), 0.146 (on/off), 0.152 (off/on), 0.160 (on/on) -- every one larger than the corresponding eta^2_opt (0.013, 0.036, 0.006, 0.005) that the paper does discuss at length in Section 'Interpreting the optimizer effect.' The interaction column appears in the table four times and is never mentioned in the running text of main.tex or supplement.tex outside the table caption. Two further clues the paper itself supplies but does not connect: (1) supplement.tex Section 'Identifiability: Matched Tuning (GATE-1)' reports eta^2_inter falling from 0.17 (unmatched) to 0.12 (matched, i.e. GP hyperparameter-tuning budget frozen to zero) -- a ~30% drop that tracks the ~24% drop in eta^2_surr (0.37->0.28) under the identical control, suggesting the interaction may be partly explained by the same per-run GP-tuning confound rather than being a pure surrogate x optimizer property; (2) I independently recomputed the paper's own min-max normalization on the Griewank-30D row of supplement Table 'tab:sfull' (raw cell means: Ens+Grad -2592, Ens+CMA -2613, GP+Grad -0.94, GP+CMA -1.00, SVGP+Grad -2.11, Ens+Pert -395, GP+Pert -270, SVGP+Pert -275) and found that after min-max normalization, all three Perturbation cells cluster within 0.048 of each other (0.849/0.897/0.895) regardless of surrogate, while Gradient and CMA cells span nearly the full [0,1] range depending on surrogate (Ensemble ~0.008-0.000 vs GP/SVGP ~1.000/0.9995) -- a textbook interaction pattern (the surrogate effect is present under two optimizers and nearly absent under the third) driven by exactly one catastrophic-collapse task. The paper's own related-work paragraph states the interaction is the entire justification for the crossed design over Hutter's one-way fANOVA and Moosbauer's declined two-way analysis, yet having found the largest interaction on the page, it interprets only the main effects.",
+      "corpus_evidence": ["moosbauer-et-al-2022-automated-benchmark-driven-design-and-explanation-of-hpo-ar", "hutter-hoos-leyton-brown-2014-icml-fanova-full-pdf-r4-refetch"],
+      "suggested_starting_urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/search?query=simple+effects+analysis+interpreting+significant+interaction+factorial+ANOVA&fields=title,year,citationCount,externalIds&limit=10",
+        "https://api.openalex.org/works?search=interaction%20effect%20interpretation%20main%20effect%20factorial%20design%20simple%20effects&sort=cited_by_count:desc&per-page=15"
+      ],
+      "suggested_searches": [
+        "when interaction effect exceeds main effect how to report ANOVA methodology",
+        "simple effects analysis required significant interaction two-way ANOVA practice",
+        "eta squared interaction term interpretation benchmarking algorithm comparison",
+        "does per-run hyperparameter tuning inflate interaction variance in factorial benchmark comparisons"
+      ]
+    },
+    {
+      "name": "minmax-normalization-outlier-fragility",
+      "flavor": "dialectical",
+      "one_line": "Every eta^2 in the paper -- the headline 0.405, all four corner values, the beta sweep, the budget sweep -- is computed on per-task min-max normalized cell means over only n=9 cells. The paper's own supplement Table 'tab:sfull' shows raw score ranges spanning over 2700-fold on at least one task (Griewank: Ens+CMA=-2613 vs GP+Grad=-0.94), with the two normalization endpoints on that task defined by a catastrophic ensemble collapse. Is the reported effect-size decomposition an artifact of an unexamined, outlier-fragile normalization choice, against the paper's own cited authority on exactly this failure mode?",
+      "rationale": "main.tex sec:confounds states the method plainly: \"Per task we min--max normalize the nine cell means and take a two-way ANOVA; eta^2_surr and eta^2_opt are the fractions of normalized-score variance carried by the two main effects.\" No alternative normalization (rank-based, trimmed, z-score, or Agarwal-style interquartile-mean-based robust aggregation) is discussed or tried anywhere in the paper. The paper already cites Agarwal et al. 2021 (agarwal2021precipice) twice -- for the never-claim-equivalence argument (Design-Bench section) and the partials-preemption paragraph (sec:deconf) -- but never for its actual central methodological thesis, which is exactly on point: mean/min-max-style aggregate statistics over a small number of tasks/runs are fragile to outlier task-runs, and the paper recommends robust alternatives (interquartile mean, performance profiles) specifically to avoid exactly the failure mode visible in this paper's own supplement Table 'tab:sfull'. I independently recomputed the min-max normalization on the Griewank-30D row and found that Ensemble+Gradient (-2592) and Ensemble+CMA (-2613) normalize to ~0.008 and ~0.000 respectively while every GP/SVGP cell and even Ensemble+Perturbation (-395) normalize to 0.85-1.00 -- meaning one catastrophic-failure pairing sets both endpoints of the [0,1] range that every other cell on that task is then judged against. Since eta^2 is computed from variance in these normalized scores pooled across all 7 tasks, a task like Griewank where the normalization is dominated by one outlier cell can contribute disproportionately to both eta^2_surr and eta^2_inter without that leverage being visible anywhere in the paper.",
+      "corpus_evidence": ["210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice", "agarwal2021-deep-rl-edge-statistical-precipice-fulltext"],
+      "opposing_positions": [
+        {
+          "position": "The paper's per-task min-max normalization of n=9 cell means feeding a two-way ANOVA is a standard, defensible analysis choice; the paper reports it as fact without treating it as a limitation or checking sensitivity to alternative normalizations.",
+          "sources": ["paper-under-audit (main.tex, sec:confounds: 'Per task we min--max normalize the nine cell means and take a two-way ANOVA')"]
+        },
+        {
+          "position": "Agarwal et al. 2021 -- already in this paper's own bibliography, cited for a narrower point -- is the canonical ML methodology critique of exactly this class of aggregate statistic: mean/range-based multi-task normalization is fragile to a small number of catastrophic-failure runs, which is why they recommend interquartile-mean and performance-profile alternatives; the paper's own supplement data (Griewank-30D cell means spanning a >2700-fold range, endpoints set by an ensemble collapse) is a textbook instance of the exact fragility Agarwal's methodology warns against.",
+          "sources": ["210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice"]
+        }
+      ],
+      "suggested_starting_urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/search?query=robust+aggregate+metrics+interquartile+mean+multi+task+benchmark+normalization&fields=title,year,citationCount,externalIds&limit=10",
+        "https://api.openalex.org/works?search=min-max%20normalization%20outlier%20sensitivity%20benchmark%20aggregation%20variance%20explained&sort=cited_by_count:desc&per-page=15"
+      ],
+      "suggested_searches": [
+        "min-max normalization sensitivity to outlier task benchmark aggregation",
+        "rank-based versus min-max normalization ANOVA effect size robustness",
+        "interquartile mean IQM aggregate performance profile Agarwal robust statistics benchmarking",
+        "recompute variance decomposition under alternative score normalization scheme"
+      ]
+    },
+    {
+      "name": "proposal-distribution-fix-in-table-cross",
+      "flavor": "convergent",
+      "one_line": "Supplement Table 'tab:cross' shows the ensemble's LCB premise coverage recovers from 0.41 (evaluated on its own gradient-ascent proposals) to 0.97 (evaluated on the GP's proposals) -- and the paper's own prose says 'the ensemble is not miscalibrated in general---only where its own gradient optimizer drives it.' Is there an unattempted, prescriptive fix hiding here -- decoupling which surrogate scores designs from which optimizer searches for them -- that would convert the paper's diagnosis into a testable design recommendation using data the paper already has, rather than stopping at a coverage observation?",
+      "rationale": "supplement.tex Table 'tab:cross' and its surrounding prose establish that the ensemble premise coverage is not a fixed property of the surrogate: it holds in-distribution (0.73) and on the GP's proposals (0.97) but collapses on its own proposals (0.41), while the GP premise holds everywhere (0.97-0.98). main.tex's own 'Two corrections to the coverage analysis' paragraph shows this generalizes to CMA proposals too ('the claim narrows to the ensemble paired with any aggressive selector'), so the failure is about self-referential exploitation of the ensemble's own mean, not one specific optimizer. What the paper never tests is whether this coverage-transfer effect also transfers to ORACLE VALUE: does scoring/selecting candidates with the ensemble's LCB but drawing the candidate pool from a different, calibration-preserving search process (e.g., the GP's proposals, or a trust-region-constrained search) recover competitive oracle value rather than merely restoring nominal coverage? The paper's own grid already contains Ens+Perturbation and Ens+CMA cells that partially test a related idea (both outperform Ens+Gradient on Griewank, e.g. -395 and -2613 against -2592, per supplement Table 'tab:sfull') but the paper frames this only as part of the inversion/collapse narrative, never as a proposal-distribution intervention motivated by Table cross. TuRBO (already in this vault) is the canonical BO paper that constrains search regions explicitly to preserve surrogate validity, and Deep Kernel Learning is already flagged elsewhere in this audit as a double-dissociation candidate for causal mechanism testing -- both motivate a distinct, prescriptive angle: not 'why does the ensemble fail' but 'what search-side constraint would make the ensemble's own uncertainty trustworthy again.'",
+      "corpus_evidence": ["191001739-scalable-global-optimization-via-local-bayesian-optimization", "151102222-deep-kernel-learning"],
+      "suggested_starting_urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/search?query=trust+region+Bayesian+optimization+preserve+surrogate+validity+constrained+search&fields=title,year,citationCount,externalIds&limit=10",
+        "https://api.openalex.org/works?search=surrogate%20calibration%20preserving%20search%20constraint%20offline%20optimization&sort=cited_by_count:desc&per-page=15"
+      ],
+      "suggested_searches": [
+        "trust region constrained search preserves surrogate calibration offline optimization",
+        "decoupling acquisition surrogate from search operator Bayesian optimization",
+        "proposal distribution constrained optimizer offline model-based design",
+        "conservative search region prevents ensemble miscalibration"
+      ]
+    },
+    {
+      "name": "aaai-audit-genre-venue-fit",
+      "flavor": "convergent",
+      "one_line": "Does the audit/decomposition genre (reproducibility and statistical audits with no proposed new method) have a track record of surviving AAAI main-track review on its own terms, and does this paper's genre paragraph -- which names Henderson et al. as having appeared 'at this venue' -- actually establish that precedent, or does it merely gesture at one instance in a genre otherwise published elsewhere (ICLR, NeurIPS, RecSys, ECCV)?",
+      "rationale": "main.tex's 'The genre-shape is prior work' paragraph explicitly lists the audit genre's canonical instances -- Henderson & Agarwal (deep RL audits), Ferrari Dacrema (RecSys), Musgrave (metric learning), Lucic (GANs) -- and states 'One of them appeared at this venue,' referring to Henderson et al., independently confirmed elsewhere in this audit as AAAI 2018 (not the arXiv 2017 posting date S2 reports). But of the five named genre instances, only one (Henderson) was published at AAAI; the rest appeared at ICLR (Melis, not listed but same genre), RecSys, ECCV, and NeurIPS. This paper is asking AAAI reviewers, on the strength of a single six-year-old precedent, to accept a paper whose three headline contributions are an instrument-plus-confound-taxonomy, a decomposition that fails to resolve at n=7 tasks, and seven eliminations that reach no positive mechanism -- i.e., contributions defined substantially by what was NOT found. This is exactly the framing risk an AAAI-specific reviewer (versus a NeurIPS Datasets & Benchmarks or ICLR reviewer, venues with an explicit or de facto benchmark/negative-result appetite) is positioned to raise, and the paper does not address venue fit at all beyond the one-sentence precedent claim.",
+      "corpus_evidence": ["170906560-deep-reinforcement-learning-that-matters"],
+      "suggested_starting_urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/search?query=AAAI+reproducibility+track+negative+results+empirical+audit+paper+acceptance&fields=title,year,citationCount,externalIds&limit=10",
+        "https://aaai.org/conference/aaai/aaai-27/"
+      ],
+      "suggested_searches": [
+        "AAAI call for papers reproducibility empirical audit track history",
+        "reviewer criticism audit paper no proposed method reality check acceptance",
+        "AAAI accepted reproducibility statistical audit papers history main track",
+        "NeurIPS datasets and benchmarks track versus AAAI main track empirical audit fit"
+      ]
+    },
+    {
+      "name": "landscape-predicted-surrogate-choice",
+      "flavor": "convergent",
+      "one_line": "The seven synthetic tasks show wildly heterogeneous GP-vs-ensemble gaps -- near-total collapse on Griewank-30D and Rastrigin-15D versus a far smaller relative gap on Rosenbrock-10D and Levy-8D -- that the paper treats as unstructured per-task variance. Does the exploratory-landscape-analysis / algorithm-selection literature suggest this heterogeneity is predictable from problem features (dimensionality, multimodality/ruggedness), which would let a practitioner forecast which surrogate class to trust on a NEW task without running the full crossed factorial -- a genuinely unattempted paper distinct from the mechanism-narrowing this one already does?",
+      "rationale": "Recomputing ratios from supplement.tex Table 'tab:sfull': on Griewank-30D, GP+Grad (-0.94) beats Ens+Grad (-2592) by nearly 2700-fold; on Rosenbrock-10D, GP+Grad (-0.09) beats Ens+Grad (-0.28) by only about 3-fold; on Rastrigin-15D the gap is intermediate (GP+Grad -4.83 vs Ens+Grad -7.71, less than 2-fold, but SVGP+Grad reaches -2.83, nearly 3x better than the GP). The paper's own Limitations section calls this heterogeneity 'training and optimization variance, not data-draw variance' and stops there -- it never tests whether task-level features (dimensionality, known multimodality of Griewank/Rastrigin/Ackley versus the smoother unimodal-ish Rosenbrock/Branin geometry, or the number of local optima) predict which surrogate class wins, or by how much. This is a different paper than the one under audit: not 'why does the GP beat the ensemble' (already elaborately investigated) but 'can we tell, cheaply, in advance, which surrogate to deploy on an unseen task.' Bischl et al.'s 2023 HPO survey (already in this vault) documents that exploratory-landscape-analysis-driven algorithm selection is an established methodology in the adjacent hyperparameter-optimization literature, which motivates -- without yet supplying -- an analogous approach for offline-MBO surrogate selection. This is squarely an UNEXPLORED result in deliverable (iii)'s sense: the paper's own seven-task grid is suggestive but far too small (n=7) to fit such a model itself, so any depth investigation should establish whether the motivating literature exists and whether it is a CHEAP re-analysis of existing per-task summary statistics or an EXPENSIVE new-benchmark undertaking.",
+      "corpus_evidence": ["bischl-2023-hpo-foundations-open-challenges-extension-check"],
+      "suggested_starting_urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/search?query=exploratory+landscape+analysis+algorithm+selection+black+box+optimization&fields=title,year,citationCount,externalIds&limit=10",
+        "https://api.openalex.org/works?search=landscape%20features%20predict%20surrogate%20model%20choice%20optimization&sort=cited_by_count:desc&per-page=15"
+      ],
+      "suggested_searches": [
+        "exploratory landscape analysis algorithm selection black-box optimization",
+        "predicting surrogate model class performance from problem landscape features",
+        "multimodality ruggedness predicts Gaussian process versus ensemble surrogate performance",
+        "algorithm selection problem Rice 1976 landscape features offline optimization"
+      ]
+    }
+  ],
+  "skip_loci": [
+    {
+      "slug": "contradiction-graph-high-relevance-clusters",
+      "reason": "The contradiction graph at research/temp/contradiction-graph.json already contains several validated 'high' decision_relevance dialectical clusters (sigma-distance-vs-error, K-robustness-vs-K-sensitivity, ucb-local-search-ownership, audit-direction, n6-residual-width, budget-dissolves-or-strengthens). I deliberately did not re-promote these as my own loci: the orchestrator's brief directs analyst A at exactly this fault-line territory, and my mandate is to find what the width sweep has NOT already surfaced. If analyst A's list does not independently cover these, the orchestrator should still ensure the top 2-3 (sigma-distance-vs-error, K-robustness-vs-K-sensitivity, ucb-local-search-ownership) survive dedupe, since they are load-bearing citation-miscitation findings, not merely interesting asides."
+    },
+    {
+      "slug": "budget-axis-under-stated",
+      "reason": "research/temp/findings-so-far.md 'H5 CONFIRMED' already establishes this as the clearest under-stated result (COCO/BBOB section 3.5, Lucic et al. 2018, Kazikova et al. 2021), with a concrete fix already drafted. Re-proposing it as a fresh locus would duplicate work already substantially complete."
+    },
+    {
+      "slug": "eta2-bias-correction",
+      "reason": "MANDATORY FIX 9 in findings-so-far.md already establishes eta^2's small-n bias and computed the bias-corrected headline (0.351->0.395) from the paper's own bootstrap artifacts. Fully resolved; no further depth investigation needed."
+    },
+    {
+      "slug": "single-dataset-draw-variance",
+      "reason": "The paper's own Limitations section already discloses that its synthetic datasets are drawn once at seed 0, so reported variance excludes data-draw variance. This is an acknowledged, disclosed limitation rather than an unexamined gap, and I judged the landscape-predicted-surrogate-choice and interaction-term loci to be higher-value uses of a depth-investigation slot than deepening an already-disclosed caveat."
+    },
+    {
+      "slug": "k-beta-crossed-sweep",
+      "reason": "Considered asking whether an unexplored K x beta interaction exists (both are swept only marginally, never crossed). Rejected: the paper already treats K strictly as a nuisance coordinate to be controlled rather than a result, this would require new experiments rather than literature-motivated re-analysis of existing data, and it does not clearly serve the research_query's emphasis on literature-grounded findings as well as the five loci selected."
+    }
+  ]
+}
