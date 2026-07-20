@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "A forward-citation walk across all three N6 near-misses (Hutter et al. 2014, Liang et al. 2021, Moosbauer et al. 2022) plus the van Rijn & Hutter (KDD 2018) fANOVA-lineage extension, restricted to the 2023-2026 window for high-citation papers, found no successor paper that runs a two-way crossed surrogate x optimizer factorial ANOVA/eta-squared variance decomposition in offline model-based optimization or offline black-box optimization.",
+    "stance": "supports",
+    "stance_target": "N6: no prior (or subsequent, through mid-2026) work runs a crossed surrogate x optimizer factorial in offline MBO -- FINAL VERDICT: CONFIRMED NONE-FOUND",
+    "evidence_type": "empirical",
+    "scope_conditions": "OpenAlex cites: filter on 4 seed papers (Hutter W114730584: 62 citers 2023-2026 of 314 total; Liang W3215518215+W3168182983: 166 citers 2023-2026 of 211 total; Moosbauer W3214985046: 4 total citers; van Rijn & Hutter W2766412091: 115 citers 2023-2026 of 208 total), approximately 347 titles scanned, 6 candidates deep-verified",
+    "quoted_support": "None of the ~347 forward-citing paper titles/abstracts scanned describe a crossed surrogate-model x optimizer/search-strategy factorial design evaluated via ANOVA, fANOVA, or eta-squared within an offline model-based optimization or offline black-box optimization scope; the closest candidates (PED-ANOVA, quantum-NN fANOVA lineage) extend fANOVA within a single algorithm's hyperparameter space, and the closest crossed-design candidate (EXPObench) reports results via hypothesis testing and decision-tree rules, not ANOVA.",
+    "numbers": ["62 Hutter citers (2023-2026)", "166 Liang citers (2023-2026, across 2 OpenAlex records)", "4 Moosbauer citers (all-time)", "115 van Rijn & Hutter citers (2023-2026)", "~347 total titles scanned", "6 candidates deep-verified"],
+    "entities": ["Hutter", "Liang", "Moosbauer", "van Rijn", "PED-ANOVA", "EXPObench", "Bischl et al. 2023"],
+    "time_period": "2023-2026 (forward-citation window)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "n6-extension-check-synthesis-r4-adversarial"
+  },
+  {
+    "claim": "Semantic Scholar's paper-search and citation APIs returned HTTP 429 (Too Many Requests) on every attempt during this session, forcing exclusive reliance on OpenAlex for the forward-citation walk -- a methodological deviation from the ideal Semantic-Scholar-first protocol, noted for reproducibility.",
+    "stance": "neutral",
+    "stance_target": "Methodology/tooling caveat for this re-audit",
+    "evidence_type": "empirical",
+    "scope_conditions": "This session only, 2026-07-20",
+    "quoted_support": "Semantic Scholar API response: {\"message\": \"Too Many Requests. Please wait and try again or apply for a key for higher rate limits.\", \"code\": \"429\"}, persisted across multiple retries with cooldowns.",
+    "numbers": ["429 error code"],
+    "entities": ["Semantic Scholar API", "OpenAlex API"],
+    "time_period": "2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "n6-extension-check-synthesis-r4-adversarial"
+  },
+  {
+    "claim": "The CART-ANOVA hyperparameter-interaction technique (batch size x learning rate, evaluated for statistical significance via ANOVA over a Cartesian product grid) demonstrates that crossed-factorial ANOVA designs ARE a known, applied technique elsewhere in machine learning research by 2025 -- the gap N6 identifies is that this technique has specifically not been applied to a surrogate-model x optimizer factorial in offline MBO, not that crossed ANOVA designs are unknown to the field.",
+    "stance": "neutral",
+    "stance_target": "Clarifying the precise scope of N6's novelty claim",
+    "evidence_type": "empirical",
+    "scope_conditions": "CNN hyperparameter tuning for brain tumor classification, ResNet18 knowledge-transfer-learning model, 2025",
+    "quoted_support": "\"This study introduces a novel CART-ANOVA (Cartesian-ANOVA) hyperparameter tuning framework, which differs from traditional optimization methods by systematically integrating statistical significance testing (ANOVA) with the Cartesian product of hyperparameter values... evaluating the interaction effects between hyperparameters, such as batch size and learning rate.\"",
+    "numbers": ["99.65% testing accuracy (four-class)", "98.05% (seven-class)"],
+    "entities": ["CART-ANOVA", "ResNet18"],
+    "time_period": "2025",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "n6-extension-check-synthesis-r4-adversarial"
+  }
+]

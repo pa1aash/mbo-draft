@@ -6,8 +6,16 @@
     "evidence_type": "empirical",
     "scope_conditions": "Publication header of the JMLR version",
     "quoted_support": "\"Journal of Machine Learning Research 17 (2016) 1-10\" ... \"Submitted 11/14; Revised 3/15; Published 3/16\"",
-    "numbers": ["17", "2016"],
-    "entities": ["Alessio Benavoli", "Giorgio Corani", "Francesca Mangili", "JMLR"],
+    "numbers": [
+      "17",
+      "2016"
+    ],
+    "entities": [
+      "Alessio Benavoli",
+      "Giorgio Corani",
+      "Francesca Mangili",
+      "JMLR"
+    ],
     "time_period": "2016",
     "region": null,
     "confidence": "high",
@@ -21,7 +29,11 @@
     "scope_conditions": "Statistical comparison of multiple classifiers over multiple datasets, general methodological result with worked examples",
     "quoted_support": "\"the outcome of the mean-ranks test depends on the pool of algorithms originally included in the experiment. In other words, the outcome of the comparison between algorithms A and B depends also on the performance of the other algorithms in the pool.\"",
     "numbers": [],
-    "entities": ["Benavoli", "mean-ranks test", "Friedman test"],
+    "entities": [
+      "Benavoli",
+      "mean-ranks test",
+      "Friedman test"
+    ],
     "time_period": "2016",
     "region": null,
     "confidence": "high",
@@ -34,8 +46,13 @@
     "evidence_type": "theoretical",
     "scope_conditions": "Worked numerical example with algorithms C1-C5 and additional algorithms C, D, E",
     "quoted_support": "\"for any pool of algorithms C2, C4, Cx, Cy, we always report the same decision: C2, C4 are [significantly different]\" [via Wilcoxon] versus the mean-ranks conclusion which \"clearly depends on the pool of alternative classifiers\"",
-    "numbers": ["0.0002"],
-    "entities": ["Wilcoxon signed-rank test", "mean-ranks test"],
+    "numbers": [
+      "0.0002"
+    ],
+    "entities": [
+      "Wilcoxon signed-rank test",
+      "mean-ranks test"
+    ],
     "time_period": "2016",
     "region": null,
     "confidence": "high",
@@ -49,7 +66,33 @@
     "scope_conditions": "General recommendation across scientific fields using multiple-algorithm comparisons",
     "quoted_support": "\"the aim of this technical note is to discuss the inconsistencies of the mean-ranks post-hoc test with the goal of discouraging its use in machine learning as well as in medicine, psychology, etc.\"",
     "numbers": [],
-    "entities": ["Benavoli", "sign test", "Wilcoxon signed-rank test"],
+    "entities": [
+      "Benavoli",
+      "sign test",
+      "Wilcoxon signed-rank test"
+    ],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  },
+  {
+    "claim": "In a worked example, the two-sided sign test comparing algorithms A and B has statistical power 0.94, while the mean-ranks post-hoc test comparing the identical A vs B (embedded in a larger algorithm pool) has power only 0.046 -- a roughly 20-fold power collapse purely from using mean-ranks instead of a pairwise test.",
+    "stance": "supports",
+    "stance_target": "small-n statistics: choice of post-hoc test can dominate the power of a comparison independent of sample size",
+    "evidence_type": "statistical",
+    "scope_conditions": "Worked numerical example (Example 2, Section 4.2) in Benavoli et al. 2016",
+    "quoted_support": "\"the power of the two-sided sign test with alpha=0.05 is very high: 0.94... The power of the mean-ranks test is instead only 0.046.\"",
+    "numbers": [
+      "0.94",
+      "0.046",
+      "0.05"
+    ],
+    "entities": [
+      "Benavoli",
+      "sign test",
+      "mean-ranks test"
+    ],
     "time_period": "2016",
     "region": null,
     "confidence": "high",

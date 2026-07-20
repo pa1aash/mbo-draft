@@ -31,30 +31,83 @@ and %Gain, zero ANOVA or variance-decomposition language.
    online and descriptive; Moosbauer is HPO and declines the analysis. RaM Table 3 is
    *offline MBO*, *genuinely crossed*, and *contemporaneous*. Only the two-way decomposition
    is missing.
-2. **The paper already cites `tan2025ltr` — and mischaracterises it.** The intro states:
-   *"The systematic studies that exist fix one axis and vary the other---surrogate-class
-   comparisons **hold the optimizer constant** \citep{tan2025ltr,li2024bnnsurrogates}."*
-   Table 3 does **not** hold the optimizer constant; it varies nine of them. The sentence is
-   false about one of its two citations, and false in exactly the direction that inflates
-   N6's residual.
+2. **The paper cites `tan2025ltr` and its characterisation is incomplete rather than false.**
+   *(I overstated this on first pass and am correcting it — the distinction matters.)* The
+   intro says: *"surrogate-class comparisons **hold the optimizer constant**
+   \citep{tan2025ltr,li2024bnnsurrogates}."* That is **accurate about RaM's main experiment**
+   — the 5-surrogate Spearman comparison does hold gradient ascent fixed. Table 3 is a
+   *separate* versatility check in the same paper. So the sentence is not false; it is
+   **incomplete in the one way that matters**, because the same paper it cites for
+   one-axis-at-a-time also contains a crossed grid it does not mention.
 3. **The prior audit missed it.** The vault holds three earlier fetches of this same paper
-   from the previous pass; none mentions Table 3. All three analysed a different experiment
-   (the 5-surrogate Spearman comparison with gradient ascent fixed). **This is the concrete
-   demonstration that the prior audit's verdicts had to be re-checked rather than trusted.**
+   from the previous pass; none mentions Table 3. All three analysed only the main
+   experiment. **This is the concrete demonstration that the prior audit's verdicts had to be
+   re-checked rather than trusted** — the instruction to treat NOVELTY_V3 as prior rather
+   than fact paid for itself here.
 
-**The defensible residual, and it must be stated on the page.** RaM Table 3 varies *surrogate
-training loss* (MSE vs ListNet), not *surrogate model class* (GP posterior vs ensemble
-disagreement). That is a real distinction and it preserves N6 — a loss swap within one model
-family is not a class comparison. But the distinction is now **load-bearing**, and the paper
-currently does not draw it anywhere. **Fix (mandatory): correct the "hold the optimizer
-constant" sentence, name RaM Table 3 explicitly as the nearest crossed design in offline MBO,
-and state why a loss-type axis is not a surrogate-class axis.** Pre-empting this is far
-cheaper than having a reviewer find it — and the reviewer most likely to find it is Tan et al.
+**The residual survives on THREE grounds, not one — and none of them is currently on the page.**
+
+| Ground | Why RaM Table 3 is not a kill |
+|---|---|
+| **Loss type ≠ model class** | Table 3 swaps the surrogate *training objective* (MSE vs ListNet). N6 is about surrogate *model class* (GP posterior vs ensemble disagreement). A loss swap inside one model family is not a class comparison. |
+| **Bundled methods ≠ an optimizer factor** | The nine are whole *methods* — BO-qEI, CMA-ES, REINFORCE, Grad. Ascent, CbAS, MINs, Tri-Mentoring, PGS, Match-OPT. CbAS is generative, MINs is inverse modelling, PGS is policy search. These bundle a search routine with a modelling strategy; they are not nine settings of a clean optimizer factor. The paper's own grid deliberately isolates three *numerical search routines* against one shared protocol. |
+| **Descriptive reporting** | Score±std and %Gain per cell. Zero ANOVA, zero variance decomposition (0 grep hits). |
+
+**Fix (mandatory, and it is a strengthening).** Name RaM Table 3 explicitly as the nearest
+crossed design in offline MBO, and state the three grounds above. This is *better* for the
+paper than silence: a residual defended on three independent grounds against the closest real
+competitor reads as rigour, whereas an unmentioned near-miss discovered by a reviewer reads as
+an omission. The reviewer most likely to find it is Tan et al.
 
 **NM-B — DiBO (arXiv:2603.17919, 2026), Table 2.** Crosses backbone (diffusion vs
 autoregressive) × training stage (DA / SFT / RL) in a genuine 2×3 grid. Descriptive only
 (mean±std). Weaker than NM-A because a training *stage* is not an optimizer routine, but it
 belongs in the near-miss list as the 2026 entry.
+
+### The three prior near-misses: ALL RE-CONFIRMED, AND NONE EXTENDED
+
+Batch 2 re-fetched all three fresh (no cached verdicts) and ran the extension check.
+
+| Near-miss | Re-confirmed as near-miss? | Verbatim evidence |
+|---|---|---|
+| **Hutter 2014** (fANOVA, ICML) | ✓ **one-way only** | Table 1 caption: fANOVA computed *"based on data from one SMAC run"*. Finding: *"the most important hyperparameter was the model class used"*, range **31%–58%** (YEAST 31, AMAZON 58, MNIST-BASIC 55, KDD09 41, CIFAR-10 53). Zero hits for factorial/crossed/two-way/OFAT/offline. |
+| **Liang 2021** (npj Comput Mater) | ✓ **crossed but descriptive, and online** | Genuine surrogate × acquisition grid; **zero** ANOVA/fANOVA/eta-squared hits; reports only Enhancement Factor / Acceleration Factor; explicitly *"closed-loop active learning"*. |
+| **Moosbauer 2022** (IEEE TEVC) | ✓ **names fANOVA and declines it** | Verbatim: *"any interactions between inputs cannot be detected by an OFAT analysis"* — appearing immediately after they name ANOVA/fANOVA as the standard method and decline it on cost grounds. §6.3 confirms their actual methodology is OFAT from one optimized configuration. |
+
+**A false-positive worth recording.** Liang's full text returns 14 hits for `crossed` — all of
+them the **"Crossed barrel" dataset name**, a homonym, not evidence of a crossed design. This
+is precisely the trap that makes grep-count-only verdicts unsafe, and it is why the method
+constraint forbids snippet-level conclusions. Anyone re-running this audit with a naive grep
+would score Liang as crossed.
+
+**THE EXTENSION CHECK — the half a re-audit usually skips.** Forward-citation walk over
+**~347 citing papers** (62 Hutter, 166 Liang, 4 Moosbauer, 115 van Rijn & Hutter; restricted
+to 2023–2026 where volume required). Six candidates deep-verified, two fetched in full:
+
+- **EXPObench (2023)** — 6 surrogate algorithms × 4 real problems; zero ANOVA/factorial hits;
+  its "offline" refers to offline surrogate *training*, not offline MBO. **NOT A KILL.**
+- **Bischl et al. 2023 HPO survey** (836 citations, the highest-cited Moosbauer citer) — zero
+  ANOVA/factorial hits; cites Moosbauer only as related work. **NOT A KILL.**
+- **PED-ANOVA**, quantum-NN fANOVA lineage, CART-ANOVA transfer learning, Instance Space
+  Analysis — all extend fANOVA *within one algorithm's hyperparameter space*, or apply
+  crossed ANOVA in unrelated domains. Never surrogate × optimizer in offline MBO. **NOT KILLS.**
+
+Semantic Scholar returned HTTP 429 throughout (shared rate limit across concurrent batches);
+OpenAlex carried the walk. Recorded as a method limitation, not a gap in the conclusion.
+
+### The offline-MBO field's own benchmarks: no kill surface either
+
+Batch 7 swept Design-Bench, RaM, SOO-Bench, COMs, RoMA and the Kim review for the seven
+decomposition terms. **Every paper returned 0 genuine hits.** A handful of raw `anova`
+substring matches across four papers are all false positives — the author surnames
+*Usmanova* / *Bozhanova* recurring in shared bio-design bibliographies. Another homonym trap.
+
+**SOO-Bench characterisation VERIFIED.** Its actual contribution is a *stability indicator*
+tracking whether an algorithm degrades relative to the offline dataset during optimization.
+The paper's description — "stress-tests optimizer **stability** rather than attribution" — is
+accurate. Design-Bench, RaM, COMs and RoMA all treat surrogate+optimizer as **one bundled
+atomic method per baseline**, never crossed independently, which is exactly the confounded
+status quo the paper says it dissects.
 
 ### Kim survey — venue RESOLVED, and a contextual over-read found
 
@@ -378,6 +431,152 @@ the audits the paper surveyed moved downward. **Option (i) is stronger and nearl
 the paper already cites all four papers elsewhere in its genre paragraph. As written, one
 citation is asked to certify a claim about a literature, which is the exact defect this audit
 was commissioned to find.
+
+## MANDATORY FIX 8 — `demsar2006statistical` does not contain the threshold it is cited for
+
+**The paper's claim (§Design-Bench Results, `main.tex:220`):**
+> "we are below the threshold for the test we ran: **this omnibus is recommended for more
+> than ten datasets** \citep{demsar2006statistical}"
+
+**What Demšar 2006 actually contains.** Full 30-page JMLR PDF extracted and grepped. **There
+is no "more than ten datasets" recommendation anywhere in the paper.** The only occurrences of
+"ten data sets" describe **Demšar's own power-simulation sampling procedure** — the setup of
+his simulation study — not a usage threshold for the Friedman test.
+
+**This is a fabricated threshold attributed to a real source.** It is the most serious
+miscitation class in the audit: not an over-read of something the source says loosely, but a
+specific numeric recommendation the source does not make.
+
+**Why it matters beyond the citation.** The claim is doing real work — it is the paper's stated
+justification for reporting the Design-Bench result as "no detectable difference at this power"
+rather than as equivalence. The *conclusion* is right and well-supported by the rest of the
+sentence (the paired-test power calculation, `|d_z| ≥ 1.27` for 80% power at n=7, and the
+Agarwal citation, all verified). Only the Demšar threshold is unsupported.
+
+**Fix (mandatory).** Delete "recommended for more than ten datasets" and the Demšar citation
+from that clause. The power argument stands without it: keep `|d_z| ≥ 1.27` and Agarwal. If a
+Demšar citation is wanted, cite him for what he does say — the Friedman-plus-post-hoc
+methodology itself. **The claim survives; only its false warrant has to go.**
+
+## MANDATORY FIX 9 — η² is a biased estimator at n=7 and the paper never says so
+
+Two independent lines converged on this, one from the paper's own artifacts and one from the
+literature.
+
+**From the literature (batch 9).** η² and partial-η² are **positively biased** estimators of
+variance explained; **ω² and ε² are the bias-corrected alternatives** and are the recommended
+reporting choice at small n (Kelley 1935; Olejnik & Algina 2003, ~1,647 citations; verified
+via the JOSS `effectsize` documentation, which quotes both — the primary sources are paywalled,
+recorded as a limitation).
+
+**From the paper's own bootstraps (orchestrator, local — see `local-checks.md` §L2.6).** The
+bootstrap mean exceeds the point estimate in **all four corners**, by +0.0099 to +0.0184. That
+is the bias, and the paper's artifacts already estimate it.
+
+**The paper reports η² at n=7 throughout — in the abstract, the headline, every corner, the β
+axis and the budget axis — with no bias caveat and no bias-corrected alternative.**
+
+**Fix, and it is a strengthening not a concession.** Report ω² or ε² alongside η², or report
+the bootstrap-bias-corrected values. **I checked what happens: the headline claim gets
+stronger.** Bias-corrected, the two protocol confounds move the surrogate effect
+**0.351 → 0.395**, a rise of **+0.0437**, against the reported **0.367 → 0.405** rise of
+**+0.0376**. Direction survives; magnitude of the *change* grows. One sentence plus one
+supplementary column buys immunity from the single most obvious statistical objection to the
+paper's central number. **Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
+
+## H5 CONFIRMED — the budget axis is an instance of a NAMED line, and the paper doesn't know it
+
+**COCO/BBOB (Hansen et al. 2016) §3.5 formally names budget-dependent benchmarking** as an
+established methodological category, with a decade-old apparatus: the fixed-budget vs
+fixed-target views, and anytime assessment. The paper's budget finding — the only disjoint-
+interval separation it has, plus a *ranking flip* (gradient leads at low budget, perturbation
+at high) — is an instance of this named line, and COCO is uncited.
+
+**A direct precedent, also uncited: Lucic et al. 2018** (already in the paper's bibliography
+and cited for the genre, but not for this). Verbatim: **"bad models can outperform good models
+given enough computational budget."** That is the paper's own finding, stated at NeurIPS 2018.
+
+**A sibling-field confirmation:** Kazikova et al. 2021 (IEEE Access) — budget-matched
+comparison is "standard practice" in metaheuristics, and raising the budget "may significantly
+affect the final verdict."
+
+**What this changes.** The paper currently presents its budget result defensively, as an
+objection it has removed ("the obvious objection is that the optimizer axis is search
+intensity wearing a costume"). Read against COCO and Lucic, it is not a defence — it is a
+**contribution to an established line, carrying the strongest evidence in the paper**
+(disjoint intervals) and a ranking reversal that Lucic predicted and COCO's framework
+anticipates. See the ranked section; this is the clearest UNDER-STATED finding.
+
+## Deliverable (iii) UNDER-EXECUTED — the runnable experiments, ranked by cost (batch 8)
+
+The task asked for a *specific, runnable* experiment the literature motivates that converts
+elimination into positive mechanism, with the motivating citation and a CHEAP/EXPENSIVE tag.
+Eight primaries were fetched. Ranked by value-per-cost:
+
+**1. Xu et al., "How Neural Networks Extrapolate" (arXiv:2009.11848, ICLR 2021) — CHEAP, and
+it is the mechanism the paper is missing.**
+Their Theorem 1 (NTK regime): ReLU MLPs **provably converge to linear functions along rays
+from the origin outside the training support**, at rate O(1/t). This yields a positive,
+falsifiable geometric prediction that is *exactly* the paper's own diagnosis made mechanical:
+**an ensemble mean that grows linearly without bound far from support admits unbounded
+maximizers at the box boundary; a GP posterior mean, which reverts toward its prior, does
+not.** "Which off-distribution maximizers a surrogate's mean admits" stops being a diagnosis
+and becomes a testable claim about the functional form of each surrogate's far field.
+**Runnable now:** fit lines to existing model outputs along the existing optimization
+trajectories, already stored. No new training. **This is the single highest-value finding in
+deliverable (iii).**
+
+**2. Dao et al., "Boosting Offline Optimizers with Surrogate Sensitivity" (arXiv:2503.04181,
+ICML 2024) — CHEAPEST.**
+Their (α,ω)-sensitivity (Definition 3.1): perturb the trained surrogate's own **parameters**
+and measure how much the prediction at the found optimum moves. **None of the seven
+eliminations touches weight-space fragility** — it is a genuinely new axis, and it is
+computable on already-trained checkpoints with zero new training.
+
+**3. Gao, Schulman, Hilton, "Scaling Laws for Reward Model Overoptimization" — CHEAP.**
+Closed-form `R(d) = d(α − βd)` for true-reward degradation as a proxy is optimized away from
+the data, parameterised in KL distance. Directly fittable to the paper's existing
+distance-vs-oracle-value data across its 5,040 instrumented optima. Note: this is the paper's
+own uncited bibliography entry (see L1b).
+
+**4. Kumar et al., CQL Theorem 3.4 ("gap-expanding") — CHEAP.**
+A formal, named robustness property. The paper's inversion result can be re-quantified as a
+violation of it, which upgrades a descriptive count into a statement about a provable property.
+
+**5. Manheim & Garrabrant, "Categorizing Variants of Goodhart's Law" (arXiv:1803.04585) —
+CHEAP, framing only.** Gives precise existing vocabulary for the paper's under-named
+diagnosis: **"Extremal Goodhart — Model Insufficiency."**
+
+**6. Deep Kernel Learning (Wilson et al.) + DUE — CHEAP-to-MEDIUM.**
+A double-dissociation transplant: an unconstrained GP-with-neural-features should fail like
+the ensemble; a bi-Lipschitz-constrained DUE should recover GP-like behaviour. Confined to one
+2D benchmark it is affordable; it is the cleanest *causal* test available.
+
+**7. BCQ (Fujimoto et al.) three-arm graded battery — EXPENSIVE.**
+The right template for upgrading the binary inversion result into a dose-response curve, but
+it requires new runs, not re-analysis. **FOLLOW-UP-PAPER.**
+
+## VERIFIED CLEAN — Shahriari and Chemingui (batch 7)
+
+**`shahriari2016humanoutoftheloop` — the paper is NOT over-disclaiming.** I flagged the risk
+that the paper concedes priority to a source that never claimed the doctrine. It does not.
+Shahriari states it **twice**, as the review's own organizing thesis:
+
+> "We will see that **the careful choice of statistical model is often far more important than
+> the choice of acquisition function heuristic**." *(Overview)*
+> "...we have taken the perspective that the importance of [acquisition function design]
+> **plays a secondary role to the choice of the underlying surrogate model**." *(Conclusion)*
+
+Zero hits for `offline` across the full 137,300-character text (25 for "sequential"). **The
+paper's scope-restriction is accurate and non-strained**, and its paraphrase ("matters more")
+*understates* Shahriari's own wording ("far more important"). No fix needed. Worth reporting
+as a pass — this is the disclaimer the paper's whole no-field-reversal posture rests on.
+
+**`chemingui2024pggs` — the falsification target is real.** Verbatim from PG-GS's
+Summary/Future Work: *"This perspective is aimed at improving the search strategy in offline
+BBO, which complements prior methods that have **focused on improving surrogate models while
+using fixed search strategies**."* Near-identically restated in the abstract. **The premise the
+paper claims to falsify is asserted by the source, not fabricated.** No fix needed.
 
 ## VERIFIED CLEAN — citation traps and quoted figures (batch 6)
 

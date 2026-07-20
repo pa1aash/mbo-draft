@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Gao, Schulman, and Hilton give an empirically-validated closed-form functional relationship between gold (true) reward and distance from the initial policy as a policy is optimized against a proxy reward model, differing by optimization method.",
+    "stance": "supports",
+    "stance_target": "the existence of a positive, testable functional form for oracle-value-vs-distance-to-support decay under optimization against a learned proxy",
+    "evidence_type": "empirical",
+    "scope_conditions": "InstructGPT-style synthetic RLHF setup with a fixed gold reward model standing in for human labels",
+    "quoted_support": "\"We find empirically that for best-of-n (BoN) sampling, R_bon(d) = d(alpha_bon - beta_bon*d), and for reinforcement learning, R_RL(d) = d(alpha_RL - beta_RL*log(d))\"",
+    "numbers": ["d := sqrt(KL(pi||pi_init))", "alpha_bon", "beta_bon", "alpha_RL", "beta_RL"],
+    "entities": ["Leo Gao", "John Schulman", "Jacob Hilton", "OpenAI", "InstructGPT"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "The paper attributes the nonmonotonic decay term (beta) in its scaling laws specifically to extremal Goodhart (out-of-distribution proxy failure), and the near-origin slope term (alpha) to regressional Goodhart (selection on correlated noise).",
+    "stance": "supports",
+    "stance_target": "extremal Goodhart / model-insufficiency as the correct taxonomic label for surrogate off-distribution failure",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Applies the Manheim & Garrabrant (2018) four-way Goodhart taxonomy to the RLHF overoptimization setting",
+    "quoted_support": "\"We expect extremal Goodharting to be primarily responsible for the nonmonotonicity of the gold RM scores in this paper, and is mostly responsible for the beta term, which in the limit of optimization, results in an unbounded loss of utility.\"",
+    "numbers": ["beta term", "alpha term"],
+    "entities": ["extremal Goodhart", "regressional Goodhart", "Manheim", "Garrabrant"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "The alpha and beta scaling-law coefficients vary smoothly (approximately logarithmically) with the number of proxy reward model parameters, allowing prediction of the attained gold RM score before running an experiment to completion.",
+    "stance": "supports",
+    "stance_target": "smooth coefficient scaling as a validated methodological pattern for scaling-law fitting",
+    "evidence_type": "empirical",
+    "scope_conditions": "Reward-model parameter counts studied in the InstructGPT synthetic setup",
+    "quoted_support": "\"The alpha and beta coefficients in the BoN and RL functional forms vary smoothly with the number of proxy reward model parameters, following approximate logarithmic trends.\"",
+    "numbers": ["RM parameter count"],
+    "entities": ["proxy reward model"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "Adding a KL penalty during RL training increases the achievable proxy reward model score at a given KL but does not measurably improve the gold RM score-vs-KL frontier.",
+    "stance": "refutes",
+    "stance_target": "the idea that a distance/KL-based regularization penalty alone fixes overoptimization",
+    "evidence_type": "empirical",
+    "scope_conditions": "RL (PPO) optimization against proxy reward models in the InstructGPT setup; the authors flag this result as sensitive to hyperparameters",
+    "quoted_support": "\"In our reinforcement learning setup, using a KL penalty increases the proxy reward model score that can be achieved for a given KL divergence, but this does not correspond to a measurable improvement in the gold RM score-KL_RL frontier.\"",
+    "numbers": ["KL penalty coefficient"],
+    "entities": ["KL penalty", "PPO"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "Iterating RLHF in k rounds with fresh proxy reward models trained on data covering distance d/k per round increases the final gold reward by beta_RL * d * log(k) relative to a single round covering distance d, under simplifying additivity assumptions.",
+    "stance": "neutral",
+    "stance_target": "whether iterated/online correction mitigates overoptimization, relevant as a contrast case to fully offline optimization",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Assumes scaling coefficients constant across iterations and KL-distance additivity across iterations; breaks down below some minimum per-iteration distance",
+    "quoted_support": "\"the effect of the iterative approach is to increase the final gold RM score by an amount proportional to both d and log(k), namely beta_RL * d * log(k)\"",
+    "numbers": ["k iterations", "d/k per-iteration distance"],
+    "entities": ["iterated RLHF"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  }
+]

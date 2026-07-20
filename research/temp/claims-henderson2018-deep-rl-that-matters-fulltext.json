@@ -1,0 +1,39 @@
+[
+  {
+    "claim": "Henderson et al. show that splitting 10 identical-hyperparameter random-seed trials into two groups of 5 produces statistically different score distributions on HalfCheetah, purely from seed variation.",
+    "stance": "supports",
+    "stance_target": "small-n significance fragility in RL benchmark comparison -- a structural analog to the AAAI-27 draft's n=7-task power limitation",
+    "evidence_type": "empirical",
+    "scope_conditions": "TRPO on HalfCheetah-v1, policy-gradient continuous control",
+    "quoted_support": "\"We perform 10 experiment trials, for the same hyperparameter configuration, only varying the random seed... we find that the performance of algorithms can be drastically different. We demonstrate that the variance between runs is enough to create statistically different distributions just from varying random seeds.\"",
+    "numbers": [
+      "10",
+      "5"
+    ],
+    "entities": [
+      "Henderson",
+      "TRPO",
+      "HalfCheetah"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "henderson2018-deep-rl-that-matters-fulltext"
+  },
+  {
+    "claim": "Henderson et al. explicitly decline to specify a recommended number of trials for RL significance testing, citing the need for further work on power analysis in the field.",
+    "stance": "neutral",
+    "stance_target": "context for small-n statistical guidance in RL/ML benchmarking generally",
+    "evidence_type": "theoretical",
+    "scope_conditions": "RL reproducibility recommendations",
+    "quoted_support": "\"While there can be no specific number of trials specified as a recommendation, it is possible that power analysis methods can be used to give a general idea to this extent... However, more investigation is needed to answer this open problem.\"",
+    "numbers": [],
+    "entities": [
+      "Henderson"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "henderson2018-deep-rl-that-matters-fulltext"
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "claim": "Comparing metaheuristics based on an equal number of objective function evaluations is described as 'standard practice' in the metaheuristics/swarm-optimization literature, establishing budget-matched comparison as a field-wide norm rather than an ad hoc control this batch is only inferring.",
+    "stance": "supports",
+    "stance_target": "budget-matched comparison as an established methodological norm across black-box/metaheuristic optimization benchmarking, which the AAAI-27 draft's query-budget-matching correction instantiates but does not cite as belonging to a named tradition",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Metaheuristic and swarm-optimization algorithm benchmarking, IEEE CEC-competition context",
+    "quoted_support": "\"Comparing various metaheuristics based on an equal number of objective function evaluations has become standard practice.\"",
+    "numbers": [],
+    "entities": [
+      "Kazikova",
+      "Pluhacek",
+      "Senkerik",
+      "IEEE Access"
+    ],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "how-does-the-number-of-objective-function-evaluations-impact-our-understanding-o"
+  },
+  {
+    "claim": "Raising the evaluation budget can significantly affect the final verdict of a metaheuristics comparison, i.e. which algorithm is judged best changes with the number of function evaluations allowed.",
+    "stance": "supports",
+    "stance_target": "deliverable (iii): budget level changing which optimizer wins is a documented phenomenon in a sibling optimization literature (metaheuristics/CEC competitions), not a novel isolated finding",
+    "evidence_type": "empirical",
+    "scope_conditions": "Swarm algorithms and IEEE CEC competition winners under varying evaluation budgets",
+    "quoted_support": "\"Even though the final impact varies based on current algorithm selection, it may significantly affect the final verdict of metaheuristics comparison.\"",
+    "numbers": [],
+    "entities": [
+      "Kazikova",
+      "Pluhacek",
+      "Senkerik"
+    ],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "how-does-the-number-of-objective-function-evaluations-impact-our-understanding-o"
+  }
+]

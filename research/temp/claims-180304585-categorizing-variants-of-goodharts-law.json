@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Manheim and Garrabrant formalize four distinct mechanisms of Goodhart's law: Regressional, Extremal, Causal, and Adversarial, each with a distinct causal structure.",
+    "stance": "supports",
+    "stance_target": "existence of a fine-grained, citable taxonomy for 'optimizing against a learned proxy finds points where the proxy is wrong'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General framework applicable to economic regulation, public policy, machine learning, and AI alignment",
+    "quoted_support": "\"The four categories of Goodhart effects introduced by Garrabrant are 1) Regressional... 2) Extremal... 3) Causal... 4) Adversarial\"",
+    "numbers": [],
+    "entities": ["David Manheim", "Scott Garrabrant"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180304585-categorizing-variants-of-goodharts-law"
+  },
+  {
+    "claim": "Extremal Goodhart's 'Model Insufficiency' sub-case describes a metric based on a learned relationship that is approximately accurate only in the region it was fit; selection pressure moves the query point into regions where the omitted (e.g. higher-order) structure dominates and the relationship collapses.",
+    "stance": "supports",
+    "stance_target": "a precise, named mechanism matching 'which off-distribution maximizers a surrogate's mean admits'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Applies when the proxy is a simplified/underfit approximation of the true relationship, distinct from the 'Regime Change' sub-case where the true generating process itself differs by region",
+    "quoted_support": "\"The metric of interest is based on a learned relationship between the goal and the metric which is approximately accurate in the initial region. Selection pressure moves the metric away from the region in which the relationship is most accurate so that the relationship collapses.\"",
+    "numbers": [],
+    "entities": ["Extremal Goodhart", "Model Insufficiency"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180304585-categorizing-variants-of-goodharts-law"
+  },
+  {
+    "claim": "Extremal Goodhart's alternative 'Regime Change' sub-case occurs when the true underlying generating process differs qualitatively across regions (a structural discontinuity), rather than the proxy being an underfit approximation of a single stable process.",
+    "stance": "neutral",
+    "stance_target": "distinguishing whether a surrogate's off-support failure reflects the surrogate's own approximation error versus a genuine structural feature of the true objective function",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Applies when the generating process itself changes at a boundary, e.g. measurement instruments biased beyond their design tolerance",
+    "quoted_support": "\"The proxy M may be related to G differently in different regions. Even if the correct relationship is learned for the observed region, in the region where the proxy takes an extreme value the relationship to the goal may be fundamentally different.\"",
+    "numbers": [],
+    "entities": ["Regime Change", "Extremal Goodhart"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180304585-categorizing-variants-of-goodharts-law"
+  },
+  {
+    "claim": "This taxonomy is the load-bearing citation behind Gao, Schulman, and Hilton's (2022) four-way decomposition of reward-model overoptimization, not an independent parallel naming.",
+    "stance": "supports",
+    "stance_target": "citation chain from Goodhart taxonomy to reward-overoptimization scaling laws",
+    "evidence_type": "empirical",
+    "scope_conditions": "Confirmed via direct grep of Gao et al.'s Section 4.2, which cites this taxonomy explicitly",
+    "quoted_support": "Gao et al. Section 4.2 headers (\"Regressional Goodhart\", \"Extremal Goodhart\", \"Causal Goodhart\", \"Adversarial Goodhart\") match this paper's own four category names and definitions verbatim.",
+    "numbers": [],
+    "entities": ["Gao", "Schulman", "Hilton"],
+    "time_period": "2018-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180304585-categorizing-variants-of-goodharts-law"
+  }
+]

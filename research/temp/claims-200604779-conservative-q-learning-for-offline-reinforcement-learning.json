@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Conservative Q-Learning (CQL) is proven to be 'gap-expanding': at large enough regularization strength, the learned Q-function widens (never narrows or inverts) the gap between in-distribution and out-of-distribution action values relative to the true gap.",
+    "stance": "supports",
+    "stance_target": "a provable, positive property distinguishing well-behaved pessimistic value/acquisition functions from ones that invert real-vs-invented rankings",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Offline Q-learning with the CQL regularizer, for large enough alpha (the tradeoff coefficient)",
+    "quoted_support": "\"Theorem 3.4 (CQL is gap-expanding). At any iteration k, CQL expands the difference in expected Q-values under the behavior policy pi_beta(a|s) and mu_k... for large enough values of alpha_k\"",
+    "numbers": ["alpha_k"],
+    "entities": ["Aviral Kumar", "Aurick Zhou", "George Tucker", "Sergey Levine", "CQL"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200604779-conservative-q-learning-for-offline-reinforcement-learning"
+  },
+  {
+    "claim": "Prior offline RL methods that do not explicitly constrain or regularize the Q-function may fail to be gap-expanding, allowing out-of-distribution actions to have higher learned values than the true gap would justify.",
+    "stance": "refutes",
+    "stance_target": "the assumption that any offline value/surrogate estimator is automatically conservative toward out-of-distribution points",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Standard (unregularized) offline Q-learning methods, contrasted empirically in the paper's Appendix B",
+    "quoted_support": "\"When function approximation or sampling error makes OOD actions have higher learned Q-values, CQL backups are expected to be more robust... prior offline RL methods that do not explicitly constrain or regularize the Q-function may not enjoy such robustness properties.\"",
+    "numbers": [],
+    "entities": ["OOD actions", "Q-function"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200604779-conservative-q-learning-for-offline-reinforcement-learning"
+  },
+  {
+    "claim": "CQL produces a provable lower bound on the true value of the current policy for a sufficiently large regularization coefficient, and this coefficient can be made smaller as the offline dataset grows.",
+    "stance": "supports",
+    "stance_target": "background context for CQL's conservative-value-estimation framing",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Continuous control (SAC-based) and discrete control (QR-DQN-based) offline RL settings",
+    "quoted_support": "\"as increases, the theoretical value of alpha that is needed to guarantee a lower bound decreases, which indicates that in the limit of infinite data, a lower bound can be obtained by using extremely small\"",
+    "numbers": [],
+    "entities": ["CQL", "lower bound"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "200604779-conservative-q-learning-for-offline-reinforcement-learning"
+  }
+]

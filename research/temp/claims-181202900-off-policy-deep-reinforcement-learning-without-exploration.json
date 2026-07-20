@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Fujimoto, Meger, and Precup decompose offline (batch) deep RL extrapolation error into three named causes: absent data, model bias, and training mismatch.",
+    "stance": "supports",
+    "stance_target": "existence of a named, decomposed mechanism (not a single elimination) for offline value-learning failure",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Off-policy deep Q-learning / actor-critic methods trained on a fixed batch",
+    "quoted_support": "\"Absent Data. If any state-action pair (s, a) is unavailable, then error is introduced as some function of the amount of similar data and approximation error.\"",
+    "numbers": [],
+    "entities": ["Scott Fujimoto", "David Meger", "Doina Precup", "BCQ"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181202900-off-policy-deep-reinforcement-learning-without-exploration"
+  },
+  {
+    "claim": "The paper demonstrates extrapolation error positively via a graded battery of three dataset-construction protocols (final buffer, concurrent, imitation) that vary the distributional mismatch between the batch and the evaluation policy, showing the DDPG value estimate diverges (to 10^4-10^5 scale) as mismatch increases.",
+    "stance": "supports",
+    "stance_target": "a graded dose-response methodology as the template for converting single-arm eliminations into a positive mechanism demonstration",
+    "evidence_type": "empirical",
+    "scope_conditions": "Hopper-v1 continuous control, DDPG agent, three batch-generation protocols",
+    "quoted_support": "\"These experiments show extrapolation error can be highly problematic\"",
+    "numbers": ["10^4", "10^5", "three batch protocols"],
+    "entities": ["DDPG", "Hopper-v1", "final buffer", "concurrent", "imitation"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181202900-off-policy-deep-reinforcement-learning-without-exploration"
+  },
+  {
+    "claim": "In deterministic finite MDPs, extrapolation error can be formally decomposed via a Bellman-like recursive equation in terms of the divergence between the true and batch-empirical transition distributions, and batch-constrained Q-learning is proven to converge to the optimal value function under the batch-induced MDP.",
+    "stance": "supports",
+    "stance_target": "the feasibility of a formal, provable characterization of offline value-estimation error as a template for the offline-MBO paper's own diagnosis",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Deterministic, finite (tabular) MDPs only; the continuous/deep-network experiments are empirical, not covered by this formal result",
+    "quoted_support": "\"Theorem 1. Performing Q-learning by sampling from a batch B converges to the optimal value function under the MDP M_B.\"",
+    "numbers": ["epsilon_MDP(s,a) = Q^pi(s,a) - Q^pi_B(s,a)"],
+    "entities": ["batch-constrained Q-learning", "finite MDP"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "181202900-off-policy-deep-reinforcement-learning-without-exploration"
+  }
+]

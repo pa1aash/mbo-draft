@@ -1,0 +1,57 @@
+[
+  {
+    "claim": "COCO/BBOB formally defines 'budget-dependent' solvers as a distinct methodological category and states that a single fixed-budget performance assessment of such solvers cannot faithfully predict their performance at a different budget.",
+    "stance": "supports",
+    "stance_target": "deliverable (iii): the budget-axis separation/ranking-reversal finding in the AAAI-27 draft is an instance of an established, NAMED methodological category, not a novel isolated observation",
+    "evidence_type": "theoretical",
+    "scope_conditions": "COCO/BBOB continuous black-box optimization benchmarking platform, Section 3.5 'Budget-Dependent Benchmarking'",
+    "quoted_support": "\"The performance of some solvers depends on the total budget of function evaluations given as an additional parameter to the solver... a single performance assessment of such solvers cannot be expected to faithfully predict their performance for budgets that are different from the one that was used in the experiments.\"",
+    "numbers": [],
+    "entities": [
+      "Hansen",
+      "Auger",
+      "COCO",
+      "BBOB"
+    ],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "coco-platform-comparing-continuous-optimizers-black-box-fulltext"
+  },
+  {
+    "claim": "COCO/BBOB prescribes reporting both fixed-target and fixed-budget views and an anytime assessment over the entire run, rather than measuring at one chosen budget, precisely because runtime/performance comparisons can be budget-sensitive.",
+    "stance": "supports",
+    "stance_target": "budget-matched comparison as an established norm in optimization benchmarking",
+    "evidence_type": "theoretical",
+    "scope_conditions": "COCO/BBOB platform design principles",
+    "quoted_support": "\"There is no predefined budget... the experimental procedure is budget-free... This also implies an anytime assessment approach: the performance is not (only) measured after some given runtime or fixed budget or after reaching some given target but over the entire run of the solver.\"",
+    "numbers": [],
+    "entities": [
+      "COCO",
+      "BBOB",
+      "fixed-target",
+      "fixed-budget"
+    ],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "coco-platform-comparing-continuous-optimizers-black-box-fulltext"
+  },
+  {
+    "claim": "COCO's prescribed remedy for budget-dependent solvers is to repeatedly re-run at multiple, log-equidistant budgets (rather than trust one fixed-budget measurement), which keeps the measurement overhead linear rather than quadratic in the maximal budget.",
+    "stance": "neutral",
+    "stance_target": "concrete methodology the AAAI-27 draft's budget-matching experiment could be framed against or extended toward (multiple matched budget LEVELS, which the paper already partially does with its low/high Q comparison)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "COCO/BBOB Section 3.5",
+    "quoted_support": "\"The budgeted (non-anytime) performance of a budget-dependent solver can be better estimated by repeatedly running the solver with increasing budgets... By using budgets that are equidistant on the logarithmic scale... the time complexity of the overhead depends linearly on the maximal budget.\"",
+    "numbers": [],
+    "entities": [
+      "COCO",
+      "BBOB"
+    ],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "coco-platform-comparing-continuous-optimizers-black-box-fulltext"
+  }
+]

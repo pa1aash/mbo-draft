@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "A two-layer ReLU MLP trained by gradient descent in the NTK regime converges, along any ray from the origin outside the training support, to a linear function of distance along that ray, at rate O(1/t).",
+    "stance": "supports",
+    "stance_target": "a specific, provable, positive mechanism for why gradient-ascent optimization against a neural-network surrogate's mean can admit unbounded off-distribution maximizers uncorrelated with the true (bounded/nonlinear) oracle function",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Two-layer ReLU MLPs trained with squared loss in the NTK regime (infinitely wide, appropriately initialized); empirically confirmed to hold approximately across varied depths, widths, learning rates, and batch sizes",
+    "quoted_support": "\"As t -> infinity, f(x0 + hv) - f(x0) -> beta_v * h for any h > 0, where beta_v is a constant linear coefficient... for t = O(1/epsilon), we have |f(x0+hv)-f(x0))/h - beta_v| < epsilon.\"",
+    "numbers": ["O(1/t) convergence rate", "two-layer network"],
+    "entities": ["Keyulu Xu", "Mozhi Zhang", "Jingling Li", "Simon S. Du", "Ken-ichi Kawarabayashi", "Stefanie Jegelka", "neural tangent kernel", "Jacot et al. 2018"],
+    "time_period": "2020-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200911848-how-neural-networks-extrapolate-from-feedforward-to-graph-neural-net"
+  },
+  {
+    "claim": "ReLU MLPs extrapolate well only when the target function is itself approximately linear along the relevant directions from the training distribution; for most nonlinear target functions, ReLU MLPs do not extrapolate well regardless of architecture depth or width.",
+    "stance": "supports",
+    "stance_target": "identifying the condition under which a neural-network surrogate's off-support predictions would (or would not) track a nonlinear true oracle function",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Feedforward ReLU MLPs; contrasted with GNNs, which can extrapolate to algorithmic tasks when non-linearities are encoded in the architecture",
+    "quoted_support": "\"they can provably learn a linear target function when the training distribution is sufficiently 'diverse.' ... ReLU MLPs do not extrapolate most nonlinear functions.\"",
+    "numbers": [],
+    "entities": ["ReLU MLP", "linear target function"],
+    "time_period": "2020-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200911848-how-neural-networks-extrapolate-from-feedforward-to-graph-neural-net"
+  },
+  {
+    "claim": "The paper's extrapolation results connect over-parameterized network training to the neural tangent kernel: optimization trajectories of over-parameterized networks trained by gradient descent are equivalent to kernel regression with a specific NTK, under the 'NTK regime' assumptions of Jacot et al. (2018).",
+    "stance": "neutral",
+    "stance_target": "establishing the theoretical link between finite-network training and an exact kernel-regression equivalence, motivating why GP-like (kernel) machinery may behave differently in extrapolation than raw neural-network training",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Over-parameterized (wide) networks under the NTK-regime assumptions",
+    "quoted_support": "\"optimization trajectories of over-parameterized networks trained by GD are equivalent to those of kernel regression with a specific neural tangent kernel, under a set of assumptions called the 'NTK regime' (Jacot et al., 2018)\"",
+    "numbers": [],
+    "entities": ["neural tangent kernel", "Jacot et al. 2018"],
+    "time_period": "2018-2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200911848-how-neural-networks-extrapolate-from-feedforward-to-graph-neural-net"
+  }
+]

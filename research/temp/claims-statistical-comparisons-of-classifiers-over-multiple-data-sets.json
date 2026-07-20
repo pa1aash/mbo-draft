@@ -6,8 +6,16 @@
     "evidence_type": "empirical",
     "scope_conditions": "JMLR publication record",
     "quoted_support": "\"Statistical Comparisons of Classifiers over Multiple Data Sets. Janez Demšar; 7(1):1-30, 2006.\"",
-    "numbers": ["7", "1", "30", "2006"],
-    "entities": ["Janez Demšar", "JMLR"],
+    "numbers": [
+      "7",
+      "1",
+      "30",
+      "2006"
+    ],
+    "entities": [
+      "Janez Demšar",
+      "JMLR"
+    ],
     "time_period": "2006",
     "region": null,
     "confidence": "high",
@@ -21,7 +29,52 @@
     "scope_conditions": "General ML benchmarking methodology recommendation",
     "quoted_support": "\"we recommend a set of simple, yet safe and robust non-parametric tests ... the Friedman test with the corresponding post-hoc tests for comparison of more classifiers over multiple data sets. Results of the latter can also be neatly presented with the newly introduced CD (critical difference) diagrams.\"",
     "numbers": [],
-    "entities": ["Demšar", "Friedman test", "CD diagrams"],
+    "entities": [
+      "Demšar",
+      "Friedman test",
+      "CD diagrams"
+    ],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "statistical-comparisons-of-classifiers-over-multiple-data-sets"
+  },
+  {
+    "claim": "Demsar (2006) contains no numeric dataset-count threshold (e.g. 'more than ten datasets') anywhere in its 30 pages for when the Friedman omnibus test is recommended; its only 'ten data sets' references describe the paper's own random-subsampling power-simulation methodology, not a usage threshold.",
+    "stance": "refutes",
+    "stance_target": "AAAI-27 draft's citation 'this omnibus is recommended for more than ten datasets \\citep{demsar2006statistical}' (main.tex line 220)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of the 30-page JMLR 2006 PDF (jmlr.org/papers/volume7/demsar06a/demsar06a.pdf), all instances of 'ten', 'recommend', and 'Friedman test'",
+    "quoted_support": "The only instances of 'ten data sets' are: 'When comparing two classifiers, samples of ten data sets were randomly selected...' and 'selections of ten data sets, as described above' -- both describing the paper's OWN power-experiment sampling procedure (drawing 10 of 40 UCI datasets per trial), not a recommended minimum for using the omnibus test.",
+    "numbers": [
+      "10",
+      "40",
+      "30"
+    ],
+    "entities": [
+      "Janez Demsar",
+      "Friedman test",
+      "JMLR"
+    ],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "statistical-comparisons-of-classifiers-over-multiple-data-sets"
+  },
+  {
+    "claim": "Demsar's actual concluding recommendation is unconditional preference for non-parametric tests (Wilcoxon/Friedman) over parametric ones (t-test/ANOVA) for machine learning data, with no stated minimum dataset count gating when the Friedman/omnibus test becomes appropriate.",
+    "stance": "neutral",
+    "stance_target": "correct characterization of what Demsar 2006 actually recommends, for citation-repair purposes",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Conclusion section (paper pp. 26-27)",
+    "quoted_support": "\"Overall, the non-parametric tests, namely the Wilcoxon and Friedman test are suitable for our problems. They are appropriate since they assume some, but limited commensurability... Empirical results suggest that they are also stronger than the other tests studied.\"",
+    "numbers": [],
+    "entities": [
+      "Demsar",
+      "Wilcoxon test",
+      "Friedman test",
+      "ANOVA"
+    ],
     "time_period": "2006",
     "region": null,
     "confidence": "high",

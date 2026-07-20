@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Dao, Nguyen, Truong, and Hoang define an (alpha, omega)-sensitivity measure for an offline-MBO surrogate as the probability that a Gaussian perturbation of the surrogate's own parameters changes its average prediction by more than a threshold alpha.",
+    "stance": "supports",
+    "stance_target": "existence of a weight-space fragility diagnostic distinct from every input-space covariate already eliminated in the offline-MBO paper's seven controls",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Model-agnostic definition applicable to any parameterized surrogate g(x; phi) trained on offline data D",
+    "quoted_support": "\"The (alpha, omega)-sensitivity of a model g(x; phi) on the offline dataset D is defined as S_phi(alpha, omega) := Pr_{gamma~N(omega_mu, omega_sigma^2 I)}[A(phi, gamma) >= alpha], where A(phi, gamma) := E_{x~D}[g(x; phi+gamma)] - E_{x~D}[g(x; phi)]\"",
+    "numbers": ["alpha", "omega_mu", "omega_sigma"],
+    "entities": ["Manh Cuong Dao", "Phi Le Nguyen", "Thao Nguyen Truong", "Trong Nghia Hoang"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "250304181-boosting-offline-optimizers-with-surrogate-sensitivity-batch8"
+  },
+  {
+    "claim": "High (alpha, omega)-sensitivity implies there exists a neighborhood of input at which the surrogate's prediction is brittle against small perturbations of its own parameters.",
+    "stance": "supports",
+    "stance_target": "the interpretability of the sensitivity measure as a fragility diagnostic usable at a specific query point (e.g. a candidate optimum)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Follows from Lemma 3.2 of the paper, given S_phi(alpha, omega) >= 1 - delta",
+    "quoted_support": "\"Suppose S_phi(alpha,omega) >= 1-delta with delta in (0,1). Then, with probability at least 1-delta over the space of random perturbation gamma, there exists x in D such that |g(x;phi+gamma) - g(x;phi)| >= alpha\"",
+    "numbers": ["delta"],
+    "entities": ["Lemma 3.2"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "250304181-boosting-offline-optimizers-with-surrogate-sensitivity-batch8"
+  },
+  {
+    "claim": "The paper's proposed regularizer only ever reduces surrogate sensitivity and is demonstrated exclusively on neural-network surrogates; it runs no experiment applying the sensitivity measure to, or manipulating the sensitivity of, a Gaussian process.",
+    "stance": "neutral",
+    "stance_target": "scope limitation: the sensitivity measure itself is reusable as a post-hoc diagnostic on any surrogate, even though this paper's own regularizer application is neural-network-only and one-directional",
+    "evidence_type": "empirical",
+    "scope_conditions": "Confirmed via full-text search: the paper's only Gaussian process mention is a bibliography citation to an unrelated third-party paper on GP kernel-choice robustness",
+    "quoted_support": "\"This raises the following questions: (1) how to regulate the sensitivity of a surrogate model; and (2) whether conditioning an offline optimizer with such less sensitive surrogate will lead to better optimization performance.\"",
+    "numbers": [],
+    "entities": ["neural network surrogate", "Gaussian process"],
+    "time_period": "2024-2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "250304181-boosting-offline-optimizers-with-surrogate-sensitivity-batch8"
+  }
+]

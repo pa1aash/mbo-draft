@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Deep Kernel Learning replaces a GP kernel's raw-input evaluation with evaluation on a deep-network feature extractor's output, while retaining the standard GP posterior mean/variance machinery and training the whole system jointly via the GP marginal likelihood.",
+    "stance": "supports",
+    "stance_target": "existence of a cheap, off-the-shelf 'transplant' surrogate class interpolating between plain GP and neural ensemble",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General regression/scalable-GP setting; demonstrated on datasets up to 2 million points",
+    "quoted_support": "\"k(xi, xj|theta) -> k(g(xi, w), g(xj, w)|theta, w), where g(x, w) is a non-linear mapping given by a deep architecture\"",
+    "numbers": ["O(n) inference/learning cost", "O(1) per-test-point prediction cost", "2 million examples"],
+    "entities": ["Andrew Gordon Wilson", "Zhiting Hu", "Ruslan Salakhutdinov", "Eric P. Xing", "KISS-GP"],
+    "time_period": "2015-2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "151102222-deep-kernel-learning"
+  },
+  {
+    "claim": "Prior GP-neural-network hybrids (GP regression networks, Bayesian-NN-with-GP-activations, DBN+GP, feedforward+GP of Calandra et al.) each required approximate Bayesian inference and did not scale beyond a few thousand training points, motivating deep kernel learning's closed-form, marginal-likelihood-trained alternative.",
+    "stance": "neutral",
+    "stance_target": "context establishing DKL as the mainstream, scalable version of GP+NN hybridization rather than a novel one-off",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Related-work survey as of 2015",
+    "quoted_support": "\"both models are very task specific, and require sophisticated approximate Bayesian inference which is much more demanding than what is required by standard Gaussian processes or deep learning models, and typically does not scale beyond a few thousand training points\"",
+    "numbers": ["a few thousand training points"],
+    "entities": ["Wilson et al. 2012", "Damianou and Lawrence 2013", "Salakhutdinov and Hinton 2008", "Calandra et al. 2014"],
+    "time_period": "2008-2015",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "151102222-deep-kernel-learning"
+  }
+]

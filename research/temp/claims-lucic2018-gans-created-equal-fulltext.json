@@ -1,0 +1,56 @@
+[
+  {
+    "claim": "Under a large hyperparameter-search budget, all GAN models achieve similar minimum FID, but 'bad' models can outperform 'good' models given enough computational budget -- i.e. algorithm ranking is not budget-invariant.",
+    "stance": "supports",
+    "stance_target": "deliverable (iii): equalizing/varying search budget changing which method wins is a documented, named phenomenon in a major venue (NeurIPS 2018), not a novel isolated finding of the AAAI-27 draft",
+    "evidence_type": "empirical",
+    "scope_conditions": "Large-scale GAN comparison study across 7 GAN variants, multiple datasets",
+    "quoted_support": "\"for a fixed FID, 'bad' models can outperform 'good' models given enough computational budget. We argue that the computational budget to search over hyperparameters is...\" [an inherent part of an algorithm's practical value]",
+    "numbers": [],
+    "entities": [
+      "Lucic",
+      "Kurach",
+      "FID",
+      "GAN"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "lucic2018-gans-created-equal-fulltext"
+  },
+  {
+    "claim": "No GAN algorithm clearly dominates across the comparison once hyperparameter-search budget is accounted for; a model trained on a large budget can outperform a 'good' model trained on a small budget.",
+    "stance": "supports",
+    "stance_target": "budget-matched comparison as necessary methodological practice; budget determines the winner",
+    "evidence_type": "empirical",
+    "scope_conditions": "GAN comparison across FID distributions at varying computational budgets",
+    "quoted_support": "\"there is no algorithm which clearly dominates... a [model] trained on a large budget can outperform a good model trained on a small budget.\"",
+    "numbers": [],
+    "entities": [
+      "Lucic",
+      "GAN",
+      "FID"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "lucic2018-gans-created-equal-fulltext"
+  },
+  {
+    "claim": "The paper recommends comparing distributions of minimum achievable FID under a FIXED computational budget, rather than best-of point estimates, as the fair-comparison protocol for GANs.",
+    "stance": "neutral",
+    "stance_target": "methodological prescription analogous to the AAAI-27 draft's query-budget-matching correction",
+    "evidence_type": "theoretical",
+    "scope_conditions": "GAN benchmarking methodology",
+    "quoted_support": "\"we propose to compare distributions of the minimum achievable FID for a fixed computational budget.\"",
+    "numbers": [],
+    "entities": [
+      "Lucic",
+      "FID"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "lucic2018-gans-created-equal-fulltext"
+  }
+]

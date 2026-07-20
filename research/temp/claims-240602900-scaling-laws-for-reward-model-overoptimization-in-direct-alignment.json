@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Direct Alignment Algorithms (DAAs) like DPO, which never train an explicit proxy reward model, still exhibit reward overoptimization/degradation as KL budget from the initial policy increases.",
+    "stance": "supports",
+    "stance_target": "the generality of Goodhart-style overoptimization beyond settings with an explicit learned reward model",
+    "evidence_type": "empirical",
+    "scope_conditions": "Direct Alignment Algorithms (DPO and variants) across objectives, training regimes, and model scales",
+    "quoted_support": "\"While the so-called reward hacking phenomenon is not well-defined for DAAs, we still uncover similar trends: at higher KL budgets, DAA algorithms exhibit similar degradation patterns to their classic RLHF counterparts.\"",
+    "numbers": ["KL budget"],
+    "entities": ["Rafael Rafailov", "Direct Preference Optimization", "DAA"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240602900-scaling-laws-for-reward-model-overoptimization-in-direct-alignment"
+  },
+  {
+    "claim": "DAA methods can deteriorate before even a single epoch of the offline preference dataset is completed, indicating overoptimization can occur very early in offline-style training without iterated online sampling against a static proxy.",
+    "stance": "supports",
+    "stance_target": "overoptimization as a fast, offline-relevant phenomenon rather than one requiring extensive online exploration",
+    "evidence_type": "empirical",
+    "scope_conditions": "DAA training regimes studied in the paper",
+    "quoted_support": "\"we find that DAA methods deteriorate not only across a wide range of KL budgets but also often before even a single epoch of the dataset is completed\"",
+    "numbers": ["one epoch"],
+    "entities": ["DAA"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240602900-scaling-laws-for-reward-model-overoptimization-in-direct-alignment"
+  }
+]

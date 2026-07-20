@@ -1,0 +1,47 @@
+[
+  {
+    "claim": "Eta-squared and partial eta-squared are biased estimators of population variance explained; epsilon-squared and omega-squared are the less-biased alternatives, per Kelley (1935) and Olejnik & Algina (2003).",
+    "stance": "refutes",
+    "stance_target": "MANDATORY methodological gap: the AAAI-27 draft reports eta^2_surr and eta^2_opt as its primary effect-size metric throughout, including at n=7 synthetic tasks, without citing the small-sample eta-squared bias literature or reporting omega-squared/epsilon-squared alternatives",
+    "evidence_type": "theoretical",
+    "scope_conditions": "ANOVA-type effect-size estimation, general statistical methodology (R 'effectsize' package documentation, JOSS)",
+    "quoted_support": "\"epsilon_squared() and omega_squared(), which are less biased estimates of the variance explained in the population (T. L. Kelley, 1935; Olejnik & Algina, 2003).\"",
+    "numbers": [
+      "1935",
+      "2003"
+    ],
+    "entities": [
+      "Kelley",
+      "Olejnik",
+      "Algina",
+      "eta-squared",
+      "omega-squared",
+      "epsilon-squared"
+    ],
+    "time_period": "2020 (package); 1935/2003 (foundational sources)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "journal-of-open-source-software-effectsize-estimation-of-effect-size-indices-and"
+  },
+  {
+    "claim": "Olejnik & Algina (2003), 'Generalized Eta and Omega Squared Statistics: Measures of Effect Size for Some Common Research Designs' (Psychological Methods 8:434-447), is the standard-reference paper for eta-squared bias correction, with approximately 1,647 citations per OpenAlex, indicating it is the field's canonical citation for this exact methodological point.",
+    "stance": "neutral",
+    "stance_target": "establishing the citation weight/authority of the eta-squared-bias literature the AAAI-27 draft omits",
+    "evidence_type": "empirical",
+    "scope_conditions": "Citation-count metadata from OpenAlex, 2026 snapshot",
+    "quoted_support": "OpenAlex record: 'Generalized Eta and Omega Squared Statistics: Measures of Effect Size for Some Common Research Designs' (2003), cited_by_count = 1647.",
+    "numbers": [
+      "1647",
+      "2003"
+    ],
+    "entities": [
+      "Olejnik",
+      "Algina",
+      "OpenAlex"
+    ],
+    "time_period": "2003",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "journal-of-open-source-software-effectsize-estimation-of-effect-size-indices-and"
+  }
+]

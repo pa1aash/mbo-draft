@@ -1,0 +1,42 @@
+[
+  {
+    "claim": "Agarwal et al. show that the choice of aggregate metric alone (mean vs. median vs. IQM vs. optimality gap) can reverse the ranking between algorithms on the same benchmark, independent of run count.",
+    "stance": "supports",
+    "stance_target": "the broader theme that measurement-protocol choices (of which budget is one) determine which algorithm 'wins', a class the AAAI-27 draft's optimizer-ranking-flips-with-budget finding belongs to",
+    "evidence_type": "empirical",
+    "scope_conditions": "ALE/Atari benchmark aggregate-metric comparison",
+    "quoted_support": "\"depending on the choice of metric, the ordering between algorithms changes... the change of algorithm ranking between optimality gap and IQM/median scores reveal that while recent algorithms typically show performance gains relative to humans on average, their performance seems to be worse on games below human performance.\"",
+    "numbers": [],
+    "entities": [
+      "Agarwal",
+      "IQM",
+      "optimality gap",
+      "ALE"
+    ],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "agarwal2021-deep-rl-edge-statistical-precipice-fulltext"
+  },
+  {
+    "claim": "The exact sentence the AAAI-27 draft paraphrases for its power argument ('a failure to reject is not a demonstration that an effect is absent') is verbatim supported by Agarwal et al.'s SPR-over-DER case study.",
+    "stance": "supports",
+    "stance_target": "citation-verification: agarwal2021precipice used correctly in the AAAI-27 draft",
+    "evidence_type": "empirical",
+    "scope_conditions": "Atari 100k, SPR vs DER comparison at 5-15 runs vs full run count",
+    "quoted_support": "\"while improvement from SPR over DER with 5 to 15 runs is not statistically significant, claiming 'no improvement' would be misleading as evaluating more runs indeed shows that the improvement is significant.\"",
+    "numbers": [
+      "5",
+      "15"
+    ],
+    "entities": [
+      "SPR",
+      "DER",
+      "Atari 100k"
+    ],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "agarwal2021-deep-rl-edge-statistical-precipice-fulltext"
+  }
+]

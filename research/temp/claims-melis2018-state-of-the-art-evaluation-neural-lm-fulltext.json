@@ -1,0 +1,42 @@
+[
+  {
+    "claim": "Melis et al. state that as neural architecture comparisons matured beyond the era of large, easy-to-detect gains, effect sizes between competing architectures shrank and required more methodological care to measure reliably.",
+    "stance": "supports",
+    "stance_target": "citation-verification: melis2018sota used in AAAI-27 draft for 'audits in this genre usually shrink the effect they audit', with a scope caveat (Melis frames this as an era/regime trend in NLP architecture comparison, not literally as a re-audit-shrinks-effect claim)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Neural language model architecture comparisons, LSTM vs RHN vs NAS, ICLR 2018",
+    "quoted_support": "\"During the transitional period when deep neural language models began to supplant their shallower predecessors, effect sizes tended to be large... However, now that the neural revolution is in full swing... In this regime, effect sizes tend to be much smaller, and more methodological care is required to produce reliable results.\"",
+    "numbers": [],
+    "entities": [
+      "Melis",
+      "Dyer",
+      "Blunsom",
+      "LSTM",
+      "RHN",
+      "NAS"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "melis2018-state-of-the-art-evaluation-neural-lm-fulltext"
+  },
+  {
+    "claim": "Uniform black-box hyperparameter tuning (Google Vizier) reverses a published architecture ranking: a plain LSTM matches or beats newer architectures (RHN, NAS) once tuning budget is equalized across models.",
+    "stance": "supports",
+    "stance_target": "budget/tuning-equalization changing which architecture wins -- an NLP-domain analog of the AAAI-27 draft's budget-matched optimizer-ranking-flip finding",
+    "evidence_type": "empirical",
+    "scope_conditions": "Penn Treebank / Wikitext-2 language modeling benchmarks",
+    "quoted_support": "black-box hyperparameter tuning used to place LSTM, RHN and NAS architectures on equal tuning footing; the paper's stated conclusion is that this reverses previously-reported architecture rankings while narrowing effect sizes.",
+    "numbers": [],
+    "entities": [
+      "LSTM",
+      "RHN",
+      "NAS",
+      "Google Vizier"
+    ],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "melis2018-state-of-the-art-evaluation-neural-lm-fulltext"
+  }
+]
