@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "RoMA (Yu, Ahn, Song, Shin, NeurIPS 2021) is the 'Yu et al. 2021a' work Chemingui 2024 and the 2025 Comprehensive Review both name as an example of the surrogate-focused, smoothness-prior family; RoMA uses a local smoothness prior to adapt the proxy model, then searches via gradient ascent -- confirming the family characterization.",
+    "stance": "supports",
+    "stance_target": "Accuracy of naming RoMA as part of the 'improving surrogate models while using fixed search strategies' family (the premise the audited paper claims to falsify)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "RoMA abstract and method, NeurIPS 2021",
+    "quoted_support": "We consider the problem of searching an input maximizing a black-box objective function given a static dataset of input-output queries. A popular approach to solving this problem is maintaining a proxy model, e.g., a deep neural network (DNN), that approximates",
+    "numbers": ["7 hits for 'smoothness prior'", "4 hits for 'gradient ascent'"],
+    "entities": ["Yu", "Ahn", "Song", "Shin", "RoMA", "smoothness prior", "KAIST"],
+    "time_period": "2021",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "211014188-roma-robust-model-adaptation-for-offline-model-based-optimization"
+  },
+  {
+    "claim": "RoMA's full text contains zero genuine occurrences of factorial, crossed, eta-squared, variance-decomposition, main-effect, or two-way terminology, and both raw 'anova' hits are false positives from the identical author-surname pattern (Usmanova, Bozhanova) found in Design-Bench, COMs, and the Comprehensive Review -- these four papers evidently share overlapping bio-design citations, and none contains a genuine statistical-ANOVA discussion.",
+    "stance": "refutes",
+    "stance_target": "Hypothesis that RoMA itself performs a crossed surrogate-class x optimizer factorial analysis (N6 kill-surface claim)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full 70,350-character extracted text of RoMA",
+    "quoted_support": "an, D. A. Bolotin, M. V. Meer, D. R. Usmanova, A. S. Mishin... N. G. Bozhanova, M. S. Baranov, O. Soylemez, et al.",
+    "numbers": ["70,350 characters extracted", "0 genuine hits across all N6 target terms", "2 raw 'anova' hits, both false positives"],
+    "entities": ["RoMA", "Usmanova", "Bozhanova"],
+    "time_period": "2021",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "211014188-roma-robust-model-adaptation-for-offline-model-based-optimization"
+  },
+  {
+    "claim": "This completes independent verification of both named exemplars of the 'surrogate-focused, fixed-search-strategy' family (Trabucco et al. 2021/COMs and Yu et al. 2021a/RoMA) that Chemingui 2024 cites in its Related Work, and neither exemplar nor the two field-wide surveys checked (Design-Bench, Comprehensive Review) contains a crossed surrogate x optimizer factorial analysis -- a consistent five-for-five null result across the entire evaluation-surface sweep for this batch.",
+    "stance": "supports",
+    "stance_target": "Robustness of the audited paper's N6 claim across the full citation chain: Chemingui's premise sources (COMs, RoMA) plus the field's benchmark/survey papers (Design-Bench, RaM, SOO-Bench, Comprehensive Review)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Cross-paper synthesis across all 7 papers grepped in this batch: Design-Bench, RaM, SOO-Bench, COMs, Comprehensive Review, RoMA, and Chemingui itself",
+    "quoted_support": "0 genuine hits: factorial, crossed, analysis of variance, eta squared, variance decomposition, main effect, two-way",
+    "numbers": ["7 papers checked", "0 genuine hits for all N6 target terms in every paper"],
+    "entities": ["COMs", "RoMA", "Design-Bench", "RaM", "SOO-Bench", "Comprehensive Review", "Chemingui 2024"],
+    "time_period": "2021-2025",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "211014188-roma-robust-model-adaptation-for-offline-model-based-optimization"
+  }
+]

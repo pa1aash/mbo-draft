@@ -4,6 +4,81 @@ Orchestrator-level verdicts. Each traces to fetched primary full text or to a re
 
 ---
 
+## N6 — INTERIM VERDICT: NO KILL FOUND, but the near-miss list must expand
+
+Batch 1 swept the 2026 recency frontier: eight offline-MBO / offline-BBO papers from Jan–Jun
+2026, full PDFs extracted and grepped for all twelve decomposition terms (`factorial`,
+`crossed`, `ANOVA`, `analysis of variance`, `eta squared`, `η²`, `main effect`, `variance
+decomposition`, `two-way`, `interaction effect`, `attribution`).
+
+**Result: 0 hits, all 8 papers, all 12 terms.** Verdicts: 6 IRRELEVANT (single surrogate, or
+single fixed optimizer, or bundled whole-system leaderboards), 1 survey, 1 NEAR-MISS. None of
+Hutter / Liang / Moosbauer is cited or extended by any of the eight.
+
+**No paper satisfies all four conjuncts. N6 is not killed by the 2026 frontier.**
+
+### But two NEW near-misses were found, both closer than the prior pass's three
+
+**NM-A — Tan et al., RaM (arXiv:2410.11502, ICLR 2025), Table 3 "Versatility of ranking
+loss".** A genuine **9 × 2 crossed grid** in offline MBO: nine methods/optimizers against two
+surrogate-loss types (MSE vs ListNet), verbatim *"fixing their open-source codes by replacing
+MSE with ListNet when training the forward model"*. Reporting is descriptive only — Score±std
+and %Gain, zero ANOVA or variance-decomposition language.
+
+**This is the most important N6 finding of the session, for three reasons:**
+
+1. **It is the closest near-miss that exists.** Hutter is one-way and not offline; Liang is
+   online and descriptive; Moosbauer is HPO and declines the analysis. RaM Table 3 is
+   *offline MBO*, *genuinely crossed*, and *contemporaneous*. Only the two-way decomposition
+   is missing.
+2. **The paper already cites `tan2025ltr` — and mischaracterises it.** The intro states:
+   *"The systematic studies that exist fix one axis and vary the other---surrogate-class
+   comparisons **hold the optimizer constant** \citep{tan2025ltr,li2024bnnsurrogates}."*
+   Table 3 does **not** hold the optimizer constant; it varies nine of them. The sentence is
+   false about one of its two citations, and false in exactly the direction that inflates
+   N6's residual.
+3. **The prior audit missed it.** The vault holds three earlier fetches of this same paper
+   from the previous pass; none mentions Table 3. All three analysed a different experiment
+   (the 5-surrogate Spearman comparison with gradient ascent fixed). **This is the concrete
+   demonstration that the prior audit's verdicts had to be re-checked rather than trusted.**
+
+**The defensible residual, and it must be stated on the page.** RaM Table 3 varies *surrogate
+training loss* (MSE vs ListNet), not *surrogate model class* (GP posterior vs ensemble
+disagreement). That is a real distinction and it preserves N6 — a loss swap within one model
+family is not a class comparison. But the distinction is now **load-bearing**, and the paper
+currently does not draw it anywhere. **Fix (mandatory): correct the "hold the optimizer
+constant" sentence, name RaM Table 3 explicitly as the nearest crossed design in offline MBO,
+and state why a loss-type axis is not a surrogate-class axis.** Pre-empting this is far
+cheaper than having a reviewer find it — and the reviewer most likely to find it is Tan et al.
+
+**NM-B — DiBO (arXiv:2603.17919, 2026), Table 2.** Crosses backbone (diffusion vs
+autoregressive) × training stage (DA / SFT / RL) in a genuine 2×3 grid. Descriptive only
+(mean±std). Weaker than NM-A because a training *stage* is not an optimizer routine, but it
+belongs in the near-miss list as the 2026 entry.
+
+### Kim survey — venue RESOLVED, and a contextual over-read found
+
+**Venue confirmed: Transactions on Machine Learning Research, 01/2026.** Every page header of
+v2 (6 Jan 2026) reads "Published in Transactions on Machine Learning Research (01/2026)",
+independently corroborated by arXiv:2603.04000's bibliography citing it as TMLR 2026.
+
+So the paper's prose ("the subfield's 2026 survey") is **accurate**, and the **bib entry is
+stale**: `@article{kim2025mbosurvey, journal={arXiv preprint arXiv:2503.17286}, year={2025}}`.
+**Fix: update to TMLR 2026.** This resolves L3a in the paper's favour — the prose was right
+and the bibliography was wrong, not the other way round.
+
+**Contextual over-read (minor but real).** The quoted sentence — *"existing benchmarks often
+emphasize overall optimization performance without clarifying whether observed gains stem
+from superior surrogate modeling, improved optimization strategies, or mere chance"* — sits in
+§6 under "Uncertainty Estimation of Surrogate Model", framed around **uncertainty-quantification
+evaluation gaps**, not as a call for a crossed factorial. The paper presents it as *"the field
+certifying that the attribution is unresolved"*. The quote is verbatim and does say what it
+says, so this is not a miscitation — but the framing implies a stronger, more targeted
+endorsement than its context supports. **Fix (light): keep the quote, drop the implication
+that the survey is calling for this specific design.**
+
+---
+
 ## ENVIRONMENT LIMITATION (belongs in "What I could not verify and why")
 
 `hyperresearch fetch` **cannot ingest PDFs in this environment.** Every arXiv PDF URL form

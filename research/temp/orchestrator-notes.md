@@ -58,6 +58,34 @@ buried mid-paragraph in a section led by beta. If the optimization-benchmarking 
 (COCO/BBOB fixed-budget vs fixed-target) already formalises this, the paper is sitting on a
 contribution to a named line and framing it as an aside.
 
+## Hypothesis scoring (written after batches 3,4,5,6 returned; predictions were recorded before)
+
+| | Prediction | Outcome | Verdict |
+|---|---|---|---|
+| H1 | N6 survives on fact; framing is the weak point | still open — B1/B2/B7/B11 out | PENDING |
+| H2 | SNGP citation is inverted | **Confirmed, and stronger than predicted.** SNGP names deep ensembles as *not* distance-aware and that lack is its motivation; DUQ says so independently; all SNGP experiments are classification | **HIT** |
+| H3 | Fan citation has a sign problem | **Confirmed, and it is three problems not one.** Also: their Theorem 1 proves *convergence*, so the paper cites a positive convergence result as authority for a failure mode | **HIT, understated** |
+| H4 | melis2018sota cannot bear "audits normally shrink" | **Confirmed.** Ranking reversal, one instance, explicitly self-described as joining a line rather than stating a law | **HIT** |
+| H5 | budget axis is under-stated and is the best result | pending B9 | PENDING |
+
+Four for four on the ones that have returned. **That is a warning sign, not a comfort.** I
+wrote these predictions from reading the paper and knowing the sources by reputation, and
+the fetchers then confirmed all four. Two readings: either the defects were genuinely
+visible from the paper's own text (plausible — miscitation of the SNGP/Fan kind shows up as
+a mismatch between what a sentence needs and what a source of that title could supply), or I
+briefed the fetchers toward my priors. I did tell each batch what claim was under audit and
+what to check, which is confirmation-seeking by construction.
+
+**Mitigation, applied:** the K=2 finding is the control. I did *not* predict it — I framed
+batch 5 around the acquisition-fixed defence of N6 and listed the K-range check as one task
+among six, expecting it to confirm the paper. It came back contradicting the paper instead,
+on a point the paper states confidently. A briefed-toward-priors fetcher does not do that.
+Similarly, batch 6 returned Maassen et al., which *weakens* a finding I was inclined to
+credit. So the wave is capable of returning against the brief.
+
+**Standing correction for later steps:** the critics in step 12 must be pointed at my
+findings, not just at the draft, with an explicit instruction to attack the ones I predicted.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
