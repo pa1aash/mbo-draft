@@ -691,6 +691,43 @@ and already in Table 2 of the paper.
 
 **Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii).
 
+### THE PAPER ALREADY HAS MECHANISTIC EVIDENCE FOR THE INTERACTION, IN A DIFFERENT TABLE
+
+Prompted by loci-analyst B's third locus, and it connects two things the paper keeps apart.
+
+**Supplement Table `tab:cross`** — premise coverage at β=2, each surrogate measured on
+in-distribution points, on its own proposals, and on the *other* surrogate's proposals:
+
+| Premise | in-dist | own prop. | other's prop. |
+|---|---|---|---|
+| **Ensemble** | 0.73 | **0.41** | **0.97** |
+| GP | 0.98 | 0.97 | 0.93 |
+
+The paper's own reading, correctly: *"The ensemble is not miscalibrated in general---only where
+its own gradient optimizer drives it."*
+
+**That sentence is a description of an interaction.** The ensemble's premise validity is not a
+property of the ensemble; it is a property of the *ensemble-optimizer pair*. Evaluated on the
+GP's proposals the ensemble's premise holds at 0.97 — better than the GP's own 0.93. Evaluated
+on its own proposals it collapses to 0.41.
+
+**So the paper has, in two different tables, (a) a significant interaction term it never
+interprets and (b) a direct mechanistic measurement of what that interaction consists of — and
+it never connects them.** `tab:corners` says surrogate and optimizer are not separable;
+`tab:cross` says *why*: each surrogate is well-behaved except where its own search rule pushes
+it.
+
+**Why this matters for the report.** It upgrades the interaction from a bare η² — vulnerable to
+the normalization challenge below — to a claim with an independent, unnormalized measurement
+behind it. **Coverage figures are probabilities, not min–max-normalized scores**, so the
+0.41-versus-0.97 contrast is untouched by the normalizer critique. That makes the pair jointly
+much stronger than either alone: the η² establishes that the interaction is large, and
+`tab:cross` establishes what it is.
+
+**Fix: connect them explicitly.** One sentence in the mechanism section pointing `tab:cross` at
+the interaction term, and one in the decomposition section pointing the other way. **Zero new
+computation. Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
+
 ### THE DIALECTICAL CHALLENGE — is the interaction partly a normalization artifact?
 
 **Raised independently by loci-analyst B, and it has real force. I verified it arithmetically
