@@ -1,0 +1,288 @@
+[
+  {
+    "cluster_id": "sigma-distance-vs-error",
+    "fight": "Is a deep ensemble's sigma a distance signal that is uninformative about pointwise error, or does ensemble disagreement genuinely track predictive error?",
+    "side_a": {
+      "position": "Ensemble sigma tracks DISTANCE to the training data, not error. The paper measures rho=0.07 against pointwise absolute error but rho=0.26 against k-NN distance, and frames the low error-correlation as a corrected measurement rather than a defect.",
+      "claims": [
+        "The ensemble's sigma correlates with pointwise absolute error at only rho~0.07, but with k-NN distance to the training data at rho~0.26, three to four times larger and positive on all seven tasks.",
+        "The prior analysis concluded sigma was uninformative by measuring it against the wrong target."
+      ],
+      "sources": ["paper-under-audit (main.tex, Isolating the Source of the Gap)"]
+    },
+    "side_b": {
+      "position": "Ensemble/committee uncertainty DOES track error in regression, strongly, when measured in-distribution. And separately, the two sources the paper cites to bound its claim say deep ensembles are NOT distance-aware at all.",
+      "claims": [
+        "Carrete et al. 2023 (J. Chem. Phys. 158:204801): 'the Spearman correlation coefficient between uncertainty and error over the validation data set is 0.90 for the committee and 0.91 for the bootstrap-aggregation ensemble' -- 13x the paper's rho=0.07, in regression.",
+        "SNGP (Liu et al. 2020): 'deep ensembles ... are based on dense output layers that are not distance aware ... assigning low uncertainty to OOD examples even if they are far from the data.'",
+        "DUQ (van Amersfoort et al.): 'Deep Ensembles is uncertain only along the decision boundary, and certain elsewhere.'",
+        "Lakshminarayanan et al. 2017: MSE-trained ensembles using cross-member empirical variance 'consistently underestimate the true predictive uncertainty' (80% nominal interval covering ~20% of test points), unlike the NLL-trained heteroscedastic variant."
+      ],
+      "sources": ["230208805-carrete-deep-ensembles-vs-committees", "200610108-sngp", "200302037-duq", "161201474-lakshminarayanan-deep-ensembles", "260501502-radmi"]
+    },
+    "evidence_quality_delta": "Side B is stronger and more diverse: one peer-reviewed regression benchmark with a directly comparable statistic, two papers whose central empirical argument is about the exact model class, and the ensemble method's own originating paper on the exact construction under audit. Side A is a single measurement on one grid. Note however that side B's Carrete figure is IN-DISTRIBUTION while the paper's rho=0.07 is measured across its own grid including proposals -- so the numbers are not strictly commensurable.",
+    "scope_overlap": "PARTLY scoped differently, and the scoping is the resolution. Carrete measures in-distribution, where distance and error largely coincide; the paper measures where an optimizer has pushed designs off-support. SNGP/DUQ measure classification with a 2D toy geometry. So all three can be right. But that means the paper's DICHOTOMY -- distance signal 'not' error signal -- is a false opposition, and its 'bounded by prior work on distance-aware uncertainty' citation is inverted regardless of scope, because SNGP's thesis is that ensembles LACK the property being attributed to them.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "K-robustness-vs-K-sensitivity",
+    "fight": "Has the K=2 endpoint already been tested for ensemble surrogates in Bayesian optimization, and does it show robustness or sensitivity?",
+    "side_a": {
+      "position": "The paper claims its K sweep 'extends below' the range over which ensemble surrogates were found robust, characterising the prior range as K in {5,10} and claiming K=2,3 as its own addition.",
+      "claims": [
+        "Our sweep runs over K in {2,3,5,10} and therefore extends below the K in {5,10} range over which ensemble surrogates were found robust (li2024bnnsurrogates), sharing its two upper points and adding K=2,3."
+      ],
+      "sources": ["paper-under-audit (main.tex, Confound 3)"]
+    },
+    "side_b": {
+      "position": "Li/Rudner/Wilson tested K = {2, 5, 10} and reported ROBUSTNESS across that range, K=2 included.",
+      "claims": [
+        "Figure A.7 legend tokens, extracted first-hand from arXiv:2305.20028v2 page 28: '2 Models', '5 Models', '10 Models'.",
+        "Verbatim caption: 'We compare the behavior of ensembles with different numbers of models, and we find that the different ensembles perform similarly across many experiments, showing the robustness of our results to this hyperparameter.'",
+        "Main text: 'we find that these hyperparameters generally have minimal effects on the performance.'"
+      ],
+      "sources": ["a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimization", "230520028-lrw-abstract"]
+    },
+    "evidence_quality_delta": "Side B is decisive and verified twice independently -- by the orchestrator extracting legend tokens from the PDF, and by a subagent rendering the same page as an image. Side A's characterisation of the prior range is simply incorrect.",
+    "scope_overlap": "GENUINE contradiction on the factual claim about the prior range. But a real distinction survives and the paper does not draw it: L/R/W measure PERFORMANCE robustness of ensemble BO; the paper measures SENSITIVITY OF THE VARIANCE DECOMPOSITION (eta^2_surr) to K. Those are different quantities and can both be true. That distinction is the paper's only defence and it appears nowhere.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "audit-direction",
+    "fight": "Do corrective audits normally shrink the effect they audit, and is an audit whose corrected effect GREW unprecedented -- or is it a documented artifact signature?",
+    "side_a": {
+      "position": "Audits in this genre usually shrink; a corrected variance-explained statistic above its published value has no precedent in the ML audit literature.",
+      "claims": [
+        "Audits in this genre usually shrink the effect they audit (melis2018sota). This one strengthens it.",
+        "We searched the ML reality-check and reproducibility literature for a de-confounding audit reporting a corrected variance-explained statistic above its own published value and found none."
+      ],
+      "sources": ["paper-under-audit (main.tex, Contribution 2 and sec:deconf)"]
+    },
+    "side_b": {
+      "position": "Three separate problems. (1) Melis never claims a genre-wide direction -- it reports a ranking reversal in one setting and self-describes as one instance. (2) In the one large systematic audit of recomputed effect sizes, corrections go up about as often as down. (3) In the one ML literature where confound removal INCREASING an effect has been studied, the documented diagnosis is leakage artifact.",
+      "claims": [
+        "Melis et al.: 'Once hyperparameters have been properly controlled for, we find that LSTMs outperform the more recent models, contra the published claims' -- a ranking reversal, not a shrinking variance-explained scalar; and 'this paper joins other recent papers in warning of ... replication failure'.",
+        "Maassen et al. 2020 (PLOS ONE, 500 effect sizes across 33 meta-analyses): 'We did not find any evidence for systematic bias ... we estimated 19 pooled effect sizes to be larger than originally reported and 14 to be smaller.'",
+        "Hamdan et al. 2022 (arXiv:2210.09232): 'this common approach to confound removal biases ML models ... can leak information such that what are null or moderate effects become amplified to near-perfect prediction.'"
+      ],
+      "sources": ["melis2018-state-of-the-art-evaluation-neural-lm-fulltext", "reproducibility-of-individual-effect-sizes-in-meta-analyses-in-psychology-plos-o", "221009232-confound-leakage", "190210811-recht-imagenet", "171110337-lucic-gans", "190706902-ferraridacrema", "200308505-musgrave"]
+    },
+    "evidence_quality_delta": "Side B is stronger on every limb. Its (1) is a direct reading of the single citation side A rests on; its (2) is a large systematic study; its (3) is a peer-reviewed ML methodology paper naming the exact directional signature. Side A's narrow scalar claim nonetheless SURVIVES -- nobody found an ML benchmark audit reporting a corrected variance-explained statistic above its published value.",
+    "scope_overlap": "SCOPED DIFFERENTLY, and the paper's narrow scoping is what saves it. Maassen is psychology meta-analysis, not ML benchmark audits. Hamdan is confound-removal methodology, not a reality-check audit. So the exact scalar claim stands. What does NOT stand is the surrounding rhetoric: 'audits normally shrink' as a law, and the implication that an upward correction is intrinsically surprising. Hamdan additionally imposes a NEW burden -- the paper must affirmatively rule out leakage as the mechanism for its own increase.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "ucb-local-search-ownership",
+    "fight": "Is 'a UCB-style acquisition behaves as local search and gets trapped near the data' an established reading in the literature, and who owns it?",
+    "side_a": {
+      "position": "It is an established reading which the paper applies rather than discovers, owned by Fan et al. 2024.",
+      "claims": [
+        "as is the reading of a UCB-style acquisition as local search (fan2024minucb)",
+        "The surviving mechanism is LCB paralysis ... This is the offline instance of a known reading of UCB-style acquisitions as local search (fan2024minucb), applied rather than discovered."
+      ],
+      "sources": ["paper-under-audit (main.tex, sec:mech and sec:db)"]
+    },
+    "side_b": {
+      "position": "Nobody owns it. Fan proposes it as a novel method and proves CONVERGENCE; TuRBO diagnoses the opposite failure; GIBO's exploitation step involves no UCB at all.",
+      "claims": [
+        "Fan et al.: 'we propose our first algorithm ... MinUCB, which replaces gradient descent step with a step that minimizes the UCB in GIBO'; 'This discovery is also meaningful as it opens up possibilities for new designs.'",
+        "Fan et al. full-text grep: 0 hits for 'offline', 'LCB', 'lower confidence bound', 'stuck', 'frozen', 'paralysis'. Their Theorem 1 proves convergence to a local optimum under an increasing beta schedule and continual active resampling -- conditions a static offline dataset cannot meet.",
+        "TuRBO grep: 'trapped'=0, 'greedy'=0. Its diagnosis of vanilla global BO is 'an overemphasized exploration that results from global acquisition' and 'a failure to exploit promising areas' -- the OPPOSITE of trapped-near-data.",
+        "GIBO (Muller et al. 2021) is the actual source of the two-stage local-BO premise Fan modifies, and its exploitation step is plain gradient descent."
+      ],
+      "sources": ["240515285-minimizing-ucb", "191001739-turbo", "210611899-gibo", "230515572-behavior-convergence-local-bo"]
+    },
+    "evidence_quality_delta": "Side B is decisive: zero-hit greps on the exact terms, plus a theorem that runs the opposite direction, plus an independent check that the proposed alternative owner diagnoses the opposite failure mode.",
+    "scope_overlap": "NOT a scoping difference -- a straightforward attribution error, in three places (the mechanism framing, the LCB-paralysis mechanism, and the distance-aware co-citation). The paper's own empirical freeze finding is unaffected and is strong; it simply has no prior owner to cite.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "distance-explains-off-support-failure",
+    "fight": "Is distance-from-data the driver of surrogate unreliability under optimization, or does it fail to discriminate between surrogate classes?",
+    "side_a": {
+      "position": "Distance drives oracle unreliability -- the founding framing of offline model-based design, and the premise behind autofocusing.",
+      "claims": [
+        "Fannjiang & Listgarten 2020: 'oracle-based design ... will query the oracle in regions of the design space that are not well-represented by the oracle training data ... its outputs, including its uncertainty estimates, become unreliable beyond the training data.'",
+        "Gao et al.: proxy-reward degradation is a function of KL distance from the data, R_bon(d)=d(alpha-beta*d)."
+      ],
+      "sources": ["200608052-autofocused-oracles", "221010760-scaling-laws-reward-overoptimization"]
+    },
+    "side_b": {
+      "position": "Distance predicts aggregate loss but does NOT discriminate between surrogate classes at matched distance -- the paper's seventh elimination.",
+      "claims": [
+        "Across 5,040 optima, distance predicts over-prediction (rho=+0.758) and true loss (rho=-0.818), but the classes sit at matched median distance (0.87 / 0.86 / 0.84) and the ensemble is still worse in true oracle value by -1.406 [-2.803,-0.375].",
+        "The ensemble's optima are +0.116 [-0.004,0.333] further out and +0.043 [-0.652,1.085] more inflated -- both intervals covering zero."
+      ],
+      "sources": ["paper-under-audit (main.tex, Elimination 7)"]
+    },
+    "evidence_quality_delta": "Both sides are empirically solid and NOT actually in conflict once stated precisely. Side A is about the aggregate distance-unreliability law, which side B independently confirms (rho=-0.818). Side B adds that the law does not explain the CLASS gap.",
+    "scope_overlap": "COMPLEMENTARY, not contradictory -- and this is the paper's best unexploited opportunity. Gao's degradation is explicitly class-dependent by optimization method but he varies only scale within one architecture family. So the paper's finding is a genuine REFINEMENT onto a new axis (architecture class) in a new domain (offline MBO). Framing it as a refinement of a named prior position is stronger than presenting the diagnosis as unprecedented -- especially since Fannjiang articulated the diagnosis in 2020 and sits uncited in the paper's own bibliography.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "budget-dissolves-or-strengthens",
+    "fight": "Does equalizing search budget dissolve an apparent optimizer effect, or can budget itself determine which optimizer wins?",
+    "side_a": {
+      "position": "The naive expectation the paper pre-empts: an unmatched budget manufactures the optimizer effect, so matching should shrink or remove it.",
+      "claims": [
+        "the obvious objection is that the optimizer axis on Design-Bench is search intensity wearing a costume"
+      ],
+      "sources": ["paper-under-audit (main.tex, sec:db)"]
+    },
+    "side_b": {
+      "position": "Budget-dependent ranking is an established, NAMED phenomenon with a decade-old methodology, and reversal of the winner with budget is documented at NeurIPS.",
+      "claims": [
+        "COCO/BBOB (Hansen et al. 2016) section 3.5 formalises budget-dependent benchmarking, with fixed-budget vs fixed-target views and anytime assessment.",
+        "Lucic et al. 2018: 'bad models can outperform good models given enough computational budget.'",
+        "Kazikova et al. 2021 (IEEE Access): budget-matched comparison is standard practice in metaheuristics, and raising the budget 'may significantly affect the final verdict'.",
+        "The paper's own data: matching raises eta^2_opt by 1.46-1.88x in every corner, and the best optimizer changes with budget -- gradient leads at Q=4,352 (0.731), perturbation at Q=51,456 (0.732)."
+      ],
+      "sources": ["coco-platform-comparing-continuous-optimizers-black-box-fulltext", "lucic2018-gans-created-equal-fulltext", "how-does-the-number-of-objective-function-evaluations", "paper-under-audit"]
+    },
+    "evidence_quality_delta": "Side B is overwhelming and includes the paper's own strongest evidence (the only disjoint bootstrap intervals it reports: [0.189,0.355] vs [0.421,0.719]).",
+    "scope_overlap": "NO genuine disagreement -- side A is a strawman the paper erects and demolishes. The finding is that the paper is arguing DEFENSIVELY against an objection when the literature would let it argue POSITIVELY as a contribution to a named line. This is the clearest under-stated result in the audit.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "pessimism-creates-or-amplifies",
+    "fight": "Does conservatism create an offline method's advantage, or amplify a base-model-quality advantage that already exists -- and can pessimism backfire?",
+    "side_a": {
+      "position": "Pessimism is the load-bearing principle: a valid lower bound prevents the optimizer exploiting model error, and pessimism provably eliminates spurious correlation.",
+      "claims": [
+        "Jin, Yang & Wang (PEVI): pessimism eliminates spurious correlation and is minimax-optimal.",
+        "The pessimism principle behind conservative offline methods is that a valid lower bound prevents the optimizer exploiting model error (jin2021pessimism)."
+      ],
+      "sources": ["201215085-is-pessimism-provably-efficient-for-offline-rl-2", "paper-under-audit (Background)"]
+    },
+    "side_b": {
+      "position": "Empirically the base model carries most of the advantage, and pessimism implemented through insufficiently independent ensemble members can invert into optimism.",
+      "claims": [
+        "The paper's own beta=0 result: 61% of the GP advantage survives with pessimism removed entirely (0.319 [0.196,0.460] vs 0.525 [0.406,0.614]); the increment is significant at 0.203 [0.007,0.396], p=0.020.",
+        "Ghasemipour, Gu & Nachum (ICML 2022): shared pessimistic Bellman targets across ensemble members can render an ensemble PARADOXICALLY OPTIMISTIC; member independence is the load-bearing condition.",
+        "Fujimoto & Gu (TD3+BC): RL alone is insufficient without the BC term, and performance is robust across a broad alpha range -- the same base-vs-regularisation decomposition."
+      ],
+      "sources": ["220513703-why-so-pessimistic", "210606860-a-minimalist-approach-to-offline-reinforcement-learning-2", "paper-under-audit (Elimination 1)"]
+    },
+    "evidence_quality_delta": "Side A is theory without an empirical base-vs-conservatism ablation (PEVI contains none). Side B has three independent empirical decompositions plus a proof that the mechanism can invert. Side B is stronger for the specific question of ATTRIBUTION.",
+    "scope_overlap": "Genuinely complementary: PEVI proves pessimism is sufficient for a guarantee; side B shows it is not the source of most of the observed gain. Ghasemipour is the important entry -- it supplies a candidate POSITIVE MECHANISM for the paper's inversion result, which the seven eliminations do not rule out, and which is testable on stored per-member predictions.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "eta2-at-small-n",
+    "fight": "Is eta-squared an appropriate effect-size report at n=7, and does the Friedman omnibus require a dataset-count floor?",
+    "side_a": {
+      "position": "The paper reports eta^2 throughout at n=7 without a bias caveat, and states that the Friedman omnibus is recommended for more than ten datasets.",
+      "claims": [
+        "this omnibus is recommended for more than ten datasets (demsar2006statistical)",
+        "eta^2_surr and eta^2_opt are the fractions of normalized-score variance carried by the two main effects"
+      ],
+      "sources": ["paper-under-audit (main.tex, sec:db and sec:confounds)"]
+    },
+    "side_b": {
+      "position": "eta^2 is a positively biased estimator with named bias-corrected alternatives, and Demsar contains no dataset-count floor -- he recommends the non-parametric route BECAUSE n is small.",
+      "claims": [
+        "Demsar 2006, verified first-hand over the 30-page JMLR PDF: 'more than ten'=0, 'at least ten'=0, 'ten or more'=0 occurrences. The two 'ten data sets' hits describe his own simulation sampling.",
+        "Demsar verbatim: 'we recommend ... the Friedman test with the corresponding post-hoc tests for comparison of more classifiers over multiple data sets' -- no count floor attached.",
+        "Demsar verbatim on his design context: 'the number of data sets is usually much less than 30.'",
+        "eta^2 and partial eta^2 are biased; omega^2 and epsilon^2 are the recommended corrections (Kelley 1935; Olejnik & Algina 2003).",
+        "The paper's OWN bootstrap artifacts estimate the bias: mean(theta*)-theta_hat is positive in all four corners, +0.0099 to +0.0184."
+      ],
+      "sources": ["statistical-comparisons-of-classifiers-over-multiple-data-sets", "journal-of-open-source-software-effectsize", "should-we-really-use-post-hoc-tests-based-on-mean-ranks", "results/bootstrap_eta_corners.json (repo artifact)"]
+    },
+    "evidence_quality_delta": "Side B is decisive on both limbs, and the Demsar limb was verified first-hand by the orchestrator rather than by relay.",
+    "scope_overlap": "GENUINE error on side A, in the paper's favour on one limb and against it on the other. The Demsar threshold does not exist and its absence HELPS the paper (Demsar endorses Friedman at small n). The eta^2 bias is real and unreported, but bias-correcting STRENGTHENS the headline (0.351->0.395, a rise of +0.0437 against the reported +0.0376). Both corrections improve the paper.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "n6-residual-width",
+    "fight": "Is the crossed surrogate x optimizer factorial genuinely unowned in offline MBO, or does a sufficiently broad reading of 'surrogate class' surrender it?",
+    "side_a": {
+      "position": "Unowned. No prior work runs a crossed surrogate x optimizer factorial with a two-way variance decomposition in offline MBO.",
+      "claims": [
+        "This paper runs the crossed surrogate x optimizer factorial and reports the two-way variance decomposition. We know of no prior instance in offline MBO."
+      ],
+      "sources": ["paper-under-audit (main.tex, Introduction)"]
+    },
+    "side_b": {
+      "position": "RaM Table 3 is a genuine 9x2 crossed grid in offline MBO, inside a paper the submission already cites -- and the submission characterises that paper as holding the optimizer constant.",
+      "claims": [
+        "Tan et al. RaM Table 3 ('Versatility of ranking loss') crosses 9 methods/optimizers (BO-qEI, CMA-ES, REINFORCE, Grad. Ascent, CbAS, MINs, Tri-Mentoring, PGS, Match-OPT) against 2 surrogate loss types (MSE vs ListNet), verbatim 'fixing their open-source codes by replacing MSE with ListNet when training the forward model'.",
+        "Reporting is descriptive only -- Score+/-std and %Gain, zero ANOVA or variance-decomposition hits.",
+        "DiBO (arXiv:2603.17919) Table 2 crosses backbone (diffusion/AR) x training stage (DA/SFT/RL) in a 2x3 grid, descriptive only."
+      ],
+      "sources": ["241011502-offline-model-based-optimization-by-learning-to-rank", "260317919-dibo"]
+    },
+    "evidence_quality_delta": "Side B raises a real and previously-missed near-miss (three prior fetches of RaM in this vault never surfaced Table 3). But side A survives on three independent grounds.",
+    "scope_overlap": "The residual SURVIVES on three grounds, none currently stated in the paper: (1) loss type is not model class -- swapping MSE for ListNet within one model family is not a GP-vs-ensemble comparison; (2) the nine are bundled METHODS (CbAS is generative, MINs is inverse modelling, PGS is policy search), not settings of a clean optimizer factor; (3) descriptive reporting with no decomposition. The danger is not that N6 is false but that it is undefended against the closest real competitor.",
+    "decision_relevance": "high"
+  },
+  {
+    "cluster_id": "improvement-guarantee",
+    "fight": "Should an offline optimizer be permitted to return a design worse than the best one it was given?",
+    "side_a": {
+      "position": "The paper treats its inversion result as a descriptive within-grid observation with no formal status.",
+      "claims": [
+        "We call that an inversion and count it per seed ... it is a demonstration within this grid, descriptive at n=7 tasks, not a mechanism with a causal test behind it."
+      ],
+      "sources": ["paper-under-audit (main.tex, sec:mech)"]
+    },
+    "side_b": {
+      "position": "Offline RL formalised exactly this as Safe Policy Improvement a decade ago, and builds algorithms to guarantee it.",
+      "claims": [
+        "Safe Policy Improvement: P(rho(pi,M) >= rho(pi_b,M) - zeta) >= 1-delta.",
+        "SPIBB (Laroche, Trichelair, Des Combes) Theorem 2 proves the algorithm is a zeta-approximate SPI over the baseline with high probability.",
+        "Thomas, Theocharous & Ghavamzadeh (ICML 2015) is the founding formalization: a user-chosen confidence level bounds the probability of returning a policy below a chosen lower bound."
+      ],
+      "sources": ["171206924-safe-policy-improvement-with-baseline-bootstrapping-2", "high-confidence-policy-improvement"]
+    },
+    "evidence_quality_delta": "Side B supplies a formal name, a definition and a theorem for a property side A observes informally. No empirical conflict -- this is an under-explanation, not a disagreement.",
+    "scope_overlap": "NOT a contradiction. It is the sharpest available reframing: the paper's inversion is evidence that offline MBO optimizers ship without a safe-improvement guarantee, a property the sibling field considered important enough to build algorithms around. Two sentences and two citations convert a descriptive count into a statement about a missing guarantee.",
+    "decision_relevance": "medium"
+  },
+  {
+    "cluster_id": "conformal-shift-transfer",
+    "fight": "Does weighted conformal prediction restore validity under the covariate shift induced by an optimizer's proposals?",
+    "side_a": {
+      "position": "The supplement's Proposition 2 states that under a shifted proposal with density ratio w = dPi/dP, validity is restored by weighting the calibration quantile by w.",
+      "claims": [
+        "Under a shifted proposal Pi != P with density ratio w=dPi/dP, validity is restored by weighting the calibration quantile by w (weighted conformal)."
+      ],
+      "sources": ["paper-under-audit (supplement.tex:48)"]
+    },
+    "side_b": {
+      "position": "That is exactly Tibshirani et al.'s theorem and is correct FOR KNOWN w. With estimated w there is no theorem, only empirical support -- and w is least knowable for optimizer-generated proposals.",
+      "claims": [
+        "Tibshirani et al. Theorem 2's exact guarantee holds when the true weight functions are known; their abstract separates the estimated case ('known -- or, in practice, can be estimated accurately') and supports it empirically only (91.0% vs 90% nominal, airfoil, 5000 splits).",
+        "Angelopoulos & Bates verbatim: 'This algorithm addresses a somewhat restricted case -- that of a known covariate shift'; 'exact when the magnitude of the distribution shift is known.'",
+        "The paper's own measurements: conformal repair 'restores in-distribution coverage to its 0.90 target on every task but leaves OOD coverage erratic' (0.00 on Styblinski, Griewank, UTR, Ant, D'Kitty)."
+      ],
+      "sources": ["190406019-conformal-prediction-under-covariate-shift-2", "a-gentle-introduction-to-conformal-prediction-and-distribution-free-uncertainty"]
+    },
+    "evidence_quality_delta": "Side B is correct about the condition, but side A is NOT wrong: the proposition explicitly writes w = dPi/dP, the true ratio, so the statement is formally sound. An initial subagent report claimed a missing hypothesis; reading the supplement directly refuted that and the severe framing was withdrawn.",
+    "scope_overlap": "NOT a contradiction -- a scoping omission. The clause is correct and inert: nothing in the paper estimates w or applies weighted conformal, and the erratic OOD coverage already reported is the expected consequence of the precondition being unavailable. Saying so converts an unexplained table into a scoped negative result.",
+    "decision_relevance": "medium"
+  },
+  {
+    "cluster_id": "surrogate-vs-optimizer-doctrine",
+    "fight": "Is 'the statistical model matters more than the acquisition heuristic' an established doctrine the paper must scope against, or is the paper over-conceding?",
+    "side_a": {
+      "position": "It is the organizing doctrine of the standard BO review and is a decade old, so the paper claims no field reversal.",
+      "claims": [
+        "That the choice of statistical model often matters more than the acquisition heuristic is the organizing doctrine of the standard Bayesian-optimization review (shahriari2016humanoutoftheloop) and is a decade old."
+      ],
+      "sources": ["paper-under-audit (main.tex, Scope)"]
+    },
+    "side_b": {
+      "position": "Confirmed -- Shahriari states it twice, and more strongly than the paper paraphrases.",
+      "claims": [
+        "Shahriari Overview, verbatim: 'We will see that the careful choice of statistical model is often far more important than the choice of acquisition function heuristic.'",
+        "Shahriari Conclusion, verbatim: '...we have taken the perspective that the importance of [acquisition function design] plays a secondary role to the choice of the underlying surrogate model.'",
+        "Zero hits for 'offline' across the full 137,300-character text, so the paper's restriction of the doctrine to online BO is accurate."
+      ],
+      "sources": ["taking-the-human-out-of-the-loop-a-review-of-bayesian-optimization-princeton-uni"]
+    },
+    "evidence_quality_delta": "No fight. Side B fully corroborates side A, and if anything the paper UNDERSTATES the source ('matters more' vs 'far more important').",
+    "scope_overlap": "No disagreement. Recorded as a resolved check rather than a live fight: I hypothesised the paper might be over-conceding priority to a source that never claimed the doctrine, and it is not. Included because a negative result on a hypothesised fight is evidence about the corpus, not an absence of evidence.",
+    "decision_relevance": "low"
+  }
+]

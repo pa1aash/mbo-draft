@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "The standard/typical regression nonconformity measure (absolute error |y_i - yhat_i|) used in conformal prediction produces predictive-region widths that do not adapt to per-example difficulty; the paper's normalized k-NN-based measures fix this by scaling width with expected local accuracy.",
+    "stance": "supports",
+    "stance_target": "The foundational, single-model per-instance version of Confound 4's principle that a shared/fixed interval-construction rule does not track true local uncertainty scale",
+    "evidence_type": "theoretical",
+    "scope_conditions": "k-Nearest Neighbours Regression conformal predictors (transductive and inductive), regression setting",
+    "quoted_support": "Our definitions normalize the standard measure based on the expected accuracy of the underlying algorithm for each example, which makes the width of the resulting predictive regions vary accordingly.",
+    "numbers": [],
+    "entities": ["Harris Papadopoulos", "Vladimir Vovk", "Alex Gammerman", "k-NN regression", "conformal prediction"],
+    "time_period": "2011 (JAIR); arXiv preprint posted 2014",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "14013880-regression-conformal-prediction-with-nearest-neighbours"
+  },
+  {
+    "claim": "Normalizing the nonconformity measure by a k-NN-distance-based expected-accuracy estimate produces predictive regions that are, in general, much tighter than those produced by the standard (unnormalized) regression nonconformity measure.",
+    "stance": "supports",
+    "stance_target": "The value/necessity of local dispersion-based normalization as the standard fix for shared-threshold miscalibration",
+    "evidence_type": "empirical",
+    "scope_conditions": "six benchmark regression datasets (Boston housing, Abalone, Computer Activity, Kin, Bank, Pumadyn)",
+    "quoted_support": "As a result, the predictive regions produced by our measures are in general much tighter than those produced by the standard regression measure.",
+    "numbers": ["six benchmark datasets", "six novel nonconformity measures"],
+    "entities": ["k-NN regression", "nonconformity measure"],
+    "time_period": "2011",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "14013880-regression-conformal-prediction-with-nearest-neighbours"
+  },
+  {
+    "claim": "This paper is the direct methodological antecedent Dewolf et al. 2022 cite as the origin of normalizing nonconformity measures by a dispersion function to fix the 'uniform (homoscedastic) prediction interval' problem of unnormalized conformal prediction; confirmed via direct primary-source fetch, not secondary paraphrase.",
+    "stance": "neutral",
+    "stance_target": "Citation-chain verification: does Papadopoulos et al. 2011 actually establish what Dewolf et al. 2022 (and by extension, the audited paper's Confound 4) attribute to it as the foundational fix?",
+    "evidence_type": "theoretical",
+    "scope_conditions": "N/A -- citation-chain verification",
+    "quoted_support": "The main aim of this work was to improve the typical regression nonconformity measure (8) by normalizing it with the expected accuracy of the underlying method. The intuition behind this is that if two examples have the same nonconformity score... and the prediction for one of them was expected to be more accurate than the other, then the former is actually stranger than the latter.",
+    "numbers": [],
+    "entities": ["Dewolf et al. 2022", "Papadopoulos et al. 2011"],
+    "time_period": "2011 / 2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "14013880-regression-conformal-prediction-with-nearest-neighbours"
+  }
+]

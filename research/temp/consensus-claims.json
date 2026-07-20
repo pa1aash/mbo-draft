@@ -1,0 +1,129 @@
+[
+  {
+    "consensus_id": "n6-no-crossed-factorial",
+    "claim": "No prior work in offline MBO or offline black-box optimization runs a crossed surrogate-class x optimizer factorial with a two-way variance decomposition of the outcome.",
+    "independent_sources": [
+      "8 x 2026-frontier offline-MBO/BBO papers (2606.15217, 2603.04000, 2603.06082, 2604.12325, 2605.11246, 2603.17919, 2601.14446, 2503.17286) -- 0 hits across all 12 decomposition terms",
+      "Design-Bench (2202.08450)",
+      "RaM / Tan et al. (2410.11502)",
+      "SOO-Bench (Zhu & Qian)",
+      "COMs (2107.06882)",
+      "RoMA (2110.14188)",
+      "lu2022revisiting (2110.04135) -- offline model-based RL sibling genre",
+      "Hutter fANOVA (ICML 2014) -- one-way, one fixed SMAC run",
+      "Liang et al. (npj Comput Mater 2021) -- crossed but descriptive, and online",
+      "Moosbauer et al. (IEEE TEVC 2022) -- two-axis, explicitly declines fANOVA",
+      "EXPObench (2023)",
+      "Bischl et al. HPO survey (2023)",
+      "~347 forward citations walked across Hutter/Liang/Moosbauer/van Rijn"
+    ],
+    "source_count": 13,
+    "agreement_strength": "very high -- this is the audit's central negative result and it survived a recency sweep, a near-miss re-confirmation, an extension check, and an adjacent-field sweep",
+    "assert_without_hedging": true,
+    "caveat": "Assert with the residual's three grounds stated (loss type != model class; bundled methods != a clean optimizer factor; descriptive reporting != a decomposition), because RaM Table 3 is a genuine 9x2 crossed grid in offline MBO and is the closest competitor."
+  },
+  {
+    "consensus_id": "offline-mbo-bundles-axes",
+    "claim": "The offline-MBO literature evaluates surrogate and optimizer as one bundled atomic method per baseline, never crossing them independently.",
+    "independent_sources": ["Design-Bench", "RaM / Tan et al.", "SOO-Bench", "COMs", "RoMA", "Kim et al. TMLR 2026 survey"],
+    "source_count": 6,
+    "agreement_strength": "very high",
+    "assert_without_hedging": true,
+    "caveat": "This is the confounded status quo the paper says it dissects, and it is well supported. The Kim survey's own sentence corroborates it, though that sentence sits in a section about uncertainty-quantification evaluation rather than being a call for a crossed factorial."
+  },
+  {
+    "consensus_id": "audits-historically-shrink-instances",
+    "claim": "In the canonical ML reality-check audits, a claimed advantage shrank or reversed once evaluation was properly controlled.",
+    "independent_sources": [
+      "Melis et al. ICLR 2018 (tuned LSTM matches/beats newer architectures)",
+      "Ferrari Dacrema et al. 2019 (neural recommenders)",
+      "Musgrave et al. 2020 (metric learning)",
+      "Lucic et al. NeurIPS 2018 (GANs)",
+      "Recht et al. ICML 2019 (8-11 point accuracy drops)"
+    ],
+    "source_count": 5,
+    "agreement_strength": "high as a set of INSTANCES",
+    "assert_without_hedging": false,
+    "caveat": "CRITICAL SCOPING. Five instances agreeing is not a law, and none of the five states a genre-wide directional rule. The paper currently cites ONE of them (Melis) for the general claim 'audits normally shrink'. Cite the set for the pattern, never one for a law -- and note Maassen et al. 2020 finds corrections going up about as often as down (19 vs 14) in a large systematic audit outside ML."
+  },
+  {
+    "consensus_id": "deep-ensembles-not-distance-aware",
+    "claim": "Standard deep ensembles are not input-distance-aware in the SNGP sense; their uncertainty reflects distance from decision boundaries rather than distance from the data manifold.",
+    "independent_sources": [
+      "SNGP (Liu et al. NeurIPS 2020) -- Figure 1 and Definition 1",
+      "DUQ (van Amersfoort et al.) -- Figure 1 caption",
+      "Padhy et al., Revisiting One-vs-All (same research program)"
+    ],
+    "source_count": 3,
+    "agreement_strength": "high",
+    "assert_without_hedging": true,
+    "caveat": "All three are CLASSIFICATION results; none runs regression experiments. This is the basis for Mandatory Fix 2: the paper cites SNGP to bound a claim that its ensemble's sigma IS a distance signal, which inverts the source. State the classification/regression gap explicitly when using this."
+  },
+  {
+    "consensus_id": "failure-to-reject-is-not-equivalence",
+    "claim": "A failure to reject a null hypothesis is not a demonstration that an effect is absent, particularly at small sample sizes.",
+    "independent_sources": [
+      "Agarwal et al. NeurIPS 2021 -- 'lack of statistically significant results does not demonstrate the absence of effect'",
+      "Demsar JMLR 2006 -- non-parametric tests recommended precisely because n is small and normality is unavailable",
+      "Benavoli et al. JMLR 2016 -- mean-ranks post-hoc power collapses (0.046 vs 0.94 for the sign test on the same comparison)"
+    ],
+    "source_count": 3,
+    "agreement_strength": "very high",
+    "assert_without_hedging": true,
+    "caveat": "The paper's handling of this is CORRECT and well-cited; it reports the Design-Bench result as no-detectable-difference and never as equivalence. The only defect is the fabricated 'more than ten datasets' threshold attributed to Demsar, whose removal strengthens rather than weakens the passage."
+  },
+  {
+    "consensus_id": "budget-determines-the-winner",
+    "claim": "Computational budget is not a nuisance parameter in optimizer comparison: equalizing it can change which method wins, and budget-dependent benchmarking is an established methodological category.",
+    "independent_sources": [
+      "COCO/BBOB, Hansen et al. 2016, section 3.5 -- fixed-budget vs fixed-target views, anytime assessment",
+      "Lucic et al. NeurIPS 2018 -- 'bad models can outperform good models given enough computational budget'",
+      "Kazikova et al. 2021 IEEE Access -- budget-matching is standard practice in metaheuristics; raising budget 'may significantly affect the final verdict'",
+      "Melis et al. ICLR 2018 -- tuning budget as the confound that reversed LM architecture rankings"
+    ],
+    "source_count": 4,
+    "agreement_strength": "very high",
+    "assert_without_hedging": true,
+    "caveat": "This is the settled ground that makes the paper's budget finding a CONTRIBUTION TO A NAMED LINE rather than a defence against an objection. The paper's own budget result carries its only disjoint bootstrap intervals and a ranking flip, and cites none of these four."
+  },
+  {
+    "consensus_id": "eta2-biased-at-small-n",
+    "claim": "Eta-squared and partial eta-squared are positively biased estimators of variance explained; omega-squared and epsilon-squared are the bias-corrected alternatives, and the bias matters most at small n.",
+    "independent_sources": [
+      "Kelley 1935 (via JOSS effectsize documentation quoting it verbatim -- primary paywalled)",
+      "Olejnik & Algina 2003, ~1,647 citations (via the same route -- primary paywalled)",
+      "The paper's OWN bootstrap artifacts: mean(theta*) - theta_hat positive in all four corners, +0.0099 to +0.0184 (results/bootstrap_eta_corners.json)"
+    ],
+    "source_count": 3,
+    "agreement_strength": "high, with a provenance caveat",
+    "assert_without_hedging": true,
+    "caveat": "The two foundational statistics sources were verified SECONDHAND (paywalled everywhere attempted). The empirical half is first-hand and decisive -- I computed the bias directly from the paper's own artifacts. Bias-correcting moves the headline 0.367->0.405 to 0.351->0.395, so the direction survives and the effect grows."
+  },
+  {
+    "consensus_id": "off-support-optimization-degrades-value",
+    "claim": "Optimizing against a learned surrogate drives designs off-support, where the surrogate over-predicts and true value degrades.",
+    "independent_sources": [
+      "Fannjiang & Listgarten NeurIPS 2020 -- 'outputs, including its uncertainty estimates, become unreliable beyond the training data'",
+      "Gao, Schulman & Hilton ICML 2023 -- closed-form degradation R(d) in KL distance from the data",
+      "Fujimoto et al. BCQ / Kumar et al. CQL -- extrapolation error and value overestimation in offline RL",
+      "The paper's own measurement: distance predicts over-prediction (rho=+0.758) and true loss (rho=-0.818) across 5,040 optima"
+    ],
+    "source_count": 4,
+    "agreement_strength": "very high",
+    "assert_without_hedging": true,
+    "caveat": "Settled ground the paper can assert without defence. What is NOT settled, and is the paper's genuine contribution, is that this law does not DISCRIMINATE between surrogate classes at matched distance. Frame the paper's Elimination 7 as a refinement of this consensus rather than as an independent discovery -- Fannjiang stated the diagnosis in 2020 and is uncited."
+  },
+  {
+    "consensus_id": "shahriari-doctrine-real",
+    "claim": "The standard Bayesian-optimization review asserts that the choice of statistical model often matters more than the choice of acquisition heuristic, and does so as an organizing thesis.",
+    "independent_sources": [
+      "Shahriari et al. Proc IEEE 2016 Overview section",
+      "Shahriari et al. Proc IEEE 2016 Conclusion section",
+      "Chemingui et al. AAAI 2024 -- independently asserts the complementary premise that prior offline BBO work focused on surrogates while using fixed search strategies"
+    ],
+    "source_count": 2,
+    "agreement_strength": "very high (two independent statements within the canonical review, plus corroboration of the complementary premise)",
+    "assert_without_hedging": true,
+    "caveat": "Verified because I hypothesised the paper might be OVER-conceding priority here. It is not -- the review states the doctrine twice, and more strongly than the paper's paraphrase. The paper's restriction of the doctrine to online BO is also sound: zero hits for 'offline' in 137,300 characters."
+  }
+]
