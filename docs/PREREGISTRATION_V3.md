@@ -101,3 +101,101 @@ silently accepted.
   outside the pre-registered decision rules, that is reported as such rather than
   reinterpreted.
 - `docs/SESSION_STATE.md` updated after each unit.
+
+---
+
+## 0D — Far-field functional form, instrumented (FF1/FF2/FF3)
+
+0C (`docs/MECHANISM_FARFIELD.md`, branch `mechanism-farfield`) returned NOT-COMPUTABLE: no
+surrogate is reconstructable from disk, no design coordinates survive a run, so neither FF1 nor
+FF2 could be formed from stored artifacts. 0C named the cheap fix — store the surrogate MEAN on
+a fixed ray grid, kilobytes per cell, which makes FF1 computable and discharges the NTK
+assumption at the same time. 0D is that fix, executed ONCE.
+
+**Scope and stopping rule, fixed in advance.** This is a NEW synthetic run: it re-executes
+`train_ensemble`, `fit_botorch_gp` and `fit_svgp`. It is the minimal instrumented version —
+synthetic tasks only, one attempt. If the mechanism does not cleanly separate the classes under
+the decision rules below, that is a KEEP-ELIMINATION verdict and the arm is closed. It is not a
+reason to re-specify the diagnostic and try again.
+
+**Engine.** X1=on, X3=on, beta=2, K=5, 30 seeds (`0..29`), 7 synthetic tasks, `envs/pod-synth`
+(python 3.12.3, torch 2.11.0+cpu, numpy 2.4.4, botorch 0.18.1, gpytorch 1.15.2, cma 4.4.4).
+Full 19-field engine stamp per `run_all.REQUIRED_META` on every artifact.
+
+**Non-mutation of the incumbent engine.** The Stage-0 corpus must stay bit-reproducible, so
+`code/mbo.py` is NOT modified. All instrumentation lives in a new module `code/farfield_v2.py`
+which imports `mbo` read-only; the instrumentation is therefore default-OFF for every existing
+caller by construction. This is verified two ways, both reported: (i) `git diff` on `code/mbo.py`
+against `main` must be empty; (ii) the incumbent grid path is re-run at beta=2 through
+`run_all._worker` and compared cell-by-cell against `results/kbeta/grid_b2.0.json`, replicating
+the validity check `docs/WIDTH_ABLATION.md` applied to the width arm. The pre-registered
+reproduction standard is that one: **grad and cma bit-exact on all 7 tasks; perturb within
+noise**, because `perturb_opt` draws from the global numpy RNG without reseeding
+(`code/mbo.py:257-272`) so its stream position depends on call order. A perturb deviation within
+the width arm's observed envelope is not a failure; a grad or cma deviation is.
+
+### Ray-grid geometry (fixed before the run)
+
+The synthetic offline datasets are `uniform(0,1)^d` (`code/mbo.py:46-54`), so the training
+support IS the unit box and "beyond the support" means outside `[0,1]^d`. Rays are therefore
+parametrized by their exit point, which also makes 2-D and 30-D comparable on one axis:
+
+- Centroid `c = x.mean(axis=0)` over the offline dataset D.
+- **16 rays** per task: the first `min(d,8)` axis directions `+e_i`, then random unit vectors to
+  fill 16, drawn from `RandomState(777 + task_index)` — seeded by TASK not by seed, so every
+  seed sees the same rays and per-ray statistics pool across seeds.
+- `t_exit(u)` = the distance from `c` to the box face along `u`; the point at normalized radius
+  `s` is `c + s * t_exit(u) * u`. So `s=1` is exactly the box boundary, `s<1` is inside the
+  support, `s>1` is outside it.
+- **s grid, 61 points**: `linspace(0, 1.0, 21)` concatenated with `linspace(1.05, 3.0, 40)`.
+- **FAR segment** (FF1): `s in [1.5, 3.0]`, 31 points. **NEAR segment** (FF3): `s in [0.6, 1.0]`,
+  9 points.
+- Stored per (task, seed, class, ray) in `results/mechanism/farfield_v2/rays_<task>.json`.
+
+Classes: `ens` (K=5 ReLU MLP ensemble), `botorchgp` (exact GP), `svgp`. Both GPs carry a
+`ConstantMean`, so reversion is toward a fitted constant.
+
+### The constant-mean trap, and why R2 alone is not enough
+
+A mean that has reverted to a constant is **perfectly fit by a linear function** (slope 0), and
+its R2 is `0/0`. R2 alone therefore cannot distinguish "extrapolates linearly without bound"
+from "reverted to a constant" — the two hypotheses FF1 exists to separate. The discriminator is
+recorded alongside R2 and both are fixed here in advance:
+
+- `R2` — coefficient of determination of the least-squares fit `mu ~ a + b*s` on the segment.
+  R2 is invariant to affine rescaling of `mu`, so it is comparable across classes regardless of
+  each surrogate's internal target standardization.
+- `slope` — the fitted `b`, expressed in **sd_y per unit s** (`sd_y = np.std(y)` over D).
+- `range` — `max(mu) - min(mu)` over the segment in sd_y units. A curve with `range < 0.01`
+  sd_y is labelled DEGENERATE-CONSTANT; its R2 is recorded as NaN and excluded from R2 medians,
+  and it is counted in `frac_constant`.
+
+Per (task, class) the medians are taken over rays x seeds, and each (task, class) receives one
+label:
+
+- **LINEAR-GROWING** iff median far-field R2 >= 0.90 AND median far-field |slope| >= 0.5 sd_y.
+- **REVERTING** iff median far-field |slope| < 0.05 sd_y.
+- **OTHER** otherwise.
+
+| ID | Prediction |
+|---|---|
+| **FF1** | Fitting each surrogate's stored ray-grid mu against a linear function of s on the FAR segment, the ENSEMBLE mean is well-fit by a linear ray-function and keeps growing, while the GP means are not — they revert toward their prior constant. **CONFIRMED** iff `ens` is LINEAR-GROWING on >= 5/7 tasks AND `botorchgp` and `svgp` are each REVERTING on >= 5/7 tasks. **KILL** iff the classes fail to separate on that label — `ens` is not LINEAR-GROWING on a majority of tasks, or either GP class is LINEAR-GROWING on a majority. Median R2 and median slope are reported per class per task either way. |
+| **FF2** | The ensemble's returned optima sit closer to the BOX BOUNDARY than the GPs', because an unbounded-growth linear mean is maximized at the boundary. Boundary distance is `d_bnd(x) = min_i min(x_i, 1 - x_i)`, in `[0, 0.5]`; the returned optimum x* is the proposal maximizing the surrogate MEAN, the same definition 0B pre-registered. Companion statistic, reported alongside because `d_bnd` compresses as d grows: `frac_at_bound`, the fraction of coordinates within 0.01 of a face. **CONFIRMED** iff median `d_bnd(ens)` < median `d_bnd` of both GP classes on >= 5/7 tasks. **KILL** iff boundary-proximity is equal across classes — then boundary-seeking is not the mechanism. |
+| **FF3** | *(NTK assumption discharge — reported, NOT a kill condition.)* At the TRAINING boundary the ensemble mean is already in a linear-ray regime. Measured as median R2 and median \|slope\| on the NEAR segment `s in [0.6, 1.0]`, per task. This is the w=96-in-NTK-regime assumption 0C flagged as undischarged; 0D reports it so the write-up can either discharge it or carry it as a stated caveat. |
+
+**Decision rules, fixed in advance.**
+- The binary is **POSITIVE-MECHANISM** iff FF1 and FF2 BOTH reach CONFIRMED. Anything else —
+  either KILL firing, or any outcome falling between CONFIRMED and KILL — is
+  **KEEP-ELIMINATION**, and section 5 ships as seven eliminations.
+- FF3 does not gate the binary. If FF1 and FF2 both confirm but FF3 shows the ensemble is NOT
+  already linear at the training boundary, the mechanism is reported as POSITIVE-MECHANISM with
+  the NTK-regime premise carried as an explicit REMAINING CAVEAT, not silently discharged.
+- An outcome falling outside these rules is reported as such rather than reinterpreted.
+- One attempt. No re-specification of the diagnostic after seeing the numbers.
+
+**Compatibility with Elimination 2 (recorded in advance).** 0D is not inconsistent with
+Elimination 2's use of NTK to argue width does not matter. The asymptotics are in different
+variables: Xu et al. (arXiv:2009.11848) Thm 1 is asymptotic in far-field DISTANCE along a ray at
+fixed width; Elimination 2 is asymptotic in WIDTH at fixed input. A network can be
+width-insensitive and still linearly extrapolating. The two constrain orthogonal limits and must
+not be read as contradictory.
