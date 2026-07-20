@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Recht et al. report a linear-fit slope of 1.69 for new-vs-original test accuracy on CIFAR-10.",
+    "stance": "supports",
+    "stance_target": "N9's numeric claim: 'a relative slope above one---1.69 on CIFAR-10, 1.11 on ImageNet'",
+    "evidence_type": "empirical",
+    "scope_conditions": "New CIFAR-10 test set built by replicating the original Krizhevsky dataset-creation process",
+    "quoted_support": "\"accnew = 1.69 * accorig - 72.7%\" ... \"Computing a 95% confidence interval from 100,000 bootstrap samples gives [1.63, 1.76] for the slope\"",
+    "numbers": ["1.69", "72.7", "1.63", "1.76"],
+    "entities": ["Benjamin Recht", "Rebecca Roelofs", "Ludwig Schmidt", "Vaishaal Shankar", "CIFAR-10"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190210811-do-imagenet-classifiers-generalize-to-imagenet"
+  },
+  {
+    "claim": "Recht et al. report a linear-fit slope of 1.11 for new-vs-original top-1 test accuracy on ImageNet.",
+    "stance": "supports",
+    "stance_target": "N9's numeric claim: 'a relative slope above one---1.69 on CIFAR-10, 1.11 on ImageNet'",
+    "evidence_type": "empirical",
+    "scope_conditions": "New ImageNet validation set built by replicating the original ILSVRC dataset-creation process",
+    "quoted_support": "\"accnew = 1.11 * accorig - 20.2%\" ... \"[1.07, 1.19] and [-26.0, -17.8] respectively for ImageNet\" [slope and offset 95% CIs]",
+    "numbers": ["1.11", "20.2", "1.07", "1.19"],
+    "entities": ["Recht", "ImageNet", "ILSVRC"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190210811-do-imagenet-classifiers-generalize-to-imagenet"
+  },
+  {
+    "claim": "A slope greater than 1 in Recht et al.'s regression means models with higher original accuracy see a smaller accuracy drop on new test sets -- i.e. higher-accuracy models are more robust to distribution shift between old and new test sets, not that any single model's claimed advantage over another model grew.",
+    "stance": "neutral",
+    "stance_target": "precise meaning of the slope>1 statistic, for correct downstream characterization",
+    "evidence_type": "empirical",
+    "scope_conditions": "Cross-model regression on CIFAR-10 and ImageNet replication test sets",
+    "quoted_support": "\"On both datasets, the slope of the linear fit is greater than 1. So models with higher original accuracy see a smaller drop on the new test sets. In other words, model robustness improves with increasing accuracy.\"",
+    "numbers": ["1.69", "1.11"],
+    "entities": ["Recht", "CIFAR-10", "ImageNet"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190210811-do-imagenet-classifiers-generalize-to-imagenet"
+  },
+  {
+    "claim": "Recht et al.'s own headline finding is a large accuracy drop (8-11 percentage points for common architectures) on replicated test sets relative to the original ones, placing this paper itself within the 'audits shrink the claimed effect' family rather than illustrating a growth pattern.",
+    "stance": "refutes",
+    "stance_target": "any implication that Recht et al. exemplifies audits growing an effect",
+    "evidence_type": "empirical",
+    "scope_conditions": "CIFAR-10 and ImageNet classifiers, standard architectures (VGG, ResNet) plus best available 2018-2019 models",
+    "quoted_support": "\"All models see a large drop in accuracy from the original test sets to our new test sets. For widely used architectures such as VGG and ResNet, the drop is 8% on CIFAR-10 and 11% on ImageNet.\"",
+    "numbers": ["8", "11"],
+    "entities": ["VGG", "ResNet", "CIFAR-10", "ImageNet"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190210811-do-imagenet-classifiers-generalize-to-imagenet"
+  }
+]

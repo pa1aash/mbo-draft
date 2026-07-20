@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Benavoli, Corani, and Mangili's mean-ranks critique was published in the Journal of Machine Learning Research, volume 17, in 2016, not 2015.",
+    "stance": "supports",
+    "stance_target": "user-flagged citation trap: 'Benavoli is JMLR 2016 (arXiv 2015)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Publication header of the JMLR version",
+    "quoted_support": "\"Journal of Machine Learning Research 17 (2016) 1-10\" ... \"Submitted 11/14; Revised 3/15; Published 3/16\"",
+    "numbers": ["17", "2016"],
+    "entities": ["Alessio Benavoli", "Giorgio Corani", "Francesca Mangili", "JMLR"],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  },
+  {
+    "claim": "The mean-ranks post-hoc test's outcome for a comparison between two specific algorithms A and B depends on which other algorithms are included in the same experimental pool, unlike Wilcoxon-signed-rank-based pairwise comparisons.",
+    "stance": "supports",
+    "stance_target": "N9's citation of Benavoli for 'mean-rank conclusions depend on the pool of compared methods'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Statistical comparison of multiple classifiers over multiple datasets, general methodological result with worked examples",
+    "quoted_support": "\"the outcome of the mean-ranks test depends on the pool of algorithms originally included in the experiment. In other words, the outcome of the comparison between algorithms A and B depends also on the performance of the other algorithms in the pool.\"",
+    "numbers": [],
+    "entities": ["Benavoli", "mean-ranks test", "Friedman test"],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  },
+  {
+    "claim": "Benavoli et al. show concretely that for any pool of algorithms, the Wilcoxon-signed-rank-based decision about a specific pairwise comparison stays fixed, while the mean-ranks-test decision for the identical pair changes depending on which other algorithms are in the pool.",
+    "stance": "supports",
+    "stance_target": "the pool-dependence mechanism underlying N9's citation of Benavoli",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Worked numerical example with algorithms C1-C5 and additional algorithms C, D, E",
+    "quoted_support": "\"for any pool of algorithms C2, C4, Cx, Cy, we always report the same decision: C2, C4 are [significantly different]\" [via Wilcoxon] versus the mean-ranks conclusion which \"clearly depends on the pool of alternative classifiers\"",
+    "numbers": ["0.0002"],
+    "entities": ["Wilcoxon signed-rank test", "mean-ranks test"],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  },
+  {
+    "claim": "Benavoli et al. recommend replacing the mean-ranks post-hoc test with the sign test or Wilcoxon signed-rank test for statistical comparisons in machine learning, medicine, and psychology.",
+    "stance": "neutral",
+    "stance_target": "methodological recommendation context",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General recommendation across scientific fields using multiple-algorithm comparisons",
+    "quoted_support": "\"the aim of this technical note is to discuss the inconsistencies of the mean-ranks post-hoc test with the goal of discouraging its use in machine learning as well as in medicine, psychology, etc.\"",
+    "numbers": [],
+    "entities": ["Benavoli", "sign test", "Wilcoxon signed-rank test"],
+    "time_period": "2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  }
+]

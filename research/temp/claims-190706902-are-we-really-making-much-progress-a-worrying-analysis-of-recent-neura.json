@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Ferrari Dacrema et al. find that 6 of 18 reproduced neural recommender-system papers can be outperformed by simple heuristic (nearest-neighbor or graph-based) methods, and only 1 of the 18 clearly outperformed baselines without also losing to a well-tuned non-neural linear ranking method.",
+    "stance": "supports",
+    "stance_target": "the 'audits shrink' pattern generally cited alongside melis2018sota",
+    "evidence_type": "empirical",
+    "scope_conditions": "18 neural recommendation papers from KDD, SIGIR, WWW, RecSys (2015-2018)",
+    "quoted_support": "\"it turned out that 6 of them can often be outperformed with comparably simple heuristic methods, e.g., based on nearest-neighbor or graph-based techniques. The remaining one clearly outperformed the baselines but did not consistently outperform a well-tuned non-neural linear ranking method.\"",
+    "numbers": ["6", "18", "1"],
+    "entities": ["Ferrari Dacrema", "Cremonesi", "Jannach", "ItemKNN", "MCRec", "SpectralCF"],
+    "time_period": "2015-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190706902-are-we-really-making-much-progress-a-worrying-analysis-of-recent-neura"
+  },
+  {
+    "claim": "A traditional ItemKNN method, when properly configured, outperforms the neural MCRec model on all measured performance metrics.",
+    "stance": "supports",
+    "stance_target": "specific case-study evidence for the shrink direction",
+    "evidence_type": "empirical",
+    "scope_conditions": "MCRec reproduction case study",
+    "quoted_support": "\"Table 3 shows that the traditional ItemKNN method, when configured correctly, outperforms MCRec on all performance measures.\"",
+    "numbers": [],
+    "entities": ["ItemKNN", "MCRec"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190706902-are-we-really-making-much-progress-a-worrying-analysis-of-recent-neura"
+  },
+  {
+    "claim": "SpectralCF, a neural graph-based recommender, performed worse than baseline methods in every configuration tested and was even outperformed by a non-personalized TopPopular baseline.",
+    "stance": "supports",
+    "stance_target": "specific case-study evidence for the shrink direction",
+    "evidence_type": "empirical",
+    "scope_conditions": "SpectralCF reproduction case study, multiple datasets",
+    "quoted_support": "\"SpectralCF in all configurations performed worse than our baseline methods and was outperformed even by the TopPopular method.\"",
+    "numbers": [],
+    "entities": ["SpectralCF", "TopPopular"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190706902-are-we-really-making-much-progress-a-worrying-analysis-of-recent-neura"
+  }
+]

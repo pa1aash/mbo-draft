@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Agarwal et al. explicitly warn that a lack of statistically significant results does not demonstrate the absence of an effect.",
+    "stance": "supports",
+    "stance_target": "power argument re: failure-to-reject vs. equivalence",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Deep RL benchmark evaluation practice, general statistical-thinking recommendation",
+    "quoted_support": "\"lack of statistically significant results does not demonstrate the absence of effect (Figure 2, right), and 2) given enough data, any trivial effect can be statistically significant but may not be practically significant.\"",
+    "numbers": [],
+    "entities": ["Rishabh Agarwal", "Max Schwarzer", "Aaron Courville", "Pablo Samuel Castro"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice"
+  },
+  {
+    "claim": "With 5 runs, an improvement of SPR over DrQ on Atari 100k is not statistically significant, but the effect is real and becomes significant once more runs are evaluated, so claiming 'no improvement' from the low-n result would be misleading.",
+    "stance": "supports",
+    "stance_target": "small-n evaluation fragility / failure-to-reject-is-not-equivalence argument",
+    "evidence_type": "empirical",
+    "scope_conditions": "Atari 100k benchmark, deep RL data-efficiency algorithms (DER, OTR, DrQ, CURL, SPR)",
+    "quoted_support": "\"while improvement from SPR over DER with 5 to 15 runs is not statistically significant, claiming 'no improvement' would be misleading as evaluating more runs indeed shows that the improvement is significant.\"",
+    "numbers": ["5", "15"],
+    "entities": ["SPR", "DER", "DrQ", "Atari 100k"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice"
+  },
+  {
+    "claim": "Prior reported results on the Atari 100k benchmark are computed mostly from 3-5 runs per algorithm, while reliably detecting statistically significant performance differences requires roughly 50-100 runs.",
+    "stance": "supports",
+    "stance_target": "small-n / underpowered evaluation critique in the ML audit genre",
+    "evidence_type": "empirical",
+    "scope_conditions": "Atari 100k benchmark, deep RL literature circa 2021",
+    "quoted_support": "\"Prior reported results on this benchmark have been computed mostly from 3 ... or 5 runs ..., and more rarely, 10 ... or 20 runs\" and separately \"we find that this number is closer to 50-100 runs in Atari [for reliably assessing performance differences]\".",
+    "numbers": ["3", "5", "10", "20", "50", "100"],
+    "entities": ["Atari 100k", "DER", "OTR", "DrQ", "CURL", "SPR"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice"
+  },
+  {
+    "claim": "Agarwal et al. recommend confidence intervals and effect sizes over dichotomous significance testing, citing Amrhein, Romer, and Wasserstein's calls to abandon 'statistical significance' as a criterion.",
+    "stance": "neutral",
+    "stance_target": "methodological grounding for the power argument",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General statistical-reporting recommendation applied to deep RL",
+    "quoted_support": "\"we recommend using confidence intervals for measuring the uncertainty in results and showing effect sizes (e.g., performance improvements over baseline) that are compatible with the given data. Furthermore, we emphasize using statistical thinking but avoid statistical significance tests\"",
+    "numbers": [],
+    "entities": ["Amrhein", "Romer", "Wasserstein"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210813264-deep-reinforcement-learning-at-the-edge-of-the-statistical-precipice"
+  }
+]

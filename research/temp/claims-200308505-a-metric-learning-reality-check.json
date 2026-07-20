@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Musgrave et al. find that metric-learning papers have drastically overstated improvements over classic contrastive/triplet losses, with some papers claiming relative improvements exceeding 100%, while controlled re-evaluation shows only marginal or flat progress from 2006 to 2019.",
+    "stance": "supports",
+    "stance_target": "the 'audits shrink' pattern generally cited alongside melis2018sota",
+    "evidence_type": "empirical",
+    "scope_conditions": "Deep metric learning literature, image retrieval benchmarks, methods published 2006-2019",
+    "quoted_support": "\"papers have drastically overstated improvements over the two classic methods... with some claiming relative improvements exceeding 100% when compared with the contrastive loss... The trend appears to be a relatively flat line, indicating that the methods perform similarly to one another, whether they were introduced in 2006 or 2019.\"",
+    "numbers": ["100"],
+    "entities": ["Musgrave", "Belongie", "Lim", "contrastive loss", "triplet loss"],
+    "time_period": "2006-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200308505-a-metric-learning-reality-check"
+  },
+  {
+    "claim": "Musgrave et al.'s controlled conclusion is that state-of-the-art metric-learning loss functions perform only marginally better than, and sometimes on par with, classic baselines once evaluation confounds (embedding size, augmentation, optimizer) are controlled.",
+    "stance": "supports",
+    "stance_target": "the 'audits shrink' pattern",
+    "evidence_type": "empirical",
+    "scope_conditions": "Controlled re-evaluation with matched embedding size and training protocol",
+    "quoted_support": "\"state-of-the-art loss functions perform marginally better than, and sometimes on par with, [classic contrastive/triplet methods]\"",
+    "numbers": [],
+    "entities": ["Musgrave"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200308505-a-metric-learning-reality-check"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Henderson et al.'s 'Deep Reinforcement Learning that Matters' was published at AAAI 2018, not 2017, despite Semantic Scholar and many citing papers listing it as 2017.",
+    "stance": "supports",
+    "stance_target": "user-flagged citation trap: 'Henderson is AAAI 2018 (S2 says 2017)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Publication metadata printed directly on the paper's first page",
+    "quoted_support": "\"Copyright c 2018, Association for the Advancement of Artificial Intelligence (www.aaai.org). All rights reserved.\"",
+    "numbers": ["2018"],
+    "entities": ["Peter Henderson", "Riashat Islam", "Philip Bachman", "Joelle Pineau", "Doina Precup", "David Meger", "AAAI"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170906560-deep-reinforcement-learning-that-matters"
+  },
+  {
+    "claim": "The '2017' date commonly attached to Henderson et al. traces to the arXiv preprint posting date (Sept 2017), which is also the version Melis et al. (2017/2018) cite in their own reference list.",
+    "stance": "neutral",
+    "stance_target": "explaining mechanism behind the citation trap",
+    "evidence_type": "empirical",
+    "scope_conditions": "Cross-reference between Melis et al.'s bibliography and Henderson et al.'s arXiv submission history",
+    "quoted_support": "Melis et al. reference list: \"Peter Henderson, Riashat Islam, Philip Bachman, Joelle Pineau, Doina Precup, and David Meger. Deep reinforcement learning that matters. arXiv preprint arXiv:1709.06560, 2017.\"",
+    "numbers": ["1709.06560", "2017", "2018"],
+    "entities": ["Henderson", "Melis"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "170906560-deep-reinforcement-learning-that-matters"
+  },
+  {
+    "claim": "Henderson et al. demonstrate that deep RL policy-gradient benchmark comparisons can flip based on codebase, network architecture, activation function, and random seed count alone, independent of the underlying algorithm.",
+    "stance": "supports",
+    "stance_target": "broader reproducibility/audit-genre context",
+    "evidence_type": "empirical",
+    "scope_conditions": "Continuous control policy-gradient methods (TRPO, PPO, DDPG, ACKTR) on standard MuJoCo benchmarks",
+    "quoted_support": "\"In (Islam et al. 2017), it is shown that policy network architecture can significantly impact results in both TRPO and DDPG.\"",
+    "numbers": ["5"],
+    "entities": ["TRPO", "PPO", "DDPG", "ACKTR"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "170906560-deep-reinforcement-learning-that-matters"
+  }
+]

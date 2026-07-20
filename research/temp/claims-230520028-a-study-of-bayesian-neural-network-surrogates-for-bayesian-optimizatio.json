@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Li, Rudner & Wilson's 'A Study of Bayesian Neural Network Surrogates for Bayesian Optimization' (arXiv:2305.20028) was published at ICLR 2024, not 2023.",
+    "stance": "neutral",
+    "stance_target": "citation year accuracy for li2024bnnsurrogates",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv metadata / venue field",
+    "quoted_support": "Comments: ICLR 2024. Code available at this https URL",
+    "numbers": ["v1: 31 May 2023", "v2: 8 May 2024"],
+    "entities": ["Yucen Lily Li", "Tim G. J. Rudner", "Andrew Gordon Wilson", "ICLR 2024"],
+    "time_period": "2023-2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "230520028-a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimizatio"
+  },
+  {
+    "claim": "Semantic Scholar-style citation metadata that dates this paper to 2023 is a confirmed citation trap, since the underlying preprint's first submission (v1) was in 2023 but the citable, peer-reviewed publication is ICLR 2024 (v2, camera-ready).",
+    "stance": "supports",
+    "stance_target": "the audited paper's need to verify li2024bnnsurrogates as 2024 not 2023",
+    "evidence_type": "empirical",
+    "scope_conditions": "N/A",
+    "quoted_support": "[Submitted on 31 May 2023 (v1), last revised 8 May 2024 (this version, v2)]",
+    "numbers": [],
+    "entities": ["Semantic Scholar", "arXiv", "ICLR 2024"],
+    "time_period": "2023-2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "230520028-a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimizatio"
+  },
+  {
+    "claim": "The paper studies five categories of BNN surrogates (finite-width HMC/SGHMC/deep ensembles, infinite-width BNNs, linearized Laplace, deep kernel learning) against standard GP surrogates for Bayesian optimization.",
+    "stance": "neutral",
+    "stance_target": "scope of the cross-surrogate comparison in li2024bnnsurrogates",
+    "evidence_type": "empirical",
+    "scope_conditions": "Bayesian optimization, synthetic + real-world benchmarks",
+    "quoted_support": "We consider a variety of approximate inference procedures for finite-width BNNs, including high-quality Hamiltonian Monte Carlo, low-cost stochastic MCMC, and heuristics such as deep ensembles. We also consider infinite-width BNNs, linearized Laplace approximations, and partially stochastic models such as deep kernel learning.",
+    "numbers": ["~7 surrogate classes"],
+    "entities": ["GP", "HMC", "SGHMC", "deep ensembles", "infinite-width BNN", "linearized Laplace", "deep kernel learning"],
+    "time_period": "2024",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "230520028-a-study-of-bayesian-neural-network-surrogates-for-bayesian-optimizatio"
+  }
+]

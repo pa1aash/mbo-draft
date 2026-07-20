@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Demšar's paper recommending Wilcoxon signed-rank and Friedman-plus-post-hoc mean-ranks tests for ML benchmark comparisons was published in JMLR volume 7, issue 1, in 2006 -- a decade before, and a distinct paper from, Benavoli et al.'s 2016 JMLR 17 rebuttal.",
+    "stance": "neutral",
+    "stance_target": "disambiguating Demšar 2006 from Benavoli 2016 in the citation ledger",
+    "evidence_type": "empirical",
+    "scope_conditions": "JMLR publication record",
+    "quoted_support": "\"Statistical Comparisons of Classifiers over Multiple Data Sets. Janez Demšar; 7(1):1-30, 2006.\"",
+    "numbers": ["7", "1", "30", "2006"],
+    "entities": ["Janez Demšar", "JMLR"],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "statistical-comparisons-of-classifiers-over-multiple-data-sets"
+  },
+  {
+    "claim": "Demšar recommends the Friedman test with post-hoc mean-ranks tests (and introduces CD diagrams) as the standard methodology for comparing multiple classifiers over multiple datasets -- the exact methodology that Benavoli et al. (2016) later show produces pool-dependent conclusions.",
+    "stance": "neutral",
+    "stance_target": "establishing the methodological lineage between Demšar 2006 and Benavoli 2016",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General ML benchmarking methodology recommendation",
+    "quoted_support": "\"we recommend a set of simple, yet safe and robust non-parametric tests ... the Friedman test with the corresponding post-hoc tests for comparison of more classifiers over multiple data sets. Results of the latter can also be neatly presented with the newly introduced CD (critical difference) diagrams.\"",
+    "numbers": [],
+    "entities": ["Demšar", "Friedman test", "CD diagrams"],
+    "time_period": "2006",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "statistical-comparisons-of-classifiers-over-multiple-data-sets"
+  }
+]

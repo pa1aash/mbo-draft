@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Lucic et al. find no clear consensus on which GAN algorithm performs objectively better than others once all algorithms are given equal hyperparameter-search budget.",
+    "stance": "supports",
+    "stance_target": "the 'audits shrink' pattern generally cited alongside melis2018sota",
+    "evidence_type": "empirical",
+    "scope_conditions": "7 GAN variants (MM GAN, NS GAN, LSGAN, WGAN, WGAN GP, DRAGAN, BEGAN) on standard image datasets, matched computational budget",
+    "quoted_support": "\"still no clear consensus on which GAN algorithm(s) perform objectively better than others. This is due to the use of ... algorithms on equal footage, including the computational budget to search over all hyperparameters.\"",
+    "numbers": [],
+    "entities": ["Lucic", "Kurach", "Michalski", "Gelly", "Bousquet"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171110337-are-gans-created-equal-a-large-scale-study"
+  },
+  {
+    "claim": "Lucic et al. conclude that discussing only the best score a model obtained on a dataset, without accounting for tuning budget, is not a meaningful basis for comparison.",
+    "stance": "supports",
+    "stance_target": "small-n / tuning-confound critique in the ML audit genre",
+    "evidence_type": "empirical",
+    "scope_conditions": "GAN hyperparameter-budget comparison",
+    "quoted_support": "\"These results support the conclusion that discussing the best score obtained by a model on a data set\" [is not meaningful without accounting for the search budget expended]",
+    "numbers": [],
+    "entities": ["Lucic"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "171110337-are-gans-created-equal-a-large-scale-study"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "The arXiv preprint of Benavoli, Corani, and Mangili's mean-ranks critique was first posted on 9 May 2015, one year before the JMLR-published version (vol 17, 2016).",
+    "stance": "supports",
+    "stance_target": "user-flagged citation trap: 'Benavoli is JMLR 2016 (arXiv 2015)'",
+    "evidence_type": "empirical",
+    "scope_conditions": "arXiv submission history metadata",
+    "quoted_support": "arXiv:1505.02288, [Submitted 9 May 2015] -- title and abstract identical to the JMLR 17 (2016) 1-10 published version.",
+    "numbers": ["1505.02288", "2015", "2016"],
+    "entities": ["Benavoli", "Corani", "Mangili", "arXiv"],
+    "time_period": "2015-2016",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "150502288-should-we-really-use-post-hoc-tests-based-on-mean-ranks"
+  }
+]
