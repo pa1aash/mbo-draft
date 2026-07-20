@@ -691,6 +691,71 @@ and already in Table 2 of the paper.
 
 **Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii).
 
+### ★★ WHAT THE INTERACTION ACTUALLY IS — 7/7, in raw units, from the paper's own table
+
+**Computed by the orchestrator from the supplement's Table `tab:sfull`. No new experiments, no
+normalization, no bootstrap. This is the sharpest form of the finding and the one the
+normalization challenge cannot reach.**
+
+Taking the GP-minus-ensemble gap in **raw oracle units**, per optimizer, per task:
+
+| Task | grad | pert | cma | pert gap as % of the larger aggressive gap |
+|---|---|---|---|---|
+| Branin-2D | 8.87 | **0.38** | 13.61 | **2.8%** |
+| Styblinski-5D | 21.20 | **3.07** | 21.44 | **14.3%** |
+| Levy-8D | 2.09 | **0.16** | 3.14 | **5.1%** |
+| Rosenbrock-10D | 0.19 | **0.04** | 0.39 | **10.3%** |
+| Rastrigin-15D | 2.88 | **0.16** | 5.75 | **2.8%** |
+| Ackley-20D | 3.11 | **0.04** | 3.72 | **1.1%** |
+| Griewank-30D | 2591.06 | **125.00** | 2612.00 | **4.8%** |
+
+**On 7 of 7 tasks the surrogate gap under perturbation is smaller than under BOTH gradient and
+CMA. On average it is 5.9% of the aggressive-optimizer gap — a roughly 17× attenuation.**
+
+**The claim this licenses, and it is a different paper's headline:**
+
+> The GP's advantage is almost entirely **conditional on an aggressive optimizer**. Under a
+> weak local search, surrogate class barely matters.
+
+**Why this is stronger than everything else in the audit.**
+
+1. **Raw oracle units.** No min–max normalization, so loci-analyst B's fragility challenge does
+   not apply. No bootstrap, so the η² small-n bias does not apply. It is arithmetic on the
+   paper's own published table.
+2. **7 of 7, spanning 2D to 30D**, and spanning tasks where the paper's other results are
+   heterogeneous. The consistency is the evidence.
+3. **It unifies six results the paper currently keeps separate.** The interaction η² (0.15,
+   significant in all four corners); `tab:cross` coverage (ensemble premise 0.41 on its own
+   proposals, 0.97 on the GP's); the x0-inversion (ensemble inverts under gradient/CMA);
+   Elimination 4 (more budget *widens* the gap — because more budget means more aggressive
+   exploitation); the Design-Bench frozen cells (GP+perturbation is the frozen pairing —
+   perturbation does not move); and the Design-Bench optimizer inversion (perturbation leads
+   there). **Every one of these is the same phenomenon.** The paper reports them in five
+   different sections as separate observations.
+4. **It is practitioner-facing**, which almost nothing else in the paper is: if you must use a
+   neural ensemble surrogate, do not pair it with gradient ascent.
+5. **It reframes the headline.** "η²_surr = 0.405" becomes "the surrogate main effect is large
+   *because two of three optimizers in the grid are aggressive*." That is a claim about when
+   the surrogate matters, not merely that it does.
+
+**And it explains the paper's own biggest puzzle.** The paper cannot understand why the
+optimizer axis is negligible on synthetic tasks but *inverts* on Design-Bench with perturbation
+leading. Under this reading it is one fact: perturbation neutralises surrogate differences, so
+wherever perturbation is competitive the surrogate axis collapses and the optimizer axis
+surfaces.
+
+**Honest limits, stated plainly.** These are single-cell means from the supplement table (30
+seeds each) with **no intervals attached**, so the 5.9% figure is descriptive, not inferential.
+The paper would need to bootstrap the per-optimizer gaps to assert it — cheap, since the
+machinery exists and is already used elsewhere. Styblinski-5D is the weakest case at 14.3%.
+And one alternative explanation must be ruled out: perturbation is also the *weakest* optimizer
+in absolute terms on several tasks, so part of the attenuation could be a floor effect rather
+than genuine surrogate-neutrality. Checking that requires comparing perturbation's absolute
+scores against the dataset baseline per task — also cheap, also not done here.
+
+**Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii), above the bare
+interaction finding, because it is the interaction stated in units nobody can dispute.
+
 ### THE PAPER ALREADY HAS MECHANISTIC EVIDENCE FOR THE INTERACTION, IN A DIFFERENT TABLE
 
 Prompted by loci-analyst B's third locus, and it connects two things the paper keeps apart.
