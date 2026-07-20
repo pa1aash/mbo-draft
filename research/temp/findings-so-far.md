@@ -432,6 +432,56 @@ the paper already cites all four papers elsewhere in its genre paragraph. As wri
 citation is asked to certify a claim about a literature, which is the exact defect this audit
 was commissioned to find.
 
+## MANDATORY FIX 7.5 — **A LOAD-BEARING CONDITION IS MISSING FROM A STATED PROOF**
+
+This is the most serious finding in the audit. Every other item is prose; this one is inside
+a proposition the paper proves.
+
+**The supplement's Proposition 2 (Split-conformal repair; shift-limited transfer)** states,
+and its proof asserts:
+> "Under a shifted proposal $\Pi\neq P$ with density ratio $w=d\Pi/dP$, validity is restored
+> by weighting the calibration quantile by $w$ (weighted conformal)."
+> *(proof)* "The covariate-shift clause is the weighted-exchangeability extension of
+> \citet{tibshirani2019conformal}: replacing the empirical quantile of $\{r_i\}$ with its
+> $w$-weighted analogue restores marginal validity under $\Pi$."
+
+**What Tibshirani, Barber, Candès & Ramdas actually prove.** Full text fetched (16,645 words).
+Theorem 2's exact guarantee `P{Y ∈ C} ≥ 1−α` is proven **only when the true weight functions
+$w_i$ are KNOWN** and plugged into the $p_i^w$ construction. Their own abstract separates the
+estimated-weight case as a distinct and weaker claim — *"known — or, in practice, can be
+estimated accurately"* — and supports it **empirically only** (91.0% against 90% nominal on
+the airfoil dataset over 5,000 splits). **No theorem in that paper bounds the coverage gap
+incurred by using $\hat w$ in place of $w$.**
+
+Independently corroborated by Angelopoulos & Bates' tutorial (19,726 words), verbatim:
+> "This algorithm addresses **a somewhat restricted case—that of a known covariate shift**"
+> "**exact when the magnitude of the distribution shift is known**"
+
+**Why this matters here specifically.** The paper's setting is the one where $w$ is *least*
+knowable: $\Pi$ is the distribution of designs an optimizer proposes after ascending a
+surrogate. That density ratio is not known, and it is not obviously estimable — the proposals
+are the output of a deterministic optimization, concentrated on a low-dimensional set where a
+density ratio against the offline data may not even be well-defined. The paper's own measured
+numbers point the same way: conformal repair "restores in-distribution coverage to its 0.90
+target on every task but **leaves OOD coverage erratic**" (0.00 on Styblinski, Griewank, UTR,
+Ant, D'Kitty). **The proposition's conclusion fails empirically exactly where its omitted
+condition fails.**
+
+**Fix (mandatory).** State the condition. Two options, and the second is better:
+1. Add to Proposition 2: *"…where $w$ is known; with $\hat w$ estimated, marginal validity is
+   no longer exact and Tibshirani et al. establish it empirically rather than by theorem."*
+2. **Better — turn the defect into a result.** The supplement already reports the OOD coverage
+   collapse. Say plainly that the shift-limited transfer clause requires a known density ratio,
+   that this is unavailable for optimizer-generated proposals, and that **the observed OOD
+   coverage failures are the predicted consequence, not an anomaly.** That converts an
+   overclaimed proposition into a correctly-scoped negative result with its own evidence —
+   and it strengthens the paper's separate argument that premise coverage is separable from
+   optimization outcome.
+
+**Severity note for the report.** An omitted hypothesis in a proposition is different in kind
+from a loose citation. It should be listed first in deliverable (i), above even the Demšar
+fabrication, because a reviewer who checks one thing in a supplement checks the proofs.
+
 ## MANDATORY FIX 8 — `demsar2006statistical` does not contain the threshold it is cited for
 
 **The paper's claim (§Design-Bench Results, `main.tex:220`):**
@@ -555,6 +605,69 @@ the ensemble; a bi-Lipschitz-constrained DUE should recover GP-like behaviour. C
 **7. BCQ (Fujimoto et al.) three-arm graded battery — EXPENSIVE.**
 The right template for upgrading the binary inversion result into a dose-response curve, but
 it requires new runs, not re-analysis. **FOLLOW-UP-PAPER.**
+
+## Deliverable (iii) UNDER-EXPLAINED — the inversion has a name, and a candidate mechanism
+
+**The paper states its inversion result flatly**, as a within-grid demonstration: *"A cell
+that returns something worse than what it was handed has had its own acquisition rank a
+design it invented above a real design it was already holding. We call that an inversion…
+it is a demonstration within this grid, descriptive at $n{=}7$ tasks, not a mechanism."*
+
+**It is an instance of a named, decades-old failure category.** The offline-RL literature
+formalises exactly this property as **Safe Policy Improvement**:
+
+> `P( ρ(π, M) ≥ ρ(π_b, M) − ζ ) ≥ 1 − δ`
+
+— the requirement that a policy learned offline not be worse than the baseline it was given,
+with high probability. **Thomas, Theocharous & Ghavamzadeh (ICML 2015)** is the founding
+formalization; **Laroche, Trichelair & Des Combes, SPIBB (arXiv:1712.06924)** Theorem 2 proves
+their algorithm is a ζ-approximate SPI over the baseline with high probability.
+
+**The reframing this licenses.** The paper's inversion is not merely an awkward number — it is
+the observation that **offline MBO optimizers ship with no safe-improvement guarantee, and
+that the absence bites.** The offline-RL sibling field considered this property important
+enough to build algorithms around it a decade ago; offline MBO has not. That is a sharper,
+more transferable claim than "we count inversions on our grid", it costs two sentences and two
+citations, and it converts a descriptive count into a statement about a missing guarantee.
+**Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
+
+**And a candidate MECHANISM, which the paper currently lacks entirely.**
+**Ghasemipour, Gu & Nachum, "Why So Pessimistic? Estimating Uncertainties for Offline RL
+through Ensembles, and Why Their Independence Matters" (ICML 2022, arXiv:2205.13703)** prove
+that **shared pessimistic targets across ensemble members can render an ensemble
+paradoxically OPTIMISTIC.** Member independence is the load-bearing condition.
+
+This is directly on point for a paper whose central puzzle is that a pessimistic
+(LCB-penalised) ensemble ranks its own hallucinations above real data. If insufficient member
+independence converts intended pessimism into effective optimism, that is a *positive
+mechanism* for the inversion — the first one this audit has found that the seven eliminations
+do not already rule out. **It is also testable on data the paper has**: measure member
+independence (pairwise prediction correlation across the K=5 members) at the returned optima
+and check whether inversion rate tracks it. **Tag: FOLD-INTO-THIS-PAPER / CHEAP** if the
+per-member predictions were stored; FOLLOW-UP if not.
+
+Note this compounds with the Lakshminarayanan finding (Mandatory Fix 3): an MSE-trained
+ensemble taking cross-member empirical variance as σ is precisely the construction most
+vulnerable to insufficient diversity. **Two independent sources now point at ensemble
+construction as an unexamined confound**, and the paper treats its ensemble as a fixed given.
+
+## Deliverable (iii) — precedent for the pessimism decomposition
+
+The paper's β=0 result — *"pessimism amplifies a mean-quality base rather than creating it"* —
+has a precedent in shape, which it does not cite.
+
+**Fujimoto & Gu, TD3+BC (arXiv:2106.06860)**: their ablation shows RL alone is insufficient
+without the behaviour-cloning term, and performance is robust across a broad α range,
+degrading only at the extremes. That is the same decomposition — a method's gain split between
+base-model quality and a regularisation/conservatism term. **A cheap citation that gives the
+paper's β=0 finding a lineage.**
+
+**Jin, Yang & Wang, PEVI (arXiv:2012.15085)** — verified, but note the limitation: it is a
+pure theory paper decomposing offline-RL suboptimality into intrinsic uncertainty, spurious
+correlation and optimization error, and proving pessimism eliminates spurious correlation and
+is minimax-optimal. **It contains no empirical base-vs-conservatism ablation**, so it supports
+the framing but is not a precedent for the experiment. Worth stating precisely rather than
+citing loosely — that distinction is the whole subject of this audit.
 
 ## VERIFIED CLEAN — Shahriari and Chemingui (batch 7)
 

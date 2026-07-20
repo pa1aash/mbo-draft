@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "TD3+BC's ablation (Figure 5) shows that removing the behavior-cloning regularization term causes the bare RL algorithm to become insufficient for high performance on most D4RL datasets, while removing state normalization has only a minor impact -- a precedent for decomposing a method's advantage into differently load-bearing components.",
+    "stance": "supports",
+    "stance_target": "precedent for decomposing an offline method's gain into a base-algorithm component and a regularization/conservatism component of unequal importance",
+    "evidence_type": "empirical",
+    "scope_conditions": "D4RL MuJoCo locomotion benchmark tasks (HalfCheetah, Hopper, Walker), offline RL",
+    "quoted_support": "As noted in previous work (Fujimoto et al., 2019b), without behavior cloning regularization, the RL algorithm alone is insufficient to achieve a high performance (except on some of the random data sets).",
+    "numbers": [],
+    "entities": ["Scott Fujimoto", "Shixiang Shane Gu"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210606860-a-minimalist-approach-to-offline-reinforcement-learning-2"
+  },
+  {
+    "claim": "TD3+BC's alpha-weighting ablation (Figure 6) shows performance is robust across a broad middle range of the RL-vs-imitation weighting hyperparameter alpha, only degrading when alpha strongly favors pure imitation (alpha=1) or pure RL (alpha=4), with alpha=2.5 as default.",
+    "stance": "neutral",
+    "stance_target": "sensitivity of an offline method's performance to the strength of its regularization/conservatism term",
+    "evidence_type": "empirical",
+    "scope_conditions": "D4RL locomotion tasks",
+    "quoted_support": "While there is effectively no performance difference between alpha=2 and alpha=3, we remark that performance begins to degrade on select tasks as the algorithm begins to approach alpha=1 (imitation) or alpha=4 (RL).",
+    "numbers": ["alpha=2.5 default", "alpha=1", "alpha=4", "alpha=2", "alpha=3"],
+    "entities": [],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210606860-a-minimalist-approach-to-offline-reinforcement-learning-2"
+  },
+  {
+    "claim": "A simple behavior-cloning-regularized online RL algorithm (TD3+BC) matches state-of-the-art complex offline RL methods while more than halving training time, suggesting much of offline RL algorithms' apparent sophistication is not necessary for their measured performance.",
+    "stance": "supports",
+    "stance_target": "the general claim that a method's advantage can be substantially attributable to a simple base component rather than to elaborate conservatism machinery",
+    "evidence_type": "empirical",
+    "scope_conditions": "D4RL benchmark suite",
+    "quoted_support": "We find that we can match the performance of state-of-the-art offline RL algorithms by simply adding a behavior cloning term to the policy update of an online RL algorithm and normalizing the data.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210606860-a-minimalist-approach-to-offline-reinforcement-learning-2"
+  }
+]

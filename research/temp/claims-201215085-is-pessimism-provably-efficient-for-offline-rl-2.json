@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Jin, Yang & Wang decompose offline-RL suboptimality into three sources: intrinsic uncertainty (dataset fails to cover the optimal trajectory), spurious correlation (dataset covers an unrelated, high-reward trajectory by chance, misleading the learned policy), and optimization error.",
+    "stance": "neutral",
+    "stance_target": "theoretical decomposition of offline-RL performance gaps into distinct named error sources",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general offline RL, episodic MDPs",
+    "quoted_support": "two challenges arise: (i) the intrinsic uncertainty, that is, the dataset possibly fails to cover the trajectory induced by the optimal policy ... and (ii) the spurious correlation, that is, the dataset possibly happens to cover a trajectory unrelated to the optimal policy, which by chance induces a large cumulative reward and hence misleads the learned policy.",
+    "numbers": [],
+    "entities": ["Ying Jin", "Zhuoran Yang", "Zhaoran Wang"],
+    "time_period": "2020-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "201215085-is-pessimism-provably-efficient-for-offline-rl-2"
+  },
+  {
+    "claim": "PEVI's suboptimality bound for linear MDPs matches the information-theoretic minimax lower bound up to dimension/horizon factors, i.e. pessimism is proven not just sufficient but minimax-necessary: no algorithm can provably do better given the same dataset.",
+    "stance": "neutral",
+    "stance_target": "whether pessimism is merely sufficient or also necessary for offline-RL performance guarantees",
+    "evidence_type": "theoretical",
+    "scope_conditions": "linear MDPs, episodic setting, minimax framework",
+    "quoted_support": "When specialized to linear MDPs, it matches the information-theoretic lower bound up to multiplicative factors of the dimension and horizon. In other words, pessimism is not only provably efficient but also minimax optimal. In particular, given the dataset, the learned policy serves as the 'best effort' among all policies, as no other policies can do better.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2020-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "201215085-is-pessimism-provably-efficient-for-offline-rl-2"
+  },
+  {
+    "claim": "The paper is a pure theoretical analysis with no empirical ablation decomposing a specific method's real-world performance gain into a base-model-quality component versus a conservatism-penalty component; its 'necessity' result is minimax/worst-case, not an empirical attribution of gain for a concrete algorithm instance.",
+    "stance": "neutral",
+    "stance_target": "whether this paper directly supplies the empirical-decomposition precedent for a beta=0 ablation showing pessimism amplifies rather than creates an advantage",
+    "evidence_type": "theoretical",
+    "scope_conditions": "theory paper, linear MDP / RKHS specialization, no real benchmark ablation",
+    "quoted_support": "Our theoretical analysis identifies the critical role of pessimism in eliminating a notion of spurious correlation, which arises from the 'irrelevant' trajectories that are less covered by the dataset and not informative for the optimal policy.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2020-2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "201215085-is-pessimism-provably-efficient-for-offline-rl-2"
+  }
+]

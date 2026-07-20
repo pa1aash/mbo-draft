@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Many ensemble-based offline RL algorithms compute each Q-network's Bellman target using a SHARED pessimistic value (e.g., the min or mean-minus-std across the whole ensemble) rather than each member's own independently bootstrapped target -- and this shared-target design can paradoxically make the resulting Q-estimates effectively optimistic rather than pessimistic.",
+    "stance": "refutes",
+    "stance_target": "the assumption that using a pessimistic aggregation function (e.g. min, LCB) over an ensemble automatically yields a pessimistic/conservative value estimate",
+    "evidence_type": "theoretical",
+    "scope_conditions": "ensemble-of-Q-functions offline RL algorithms with shared Bellman targets",
+    "quoted_support": "we demonstrate that using shared pessimistic targets can paradoxically lead to Q-estimates which are in fact optimistic! We verify our finding by constructing pedagogical toy MDPs. These results demonstrate that the formulation of using shared pessimistic targets is fundamentally ill-formed.",
+    "numbers": [],
+    "entities": ["Seyed Kamyar Seyed Ghasemipour", "Shixiang Shane Gu", "Ofir Nachum"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "220513703-why-so-pessimistic-estimating-uncertainties-for-offline-rl-through-ens"
+  },
+  {
+    "claim": "Training each ensemble member's target network completely independently (no shared targets), then aggregating via mean-minus-standard-deviation (MSG algorithm), restores genuine pessimism and matches or significantly exceeds prior SOTA on challenging D4RL antmaze tasks and RL Unplugged.",
+    "stance": "neutral",
+    "stance_target": "fix for the shared-target pessimism-inversion flaw",
+    "evidence_type": "empirical",
+    "scope_conditions": "D4RL antmaze domains, RL Unplugged benchmark",
+    "quoted_support": "Crucially, ensembles trained with independent target values will always provide pessimistic value estimates. The pessimistic lower-confidence bound (LCB) value estimate ... is then used to update the policy being trained ... MSG matches, and in the more challenging domains such as antmazes, significantly exceeds the prior state-of-the-art.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "220513703-why-so-pessimistic-estimating-uncertainties-for-offline-rl-through-ens"
+  },
+  {
+    "claim": "The paper's ablations isolate ensemble target-independence (not merely ensemble size) as the load-bearing factor for whether an ensemble-based pessimism mechanism actually behaves conservatively.",
+    "stance": "supports",
+    "stance_target": "precedent for attributing an ensemble-based method's safety/pessimism behavior to a specific implementation-level mechanism rather than to ensembling per se",
+    "evidence_type": "empirical",
+    "scope_conditions": "offline RL benchmark ablations",
+    "quoted_support": "through a series of ablation experiments on benchmark domains, we verify the significance of our theoretical findings, study the role of ensemble size, and highlight the settings in which ensembles provide the most benefit.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "220513703-why-so-pessimistic-estimating-uncertainties-for-offline-rl-through-ens"
+  }
+]

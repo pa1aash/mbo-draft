@@ -6,8 +6,23 @@
     "evidence_type": "theoretical",
     "scope_conditions": "Trust-region Bayesian optimization, NeurIPS 2019, arXiv:1910.01739",
     "quoted_support": "\"The typical behavior is to expand a TR when the optimizer 'makes progress', i.e., it finds better solutions in that region, and shrink it when the optimizer appears stuck. Therefore, following, e.g., Nelder and Mead [33], we will shrink a TR after too many consecutive 'failures', and expand it after many consecutive 'successes'.\" (Section 2, line 182-186)",
-    "numbers": ["arXiv:1910.01739", "NeurIPS 2019, vol 32", "2 hits for 'stuck'", "20 hits for 'trust region'", "3 hits for 'shrink'", "7 hits for 'restart'"],
-    "entities": ["David Eriksson", "Michael Pearce", "Jacob Gardner", "Ryan D Turner", "Matthias Poloczek", "TuRBO", "Nelder and Mead"],
+    "numbers": [
+      "arXiv:1910.01739",
+      "NeurIPS 2019, vol 32",
+      "2 hits for 'stuck'",
+      "20 hits for 'trust region'",
+      "3 hits for 'shrink'",
+      "7 hits for 'restart'"
+    ],
+    "entities": [
+      "David Eriksson",
+      "Michael Pearce",
+      "Jacob Gardner",
+      "Ryan D Turner",
+      "Matthias Poloczek",
+      "TuRBO",
+      "Nelder and Mead"
+    ],
     "time_period": "2019",
     "region": null,
     "confidence": "high",
@@ -20,9 +35,78 @@
     "evidence_type": "theoretical",
     "scope_conditions": "TuRBO's candidate-selection mechanism, described in main text and appendix",
     "quoted_support": "\"a TR should be sufficiently large to contain good solutions. On the other hand, it should be small enough to ensure that the local model is accurate within the TR.\" (line 181-182)",
-    "numbers": ["0 hits for 'distance-aware'", "0 hits for 'offline'", "0 hits for 'locally maximal'"],
-    "entities": ["TuRBO", "Eriksson et al. 2019"],
+    "numbers": [
+      "0 hits for 'distance-aware'",
+      "0 hits for 'offline'",
+      "0 hits for 'locally maximal'"
+    ],
+    "entities": [
+      "TuRBO",
+      "Eriksson et al. 2019"
+    ],
     "time_period": "2019",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"
+  },
+  {
+    "claim": "TuRBO's own stated diagnosis of vanilla global-acquisition Bayesian optimization is the opposite of 'acquisition-driven search collapses/gets trapped near the data': the paper attributes poor high-dimensional BO performance to global acquisition functions OVER-exploring and failing to exploit promising local areas, not to premature local trapping.",
+    "stance": "refutes",
+    "stance_target": "TuRBO as the true owner of 'UCB-style acquisition reads as local search / gets trapped near the data' (the framing the audited paper attributes to fan2024minucb)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "High-dimensional black-box optimization with global GP-based BO, as diagnosed in TuRBO's introduction",
+    "quoted_support": "\"we take the view that this is due to the implicit homogeneity of the global probabilistic models and an overemphasized exploration that results from global acquisition\" and \"For common myopic acquisition functions, this results in an overemphasized exploration and a failure to exploit promising areas.\"",
+    "numbers": [
+      "0 hits for 'trapped'",
+      "0 hits for 'greedy'",
+      "1 hit for 'homogeneity'"
+    ],
+    "entities": [
+      "TuRBO",
+      "David Eriksson",
+      "global acquisition function",
+      "trust region"
+    ],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"
+  },
+  {
+    "claim": "TuRBO's locality is not a diagnosed intrinsic property of acquisition functions but a deliberately imposed algorithmic mechanism (explicit trust regions with Nelder-Mead-style expand/shrink heuristics), drawing on a pre-existing class of trust-region methods from classical stochastic optimization.",
+    "stance": "neutral",
+    "stance_target": "Whether 'local search behavior' in BO is an emergent pathology of acquisition functions versus an engineered design choice",
+    "evidence_type": "theoretical",
+    "scope_conditions": "TuRBO's trust-region construction and its cited stochastic-optimization TR lineage",
+    "quoted_support": "\"To achieve principled local optimization in the gradient-free setting, we draw inspiration from a class of TR methods from stochastic optimization [57].\"",
+    "numbers": [
+      "reference [57] = classical stochastic-optimization trust-region methods"
+    ],
+    "entities": [
+      "TuRBO",
+      "trust region",
+      "Nelder-Mead"
+    ],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"
+  },
+  {
+    "claim": "TuRBO's contrary diagnosis (over-exploration, not trapping) combined with a separate sibling-batch finding that fan2024minucb frames the UCB-minimization/local-search connection as its own novel discovery (not a citation of established prior work) and proves convergence rather than permanent stalling under online active resampling, jointly suggest the audited paper's citation of fan2024minucb for an 'established reading' of UCB-as-local-search is on weaker ground than presented.",
+    "stance": "refutes",
+    "stance_target": "The audited paper's claim (main.tex) that 'the reading of a UCB-style acquisition as local search' is established prior work which its LCB-paralysis mechanism merely 'applies and diagnoses... rather than discovered'",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Cross-referencing TuRBO (2019, uncited in the audited paper's bib) against fan2024minucb (2024, the paper actually cited)",
+    "quoted_support": "TuRBO: \"an overemphasized exploration that results from global acquisition\" (opposite diagnosis); fan2024minucb (per sibling note 240515285): \"This discovery is also meaningful as it opens up possibilities for new designs on local Bayesian optimization algorithms\" (framed as their own discovery, not an established reading)",
+    "numbers": [],
+    "entities": [
+      "TuRBO",
+      "fan2024minucb",
+      "MinUCB",
+      "GIBO"
+    ],
+    "time_period": "2019-2024",
     "region": null,
     "confidence": "medium",
     "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"

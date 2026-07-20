@@ -6,8 +6,20 @@
     "evidence_type": "empirical",
     "scope_conditions": "InstructGPT-style synthetic RLHF setup with a fixed gold reward model standing in for human labels",
     "quoted_support": "\"We find empirically that for best-of-n (BoN) sampling, R_bon(d) = d(alpha_bon - beta_bon*d), and for reinforcement learning, R_RL(d) = d(alpha_RL - beta_RL*log(d))\"",
-    "numbers": ["d := sqrt(KL(pi||pi_init))", "alpha_bon", "beta_bon", "alpha_RL", "beta_RL"],
-    "entities": ["Leo Gao", "John Schulman", "Jacob Hilton", "OpenAI", "InstructGPT"],
+    "numbers": [
+      "d := sqrt(KL(pi||pi_init))",
+      "alpha_bon",
+      "beta_bon",
+      "alpha_RL",
+      "beta_RL"
+    ],
+    "entities": [
+      "Leo Gao",
+      "John Schulman",
+      "Jacob Hilton",
+      "OpenAI",
+      "InstructGPT"
+    ],
     "time_period": "2022",
     "region": null,
     "confidence": "high",
@@ -20,8 +32,16 @@
     "evidence_type": "theoretical",
     "scope_conditions": "Applies the Manheim & Garrabrant (2018) four-way Goodhart taxonomy to the RLHF overoptimization setting",
     "quoted_support": "\"We expect extremal Goodharting to be primarily responsible for the nonmonotonicity of the gold RM scores in this paper, and is mostly responsible for the beta term, which in the limit of optimization, results in an unbounded loss of utility.\"",
-    "numbers": ["beta term", "alpha term"],
-    "entities": ["extremal Goodhart", "regressional Goodhart", "Manheim", "Garrabrant"],
+    "numbers": [
+      "beta term",
+      "alpha term"
+    ],
+    "entities": [
+      "extremal Goodhart",
+      "regressional Goodhart",
+      "Manheim",
+      "Garrabrant"
+    ],
     "time_period": "2022",
     "region": null,
     "confidence": "high",
@@ -34,8 +54,12 @@
     "evidence_type": "empirical",
     "scope_conditions": "Reward-model parameter counts studied in the InstructGPT synthetic setup",
     "quoted_support": "\"The alpha and beta coefficients in the BoN and RL functional forms vary smoothly with the number of proxy reward model parameters, following approximate logarithmic trends.\"",
-    "numbers": ["RM parameter count"],
-    "entities": ["proxy reward model"],
+    "numbers": [
+      "RM parameter count"
+    ],
+    "entities": [
+      "proxy reward model"
+    ],
     "time_period": "2022",
     "region": null,
     "confidence": "high",
@@ -48,8 +72,13 @@
     "evidence_type": "empirical",
     "scope_conditions": "RL (PPO) optimization against proxy reward models in the InstructGPT setup; the authors flag this result as sensitive to hyperparameters",
     "quoted_support": "\"In our reinforcement learning setup, using a KL penalty increases the proxy reward model score that can be achieved for a given KL divergence, but this does not correspond to a measurable improvement in the gold RM score-KL_RL frontier.\"",
-    "numbers": ["KL penalty coefficient"],
-    "entities": ["KL penalty", "PPO"],
+    "numbers": [
+      "KL penalty coefficient"
+    ],
+    "entities": [
+      "KL penalty",
+      "PPO"
+    ],
     "time_period": "2022",
     "region": null,
     "confidence": "medium",
@@ -62,11 +91,64 @@
     "evidence_type": "theoretical",
     "scope_conditions": "Assumes scaling coefficients constant across iterations and KL-distance additivity across iterations; breaks down below some minimum per-iteration distance",
     "quoted_support": "\"the effect of the iterative approach is to increase the final gold RM score by an amount proportional to both d and log(k), namely beta_RL * d * log(k)\"",
-    "numbers": ["k iterations", "d/k per-iteration distance"],
-    "entities": ["iterated RLHF"],
+    "numbers": [
+      "k iterations",
+      "d/k per-iteration distance"
+    ],
+    "entities": [
+      "iterated RLHF"
+    ],
     "time_period": "2022",
     "region": null,
     "confidence": "medium",
     "source_note_id": "221010760-scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "The audited AAAI-27 paper's bib entry for gao2022reward contains a page-range error independent of the year/key mismatch: it lists pages 10909-10934, but the true PMLR v202 pages (verified against proceedings.mlr.press/v202/gao23h.html) are 10835-10866.",
+    "stance": "neutral",
+    "stance_target": "Bibliography-accuracy audit of the audited paper's uncited entries",
+    "evidence_type": "empirical",
+    "scope_conditions": "Citation-key/venue/page verification against the canonical PMLR record",
+    "quoted_support": "PMLR record: 'Proceedings of the 40th International Conference on Machine Learning, PMLR 202:10835-10866, 2023.' BibTeX: '@InProceedings{pmlr-v202-gao23h, ... pages = {10835--10866}, year = {2023}, ...}'",
+    "numbers": [
+      "true pages 10835-10866",
+      "audited bib pages 10909-10934",
+      "ICML 2023",
+      "PMLR vol 202"
+    ],
+    "entities": [
+      "Leo Gao",
+      "John Schulman",
+      "Jacob Hilton",
+      "PMLR",
+      "ICML 2023"
+    ],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "scaling-laws-for-reward-model-overoptimization"
+  },
+  {
+    "claim": "Gao et al.'s scaling law establishes that proxy-optimization degradation curves are class-dependent (differing functional form by optimization method, and coefficients scaling with model parameter count within one architecture family) but never tests whether entirely different model architectures/classes at matched distance produce different degradation -- leaving open exactly the axis (surrogate architecture class) that the audited paper's Elimination 7 tests.",
+    "stance": "supports",
+    "stance_target": "The audited paper's Elimination-7 finding (two surrogate classes at matched distance-to-data but different true oracle loss) as a natural extension of, not a counterexample to, Gao et al.'s scaling-law framework",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Gao et al. vary only reward-model SIZE within the GPT-3 architecture family and vary optimization METHOD (RL vs BoN); they do not cross different surrogate architectures at fixed distance",
+    "quoted_support": "\"alpha_RL, beta_RL, alpha_bon and beta_bon are parameters that may depend on the number of proxy reward model parameters, the size of the proxy reward model dataset, and so on.\"",
+    "numbers": [
+      "d = sqrt(KL(pi||pi_init))",
+      "alpha/beta scale with RM parameter count"
+    ],
+    "entities": [
+      "Gao et al. 2023",
+      "reward model",
+      "audited paper Elimination 7",
+      "ensemble surrogate",
+      "GP surrogate"
+    ],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "scaling-laws-for-reward-model-overoptimization"
   }
 ]

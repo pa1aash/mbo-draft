@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Stanton, Maddox & Wilson correctly cite Tibshirani et al. (2019) specifically for the importance-weighting mechanism used to correct feedback-induced covariate shift in conformal Bayesian optimization, matching the actual content of Tibshirani et al.'s weighted conformal prediction result.",
+    "stance": "supports",
+    "stance_target": "accuracy of the citation chain from conformal BO literature back to Tibshirani et al. 2019",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Bayesian optimization with adaptive/feedback covariate shift",
+    "quoted_support": "The importance weights w account for covariate shift (Tibshirani et al., 2019), and w_i=1/(n+1) for all i in the special case where D union {(x_n,y_n)} is fully exchangeable (e.g. IID).",
+    "numbers": [],
+    "entities": ["Samuel Stanton", "Wesley Maddox", "Andrew Gordon Wilson", "Tibshirani et al. 2019"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221012496-1-introduction"
+  },
+  {
+    "claim": "Conformal Bayesian optimization is motivated by 'feedback covariate shift': because BayesOpt adaptively selects queries, the query (test) distribution differs systematically from the training distribution, and UCB-style acquisition can select points in regions where the surrogate model's predictions have no coverage guarantee.",
+    "stance": "neutral",
+    "stance_target": "mechanism by which covariate shift arises specifically in the adaptive-acquisition setting relevant to offline/active optimization more broadly",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Bayesian optimization, GP surrogate models",
+    "quoted_support": "The upper-confidence bound (UCB) acquisition function selects the next query far from any training data, where we cannot guarantee reliable predictions. ... conformal UCB directs the search to the region where conformal predictions are guaranteed coverage of at least (1-alpha).",
+    "numbers": ["alpha=1/sqrt(8) (example)"],
+    "entities": [],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "221012496-1-introduction"
+  }
+]

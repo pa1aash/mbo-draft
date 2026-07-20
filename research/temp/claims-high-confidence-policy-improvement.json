@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Thomas, Theocharous & Ghavamzadeh's HCPI algorithm guarantees that, for any user-chosen performance lower bound and confidence level, the probability the algorithm returns a policy performing below that lower bound is at most the chosen confidence level -- the founding formal instantiation of a 'no regression below a bound, with high confidence' guarantee for offline/batch policy improvement.",
+    "stance": "neutral",
+    "stance_target": "named prior formalization of the property an inversion (returning something worse than the best already-held point) would violate",
+    "evidence_type": "theoretical",
+    "scope_conditions": "batch reinforcement learning, user-specified lower bound and confidence level",
+    "quoted_support": "the user may select any performance lower-bound and confidence level and our algorithm will ensure that the probability that it returns a policy with performance below the lower bound is at most the specified confidence level.",
+    "numbers": [],
+    "entities": ["Philip Thomas", "Georgios Theocharous", "Mohammad Ghavamzadeh"],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "high-confidence-policy-improvement"
+  },
+  {
+    "claim": "HCPI proposes an incremental variant that repeatedly executes the safe-improvement step to chain multiple successive safe policy improvements, i.e. a formal mechanism for guaranteeing monotonic-with-high-probability improvement over successive iterations rather than a single one-shot guarantee.",
+    "stance": "neutral",
+    "stance_target": "iterative/anytime formalization of safe improvement, relevant to multi-round or multi-restart optimizers",
+    "evidence_type": "theoretical",
+    "scope_conditions": "batch RL, repeated policy improvement rounds",
+    "quoted_support": "We then propose an incremental algorithm that executes our policy improvement algorithm repeatedly to generate multiple policy improvements.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2015",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "high-confidence-policy-improvement"
+  }
+]
