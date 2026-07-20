@@ -1,0 +1,119 @@
+====================================================================================================
+STAMP OF NEW GRID
+====================================================================================================
+  platform     Linux-6.17.0-35-generic-x86_64-with-glibc2.39
+  os_release   6.17.0-35-generic
+  python       3.12.3
+  torch        2.11.0+cpu
+  numpy        2.4.4
+  botorch      0.18.1
+  gpytorch     1.15.2
+  cma          4.4.4
+  git_sha      bf8d8d2ddcc8be135b46f412e93800eebcc067bf
+  X1           False
+  X3           False
+  K            5
+  beta         2.0
+  TOP          128
+  OPT_STEPS    100
+  LR_OPT       0.05
+  n_seeds      30
+  seed         0..29
+  timestamp    2026-07-20T17:02:22
+  -> 19 fields
+
+====================================================================================================
+VALIDATION - does results_camera.json reproduce tab:sfull as printed?
+====================================================================================================
+  84/84 cells reproduce the printed table  [OK]
+  tab:srank: 12/12 ranks reproduce  [OK]
+
+====================================================================================================
+tab:sfull  OLD (unstamped camera, off_off)  ->  NEW (stamped off_off, 30 seeds)
+====================================================================================================
+Method                     Branin            Styblinsk                 Levy            Rosenbroc            Rastrigin               Ackley             Griewank
+Ens+Grad        -9.27->-9.27          6.37->6.34     *    -2.14->-2.14         -0.28->-0.28         -7.71->-7.71         -3.66->-3.66         -2592->-2592     
+Ens+Pert        -0.78->-0.78         33.08->33.03    *    -0.40->-0.40         -0.12->-0.12         -8.44->-8.44         -6.32->-6.32          -395->-395      
+Ens+CMA        -14.01->-14.01         5.21->5.15     *    -3.19->-3.19         -0.48->-0.48        -10.81->-10.81        -4.31->-4.31         -2613->-2613     
+GP+Grad         -0.40->-0.40         27.57->27.57         -0.05->-0.05         -0.09->-0.09         -4.83->-4.83         -0.55->-0.55         -0.94->-0.94     
+GP+Pert         -0.40->-0.40         36.15->36.15         -0.24->-0.24         -0.08->-0.08         -8.28->-8.28         -6.28->-6.28          -270->-270      
+GP+CMA          -0.40->-0.40         26.65->26.65         -0.05->-0.05         -0.09->-0.09         -5.06->-5.06         -0.59->-0.59         -1.00->-1.00     
+SVGP+Grad       -0.45->-0.45         11.83->11.83         -0.08->-0.08         -0.04->-0.04         -2.83->-2.83         -0.69->-0.70    *    -2.11->-2.09    *
+SVGP+Pert       -0.40->-0.40         34.35->34.31    *    -0.25->-0.25         -0.08->-0.08         -8.27->-8.27         -6.14->-6.14          -275->-275      
+SVGP+CMA        -0.53->-0.53         11.60->11.53    *    -0.08->-0.08         -0.04->-0.04         -3.00->-2.99    *    -0.73->-0.74    *    -2.17->-2.15    *
+COMs            -9.73->-9.73          8.50->8.21     *    -4.44->-4.44         -1.31->-1.31         -6.97->-6.97         -4.49->-4.49         -2078->-2078     
+CbAS            -5.64->-5.64         33.85->33.85         -0.21->-0.21         -0.05->-0.05         -8.02->-8.02         -5.10->-5.10          -276->-276      
+Grad.Asc.       -8.35->-8.35          3.49->3.51     *    -2.43->-2.43         -0.31->-0.31         -9.08->-9.08         -3.04->-3.04         -2701->-2701     
+
+  bit-exact per-seed vectors: 50/84
+  cells whose PRINTED (rounded) value changes: 12/84
+    Ens+Grad    Styblinski-5D   6.37  ->  6.34
+    Ens+Pert    Styblinski-5D   33.08  ->  33.03
+    Ens+CMA     Styblinski-5D   5.21  ->  5.15
+    SVGP+Grad   Ackley-20D      -0.69  ->  -0.7
+    SVGP+Grad   Griewank-30D    -2.11  ->  -2.09
+    SVGP+Pert   Styblinski-5D   34.35  ->  34.31
+    SVGP+CMA    Styblinski-5D   11.6  ->  11.53
+    SVGP+CMA    Rastrigin-15D   -3.0  ->  -2.99
+    SVGP+CMA    Ackley-20D      -0.73  ->  -0.74
+    SVGP+CMA    Griewank-30D    -2.17  ->  -2.15
+    COMs        Styblinski-5D   8.5  ->  8.21
+    Grad.Asc.   Styblinski-5D   3.49  ->  3.51
+
+  BOLD (best per task):
+    Branin-2D       GP+Grad     -> GP+Grad    
+    Styblinski-5D   GP+Pert     -> GP+Pert    
+    Levy-8D         GP+Grad     -> GP+Grad    
+    Rosenbrock-10D  SVGP+Grad   -> SVGP+Grad  
+    Rastrigin-15D   SVGP+Grad   -> SVGP+Grad  
+    Ackley-20D      GP+Grad     -> GP+Grad    
+    Griewank-30D    GP+Grad     -> GP+Grad    
+
+  tab:srank (avg rank over 7 tasks, lower better):
+    Method          old    new   delta
+    GP+Grad        2.57   2.57   +0.00
+    SVGP+Grad      3.29   3.29   +0.00
+    GP+CMA         3.57   3.57   +0.00
+    SVGP+CMA       4.29   4.29   +0.00
+    GP+Pert        5.71   5.71   +0.00
+    SVGP+Pert      5.86   5.86   +0.00
+    CbAS           6.00   6.00   +0.00
+    Ens+Pert       8.14   8.14   +0.00
+    Ens+Grad       8.57   8.57   +0.00
+    COMs           9.43   9.43   +0.00
+    Grad.Asc.      9.86   9.86   +0.00
+    Ens+CMA       10.71  10.71   +0.00
+
+  Synthetic Friedman (9 grid cells x 7 tasks):
+    old p=6.086e-05   best=GP+Grad mean-rank=2.29
+    new p=6.086e-05   best=GP+Grad mean-rank=2.29
+    with baselines in pool: old p=3.458e-06  new p=3.458e-06
+
+====================================================================================================
+tab:cov (synthetic block)  OLD (camera, 10 seeds)  ->  NEW (stamped off_off)
+====================================================================================================
+  NEW stamp fields: 19   X1=False X3=False n_seeds=30
+
+  Validation - does camera reproduce tab:cov as printed?
+    35/35 entries reproduce  [OK]
+
+  Task                              c_in                 c_ood                  qhat                 cf_in                cf_ood
+                   old -> new10 -> new30 old -> new10 -> new30 old -> new10 -> new30 old -> new10 -> new30 old -> new10 -> new30
+  Branin-2D             0.71->0.71->0.71      0.42->0.42->0.35         6.2->6.3->6.6      0.91->0.91->0.90      0.84->0.84->0.77
+  Styblinski-5D         0.64->0.64->0.66      0.00->0.00->0.00         7.5->7.5->7.2      0.90->0.89->0.90      0.00->0.00->0.02
+  Levy-8D               0.68->0.68->0.68      0.11->0.12->0.10         6.0->6.0->6.0      0.90->0.90->0.90      0.28->0.44->0.40
+  Rosenbrock-10D        0.86->0.86->0.86      0.64->0.64->0.69         2.5->2.4->2.5      0.90->0.90->0.90      0.66->0.66->0.71
+  Rastrigin-15D         0.73->0.73->0.73      0.72->0.76->0.79         4.8->4.8->4.8      0.91->0.91->0.90      0.77->0.79->0.83
+  Ackley-20D            0.92->0.92->0.92      1.00->1.00->1.00         1.8->1.8->1.9      0.89->0.89->0.90      1.00->1.00->1.00
+  Griewank-30D          0.57->0.57->0.57      0.00->0.00->0.00      16.1->16.1->15.9      0.90->0.90->0.90      0.00->0.00->0.07
+
+  tab:cross ensemble row (col means of the c_in / c_ood columns above):
+    in-distribution (printed 0.73)   old=0.7292  new10=0.7290  new30=0.7325
+    own proposals (printed 0.41)     old=0.4134  new10=0.4199  new30=0.4180
+
+  Claim check - c_ood "near zero" tasks (<0.05):
+    old : ['Styblinski-5D', 'Griewank-30D']
+    new : ['Styblinski-5D', 'Griewank-30D']
+  Claim check - cf_ood == 0.00 exactly (feeds "five of the fourteen tasks"):
+    old : 2 synthetic ['Styblinski-5D', 'Griewank-30D']
+    new : 0 synthetic 

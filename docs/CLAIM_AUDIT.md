@@ -200,6 +200,35 @@ the data". The verified surrounding claim (four frozen cells returning exactly 1
 variance across 16 seeds) is unchanged, and the argument it supports — that a cell reporting
 $1.0$ returned nothing better than its input — does not depend on the exact tie count.
 
+### Internal — `tab:cross` own-proposals `0.97` (RESOLVED — sourced, not unverifiable)
+
+**The claim.** The ensemble row's third cell of `tab:cross`, "other's proposals" $=0.97$
+(`supplement.tex:171`), read as the ensemble's premise coverage on the GP's proposals, and the
+prose that leans on it: `supplement.tex:116` ("on the GP's proposals ($0.97$)") and
+`supplement.tex:118` ("the same ensemble premise holds at $0.97$ on points the GP's pipeline
+proposed"). Load-bearing — it is the whole "the ensemble is not miscalibrated in general, only
+where its own gradient optimizer drives it" contrast.
+
+**How it was flagged.** `docs/SUPP_ENGINE_FIX.md` §6 called this cell a "standing liability …
+could not be reconciled with any artifact in `results/`," giving `gpcov.json`'s `ens_on_gp`
+(mean **0.1429**, six of seven tasks at 0.0) as the nearest — and contradictory — candidate.
+
+**RESOLVED — the number is sourced.** It reconciles with `results/05_findings.json` →
+`gp_coverage.mean.ens_on_gp` $= 0.9704241 \to 0.97$. In fact **all six** `tab:cross` cells trace
+to that one block: GP row `gp_indist`/`gp_own`/`gp_on_ens` $= 0.984/0.973/0.927 \to$
+$0.98/0.97/0.93$; ensemble row `ens_indist`/`ens_own`/`ens_on_gp` $= 0.734/0.413/0.970 \to$
+$0.73/0.41/0.97$ (the `own`-proposals cell is the one the 30-seed `tab:cov` regeneration lifts
+$0.41\to0.42$, since `tab:cross`'s first two ensemble cells are `tab:cov`'s synthetic column
+means). Per-task `ens_on_gp`: Branin 0.999, Styblinski 1.000, Levy 0.895, Rosenbrock 0.999,
+Rastrigin 0.899, Ackley 1.000, Griewank 1.000.
+
+**Why the flag misfired.** `gpcov.json` (`code/run_gpcov.py`) is a *different measurement* —
+a scikit-learn exact GP whose proposals are found by 0th-order perturbation, giving a binary-ish
+per-task coverage that means 0.14. `tab:cross` is populated throughout from the consolidated
+`05_findings.json` `gp_coverage` block (the differentiable-ensemble fractional measurement),
+not from `gpcov.json`. SUPP_ENGINE_FIX §6 checked `gpcov.json` and never opened `05_findings.json`.
+**Verdict: VERIFIABLE. No paper edit; `0.97` stands.**
+
 ### External — 3
 
 Numbers cited from other papers, not checkable against this repo: Recht et al.'s relative slopes
