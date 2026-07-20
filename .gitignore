@@ -72,3 +72,9 @@ envs/miniforge/
 
 # agent scratch
 *.agent.md
+
+# Design-Bench dataset downloads (never commit)
+superconductor/
+tf_bind_10-pho4/
+tf_bind_8-SIX6_REF_R1/
+results/db_corners/*.log
