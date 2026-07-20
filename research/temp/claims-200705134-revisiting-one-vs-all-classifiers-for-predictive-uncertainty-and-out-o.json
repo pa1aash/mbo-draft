@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The URL assigned for the 'loss landscape perspective' deep-ensembles paper (arXiv:2007.05134) actually resolves to a different paper, 'Revisiting One-vs-All Classifiers for Predictive Uncertainty and OOD Detection in Neural Networks' (Padhy, Nado, Ren, Liu, Snoek, Lakshminarayanan), not Fort/Huang/Lakshminarayanan's loss-landscape paper (correct ID: arXiv:1912.02757).",
+    "stance": "neutral",
+    "stance_target": "citation-chasing accuracy / URL-to-paper mapping in the batch assignment",
+    "evidence_type": "empirical",
+    "scope_conditions": "N/A - bibliographic verification",
+    "quoted_support": "Title: Revisiting One-vs-All Classifiers for Predictive Uncertainty and Out-of-Distribution Detection in Neural Networks. Authors: Shreyas Padhy, Zachary Nado, Jie Ren, Jeremiah Liu, Jasper Snoek, Balaji Lakshminarayanan",
+    "numbers": ["arXiv:2007.05134", "arXiv:1912.02757"],
+    "entities": ["Padhy", "Nado", "Ren", "Liu", "Snoek", "Lakshminarayanan"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200705134-revisiting-one-vs-all-classifiers-for-predictive-uncertainty-and-out-o"
+  },
+  {
+    "claim": "This paper argues that standard softmax cross-entropy normalization removes/undoes a distance constraint present in distance-based logit formulations, and that a distance-based one-vs-all classifier improves calibration under covariate shift, with the advantage growing as shift increases.",
+    "stance": "neutral",
+    "stance_target": "the broader distance-awareness literature program that SNGP belongs to",
+    "evidence_type": "empirical",
+    "scope_conditions": "classification under covariate shift",
+    "quoted_support": "the softmax normalization undoes the distance constraint... a distance-based formulation performing the best, especially at high levels of shift.",
+    "numbers": [],
+    "entities": ["one-vs-all classifier", "softmax", "distance-based logit"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "200705134-revisiting-one-vs-all-classifiers-for-predictive-uncertainty-and-out-o"
+  }
+]

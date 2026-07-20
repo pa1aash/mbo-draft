@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "In a regression setting (neural-network force fields predicting atomic forces), ensemble/committee uncertainty correlates strongly with actual error on in-distribution validation data: Spearman rho = 0.90 (committee) and 0.91 (bootstrap-aggregation ensemble).",
+    "stance": "refutes",
+    "stance_target": "the audited paper's claim/implication that ensemble sigma is generally a distance signal rather than an error signal (rho=0.07)",
+    "evidence_type": "empirical",
+    "scope_conditions": "regression (force-field energies and forces), SrTiO3 bulk system, validation data drawn from the same distribution as training data (near/in-distribution)",
+    "quoted_support": "the Spearman correlation coefficient between uncertainty and error over the validation data set is 0.90 for the committee and 0.91 for the bootstrap-aggregation ensemble.",
+    "numbers": ["0.90", "0.91"],
+    "entities": ["SrTiO3", "committee", "bootstrap-aggregation ensemble", "neural-network force field"],
+    "time_period": "2023",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "230208805-deep-ensembles-vs-committees-for-uncertainty-estimation-in-neural-netw"
+  },
+  {
+    "claim": "The same paper shows this uncertainty-error correlation degrades substantially when evaluated on genuinely out-of-distribution structures (4x1 surface reconstructions structurally distinct from the bulk training data), especially at the level of individual atoms rather than aggregated layers.",
+    "stance": "supports",
+    "stance_target": "the audited paper's implicit premise that OOD/extrapolation regimes behave differently from in-distribution regimes for uncertainty-error correlation",
+    "evidence_type": "empirical",
+    "scope_conditions": "regression, SrTiO3 4x1 surface reconstruction (OOD relative to bulk training data)",
+    "quoted_support": "the correlation between uncertainty and error within the topmost layers is not good enough to identify the most problematic atoms directly... the skill of the uncertainty in the forces as a proxy for error improves with the cardinal of the set of atoms considered: it is still good when applied to a whole layer, but less so for individual atoms.",
+    "numbers": [],
+    "entities": ["4x1 surface reconstruction", "SrTiO3"],
+    "time_period": "2023",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "230208805-deep-ensembles-vs-committees-for-uncertainty-estimation-in-neural-netw"
+  },
+  {
+    "claim": "The paper explicitly argues that raw input-space distance to training data is too simplistic a proxy for uncertainty in high-dimensional regression because such models extrapolate with overwhelming probability, favoring model-internal (ensemble/committee) uncertainty over naive distance metrics.",
+    "stance": "neutral",
+    "stance_target": "whether input-distance and model-internal-uncertainty are equivalent constructs",
+    "evidence_type": "theoretical",
+    "scope_conditions": "high-dimensional regression / machine-learned force fields",
+    "quoted_support": "it is common to find this issue framed in terms of interpolation vs. extrapolation with respect to the training data; that is, however, too simplistic a picture, since regression models in high dimensionality will extrapolate with overwhelming probability.",
+    "numbers": [],
+    "entities": ["interpolation", "extrapolation"],
+    "time_period": "2023",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "230208805-deep-ensembles-vs-committees-for-uncertainty-estimation-in-neural-netw"
+  },
+  {
+    "claim": "The paper frames a well-behaved uncertainty estimator as one whose correlation with error enables active learning (identifying high-uncertainty, presumably high-error regions to prioritize for retraining), directly linking uncertainty quality to error-informativeness as the primary desideratum, not distance-awareness per se.",
+    "stance": "neutral",
+    "stance_target": "conceptual framing of what makes an uncertainty estimate useful",
+    "evidence_type": "theoretical",
+    "scope_conditions": "active learning for force-field refinement",
+    "quoted_support": "Ideally, the uncertainty in a prediction made by a ML model correlates with the error, because that allows for active learning approaches to iteratively improve the prediction capabilities of a model by identifying regions of high uncertainty (and therefore presumably high error) and retraining the model",
+    "numbers": [],
+    "entities": ["active learning"],
+    "time_period": "2023",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "230208805-deep-ensembles-vs-committees-for-uncertainty-estimation-in-neural-netw"
+  }
+]

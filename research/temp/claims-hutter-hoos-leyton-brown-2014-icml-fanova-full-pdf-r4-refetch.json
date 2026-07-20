@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Hutter, Hoos & Leyton-Brown (ICML 2014) run functional ANOVA (fANOVA) on hyperparameter data from a SINGLE fixed SMAC search run per dataset, treating model class as one hyperparameter among Auto-WEKA's 768 -- this is one-way variance decomposition within one optimizer's trajectory, not a crossed two-way surrogate x optimizer factorial.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial in offline MBO -- Hutter et al. is the closest one-way near-miss",
+    "evidence_type": "empirical",
+    "scope_conditions": "Auto-WEKA hyperparameter space (768 dimensions), 5 representative datasets (of 21 total) from Thornton et al. 2013's SMAC-gathered performance data",
+    "quoted_support": "\"Table 1. Top 3 most important hyperparameters of Auto-WEKA for each of 5 datasets, based on data from one SMAC run. ... We give means computed across 25 repetitions (each based on a different SMAC run).\"",
+    "numbers": ["768 hyperparameters", "5 datasets", "25 repetitions", "21 datasets total (Thornton et al. 2013)"],
+    "entities": ["Frank Hutter", "Holger Hoos", "Kevin Leyton-Brown", "Auto-WEKA", "SMAC", "fANOVA"],
+    "time_period": "2014",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "hutter-hoos-leyton-brown-2014-icml-fanova-full-pdf-r4-refetch"
+  },
+  {
+    "claim": "Hutter et al. 2014 find that the model class hyperparameter is the single most important hyperparameter for Auto-WEKA across all five evaluated datasets, explaining between 31% and 58% of performance variance depending on the dataset.",
+    "stance": "supports",
+    "stance_target": "Verification task (c): confirm 'most important hyperparameter was model class' finding with exact percentage range",
+    "evidence_type": "statistical",
+    "scope_conditions": "Auto-WEKA on YEAST, AMAZON, MNIST BASIC, KDD09-APPENTENCY, CIFAR-10 datasets",
+    "quoted_support": "\"With this data as input, we ran our functional ANOVA approach to identify the three most important hyperparameters for each dataset; we list these in Table 1 along with the fraction of variance explained by them. Not surprisingly, the most important hyperparameter was the model class used.\"",
+    "numbers": ["YEAST: class 31%", "AMAZON: class 58%", "MNIST BASIC: class 55%", "KDD09-APPENTENCY: class 41%", "CIFAR-10: class 53%", "range: 31%-58%"],
+    "entities": ["Auto-WEKA", "YEAST", "AMAZON", "MNIST BASIC", "KDD09-APPENTENCY", "CIFAR-10"],
+    "time_period": "2014",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "hutter-hoos-leyton-brown-2014-icml-fanova-full-pdf-r4-refetch"
+  },
+  {
+    "claim": "Full-text grep of Hutter et al. 2014 (47,266-word clean pymupdf extraction) confirms zero hits anywhere in the paper for 'factorial', 'crossed', 'two-way', 'one-way', 'OFAT', 'one-factor-at-a-time', 'offline', or 'eta squared'/'eta-squared' -- the paper's variance-attribution vocabulary is fraction-of-variance-explained (F_U = V_U/V), main effects, and interaction effects, never factorial-design framing.",
+    "stance": "supports",
+    "stance_target": "N6 near-miss confirmation: terminological and structural gap both present in this source",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full text of PMLR v32 pp.754-762",
+    "quoted_support": "Grep counts on clean full-text extraction: factorial=0, crossed=0, ANOVA=20, fANOVA=2, 'analysis of variance'=4, eta squared/eta-squared=0, two-way=0, one-way=0, main effect=9, interaction=20, OFAT=0, one-factor-at-a-time=0, offline=0, 'model class'=4.",
+    "numbers": ["factorial: 0", "crossed: 0", "two-way: 0", "one-way: 0", "OFAT: 0", "offline: 0", "main effect: 9", "interaction: 20"],
+    "entities": ["Hutter et al. 2014"],
+    "time_period": "2014",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "hutter-hoos-leyton-brown-2014-icml-fanova-full-pdf-r4-refetch"
+  },
+  {
+    "claim": "The hyperresearch CLI's PDF garbage-detector produces a false positive on the Hutter 2014 PDF, caused by two stray null bytes in pymupdf's raw text extraction, requiring a manual pymupdf extraction + null-byte strip + direct note-write workaround to recover the full text.",
+    "stance": "neutral",
+    "stance_target": "Tooling/methodology note for reproducibility of this re-audit",
+    "evidence_type": "empirical",
+    "scope_conditions": "hyperresearch fetch CLI, this specific PDF (https://proceedings.mlr.press/v32/hutter14.pdf), also reproduced on the export.arxiv.org mirror of Moosbauer's PDF",
+    "quoted_support": "CLI error: \"Skipped junk content from https://proceedings.mlr.press/v32/hutter14.pdf: Binary PDF garbage in content\" -- yet direct pymupdf extraction of the same downloaded PDF produced 47,268 clean characters of readable text with only 2 null bytes present.",
+    "numbers": ["2 null bytes", "47268 characters extracted"],
+    "entities": ["pymupdf", "hyperresearch CLI"],
+    "time_period": "2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "hutter-hoos-leyton-brown-2014-icml-fanova-full-pdf-r4-refetch"
+  }
+]

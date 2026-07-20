@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "TuRBO (Eriksson et al., NeurIPS 2019) is the actual literature source that explicitly discusses an optimizer 'appearing stuck' in local Bayesian optimization, handled through an explicit trust-region shrink/restart heuristic rather than any UCB/LCB sign-based argument -- making it a stronger candidate true-owner than fan2024minucb for a generic 'BO can get stuck locally' framing, though it does not describe the specific mechanism (acquisition locally maximal exactly at data) claimed in the audited paper.",
+    "stance": "supports",
+    "stance_target": "Search for the true owner of 'optimizer gets stuck / doesn't move' framing in local BO literature (task e)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Trust-region Bayesian optimization, NeurIPS 2019, arXiv:1910.01739",
+    "quoted_support": "\"The typical behavior is to expand a TR when the optimizer 'makes progress', i.e., it finds better solutions in that region, and shrink it when the optimizer appears stuck. Therefore, following, e.g., Nelder and Mead [33], we will shrink a TR after too many consecutive 'failures', and expand it after many consecutive 'successes'.\" (Section 2, line 182-186)",
+    "numbers": ["arXiv:1910.01739", "NeurIPS 2019, vol 32", "2 hits for 'stuck'", "20 hits for 'trust region'", "3 hits for 'shrink'", "7 hits for 'restart'"],
+    "entities": ["David Eriksson", "Michael Pearce", "Jacob Gardner", "Ryan D Turner", "Matthias Poloczek", "TuRBO", "Nelder and Mead"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"
+  },
+  {
+    "claim": "TuRBO uses Thompson sampling over local Gaussian processes for candidate selection, not a UCB or LCB argmin/argmax exploitation step, and never discusses distance-aware uncertainty or an offline setting -- it is only a partial match for the audited paper's mechanism, useful for the general 'stuck locally' framing but not for the specific LCB-at-data mathematics.",
+    "stance": "neutral",
+    "stance_target": "Precision of TuRBO as a substitute citation for the LCB-paralysis mechanism specifically",
+    "evidence_type": "theoretical",
+    "scope_conditions": "TuRBO's candidate-selection mechanism, described in main text and appendix",
+    "quoted_support": "\"a TR should be sufficiently large to contain good solutions. On the other hand, it should be small enough to ensure that the local model is accurate within the TR.\" (line 181-182)",
+    "numbers": ["0 hits for 'distance-aware'", "0 hits for 'offline'", "0 hits for 'locally maximal'"],
+    "entities": ["TuRBO", "Eriksson et al. 2019"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "191001739-scalable-global-optimization-via-local-bayesian-optimization"
+  }
+]

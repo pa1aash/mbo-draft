@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "In the original deep-ensembles paper's own 1D toy regression benchmark, an NLL-trained ensemble's predictive standard deviation grows specifically as inputs move farther from the observed training data, demonstrating ensemble sigma CAN behave as a distance signal in at least one regression setting.",
+    "stance": "neutral",
+    "stance_target": "generality of the audited paper's dichotomy between distance signal and error signal",
+    "evidence_type": "empirical",
+    "scope_conditions": "1D toy regression, y=x^3+eps, Hernandez-Lobato & Adams dataset, 5-network ensemble trained via NLL",
+    "quoted_support": "ensemble combination improves performance, especially as we move farther from the observed training data.",
+    "numbers": ["5 networks"],
+    "entities": ["Lakshminarayanan", "deep ensembles", "Hernandez-Lobato and Adams"],
+    "time_period": "2017",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "161201474-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensem"
+  },
+  {
+    "claim": "The naive heuristic of training an ensemble via MSE and using the empirical variance across members as the uncertainty estimate significantly underestimates true predictive uncertainty compared to an ensemble that learns a heteroscedastic NLL-based variance.",
+    "stance": "supports",
+    "stance_target": "possible confound explaining a low rho between ensemble sigma and error: ensemble training procedure (MSE vs NLL) affects sigma's informativeness",
+    "evidence_type": "empirical",
+    "scope_conditions": "Year Prediction MSD regression dataset, 5-network ensemble",
+    "quoted_support": "the empirical variance obtained from NNs which do not learn the predictive variance (specifically, five NNs trained to minimize MSE) consistently underestimates the true predictive uncertainty. For instance, the 80% prediction interval contains only 20% of the test observations",
+    "numbers": ["80%", "20%", "5 networks"],
+    "entities": ["Year Prediction MSD", "MSE", "NLL"],
+    "time_period": "2017",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "161201474-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensem"
+  },
+  {
+    "claim": "The deep ensembles paper frames calibration (predictive uncertainty matching empirical error/frequency) as the central quality criterion for uncertainty estimates, explicitly linking uncertainty quality to error-rate correctness rather than treating distance-awareness and error-awareness as separate axes.",
+    "stance": "neutral",
+    "stance_target": "whether distance-signal and error-signal are treated as mutually exclusive in the literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general calibration framing for classification and regression",
+    "quoted_support": "calibration is an orthogonal concern to accuracy: a network's predictions may be accurate and yet miscalibrated, and vice versa.",
+    "numbers": [],
+    "entities": ["calibration", "accuracy"],
+    "time_period": "2017",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "161201474-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensem"
+  }
+]

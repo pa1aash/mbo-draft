@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "SNGP defines 'input distance awareness' as the property that a model's uncertainty summary statistic u(x) equals a monotonic function of the distance between x and the training data domain, u(x) = v(d(x, X_IND)).",
+    "stance": "neutral",
+    "stance_target": "definition of distance-aware uncertainty",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general deep learning uncertainty quantification, illustrated on classification tasks",
+    "quoted_support": "We say p(y|x) is input distance aware if there exists u(x) a summary statistic of p(y|x) that quantifies model uncertainty (e.g., entropy, predictive variance, etc) that reflects the distance between x and the training data with respect to ||.||_X, i.e., u(x) = v(d(x, X_IND))",
+    "numbers": [],
+    "entities": ["Jeremiah Zhe Liu", "SNGP", "Gaussian process", "RBF kernel"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200610108-simple-and-principled-uncertainty-estimation-with-deterministic-deep-l"
+  },
+  {
+    "claim": "SNGP's own experiments assert that standard deep ensembles are NOT input distance aware, and instead assign low uncertainty to OOD points that are far from training data.",
+    "stance": "refutes",
+    "stance_target": "audited paper's claim that citing SNGP 'bounds'/supports a finding that a deep ensemble's sigma IS a distance signal",
+    "evidence_type": "empirical",
+    "scope_conditions": "2D synthetic binary classification (Gaussian blobs, two moons), ResFFN-12-128 architecture",
+    "quoted_support": "deep ensembles (Figures 1b, 1g) and MC Dropout (Figures 1c, 1h) are based on dense output layers that are not distance aware. As a result, both methods quantify their predictive uncertainty based on the distance from the decision boundaries, assigning low uncertainty to OOD examples even if they are far from the data.",
+    "numbers": [],
+    "entities": ["deep ensembles", "MC Dropout", "SNGP", "DNN-GP"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200610108-simple-and-principled-uncertainty-estimation-with-deterministic-deep-l"
+  },
+  {
+    "claim": "SNGP was invented specifically because typical deep learning models (including ensembles of them) lack distance awareness, and this deficiency is 'not guaranteed for a typical deep learning model.'",
+    "stance": "refutes",
+    "stance_target": "framing SNGP as evidence bounding/supporting distance-aware ensemble sigma",
+    "evidence_type": "theoretical",
+    "scope_conditions": "discriminative deep classifiers with dense output layer / softmax",
+    "quoted_support": "this property is not guaranteed for a typical deep learning model... the model computes confidence for a x* based not on its distance from the training data X_IND, but based on its distance from the decision boundaries, i.e., the model uncertainty is not input distance aware.",
+    "numbers": [],
+    "entities": ["dense output layer", "logit", "decision boundary"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200610108-simple-and-principled-uncertainty-estimation-with-deterministic-deep-l"
+  },
+  {
+    "claim": "SNGP treats input distance awareness as jointly important for both in-distribution calibration and OOD detection, not as a property that trades off against error-informativeness.",
+    "stance": "neutral",
+    "stance_target": "whether distance-signal and error-signal are mutually exclusive framings",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general",
+    "quoted_support": "the input distance awareness property is important for both calibration and OOD detection.",
+    "numbers": [],
+    "entities": ["calibration", "OOD detection"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "200610108-simple-and-principled-uncertainty-estimation-with-deterministic-deep-l"
+  },
+  {
+    "claim": "All SNGP empirical validation is on classification tasks (2D toy classification, CIFAR-10/100, ImageNet, CIFAR-10-C corruption, and BERT-based language understanding tasks) using Wide-ResNet and BERT architectures; the paper contains no regression experiments.",
+    "stance": "neutral",
+    "stance_target": "domain scope of SNGP's claims relative to the audited paper's regression/MBO surrogate setting",
+    "evidence_type": "empirical",
+    "scope_conditions": "vision and language classification benchmarks",
+    "quoted_support": "On a suite of vision and language understanding tasks and on modern architectures (Wide-ResNet and BERT), SNGP is competitive with deep ensembles in prediction, calibration and out-of-domain detection",
+    "numbers": [],
+    "entities": ["Wide-ResNet", "BERT", "CIFAR-10", "ImageNet"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200610108-simple-and-principled-uncertainty-estimation-with-deterministic-deep-l"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "DUQ's own figure and text state that standard Deep Ensembles fail to produce meaningful distance-aware uncertainty, becoming uncertain only near the decision boundary rather than far from training data.",
+    "stance": "refutes",
+    "stance_target": "audited paper's claim that citing DUQ bounds/supports a finding that a deep ensemble's sigma IS a distance signal",
+    "evidence_type": "empirical",
+    "scope_conditions": "two moons 2D synthetic classification dataset",
+    "quoted_support": "DUQ is certain only on the data distribution, and uncertain away from it: the ideal result. Deep Ensembles is uncertain only along the decision boundary, and certain elsewhere.",
+    "numbers": [],
+    "entities": ["DUQ", "Deep Ensembles", "two moons dataset"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200302037-uncertainty-estimation-using-a-single-deep-deterministic-neural-networ"
+  },
+  {
+    "claim": "DUQ attributes deep ensembles' failure to be distance-aware to a lack of diversity among ensemble members on simple, low-dimensional datasets.",
+    "stance": "refutes",
+    "stance_target": "distance-awareness of deep ensemble sigma",
+    "evidence_type": "empirical",
+    "scope_conditions": "low-dimensional (2D) datasets specifically; contrasted with large real datasets",
+    "quoted_support": "Deep Ensembles are not able to obtain meaningful uncertainty on this dataset, because of a lack of diversity in the different models in the ensemble... even though Deep Ensembles have been successfully applied to many large datasets, they fail to estimate uncertainty well on the two moons dataset.",
+    "numbers": [],
+    "entities": ["Deep Ensembles"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200302037-uncertainty-estimation-using-a-single-deep-deterministic-neural-networ"
+  },
+  {
+    "claim": "DUQ explicitly distinguishes its distance-based approach from ensemble/Monte Carlo methods, describing ensembles as methods that 'aim to find different explanations for the data and increase uncertainty when these disagree' rather than measuring distance to training data directly.",
+    "stance": "neutral",
+    "stance_target": "conceptual distinction between distance-based and ensemble-disagreement-based uncertainty",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general",
+    "quoted_support": "Our approach is distinct from both ensembles/Monte Carlo methods, which aim to find different explanations for the data and increase uncertainty when these disagree, and generative models which model the data distribution directly.",
+    "numbers": [],
+    "entities": ["DUQ", "Monte Carlo methods", "generative models"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200302037-uncertainty-estimation-using-a-single-deep-deterministic-neural-networ"
+  },
+  {
+    "claim": "DUQ's uncertainty metric for its own model is distance to the closest class centroid in feature space, explicitly labeled a distance-based approach, unlike deep ensembles which use predictive entropy of the averaged output.",
+    "stance": "neutral",
+    "stance_target": "definitional basis of distance-aware uncertainty",
+    "evidence_type": "theoretical",
+    "scope_conditions": "classification with RBF-network-style centroids",
+    "quoted_support": "The uncertainty for DUQ is quantified as the distance to the closest centroid (max over the kernel distances), the uncertainty for Deep Ensembles is computed as the predictive entropy of the average output",
+    "numbers": [],
+    "entities": ["DUQ", "centroids", "predictive entropy"],
+    "time_period": "2020",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "200302037-uncertainty-estimation-using-a-single-deep-deterministic-neural-networ"
+  }
+]

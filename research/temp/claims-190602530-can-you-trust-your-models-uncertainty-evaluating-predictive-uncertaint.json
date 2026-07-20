@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Ovadia et al.'s large-scale UQ benchmark under dataset shift contains no per-point correlation analysis between uncertainty and error, and no distance-to-training-data framing at all; it evaluates only aggregate calibration metrics (ECE, Brier score, NLL, accuracy) across corruption severities.",
+    "stance": "neutral",
+    "stance_target": "whether prior large-scale UQ literature already measured the specific rho(sigma,error) vs rho(sigma,distance) comparison the audited paper claims to correct",
+    "evidence_type": "empirical",
+    "scope_conditions": "classification only (MNIST, CIFAR-10, ImageNet, sentiment, genomics), various architectures",
+    "quoted_support": "We present a large-scale benchmark of existing state-of-the-art methods on classification problems and investigate the effect of dataset shift on accuracy and calibration.",
+    "numbers": [],
+    "entities": ["Ovadia", "dataset shift benchmark"],
+    "time_period": "2019",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "190602530-can-you-trust-your-models-uncertainty-evaluating-predictive-uncertaint"
+  },
+  {
+    "claim": "Deep ensembles were found to be the most robust UQ method to dataset shift among all methods benchmarked, with a small ensemble size (M=5) often sufficient.",
+    "stance": "neutral",
+    "stance_target": "relative distance/shift-awareness of deep ensembles compared to alternatives",
+    "evidence_type": "empirical",
+    "scope_conditions": "classification under corruption/shift, multiple architectures and datasets",
+    "quoted_support": "Deep ensembles seem to perform the best across most metrics and be more robust to dataset shift. We found that relatively small ensemble size (e.g. M = 5) may be sufficient",
+    "numbers": ["M=5"],
+    "entities": ["deep ensembles"],
+    "time_period": "2019",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "190602530-can-you-trust-your-models-uncertainty-evaluating-predictive-uncertaint"
+  },
+  {
+    "claim": "Uncertainty quality (calibration) consistently degrades with increasing dataset shift regardless of UQ method, and good i.i.d. calibration does not transfer to good calibration under shift.",
+    "stance": "neutral",
+    "stance_target": "generalizability of in-distribution uncertainty quality claims to OOD settings",
+    "evidence_type": "empirical",
+    "scope_conditions": "classification under corruption/shift",
+    "quoted_support": "Along with accuracy, the quality of uncertainty consistently degrades with increasing dataset shift regardless of method. Better calibration and accuracy on the i.i.d. test dataset does not usually translate to better calibration under dataset shift",
+    "numbers": [],
+    "entities": ["dataset shift", "calibration"],
+    "time_period": "2019",
+    "region": "N/A",
+    "confidence": "high",
+    "source_note_id": "190602530-can-you-trust-your-models-uncertainty-evaluating-predictive-uncertaint"
+  }
+]

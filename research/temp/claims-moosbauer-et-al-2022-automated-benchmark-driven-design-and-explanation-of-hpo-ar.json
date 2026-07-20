@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Moosbauer et al. (IEEE TEVC 2022 / arXiv:2111.14756) explicitly name ANOVA and functional ANOVA (fANOVA) as standard sensitivity-analysis methods, then decline them in favor of one-factor-at-a-time (OFAT)/ablation for their HPO algorithm analysis, citing OFAT's inability to detect interactions as a known limitation they accept anyway.",
+    "stance": "supports",
+    "stance_target": "N6: no prior work runs a crossed surrogate x optimizer factorial ANOVA in offline MBO",
+    "evidence_type": "empirical",
+    "scope_conditions": "Hyperparameter optimization (HPO) algorithm design/explanation, YAHPO Gym surrogate benchmarks (lcbench, rbv2_super, nb301), online multi-fidelity HPO -- not offline MBO",
+    "quoted_support": "\"Commonly used methods are analysis of variance (ANOVA) and functional ANOVA (fANOVA) methods, which decompose the response of a (mathematical) model or function into lower-order components... We want to limit the costs of performing such a sensitivity analysis... by choosing a method that keeps the resource requirements of the experimental design reasonably low, like for example a one-factor-at-a-time (OFAT) analysis. Those methods have their own limitations; for example, any interactions between inputs cannot be detected by an OFAT analysis, and parts of the input space remain hidden.\"",
+    "numbers": ["30 repeated seeds per evaluation", "RQ1-RQ7 (7 research questions)"],
+    "entities": ["Moosbauer", "Binder", "Schneider", "Pfisterer", "Becker", "Lang", "Kotthoff", "Bischl", "fANOVA", "OFAT", "YAHPO Gym", "BOHB"],
+    "time_period": "2022 (arXiv v1 2021-11-29)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "moosbauer-et-al-2022-automated-benchmark-driven-design-and-explanation-of-hpo-ar"
+  },
+  {
+    "claim": "Moosbauer et al.'s actual RQ6 (surrogate-model effect) analysis is a one-factor-at-a-time ablation: the surrogate learner is swapped out while all other components remain fixed at the single optimized configuration gamma*, not crossed against the sampling-strategy factor (RQ5a/b) in any joint ANOVA table.",
+    "stance": "supports",
+    "stance_target": "N6: near-miss confirmed -- surrogate and search-strategy factors varied but never crossed statistically",
+    "evidence_type": "empirical",
+    "scope_conditions": "Section 6.3 Algorithm Analysis, RQ1-RQ7 methodology",
+    "quoted_support": "\"A simple method to answer many of these questions is to take the optimized configuration of Alg. 2 and swap out components of it for generally simpler components, thereby performing a one-factor-at-a-time analysis or an ablation study... RQ6 - Effect of surrogate models: ...Our ablation experiments suggest that the performance of the optimizer is on average best when using this surrogate learner, even though the differences do not seem to be significant.\"",
+    "numbers": ["RQ1", "RQ2", "RQ3", "RQ4", "RQ5a", "RQ5b", "RQ6", "RQ7"],
+    "entities": ["KNN", "TPE", "BOHB", "GPBO", "lcbench", "rbv2_super", "nb301"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "moosbauer-et-al-2022-automated-benchmark-driven-design-and-explanation-of-hpo-ar"
+  },
+  {
+    "claim": "Full-text grep of Moosbauer et al. (19,701 words, ar5iv HTML mirror) confirms zero hits for 'factorial', 'crossed', 'eta squared'/'eta-squared', 'two-way', or 'main effect', and zero hits for 'offline' -- the paper never frames its analysis as a crossed factorial and never uses offline-MBO terminology.",
+    "stance": "supports",
+    "stance_target": "N6 near-miss confirmation: methodological gap (no factorial/ANOVA framing) and domain gap (not offline MBO) both present",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full text of arXiv:2111.14756 / IEEE TEVC 26(6):1336-1350",
+    "quoted_support": "Grep counts: factorial=0, crossed=0, ANOVA=5, fANOVA=2, 'analysis of variance'=1, eta squared/eta-squared=0, two-way=0, main effect=0, interaction=1, OFAT=2, one-factor-at-a-time=2, offline=0.",
+    "numbers": ["factorial: 0", "crossed: 0", "ANOVA: 5", "fANOVA: 2", "eta squared: 0", "two-way: 0", "main effect: 0", "interaction: 1", "OFAT: 2", "offline: 0"],
+    "entities": ["Moosbauer et al. 2022"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "moosbauer-et-al-2022-automated-benchmark-driven-design-and-explanation-of-hpo-ar"
+  },
+  {
+    "claim": "Moosbauer et al. cite Fawcett & Hoos (ablation-path analysis in algorithm configuration, ref [42]) and a YAHPO Gym benchmark suite paper (ref [59]) as methodological antecedents, both of which are candidate leads for further citation-chasing but neither is a crossed-factorial ANOVA of surrogate x optimizer.",
+    "stance": "neutral",
+    "stance_target": "Lead generation for citation-chain verification",
+    "evidence_type": "empirical",
+    "scope_conditions": "Reference list of arXiv:2111.14756",
+    "quoted_support": "\"In the context of algorithm configuration, [42] propose an ablation approach that links a source configuration (e.g. the default) to a target (e.g. the optimized configuration) through an ablation path.\"",
+    "numbers": ["ref [42]", "ref [59]"],
+    "entities": ["Fawcett", "Hoos", "YAHPO Gym"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "moosbauer-et-al-2022-automated-benchmark-driven-design-and-explanation-of-hpo-ar"
+  }
+]

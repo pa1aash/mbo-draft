@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "In a seismic-facies semantic segmentation task, a 30-member deep ensemble's predictive-entropy uncertainty correlates with actual per-pixel prediction error at Pearson r=0.715 (+/-0.081) and Spearman rho=0.568 (+/-0.108).",
+    "stance": "refutes",
+    "stance_target": "the audited paper's claim that ensemble sigma correlates with error at only rho~=0.07",
+    "evidence_type": "empirical",
+    "scope_conditions": "dense per-pixel classification (semantic segmentation) of seismic facies volumes, M=30 ensemble members, apparently in-distribution test data",
+    "quoted_support": "Deep Ensemble [10]        0.715 ± 0.081 0.568 ± 0.108 0.661 ± 0.114 [Table 2, Agreement with Prediction Error]",
+    "numbers": ["0.715", "0.081", "0.568", "0.108", "0.661", "0.114", "M=30"],
+    "entities": ["deep ensemble", "seismic facies segmentation", "RADMI"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "260501502-radmi-latent-information-aggregation-as-a-proxy-for-model-uncertainty"
+  },
+  {
+    "claim": "This result is domain-mismatched relative to the audited paper (dense per-pixel classification/segmentation, not scalar regression) and comes from a very recent (2026), not-yet-heavily-cited conference paper, warranting lower evidentiary weight than a peer-reviewed regression benchmark.",
+    "stance": "neutral",
+    "stance_target": "evidentiary strength/generalizability of the RADMI correlation figures",
+    "evidence_type": "empirical",
+    "scope_conditions": "IEEE ICIP 2026 accepted paper, seismic imaging domain",
+    "quoted_support": "Citation W. Stevens, M. Prabhushankar, and G. AlRegib, \"RADMI: Latent Information Aggregation as a Proxy for Model Uncertainty,\" in IEEE International Conference on Image Processing (ICIP), Tampere, Finland, 2026. Review Date of Acceptance: April 30th 2026",
+    "numbers": ["2026"],
+    "entities": ["ICIP 2026", "Stevens", "Prabhushankar", "AlRegib"],
+    "time_period": "2026",
+    "region": "N/A",
+    "confidence": "medium",
+    "source_note_id": "260501502-radmi-latent-information-aggregation-as-a-proxy-for-model-uncertainty"
+  }
+]

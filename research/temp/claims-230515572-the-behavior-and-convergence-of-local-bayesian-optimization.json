@@ -1,0 +1,16 @@
+[
+  {
+    "claim": "Wu, Kim, Garnett, Gardner (NeurIPS 2023/vol 36, arXiv:2305.15572) provide the first rigorous convergence-rate proof for GIBO, which is the analysis fan2024minucb's own Theorem 1 explicitly compares against (cited as ref [34]) -- this paper's thesis is that local BO PROVABLY CONVERGES under standard assumptions, formalizing prior 'folk wisdom'; it contains no stalling, freeze, or paralysis framing anywhere in its text.",
+    "stance": "refutes",
+    "stance_target": "Whether the local-BO literature cited alongside/behind fan2024minucb supports an optimizer-never-leaves paralysis framing",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Local Bayesian optimization convergence analysis, GP sample-path objectives with known hyperparameters, noiseless and noisy settings",
+    "quoted_support": "\"The 'folk wisdom' in the literature is that the focus on local optimization sidesteps the curse of dimensionality; however, little is known concretely about the expected behavior or convergence of Bayesian local optimization routines... We then present the first rigorous analysis of such a Bayesian local optimization algorithm recently proposed by Müller et al. (2021), and derive convergence rates in both the noiseless and noisy settings.\" (Abstract)",
+    "numbers": ["arXiv:2305.15572", "0 hits for 'stuck'", "0 hits for 'trust region'", "0 hits for 'offline'", "0 hits for 'distance-aware'", "57 hits for 'converg'"],
+    "entities": ["Kaiwen Wu", "Kyurae Kim", "Roman Garnett", "Jacob R. Gardner", "GIBO", "Müller et al. 2021"],
+    "time_period": "2023-2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "230515572-the-behavior-and-convergence-of-local-bayesian-optimization"
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "GIBO (Müller, von Rohr, Trimpe, NeurIPS 2021) is the algorithm Fan et al.'s MinUCB directly modifies, and GIBO's own local-search step is gradient descent using the GP posterior-mean gradient estimate -- not a UCB or LCB acquisition of any kind. GIBO is therefore the true prior-work origin of the 'local search via GP-based two-stage loop' framework, predating Fan et al. by three years.",
+    "stance": "supports",
+    "stance_target": "Correct attribution: the general local-BO-via-GP-acquisition premise traces to GIBO (2021), not to fan2024minucb (2024), which only substitutes GIBO's exploitation objective",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Local Bayesian optimization / local policy search, NeurIPS 2021, arXiv:2106.11899",
+    "quoted_support": "\"Our proposed method delegates the exploitation to a gradient-based optimizer after exploring a local property, the function's derivative at the current iterate, for which a local search (and model) is sufficient.\" (Introduction, line 219-221)",
+    "numbers": ["arXiv:2106.11899", "NeurIPS 2021, vol 34, pages 20708-20720", "2 hits for 'local search' in full text"],
+    "entities": ["Sarah Müller", "Alexander von Rohr", "Sebastian Trimpe", "GIBO"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "210611899-local-policy-search-with-bayesian-optimization"
+  },
+  {
+    "claim": "GIBO discusses gradient methods 'getting stuck in local optima' only as generic background on classical first-order steplength heuristics (Momentum, AdaGrad, RMSProp, Adam), citing an unrelated reference -- not as a GP/BO-acquisition-specific 'locally maximal at the data' phenomenon relevant to LCB paralysis.",
+    "stance": "neutral",
+    "stance_target": "Whether GIBO is a plausible alternative true-owner citation for the LCB-paralysis mechanism",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Background discussion of first-order optimization steplength heuristics",
+    "quoted_support": "\"several problems when using a scaled version of the gradient's magnitude as steplength [43]: (i) divergent oscillation from the optimum, (ii) loss of gradient at plateaus or saddle points, (iii) getting stuck in local optima.\" (line 977-979)",
+    "numbers": ["1 hit for 'stuck'"],
+    "entities": ["GIBO", "Müller et al."],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "210611899-local-policy-search-with-bayesian-optimization"
+  }
+]
