@@ -256,6 +256,64 @@ gpytorch and cma versions, `git_sha`, the X1/X3 flags, K, beta, TOP, seed range 
 timestamp. **The protocol the paper prescribes is one it actually followed.** Worth stating
 in the report — it is the claim most likely to be assumed rhetorical and it is not.
 
+## L2.9 — The frozen-cell claims verify to the seed
+
+These are the most striking factual claims in the Design-Bench section, and the ones most
+exposed to a reviewer with the artifacts. **Every one reproduces exactly.**
+
+### Ant (from `results/db_corners/corner_on_on_mujoco_db.json`, p100, 16 seeds)
+
+The paper: *"On Ant, two of three GP cells return the bit-identical constant
+`1.5287419557571411` with standard deviation exactly `0.0` across all sixteen seeds, and a
+third (SVGP with perturbation) hits it on **ten of sixteen**."* And its own correction: *"It is
+two of three Ant GP cells, not three---the gradient cell returns `1.3242 ± 0.1975` and is not
+frozen."*
+
+| Cell | Exact hits on 1.5287419557571411 | Distinct values | Verdict |
+|---|---|---|---|
+| `botorchgp:perturb` | **16/16** | 1 | frozen ✓ |
+| `botorchgp:cma` | **16/16** | 1 | frozen ✓ |
+| `botorchgp:grad` | 0/16 | 16 | **not** frozen ✓ — mean 1.32417, sd 0.198, matching the paper's `1.3242 ± 0.1975` |
+| `svgp:perturb` | **10/16** | 5 | ✓ — the paper's "ten of sixteen" is exact |
+
+**"Ten of sixteen" is exactly right.** That is a claim the authors could easily have rounded
+or approximated, and did not.
+
+### TF-Bind-8 (all four corners, p100, 16 seeds)
+
+The paper: *"the three exact-GP cells return exactly `1.0` on all 16 seeds with zero variance
+**in every corner**, and ensemble-with-perturbation joins them **in two of the four** — four
+frozen cells of nine there, three in the others."*
+
+| Corner | Frozen cells | Which |
+|---|---|---|
+| off/off | **4/9** | ens:perturb, botorchgp:grad, botorchgp:perturb, botorchgp:cma |
+| off/on | **3/9** | the three exact-GP cells |
+| on/off | **3/9** | the three exact-GP cells |
+| on/on | **4/9** | ens:perturb + the three exact-GP cells |
+
+All three exact-GP cells frozen at exactly 1.0 in **all four** corners ✓. `ens:perturb` joins
+in **exactly two** of four ✓. Four-of-nine there, three elsewhere ✓.
+
+## L2.10 — The pattern across all local verification, and what it means for the report
+
+Every quantitative claim I could check against a repo artifact reproduced, with one
+exception (L2.7a, "five other cells" should be six). That covers: four corner η² values and
+their CIs, corner range, interval widths, the bootstrap-width validation, Elimination 1's
+seven figures including the paired delta and the z-score cross-check, per-task β=0 gaps, the
+inversion counts across three surrogate classes, both frozen-cell claims to the seed, the
+`mbo.py` line traces for two confounds, and the engine-stamping protocol.
+
+**This should be stated explicitly in the report, near the front.** An audit that returns nine
+mandatory fixes reads, by default, as an indictment. The correct reading here is narrower and
+more useful to the author: **the defects are concentrated almost entirely in citation
+attribution and framing, and essentially absent from the evidence.** Of the nine mandatory
+items, eight concern what a *source* says and one concerns an integer recount. None concerns a
+number the paper computed.
+
+That distinction is actionable. It says the remaining pre-deadline effort belongs in the
+related-work and scoping prose, not in re-running anything.
+
 ## L3 — Citation-year and venue defects visible without fetching
 
 **L3a — `kim2025mbosurvey` key/prose mismatch.** The bib entry is
