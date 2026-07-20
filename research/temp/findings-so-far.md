@@ -152,6 +152,48 @@ that the survey is calling for this specific design.**
 
 ---
 
+## ⚠ TWO VENUE CLAIMS IN MY OWN RECOMMENDATIONS ARE UNCONFIRMED — caught before shipping
+
+**This audit exists to catch citation defects. It nearly shipped two of its own.** I ran a
+venue/year verification pass over every citation this report *recommends adding* — on the
+principle that a report fixing citation errors must not introduce new ones. Two failed.
+
+### 1. `Dao et al., "Boosting Offline Optimizers with Surrogate Sensitivity"` — venue claim is IMPOSSIBLE
+A depth investigator reported this as **"arXiv:2503.04181, ICML 2024"** and I carried that into
+the findings ledger as the cheapest fold-in experiment (the (α,ω)-sensitivity measure).
+
+**arXiv v1 is dated 2025-03-06.** A 2025 preprint cannot have appeared at ICML 2024. OpenAlex
+returns no match for the title at all. **The venue attribution is wrong and is withdrawn.**
+
+The *substance* may still be fine — the (α,ω)-sensitivity idea is a real recommendation and the
+arXiv ID resolves — but the report must cite it as **arXiv:2503.04181 (2025), venue
+unverified**, and the terminal section must say so.
+
+### 2. `Ghasemipour, Gu & Nachum, "Why So Pessimistic?"` — two subagents, two different venues
+One batch reported **NeurIPS 2022**; another reported **ICML 2022**. Both cannot be right.
+OpenAlex resolves arXiv:2205.13703 to a **preprint with no conference venue recorded**, and a
+title search returns no published version.
+
+**Cite as arXiv:2205.13703 (2022) with the venue unverified.** This matters more than usual
+because Ghasemipour is load-bearing twice over — it supplies the correction to
+`ghasemipour2022pessimistic` (Mandatory Fix 11) *and* the candidate positive mechanism for the
+inversion result.
+
+### Why this belongs in the report, not just in my notes
+
+The project brief says *"this project has caught fabrications — hold the line."* The fabrications
+this pass caught were **not** in the paper under audit. They were in my own subagents' relays: a
+chronologically impossible venue, and a venue disagreement between two agents neither of whom
+flagged uncertainty. Both would have entered a report whose entire subject is citation fidelity.
+
+**Rule applied to the whole deliverable:** every citation the report recommends adding carries
+its arXiv ID, and any venue I could not verify first-hand is marked *venue unverified* rather
+than guessed. Verified-clean in the same pass: Xu et al. (ICLR 2021 — note arXiv v1 is 2020, the
+same trap class as Li/Rudner/Wilson), Gao et al. (**ICML 2023**, confirming the `gao2022reward`
+key defect), Lu et al. (**Spotlight @ ICLR 2022**), Fujimoto & Gu (**NeurIPS 2021 Spotlight**),
+Laroche et al. SPIBB (**long oral at ICML 2019**, not 2018), Fannjiang & Listgarten (NeurIPS
+2020), Tibshirani et al. (2019), Hamdan et al. (2022).
+
 ## ENVIRONMENT LIMITATION (belongs in "What I could not verify and why")
 
 `hyperresearch fetch` **cannot ingest PDFs in this environment.** Every arXiv PDF URL form
