@@ -199,23 +199,78 @@ Three candidate owners were ruled out in earlier steps — TuRBO (diagnoses the 
 over-exploration), Fan et al. 2024 (proposes minimizing UCB as a method and proves *convergence*;
 0 hits for offline/LCB/stuck/paralysis), and GIBO (no confidence bound in its exploitation step).
 **But excluding three specific papers is not the same as sweeping the failure-mode vocabulary**,
-which no prior step did. This gap closes that hole, including EI's documented over-exploitation
-pathology.
+which no prior step did. This gap closes that hole.
 
-*Result pending fetcher return.*
+**RESULT: NOT a clean none-found. One real near-miss found, and my earlier "nobody owns it"
+claim must be softened into a citation obligation.**
+
+**Yarotsky (2013), "Examples of inconsistency in optimization by expected improvement",
+*J. Global Optimization* 56(4):1773–1790, arXiv:1109.1320** (venue verified via Springer citation
+metadata). **Theorem 3 rigorously proves that EI-driven BO started at the true optimum has a
+trajectory that converges back to that single point and is "not dense."** That is the closest
+prior formalization in existence of *"gets stuck and never leaves."*
+
+It differs from the paper's claim on **three axes**, each real:
+1. **Expected Improvement**, not a confidence bound (UCB/LCB);
+2. **online** BO, not the offline/frozen-dataset regime;
+3. an **adversarial worst-case starting condition**, not an empirical seed-robust observation.
+
+**Effect on the audit's position — I am correcting myself.** I previously wrote that *"nobody
+owns 'a confidence-bound acquisition is locally maximal at the data so the optimizer never
+leaves,' so the paper should claim it as its own observation."* That was reached by *excluding*
+three candidates (TuRBO, Fan, GIBO) without sweeping the vocabulary. With the vocabulary swept,
+**Yarotsky is closest prior art and the paper now owes it a scoping sentence** rather than
+silence. The frozen-cell evidence still stands as the paper's own empirical observation — 16
+bit-identical seeds across two GP classes on a continuous task is not in Yarotsky — but the
+related-work obligation is real and the "no prior art" phrasing is withdrawn.
+
+**Two adjacent findings, both verified:**
+- **Ament et al., NeurIPS 2023 Spotlight** (arXiv:2310.20708, venue verified via arXiv Comments
+  and the matching proceedings URL) — EI/EHVI's *numerical* vanishing-gradient pathology
+  degenerating the acquisition optimizer into random search. A different, EI-specific,
+  floating-point mechanism; not a structural maximal-at-the-data claim.
+- **Kim & Choi, ECML-PKDD 2020** (arXiv:1901.08350, venue verified from arXiv Comments) — bounds
+  the regret gap between local and global optimizers of PI/EI/GP-UCB via a "collapse" probability.
+  Touches GP-UCB directly but concerns **within-round inner-optimization fidelity**, not the
+  outer-loop stuck-at-the-data claim.
 
 ## gap-6 (high) — accessible primaries for the η² small-n bias
 
 **Target position:** η² is positively biased at small n; ω²/ε² are the corrections
 (Mandatory Fix 9).
 
-Currently **secondhand** — Kelley (1935) and Olejnik & Algina (2003) are paywalled everywhere
-attempted, so the claim rests on the JOSS `effectsize` documentation quoting them. The empirical
-half is first-hand: I computed the bias from the paper's own bootstrap artifacts (+0.0099 to
-+0.0184 across four corners). Named accessible candidates: Levine & Hullett (2002), Okada (2013),
-Lakens (2013).
+Was **secondhand** — Kelley (1935) and Olejnik & Algina (2003) are paywalled everywhere attempted.
 
-*Result pending fetcher return.*
+**RESULT: UPGRADED TO FIRSTHAND. Two open-access primaries obtained, and one refines the fix.**
+
+**1. Okada (2013), "Is Omega Squared Less Biased?", *Behaviormetrika* 40(2):129–147**, DOI
+10.2333/bhmk.40.129 (venue verified from the PDF running header; J-STAGE paywalls this specific
+volume, so full text came from a Wayback snapshot of the author's self-archived PDF).
+
+Contains the **exact Monte Carlo bias table** (1M replications per condition):
+
+| n per group | η² bias |
+|---|---|
+| 10 | **+0.054** |
+| … | … |
+| 100 | **+0.005** |
+
+**Always positive**, shrinking with n. ε² and ω² are always small and **negative**.
+
+**And it refines Mandatory Fix 9 in a way I had wrong.** Okada's own simulation **overturns the
+folk belief that ω² is the least-biased correction — ε² is.** So the recommendation to the paper
+should name **ε²**, or report both, rather than defaulting to ω² as I originally wrote.
+
+**2. Liu (2022), "Bias correction for η² in one-way ANOVA", *Methodology* 18(1):44–57**, DOI
+10.5964/meth.7745, **CC BY 4.0**. States firsthand: *"eta squared is not an unbiased estimate and
+is known to have positive bias… depends on sample size"*, and attributes the corrections directly
+— **Kelley (1935) for ε², Hays (1963) for ω²**.
+
+**Net:** Mandatory Fix 9 no longer rests on the JOSS documentation quoting paywalled sources. It
+rests on two open-access primaries with verbatim quotes, plus my own first-hand computation of
+the bias from the paper's own bootstrap artifacts (+0.0099 to +0.0184 across four corners). At
+the paper's n=7 tasks, Okada's table puts the expected η² bias **above** his smallest tabulated
+condition — consistent in direction and rough magnitude with what the artifacts show.
 
 ---
 
