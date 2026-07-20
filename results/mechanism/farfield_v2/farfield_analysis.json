@@ -1,0 +1,633 @@
+{
+ "config": {
+  "n_rays": 16,
+  "n_axis": 8,
+  "ray_seed": 777,
+  "s_grid": [
+   0.0,
+   0.05,
+   0.1,
+   0.15000000000000002,
+   0.2,
+   0.25,
+   0.30000000000000004,
+   0.35000000000000003,
+   0.4,
+   0.45,
+   0.5,
+   0.55,
+   0.6000000000000001,
+   0.65,
+   0.7000000000000001,
+   0.75,
+   0.8,
+   0.8500000000000001,
+   0.9,
+   0.9500000000000001,
+   1.0,
+   1.05,
+   1.1,
+   1.1500000000000001,
+   1.2,
+   1.25,
+   1.3,
+   1.35,
+   1.4,
+   1.45,
+   1.5,
+   1.55,
+   1.6,
+   1.65,
+   1.7,
+   1.75,
+   1.7999999999999998,
+   1.85,
+   1.9,
+   1.95,
+   2.0,
+   2.05,
+   2.0999999999999996,
+   2.15,
+   2.2,
+   2.25,
+   2.3,
+   2.3499999999999996,
+   2.4,
+   2.45,
+   2.5,
+   2.55,
+   2.5999999999999996,
+   2.65,
+   2.7,
+   2.75,
+   2.8,
+   2.8499999999999996,
+   2.9,
+   2.95,
+   3.0
+  ],
+  "far": [
+   1.5,
+   3.0
+  ],
+  "near": [
+   0.6,
+   1.0
+  ],
+  "const_tol": 0.01,
+  "bound_tol": 0.01,
+  "surr": [
+   "ens",
+   "botorchgp",
+   "svgp"
+  ],
+  "opt": [
+   "grad",
+   "perturb",
+   "cma"
+  ]
+ },
+ "thresholds": {
+  "r2_lin": 0.9,
+  "slope_grow": 0.5,
+  "slope_revert": 0.05,
+  "const_tol": 0.01,
+  "majority": "5/7"
+ },
+ "FF1": {
+  "per_task": {
+   "Branin-2D": {
+    "ens": {
+     "median_r2": 0.9990225039351395,
+     "median_abs_slope": 1.6759922228621036,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.7901114653145223,
+     "median_abs_slope": 1.2600835120291831,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "OTHER"
+    },
+    "svgp": {
+     "median_r2": 0.8992792321655527,
+     "median_abs_slope": 0.39714326247247317,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "OTHER"
+    }
+   },
+   "Styblinski-5D": {
+    "ens": {
+     "median_r2": 0.9998981616875751,
+     "median_abs_slope": 6.430342544978216,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.8118478042573101,
+     "median_abs_slope": 0.4231024106619236,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "OTHER"
+    },
+    "svgp": {
+     "median_r2": 0.9384602724048928,
+     "median_abs_slope": 1.026325430441132,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   },
+   "Levy-8D": {
+    "ens": {
+     "median_r2": 0.9997668183237215,
+     "median_abs_slope": 3.8733486284982463,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.9905419882191762,
+     "median_abs_slope": 2.6335675562286553,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "svgp": {
+     "median_r2": 0.9502345906284134,
+     "median_abs_slope": 1.341022309698904,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   },
+   "Rosenbrock-10D": {
+    "ens": {
+     "median_r2": 0.9980947425423656,
+     "median_abs_slope": 2.705708733816774,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.99461310161831,
+     "median_abs_slope": 2.612123266145746,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "svgp": {
+     "median_r2": 0.9806539323234946,
+     "median_abs_slope": 1.6589497593562352,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   },
+   "Rastrigin-15D": {
+    "ens": {
+     "median_r2": 0.9982811040560216,
+     "median_abs_slope": 3.170472307088856,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.9930722629314876,
+     "median_abs_slope": 2.879402254142377,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "svgp": {
+     "median_r2": 0.954376032544177,
+     "median_abs_slope": 1.5405140686295244,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   },
+   "Ackley-20D": {
+    "ens": {
+     "median_r2": 0.9988572185223819,
+     "median_abs_slope": 4.592299265818893,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.9929779963887977,
+     "median_abs_slope": 4.447477819290268,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "svgp": {
+     "median_r2": 0.9227219199368799,
+     "median_abs_slope": 1.8647860564858036,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   },
+   "Griewank-30D": {
+    "ens": {
+     "median_r2": 0.9808710057428944,
+     "median_abs_slope": 4.1184137013236315,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "botorchgp": {
+     "median_r2": 0.9965077744086892,
+     "median_abs_slope": 5.933549658682118,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    },
+    "svgp": {
+     "median_r2": 0.9685234475710149,
+     "median_abs_slope": 1.7794426205474123,
+     "frac_constant": 0.0,
+     "n_curves": 480,
+     "label": "LINEAR-GROWING"
+    }
+   }
+  },
+  "ens_linear_growing_tasks": [
+   "Ackley-20D",
+   "Branin-2D",
+   "Griewank-30D",
+   "Levy-8D",
+   "Rastrigin-15D",
+   "Rosenbrock-10D",
+   "Styblinski-5D"
+  ],
+  "gp_reverting_tasks": {
+   "botorchgp": [],
+   "svgp": []
+  },
+  "gp_linear_growing_tasks": {
+   "botorchgp": [
+    "Ackley-20D",
+    "Griewank-30D",
+    "Levy-8D",
+    "Rastrigin-15D",
+    "Rosenbrock-10D"
+   ],
+   "svgp": [
+    "Ackley-20D",
+    "Griewank-30D",
+    "Levy-8D",
+    "Rastrigin-15D",
+    "Rosenbrock-10D",
+    "Styblinski-5D"
+   ]
+  },
+  "verdict": "KILL"
+ },
+ "FF2": {
+  "per_task": {
+   "Branin-2D": {
+    "ens": {
+     "median_d_bnd": 0.0,
+     "median_frac_at_bound": 0.75,
+     "n": 90,
+     "d_bnd_grad": 0.0,
+     "d_bnd_perturb": 0.0,
+     "d_bnd_cma": 0.0
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.12383856251835823,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.12380455806851387,
+     "d_bnd_perturb": 0.12370137497782707,
+     "d_bnd_cma": 0.15249492973089218
+    },
+    "svgp": {
+     "median_d_bnd": 0.12978551536798477,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.1311500519514084,
+     "d_bnd_perturb": 0.1259573996067047,
+     "d_bnd_cma": 0.13291451334953308
+    }
+   },
+   "Styblinski-5D": {
+    "ens": {
+     "median_d_bnd": 0.33154749870300293,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.31634581089019775,
+     "d_bnd_perturb": 0.3364236652851105,
+     "d_bnd_cma": 0.3180900067090988
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.22484783828258514,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.22897512465715408,
+     "d_bnd_perturb": 0.2161504328250885,
+     "d_bnd_cma": 0.22842755168676376
+    },
+    "svgp": {
+     "median_d_bnd": 0.22191976010799408,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.2213863730430603,
+     "d_bnd_perturb": 0.22688158601522446,
+     "d_bnd_cma": 0.22161543369293213
+    }
+   },
+   "Levy-8D": {
+    "ens": {
+     "median_d_bnd": 0.3678338974714279,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.3678338974714279,
+     "d_bnd_perturb": 0.37957918643951416,
+     "d_bnd_cma": 0.3653113842010498
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.44591575860977173,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.45234984159469604,
+     "d_bnd_perturb": 0.37218034267425537,
+     "d_bnd_cma": 0.45223215222358704
+    },
+    "svgp": {
+     "median_d_bnd": 0.45795589685440063,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.4600669741630554,
+     "d_bnd_perturb": 0.3841075152158737,
+     "d_bnd_cma": 0.45984214544296265
+    }
+   },
+   "Rosenbrock-10D": {
+    "ens": {
+     "median_d_bnd": 0.23245713114738464,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.22082564234733582,
+     "d_bnd_perturb": 0.23245713114738464,
+     "d_bnd_cma": 0.26768267154693604
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.3299351781606674,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.327426940202713,
+     "d_bnd_perturb": 0.333224818110466,
+     "d_bnd_cma": 0.328181728720665
+    },
+    "svgp": {
+     "median_d_bnd": 0.3524642884731293,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.35597097873687744,
+     "d_bnd_perturb": 0.33597248792648315,
+     "d_bnd_cma": 0.3562689423561096
+    }
+   },
+   "Rastrigin-15D": {
+    "ens": {
+     "median_d_bnd": 0.26345276832580566,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.2832099199295044,
+     "d_bnd_perturb": 0.2535371333360672,
+     "d_bnd_cma": 0.30242355167865753
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.4560147821903229,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.45993269979953766,
+     "d_bnd_perturb": 0.2597558796405792,
+     "d_bnd_cma": 0.4604092836380005
+    },
+    "svgp": {
+     "median_d_bnd": 0.4637349545955658,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.46796125173568726,
+     "d_bnd_perturb": 0.28081828355789185,
+     "d_bnd_cma": 0.46853408217430115
+    }
+   },
+   "Ackley-20D": {
+    "ens": {
+     "median_d_bnd": 0.24854418635368347,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.2620217204093933,
+     "d_bnd_perturb": 0.21448811888694763,
+     "d_bnd_cma": 0.27522215247154236
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.4810656011104584,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.48370060324668884,
+     "d_bnd_perturb": 0.2255052924156189,
+     "d_bnd_cma": 0.48406967520713806
+    },
+    "svgp": {
+     "median_d_bnd": 0.48001906275749207,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.4821339249610901,
+     "d_bnd_perturb": 0.23531561344861984,
+     "d_bnd_cma": 0.4817972481250763
+    }
+   },
+   "Griewank-30D": {
+    "ens": {
+     "median_d_bnd": 0.14529594779014587,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.17295768857002258,
+     "d_bnd_perturb": 0.11698088049888611,
+     "d_bnd_cma": 0.18049892783164978
+    },
+    "botorchgp": {
+     "median_d_bnd": 0.4966955929994583,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.4970427602529526,
+     "d_bnd_perturb": 0.15297246724367142,
+     "d_bnd_cma": 0.49710823595523834
+    },
+    "svgp": {
+     "median_d_bnd": 0.47482314705848694,
+     "median_frac_at_bound": 0.0,
+     "n": 90,
+     "d_bnd_grad": 0.4767891764640808,
+     "d_bnd_perturb": 0.11922961473464966,
+     "d_bnd_cma": 0.47699010372161865
+    }
+   }
+  },
+  "ens_closer_tasks": [
+   "Ackley-20D",
+   "Branin-2D",
+   "Griewank-30D",
+   "Levy-8D",
+   "Rastrigin-15D",
+   "Rosenbrock-10D"
+  ],
+  "verdict": "CONFIRMED"
+ },
+ "FF3": {
+  "per_task": {
+   "Branin-2D": {
+    "ens": {
+     "median_r2": 0.9873152867043694,
+     "median_abs_slope": 1.4373774012609974,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.961602802378329,
+     "median_abs_slope": 1.71822307836683,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.971497267830044,
+     "median_abs_slope": 1.6877282638231095,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Styblinski-5D": {
+    "ens": {
+     "median_r2": 0.9474461244208705,
+     "median_abs_slope": 2.1132303828939616,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9659440354944823,
+     "median_abs_slope": 4.043431433216907,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9931330091987302,
+     "median_abs_slope": 1.8676578870695315,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Levy-8D": {
+    "ens": {
+     "median_r2": 0.990714898523092,
+     "median_abs_slope": 1.3629315052025426,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9963478590011239,
+     "median_abs_slope": 2.4181193678095836,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9981614175243456,
+     "median_abs_slope": 2.682450793590407,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Rosenbrock-10D": {
+    "ens": {
+     "median_r2": 0.9861557960132845,
+     "median_abs_slope": 0.7767260984024884,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9947196121064485,
+     "median_abs_slope": 1.517265006000836,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9981521199011243,
+     "median_abs_slope": 2.1164824124868358,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Rastrigin-15D": {
+    "ens": {
+     "median_r2": 0.9918443198547855,
+     "median_abs_slope": 1.1131329406048076,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9973801853603987,
+     "median_abs_slope": 2.953169852356261,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9986269513965709,
+     "median_abs_slope": 2.9064061145902205,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Ackley-20D": {
+    "ens": {
+     "median_r2": 0.9951866533603926,
+     "median_abs_slope": 1.9871137280817766,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9966575664505565,
+     "median_abs_slope": 4.048297625407291,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9984100225935515,
+     "median_abs_slope": 4.108193172907395,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   },
+   "Griewank-30D": {
+    "ens": {
+     "median_r2": 0.9953676226636732,
+     "median_abs_slope": 0.9478823537189489,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "botorchgp": {
+     "median_r2": 0.9956740579057344,
+     "median_abs_slope": 2.890035803225798,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    },
+    "svgp": {
+     "median_r2": 0.9984458468362732,
+     "median_abs_slope": 3.2968615498227702,
+     "frac_constant": 0.0,
+     "n_curves": 480
+    }
+   }
+  }
+ },
+ "BINARY": "KEEP-ELIMINATION"
+}
