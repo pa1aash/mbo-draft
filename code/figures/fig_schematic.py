@@ -59,16 +59,21 @@ ccx = [gx0 + cw * (i + 0.5) for i in range(3)]
 rcy = [gy_top - rh * (j + 0.5) for j in range(3)]
 
 # outlined cells (white), colour only as a thin left-edge tag per row
-tag_w = 0.017
+# outlined white cells; a filled class-coloured dot marks every run cell,
+# so the grid reads as a fully-crossed 3x3 at a glance
 for j, (_, col) in enumerate(rows):
     ry = gy_top - rh * (j + 1)
-    rect(gx0 - tag_w, ry, tag_w, rh, ec=col, fc=col, lw=0.4, z=3)   # class tag
     for i in range(3):
         rect(gx0 + cw * i, ry, cw, rh)                              # grid cell
-# row labels (black, roman)
-for j, (name, _) in enumerate(rows):
-    ax.text(gx0 - tag_w - 0.016, rcy[j], name, ha="right", va="center",
-            fontsize=6.9, color=BLACK)
+        ax.plot(ccx[i], rcy[j], "o", color=col, ms=5.5, mec="none",
+                zorder=5)                                           # run marker
+# row labels, each with a legend-style class-colour swatch to its left
+x_sw, sq_w, sq_h = 0.100, 0.023, 0.024
+x_lab = x_sw + sq_w + 0.012
+for j, (name, col) in enumerate(rows):
+    rect(x_sw, rcy[j] - sq_h / 2, sq_w, sq_h, ec=BLACK, fc=col, lw=0.4, z=4)
+    ax.text(x_lab, rcy[j], name, ha="left", va="center", fontsize=6.9,
+            color=BLACK)
 # column headers (black, roman)
 for i, c in enumerate(cols):
     ax.text(ccx[i], gy_top + 0.016, c, ha="center", va="bottom",
@@ -79,13 +84,13 @@ ax.text((gx0 + gx1) / 2, gy_top + 0.050, "search routine", ha="center",
 ax.text(0.045, (gy_top + gy_bot) / 2, "surrogate class", ha="center",
         va="center", rotation=90, fontsize=7.2, color=BLACK)
 
-varrow(gy_bot - 0.006, 0.726)
-ax.text(SPINE + 0.028, (gy_bot - 0.006 + 0.726) / 2, "remove five confounds",
+varrow(gy_bot - 0.006, 0.7265)
+ax.text(SPINE + 0.028, (gy_bot - 0.006 + 0.7265) / 2, "remove five confounds",
         ha="left", va="center", fontsize=6.0, color=BLACK)
 
 # ======================= STAGE 2 -- five confounds ========================
 bx0, bx1 = 0.255, 0.965
-by_top, by_bot = 0.716, 0.408
+by_top, by_bot = 0.7225, 0.4145
 rect(bx0, by_bot, bx1 - bx0, by_top - by_bot, lw=0.8)
 nrows = 5
 rrh = (by_top - by_bot) / nrows
@@ -117,8 +122,8 @@ for k, (tag, name, glyph) in enumerate(confs):
         ax.text(dx, y, "acts on optimizer axis", ha="right", va="center",
                 fontsize=6.6, color=BLACK)
 
-varrow(by_bot - 0.006, 0.372)
-ax.text(SPINE + 0.028, (by_bot - 0.006 + 0.372) / 2, "two-way ANOVA",
+varrow(by_bot - 0.006, 0.366)
+ax.text(SPINE + 0.028, (by_bot - 0.006 + 0.366) / 2, "two-way ANOVA",
         ha="left", va="center", fontsize=6.0, color=BLACK)
 
 # ======================= STAGE 3 -- decomposition =========================
