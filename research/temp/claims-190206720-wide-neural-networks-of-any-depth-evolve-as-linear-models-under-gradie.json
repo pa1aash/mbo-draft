@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "For learning rates below a critical threshold, network predictions f_t(x) throughout gradient descent training converge in distribution to a Gaussian as width n goes to infinity (Theorem 2.2).",
+    "stance": "supports",
+    "stance_target": "wide networks approach GP behaviour during/after training (sub-claim a)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Squared loss, infinite-width limit n→∞, learning rate η < η_critical (Theorem 2.1), input ‖x‖_2 ≤ 1.",
+    "quoted_support": "\"Theorem 2.2. If η < η_critical, then for every x ∈ ℝ^{n_0} with ‖x‖_2 ≤ 1, as n→∞, f_t(x) converges in distribution to the Gaussian with mean and variance given by Equation 14 and Equation 15.\"",
+    "numbers": ["η_critical", "n_0"],
+    "entities": ["Lee", "Xiao", "Schoenholz", "Bahri", "Novak", "Sohl-Dickstein", "Pennington", "Theorem 2.2"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190206720-wide-neural-networks-of-any-depth-evolve-as-linear-models-under-gradie"
+  },
+  {
+    "claim": "The paper explicitly frames its contribution as extending Jacot et al.'s NTK result to the full training trajectory, formally showing predictions throughout gradient descent are described by a GP as width goes to infinity.",
+    "stance": "supports",
+    "stance_target": "this is the load-bearing citation for GP behavior extended beyond initialization",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Infinite width limit, gradient descent training.",
+    "quoted_support": "\"Output distribution dynamics: We formally show that the predictions of a neural network throughout gradient descent training are described by a GP as the width goes to infinity (see Theorem 2.2), extending results from Jacot et al. We further derive explicit time-dependent expressions for the evolution of this GP during training.\"",
+    "numbers": [],
+    "entities": ["Lee et al. 2019", "Jacot et al. 2018", "Theorem 2.2"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190206720-wide-neural-networks-of-any-depth-evolve-as-linear-models-under-gradie"
+  },
+  {
+    "claim": "In the infinite-width limit, wide neural network training dynamics simplify to a linear model given by the first-order Taylor expansion around initial parameters, for any loss function.",
+    "stance": "supports",
+    "stance_target": "wide networks evolve as linear models under gradient descent",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Infinite width limit; holds regardless of loss function for the parameter-space linearization result.",
+    "quoted_support": "\"...for wide neural networks the learning dynamics simplify considerably and that, in the infinite width limit, they are governed by a linear model obtained from the first-order Taylor expansion of the network around its initial parameters.\"",
+    "numbers": [],
+    "entities": ["Lee", "Xiao", "Schoenholz", "Bahri", "Novak", "Sohl-Dickstein", "Pennington"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190206720-wide-neural-networks-of-any-depth-evolve-as-linear-models-under-gradie"
+  },
+  {
+    "claim": "The exact-Bayesian NNGP predictive distribution and the gradient-descent-trained network's predictive distribution at the end of training are both Gaussian but are 'noticeably different' from each other -- gradient descent does not sample from the posterior of any probabilistic model.",
+    "stance": "refutes",
+    "stance_target": "conflating gradient-descent-induced GP behavior with the exact-Bayesian NNGP correspondence as the same object",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Wide residual network / CIFAR-10 experiments; infinite-width theoretical comparison.",
+    "quoted_support": "\"Moreover the NNGP predictive distribution which corresponds to exact Bayesian inference, while similar, is noticeably different from the predictive distribution at the end of gradient descent training... while both methods generate draws from a GP, gradient descent does not generate samples from the posterior of any probabilistic model.\"",
+    "numbers": [],
+    "entities": ["Lee", "Xiao", "Schoenholz", "Bahri", "Novak", "Sohl-Dickstein", "Pennington", "NNGP"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "190206720-wide-neural-networks-of-any-depth-evolve-as-linear-models-under-gradie"
+  },
+  {
+    "claim": "The linearization/GP-convergence result holds under both standard and NTK parameterization, showing the effect is due to width rather than a particular parameterization choice.",
+    "stance": "supports",
+    "stance_target": "robustness of the width-driven linear/GP behavior result",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Fully-connected, convolutional, and wide residual network architectures; gradient descent, momentum, mini-batching optimizers; MSE and cross-entropy losses.",
+    "quoted_support": "\"Parameterization independence: We note that linearization result holds both in standard and NTK parameterization... while previous work assumed the latter, emphasizing that the effect is due to increase in width rather than the particular parameterization.\"",
+    "numbers": [],
+    "entities": ["Lee", "Xiao", "Schoenholz", "Bahri", "Novak", "Sohl-Dickstein", "Pennington"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "190206720-wide-neural-networks-of-any-depth-evolve-as-linear-models-under-gradie"
+  }
+]

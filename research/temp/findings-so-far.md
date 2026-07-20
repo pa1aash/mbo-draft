@@ -835,6 +835,39 @@ much stronger than either alone: the η² establishes that the interaction is la
 the interaction term, and one in the decomposition section pointing the other way. **Zero new
 computation. Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
 
+### CRITICAL SCOPE LIMIT — the interaction is SYNTHETIC-GRID-SPECIFIC (locus 3)
+
+**A qualification I did not have, and it constrains everything above.** On Design-Bench,
+**η²_inter is only 0.006–0.041** — an order of magnitude smaller than the synthetic grid's
+0.146–0.165, and **subordinate to η²_opt there** rather than dominating it.
+
+So the interaction is **not** a general property of offline MBO. It is a property of the
+synthetic grid. Any promotion of it must be scoped explicitly, and promoting it to the abstract
+as an unqualified finding would be exactly the kind of overreach this audit exists to catch.
+
+This also fits the rest of the picture rather than contradicting it: on Design-Bench the
+surrogate cells are substantially **frozen** (three exact-GP cells at exactly 1.0 on TF-Bind-8
+in all four corners; two Ant GP cells bit-identical across 16 seeds), and a frozen surrogate
+cannot interact with anything. The two findings are consistent — where surrogates cannot move,
+neither main effects nor interactions involving them can appear.
+
+### FORMAL SIMPLE-EFFECTS TABLE — computed from stored data (locus 3)
+
+Locus 3 ran the formal per-optimizer-level simple-effects analysis that an ANOVA-literate
+reviewer would demand before any interaction is promoted, using stored per-seed data
+(`results/corners/corner_*.json`). Result: **the surrogate effect collapses to ≈0.01 under
+perturbation against 0.4–0.8 under gradient and CMA.**
+
+**This is a formal, bootstrapped confirmation of my informal 7/7 raw-units result** — arrived at
+independently, by a different route, from per-seed rather than per-cell data. It is the version
+the paper should report, because it carries intervals where mine does not.
+
+**It does not, however, dissolve the floor-effect confound.** A simple-effects analysis
+establishes *that* the surrogate effect is near-zero under perturbation; it does not by itself
+establish *why*, and "perturbation underperforms, compressing everything" remains a competing
+explanation that the Styblinski data point actively supports. The disentangling analysis I named
+earlier is still required.
+
 ### THE DIALECTICAL CHALLENGE — is the interaction partly a normalization artifact?
 
 **Raised independently by loci-analyst B, and it has real force. I verified it arithmetically
@@ -1193,6 +1226,62 @@ it: *"Rejecting small effects in an equivalence test requires large samples."*
 
 **Fix: report the computed TOST bound and verdict in the supplement, and cite Lakens (2017).**
 Zero new computation. **Tag: FOLD-INTO-THIS-PAPER / CHEAP.**
+
+## MANDATORY FIX 12 — `rahaman2019spectralbias` motivates the wrong ablation, and the paper's architecture makes the point worse
+
+**Found by the locus-4 depth investigator. Nobody had checked these four citations — not the
+width sweep, not my own coverage audit.** Three of the four are clean; the fourth is not.
+
+**The paper's claim (Elimination 2):**
+> "The gap could be an under-parameterization artifact: wide networks approach GP behaviour
+> \citep{jacot2018ntk,lee2018dnngp,lee2019widenets} and **finite networks show spectral bias**
+> \citep{rahaman2019spectralbias}. … so we ran the ablation that does. At fixed $K{=}5$,
+> sweeping per-member **width** over a $10.7\times$ range leaves the gap unchanged."
+
+**VERIFIED CLEAN — 3 of 4.** Jacot (NTK, training-dynamics regime), Lee 2018 (NNGP, the
+at-initialization correspondence) and Lee 2019 (wide nets evolve as linear models) **collectively
+do support** "wide networks approach GP behaviour", covering the at-init and during-training
+regimes respectively. All re-fetched fresh via ar5iv. **No fix needed**, and the audit should
+say so — this is the citation cluster most likely to be assumed sloppy and it holds up.
+
+**MISCITED IN EFFECT — Rahaman et al.** Their theorem holds *"for arbitrary width and depth"*,
+and their own width-versus-depth ablation reports that **depth dominates while width is
+"considerably weaker."** The paper cites spectral bias to motivate a **width** ablation, when
+the cited source says width is the weaker lever. The sentence's structure invites a
+width-monotonic reading the source does not support.
+
+**And the architecture compounds it.** `main.tex:88` fixes the ensemble at a **two-hidden-layer
+MLP across the entire width sweep**. So the paper varies the axis Rahaman calls weak and holds
+fixed the axis Rahaman calls dominant. **The width-only ablation cannot have tested the
+depth-driven spectral-bias mechanism it invoked Rahaman to motivate.**
+
+**Fix.** Two options, and the second is better:
+1. Minimal — drop `rahaman2019spectralbias` from that sentence. The width objection stands on
+   the NTK/NNGP lineage alone, which is verified faithful.
+2. **Better — keep it and state the limit.** Say that spectral bias is reported as primarily a
+   *depth* phenomenon, that the ablation sweeps width at fixed depth 2, and that the
+   depth-driven version of the objection therefore **remains open**. This costs one clause,
+   converts a miscitation into a correctly-scoped limitation, and pre-empts a reviewer who
+   knows Rahaman. It also names a concrete follow-up (a depth sweep) the paper does not
+   currently have.
+
+**Note the asymmetry with Elimination 2's own framing.** The paper is careful to say the sweep
+"stops at 1024 while the kernel limits are asymptotic, so this answers the objection at
+practical widths and makes no asymptotic claim." That same scrupulousness has simply not been
+applied to the depth axis.
+
+### Resolved: the Xu et al. recommendation IS compatible with Elimination 2
+
+I flagged a possible contradiction — the audit recommends Xu et al.'s NTK linear-extrapolation
+theorem as the paper's best positive mechanism, while Elimination 2 cites the NTK lineage to
+argue width does *not* explain the gap. **The investigator resolved it: they are asymptotic in
+different variables.** Xu is asymptotic in *far-field distance from the support*; Elimination 2
+is about asymptotic *width*, and it explicitly disclaims any asymptotic-width claim. Both hold
+simultaneously.
+
+**One clarifying sentence is needed if the paper adopts Xu**, because nothing currently
+distinguishes "NTK regime" (Xu's theorem) from "the kernel limits are asymptotic"
+(Elimination 2's disclaimer) for a reader who meets both in the same paper.
 
 ## VERIFIED CLEAN — Shahriari and Chemingui (batch 7)
 

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "The NIST/SEMATECH e-Handbook defines the One-Factor-at-a-Time (OFAT) experimental method as holding all inputs fixed except one, finding its best value, fixing it there, then varying the next input in turn.",
+    "stance": "neutral",
+    "stance_target": "definition of OFAT design",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "General design-of-experiments methodology, process improvement context",
+    "quoted_support": "Hold all inputs but one fixed, and see the best result when the one free input is varied. Fix that input at that ‘best’ value. Then vary one other input... This is called a ‘One factor at a time’ (OFAT) experiment, and is practiced widely.",
+    "numbers": [],
+    "entities": ["NIST", "SEMATECH", "OFAT"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "5212-one-variable-at-a-time"
+  },
+  {
+    "claim": "OFAT experiments only produce correct conclusions when the true underlying response model is a purely additive 'main effects' model (Y = X1 + X2) with no interaction term.",
+    "stance": "supports",
+    "stance_target": "OFAT designs cannot detect interactions",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Two-input black-box process model, general DOE theory",
+    "quoted_support": "This model is ‘flat’ in all dimensions, and is called a ‘main effects’ model. No matter at which point on the surface one begins, increasing an input always has the same effect on the output. There are no ‘interactions’ between inputs.",
+    "numbers": [],
+    "entities": ["OFAT", "main effects model"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "5212-one-variable-at-a-time"
+  },
+  {
+    "claim": "When the true model contains an interaction term (Y = X1 + X2 + X1*X2), OFAT experimentation will not work because the best setting of one factor depends on the level of the other factor, and OFAT cannot discover this joint dependence.",
+    "stance": "supports",
+    "stance_target": "OFAT designs cannot estimate/detect interactions",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Two-input black-box process model with interaction, general DOE theory",
+    "quoted_support": "OFAT experiments will not work if the true model inside the black box looks something like: ... Interactions Model: Y = X1 + X2 + X1*X2 ... In a model with many inputs, the two-factor interactions such as X1*X2 are usually of interest, as they might point the way to a better product with minimal additional expense. OFAT experimentation leaves us in the dark about factor interactions.",
+    "numbers": [],
+    "entities": ["OFAT", "interaction model", "X1", "X2"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "5212-one-variable-at-a-time"
+  },
+  {
+    "claim": "In the presence of an interaction, the optimal setting of factor X1 reverses depending on whether X2 is fixed at its lowest or highest value, illustrating that the two factors' effects on the response cannot be chosen independently of each other.",
+    "stance": "supports",
+    "stance_target": "significant interaction implies factor levels cannot be chosen independently",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Two-factor interaction plot example, general DOE theory",
+    "quoted_support": "In this model, if one started experimenting with X2 set at its lowest value, X1 would have to be moved toward its lowest value to get a high Y. On the other hand, if one started out with X2 fixed at its highest value, X1 would have to be moved up to get a high Y. We do not know if X1 and X2 both set at low will give a better Y that X1 and X2 both set high.",
+    "numbers": [],
+    "entities": ["X1", "X2", "interaction plot"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "5212-one-variable-at-a-time"
+  }
+]

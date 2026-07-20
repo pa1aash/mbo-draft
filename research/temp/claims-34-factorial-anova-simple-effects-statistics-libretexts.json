@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "When researchers detect a statistically significant interaction in a factorial ANOVA, the main effects may be misleading because averaging across the levels of the other factor can cause real, opposite-signed effects to cancel out (a crossover interaction).",
+    "stance": "supports",
+    "stance_target": "significant interaction undermines straightforward interpretation of main effects",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2x2 factorial ANOVA, general psychological research methods",
+    "quoted_support": "When researchers find an interaction it suggests that the main effects may be a bit misleading... Because the positive effect of caffeine on extraverts would be wiped out by the negative effects of caffeine on the introverts, no main effect of caffeine consumption would have been found... Does the absence of any main effects mean that there is no effect of caffeine and no effect of personality? No of course not.",
+    "numbers": ["4 mg of caffeine per kilogram of body weight"],
+    "entities": ["Gilliland (1980)", "caffeine", "introversion", "extraversion"],
+    "time_period": "1980 (Gilliland study)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "34-factorial-anova-simple-effects-statistics-libretexts"
+  },
+  {
+    "claim": "Standard practice requires that whenever an interaction is detected in a factorial ANOVA, researchers conduct additional simple effects analyses -- examining the effect of each independent variable at each level of the other independent variable -- rather than relying on main effects alone.",
+    "stance": "supports",
+    "stance_target": "significant interaction requires simple-effects follow-up analysis before/instead of interpreting main effects",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "Factorial ANOVA interpretation, general research methods (psychology), any factorial design",
+    "quoted_support": "Whenever an interaction is detected, researchers need to conduct additional analyses to determine where that interaction is coming from... a simple effects analysis allows researchers to determine the effects of each independent variable at each level of the other independent variable.",
+    "numbers": [],
+    "entities": ["simple effects analysis"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "34-factorial-anova-simple-effects-statistics-libretexts"
+  },
+  {
+    "claim": "Simple effects analyses are only necessary when an interaction is present; when there is no interaction, the main effects alone give the complete and accurate story.",
+    "stance": "neutral",
+    "stance_target": "conditions under which simple effects analysis is required vs. unnecessary",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General factorial ANOVA interpretation",
+    "quoted_support": "Examining simple effects provides a means of breaking down the interaction and therefore it is only necessary to conduct these analyses when an interaction is present. When there is no interaction then the main effects will tell the complete and accurate story.",
+    "numbers": [],
+    "entities": ["simple effects", "main effects"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "34-factorial-anova-simple-effects-statistics-libretexts"
+  },
+  {
+    "claim": "In a 2x2 hypochondriasis x word-type recall study (Brown et al.), simple effects analysis revealed that hypochondriasis increased recall only for health-related words and had no effect on non-health-related word recall -- a pattern the aggregate main effect of hypochondriasis alone would not reveal.",
+    "stance": "supports",
+    "stance_target": "simple effects reveal condition-specific effects hidden by main effects",
+    "evidence_type": "empirical",
+    "scope_conditions": "Psychology, word recall study, hypochondriasis x word type factorial design",
+    "quoted_support": "They found that people high in hypochondriasis were able to recall more health-related words than people low in hypochondriasis. In contrast, there was no effect of hypochondriasis on the recall of non-health related words.",
+    "numbers": [],
+    "entities": ["Brown", "hypochondriasis", "word recall"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "34-factorial-anova-simple-effects-statistics-libretexts"
+  },
+  {
+    "claim": "The number of simple effects to examine in a factorial design scales with the number of levels of the independent variables (e.g., a 2x2 design requires 2 main effects and 4 simple effects; a 3x3 design requires 2 main effects and 6 simple effects), unlike the number of main effects which depends only on the number of factors.",
+    "stance": "neutral",
+    "stance_target": "scope/scale of simple effects analysis relative to design size",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General factorial ANOVA design",
+    "quoted_support": "A researcher using a 2×2 design with four conditions would need to look at 2 main effects and 4 simple effects. A researcher using a 2×3 design with six conditions would need to look at 2 main effects and 5 simple effects, while a researcher using a 3×3 design with nine conditions would need to look at 2 main effects and 6 simple effects.",
+    "numbers": ["2x2 design: 4 simple effects", "2x3 design: 5 simple effects", "3x3 design: 6 simple effects"],
+    "entities": ["factorial design", "simple effects"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "34-factorial-anova-simple-effects-statistics-libretexts"
+  }
+]

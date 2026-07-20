@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "This 2024 paper computes fitness-landscape features on both the true objective and a Kriging surrogate model during surrogate-assisted multi-objective evolutionary optimization, finding surrogate-landscape features differ significantly from true-landscape features yet remain highly correlated.",
+    "stance": "supports",
+    "stance_target": "landscape features can characterize surrogate models but differ from the true landscape",
+    "evidence_type": "empirical",
+    "scope_conditions": "surrogate-assisted reference-vector-guided evolutionary algorithm on the BBOB-BIOBJ bi-objective benchmark suite",
+    "quoted_support": "Our results indicate that surrogate landscape features differ significantly from the true landscape features and that these features vary during the course of a run. Despite these differences, the surrogate and true landscape often show a high correlation.",
+    "numbers": ["only 33 out of 55 bbob-biobj functions retained when Kriging surrogate used (Figure 2)"],
+    "entities": ["Kriging", "K-RVEA", "BBOB-BIOBJ"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240406557-temporal-true-and-surrogate-fitness-landscape-analysis-for-expensive-b"
+  },
+  {
+    "claim": "The paper explicitly frames landscape-feature-driven 'online surrogate switching' (selecting/switching among surrogate model types) as future work, not something accomplished in this study -- only Kriging was tested, with neural-network surrogates and other Kriging variants deferred to future work.",
+    "stance": "refutes",
+    "stance_target": "landscape-based selection between surrogate model architectures (e.g. GP/Kriging vs. neural network) is an established, solved capability",
+    "evidence_type": "empirical",
+    "scope_conditions": "surrogate-assisted multi-objective evolutionary optimization, as of 2024",
+    "quoted_support": "in future works, more Kriging models from other state-of-the-art SA-EAs... and other types of surrogate models such as neural networks... should be considered... This opens the door for online surrogate switching in multi-objective optimisation in the future.",
+    "numbers": [],
+    "entities": ["Kriging"],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240406557-temporal-true-and-surrogate-fitness-landscape-analysis-for-expensive-b"
+  },
+  {
+    "claim": "Key landscape features from both the surrogate and true landscape were identified with the capability to predict algorithm PERFORMANCE (not to predict which surrogate type is superior), during the course of optimization.",
+    "stance": "neutral",
+    "stance_target": "scope of what landscape features were shown to predict in this paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "surrogate-assisted multi-objective evolutionary optimization",
+    "quoted_support": "This work also evaluates how these different features impact the actual search and identified key landscape features from both the surrogate and the true landscape with the capability to predict algorithm performance.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2024",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "240406557-temporal-true-and-surrogate-fitness-landscape-analysis-for-expensive-b"
+  },
+  {
+    "claim": "The paper cites Werth et al. (2019/2020) and Harrison et al. as the two prior works considering surrogate fitness landscapes explicitly, positioning this 2024 paper as a direct continuation of that narrow sub-literature rather than of the broader ELA/algorithm-selection tradition (Kerschke et al.).",
+    "stance": "neutral",
+    "stance_target": "lineage of surrogate-landscape-analysis research",
+    "evidence_type": "empirical",
+    "scope_conditions": "literature review section of the paper",
+    "quoted_support": "Werth et al. explore this direction, comparing surrogate landscapes with those of the true... Harrison et al. analyse the surrogate landscape for single-objective... surrogate landscapes.",
+    "numbers": [],
+    "entities": ["Bernhard Werth", "Harrison"],
+    "time_period": "2019-2024",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "240406557-temporal-true-and-surrogate-fitness-landscape-analysis-for-expensive-b"
+  },
+  {
+    "claim": "A related but distinct 2023 paper (Vermetten, Wang, Sim & Hart, cited as reference 40) predicts the benefit of switching between OPTIMIZERS (algorithms) based on trajectory features, not between surrogate model types -- an algorithm-switching analogue rather than a surrogate-switching precedent.",
+    "stance": "neutral",
+    "stance_target": "distinguishing algorithm-switching literature from surrogate-switching literature",
+    "evidence_type": "empirical",
+    "scope_conditions": "cited reference within the temporal surrogate landscape paper",
+    "quoted_support": "Diederick Vermetten, Hao Wang, Kevin Sim, and Emma Hart. 2023. To switch or not to switch: Predicting the benefit of switching between algorithms based on trajectory features.",
+    "numbers": [],
+    "entities": ["Diederick Vermetten", "Hao Wang", "Kevin Sim", "Emma Hart"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "240406557-temporal-true-and-surrogate-fitness-landscape-analysis-for-expensive-b"
+  }
+]

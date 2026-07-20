@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Confounding (aliasing) is defined as the loss of ability to separately estimate two or more effects/interactions because a fractional factorial design's contrast structure makes them mathematically inseparable.",
+    "stance": "neutral",
+    "stance_target": "canonical statistical definition of confounding/aliasing",
+    "evidence_type": "theoretical",
+    "scope_conditions": "fractional factorial experimental design theory, applied statistics",
+    "quoted_support": "Confounding means we have lost the ability to estimate some effects and/or interactions.",
+    "numbers": [],
+    "entities": ["NIST/SEMATECH Engineering Statistics Handbook"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "53343-confounding-also-called-aliasing"
+  },
+  {
+    "claim": "In a 2^(3-1) fractional factorial design constructed by setting column X3 = X1*X2, the main-effect estimate for X3 is confounded with the interaction-effect estimate for X1*X2, since the same design column serves both roles.",
+    "stance": "supports",
+    "stance_target": "confounding arises from shared design-matrix columns/contrasts, not from an author's labeling choices",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2^(3-1) half-fraction factorial design example",
+    "quoted_support": "we have confounded the main effect estimate for factor X3 (i.e., c3) with the estimate of the interaction effect for X1 and X2 (i.e., with c12).",
+    "numbers": ["2^(3-1) design", "c3", "c12"],
+    "entities": ["X1", "X2", "X3"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "53343-confounding-also-called-aliasing"
+  },
+  {
+    "claim": "The 'sparsity of effects' assumption holds that a confounded estimate (e.g., c3+c12) is a valid proxy for the effect of interest (c3) only if the confounded-in term (c12) is small/negligible; if both confounded effects are large, the confounded estimate cannot be attributed to either one.",
+    "stance": "neutral",
+    "stance_target": "when confounding is tolerable in a fractional design",
+    "evidence_type": "theoretical",
+    "scope_conditions": "fractional factorial design theory",
+    "quoted_support": "In using the 2^(3-1) design, we also assume that c12 is small compared to c3; this is called a 'sparsity of effects' assumption. Our computation of c3 is in fact a computation of c3+c12. If the desired effects are only confounded with non-significant interactions, then we are OK.",
+    "numbers": ["2^(3-1) design"],
+    "entities": [],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "53343-confounding-also-called-aliasing"
+  },
+  {
+    "claim": "Larger fractional factorial designs confound different orders of effects: in a 2^(6-2) quarter-fraction design, main effects are confounded with three-factor interactions (rather than two-factor interactions as in the 2^(3-1) case), and some two-factor interactions are confounded with other two-factor interactions.",
+    "stance": "neutral",
+    "stance_target": "confounding patterns scale with fraction size and design resolution",
+    "evidence_type": "theoretical",
+    "scope_conditions": "2^(6-2) quarter-fraction design example",
+    "quoted_support": "in the typical quarter-fraction of a 2^6 design, i.e., in a 2^(6-2) design, main effects are confounded with three-factor interactions (e.g., 5=123) and so on. In the case of 5=123, we can also readily see that 15=23 (etc.), which alerts us to the fact that certain two-factor interactions of a 2^(6-2) are confounded with other two-factor interactions.",
+    "numbers": ["2^(6-2) design"],
+    "entities": [],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "53343-confounding-also-called-aliasing"
+  }
+]

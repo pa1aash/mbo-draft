@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "A single-layer fully-connected neural network with an i.i.d. prior over its parameters is equivalent to a GP in the limit of infinite width; this paper extends the exact equivalence to arbitrarily deep networks.",
+    "stance": "supports",
+    "stance_target": "wide networks approach GP behaviour (sub-claim a)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Infinite width limit, i.i.d. Gaussian weights/biases, at initialization.",
+    "quoted_support": "\"It has long been known that a single-layer fully-connected neural network with an i.i.d. prior over its parameters is equivalent to a Gaussian process (GP), in the limit of infinite network width... In this work, we derive the exact equivalence between infinitely wide deep networks and GPs.\"",
+    "numbers": [],
+    "entities": ["Lee", "Bahri", "Novak", "Schoenholz", "Pennington", "Sohl-Dickstein", "Neal 1994"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100165-deep-neural-networks-as-gaussian-processes"
+  },
+  {
+    "claim": "The paper's primary derivation takes layer widths to infinity sequentially, one layer at a time (order-dependent induction); the simultaneous-all-layers-infinite case is credited to a concurrent paper (Matthews et al. 2018), not established as the main result here.",
+    "stance": "neutral",
+    "stance_target": "which width limit (sequential vs simultaneous) the NNGP correspondence is proven under",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Main-text derivation via induction over layers; Appendix C gives an order-independent Bayesian marginalization alternative.",
+    "quoted_support": "\"...as we continue with the induction, to guarantee that the input to the layer under consideration is already governed by a GP. In Appendix C we provide an alternative derivation... which does not depend on the order of limits... A concurrent work (de G. Matthews et al., 2018) further derives the convergence rate towards a GP if all layers are taken to infinite width simultaneously, but at different rates.\"",
+    "numbers": [],
+    "entities": ["Lee et al. 2018", "Matthews et al. 2018", "Appendix C"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100165-deep-neural-networks-as-gaussian-processes"
+  },
+  {
+    "claim": "The NNGP correspondence enables exact Bayesian inference (predictions and uncertainty estimates) from deep neural networks WITHOUT stochastic gradient-based training -- it is explicitly framed as an alternative to, not a description of, SGD-trained networks.",
+    "stance": "refutes",
+    "stance_target": "the claim that this paper establishes GP behavior of networks after SGD training",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Conclusion section, framing of the paper's practical contribution.",
+    "quoted_support": "\"Use of a GP prior on functions enables exact Bayesian inference for regression from matrix computations, and hence we are able to obtain predictions and uncertainty estimates from deep neural networks without stochastic gradient-based training.\"",
+    "numbers": [],
+    "entities": ["Lee", "Bahri", "Novak", "Schoenholz", "Pennington", "Sohl-Dickstein"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100165-deep-neural-networks-as-gaussian-processes"
+  },
+  {
+    "claim": "Whether SGD approximates Bayesian inference (and thus whether SGD-trained networks approach NNGP behavior) is explicitly flagged as an open question requiring further investigation, not a result this paper proves.",
+    "stance": "refutes",
+    "stance_target": "using this paper as proof that trained (post-SGD) finite networks converge to GP behavior",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Conclusion section discussion of SGD vs. exact Bayesian training.",
+    "quoted_support": "\"Whether gradient-based stochastic optimization implements an approximate Bayesian computation is an interesting question (Mandt et al., 2017). Further investigation is needed to determine if SGD does approximately implement Bayesian inference under the conditions typically employed in practice.\"",
+    "numbers": [],
+    "entities": ["Lee", "Bahri", "Novak", "Schoenholz", "Pennington", "Sohl-Dickstein", "Mandt et al. 2017"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100165-deep-neural-networks-as-gaussian-processes"
+  },
+  {
+    "claim": "SGD-trained finite-width network test performance empirically approaches NNGP test performance as width increases, but the authors state this would only be 'guaranteed' if the network were trained in a fully Bayesian fashion rather than by SGD.",
+    "stance": "neutral",
+    "stance_target": "empirical vs. proven relationship between SGD training and NNGP behavior",
+    "evidence_type": "empirical",
+    "scope_conditions": "MNIST and CIFAR-10 classification experiments, Section 3 Results.",
+    "quoted_support": "\"were the neural networks trained in a fully Bayesian fashion, rather than by SGD, the approach to NNGP in the large width limit would be guaranteed. There is recent work suggesting that SGD can implement approximate Bayesian inference...\"",
+    "numbers": ["MNIST", "CIFAR-10"],
+    "entities": ["Lee", "Bahri", "Novak", "Schoenholz", "Pennington", "Sohl-Dickstein"],
+    "time_period": "2017-2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171100165-deep-neural-networks-as-gaussian-processes"
+  }
+]

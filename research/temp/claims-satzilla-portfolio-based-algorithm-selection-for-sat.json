@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "SATzilla instantiates Rice's (1976) algorithm-selection framework for SAT: per-instance features feed a learned 'empirical hardness model' predicting each solver's runtime, and the solver with the best predicted performance is chosen from a fixed portfolio.",
+    "stance": "supports",
+    "stance_target": "canonical algorithm-selection targets solver/optimizer choice, not surrogate-model choice",
+    "evidence_type": "empirical",
+    "scope_conditions": "Boolean satisfiability (SAT) solving, per-instance portfolio selection",
+    "quoted_support": "Rather than following the traditional approach of choosing the best solver for a given class of instances, we advocate making this decision online on a per-instance basis... describe SATzilla, an automated approach for constructing per-instance algorithm portfolios for SAT.",
+    "numbers": [],
+    "entities": ["Lin Xu", "Frank Hutter", "Holger Hoos", "Kevin Leyton-Brown", "SATzilla"],
+    "time_period": "2008 (JAIR)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "satzilla-portfolio-based-algorithm-selection-for-sat"
+  },
+  {
+    "claim": "Gaussian process regression, lasso regression, and SVM regression are mentioned only as alternative regression techniques the authors tested for the runtime-prediction (empirical hardness) model itself; ridge regression was retained because the alternatives did not improve predictive performance enough to justify added computational cost.",
+    "stance": "refutes",
+    "stance_target": "SATzilla involves selecting among surrogate model architectures for optimization",
+    "evidence_type": "empirical",
+    "scope_conditions": "regression method choice for the runtime-prediction component of the selector, not surrogate objective modeling",
+    "quoted_support": "in similar settings, we have previously explored many other learning techniques, such as lasso regression, SVM regression, and Gaussian process regression... All of these techniques are computationally more expensive than ridge regression, and in our previous experiments we found that they did not improve predictive performance enough to justify this additional cost.",
+    "numbers": ["delta = 10^-3 (ridge regression regularization constant)"],
+    "entities": ["Leyton-Brown et al. 2002", "Hutter et al. 2006"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "satzilla-portfolio-based-algorithm-selection-for-sat"
+  },
+  {
+    "claim": "SATzilla's portfolio methodology is explicitly generalizable to any regression approach for runtime prediction, provided it is accurate and computationally cheap enough that prediction time is compensated for by algorithm-selection performance gains -- framing selection quality as a runtime-accuracy tradeoff over the SELECTOR model, not the optimization model.",
+    "stance": "neutral",
+    "stance_target": "methodological generality of empirical hardness models",
+    "evidence_type": "theoretical",
+    "scope_conditions": "SAT portfolio construction",
+    "quoted_support": "our portfolio methodology can make use of any regression approach that provides sufficiently accurate estimates of an algorithm's runtime and that is computationally efficient enough that the time spent making a prediction can be compensated for by the performance gain obtained through improved algorithm selection.",
+    "numbers": [],
+    "entities": [],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "satzilla-portfolio-based-algorithm-selection-for-sat"
+  },
+  {
+    "claim": "SATzilla addresses censored runtime data (extremely long-running SAT instances) as a core methodological challenge distinct from surrogate-model-selection concerns in continuous optimization.",
+    "stance": "neutral",
+    "stance_target": "domain-specific methodology of SATzilla",
+    "evidence_type": "empirical",
+    "scope_conditions": "SAT solving with heuristic algorithms for NP-complete problems",
+    "quoted_support": "SAT algorithms tend to solve some instances very quickly, while taking an extremely long amount of time to solve other instances... The common solution to this problem is to \"censor\" some runs",
+    "numbers": [],
+    "entities": [],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "satzilla-portfolio-based-algorithm-selection-for-sat"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Kerschke & Trautmann build an automated algorithm-selection model for continuous black-box optimization that selects among a portfolio of OPTIMIZERS (solvers), not among surrogate/objective models, using Exploratory Landscape Analysis (ELA) features.",
+    "stance": "supports",
+    "stance_target": "ELA/algorithm-selection literature targets optimizer choice, not surrogate-model choice",
+    "evidence_type": "empirical",
+    "scope_conditions": "continuous, single-objective, black-box optimization; COCO/BBOB benchmark platform",
+    "quoted_support": "the model allows for selecting the best suited optimization algorithm within the considered set for unseen problems prior to the optimization itself based on a small sample of function evaluations.",
+    "numbers": ["requires less than half of the resources of the portfolio's single best solver"],
+    "entities": ["Pascal Kerschke", "Heike Trautmann", "COCO platform", "flacco", "BBOB"],
+    "time_period": "2017-2019 (published 2019 in Evolutionary Computation)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171108921-automated-algorithm-selection-on-continuous-black-box-problems-by-comb"
+  },
+  {
+    "claim": "The paper's only use of the word 'surrogate' refers to a surrogate-assisted CMA-ES variant (saACM-ES) that is itself one candidate optimizer inside the selection portfolio, not a surrogate model being selected between.",
+    "stance": "supports",
+    "stance_target": "ELA/algorithm-selection literature does not treat surrogate-model architecture as the selection target",
+    "evidence_type": "empirical",
+    "scope_conditions": "portfolio construction section of the paper",
+    "quoted_support": "population self-adaptive surrogate-assisted CMA-ES (BIPOP-s*aACM-ES-k, Loshchilov...) ... A sequential, model-based [algorithm] ... from surrogate models and line searches simultaneously.",
+    "numbers": [],
+    "entities": ["saACM-ES", "CMA-ES", "Loshchilov"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171108921-automated-algorithm-selection-on-continuous-black-box-problems-by-comb"
+  },
+  {
+    "claim": "ELA characterizes problem landscapes via six low-level feature classes (y-Distribution, Meta-Model, Convexity, Local Search, Levelset, Curvature) computed via the flacco R package, from which high-level properties like multimodality, separability, and basin-size homogeneity are inferred.",
+    "stance": "neutral",
+    "stance_target": "definition of ELA feature taxonomy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "single-objective continuous optimization",
+    "quoted_support": "Six low-level feature classes were introduced, i.e., measures related to the distribution of the objective function values (y-Distribution), estimating meta-models such as linear or quadratic regression models on the sampled data (Meta-Model) and the level of convexity (Convexity).",
+    "numbers": ["50 numerical measures", "six categories of low-level features"],
+    "entities": ["Mersmann et al. 2011", "flacco"],
+    "time_period": "2011-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171108921-automated-algorithm-selection-on-continuous-black-box-problems-by-comb"
+  },
+  {
+    "claim": "The algorithm-selection problem (ASP) as formalized by Rice (1976) is defined as learning a mapping from a set of problem instances I to a set of algorithms A, selecting the best algorithm A for an unseen instance I -- the mapping's codomain is algorithms/solvers, not surrogate model families.",
+    "stance": "supports",
+    "stance_target": "the canonical algorithm-selection framework targets solver choice",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general algorithm-selection framing, applied here to continuous optimization",
+    "quoted_support": "given a set of optimization algorithms A, often denoted algorithm portfolio, and a set of problem instances I, one wants to find a model m : I -> A that selects the best algorithm A from the portfolio for an unseen problem instance I.",
+    "numbers": [],
+    "entities": ["Rice 1976", "Algorithm Selection Problem"],
+    "time_period": "1976 (framework); 2019 (this application)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "171108921-automated-algorithm-selection-on-continuous-black-box-problems-by-comb"
+  },
+  {
+    "claim": "The paper cites prior ELA-based selection work distinguishing 'funnel-shaped' landscapes with global structure from randomly-arranged local optima via nearest-better clustering, and shows this distinction is achievable with a budget as low as 50xd sample points.",
+    "stance": "neutral",
+    "stance_target": "feasibility of cheap landscape characterization for optimizer selection",
+    "evidence_type": "empirical",
+    "scope_conditions": "continuous black-box optimization; d = problem dimensionality",
+    "quoted_support": "even low budgets of 50xd observations (d being the problem dimensionality) -- i.e., a sample size that is close to the size of an evolutionary algorithm's initial population -- is sufficient for such a distinction.",
+    "numbers": ["50 x d observations"],
+    "entities": ["Kerschke et al. 2015", "Kerschke et al. 2016a"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "171108921-automated-algorithm-selection-on-continuous-black-box-problems-by-comb"
+  }
+]

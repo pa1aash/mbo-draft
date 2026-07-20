@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Bootstrap and permutation significance tests are unreliable and produce inflated false-positive rates at small sample sizes, because the sample is used as a noisy estimate of the true underlying distribution.",
+    "stance": "supports",
+    "stance_target": "small-N empirical statistics (e.g., a 9-cell design) are fragile / noisy estimators of the underlying distribution",
+    "evidence_type": "statistical",
+    "scope_conditions": "RL algorithm performance comparison, simulated and real (SAC vs TD3) distributions, sample sizes N=2 to 100",
+    "quoted_support": "it seems clear that the bootstrap test should never be used for sample sizes below N = 50 and the permutation test should never be used for sample sizes below N = 10. The bootstrap test in particular, uses the sample as an estimate of the true performance distribution. A small sample is a very noisy estimate, which leads to very high false positive rates.",
+    "numbers": ["N = 50", "N = 10"],
+    "entities": ["bootstrap test", "permutation test"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-hitchhikers-guide-to-statistical-comparisons-of-reinforcement-learning-algorit"
+  },
+  {
+    "claim": "Non-parametric rank-based tests (Mann-Whitney, ranked t-test) show severely inflated false-positive rates when comparing a skewed (log-normal) distribution against a symmetric one, and this bias worsens as sample size increases, because skewed-tail draws get systematically ranked above the other distribution's draws.",
+    "stance": "supports",
+    "stance_target": "rank-based/order-statistic comparisons are not a robustness-preserving remedy for non-normal or skewed underlying data",
+    "evidence_type": "statistical",
+    "scope_conditions": "Simulated normal vs log-normal / bimodal vs log-normal distribution comparisons",
+    "quoted_support": "Section 4.2 shows that non-parametric tests (Mann-Whitney and ranked t-test) can demonstrate very high false positive rates when comparing a symmetric distribution with a skewed one (log-normal). This effect gets worse linearly with the sample size. ... Therefore, the larger the sample size, the more realization are ranked first in favor of the log-normal, which leads to a bias in the statistical test.",
+    "numbers": [],
+    "entities": ["Mann-Whitney test", "ranked t-test", "log-normal distribution"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-hitchhikers-guide-to-statistical-comparisons-of-reinforcement-learning-algorit"
+  },
+  {
+    "claim": "The traditional recommendation to use non-parametric tests whenever distributions are non-normal is not reliable; it fails specifically when the two compared distributions differ from each other in shape, contradicting standard textbook guidance.",
+    "stance": "refutes",
+    "stance_target": "non-parametric/rank-based comparisons are always a safe default when normality is violated",
+    "evidence_type": "statistical",
+    "scope_conditions": "Comparisons between differently-shaped distributions (e.g., bimodal vs log-normal, normal vs log-normal)",
+    "quoted_support": "The traditional recommendation to use non-parametric tests when the distributions are not normal seems to be failing when the two distributions are different.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-hitchhikers-guide-to-statistical-comparisons-of-reinforcement-learning-algorit"
+  },
+  {
+    "claim": "Welch's t-test is the most robust test to assumption violations among those studied but still exceeds the nominal false-positive rate (alpha* > alpha, approx 0.1 vs 0.05) whenever at least one compared distribution is skewed or bimodal, especially at small sample sizes (N<10).",
+    "stance": "neutral",
+    "stance_target": "which statistical comparison method is robust vs fragile to non-normal/skewed data",
+    "evidence_type": "statistical",
+    "scope_conditions": "Simulated distribution comparisons and real SAC/TD3 empirical distributions on Half-Cheetah",
+    "quoted_support": "The t-test and the Welch's t-test were found to be more robust than others to violations of their assumptions. However, alpha* was found to be slightly above the required level (alpha* > alpha) when at least one of the two distributions is skewed (alpha* approx 0.1) no matter the sample size, and when one of the two distributions is bimodal, for small sample sizes N < 10.",
+    "numbers": ["alpha = 0.05", "alpha* approx 0.1", "N < 10"],
+    "entities": ["Welch's t-test", "t-test", "SAC", "TD3", "Half-Cheetah"],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-hitchhikers-guide-to-statistical-comparisons-of-reinforcement-learning-algorit"
+  },
+  {
+    "claim": "Detecting a moderate relative effect size (epsilon = 1.0) with 80% statistical power requires roughly N approx 20 samples across all tests studied; small samples (N=5) require effect sizes over 2x pooled standard deviation to reach comparable power.",
+    "stance": "supports",
+    "stance_target": "small sample sizes (on the order of a single-digit to low double-digit N, comparable to a 9-cell design) have materially reduced statistical power to detect real effects, independent of which test is used",
+    "evidence_type": "statistical",
+    "scope_conditions": "Simulated statistical power analysis across normal, bimodal, and log-normal candidate distributions",
+    "quoted_support": "epsilon = 0.5: N approx 100; epsilon = 1: N approx 20 and epsilon = 2: N approx 5, 10. ... Using the t-test or the Welch's t-test with small sample sizes (<5) usually leads to high false positive rate and would require very large relative effect sizes (over epsilon = 2) to show good statistical power.",
+    "numbers": ["epsilon = 0.5", "N = 100", "epsilon = 1", "N = 20", "epsilon = 2", "N = 5", "N = 10"],
+    "entities": [],
+    "time_period": "2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-hitchhikers-guide-to-statistical-comparisons-of-reinforcement-learning-algorit"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "DiBO's Table 2 provides a matched comparison crossing backbone architecture (diffusion vs. autoregressive) with training-pipeline stage (DA, SFT, RL), holding all other pipeline elements (prompts, dataset, delimiters, context selection) fixed, across 4 Design-Bench tasks with 8 seeds per cell.",
+    "stance": "neutral",
+    "stance_target": "whether DiBO Table 2 is a crossed surrogate x optimizer factorial analogous to the audited paper's novelty target",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench, discrete tasks (TF-Bind-8, TF-Bind-10) and continuous tasks (Ant Morphology, D'Kitty Morphology)",
+    "quoted_support": "We construct an autoregressive counterpart (LLaMA-3.1-8B-Instruct) by keeping the prompt construction, dataset, delimiter tokens, context selection strategy, and the full post-training pipeline (DA→SFT→RL) unchanged, and replacing only the backbone architecture (diffusion vs. AR).",
+    "numbers": ["2 backbones", "3 stages (DA/SFT/RL)", "4 tasks", "8 seeds", "TF-Bind-8 DA: 0.883±0.032 (diffusion) vs 0.803±0.038 (AR)"],
+    "entities": ["DiBO", "LLaDA-8B-Instruct", "LLaMA-3.1-8B-Instruct", "Design-Bench"],
+    "time_period": "2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "DA, SFT, and RL in DiBO are sequential stages of a single training pipeline (domain adaptation, then supervised fine-tuning, then reinforcement learning), each with its own learning rate and optimization-step schedule, not alternative numerical optimizer/search routines applied to a frozen trained surrogate.",
+    "stance": "supports",
+    "stance_target": "DiBO's DA/SFT/RL axis is a training-pipeline-stage variable, not an 'optimizer' in the offline-MBO sense (e.g., gradient ascent, CMA-ES, BO-qEI)",
+    "evidence_type": "theoretical",
+    "scope_conditions": "DiBO paper, experimental setup section",
+    "quoted_support": "The training process follows a sequential pipeline: domain adaptation (DA), supervised fine-tuning (SFT), and reinforcement learning (RL). For discrete tasks, we employ learning rates of 2×10⁻⁵ for DA and SFT, and 1×10⁻⁶ for RL.",
+    "numbers": ["DA lr 2e-5 (discrete) / 1e-5 (continuous)", "SFT lr 2e-5", "RL lr 1e-6", "DA steps 1024 (discrete)/2048 (continuous)", "SFT/RL steps 1024/128"],
+    "entities": ["DA", "SFT", "RL", "LLaDA-8B-Instruct"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "DiBO's stage-removal ablation (Section 4.4) removes one of the three pipeline stages at a time to demonstrate each is necessary for final performance, which is a pipeline-completeness ablation rather than a crossed optimizer factorial with variance decomposition.",
+    "stance": "refutes",
+    "stance_target": "DiBO's ablation constitutes a factorial-with-ANOVA analysis of the type claimed novel by the audited paper",
+    "evidence_type": "empirical",
+    "scope_conditions": "DiBO Section 4.4, 'Ablation of training stages'",
+    "quoted_support": "We remove certain training stages from the three-stage pipeline. ... removing any stage leads to a clear performance drop compared to the full pipeline, highlighting the importance of all three stages.",
+    "numbers": ["3 stages ablated one at a time"],
+    "entities": ["DiBO"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "training-diffusion-language-models-for-black-box-optimization"
+  },
+  {
+    "claim": "Across all reported task x stage cells in DiBO Table 2, the diffusion backbone outperforms or matches the matched AR backbone, with the largest gain at the TF-Bind-8 DA stage (+0.080) and near-zero gain at some continuous-task RL stages (D'Kitty RL: 0.000 gain).",
+    "stance": "neutral",
+    "stance_target": "magnitude and consistency of diffusion-vs-AR backbone gains across pipeline stages",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench discrete and continuous tasks",
+    "quoted_support": "the diffusion backbone outperforms or matches the corresponding AR backbone across all tasks and training stages.",
+    "numbers": ["TF-Bind-8 DA gain +0.080", "TF-Bind-8 SFT gain +0.064", "TF-Bind-8 RL gain +0.031", "TF-Bind-10 DA gain +0.021", "TF-Bind-10 SFT gain +0.071", "TF-Bind-10 RL gain +0.059", "D'Kitty RL gain 0.000"],
+    "entities": ["DiBO", "Autoregressive backbone"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "training-diffusion-language-models-for-black-box-optimization"
+  }
+]

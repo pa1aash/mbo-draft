@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "Alissa, Sim & Hart propose feature-free algorithm selection using recurrent neural networks (LSTM/GRU) trained on raw instance sequences to select among heuristics/solvers, contrasting with typical feature-based algorithm selection requiring hand-derived instance features -- the neural network here is the SELECTOR, not a surrogate objective model.",
+    "stance": "supports",
+    "stance_target": "algorithm-selection literature's use of neural networks targets solver/heuristic selection, not surrogate-model selection",
+    "evidence_type": "empirical",
+    "scope_conditions": "online bin-packing, selecting among four well-known packing heuristics",
+    "quoted_support": "we train two types of recurrent neural networks to predict a packing heuristic in online bin-packing, selecting from four well-known heuristics. As input, the RNN methods only use the sequence of item-sizes.",
+    "numbers": ["within 5% of oracle performance on 80.88% to 97.63% of instances, depending on dataset"],
+    "entities": ["Mohamad Alissa", "Kevin Sim", "Emma Hart", "LSTM", "GRU"],
+    "time_period": "2023 (Journal of Heuristics)",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "automated-algorithm-selection-from-feature-based-to-feature-free-approaches"
+  },
+  {
+    "claim": "The word 'surrogate' does not appear anywhere in this 2023 Journal of Heuristics survey of feature-based vs. feature-free algorithm selection, and 'landscape' appears only twice, both in bibliography citations (to Kerschke et al.'s ELA survey and a MAX-SAT landscape paper) rather than in the main text's methodology.",
+    "stance": "refutes",
+    "stance_target": "modern algorithm-selection surveys discuss surrogate-model selection",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text search of the 2023 survey (approx. 15,573 words extracted)",
+    "quoted_support": "bining exploratory landscape analysis and machine learning. Evol. Comput. 27(1), 99-127 (2019)",
+    "numbers": ["0 occurrences of 'surrogate'", "2 occurrences of 'landscape' (both in references)"],
+    "entities": ["Kerschke et al. 2019"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "automated-algorithm-selection-from-feature-based-to-feature-free-approaches"
+  },
+  {
+    "claim": "The survey restates Rice's (1976) algorithm-selection framework as its foundational reference point for both feature-based and feature-free approaches, confirming Rice's framework (mapping instances to algorithms/solvers) remains the field's core paradigm as of 2023.",
+    "stance": "supports",
+    "stance_target": "the canonical algorithm-selection framework targets solver/optimizer choice",
+    "evidence_type": "theoretical",
+    "scope_conditions": "general algorithm-selection framing",
+    "quoted_support": "the design and selection of features to describe an instance. Two deep-neural networks",
+    "numbers": [],
+    "entities": ["Rice 1976"],
+    "time_period": "1976; 2023 (this survey)",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "automated-algorithm-selection-from-feature-based-to-feature-free-approaches"
+  },
+  {
+    "claim": "Feature-free RNN-based selectors are shown to outperform classical machine learning models trained on hand-engineered instance features for the online bin-packing selection task.",
+    "stance": "neutral",
+    "stance_target": "comparative performance of feature-free vs. feature-based algorithm selection",
+    "evidence_type": "empirical",
+    "scope_conditions": "online bin-packing",
+    "quoted_support": "They are also shown to outperform classical machine learning models trained",
+    "numbers": [],
+    "entities": ["Neural Network (NN)", "Decision Trees (DT)"],
+    "time_period": "2023",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "automated-algorithm-selection-from-feature-based-to-feature-free-approaches"
+  }
+]

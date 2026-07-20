@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "The Abdar et al. UQ survey organizes deep-learning uncertainty-quantification methods into top-level 'method family' sections (Bayesian techniques including MC-dropout in Section 5; Ensemble Techniques with subsections Deep Ensemble 6.1, Deep Ensemble Bayesian 6.2, and traditional-ML ensembles 6.3) that are structurally distinct from 'loss function' choice, which is catalogued separately in Table 3 and Table 4.",
+    "stance": "supports",
+    "stance_target": "the UQ literature treats 'which method family' and 'which training loss' as orthogonal, separately-catalogued dimensions rather than one bundled factor",
+    "evidence_type": "theoretical",
+    "scope_conditions": "deep learning uncertainty quantification survey literature, ~2900+ citations, published Information Fusion 2021",
+    "quoted_support": "As an important part of ensemble techniques, loss functions play a significant role of having a good performance by different ensemble techniques. In other words, choosing the appropriate loss function can dramatically improve results. Due to page limitation, we summarise the most important loss functions applied for UQ in Table 3.",
+    "numbers": ["Table 3", "Table 4", "Section 6.1", "Section 6.2", "Section 6.3"],
+    "entities": ["Abdar", "Deep Ensemble", "Deep Ensemble Bayesian", "MC dropout", "Bayesian approximation"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-review-of-uncertainty-quantification-in-deep-learning-techniques-applications"
+  },
+  {
+    "claim": "Table 3 is explicitly captioned 'Main loss functions used by ensemble techniques for UQ' and Table 4 is captioned 'Main loss functions used by deep ensemble techniques for UQ', confirming loss function is catalogued as a standalone table axis distinct from the method-family taxonomy sections.",
+    "stance": "supports",
+    "stance_target": "loss function is a cross-cutting axis of variation within (not identical to) method family in UQ taxonomy",
+    "evidence_type": "empirical",
+    "scope_conditions": "Abdar et al. survey, Section 6 Ensemble Techniques",
+    "quoted_support": "TABLE 3: Main loss functions used by ensemble techniques for UQ. ... TABLE 4: Main loss functions used by deep ensemble techniques for UQ.",
+    "numbers": ["Table 3", "Table 4"],
+    "entities": ["Abdar"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-review-of-uncertainty-quantification-in-deep-learning-techniques-applications"
+  },
+  {
+    "claim": "The survey's Section 6 subsections (6.1 Deep Ensemble, 6.2 Deep Ensemble Bayesian, 6.3 UQ in Traditional Machine Learning domain using Ensemble Techniques) are organized by model/method family and reference each family's own loss-function table separately, rather than treating loss function choice as defining the family itself.",
+    "stance": "supports",
+    "stance_target": "method family and loss function are separately-tracked taxonomic axes in the UQ literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Abdar et al. survey structure",
+    "quoted_support": "As shown in previous section, in the following, we summarise few loss functions of deep ensembles in Table 4.",
+    "numbers": ["Section 6.1", "Section 6.2", "Section 6.3"],
+    "entities": ["Deep Ensemble", "Deep Ensemble Bayesian"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-review-of-uncertainty-quantification-in-deep-learning-techniques-applications"
+  },
+  {
+    "claim": "Bayesian approximation and ensemble learning are identified by the survey's abstract as the two most widely-used UQ method families in the deep learning literature, spanning applications in computer vision, medical image analysis, NLP, bioinformatics, and reinforcement learning.",
+    "stance": "neutral",
+    "stance_target": "scope and framing of the UQ method-family taxonomy",
+    "evidence_type": "theoretical",
+    "scope_conditions": "deep learning UQ, as of 2021",
+    "quoted_support": "Bayesian approximation and ensemble learning techniques are two of the most widely-used UQ methods in the literature.",
+    "numbers": [],
+    "entities": ["Bayesian approximation", "ensemble learning"],
+    "time_period": "2021",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-review-of-uncertainty-quantification-in-deep-learning-techniques-applications"
+  }
+]

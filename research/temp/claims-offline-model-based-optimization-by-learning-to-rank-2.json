@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "RaM's main-text Table 3 crosses 9 offline-MBO methods with 2 loss types (MSE vs ListNet) across 5 Design-Bench tasks, reporting mean±std 100th-percentile normalized scores per cell.",
+    "stance": "neutral",
+    "stance_target": "whether RaM Table 3 is a crossed surrogate x optimizer factorial",
+    "evidence_type": "empirical",
+    "scope_conditions": "Design-Bench offline MBO benchmark, ICLR 2025",
+    "quoted_support": "Table 3: 100th percentile normalized score of different methods combined with the MSE or ListNet loss in Design-Bench, where positive and negative gain rates are Blue and Red.",
+    "numbers": ["9 methods", "2 losses", "5 tasks", "N=8 seeds per cell (per task description)"],
+    "entities": ["RaM", "Design-Bench", "BO-qEI", "CMA-ES", "REINFORCE", "Grad. Ascent", "CbAS", "MINs", "Tri-Mentoring", "PGS", "Match-OPT"],
+    "time_period": "ICLR 2025",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-2"
+  },
+  {
+    "claim": "Appendix E.5 explicitly stratifies the 9 methods into three construction-based groups: baselines that optimize a trained model (BO-qEI, CMA-ES, REINFORCE, Gradient Ascent), two backward approaches (CbAS, MINs), and three state-of-the-art forward methods that can replace MSE with ListNet (Tri-Mentoring, PGS, Match-OPT).",
+    "stance": "supports",
+    "stance_target": "the grouping in Table 3 was author-imposed by method compatibility, not derived from a statistical factor analysis",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Appendix E.5, RaM paper",
+    "quoted_support": "We choose baselines methods that optimize a trained model, BO-qEI (Garnett, 2023), CMA-ES (Hansen, 2016), REINFORCE (Williams, 1992), and Gradient Ascent, two backward approach provided in Trabucco et al. (2022), CbAS (Brookes et al., 2019) and MINs (Kumar & Levine, 2020), and three state-of-the-art forward methods that can replace MSE with ListNet, Tri-Mentoring (Chen et al., 2023a), PGS (Chemingui et al., 2024), and Match-OPT (Hoang et al., 2024).",
+    "numbers": ["4 baseline methods", "2 backward methods", "3 forward methods", "9 total"],
+    "entities": ["BO-qEI", "CMA-ES", "REINFORCE", "Gradient Ascent", "CbAS", "MINs", "Tri-Mentoring", "PGS", "Match-OPT"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-2"
+  },
+  {
+    "claim": "RaM's Appendix E.5 discloses that several forward offline-MBO methods (COMs, RoMA, IOM, BDI, ICT) were excluded from the Table 3 MSE->ListNet swap because their loss functions use prediction values or per-sample weighting incompatible with a direct ranking-loss substitution.",
+    "stance": "refutes",
+    "stance_target": "Table 3 is an exhaustive/complete surrogate-class x optimizer factorial grid",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Appendix E.5, RaM paper",
+    "quoted_support": "We exclude many forward methods due to the inapplicability of directly replacing MSE with ListNet. For example, COMs (Trabucco et al., 2021), RoMA (Yu et al., 2021), IOM (Qi et al., 2022) use the prediction values to calculate the loss function... while BDI (Chen et al., 2022) and ICT (Yuan et al., 2023) assign weight to each sample, thus MSE in these methods cannot be directly replaced with a ranking loss like ListNet.",
+    "numbers": ["5 excluded methods: COMs, RoMA, IOM, BDI, ICT"],
+    "entities": ["COMs", "RoMA", "IOM", "BDI", "ICT"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-2"
+  },
+  {
+    "claim": "RaM never computes ANOVA, eta-squared, or any variance-decomposition statistic on its Table 3 method x loss grid; the paper's own vocabulary for this experiment is 'gain rate' (percentage improvement per cell), not a factorial-design analysis.",
+    "stance": "supports",
+    "stance_target": "RaM's Table 3 does not itself perform the 'crossed factorial with variance decomposition' analysis attributed to the audited paper's novelty target",
+    "evidence_type": "empirical",
+    "scope_conditions": "full-text search of 172,006-char extracted note body",
+    "quoted_support": "The results in Table 3 show that the gains are always positive except two cases, clearly demonstrating the versatility of ranking loss.",
+    "numbers": ["0 hits for ANOVA/eta-squared/variance-decomposition/main effect/interaction effect/two-way/factorial design"],
+    "entities": ["RaM"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-2"
+  },
+  {
+    "claim": "RaM's Table 3 crossing is restricted to loss-function identity (MSE vs ListNet) layered onto pre-existing methods/optimizers, not a crossing of surrogate model architecture/class against optimizer identity.",
+    "stance": "refutes",
+    "stance_target": "RaM Table 3 constitutes the same kind of surrogate-architecture x optimizer factorial claimed novel by the audited paper",
+    "evidence_type": "theoretical",
+    "scope_conditions": "RaM paper, Table 3 and Appendix E.5",
+    "quoted_support": "We examine whether simply replacing the MSE loss of some regression-based methods with a ranking loss can even bring improvement. Specifically, we substitute MSE with the best-performing ranking loss, ListNet, and incorporate output adaptation.",
+    "numbers": [],
+    "entities": ["RaM", "MSE", "ListNet"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "offline-model-based-optimization-by-learning-to-rank-2"
+  }
+]

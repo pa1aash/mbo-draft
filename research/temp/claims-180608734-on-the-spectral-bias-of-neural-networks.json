@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Deep networks show a learning bias toward LOW frequency functions, manifesting as frequency-dependent learning speed -- low-complexity functions are learned faster during gradient-descent training.",
+    "stance": "supports",
+    "stance_target": "direction of spectral bias (low vs high frequency)",
+    "evidence_type": "empirical",
+    "scope_conditions": "ReLU networks; gradient descent training; synthetic Fourier-analysis experiments.",
+    "quoted_support": "\"By using tools from Fourier analysis, we highlight a learning bias of deep networks towards low frequency functions -- i.e. functions that vary globally without local fluctuations -- which manifests itself as a frequency-dependent learning speed.\"",
+    "numbers": [],
+    "entities": ["Rahaman", "Baratin", "Arpit", "Draxler", "Lin", "Hamprecht", "Bengio", "Courville"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180608734-on-the-spectral-bias-of-neural-networks"
+  },
+  {
+    "claim": "The paper's core spectral-bias phenomenon ('lower frequencies are learned first') is defined and demonstrated as a function of training iteration, not network width -- Experiment 1/Figure 2 varies only training time (100, 1000, 10000, 80000 iterations).",
+    "stance": "refutes",
+    "stance_target": "framing spectral bias as fundamentally a width-controlled phenomenon",
+    "evidence_type": "empirical",
+    "scope_conditions": "Synthetic experiment, target function = superposition of sinusoids κ=(5,10,...,45,50), equal amplitudes, random phases.",
+    "quoted_support": "\"We now present experiments showing that networks tend to fit lower frequencies first during training. We refer to this phenomenon as the spectral bias...\"",
+    "numbers": ["iterations 100, 1000, 10000, 80000", "frequencies 5-50"],
+    "entities": ["Rahaman et al.", "Experiment 1", "Section 3"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180608734-on-the-spectral-bias-of-neural-networks"
+  },
+  {
+    "claim": "Theorem 1, the paper's formal result on the Fourier spectrum of ReLU networks, applies to general ReLU networks with arbitrary width AND depth -- it is not itself a width-limit statement.",
+    "stance": "refutes",
+    "stance_target": "treating spectral bias as vanishing/inverting in a width limit analogous to NTK/NNGP results",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General ReLU networks, any width and depth.",
+    "quoted_support": "\"Note that Eqn 6 applies to general ReLU networks with arbitrary width and depth.\"",
+    "numbers": ["Equation 6"],
+    "entities": ["Rahaman et al.", "Theorem 1"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180608734-on-the-spectral-bias-of-neural-networks"
+  },
+  {
+    "claim": "In a controlled ablation, increasing depth (linear increase, fixed width) has a significantly stronger effect on a network's ability to fit high frequencies than increasing width (exponential increase, fixed depth), where the width effect is 'considerably weaker.'",
+    "stance": "refutes",
+    "stance_target": "the claim that width is the dominant/controlling variable for spectral bias (implying wider networks show markedly less spectral bias)",
+    "evidence_type": "empirical",
+    "scope_conditions": "Fig. 15: depth ∈ {3,4,5,6}, width=16, weight clip=10. Fig. 16: width ∈ {16,32,64,128}, depth=3, weight clip=10. Target: delta-peak / constant-spectrum function at x=0.5, 60K iterations full-batch gradient descent, Adam optimizer lr=0.0003.",
+    "quoted_support": "\"Fig 15 shows that increasing the depth (for fixed width) significantly improves the network's ability to fit higher frequencies (note that the depth increases linearly). Fig 16 shows that increasing the width (for fixed depth) also helps, but the effect is considerably weaker (note that the width increases exponentially).\"",
+    "numbers": ["depth 3,4,5,6", "width 16,32,64,128", "weight clip 10", "60000 iterations", "lr=0.0003"],
+    "entities": ["Rahaman et al.", "Figure 15", "Figure 16", "Adam optimizer"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180608734-on-the-spectral-bias-of-neural-networks"
+  },
+  {
+    "claim": "Increasing weight clip (max parameter norm) also helps a network fit higher frequencies, and higher-dimensional/more-complex data manifolds make learning high frequencies easier -- both variables orthogonal to width.",
+    "stance": "neutral",
+    "stance_target": "additional non-width controlling variables for spectral bias / high-frequency fitting",
+    "evidence_type": "empirical",
+    "scope_conditions": "Fig. 17 weight-clip ablation; abstract's manifold-complexity claim.",
+    "quoted_support": "\"Fig 17 shows that increasing the weight clip (or the max parameter max-norm) also helps the network fit higher frequencies... we also investigate the role of the shape of the data manifold by presenting empirical and theoretical evidence that, somewhat counter-intuitively, learning higher frequencies gets easier with increasing manifold complexity.\"",
+    "numbers": ["weight clip 0.1, 0.15, 0.2, 2"],
+    "entities": ["Rahaman et al.", "Figure 17"],
+    "time_period": "2018-2019",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "180608734-on-the-spectral-bias-of-neural-networks"
+  }
+]

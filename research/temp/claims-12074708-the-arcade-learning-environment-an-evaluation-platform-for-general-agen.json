@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "The ALE paper defines 'inter-algorithm normalization,' the min-max formula z_{g,i} = (s_{g,i} - min_i s_{g,i}) / (max_i s_{g,i} - min_i s_{g,i}) using only the score range of the compared algorithms/methods themselves -- this is the origin of the exact min-max-over-compared-entities normalization technique later critiqued as outlier-fragile by Jordan et al. 2020.",
+    "stance": "neutral",
+    "stance_target": "definition/origin of min-max normalization over the compared entities' own score range",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Arcade Learning Environment (Atari 2600), comparing n algorithms per game g",
+    "quoted_support": "A third alternative is to normalize using the scores achieved by the algorithms themselves. Given n algorithms, each achieving score s_{g,i} on game g, we define the inter-algorithm score using the score range [min_i s_{g,i}, max_i s_{g,i}]. By definition, z_{g,i} in [0,1].",
+    "numbers": ["0", "1"],
+    "entities": ["Bellemare", "Naddaf", "Veness", "Bowling", "ALE", "inter-algorithm normalization"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12074708-the-arcade-learning-environment-an-evaluation-platform-for-general-agen"
+  },
+  {
+    "claim": "Average-based aggregation of normalized scores across games is empirically demonstrated to be dominated by a single outlier game (Zaxxon), making one algorithm (LSH) appear dramatically superior purely due to that one cell -- a distortion revealed only by comparing against the median, which is 'generally more robust to outliers than average scores.'",
+    "stance": "supports",
+    "stance_target": "min-max/average-based aggregation across a small number of cells is fragile to a single outlier cell dominating the resulting statistic",
+    "evidence_type": "empirical",
+    "scope_conditions": "ALE benchmark, five RL agents (Basic, BASS, DISCO, LSH, RAM), baseline-score aggregation across dozens of Atari games",
+    "quoted_support": "The most straightforward method of aggregating normalized scores is to compute their average. Without perfect score normalization, however, score averages tend to be heavily influenced by games such as Zaxxon for which baseline scores are high. ... Comparing medians and averages in the baseline score (upper two graphs) illustrates exactly the outlier sensitivity of the average score, where the LSH method appears dramatically superior due entirely to its performance in Zaxxon.",
+    "numbers": [],
+    "entities": ["Zaxxon", "LSH", "Basic", "BASS", "DISCO", "RAM"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12074708-the-arcade-learning-environment-an-evaluation-platform-for-general-agen"
+  },
+  {
+    "claim": "Min-max inter-algorithm normalization, though bounded to [0,1], is flagged as giving no indication of the objective quality of the best-performing entrant -- a normalized score of 1.0 can reflect merely the best of a weak field, not genuine competence, e.g. BASS scoring 1.0 on Venture despite no agent coming close to human-level performance.",
+    "stance": "supports",
+    "stance_target": "min-max normalization of scores relative to only the compared entities can misrepresent absolute performance quality, inflating a merely-relatively-best cell to the top of the normalized range",
+    "evidence_type": "empirical",
+    "scope_conditions": "ALE benchmark, inter-algorithm score normalization on the game Venture",
+    "quoted_support": "Its main drawback is that it gives no indication of the objective performance of the best algorithm. A good example of this is Venture: the inter-algorithm score of 1.0 achieved by BASS does not reflect the fact that none of our agents achieved a score remotely comparable to a human's performance. The lack of objective reference in inter-algorithm normalization suggests that it should be used to complement other scoring metrics.",
+    "numbers": ["1.0"],
+    "entities": ["BASS", "Venture"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "12074708-the-arcade-learning-environment-an-evaluation-platform-for-general-agen"
+  },
+  {
+    "claim": "Normalizing to a single reference score (e.g., random agent) can produce excessively large or excessively small normalized-score scales depending on how close the reference's raw score is to zero, illustrating that the choice of normalizer denominator (analogous to the range used in min-max normalization) can itself distort magnitude comparisons independent of real performance differences.",
+    "stance": "supports",
+    "stance_target": "the choice of normalizer/reference range materially distorts the resulting normalized-score magnitudes across tasks",
+    "evidence_type": "empirical",
+    "scope_conditions": "ALE random-agent-normalized scores, Freeway and Asteroids games",
+    "quoted_support": "The issue of scale is best seen in a game such as Freeway, for which the random agent achieves a score close to 0: scores achieved by learning agents, in the 10-20 range, are normalized into thousands. By contrast, no learning agent achieves a random-normalized score greater than 1 in Asteroids.",
+    "numbers": ["0", "10-20", "1"],
+    "entities": ["Freeway", "Asteroids", "random agent"],
+    "time_period": "2013",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "12074708-the-arcade-learning-environment-an-evaluation-platform-for-general-agen"
+  }
+]

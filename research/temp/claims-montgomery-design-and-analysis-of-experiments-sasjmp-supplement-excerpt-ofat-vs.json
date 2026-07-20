@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "The official SAS/JMP companion volume to Montgomery's Design and Analysis of Experiments textbook states that a naive one-factor-at-a-time analysis requires more trials than necessary and fails to reveal whether a factor's effect on the target depends on the values of other factors (i.e., cannot detect interaction effects).",
+    "stance": "supports",
+    "stance_target": "OFAT designs cannot estimate/detect interactions between factors",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "General DOE methodology, explicitly framed as demonstrated in Montgomery's Design and Analysis of Experiments textbook",
+    "quoted_support": "A naïve, one-factor-at-a-time analysis would require many more trials than necessary. Additionally, it would not yield information about whether the relationship between a factor and the target depends on the values of other factors (commonly referred to as interaction effects between factors). As demonstrated in Douglas Montgomery's Design and Analysis of Experiments textbook, principles of statistical theory, linear algebra, and analysis guide the development of efficient experimental designs for factor settings.",
+    "numbers": ["Chapter 5 'Introduction to Factorial Designs' begins p.77 of supplement", "Chapter 6 'The 2^k Factorial Design' begins p.101"],
+    "entities": ["Douglas Montgomery", "SAS Institute", "Heath Rushing", "Andrew Karl", "James Wisnowski"],
+    "time_period": "2013 (supplement publication)",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "montgomery-design-and-analysis-of-experiments-sasjmp-supplement-excerpt-ofat-vs"
+  },
+  {
+    "claim": "An interaction effect between two factors is standardly defined as the relationship between one factor and the response depending on the value(s) of the other factor -- i.e., the two factors' effects on the response are not independent of one another.",
+    "stance": "supports",
+    "stance_target": "definition of interaction as non-independence of factor effects",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General DOE terminology, as used in Montgomery's textbook framework",
+    "quoted_support": "it would not yield information about whether the relationship between a factor and the target depends on the values of other factors (commonly referred to as interaction effects between factors)",
+    "numbers": [],
+    "entities": ["interaction effects", "factors", "target quality attributes"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "montgomery-design-and-analysis-of-experiments-sasjmp-supplement-excerpt-ofat-vs"
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "claim": "George Box argues that many important phenomena depend not on a single factor operating alone but on two (or more) factors being brought together at appropriate levels simultaneously, illustrated by a rabbit-breeding analogy where OFAT experimentation (control, then doe alone, then buck alone) fails, but the factorial combination (buck+doe together) succeeds.",
+    "stance": "supports",
+    "stance_target": "OFAT experimentation misses effects that only emerge from factor combinations (interactions)",
+    "evidence_type": "anecdotal",
+    "scope_conditions": "General argument for factorial design over OFAT, illustrative example",
+    "quoted_support": "Many important phenomena depend, not on the operation of a single factor, but on the bringing together of two or sometimes more factors at the appropriate levels... had not Stu Hunter come by and told the experimenter about factorial designs. When that fourth experiment was run... with a buck and a doe (+,+) lo and behold, not only was a factorial-experiment produced but eight little rabbits as well!",
+    "numbers": [],
+    "entities": ["George Box", "Stu Hunter", "rabbit breeding"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "do-interactions-matter-by-george-box"
+  },
+  {
+    "claim": "Christer Hellstrand's 2^3 factorial experiment at SKF (heat treatment, outer ring osculation, cage design) discovered that bearing life increases fivefold only when outer ring osculation and inner ring heat treatment are increased together -- an interaction effect invisible to varying each factor separately -- saving tens of millions of dollars.",
+    "stance": "supports",
+    "stance_target": "OFAT experimentation cannot reveal economically important two-factor interactions that factorial designs can",
+    "evidence_type": "empirical",
+    "scope_conditions": "Industrial rolling-bearing manufacturing, SKF (largest bearing producer, 14 countries), engineering DOE case study",
+    "quoted_support": "It led to the extraordinary discovery that, in this particular application, the life of a bearing can be increased fivefold if the two factors, outer ring osculation and inner ring heat treatment, are increased together. This and similar experiments have saved tens of millions of dollars.",
+    "numbers": ["2^3 factorial experiment", "fivefold increase in bearing life", "tens of millions of dollars saved", "14 countries"],
+    "entities": ["Christer Hellstrand", "SKF", "George Box"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "do-interactions-matter-by-george-box"
+  },
+  {
+    "claim": "Box attributes the decades-long failure of engineers to discover the bearing-life interaction to the historical dominance of one-factor-at-a-time experimentation in engineering practice, despite Fisher having invented modern factorial experimental design methods roughly 65 years earlier (relative to 1989).",
+    "stance": "supports",
+    "stance_target": "OFAT experimentation was standard practice in engineering and caused interaction effects to be systematically missed",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "History of industrial experimentation, engineering vs. process/chemical industries, as of 1989",
+    "quoted_support": "A likely explanation is that, because most engineers have, until recently, employed only one factor at a time experimentation, interaction effects have been missed. One factor at a time experimentation became outdated 65 years ago with Fisher's invention of modern methods of experimental design, but it has taken an extraordinarily long time for this to permeate teaching in engineering schools.",
+    "numbers": ["65 years"],
+    "entities": ["R.A. Fisher", "George Box"],
+    "time_period": "1989 (article publication); Fisher's factorial design methods ~1924",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "do-interactions-matter-by-george-box"
+  },
+  {
+    "claim": "Box states that a well-planned factorial experiment 'frequently analyzes itself' -- the SKF engineers did not need ANOVA, significance tests, or signal-to-noise ratios to see the interaction; simply looking at the 2^3 design's tabulated results sufficed.",
+    "stance": "neutral",
+    "stance_target": "practical accessibility of factorial designs for detecting interactions",
+    "evidence_type": "expert-opinion",
+    "scope_conditions": "SKF bearing 2^3 factorial example",
+    "quoted_support": "It wasn't complicated to analyze either, they just needed to look at the results. This is not unusual, a well planned experiment frequently analyzes itself. In particular they didn't need an analysis of variance or even a test.",
+    "numbers": [],
+    "entities": ["SKF", "2^3 design"],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "do-interactions-matter-by-george-box"
+  }
+]

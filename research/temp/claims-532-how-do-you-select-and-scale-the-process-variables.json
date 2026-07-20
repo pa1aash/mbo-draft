@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "NIST's guidance frames the selection of which process variables count as 'factors' in a designed experiment as a matter of team-based engineering judgment, prior to and separate from the statistical machinery (coding, orthogonality, confounding analysis) applied afterward.",
+    "stance": "supports",
+    "stance_target": "identifying what counts as a 'factor' is a matter of domain/engineering judgment, not something derivable from statistical theory alone",
+    "evidence_type": "theoretical",
+    "scope_conditions": "NIST/SEMATECH Engineering Statistics Handbook, DOE guidance",
+    "quoted_support": "Guidelines to assist the engineering judgment process of selecting process variables for a DOE ... Include all important factors (based on engineering judgment).",
+    "numbers": [],
+    "entities": ["NIST/SEMATECH Engineering Statistics Handbook"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "532-how-do-you-select-and-scale-the-process-variables"
+  },
+  {
+    "claim": "NIST recommends practical, non-statistical heuristics for factor/response selection: check factor settings for impractical or impossible combinations, include all relevant responses, and avoid using only responses that combine two or more underlying measurements.",
+    "stance": "neutral",
+    "stance_target": "practical DOE variable-selection heuristics",
+    "evidence_type": "theoretical",
+    "scope_conditions": "NIST DOE guidance",
+    "quoted_support": "Check the factor settings for impractical or impossible combinations - i.e., very low pressure and very high gas flows. ... Avoid using only responses that combine two or more measurements of the process. For example, if interested in selectivity (the ratio of two etch rates), measure both rates, not just the ratio.",
+    "numbers": [],
+    "entities": [],
+    "time_period": null,
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "532-how-do-you-select-and-scale-the-process-variables"
+  },
+  {
+    "claim": "Once factors are chosen, two-level designs code the high/low settings as +1/-1, and the model/analysis matrix (including interaction columns like X1*X2) is built from that coding; the orthogonality of coded columns (dot product of any pair of columns = 0) is a property of the design matrix, not of the factor-selection step.",
+    "stance": "neutral",
+    "stance_target": "statistical machinery (coding, orthogonality) operates downstream of factor selection",
+    "evidence_type": "theoretical",
+    "scope_conditions": "two-level factorial design notation",
+    "quoted_support": "Coding is sometime called 'orthogonal coding' since all the columns of a coded 2-factor design matrix (except the 'I' column) are typically orthogonal. That is, the dot product for any pair of columns is zero.",
+    "numbers": ["(-1)(-1) + (+1)(-1) + (-1)(+1) + (+1)(+1) = 0"],
+    "entities": ["X1", "X2"],
+    "time_period": null,
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "532-how-do-you-select-and-scale-the-process-variables"
+  }
+]

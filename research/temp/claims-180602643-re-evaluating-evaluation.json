@@ -1,0 +1,44 @@
+[
+  {
+    "claim": "Uniform averaging over a benchmark suite's tasks/agents is sensitive to which tasks or agents are included, and inclusion of redundant tasks can 'easily skew average performance in favor of or against particular agents' -- a compositional validity failure of average-based aggregation independent of any single outlier magnitude.",
+    "stance": "supports",
+    "stance_target": "average-based aggregation over a small set of comparison cells lacks a validity guarantee against how that set of cells is composed",
+    "evidence_type": "theoretical",
+    "scope_conditions": "General benchmark-suite aggregation across tasks and/or agents",
+    "quoted_support": "Measuring performance by uniformly averaging over tasks in a benchmark suite is sensitive to the set of tasks that are included in the suite. Including redundant tasks, whether consciously or not, can easily skew average performance in favor of or against particular agents.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180602643-re-evaluating-evaluation"
+  },
+  {
+    "claim": "A worked rock-paper-scissors example shows that merely adding a redundant duplicate copy of one agent to the comparison population shifts other agents' Elo ratings by 63 points in opposite directions, despite no change in the true underlying skill of any agent -- demonstrating that composition-sensitive aggregation statistics can be manipulated or accidentally distorted by duplicate/near-duplicate entries.",
+    "stance": "supports",
+    "stance_target": "aggregation statistics computed over a small, fixed comparison set are vulnerable to distortion from how that set is composed (redundant or near-duplicate entries), a structurally related failure mode to outlier-driven range distortion",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Rock-paper-scissors toy example with three agents (A, B, C) and Elo rating aggregation",
+    "quoted_support": "The three agents exhibit rock-paper-scissors dynamics; their Elo ratings (normalized to sum to zero) are all zero. However, adding a second copy of agent C decreases the Elo rating of agent A and increases the Elo rating of agent B... That is, the Elo ratings of agents A and B are easily manipulated by changing the structure of the population.",
+    "numbers": ["63", "-63", "0"],
+    "entities": ["Elo rating", "agent A", "agent B", "agent C"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180602643-re-evaluating-evaluation"
+  },
+  {
+    "claim": "Nash averaging is proposed as an aggregation method that 'automatically adapts to redundancies in evaluation data, so that results are not biased by the incorporation of easy tasks or weak agents,' proposed as an invariance-guaranteeing alternative to naive averaging-based aggregation.",
+    "stance": "refutes",
+    "stance_target": "naive averaging (or by extension min-max normalization of a small, fixed set of raw cell means) is an adequate aggregation method without further robustness guarantees",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Agent-vs-agent and agent-vs-task evaluation scenarios; proposed alternative aggregation method",
+    "quoted_support": "The key strength of Nash averaging is that it automatically adapts to redundancies in evaluation data, so that results are not biased by the incorporation of easy tasks or weak agents. Nash averaging thus encourages maximally inclusive evaluation.",
+    "numbers": [],
+    "entities": ["Nash averaging", "Balduzzi", "Tuyls", "Perolat", "Graepel", "DeepMind"],
+    "time_period": "2018",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "180602643-re-evaluating-evaluation"
+  }
+]
