@@ -1,0 +1,464 @@
+{
+ "meta": {
+  "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "os_release": "6.17.0-35-generic",
+  "python": "3.12.3",
+  "torch": "2.11.0+cpu",
+  "numpy": "2.4.4",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "cma": "4.4.4",
+  "git_sha": "268ba11b203ed87361e3bf34fd14ab938e6fcec3",
+  "X1": true,
+  "X3": true,
+  "K": 5,
+  "beta": 2.0,
+  "TOP": 128,
+  "OPT_STEPS": 100,
+  "LR_OPT": 0.05,
+  "n_seeds": 30,
+  "seed": "0..29",
+  "timestamp": "2026-07-20T15:40:34"
+ },
+ "reference": "results/kbeta/grid_b2.0.json",
+ "reference_meta": {
+  "platform": "Linux-6.17.0-35-generic-x86_64-with-glibc2.39",
+  "os_release": "6.17.0-35-generic",
+  "python": "3.12.3",
+  "torch": "2.11.0+cpu",
+  "numpy": "2.4.4",
+  "botorch": "0.18.1",
+  "gpytorch": "1.15.2",
+  "cma": "4.4.4",
+  "git_sha": "812bcb9249aaddde1acd389f99a0b0020668332e",
+  "X1": true,
+  "X3": true,
+  "K": 5,
+  "beta": 2.0,
+  "TOP": 128,
+  "OPT_STEPS": 100,
+  "LR_OPT": 0.05,
+  "n_seeds": 30,
+  "seed": "0..29",
+  "timestamp": "2026-07-18T03:20:20"
+ },
+ "by_optimizer": {
+  "grad": {
+   "max_abs_diff": 0.0,
+   "n_exact": 630,
+   "n": 630,
+   "max_diff_in_se": 0.0
+  },
+  "perturb": {
+   "max_abs_diff": 0.0,
+   "n_exact": 630,
+   "n": 630,
+   "max_diff_in_se": 0.0
+  },
+  "cma": {
+   "max_abs_diff": 0.0,
+   "n_exact": 630,
+   "n": 630,
+   "max_diff_in_se": 0.0
+  }
+ },
+ "verdict": {
+  "grad": "BIT-EXACT",
+  "perturb": "BIT-EXACT",
+  "cma": "BIT-EXACT"
+ },
+ "by_cell": {
+  "Branin-2D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Styblinski-5D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Levy-8D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Rosenbrock-10D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Rastrigin-15D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Ackley-20D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  },
+  "Griewank-30D": {
+   "ens:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "ens:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "botorchgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:grad": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:perturb": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   },
+   "svgp:cma": {
+    "max_abs_diff": 0.0,
+    "n_exact": 30,
+    "n": 30,
+    "max_diff_in_se": 0.0
+   }
+  }
+ }
+}
