@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Fannjiang & Listgarten (NeurIPS 2020) formalize the exact same core mechanism the audited paper claims as its diagnosis -- that a surrogate/oracle becomes exploitable as the search distribution departs the training distribution -- via a non-zero-sum game between the search distribution p_theta(x) and the oracle parameters beta, four years before the audited paper.",
+    "stance": "supports",
+    "stance_target": "Whether the audited paper's 'core diagnosis' (which off-distribution maximizers a surrogate's mean admits) has prior articulation in offline design literature",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Oracle-based model-based design (protein/molecule/materials engineering), NeurIPS 2020",
+    "quoted_support": "\"oracle-based design is distinguished by the fact that it seeks solutions -- and therefore, will query the oracle -- in regions of the design space that are not well-represented by the oracle training data... a major challenge arises when an oracle is employed for design: its outputs, including its uncertainty estimates, become unreliable beyond the training data.\"",
+    "numbers": ["177 hits for 'oracle'", "105 hits for 'autofocus'"],
+    "entities": ["Clara Fannjiang", "Jennifer Listgarten", "oracle-based design", "autofocusing"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200608052-autofocused-oracles-for-model-based-design"
+  },
+  {
+    "claim": "Fannjiang & Listgarten explicitly attribute the sub-optimality of oracle-based design to 'pathological behavior of the oracle when the search model, p_theta(x), strays too far from the training distribution during the optimization' -- naming the distributional-departure-causes-oracle-exploitation mechanism directly.",
+    "stance": "supports",
+    "stance_target": "Prior articulation of surrogate exploitation as a function of distributional departure in offline/oracle-based design",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Section 3, formalization of model-based design as a non-zero-sum game",
+    "quoted_support": "\"the solution to the oracle-based problem will, in general, be sub-optimal with respect to the original objective that uses the ground truth... This sub-optimality can be extreme due to pathological behavior of the oracle when the search model, p_theta(x), strays too far from the training distribution during the optimization.\"",
+    "numbers": [],
+    "entities": ["oracle gap", "Nash equilibrium", "non-zero-sum game"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200608052-autofocused-oracles-for-model-based-design"
+  },
+  {
+    "claim": "Fannjiang & Listgarten's proposed fix (autofocusing: iteratively retraining the oracle toward a Nash equilibrium as the design distribution shifts) treats distributional distance/staleness as the primary driver of oracle unreliability, an implicit premise that the audited paper's Elimination 7 complicates by showing distance predicts aggregate loss but does not discriminate between surrogate classes at matched distance.",
+    "stance": "neutral",
+    "stance_target": "Whether the audited paper's Elimination-7 finding is a refinement of, rather than a restatement of, Fannjiang & Listgarten's distance-centric diagnosis",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Comparison between Fannjiang's autofocusing premise and the audited paper's per-optimum distance/inflation instrumentation across 5,040 optima",
+    "quoted_support": "Fannjiang: \"successful oracle-based design thus involves an inherent trade-off between the need to stay 'near' the training data in order to trust the oracle, and the need to depart from it in order to make improvements.\" Audited paper: \"across 5,040 optima, distance predicts both over-prediction (rho=+0.758) and true loss (rho=-0.818)... but it does not discriminate: the classes sit at the same median distance (0.87 against 0.86) and differ in outcome anyway.\"",
+    "numbers": ["5,040 optima", "rho=+0.758", "rho=-0.818", "median distance 0.87 vs 0.86"],
+    "entities": ["autofocusing", "oracle gap", "ensemble surrogate", "exact GP surrogate"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "200608052-autofocused-oracles-for-model-based-design"
+  },
+  {
+    "claim": "Fannjiang & Listgarten do not run any crossed surrogate-class x optimizer-class comparison, do not use ANOVA/factorial/variance-decomposition machinery, and do not distinguish between GP-family and ensemble-family surrogates as classes with differential off-distribution behavior -- so the paper cannot itself satisfy or threaten the audited paper's N6 claim.",
+    "stance": "neutral",
+    "stance_target": "Whether fannjiang2020autofocused constitutes a kill of N6",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text grep of the 24-page/83,845-character extraction",
+    "quoted_support": "Zero hits for 'maximizer', 'exploit', 'distribution shift', 'off-distribution' as literal strings; the paper's own vocabulary is 'oracle gap', 'non-zero-sum game', and 'autofocusing' rather than the audited paper's 'off-distribution maximizer admission' framing",
+    "numbers": ["0 hits for 'maximizer'", "0 hits for 'exploit'", "0 hits for 'off-distribution'"],
+    "entities": ["Fannjiang & Listgarten", "oracle gap"],
+    "time_period": "2020",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200608052-autofocused-oracles-for-model-based-design"
+  },
+  {
+    "claim": "The audited paper never cites fannjiang2020autofocused anywhere in its related-work discussion of oracle exploitation, distributional shift, or offline design (checked against main.tex), despite the paper being the founding formalization of the oracle-exploitation-under-distributional-shift problem the audited paper's core diagnosis restates.",
+    "stance": "neutral",
+    "stance_target": "Completeness of the audited paper's related-work coverage for its central diagnostic claim",
+    "evidence_type": "empirical",
+    "scope_conditions": "Grep of paper/aaai27/main.tex for 'fannjiang', 'autofocus', 'non-zero-sum', 'oracle gap'",
+    "quoted_support": "Zero matches for 'fannjiang', 'autofocus', 'Fannjiang', 'brookes' distribution-shift framing, or 'oracle gap' anywhere in main.tex; fannjiang2020autofocused appears only in references.bib (never \\cite'd)",
+    "numbers": ["67 total bib entries", "41 actually cited", "26 uncited"],
+    "entities": ["fannjiang2020autofocused", "main.tex", "references.bib"],
+    "time_period": "2026",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "200608052-autofocused-oracles-for-model-based-design"
+  }
+]

@@ -432,55 +432,59 @@ the paper already cites all four papers elsewhere in its genre paragraph. As wri
 citation is asked to certify a claim about a literature, which is the exact defect this audit
 was commissioned to find.
 
-## MANDATORY FIX 7.5 — **A LOAD-BEARING CONDITION IS MISSING FROM A STATED PROOF**
+## FIX 7.5 (MODERATE — corrected downward after I checked the primary myself)
 
-This is the most serious finding in the audit. Every other item is prose; this one is inside
-a proposition the paper proves.
+**I initially recorded this as the audit's most serious finding, on a subagent's report that
+the proposition omits a load-bearing hypothesis. I then read the supplement myself and the
+report was overstated. Correcting, because propagating an overstatement is precisely the
+failure this audit exists to catch.**
 
-**The supplement's Proposition 2 (Split-conformal repair; shift-limited transfer)** states,
-and its proof asserts:
-> "Under a shifted proposal $\Pi\neq P$ with density ratio $w=d\Pi/dP$, validity is restored
-> by weighting the calibration quantile by $w$ (weighted conformal)."
-> *(proof)* "The covariate-shift clause is the weighted-exchangeability extension of
-> \citet{tibshirani2019conformal}: replacing the empirical quantile of $\{r_i\}$ with its
-> $w$-weighted analogue restores marginal validity under $\Pi$."
+**What the supplement actually says** (`supplement.tex:48`):
+> "Under a shifted proposal $\Pi\neq P$ **with density ratio $w=d\Pi/dP$**, validity is
+> restored by weighting the calibration quantile by $w$ (weighted conformal)."
 
-**What Tibshirani, Barber, Candès & Ramdas actually prove.** Full text fetched (16,645 words).
-Theorem 2's exact guarantee `P{Y ∈ C} ≥ 1−α` is proven **only when the true weight functions
-$w_i$ are KNOWN** and plugged into the $p_i^w$ construction. Their own abstract separates the
-estimated-weight case as a distinct and weaker claim — *"known — or, in practice, can be
-estimated accurately"* — and supports it **empirically only** (91.0% against 90% nominal on
-the airfoil dataset over 5,000 splits). **No theorem in that paper bounds the coverage gap
-incurred by using $\hat w$ in place of $w$.**
+It defines $w$ as **the true density ratio**, not an estimate. So the statement *"weighting by
+$w$ restores validity"* is exactly Tibshirani et al.'s Theorem 2 and is **formally correct as
+written. The proposition is not missing a hypothesis, and it is not wrong.** My earlier
+framing was wrong and is withdrawn.
 
-Independently corroborated by Angelopoulos & Bates' tutorial (19,726 words), verbatim:
-> "This algorithm addresses **a somewhat restricted case—that of a known covariate shift**"
-> "**exact when the magnitude of the distribution shift is known**"
+**What is genuinely true, and still worth a fix.** The clause is **formally correct and
+practically inert in the paper's own setting**, and the paper never says so.
 
-**Why this matters here specifically.** The paper's setting is the one where $w$ is *least*
-knowable: $\Pi$ is the distribution of designs an optimizer proposes after ascending a
-surrogate. That density ratio is not known, and it is not obviously estimable — the proposals
-are the output of a deterministic optimization, concentrated on a low-dimensional set where a
-density ratio against the offline data may not even be well-defined. The paper's own measured
-numbers point the same way: conformal repair "restores in-distribution coverage to its 0.90
-target on every task but **leaves OOD coverage erratic**" (0.00 on Styblinski, Griewank, UTR,
-Ant, D'Kitty). **The proposition's conclusion fails empirically exactly where its omitted
-condition fails.**
+Verified against the primaries: Tibshirani et al.'s exact guarantee holds for **known** $w$;
+their abstract separates the estimated-$\hat w$ case (*"known — or, in practice, can be
+estimated accurately"*) and supports it **empirically only** (91.0% vs 90% nominal, airfoil,
+5,000 splits), with **no theorem bounding the $\hat w$ coverage gap**. Angelopoulos & Bates
+corroborate verbatim: *"This algorithm addresses a somewhat restricted case—that of a known
+covariate shift"*; *"exact when the magnitude of the distribution shift is known."*
 
-**Fix (mandatory).** State the condition. Two options, and the second is better:
-1. Add to Proposition 2: *"…where $w$ is known; with $\hat w$ estimated, marginal validity is
-   no longer exact and Tibshirani et al. establish it empirically rather than by theorem."*
-2. **Better — turn the defect into a result.** The supplement already reports the OOD coverage
-   collapse. Say plainly that the shift-limited transfer clause requires a known density ratio,
-   that this is unavailable for optimizer-generated proposals, and that **the observed OOD
-   coverage failures are the predicted consequence, not an anomaly.** That converts an
-   overclaimed proposition into a correctly-scoped negative result with its own evidence —
-   and it strengthens the paper's separate argument that premise coverage is separable from
-   optimization outcome.
+In this paper $\Pi$ is the distribution of designs an optimizer proposes after ascending a
+surrogate — the setting where $w$ is least knowable, and arguably not well-defined, since the
+proposals are the output of a deterministic optimization concentrated on a low-dimensional
+set. So the shift-limited transfer clause is **stated but never operationalized**: nothing in
+the paper estimates $w$ or applies weighted conformal. The supplement's own measurements are
+consistent with that — conformal repair *"restores in-distribution coverage to its 0.90 target
+on every task but **leaves OOD coverage erratic**"* (0.00 on Styblinski, Griewank, UTR, Ant,
+D'Kitty).
 
-**Severity note for the report.** An omitted hypothesis in a proposition is different in kind
-from a loose citation. It should be listed first in deliverable (i), above even the Demšar
-fabrication, because a reviewer who checks one thing in a supplement checks the proofs.
+**Fix (moderate, one or two sentences).** Note after Proposition 2 that the covariate-shift
+clause requires a known or reliably estimable $w$, that no such estimate is available for
+optimizer-generated proposals, and that the clause is therefore stated for completeness rather
+than applied. **Then take the free win:** the erratic OOD coverage the supplement already
+reports is *what one should expect* when the repair's precondition is unavailable — not an
+anomaly. Saying so converts an unexplained table into a correctly-scoped negative result, and
+it reinforces the paper's separate argument that premise coverage is separable from
+optimization outcome.
+
+**Severity: moderate, not severe.** It is a scoping omission around a correct proposition, not
+a defect in a proof. Ranked in deliverable (i) below the Demšar fabrication and the Fan
+inversion, not above them.
+
+**Process note worth carrying into the report's methodology section.** Two of the subagent
+relays in this audit overstated a finding in the direction of severity (this one, and the RaM
+"false vs incomplete" item). Both were caught by reading the primary source directly. Any
+verdict in the final report that rests only on a relayed summary, and not on text I read
+myself, is marked as such.
 
 ## MANDATORY FIX 8 — `demsar2006statistical` does not contain the threshold it is cited for
 

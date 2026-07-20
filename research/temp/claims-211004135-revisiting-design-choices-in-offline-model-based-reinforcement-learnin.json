@@ -1,0 +1,72 @@
+[
+  {
+    "claim": "Lu et al. (ICLR 2022) conduct zero factorial/ANOVA/variance-decomposition analysis anywhere in the paper: full-text grep of the 37-page/102,811-character extraction returns zero hits for 'factorial', 'crossed', 'ANOVA', 'analysis of variance', 'eta squared', 'variance decomposition', 'main effect', and 'two-way'.",
+    "stance": "refutes",
+    "stance_target": "The idea that lu2022revisiting is a crossed-factorial precedent that kills the audited paper's N6 ('no prior instance in offline MBO runs a crossed surrogate x optimizer factorial with a two-way variance decomposition')",
+    "evidence_type": "empirical",
+    "scope_conditions": "Full-text search of the ICLR 2022 camera-ready PDF, arXiv:2110.04135",
+    "quoted_support": "Grep counts across the full extracted text: factorial=0, crossed=0, ANOVA=0, 'analysis of variance'=0, 'eta squared'=0, 'variance decomposition'=0, 'main effect'=0, 'two-way'=0",
+    "numbers": ["0 factorial hits", "0 ANOVA hits", "0 variance-decomposition hits", "37 pages", "102,811 characters"],
+    "entities": ["Cong Lu", "Philip J. Ball", "Jack Parker-Holder", "Stephen Roberts", "ICLR 2022"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "211004135-revisiting-design-choices-in-offline-model-based-reinforcement-learnin"
+  },
+  {
+    "claim": "Lu et al.'s core design varies the uncertainty-penalty heuristic and hyperparameters (number of models, imaginary rollout length) while holding the policy-optimization algorithm fixed (SAC), then uses Bayesian Optimization to jointly tune those hyperparameters -- a one-axis-varied design-choices study, not a crossed two-axis factorial.",
+    "stance": "refutes",
+    "stance_target": "Lu et al. as a crossed surrogate-class x optimizer-class factorial with variance decomposition",
+    "evidence_type": "empirical",
+    "scope_conditions": "Main MOPO-based experimental pipeline, D4RL benchmarks",
+    "quoted_support": "\"In this paper, we conduct a rigorous investigation into a series of these design choices. We begin by focusing on the choice of uncertainty metric... We also explore the interaction with a series of other hyperparameters, such as the number of models and imaginary rollout length.\" (Introduction) and (Appendix G) \"our implementation uses the same probabilistic dynamics models (with unchanged hyperparameters) and policy optimizer (SAC, Haarnoja et al. (2018)) as MOPO\"",
+    "numbers": ["1 hit for 'optimizer'", "52 hits for 'hyperparameter'", "54 hits for 'uncertainty'", "181 hits for 'ensemble'"],
+    "entities": ["MOPO", "SAC", "Soft Actor-Critic", "CASMOPOLITAN", "Bayesian Optimization"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "211004135-revisiting-design-choices-in-offline-model-based-reinforcement-learnin"
+  },
+  {
+    "claim": "Lu et al. note, only as an unresolved implementation-level confound in an appendix, that their MOReL baseline uses a different policy optimizer (Natural Policy Gradient) than their MOPO-based pipeline (SAC) -- flagged as a source of ambiguity about whether improvements come from the P-MDP formulation, dynamics model, or policy optimization strategy, but never systematically crossed against the uncertainty-heuristic axis.",
+    "stance": "neutral",
+    "stance_target": "Whether Lu et al. partially anticipates the surrogate x optimizer confound the audited paper decomposes",
+    "evidence_type": "empirical",
+    "scope_conditions": "Appendix F, implementation-detail comparison between MOPO and MOReL baselines",
+    "quoted_support": "\"it is unclear if the improvement of MOReL over MOPO is due to its different P-MDP formulation, or if it is successful in spite of this formulation, due to a superior policy optimization strategy or dynamics model design... differing from MOReL, which uses Natural Policy Gradient (Kakade, 2002).\"",
+    "numbers": [],
+    "entities": ["MOPO", "MOReL", "Natural Policy Gradient", "SAC"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "211004135-revisiting-design-choices-in-offline-model-based-reinforcement-learnin"
+  },
+  {
+    "claim": "Lu et al. is the closest sibling-field 'design choices' precedent by genre and title to the audited paper's N6 claim, sitting uncited in the audited paper's own bibliography, and its absence from the related-work paragraph that explicitly enumerates one-axis-fixed precedents (tan2025ltr, li2024bnnsurrogates, trabucco2021coms) is a missing-related-work gap even though it does not threaten N6's truth value.",
+    "stance": "neutral",
+    "stance_target": "Whether the audited paper's related-work coverage of 'design choices' / one-axis-fixed studies is complete",
+    "evidence_type": "theoretical",
+    "scope_conditions": "Comparison between the audited paper's related-work paragraph (main.tex line 63/83) and lu2022revisiting's uncited bib status",
+    "quoted_support": "Audited paper: \"The systematic studies that exist fix one axis and vary the other---surrogate-class comparisons hold the optimizer constant \\citep{tan2025ltr,li2024bnnsurrogates}, the conservative-surrogate lineage holds gradient ascent fixed while varying the regularizer \\citep{trabucco2021coms}\" (lu2022revisiting is not among the cited examples despite fitting the identical exclusion pattern in the sibling field of offline model-based RL)",
+    "numbers": [],
+    "entities": ["lu2022revisiting", "tan2025ltr", "li2024bnnsurrogates", "trabucco2021coms"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "medium",
+    "source_note_id": "211004135-revisiting-design-choices-in-offline-model-based-reinforcement-learnin"
+  },
+  {
+    "claim": "Lu et al. use Bayesian Optimization (CASMOPOLITAN) purely as a hyperparameter-tuning tool to jointly fine-tune the uncertainty-penalty-related hyperparameters within a fixed MOPO/SAC algorithm, not to compare or select between distinct optimizer/search-algorithm classes.",
+    "stance": "neutral",
+    "stance_target": "Distinguishing 'BO as hyperparameter tuner' from 'BO as one arm of a surrogate x optimizer factorial'",
+    "evidence_type": "empirical",
+    "scope_conditions": "Section 6/Appendix G, CASMOPOLITAN hyperparameter optimization procedure",
+    "quoted_support": "\"We then jointly fine-tune our identified key variables using a powerful Bayesian Optimization algorithm (Wan et al., 2021) and find the simpler uncertainty measures can provide state-of-the-art results\"",
+    "numbers": ["~200 GPU-hours per BO optimization run", "4 parallel trials", "20 random initializing points"],
+    "entities": ["CASMOPOLITAN", "Bayesian Optimization"],
+    "time_period": "2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "211004135-revisiting-design-choices-in-offline-model-based-reinforcement-learnin"
+  }
+]
