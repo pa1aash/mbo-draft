@@ -1,0 +1,103 @@
+{
+  "critic_type": "instruction",
+  "structural_mirror_check": {
+    "status": "PASS",
+    "expected": [
+      "## N6 Verdict: The Crossed Surrogate x Optimizer Factorial",
+      "## (i) Claims the Literature Contradicts or That Are Miscited",
+      "## (ii) Kills",
+      "## (iii) Scope of Novelty, Ranked",
+      "## What I could not verify and why"
+    ],
+    "actual": [
+      "## N6 Verdict: The Crossed Surrogate x Optimizer Factorial",
+      "## (i) Claims the Literature Contradicts or That Are Miscited",
+      "## (ii) Kills",
+      "## (iii) Scope of Novelty, Ranked",
+      "## What I could not verify and why",
+      "## Sources"
+    ],
+    "note": "All five required H2s present, verbatim, in order, N6 first, terminal section last. Trailing '## Sources' is required by citation_style: inline and is not a violation. No extra H2s. No restructure needed."
+  },
+  "readability_checks": {
+    "R2_citation_density": "PASS — 207 inline [N] citations over 94,718 body characters = 2.19 per 1000 chars, above the 1.5 threshold.",
+    "R3_forward_analysis": "PASS — '### C. Forward implications' (lines 369-375) is a substantial forward-looking subsection inside deliverable (iii).",
+    "R4_comparison_tables": "PASS — near-miss ledger, three-grounds table, kills table, two-positives table, corner table, raw-units table, under-executed cost table all present.",
+    "R1_definitions": "FAIL — emitted as a finding below."
+  },
+  "findings": [
+    {
+      "severity": "critical",
+      "atomic_item": "find whether there is a stronger paper in this data that is not being written — something unexplored, or explored but under-executed or under-explained",
+      "failure_mode": "missing",
+      "location": "Deliverable (iii) Scope of Novelty, Ranked — '### B. The ranked list' (line 271 onward). The word 'UNEXPLORED' appears zero times in the entire report; grep confirms 0 hits.",
+      "issue": "The query names FOUR novelty categories and the decomposition carries entity 'the unexplored paper' (required_fields: 'result the data would support but the paper does not attempt', 'motivating literature', 'tag') plus sub-question 23 ('Is there a stronger paper here that is entirely UNEXPLORED — a result the data would support that the paper does not attempt at all, distinct from results it explored but under-executed or under-explained?'); the draft labels only UNDER-STATED (RANK 3) and UNDER-EXECUTED (RANK 9), and never designates any item as unexplored.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Explicitly designate at least one ranked item as the UNEXPLORED finding and label it as such. RANK 6's landscape-covariate negative and its cross-sectional 'multiplicative mechanism' statement (Spearman 0.84-0.96 rank stability against magnitude collapse to ~0.01 under perturbation) is the strongest candidate already in the draft — it is an analysis the paper does not attempt at all, motivated by the ELA literature [67][68][69][71]. Add a one-clause category label ('UNEXPLORED — the paper does not attempt this analysis at all') to that item's header and state in '### B' preamble which rank numbers map to which of the four categories, so the four are distinguishable at a glance. Keep the existing FOLD-INTO-THIS-PAPER / CHEAP tag.",
+      "priority_note": "This is the category the step-1 coverage audit already caught being dropped once. It is now dropped again in the final draft."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "a result explored but UNDER-EXPLAINED: a finding whose significance the paper states flatly and that the literature would let it frame more sharply",
+      "failure_mode": "under-covered",
+      "location": "Deliverable (iii) '### B. The ranked list' — RANK 8 (line 342) and the absence of any ranked item for frozen cells / LCB paralysis. Grep for 'UNDER-EXPLAINED' / 'under-explained' returns 0 hits.",
+      "issue": "The query names UNDER-EXPLAINED as one of three explicit hunts and the decomposition carries two entities under it — 'x0-inversion result (D25)' and 'frozen cells / LCB paralysis', each requiring a 'sharper frame from literature' plus a tag; RANK 8 substantively delivers the x0-inversion sharper frame (safe policy improvement [74][75], CQL gap-expanding [76]) but is never labeled as the under-explained item, and the frozen-cells / LCB-paralysis entity gets no ranked, tagged item at all — it appears only as a miscitation in (i.B) and as a verification PASS in (i.N).",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Two surgical moves. (1) Label RANK 8 explicitly as the UNDER-EXPLAINED finding — append 'The clearest under-explained finding' to its header, mirroring RANK 3's existing 'The clearest under-stated finding' phrasing. (2) Add a short RANK 8a (or fold into RANK 8) giving frozen cells / LCB paralysis its sharper frame: the report already has the material in (i.B) — Yarotsky (2013) Theorem 3, EI-driven BO started at the optimum converging back to it and 'not dense' [24], plus Ament et al.'s numerical vanishing-gradient pathology [87] and Kim & Choi on local-versus-global acquisition optimizers [25]. Frame it as 'the frozen cells are the offline, confidence-bound instance of a formalized inconsistency result, not an anomaly' and tag it FOLD-INTO-THIS-PAPER / CHEAP."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "a claim the paper UNDER-states relative to its own evidence (the budget-axis separation and the two-strengthenings pattern are candidates — is either a bigger result than the paper frames?)",
+      "failure_mode": "missing",
+      "location": "Deliverable (iii) — RANK 3 (line 322) addresses the budget-axis separation; grep for 'two-strengthening', 'two strengthenings' and 'strengthenings' returns 0 hits anywhere in the report.",
+      "issue": "The query names TWO under-stated candidates by name and asks 'is either a bigger result than the paper frames?'; the draft answers for the budget-axis separation at RANK 3 but never mentions the two-strengthenings pattern, so half of an explicitly enumerated sub-question is unanswered.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Add a short paragraph — either inside RANK 3 or as RANK 3a — that names the two-strengthenings pattern and renders a verdict on it against the budget-axis separation. The draft already holds the relevant numbers at RANK 4: the two protocol confounds move the surrogate effect 0.351 to 0.395 (+0.0437) against the reported 0.367 to 0.405 (+0.0376), i.e. both corrections strengthen rather than attenuate, which is the pattern in question. State whether it is bigger than its framing and tag it (the evidence in the draft supports FOLD-INTO-THIS-PAPER / CHEAP, subordinate to the budget axis). If the audit's considered verdict is that it is NOT bigger than its framing, say so explicitly and tag it NOT-WORTH-IT — a negative verdict satisfies the contract, silence does not."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "For each finding, tag it: FOLD-INTO-THIS-PAPER (strengthens the current submission, worth doing before the deadline), FOLLOW-UP-PAPER (real but out of scope for this submission), or NOT-WORTH-IT",
+      "failure_mode": "wrong-format",
+      "location": "Deliverable (iii) '### B. The ranked list' — RANK 1a (line 298) reads 'Connect `tab:cross` to the interaction. Free.' and RANK 1b (line 300) reads 'Report the formal simple-effects table. Free.' Also '### A. The boundary condition' (lines 257-269) closes with a 'Recommendation:' and no tag.",
+      "issue": "The query requires a three-way tag on every ranked-novelty item; RANK 1a and RANK 1b carry only the word 'Free', which conveys cost but is not one of the three required tags, and the boundary-condition item in (iii.A) carries a recommendation with no tag at all — three untagged items out of the ranked set.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Add the explicit tag to each. RANK 1a and RANK 1b are both zero-computation and pre-deadline, so both should read `FOLD-INTO-THIS-PAPER / CHEAP` in the same backticked format used by RANK 1 through RANK 11 — keep the word 'Free' as the cost gloss if desired, but the contract tag must be present verbatim. For (iii.A), either add `FOLD-INTO-THIS-PAPER / CHEAP` to its recommendation line or add one clause stating it is a boundary condition governing the ranked items below rather than a ranked finding itself, so a reader can see it was deliberately not tagged."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "Report N6 as CONFIRMED NONE-FOUND (with the queries) or KILLED (with the paper)",
+      "failure_mode": "under-covered",
+      "location": "N6 Verdict section '### B. The queries, run verbatim' (lines 21-31). Eight direct-target queries are given verbatim in backticks and the twelve 2026 grep terms are verbatim; but line 31's three adversarial regions ('surrogate-assisted evolutionary computation; AutoML, combined algorithm selection and hyperparameter optimization, and kernel selection; and simulation-optimization with design-and-analysis of computer experiments') are described as regions with no queries listed. Compounding: deliverable (ii) line 247 cites 'fourteen verbatim query formulations' that appear nowhere.",
+      "issue": "The query and the decomposition's required_formats both demand the exact queries listed verbatim for the N6 verdict, and the section is titled 'The queries, run verbatim'; the adversarial-region sweep — which the report itself calls the strongest negative ('The region where the analysis was most likely to already exist does not contain it') — is reported by region name only, so the load-bearing part of the negative is not reproducible by a reader.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Extend '### B' with the verbatim query strings actually issued for each of the three adversarial regions, in the same backticked format as the eight direct-target queries. If the exact strings are not recoverable from the step artifacts, state that explicitly at that spot rather than leaving the reader to assume they were listed. Separately, either list the fourteen grow-direction query formulations referenced at line 247 (a compact backticked run-in list is enough) or move that count into the terminal section as an unlisted-queries disclosure."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "For each: the claim, the paper's citation/framing, what the source actually says, and the required fix.",
+      "failure_mode": "wrong-format",
+      "location": "Deliverable (i) '### M. Bibliography, arithmetic, and two statistical disclosures' (lines 201-211), against the section preamble at line 83 ('Twelve mandatory items').",
+      "issue": "Items A through L each carry all four required fields cleanly, but M bundles at least five further distinct mandatory defects — the 26 uncited-but-strengthening entries, gao2022reward's three bib errors, the five-should-be-six cell recount, the three presentation gaps, the unreported eta-squared positive bias, and the unnamed fifth normalizer coordinate — and two of them (the bias, the normalizer) state no inline FIX at all, deferring with 'deliverable (iii) ranks them accordingly'; M's defects are also excluded from the stated count of twelve, so a reviewer checking the contract counts twelve fixes against seventeen-plus defects.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Two minimal edits, no restructure. (1) At line 83, change the preamble to state the actual accounting — e.g. twelve primary items (A-L) plus a bibliography-and-statistics cluster (M) carrying N further defects — so the count matches what follows. (2) In M, add a one-clause explicit fix to the two deferred defects rather than only cross-referencing: for the eta-squared bias, 'Fix: report epsilon-squared alongside eta-squared and disclose the positive small-n bias (see RANK 4)'; for the normalizer, 'Fix: name the per-task normalizer as a fifth operating-point coordinate wherever the four are enumerated, and cite Jordan [63] and Bellemare [64] (see RANK 5).' Also give gao2022reward and the five-should-be-six recount an imperatively-stated fix rather than leaving the correction implicit."
+    },
+    {
+      "severity": "minor",
+      "atomic_item": "Tag whether it's CHEAP (foldable before deadline) or EXPENSIVE (follow-up).",
+      "failure_mode": "wrong-format",
+      "location": "Deliverable (iii) RANK 9 table (lines 348-359) — row 6 tagged 'FOLD-INTO-THIS-PAPER / CHEAP-to-MEDIUM', row 7 tagged 'FOLD-INTO-THIS-PAPER / MEDIUM', row 2 tagged 'FOLLOW-UP' rather than 'FOLLOW-UP-PAPER'.",
+      "issue": "The query specifies a binary CHEAP-or-EXPENSIVE cost tag and a fixed three-value scope tag; rows 6 and 7 invent a third cost level ('MEDIUM'), and row 2 abbreviates the scope tag out of the contract vocabulary.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Normalize to the contract vocabulary in three cells. Resolve the two MEDIUM rows to CHEAP or EXPENSIVE and carry the nuance in the experiment description instead — e.g. row 6 mixed-effects model becomes 'CHEAP' with '(a day of modelling, no new runs)' in the description; row 7 depth sweep becomes 'EXPENSIVE' with 'or state the limit and defer' retained. Expand row 2's 'FOLLOW-UP' to 'FOLLOW-UP-PAPER'."
+    },
+    {
+      "severity": "major",
+      "atomic_item": "readability-structural: audience adaptation / definitions on first use",
+      "failure_mode": "missing-definitions",
+      "location": "Deliverable (iii) RANK 8 (line 342) and RANK 10 (line 363), and the N6 verdict section — undefined on first use: SPIBB, CVaR, MDPs, CQL, PEVI, TD3+BC, SAC, CMA-ES, ListNet, bi-Lipschitz.",
+      "issue": "The report defines its core vocabulary well on first use (offline MBO at line 3, OFAT at line 19, fANOVA at line 29, NTK/NNGP at line 151, ELA at line 336, TOST at line 340, eta-squared at line 209) but then imports a dense block of offline-RL acronyms in RANK 8 and RANK 10 with no gloss, in the two items whose whole purpose is to hand the author a reframing they can lift into the paper.",
+      "requires_orchestrator_restructure": false,
+      "recommendation": "Add brief inline parentheticals on first use for the offline-RL cluster, matching the style already used for NTK and ELA: SPIBB (safe policy improvement with baseline bootstrapping), CVaR (conditional value at risk — the mean of the worst-case tail), CQL (conservative Q-learning), PEVI (pessimistic value iteration), TD3+BC (a behaviour-cloning-regularized offline RL baseline), and CMA-ES (covariance matrix adaptation evolution strategy) at its first appearance in the N6 section. Ten to fifteen words total; do not add a glossary section."
+    }
+  ]
+}

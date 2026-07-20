@@ -327,3 +327,35 @@ point at. It goes in the terminal section alongside the audit's other self-infli
 - **Fabrication risk is highest exactly where the answer is "none found".** A none-found is
   unfalsifiable from the inside. Every N6-adjacent verdict must carry its queries so the
   author can re-run them.
+
+## Instruction-critic findings, verified first-hand by the orchestrator
+
+I checked each of the critic's headline claims against the report rather than accepting them:
+
+| Claim | Verified |
+|---|---|
+| `UNEXPLORED` appears **0 times** | ✓ confirmed |
+| `UNDER-EXPLAINED` appears **0 times** | ✓ confirmed (delivered substantively, never labelled) |
+| `two-strengthenings` appears **0 times** | ✓ confirmed — the query names TWO under-stated candidates and only the budget axis is answered |
+| "fourteen verbatim query formulations" cited but not listed | ✓ confirmed at line 247 |
+
+**The UNEXPLORED omission is a REPEAT of the same defect, and that is the interesting part.**
+Step 1's coverage-matrix self-audit caught exactly this: the query names *four* novelty
+categories — unexplored / under-executed / under-explained, plus the separately-specified
+under-stated hunt — and my first-pass decomposition had dropped "unexplored". I fixed it in the
+decomposition, added a sub-question and an entity for it, and dispatched a whole depth locus to
+it (`landscape-predicts-which-surrogate-wins`, which returned a decisive quantified negative).
+
+**And it fell out again at synthesis.** The analysis exists in the report — RANK 6 *is* the
+unexplored result — but the label is gone, so a reader checking the contract sees three
+categories where the query asked for four.
+
+**What this says about the pipeline:** a defect caught at step 1 and fixed in the artifact can
+still reappear at step 11, because the synthesizer works from drafts and plans rather than from
+the decomposition's category list. The coverage matrix is not self-enforcing. Worth recording
+as a process finding, not just a patch item.
+
+**All four are cheap patches**, and the material for every one already exists — RANK 6 needs a
+label, RANK 4 already holds the two-strengthenings numbers (0.351→0.395 against 0.367→0.405),
+and all fourteen N9 queries plus the adversarial-region queries are recorded verbatim in
+`research/temp/corpus-critic-results.md`.
