@@ -1,0 +1,30 @@
+[
+  {
+    "claim": "Angelopoulos & Bates' tutorial restates Tibshirani et al.'s weighted-conformal-under-covariate-shift result as their Theorem 3 and explicitly labels it a restricted case that requires the covariate shift (density ratio) to be known, not merely estimated.",
+    "stance": "refutes",
+    "stance_target": "treating the weighted-exchangeability/covariate-shift conformal guarantee as unconditionally valid regardless of whether the density ratio is known or estimated",
+    "evidence_type": "theoretical",
+    "scope_conditions": "split and full conformal prediction under covariate shift",
+    "quoted_support": "This algorithm addresses a somewhat restricted case—that of a known covariate shift—but is nonetheless quite practical.",
+    "numbers": [],
+    "entities": ["Anastasios Angelopoulos", "Stephen Bates", "Tibshirani et al. 2019"],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-gentle-introduction-to-conformal-prediction-and-distribution-free-uncertainty"
+  },
+  {
+    "claim": "The tutorial generalizes to distribution drift and states that weighted conformal procedures always satisfy marginal coverage as an upper bound property, but are only EXACT (i.e., achieve the nominal 1-alpha coverage tightly) when the magnitude of the distribution shift is known.",
+    "stance": "refutes",
+    "stance_target": "a claim that estimating the weights still yields the exact same marginal-validity guarantee as using true weights",
+    "evidence_type": "theoretical",
+    "scope_conditions": "weighted conformal prediction under general distribution shift/drift",
+    "quoted_support": "The following theory provides some justification for such weighted conformal procedures; in particular, they always satisfy marginal coverage, and are exact when the magnitude of the distribution shift is known.",
+    "numbers": [],
+    "entities": [],
+    "time_period": "2021-2022",
+    "region": null,
+    "confidence": "high",
+    "source_note_id": "a-gentle-introduction-to-conformal-prediction-and-distribution-free-uncertainty"
+  }
+]
