@@ -744,14 +744,56 @@ leading. Under this reading it is one fact: perturbation neutralises surrogate d
 wherever perturbation is competitive the surrogate axis collapses and the optimizer axis
 surfaces.
 
-**Honest limits, stated plainly.** These are single-cell means from the supplement table (30
-seeds each) with **no intervals attached**, so the 5.9% figure is descriptive, not inferential.
-The paper would need to bootstrap the per-optimizer gaps to assert it — cheap, since the
-machinery exists and is already used elsewhere. Styblinski-5D is the weakest case at 14.3%.
-And one alternative explanation must be ruled out: perturbation is also the *weakest* optimizer
-in absolute terms on several tasks, so part of the attenuation could be a floor effect rather
-than genuine surrogate-neutrality. Checking that requires comparing perturbation's absolute
-scores against the dataset baseline per task — also cheap, also not done here.
+### I TESTED THE FLOOR-EFFECT ALTERNATIVE AND IT SURVIVES — the finding must be downgraded
+
+I flagged a competing explanation: perturbation might attenuate the gap merely because it
+*underperforms*, not because it neutralises surrogate differences. **I then tested it, and the
+test goes against my interpretation. Recording that rather than leaving the caveat vague.**
+
+| Task | Best cell in the whole 9-cell grid | Is it a perturbation cell? | pert gap % |
+|---|---|---|---|
+| Branin-2D | GP+grad (−0.40) | no | 2.8% |
+| **Styblinski-5D** | **GP+pert (36.15)** | **YES** | **14.3%** |
+| Levy-8D | GP+grad (−0.05) | no | 5.1% |
+| Rosenbrock-10D | SVGP+grad (−0.04) | no | 10.3% |
+| Rastrigin-15D | SVGP+grad (−2.83) | no | 2.8% |
+| Ackley-20D | GP+grad (−0.55) | no | 1.1% |
+| Griewank-30D | GP+grad (−0.94) | no | 4.8% |
+
+**The one task where perturbation is the grid's best optimizer is the task with the WEAKEST
+attenuation.** That is exactly the pattern a floor effect predicts: where perturbation is
+competitive, the surrogate gap reappears; where perturbation is poor, the gap collapses toward
+zero because *everything* collapses toward zero.
+
+**What survives, stated precisely:**
+- **The descriptive fact is solid**: the surrogate gap under perturbation is smaller than under
+  both gradient and CMA on 7/7 tasks. That is arithmetic on published numbers.
+- **The causal reading is NOT established**: "perturbation neutralises surrogate differences"
+  is confounded with "perturbation underperforms, compressing all differences." A single
+  contrary data point does not settle it either way, but it is the data point that matters
+  most, and it points the wrong way for my reading.
+
+**Revised status.** This drops from "the audit's strongest finding" to **a real pattern with a
+live confound the paper would need to disentangle.** The disentangling experiment is cheap and
+nameable: compare each optimizer's absolute score against the offline dataset's own best
+design per task, so attenuation can be separated from under-performance — or equivalently,
+condition the per-optimizer gap on how much each optimizer improves over the seed set. **The
+paper already has both quantities** (the x0-inversion artifact stores `mean_x0_best` and
+`mean_ret_best` per cell), so this is re-analysis, not a new run.
+
+**Revised tag: FOLD-INTO-THIS-PAPER / CHEAP, but as a QUESTION the paper poses and tests,
+not as a result it asserts.** The interaction term itself (η²_inter, significant in all four
+corners) is unaffected by this and remains the safer headline; this raw-units analysis is its
+most interpretable form *if* the confound is addressed, and an overclaim *if* it is not.
+
+**Note on process.** This is the third time in this audit that testing my own finding weakened
+it. The 7/7 consistency made it tempting to promote; the single Styblinski data point is worth
+more than the seven-task count, because it is the only case that discriminates between the two
+explanations.
+
+**Remaining limits.** These are single-cell means (30 seeds each) with **no intervals**, so
+5.9% is descriptive, not inferential. Bootstrapping the per-optimizer gaps is cheap and the
+machinery exists.
 
 **Tag: FOLD-INTO-THIS-PAPER / CHEAP.** Ranked first in deliverable (iii), above the bare
 interaction finding, because it is the interaction stated in units nobody can dispute.
