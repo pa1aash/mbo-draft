@@ -367,3 +367,47 @@ recompute every downstream use from that definition. Before citing a stored tabl
 engine stamp — and if it has none, say so. When a new claim leans on an existing table, re-read
 that table's column semantics rather than the sentence describing it. Re-derive every number an
 upstream audit hands you, including the ones that look like metadata.
+
+---
+
+# Tier 3+4 verification — 2026-07-21
+
+Focused re-audit of **what the Tier 3+4 pass added** (consistency-seam rescopes and the three
+promoted results), each number recomputed from `results/*.json`, not read back from a summary.
+
+## One reconciliation — fixed
+
+| # | Failure | Severity | Fix |
+|---|---|---|---|
+| **T7** | **T4b entanglement defence overstated optimizer-independence.** The added sentence called *both* surrogate-geometry instruments "made on the surrogate alone, with no optimizer in them." True of the σ-vs-distance correlation, but the matched-distance oracle-value gap (`-1.406`) is computed over **5,040 optimizer-produced optima = 7 tasks × 24 arms × 30 seeds** (`phantom_analysis.json:PM1`, fig:landscape caption), i.e. **pooled across all optimizers**, not optimizer-free. | Medium (accuracy of an added claim) | Reworded: the σ-against-distance correlation is "a property of the surrogate alone," and the matched-distance gap is "pooled across all optimizers rather than traced to any one"; the joint instrument is now called "**optimizer-agnostic**," not "surrogate-only." The defence still stands — neither measurement reads off a single optimizer's inversion — but each is now characterised accurately. |
+
+## Verified clean (recomputed)
+
+- **T4a frozen-cell counts** — `results/db_corners/corner_*_{,mujoco_}db.json`. **TF-Bind-8:** the three
+  `botorchgp` cells return `1.0` (std 0) in **all four** corners; `ens:perturb` joins in **exactly two**
+  (`off_off`, `on_on`) → **4 frozen of 9** there, **3** in the others — matches `DEGENERATE_CELLS.md`
+  and the "up to four of nine" claim. **Ant (`AntMorphology`, on_on):** `botorchgp:perturb` and
+  `botorchgp:cma` = `1.5287419557571411` (16/16, std 0); `botorchgp:grad` = `1.3242 ± 0.1975`
+  (**not** frozen); `svgp:perturb` hits the constant on **10/16** — matches "two of three GP cells…
+  a third (SVGP with perturbation) on ten of sixteen" and the §6.3 "not three" correction.
+- **T3c matched-tuning separability** — supplement §3 (`tab:sfull` engine): η²_surr `0.37` unmatched /
+  `0.28` matched = **75% retention**, uncorrected engine; lands near Confound-1 target-scaling `0.283`
+  (also uncorrected). The "not run jointly / cannot settle separability" statement is accurate — no
+  joint (tuning-frozen ∧ target-scaled) arm exists.
+- **T4b σ-vs-distance** — `results/calibration_on_on.json` (audited engine): mean `rho_knn` = **0.257**
+  (≈0.26), mean `rho_err` = **0.067** (≈0.07); the four 5–15D tasks all >0.28 (0.332/0.362/0.341/0.282);
+  Ackley-20D **0.196**≈0.20, Griewank-30D **0.234**≈0.23; positive on all seven. Surrogate-only.
+- **T4b matched-distance gap** — `-1.4059791…` [-2.8033, -0.3745] (`PM1/oracle_value`, ens 2.671 − GP
+  4.077); `n_bins_a_worse` = 4/5. Values correct; provenance (pooled over optimizers) drove T7.
+- **T3a / T3b rescopes** — `decisive negative` 0 uses; `should not be paired` 0 uses; the landscape null
+  now "no covariate we tested predicts the gap **at this power**," matching the DB-null standard.
+
+## Refs, falsified claims, scope — all hold (post-edit)
+
+`latexmk` exit 0, **zero undefined citations / references**, no multiply-defined labels; 16 pages.
+Falsified claims absent: `without exception` 0; no `pairing table` framing; `0.577` appears once, the
+tan2025ltr footnote observation with non-commensurability stated in the same sentence (not
+RaM-as-evidence). Scope constraints hold: `0.378` absent; `0.556` only as CI bound; 0.319/0.525
+cross-β; the β–σ criterion "fired" (never "two criteria"); DB null "no detectable difference at this
+power"; K sensitivity **and** non-reversal; LCB paralysis (M-A); GP coverage 0.97/0.831 both ways; the
+0.37 pinned to "our decomposition of PGS's Table 1" at all five sites; `35.9` untouched.
