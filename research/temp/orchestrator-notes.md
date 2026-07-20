@@ -126,6 +126,41 @@ extrapolation result and the budget-axis reframing are the two items that would 
 paper rather than merely correct it, and they should be ranked above the citation fixes in
 the "stronger paper" section even though the citation fixes are mandatory.
 
+## Tension to resolve in step 6 (cross-locus reconcile)
+
+**Locus 6 (AAAI venue fit) recommends promoting the 7/7 raw-units finding into the abstract,
+ahead of the seven eliminations. I downgraded that finding an hour later, after testing the
+floor-effect alternative and finding it survives.**
+
+The investigator was working from `findings-so-far.md` as it stood before my downgrade, so this
+is a genuine sequencing artifact, not an error on its part. Step 6 must reconcile rather than
+silently prefer one.
+
+**My provisional resolution, to be tested in step 6:** the venue argument is sound and its
+*direction* survives the downgrade — leading with a positive result rather than seven negatives
+is right regardless of which positive result leads. But the specific item promoted should be
+the **interaction term**, not the 7/7 attenuation:
+
+| | Interaction η² | 7/7 raw-units attenuation |
+|---|---|---|
+| Significant | yes, all four corners, CI excludes zero | descriptive only, no intervals |
+| Survives bias correction | yes (0.134–0.156) | n/a |
+| Survives normalization challenge | **no** — rides on min–max | **yes** — raw oracle units |
+| Survives floor-effect challenge | **yes** — unaffected | **no** — Styblinski points the wrong way |
+
+Each survives the challenge the other fails, which is why they should be reported **together**
+and neither alone: the interaction establishes that the effect is real and significant, the
+raw-units analysis shows what it consists of in units immune to the normalizer critique, and
+the floor-effect confound is disclosed as the open question it is. That is a defensible package;
+either half promoted alone is an overclaim.
+
+Also actionable and cost-free from locus 6: AAAI-27's main track bundles novelty and
+significance into one scored criterion with **no audit/reproducibility rubric**, whereas
+NeurIPS's Evaluations & Datasets track has a named "Reproducibility, Auditing, and
+Stress-Testing" contribution type that pre-authorises negative results. So the paper's
+genre-membership framing is **necessary but not sufficient** at this venue — which raises the
+stakes on leading with something positive.
+
 ## Risks I am tracking
 
 - **S2 rate-limited early.** Both the REST endpoint and the MCP tool returned 429. arXiv and
