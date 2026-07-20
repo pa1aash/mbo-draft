@@ -1,0 +1,84 @@
+{
+  "gaps": [
+    {
+      "id": "gap-1-n6-automl-cash-kernel-selection",
+      "type": "overturning",
+      "priority": "critical",
+      "target_position": "N6 is CONFIRMED NONE-FOUND but DEFENSIBLE-ONLY-IF-ARGUED, resting specifically on Ground (1) of the locus-1 residual scoping: 'surrogate training-loss/objective is a principled different KIND of factor than surrogate MODEL CLASS.' RaM Table 3 already supplies a clean 4x2 optimizer x training-loss sub-grid; the only thing keeping N6 alive is that no prior work crosses surrogate MODEL CLASS (not loss) against an optimizer/search factor.",
+      "search_queries": [
+        "CASH combined algorithm selection hyperparameter optimization variance decomposition fANOVA",
+        "auto-sklearn Auto-WEKA classifier choice hyperparameter importance interaction crossed",
+        "kernel selection Gaussian process structure search acquisition function offline black-box",
+        "algorithm configuration SMAC irace surrogate model type comparison factorial design ablation"
+      ],
+      "source_type": "academic",
+      "rationale": "Explicitly named by the query and by the locus-1 investigator as the single most valuable unsearched region, and confirmed genuinely absent from the vault this pass: 'auto-sklearn AutoML pipeline selection' returns 0 hits, 'CASH combined algorithm selection hyperparameter optimization' returns only a tangential Moosbauer hit, and 'kernel selection' returns only the already-known Liang note. The CASH/AutoML literature routinely treats 'which base learner/model class' as one categorical dimension inside a combined search space alongside hyperparameters/loss -- if any paper in this literature crosses model-class choice against a distinct optimizer/search-strategy factor with a variance decomposition (even one-way fANOVA extended to a model-class dimension), it either KILLS N6 outright or forces Ground (1) to be argued much more narrowly than the current draft does. This is the one search whose failure or success changes the paper's first contribution; everything else in this list is comparatively recoverable."
+    },
+    {
+      "id": "gap-2-n6-saea-simulation-optimization-materials-bo",
+      "type": "overturning",
+      "priority": "critical",
+      "target_position": "N6's residual, specifically the claim that no offline/simulation-based optimization literature outside the ML-benchmarking genre (Design-Bench/RaM/COMs/RoMA/SOO-Bench/Hutter/Liang/Moosbauer) has ever run a crossed surrogate-class x optimizer factorial with a two-way decomposition.",
+      "search_queries": [
+        "surrogate-assisted evolutionary algorithm survey model comparison search operator interaction",
+        "simulation optimization metamodel comparison kriging response surface design of experiments algorithm",
+        "Bayesian optimization materials science surrogate model comparison acquisition function factorial crossed",
+        "data-driven evolutionary optimization surrogate model type optimizer ANOVA variance"
+      ],
+      "source_type": "academic",
+      "rationale": "The query names SAEA, simulation-optimization, and BO-for-materials-beyond-Liang as unsearched. Confirmed absent this pass: no dedicated SAEA survey (e.g. Jin's 'surrogate-assisted evolutionary computation' lineage) or simulation-optimization metamodel-comparison paper appears in the vault under this tag -- existing hits are keyword-coincidental (Bischl, EXPObench, landscape-analysis survey), not the target literature itself. Simulation-optimization in particular has its own decades-old DOE/ANOVA tradition (Kleijnen) independent of the ML-benchmarking genre already swept; a crossed metamodel x optimizer factorial there would be a genuine kill the current N6 sweep cannot rule out because it never looked."
+    },
+    {
+      "id": "gap-3-n9-ml-benchmark-audit-effect-size-grew",
+      "type": "overturning",
+      "priority": "high",
+      "target_position": "N9's narrow claim: 'no ML de-confounding/reality-check audit reports a corrected variance-explained statistic above its own published value.'",
+      "search_queries": [
+        "machine learning benchmark reanalysis effect size larger than originally reported",
+        "reproducibility study corrected estimate exceeded original claim deep learning benchmark",
+        "confound correction increased performance gap reported machine learning reality check"
+      ],
+      "source_type": "academic",
+      "rationale": "The two sources currently bracketing N9 (Hamdan et al. 2022 confound-leakage; Maassen et al. 2020 psychology meta-analyses) are both adjacent genres, not direct hits -- one is confound-removal methodology generally, the other is outside ML entirely. Confirmed this pass: a direct search for 'ML benchmark reanalysis whose effect size grew' returns 0 vault hits. A single ML-specific reality-check paper reporting an upward-corrected effect size would overturn N9 outright, which is the paper's second most load-bearing novelty claim after N6."
+    },
+    {
+      "id": "gap-4-interaction-precedent-broader-ml-benchmarking",
+      "type": "overturning",
+      "priority": "high",
+      "target_position": "The buried interaction term (surrogate x optimizer, significant in all four corners) is framed as unprecedented in ML benchmarking practice; the current search covered only offline-MBO/BO benchmarks exhaustively (Design-Bench, RaM, COMs, RoMA, SOO-Bench, Liang, EXPObench, Bischl) but not the broader supervised-learning optimizer-benchmarking genre.",
+      "search_queries": [
+        "optimizer architecture interaction effect deep learning benchmark ANOVA variance decomposition",
+        "Descending through a Crowded Valley benchmarking deep learning optimizers architecture",
+        "model class training algorithm interaction variance component machine learning benchmark study"
+      ],
+      "source_type": "academic",
+      "rationale": "Locus 3's own report explicitly scoped its precedent search to the offline-MBO/BO-benchmark genre and to fANOVA's within-one-algorithm interaction reporting (Hutter, van Rijn); it did not search the separate, large literature that benchmarks deep-learning optimizers across architectures (e.g. Schmidt et al.'s optimizer-benchmarking line), which is exactly the kind of adjacent genre where a component-by-component interaction could already be reported and interpreted. Confirmed 0 vault hits for this specific query framing. If such a paper exists, it does not touch N6 (different domain) but would weaken the claim that interpreting this kind of interaction is itself novel practice."
+    },
+    {
+      "id": "gap-5-acquisition-stalling-at-data-literature",
+      "type": "overturning",
+      "priority": "high",
+      "target_position": "'Nobody owns confidence-bound-acquisition-is-locally-maximal-at-the-data-so-the-optimizer-never-leaves' -- currently asserted as the paper's own unattributed finding after TuRBO (opposite diagnosis), Fan et al. (proves convergence under conditions offline data cannot meet), and GIBO (no confidence bound in its exploitation step) were all ruled out as owners.",
+      "search_queries": [
+        "acquisition function collapse flat region Bayesian optimization stuck local optimum",
+        "Bayesian optimization premature convergence exploitation trap posterior mean at data points",
+        "greedy acquisition function pathology local search stalling static offline dataset"
+      ],
+      "source_type": "academic",
+      "rationale": "coverage-gaps.md rates this thread only 'Adequate' (TuRBO/GIBO/Wu et al. checked), and a direct search for the exact failure-mode vocabulary ('acquisition collapse', 'flat acquisition', 'acquisition function stalling') returns 0 vault hits -- meaning the specific pathology vocabulary has not itself been swept, only the three candidate-owner papers the audit already had in hand. One more targeted sweep is needed before the paper claims this failure mode as unowned; if a source is found, the paper must attribute it instead of claiming it as its own observation."
+    },
+    {
+      "id": "gap-6-eta-squared-bias-accessible-primary",
+      "type": "independent-verification",
+      "priority": "high",
+      "target_position": "Mandatory Fix 9 (eta-squared is a positively biased small-n estimator; ω²/ε² are the bias-corrected alternatives) -- currently verified only secondhand via the JOSS effectsize documentation quoting the paywalled Kelley (1935) and Olejnik & Algina (2003).",
+      "search_queries": [
+        "Levine Hullett eta squared partial eta squared misreporting effect size communication research",
+        "Okada omega squared epsilon squared bias comparison one-way ANOVA effect size",
+        "eta squared positive bias small sample size correction open access effect size ANOVA"
+      ],
+      "source_type": "academic",
+      "rationale": "coverage-gaps.md and findings-so-far.md both flag this explicitly as a secondhand-only verification and log it for the terminal 'what could not be verified' section. Levine & Hullett (2002, Human Communication Research) and Okada (2013, open-access) are known, commonly-available alternate primaries that independently derive/discuss the same eta-squared upward bias and its bias-corrected alternatives; confirmed 0 vault hits for either this pass. Finding either as a freely accessible primary upgrades a secondhand citation to a first-hand one at zero cost to the paper's argument, closing the one remaining citation-chain gap in an otherwise well-verified mandatory fix."
+    }
+  ]
+}
