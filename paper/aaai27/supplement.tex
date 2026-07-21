@@ -13,6 +13,7 @@
 \usepackage{amsmath,amssymb,amsthm}
 \pdfinfo{/TemplateVersion (2027.1)}
 \setcounter{secnumdepth}{2}
+\renewcommand{\thefigure}{S\arabic{figure}}
 
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
@@ -101,11 +102,23 @@ Grad.Asc. & $9.86$ & Ens+CMA    & $10.71$ \\
 \end{tabular}
 \end{table}
 
+\begin{figure}[t]\centering
+\includegraphics[width=0.99\columnwidth]{figures_v3/fig_confounds}
+\caption{Four-corner confound decomposition (relocated from the main body). The four engine corners are measured levels, not a composing cascade: target scaling alone (X1) moves $\eta^2_{\text{surr}}$ \emph{down} $0.084$ and the candidate/oracle rule alone (X3) \emph{up} $0.083$, yet the corner where both apply sits $0.038$ \emph{above} the uncorrected one, so the corrections are not additive and the corrected $0.405$ $[0.290,0.556]$ is a measured joint level, not a sum. The shaded band is the region every corner's bootstrap interval contains---the four overlap so heavily that no corner is separable from another at $n{=}7$ (the pre-registered KB5 result). The right panel is ensemble size, a confound on a separate axis, not a fifth corner. Synthetic grid, $n{=}7$ tasks, 30 seeds, $B{=}10{,}000$ bootstrap.}
+\label{fig:confounds}
+\end{figure}
+
 \section{Identifiability: Matched Tuning (GATE-1)}
 Exact and sparse GPs can spend per-run marginal-likelihood budget that ensembles cannot. The \emph{matched} arm freezes GP hyperparameter fitting so every surrogate receives the same (zero) per-run tuning budget. The surrogate main effect on synthetic tasks is $\eta^2_{\text{surr}}{=}0.37$ unmatched and $0.28$ matched---a $75\%$ retention. Both figures are on the \emph{uncorrected} engine, matching Table~\ref{tab:sfull} rather than the body's audited corner; the control is a within-engine contrast, so what it licenses is the retention ratio and not either level. The optimizer main effect stays small in both ($\eta^2_{\text{opt}}{=}0.01\to0.02$) and the interaction stays large ($\eta^2_{\text{inter}}{=}0.17\to0.12$). The GP advantage is therefore a surrogate-class property, not a per-run tuning artifact.
 
 \section{Mechanism Controls}
 The Section-5 mechanism rests on three controls, all on the synthetic tasks (task-normalized, averaged over optimizers).
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.99\columnwidth]{figures_v3/fig_width_rmse}
+\caption{Capacity and accuracy ruled out (Eliminations 2--3; relocated from the main body). Top: at fixed $K{=}5$ the GP--ensemble gap stays flat over a $10.7\times$ width sweep, $0.480$ $[0.365,0.576]$ at $w{=}96$ to $0.476$ $[0.208,0.647]$ at $w{=}1024$ ($99.1\%$ retained). The curve is non-monotone (it dips to $0.336$ at $w{=}256$ and returns) and the bootstrap band widens with $w$, so $w{=}1024$ is the least precise point and the supported claim is that the gap \emph{does not close}, not that it is identical there; the sweep stops at $1024$ while the kernel limits are asymptotic, so it answers the width objection at practical widths only and the depth-driven form remains open. Bottom: the ensemble's held-out normalized RMSE ($0.445$, $0.405$, $0.393$, $0.388$ at $w{=}96,256,512,1024$) falls monotonically with width and lies below the exact GP's $0.479$ at every width---the more accurate surrogate is the one that loses. Synthetic grid, 7 tasks, 30 seeds, $B{=}10{,}000$; RMSE on a $20\%$ split the grid never saw.}
+\label{fig:width}
+\end{figure}
 
 \paragraph{Pessimism off ($\beta{=}0$).} Re-running the full $3\times3$ grid at $\beta{=}0$ (no $\sigma$ penalty) and reading both conditions on a single $\beta$-invariant normalizer, the GP--ensemble marginal gap is $0.319$ $[0.196,0.460]$ at $\beta{=}0$ against $0.525$ $[0.406,0.614]$ at $\beta{=}2$. Two things follow, and both are asserted. First, $61\%$ of the advantage survives with $\sigma$ removed entirely and the interval excludes zero, so the advantage rests on a substantial mean-quality base. Second, the paired increment is $0.203$ $[0.007,0.396]$ with $p{=}0.020$, which \emph{excludes} zero: pessimism is a significant amplifier of that base, not a bystander. A normalization-free cross-check (per-task $z$-score by the task's own pooled cell-mean standard deviation) gives $0.904$ and $1.473$ standard deviations respectively---the same $0.61$ ratio---so the conclusion is not an artifact of min--max scaling. Per-task, the ensemble$\times$gradient cell still collapses without pessimism (Griewank $-42.7$, Rastrigin $-9.5$) while the GP does not (Griewank $-0.96$); these are the audited $\beta{=}0$ grid's own cell means, on the same engine as the interval above.
 
@@ -175,7 +188,7 @@ GP       & $0.98$ & $0.97$ & $0.93$ \\
 \end{table}
 
 \section{Ablations}
-\paragraph{Pessimism strength $\beta$.} Sweeping $\beta\in\{0,0.5,1,2,5\}$ (the $\beta$-resolution curve is Figure~3 of the main paper), increasing pessimism improves the final score on 6 of 7 synthetic tasks (median normalized slope $+0.19$); the exception is Ackley, where the uninformative $\sigma$ makes the penalty point away from the optimum. That the benefit is distance-regularization rather than calibrated conservatism is confirmed by Figure~\ref{fig:calib}: the per-task calibration quality $\rho$ (rank correlation between $\sigma$ and $|\mu-f|$) does not predict whether pessimism helps.
+\paragraph{Pessimism strength $\beta$.} Sweeping $\beta\in\{0,0.5,1,2,5\}$ (the $\beta$-resolution curve is Figure~2 of the main paper), increasing pessimism improves the final score on 6 of 7 synthetic tasks (median normalized slope $+0.19$); the exception is Ackley, where the uninformative $\sigma$ makes the penalty point away from the optimum. That the benefit is distance-regularization rather than calibrated conservatism is confirmed by Figure~\ref{fig:calib}: the per-task calibration quality $\rho$ (rank correlation between $\sigma$ and $|\mu-f|$) does not predict whether pessimism helps.
 \paragraph{Ensemble size $K$.} $K$ is treated throughout as a confound to be controlled, never as a discovered mechanism. Sweeping $K\in\{2,3,5,10\}$ on the audited engine (Figure~\ref{fig:k}), two facts are reported with equal weight. \emph{Sensitivity:} $\eta^2_{\text{surr}}$ is $K$-dependent---$0.326$, $0.366$, $0.408$, $0.389$---peaking at exactly the $K{=}5$ the field fixes by convention, so the headline magnitude sits at the effect's maximum and we say so. \emph{Non-reversal:} the ranking does \emph{not} flip at $K{=}2$, where the ensemble marginal is $0.283$ against the GP's $0.767$. Our range $K\in\{2,3,5,10\}$ shares three of its four points with the $K\in\{2,5,10\}$ over which ensemble surrogates were reported robust in online BO under a fixed acquisition rule \citep{li2024bnnsurrogates}, adding only $K{=}3$; we claim no priority on the range, which already reached $K{=}2$. The residual is that the two sweeps measure different quantities: that work asks whether ensemble-BO \emph{performance} is robust to $K$ and finds that it is, while we ask whether the variance \emph{attributed to the surrogate axis} is robust to $K$ and find that it is not. Both can hold simultaneously, and only the second bears on a decomposition. Our pre-registered kill criterion for this sweep---that an ensemble marginal exceeding the GP's at $K{=}2$ would overturn the headline---did not fire.
 
 The monotonically decreasing task-normalized score reported in an earlier draft of this supplement ($0.95$ at $K{=}2$) \emph{does not reproduce} on the audited engine, which gives $0.283$ at that cell. That figure is withdrawn, and no claim in this paper rests on it.
