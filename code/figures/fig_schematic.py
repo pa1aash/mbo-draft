@@ -18,15 +18,49 @@ use_style()
 plt.rcParams.update({"font.style": "normal"})   # upright roman everywhere
 
 BLACK = INK
-W, H = COL, 3.18
+# Vertical layout is specified in POINTS from the top of the canvas, not in
+# figure fractions, so the air between stages can be tuned without touching a
+# single font size. Every text size below is unchanged from the 3.18in version;
+# only the whitespace between and inside the three stages has been taken out.
+W, H = COL, 2.56
+HPT = H * 72.0
 fig = plt.figure(figsize=(W, H))
 ax = fig.add_axes([0, 0, 1, 1])
 ax.set_xlim(0, 1)
 ax.set_ylim(0, 1)
 ax.axis("off")
 
+
+def Y(pt):
+    """Figure-fraction y for a distance in points below the canvas top."""
+    return 1.0 - pt / HPT
+
+
+def PT(pt):
+    """A height in points expressed as a figure fraction."""
+    return pt / HPT
+
+
 SPINE = 0.61     # vertical centre the stage arrows sit on
 LW = 0.7         # standard outline weight
+
+# --- the vertical budget, in points from the top ---------------------------
+P_AXIS_LAB = 5.5       # "search routine" centre
+P_COL_HEAD = 16.0      # column-header baseline row centre
+P_GRID_TOP = 22.0
+GRID_ROW = 12.0        # 3 rows: label text is 6.9pt, marker 5.5pt
+P_GRID_BOT = P_GRID_TOP + 3 * GRID_ROW
+STAGE_GAP = 9.0        # arrow + its right-hand caption sit in here
+P_CONF_TOP = P_GRID_BOT + STAGE_GAP
+CONF_ROW = 11.6        # 5 rows of 6.9pt text
+P_CONF_BOT = P_CONF_TOP + 5 * CONF_ROW
+P_DEC_TOP = P_CONF_BOT + STAGE_GAP
+P_DEC_TITLE = P_DEC_TOP + 8.0
+P_CHIP_TOP = P_DEC_TOP + 19.0
+CHIP_H = 17.0          # holds 7.4pt math with sub/superscripts
+P_CHIP_BOT = P_CHIP_TOP + CHIP_H
+P_CHIP_SUB = P_CHIP_BOT + 6.0
+P_DEC_BOT = P_CHIP_SUB + 6.0
 
 
 def rect(x, y, w, h, ec=BLACK, fc="white", lw=LW, z=2):
@@ -42,7 +76,8 @@ def varrow(y0, y1, color=BLACK, lw=1.0, ms=7):
 
 def tick(x, y, up, color=BLACK):
     """A small vertical signed-direction arrow (up or down)."""
-    y0, y1 = (y - 0.020, y + 0.020) if up else (y + 0.020, y - 0.020)
+    d = PT(4.0)
+    y0, y1 = (y - d, y + d) if up else (y + d, y - d)
     ax.add_patch(FancyArrowPatch((x, y0), (x, y1), arrowstyle="-|>",
                                  mutation_scale=6.5, color=color, lw=0.9,
                                  shrinkA=0, shrinkB=0, zorder=6))
@@ -50,7 +85,7 @@ def tick(x, y, up, color=BLACK):
 
 # ======================= STAGE 1 -- crossed factorial =====================
 gx0, gx1 = 0.315, 0.955
-gy_top, gy_bot = 0.955, 0.775
+gy_top, gy_bot = Y(P_GRID_TOP), Y(P_GRID_BOT)
 cols = ["gradient", "perturbation", "CMA"]
 rows = [("Exact GP", EGP), ("Ensemble", ENS), ("SVGP", SVGP)]
 cw = (gx1 - gx0) / 3
@@ -76,21 +111,21 @@ for j, (name, col) in enumerate(rows):
             color=BLACK)
 # column headers (black, roman)
 for i, c in enumerate(cols):
-    ax.text(ccx[i], gy_top + 0.016, c, ha="center", va="bottom",
+    ax.text(ccx[i], Y(P_COL_HEAD), c, ha="center", va="center",
             fontsize=6.4, color=BLACK)
 # axis labels (roman, upright)
-ax.text((gx0 + gx1) / 2, gy_top + 0.050, "search routine", ha="center",
-        va="bottom", fontsize=7.2, color=BLACK)
+ax.text((gx0 + gx1) / 2, Y(P_AXIS_LAB), "search routine", ha="center",
+        va="center", fontsize=7.2, color=BLACK)
 ax.text(0.045, (gy_top + gy_bot) / 2, "surrogate class", ha="center",
         va="center", rotation=90, fontsize=7.2, color=BLACK)
 
-varrow(gy_bot - 0.006, 0.7265)
-ax.text(SPINE + 0.028, (gy_bot - 0.006 + 0.7265) / 2, "remove five confounds",
+varrow(Y(P_GRID_BOT + 0.5), Y(P_CONF_TOP - 0.5))
+ax.text(SPINE + 0.028, Y(P_GRID_BOT + STAGE_GAP / 2), "remove five confounds",
         ha="left", va="center", fontsize=6.0, color=BLACK)
 
 # ======================= STAGE 2 -- five confounds ========================
 bx0, bx1 = 0.255, 0.965
-by_top, by_bot = 0.7225, 0.4145
+by_top, by_bot = Y(P_CONF_TOP), Y(P_CONF_BOT)
 rect(bx0, by_bot, bx1 - bx0, by_top - by_bot, lw=0.8)
 nrows = 5
 rrh = (by_top - by_bot) / nrows
@@ -122,28 +157,28 @@ for k, (tag, name, glyph) in enumerate(confs):
         ax.text(dx, y, "acts on optimizer axis", ha="right", va="center",
                 fontsize=6.6, color=BLACK)
 
-varrow(by_bot - 0.006, 0.366)
-ax.text(SPINE + 0.028, (by_bot - 0.006 + 0.366) / 2, "two-way ANOVA",
+varrow(Y(P_CONF_BOT + 0.5), Y(P_DEC_TOP - 0.5))
+ax.text(SPINE + 0.028, Y(P_CONF_BOT + STAGE_GAP / 2), "two-way ANOVA",
         ha="left", va="center", fontsize=6.0, color=BLACK)
 
 # ======================= STAGE 3 -- decomposition =========================
 tx0, tx1 = 0.255, 0.965
-ty_top, ty_bot = 0.362, 0.072
+ty_top, ty_bot = Y(P_DEC_TOP), Y(P_DEC_BOT)
 rect(tx0, ty_bot, tx1 - tx0, ty_top - ty_bot, lw=0.8)
-ax.text((tx0 + tx1) / 2, ty_top - 0.034, "variance decomposition", ha="center",
+ax.text((tx0 + tx1) / 2, Y(P_DEC_TITLE), "variance decomposition", ha="center",
         va="center", fontsize=7.1, color=BLACK)
 chips = [(r"$\eta^2_{\mathrm{surr}}$", "surrogate", BLACK),
          (r"$\eta^2_{\mathrm{opt}}$",  "optimizer", BLACK),
          (r"$\eta^2_{\mathrm{inter}}$", "interaction", ACCENT)]
 pad = 0.045
 cwid = (tx1 - tx0 - 2 * pad - 2 * 0.02) / 3
-sb_top, sb_bot = ty_top - 0.098, ty_bot + 0.078
+sb_top, sb_bot = Y(P_CHIP_TOP), Y(P_CHIP_BOT)
 for k, (lab, sub, ec) in enumerate(chips):
     sx = tx0 + pad + (cwid + 0.02) * k
     rect(sx, sb_bot, cwid, sb_top - sb_bot, ec=ec, lw=1.3 if k == 2 else LW, z=4)
     ax.text(sx + cwid / 2, (sb_top + sb_bot) / 2, lab, ha="center",
             va="center", fontsize=7.4, color=BLACK, zorder=6)
-    ax.text(sx + cwid / 2, sb_bot - 0.028, sub, ha="center", va="center",
+    ax.text(sx + cwid / 2, Y(P_CHIP_SUB), sub, ha="center", va="center",
             fontsize=5.9, color=BLACK, zorder=6)
 
 save(fig, "schematic")
