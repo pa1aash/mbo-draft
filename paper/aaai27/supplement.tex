@@ -14,6 +14,7 @@
 \pdfinfo{/TemplateVersion (2027.1)}
 \setcounter{secnumdepth}{2}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
 
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}
@@ -261,6 +262,43 @@ Over the 9 grid cells and 7 tasks the synthetic Friedman omnibus gives $p{=}6.1\
 \paragraph{The equivalence bound, reported.} The released code computes paired two-one-sided-tests, and rather than merely noting that they exist we give the result, because a bound is a more informative statement than a disclaimer. The best-versus-worst gap is $0.3762$ with a $90\%$ interval of $[-0.1078,0.8602]$ and an effect bound of $0.4840$. That is \emph{not} equivalent at a $0.5$ margin and not equivalent at a $0.3$ margin either. So the Design-Bench null is a failure to detect that also fails to bound the effect below any margin one would call negligible---which is a positive statement about the null's reach, and a weaker one than equivalence in the direction that matters. Rejecting effects this small would require samples well beyond $n{=}7$ \citep{lakens2017equivalence}, and no claim in this paper rests on equivalence.
 
 \paragraph{Robustness to the random-forest oracle.} Because four of the seven Design-Bench tasks use a substituted random-forest oracle (GFP, UTR, Ant, D'Kitty), we check that the null is not manufactured by RF-flattened surfaces. Restricted to the three tasks whose oracle is \emph{not} a smoothing RF substitution---TF-Bind-8/10 (exact oracles) and Superconductor (native random-forest oracle)---the Friedman omnibus over the 9 cells is $p{=}0.93$, and the median per-task method spread on the substituted tasks is \emph{no smaller} than on these three---$0.39$ normalized over the three substituted tasks other than the degenerate GFP, $0.51$ over all four, against $0.34$ here---so the substitution did not compress the score range. The synthetic-to-real collapse of method separation is therefore a property of the real tasks, not an artifact of the oracle substitution.
+
+\section{Further Robustness Checks}
+All entries here are on the audited engine (X1 and X3 on, $\beta{=}2$, $K{=}5$, 30 synthetic seeds) unless stated.
+
+\paragraph{Normalizer robustness.} Recomputing the decomposition across the four engine corners and three per-task normalizers (Table~\ref{tab:normrob}), $\eta^2_{\text{surr}}>\eta^2_{\text{opt}}$ and $\eta^2_{\text{surr}}$ is largest in \emph{all twelve} combinations; the interaction exceeds the optimizer main effect in \emph{eleven}, inverting only in the on/off corner under rank normalization (the corner carrying the largest optimizer effect). Rank transformation roughly halves the interaction throughout.
+
+\begin{table}[t]
+\centering
+\caption{Normalizer robustness. Four engine corners $\times$ three per-task normalizers, recomputed from the stored per-seed grids. $\eta^2_{\text{surr}}>\eta^2_{\text{opt}}$ in all twelve; $\eta^2_{\text{inter}}>\eta^2_{\text{opt}}$ in eleven, inverting only in the marked row.}
+\label{tab:normrob}
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llcccr}
+\toprule
+Corner & Norm. & $\eta^2_{\text{surr}}$ & $\eta^2_{\text{opt}}$ & $\eta^2_{\text{inter}}$ & int/opt \\
+\midrule
+off / off & min--max & $0.367$ & $0.013$ & $0.165$ & $12.4\times$ \\
+off / off & $z$-score & $0.426$ & $0.019$ & $0.193$ & $10.0\times$ \\
+off / off & rank      & $0.487$ & $0.050$ & $0.053$ & $1.1\times$ \\
+on\ \,/ off & min--max & $0.283$ & $0.036$ & $0.146$ & $4.0\times$ \\
+on\ \,/ off & $z$-score & $0.347$ & $0.042$ & $0.189$ & $4.5\times$ \\
+on\ \,/ off & rank     & $0.318$ & $0.075$ & $0.049$ & $\mathbf{0.6\times}$ \\
+off / on\ \, & min--max & $0.450$ & $0.006$ & $0.152$ & $26.9\times$ \\
+off / on\ \, & $z$-score & $0.494$ & $0.008$ & $0.167$ & $20.6\times$ \\
+off / on\ \, & rank     & $0.524$ & $0.021$ & $0.062$ & $2.9\times$ \\
+on\ \,/ on\ \, & min--max & $0.405$ & $0.005$ & $0.160$ & $32.8\times$ \\
+on\ \,/ on\ \, & $z$-score & $0.454$ & $0.003$ & $0.179$ & $71.3\times$ \\
+on\ \,/ on\ \, & rank     & $0.388$ & $0.017$ & $0.071$ & $4.1\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{No landscape covariate predicts the gap.} The GP--ensemble gap's rank correlation with dimension is $+0.107$ (gradient), $+0.036$ (perturbation) and $+0.071$ (CMA), indistinguishable from zero under every optimizer ($p\geq0.81$) and pointing opposite the expectation that GP advantage decays with dimension \citep{li2024bnnsurrogates}. Textbook multimodality mis-sorts: within the ``many local minima'' family the gap spans three orders of magnitude, while the one strictly unimodal task is among the smallest. Separability fares no better. This is a null from looking, not from failing to look, and not a reparametrization artifact---each task is mapped from the shared unit cube onto its exact native domain. One structural statement survives: the per-task gap \emph{ordering} is stable across optimizers (Spearman $0.71$--$0.96$; the gradient--perturbation pair at $0.71$ is not significant at $n{=}7$, $p{=}0.07$) while the \emph{magnitude} collapses under perturbation. Together these constrain any surviving mechanism to be multiplicative (a task factor scaled by an optimizer-aggressiveness factor); the collapse is bootstrapped, the ordering descriptive at $n{=}7$.
+
+\paragraph{Far-field extrapolation does not distinguish the classes.} A second pre-registered positive-mechanism arm raised the GP's prior mean to stop its far field reverting to the data mean. The manipulation does not move its target: a constant above every observation shifts the far-field posterior mean by under $1\%$ of the distance to it ($R{=}0.009$ against a registered $0.25$), because the fitted lengthscales are of order the domain diameter and no point in the feasible cube is in a reversion regime. The one arm that removes reversion carries $211\times$ the incumbent's held-out RMSE, and a surrogate that has stopped predicting is not evidence about reversion. Separately, probing the far field directly, the ensemble extrapolates near-linearly on all seven tasks while neither GP class reverts anywhere in the probed range, so far-field functional form does not distinguish the classes. A premise failed rather than a prediction surviving: any account of the GP advantage resting on prior reversion is unavailable here, not merely untested.
+
+\paragraph{The sharpest Design-Bench budget objection.} On Design-Bench the GFP CMA cell is where a budget confound could most plausibly manufacture the optimizer result: it spends $570$ surrogate queries against gradient's $51{,}456$, a $90\times$ imbalance (at $d{=}4{,}740$ the library falls back to separable CMA and converges almost at once). Matching raises it to $51{,}494$, in line with the rest, and the seven-task and GFP-dropped sets move together, so repairing that starved cell did not by itself drive the outcome.
 
 \section{Engine Map for Every Supplementary Number}
 \label{sec:enginemap}
