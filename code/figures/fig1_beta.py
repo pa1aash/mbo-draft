@@ -36,8 +36,11 @@ CI = {0.0: boot["grid_b0.0"]["eta2"]["surr"]["ci95"],
 CORNER_ORDER = [("off_off", "off\noff"), ("on_off", "on\noff"),
                 ("off_on", "off\non"), ("on_on", "on\non")]
 
+# Authored at the size it is reproduced at, with every label re-typeset so that
+# nothing renders below 7pt on the page. The canvas is shorter than the 1.85in
+# original; the type is larger, not smaller.
 fig, (ax, bx) = plt.subplots(
-    1, 2, figsize=(COL, 1.85), sharey=True,
+    1, 2, figsize=(COL, 1.52), sharey=True,
     gridspec_kw={"width_ratios": [1.5, 1.0], "wspace": 0.10})
 
 # ---------------- left: the beta trace -----------------------------------
@@ -59,7 +62,7 @@ for edge in (lo2, hi0):
     ax.axhline(edge, color=ACCENT_DK, lw=0.7, zorder=2)
 ax.annotate(f"intervals overlap\nby only {hi0 - lo2:.3f}",
             xy=(1.05, (lo2 + hi0) / 2), xytext=(1.30, 0.045),
-            fontsize=6.4, color=ACCENT_DK, ha="center", va="bottom",
+            fontsize=7.0, color=ACCENT_DK, ha="center", va="bottom",
             fontweight="bold",
             arrowprops=dict(arrowstyle="-", lw=0.6, color=ACCENT_DK,
                             shrinkA=0, shrinkB=1))
@@ -67,7 +70,9 @@ ax.annotate(f"intervals overlap\nby only {hi0 - lo2:.3f}",
 ax.set_xticks(x)
 ax.set_xticklabels([f"{b:g}" for b in BETAS])
 ax.set_xlabel(r"pessimism $\beta$")
-ax.set_ylabel(r"$\eta^2_{\mathrm{surrogate}}$")
+# base 10pt so the nested subscript (mathtext renders it at 0.7x) still clears
+# 7pt on the page; "surr" matches the notation the body text uses.
+ax.set_ylabel(r"$\eta^2_{\mathrm{surr}}$", fontsize=10.0)
 ax.set_xlim(-0.42, len(BETAS) - 0.58)
 ax.set_title(r"$\beta$ axis: endpoints nearly separate", fontsize=7.0, pad=3)
 despine(ax)
@@ -92,14 +97,14 @@ lo = max(corners[k]["eta2"]["surr"]["ci95"][0] for k in corners)
 hi = min(corners[k]["eta2"]["surr"]["ci95"][1] for k in corners)
 bx.axhspan(lo, hi, color=ACCENT, alpha=0.16, lw=0, zorder=1)
 bx.annotate("every interval\ncontains this band",
-            xy=(1.5, hi), xytext=(1.5, 0.70), fontsize=6.2, color=ACCENT_DK,
+            xy=(1.5, hi), xytext=(1.5, 0.69), fontsize=7.0, color=ACCENT_DK,
             ha="center", va="bottom",
             arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTE,
                             shrinkA=0, shrinkB=1))
 
 bx.set_xticks(range(len(CORNER_ORDER)))
-bx.set_xticklabels([lab for _, lab in CORNER_ORDER], fontsize=6.0,
-                   linespacing=0.95)
+bx.set_xticklabels([lab for _, lab in CORNER_ORDER], fontsize=7.0,
+                   linespacing=0.92)
 bx.set_xlabel("corner  X1 / X3")
 bx.set_xlim(-0.6, len(CORNER_ORDER) - 0.4)
 bx.set_title("corners: no separation", fontsize=7.0, pad=3)
