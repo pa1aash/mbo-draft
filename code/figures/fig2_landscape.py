@@ -59,6 +59,10 @@ is_cls = np.isin(arm, CLASS_KEYS)
 rho_z = spearmanr(d, z).statistic
 rho_i = spearmanr(d, infl).statistic
 
+# Reproduced full-width in the supplement (scale 1.198), so the axis-label
+# base is raised to 8.6: mathtext renders its nested subscript at 0.7x, and
+# 8.6*0.7*1.198 = 7.2pt keeps even that glyph above the 7pt floor.
+plt.rcParams.update({"axes.labelsize": 8.6})
 fig, (ax, bx, cx) = plt.subplots(
     1, 3, figsize=(FULL, 2.15),
     gridspec_kw={"width_ratios": [1.0, 1.0, 1.05], "wspace": 0.30})
