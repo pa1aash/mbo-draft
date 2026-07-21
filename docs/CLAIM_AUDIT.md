@@ -411,3 +411,61 @@ RaM-as-evidence). Scope constraints hold: `0.378` absent; `0.556` only as CI bou
 cross-β; the β–σ criterion "fired" (never "two criteria"); DB null "no detectable difference at this
 power"; K sensitivity **and** non-reversal; LCB paralysis (M-A); GP coverage 0.97/0.831 both ways; the
 0.37 pinned to "our decomposition of PGS's Table 1" at all five sites; `35.9` untouched.
+
+---
+
+# Main–supplement consistency audit — 2026-07-21
+
+Reconciling `main.tex` and `supplement.tex` as one document before compression. Every value
+appearing in both (or referenced across) was recomputed from `results/*.json` and compared.
+
+## Shared numbers
+
+| Quantity | main | supplement | verdict |
+|---|---|---|---|
+| Matched tuning | T3c "75% … near 0.283" | §3 `0.37→0.28`, 75%, η²_opt `0.01→0.02`, η²_inter `0.17→0.12`, uncorrected | **match** |
+| Corner η²_surr | tab:corners `0.367/0.283/0.450/0.405` | §bias `0.367/0.283/0.450/0.405` | **match** |
+| Synthetic Friedman p | tab:corners `6.1e-5/1.7e-3/4.1e-5/8.1e-4` | §sig `6.1e-5/1.7e-3/4.1e-5/8.1e-4`, uncorrected `6.1e-5` / audited `8.1e-4` | **match** (05_findings SYNTH = db_analysis synthetic) |
+| **DB Friedman p** | §6 `0.19–0.76` (5-task); MuJoCo `0.011–0.014`, off/off `0.16` | §sig had **legacy** `0.69`, rank `3.57`, CI `[1.86,5.71]` (05_findings REAL) | **MISMATCH → fixed** to `0.19–0.76` + MuJoCo `0.011–0.014`/`0.16` (db_analysis corners_5task/corners_7task) |
+| Interaction | tab:corners `0.146–0.165`; bias-corrected `0.134–0.156` | §bias `0.156/0.134/0.147/0.156`; matched `0.17→0.12` | **match** |
+| Bias / bias-corrected | §disc `+0.0099…+0.0184`, `0.351→0.395`, `+0.0437` vs `+0.0376` | §bias `+0.0160/+0.0184/+0.0123/+0.0099`, `0.351/0.264/0.438/0.395` | **match** |
+| Cross-β (Elim 1) | `0.319 [0.196,0.460]` vs `0.525 [0.406,0.614]`, incr `0.203 [0.007,0.396]` p=0.020, z `0.904/1.473` | §mech identical | **match** |
+| Reproducibility | abstract `0.0018`, `58 of 63` | §sig `0.40636 vs 0.40455`, `0.0018`, `58/63` | **match** |
+| K-sweep | `0.326/0.366/0.408/0.389`; K=2 ens `0.283` vs GP `0.767` | §ablations identical | **match** |
+| TOST | `0.376` / `[-0.108,0.860]` / `0.484` | `0.3762`/`[-0.1078,0.8602]`/`0.4840` | **match** (precision only) |
+| tab:cross coverage | §5 `0.97` sklearn / `0.831` grid / `0.38` Styblinski | tab:cross `0.98/0.97/0.73/0.42/0.97/0.93`, `0.97` disclosed = sklearn | **match** (= 05_findings gp_coverage; grid 0.831 is main-only, disclosed) |
+| tab:rawgap per-task gaps | §5 lists `6.95/15.13/0.46/0.09/4.92/5.10/288.46` (grad), `0.053/5.996/0.047/0.008/0.187/-0.004/25.556` (pert) | tab:rawgap identical; pert% `39.6`/`≤8.8` | **match** |
+| Styblinski GP+Pert | main:242 `35.9` (audited) | tab:sfull `36.15` (uncorrected, X1/X3 off) | **deliberate difference — different engines, not reconciled** |
+| tab:sfull cells | — | uncorrected grid | matches `results_camera.json` 63/63 (prior audit); PGS Table 1 reproduced within tolerance |
+| σ-distance `0.257≈0.26`, matched-dist `-1.406` | T4b / §5 | main-only (not in supplement) | verified vs source in Tier 3+4 |
+
+## Engine-corner disclosure
+
+Every supplementary number carries its engine: the engine map (`tab:enginemap`) lists all 14
+items (uncorrected / audited / all-four-corners), each table caption restates it, and every
+in-text figure discloses its corner. The one stale item (DB Friedman) now states its corners
+in-text after the fix. **No undisclosed-corner number remains in either file.**
+
+## Cross-file references (supplement → main paper, hardcoded because separate compile)
+
+| Reference | Target | Correct? |
+|---|---|---|
+| §Mechanism-Controls "the **Section-5** mechanism" | main §5 = `sec:mech` (Isolating the Source of the Gap) | **yes** (mechanism is Section 5) |
+| §Ablations "the β-resolution curve is **Figure~3** of the main paper" | main `fig:beta` = Figure 3 post-renumber; the paragraph is the β sweep and `fig:beta` is the β-resolution figure | **yes** — the prior "Figure 4 → Figure 3" fix is correct |
+| intro "not part of the **7-page** body" | AAAI page target; body is currently 17pp (compression pending) | softened to "**main body**" (avoids asserting a currently-false page count) |
+
+All supplement internal `\ref`s (`tab:sfull`, `tab:cov`, `tab:cross`, `tab:simple`, `tab:rawgap`,
+`tab:srank`, `tab:cc`, `tab:enginemap`, `fig:calib`, `fig:k`, `sec:enginemap`) resolve to defined
+labels; **no dangling or multiply-defined labels** in either `.aux`.
+
+## Claim consistency
+
+No main-says-X / supplement-says-Y tension survived. GP premise coverage `0.97` is attributed to
+scikit-learn (not the grid GP) in **both** files (main §5; supplement line 118), with the grid
+value `0.831` given in main; supplement `tab:cov` OOD-near-zero "where gradient ascent collapses"
+matches its own table (Styblinski/Griewank/DB OOD ≈ 0); the conformal proposition is used only as
+a measurement in main, consistent with the supplement's Proposition 2. The DB-null framing is now
+identical (5-task fails to reject in both; MuJoCo rejection noted in both).
+
+**One mismatch found and fixed** (DB Friedman legacy stats) plus one soft page-count reference
+softened. Both files compile clean, zero undefined refs/citations.
