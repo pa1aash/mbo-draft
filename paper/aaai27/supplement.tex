@@ -127,7 +127,7 @@ on\ \,/ on\ \, & $\mathbf{0.405}$ $[0.290,0.556]$ & $0.005$ & $0.160$ & $8.1\tim
 \end{table}
 
 \section{Identifiability: Matched Tuning (GATE-1)}
-Exact and sparse GPs can spend per-run marginal-likelihood budget that ensembles cannot. The \emph{matched} arm freezes GP hyperparameter fitting so every surrogate receives the same (zero) per-run tuning budget. The surrogate main effect on synthetic tasks is $\eta^2_{\text{surr}}{=}0.37$ unmatched and $0.28$ matched---a $75\%$ retention. Both figures are on the \emph{uncorrected} engine, matching Table~\ref{tab:sfull} rather than the body's audited corner; the control is a within-engine contrast, so what it licenses is the retention ratio and not either level. The optimizer main effect stays small in both ($\eta^2_{\text{opt}}{=}0.01\to0.02$) and the interaction stays large ($\eta^2_{\text{inter}}{=}0.17\to0.12$). The GP advantage is therefore a surrogate-class property, not a per-run tuning artifact.
+Exact and sparse GPs can spend per-run marginal-likelihood budget that ensembles cannot. The \emph{matched} arm freezes GP hyperparameter fitting so every surrogate receives the same (zero) per-run tuning budget. The surrogate main effect on synthetic tasks is $\eta^2_{\text{surr}}{=}0.369$ unmatched and $0.275$ matched---a $75\%$ retention. Both figures are on the \emph{uncorrected} engine, as in Table~\ref{tab:sfull}, rather than the body's audited corner; the control is a within-engine contrast, so what it licenses is the retention ratio and not either level. The unmatched figure is this arm's own estimate on that engine and is not Table~\ref{tab:corners}'s $0.367$ re-rounded: the two runs differ by $0.002$, an estimator offset rather than an engine one, and we print three decimals here so that the pair is not read as a second value of the body's headline. The optimizer main effect stays small in both ($\eta^2_{\text{opt}}{=}0.01\to0.02$) and the interaction stays large ($\eta^2_{\text{inter}}{=}0.17\to0.12$). The GP advantage is therefore a surrogate-class property, not a per-run tuning artifact.
 
 \section{Mechanism Controls}
 The Section-5 mechanism rests on three controls, all on the synthetic tasks (task-normalized, averaged over optimizers).
@@ -341,7 +341,7 @@ Item & Engine & Seeds \\
 Table~\ref{tab:sfull} full grid          & uncorrected & 30 \\
 Table~\ref{tab:srank} average ranks      & uncorrected & 30 \\
 Table~\ref{tab:corners} four corners     & all four corners & 30 \\
-Matched tuning ($0.37\!\to\!0.28$)       & uncorrected & 30 \\
+Matched tuning ($0.369\!\to\!0.275$)     & uncorrected & 30 \\
 $\beta{=}0$ controls, cross-check        & audited     & 30 \\
 Matched subsample                        & uncorrected & 30 \\
 Table~\ref{tab:cross} cross-proposal     & uncorrected & 30 \\
