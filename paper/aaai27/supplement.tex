@@ -129,6 +129,24 @@ on\ \,/ on\ \, & $\mathbf{0.405}$ $[0.290,0.556]$ & $0.005$ & $0.160$ & $8.1\tim
 \end{tabular}
 \end{table}
 
+\begin{table}[t]\centering
+\caption{The five confounds (relocated from the main body, whose \S3 prose reports every name, signed effect and kill-criterion outcome). Signed effect is on $\eta^2_{\text{surr}}$ (synthetic, $n{=}7$, 30 seeds) except Confound 5, which acts on $\eta^2_{\text{opt}}$. The two \emph{protocol} confounds move the headline against the ensemble-size confound; the net is the body's \S4.}
+\label{tab:confounds}
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{llr}
+\toprule
+Confound & What it breaks & Signed effect \\
+\midrule
+1. Target scaling      & ensemble trains on raw $y$ & $0.367\!\to\!0.283$ \\
+2. Candidate/oracle    & two estimands, one column  & $0.367\!\to\!0.450$ \\
+3. Ensemble size $K$   & headline fixed at the peak & $0.326$--$0.408$ \\
+4. $\beta$--$\sigma$ match & per-task, not aggregate & ratio $0.07$--$1.44$ \\
+5. Query budget        & optimizer $=$ search effort & $0.005\!\to\!0.038$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Identifiability: Matched Tuning (GATE-1)}
 Exact and sparse GPs can spend per-run marginal-likelihood budget that ensembles cannot. The \emph{matched} arm freezes GP hyperparameter fitting so every surrogate receives the same (zero) per-run tuning budget. The surrogate main effect on synthetic tasks is $\eta^2_{\text{surr}}{=}0.369$ unmatched and $0.275$ matched---a $75\%$ retention. Both figures are on the \emph{uncorrected} engine, as in Table~\ref{tab:sfull}, rather than the body's audited corner; the control is a within-engine contrast, so what it licenses is the retention ratio and not either level. The unmatched figure is this arm's own estimate on that engine and is not Table~\ref{tab:corners}'s $0.367$ re-rounded: the two runs differ by $0.002$, an estimator offset rather than an engine one, and we print three decimals here so that the pair is not read as a second value of the body's headline. The optimizer main effect stays small in both ($\eta^2_{\text{opt}}{=}0.01\to0.02$) and the interaction stays large ($\eta^2_{\text{inter}}{=}0.17\to0.12$). The GP advantage is therefore a surrogate-class property, not a per-run tuning artifact.
 
@@ -215,7 +233,7 @@ GP       & $0.98$ & $0.97$ & $0.93$ \\
 \end{table}
 
 \section{Ablations}
-\paragraph{Pessimism strength $\beta$.} Sweeping $\beta\in\{0,0.5,1,2,5\}$ (the $\beta$-resolution curve is Figure~2 of the main paper), increasing pessimism improves the final score on 6 of 7 synthetic tasks (median normalized slope $+0.19$); the exception is Ackley, where the uninformative $\sigma$ makes the penalty point away from the optimum. That the benefit is distance-regularization rather than calibrated conservatism is confirmed by Figure~\ref{fig:calib}: the per-task calibration quality $\rho$ (rank correlation between $\sigma$ and $|\mu-f|$) does not predict whether pessimism helps.
+\paragraph{Pessimism strength $\beta$.} Sweeping $\beta\in\{0,0.5,1,2,5\}$ (the $\beta$-resolution curve is Figure~\ref{fig:beta}), increasing pessimism improves the final score on 6 of 7 synthetic tasks (median normalized slope $+0.19$); the exception is Ackley, where the uninformative $\sigma$ makes the penalty point away from the optimum. That the benefit is distance-regularization rather than calibrated conservatism is confirmed by Figure~\ref{fig:calib}: the per-task calibration quality $\rho$ (rank correlation between $\sigma$ and $|\mu-f|$) does not predict whether pessimism helps.
 \paragraph{Ensemble size $K$.} $K$ is treated throughout as a confound to be controlled, never as a discovered mechanism. Sweeping $K\in\{2,3,5,10\}$ on the audited engine (Figure~\ref{fig:k}), two facts are reported with equal weight. \emph{Sensitivity:} $\eta^2_{\text{surr}}$ is $K$-dependent---$0.326$, $0.366$, $0.408$, $0.389$---peaking at exactly the $K{=}5$ the field fixes by convention, so the headline magnitude sits at the effect's maximum and we say so. \emph{Non-reversal:} the ranking does \emph{not} flip at $K{=}2$, where the ensemble marginal is $0.283$ against the GP's $0.767$. Our range $K\in\{2,3,5,10\}$ shares three of its four points with the $K\in\{2,5,10\}$ over which ensemble surrogates were reported robust in online BO under a fixed acquisition rule \citep{li2024bnnsurrogates}, adding only $K{=}3$; we claim no priority on the range, which already reached $K{=}2$. The residual is that the two sweeps measure different quantities: that work asks whether ensemble-BO \emph{performance} is robust to $K$ and finds that it is, while we ask whether the variance \emph{attributed to the surrogate axis} is robust to $K$ and find that it is not. Both can hold simultaneously, and only the second bears on a decomposition. Our pre-registered kill criterion for this sweep---that an ensemble marginal exceeding the GP's at $K{=}2$ would overturn the headline---did not fire.
 
 The monotonically decreasing task-normalized score reported in an earlier draft of this supplement ($0.95$ at $K{=}2$) \emph{does not reproduce} on the audited engine, which gives $0.283$ at that cell. That figure is withdrawn, and no claim in this paper rests on it.
@@ -229,6 +247,12 @@ The monotonically decreasing task-normalized score reported in an earlier draft 
 \includegraphics[width=0.9\columnwidth]{figures/fig7_k_ablation}
 \caption{Ensemble-size ablation. Task-normalized score decreases with $K$.}
 \label{fig:k}
+\end{figure}
+
+\begin{figure}[t]\centering
+\includegraphics[width=0.99\columnwidth]{figures_v3/fig_beta_resolution}
+\caption{$\beta$ nearly resolves where the engine corners do not (relocated from the main body, whose \S4 prose reports every number here). Left: $\eta^2_{\text{surr}}$ rises monotonically with pessimism, the $\beta{=}0$ and $\beta{=}2$ intervals overlapping by only $0.069$ (intervals drawn at those two endpoints only). Right, on the same scale: the four corner intervals overlap completely. Synthetic grid, 7 tasks, 30 seeds, $B{=}10{,}000$.}
+\label{fig:beta}
 \end{figure}
 
 \section{Official-Baseline Cross-Check}
